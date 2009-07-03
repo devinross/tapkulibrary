@@ -1,0 +1,25 @@
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m:9:32: error: TKLabelTextViewCell.h: No such file or directory
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m:14: warning: cannot find interface declaration for 'TKLabelTextViewCell'
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m:14: error: expected ')' before 'CGRect'
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m: In function '-[TKLabelTextViewCell initWithFrame:reuseIdentifier:]':
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m:15: error: no super class declared in @interface for 'TKLabelTextViewCell'
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m:18: error: 'textView' undeclared (first use in this function)
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m:18: error: (Each undeclared identifier is reported only once
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m:18: error: for each function it appears in.)
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m:18: error: 'UITextView' undeclared (first use in this function)
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m:18: error: 'CGRectZero' undeclared (first use in this function)
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m:19: warning: 'TKLabelTextViewCell' may not respond to '-addSubview:'
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m:19: warning: (Messages without a matching method signature
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m:19: warning: will be assumed to return 'id' and accept
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m:19: warning: '...' as arguments.)
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m:20: error: 'UIColor' undeclared (first use in this function)
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m: In function '-[TKLabelTextViewCell layoutSubviews]':
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m:30: error: no super class declared in @interface for 'TKLabelTextViewCell'
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m:32: error: 'CGRect' undeclared (first use in this function)
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m:32: error: expected ';' before 'r'
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m:33: error: 'r' undeclared (first use in this function)
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m:34: error: 'textView' undeclared (first use in this function)
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m: In function '-[TKLabelTextViewCell setSelected:animated:]':
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m:43: error: no super class declared in @interface for 'TKLabelTextViewCell'
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m: In function '-[TKLabelTextViewCell dealloc]':
+/Users/devinross14/Desktop/TapkuLibrary/TKLabelTextView.m:50: error: no super class declared in @interface for 'TKLabelTextViewCell'
