@@ -331,13 +331,13 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3B0281490FFDCBBF004A23C5</string>
+										<string>3B0281BC0FFE6B4F004A23C5</string>
 										<key>history</key>
 										<array>
 											<string>3B0279B90FFC5E0F004A23C5</string>
 											<string>3B027D1C0FFC891B004A23C5</string>
 											<string>3B027D1D0FFC891B004A23C5</string>
-											<string>3B0281480FFDCBBF004A23C5</string>
+											<string>3B0281490FFDCBBF004A23C5</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -467,11 +467,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>3B027F0E0FFD1DA9004A23C5</string>
+				<string>3B0281B20FFE6B25004A23C5</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>3B027F0F0FFD1DA9004A23C5</string>
+				<string>3B0281B30FFE6B25004A23C5</string>
 				<string>3B02793E0FFC59EA004A23C5</string>
-				<string>3B027F100FFD1DA9004A23C5</string>
+				<string>3B0281B40FFE6B25004A23C5</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -618,14 +618,14 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>3B02814A0FFDCBBF004A23C5</string>
+				<string>3B0281B50FFE6B25004A23C5</string>
 				<string>1CCC7628064C1048000F2A68</string>
 				<string>1CCC7629064C1048000F2A68</string>
-				<string>3B02814B0FFDCBBF004A23C5</string>
-				<string>3B02814C0FFDCBBF004A23C5</string>
-				<string>3B02814D0FFDCBBF004A23C5</string>
-				<string>3B02814E0FFDCBBF004A23C5</string>
-				<string>3B02814F0FFDCBBF004A23C5</string>
+				<string>3B0281B60FFE6B25004A23C5</string>
+				<string>3B0281B70FFE6B25004A23C5</string>
+				<string>3B0281B80FFE6B25004A23C5</string>
+				<string>3B0281B90FFE6B25004A23C5</string>
+				<string>3B0281BA0FFE6B25004A23C5</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -655,7 +655,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>/Users/devinross14/Documents/Tapku/tapku_library_project/TapkuLibraryDemo/TapkuLibraryDemo.xcodeproj</string>
+		<string>/Users/devinross14/tapkulibrary/TapkuLibraryDemo/TapkuLibraryDemo.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
 	<string>0 558 856 470 0 0 1680 1028 </string>

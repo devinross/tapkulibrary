@@ -39,8 +39,8 @@
 	LoadingHUDView *loading  = [[LoadingHUDView alloc] init];
 	[self.view addSubview:loading];
 	
-	[loading setTitle:@"Loading She is Mine - Michael Jackson"];
-	[loading setMessage:@"The girl is mine, don't waste your time"];
+	[loading setTitle:@"Loading"];
+	[loading setMessage:@"Enter Description Here"];
 	
 	[loading startAnimating];
 	loading.center = CGPointMake(self.view.bounds.size.width/2, 200);
