@@ -50,8 +50,8 @@ What's in TapkuLibrary?
 ==================
                   
 
-Table View Cells
-----------------
+Label Cells
+-----------
 
 
 **[TKLabelCell](http://github.com/tapku/tapkulibrary/blob/cd4c3ef7f15bde2128243cc182bb7297235946de/TapkuLibrary/TKLabelCell.h)** is a cell with a label intended to provide information on the rest of the cell similar to the cells that appear in the Address Book.
@@ -63,5 +63,19 @@ Table View Cells
 **[TKLabelFieldCell](http://github.com/tapku/tapkulibrary/blob/810ba9fc7bbc8ca3a47324f214cd9bdc46e971f1/TapkuLibrary/TKLabelFieldCell.h)** is a cell with an ordinary field label.
 
 **[TKLabelSwitchCell](http://github.com/tapku/tapkulibrary/blob/810ba9fc7bbc8ca3a47324f214cd9bdc46e971f1/TapkuLibrary/TKLabelSwitchCell.h)** is a cell with a switch.
+
+
+
+More Cells
+----------
+
+**[TKButtonCell](http://github.com/tapku/tapkulibrary/blob/810ba9fc7bbc8ca3a47324f214cd9bdc46e971f1/TapkuLibrary/TKButtonCell.h)** is a simple cell with a label in the middle.
+
+
+
+HUD UI
+------
+
+[![]http://farm3.static.flickr.com/2584/3684191507_90b3cc32cf_o.png](http://farm3.static.flickr.com/2584/3684191507_90b3cc32cf_o.png)
 
  
