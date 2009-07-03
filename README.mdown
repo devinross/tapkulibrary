@@ -53,4 +53,4 @@ What's in TapkuLibrary?
 Table View Cell Label
 ---------------------
 
-[TKLabelCell][] is a cell with a label intended to provide information on the rest of the cell similar to the cells that appear in the Address Book.
+[TKLabelCell](http://github.com/tapku/tapkulibrary/blob/cd4c3ef7f15bde2128243cc182bb7297235946de/TapkuLibrary/TKLabelCell.h is a cell with a label intended to provide information on the rest of the cell similar to the cells that appear in the Address Book.
