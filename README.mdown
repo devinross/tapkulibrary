@@ -53,5 +53,15 @@ What's in TapkuLibrary?
 Table View Cells
 ----------------
 
-**[TKLabelCell](http://github.com/tapku/tapkulibrary/blob/cd4c3ef7f15bde2128243cc182bb7297235946de/TapkuLibrary/TKLabelCell.h)**
-is a cell with a label intended to provide information on the rest of the cell similar to the cells that appear in the Address Book.
+
+**[TKLabelCell](http://github.com/tapku/tapkulibrary/blob/cd4c3ef7f15bde2128243cc182bb7297235946de/TapkuLibrary/TKLabelCell.h)** is a cell with a label intended to provide information on the rest of the cell similar to the cells that appear in the Address Book.
+
+**TKLabelTextViewCell** is a cell with a textview and label.
+
+**TKLabelTextFieldCell** is a cell with a TextField.
+
+**TKLabelFieldCell** is a cell with an ordinary field label.
+
+**TKLabelSwitchCell** is a cell with a switch.
+
+ 
