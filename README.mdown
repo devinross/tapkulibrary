@@ -76,6 +76,8 @@ More Cells
 HUD UI
 ------
 
+**LoadingHUDView** allows you to show a title and message to a loading indicator.
 [![]http://farm3.static.flickr.com/2584/3684191507_90b3cc32cf_o.png](http://farm3.static.flickr.com/2584/3684191507_90b3cc32cf_o.png)
+
 
  
