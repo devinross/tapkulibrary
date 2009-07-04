@@ -75,7 +75,7 @@ static UIColor *indicatorBackgroundColor = nil;
 	
 	
 	CGRect rect = CGRectInset(r, 12, 12);
-	rect.size.width -= 40;
+	rect.size.width -= 45;
 	
 	if(self.editing){
 		rect.origin.x += 30;

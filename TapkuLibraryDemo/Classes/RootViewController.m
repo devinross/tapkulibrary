@@ -9,6 +9,7 @@
 #import "RootViewController.h"
 #import "LabelViewController.h"
 #import "FastTableViewController.h"
+#import "HUDViewController.h"
 
 @implementation RootViewController
 
@@ -26,16 +27,7 @@
 	
 
 	
-	/*
-	LoadingHUDView *loading  = [[LoadingHUDView alloc] init];
-	[self.view addSubview:loading];
-	
-	[loading setTitle:@"Loading"];
-	[loading setMessage:@"Enter Description Here"];
-	
-	[loading startAnimating];
-	loading.center = CGPointMake(self.view.bounds.size.width/2, 200);
-	*/
+
 	
 }
 
@@ -118,10 +110,14 @@
 		LabelViewController *anotherViewController = [[LabelViewController alloc] initWithStyle:UITableViewStyleGrouped];
 		[self.navigationController pushViewController:anotherViewController animated:YES];
 		[anotherViewController release];
-	}else {
+	}else if(indexPath.row == 1) {
 		FastTableViewController *fast = [[FastTableViewController alloc] initWithStyle:UITableViewStylePlain];
 		[self.navigationController pushViewController:fast animated:YES];
 		[fast release];
+	}else{
+		HUDViewController *hud = [[HUDViewController alloc] init];
+		[self.navigationController pushViewController:hud animated:YES];
+		[hud release];
 	}
 
 }

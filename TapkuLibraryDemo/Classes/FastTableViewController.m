@@ -27,7 +27,7 @@
 	cells = [[NSMutableArray alloc] init];
 	
 	FSIndicatorCell *cell1 = [[FSIndicatorCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier];
-	cell1.text = @"Indicator Cell REALLY Long TItle REALLY Long TItle REALLY Long TItle";
+	cell1.text = @"Indicator Cell";
 	cell1.count = 20;
 	cell1.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	[cells addObject:cell1];
