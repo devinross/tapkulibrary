@@ -9,8 +9,8 @@
 #import <TapkuLibrary/TapkuLibrary.h>
 
 @interface RootViewController : UITableViewController {
+	NSMutableArray *titles;
 	
-	NSMutableArray *cells;
 }
 
 @end

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TKLabelCell.h"
 
-@interface TKLabelTextFieldCell : TKLabelCell {
+@interface TKLabelTextFieldCell : TKLabelCell<UITextFieldDelegate> {
 	UITextField *field;
 }
 @property (retain, nonatomic) UITextField *field;

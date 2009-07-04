@@ -18,6 +18,7 @@
         // Initialization code
 		field = [[UITextField alloc] initWithFrame:CGRectZero];
 		field.autocorrectionType = UITextAutocorrectionTypeYes;
+		field.delegate = self;
 		[self addSubview:field];
 		//field.backgroundColor = [UIColor redColor];
 		field.font = [UIFont boldSystemFontOfSize:16.0];
@@ -34,6 +35,13 @@
 	r.size.height -= 5;
 	r.origin.x += 80;
 	r.size.width -= 80;
+	
+	if(self.editing){
+		r.origin.x += 30;
+		r.size.width -= 30;
+	}
+	
+	
 	field.frame = r;
 	
 	
@@ -52,7 +60,6 @@
 	}
 	
 }
-
 - (void) setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
 	[super setHighlighted:highlighted animated:animated];
 	if(highlighted){
@@ -61,6 +68,13 @@
 		field.textColor = [UIColor blackColor];
 	}
 }
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+	[field resignFirstResponder];
+	return NO;
+}
+
 
 
 - (void)dealloc {

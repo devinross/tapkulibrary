@@ -27,6 +27,12 @@
 	
 	CGRect r = CGRectInset(self.bounds, 16, 10);
 	r.origin.x += label.frame.size.width + 10;
+	
+	if(self.editing){
+		r.origin.x += 30;
+		r.size.width -= 30;
+	}
+	
 	switcher.frame = r;
 	
 	

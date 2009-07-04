@@ -7,6 +7,7 @@
 //
 
 #import "RootViewController.h"
+#import "LabelViewController.h"
 
 
 @implementation RootViewController
@@ -15,27 +16,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-	static NSString *CellIdentifier = @"Cell";
+	self.title = @"TapkuLibrary";
 	
-	cells = [[NSMutableArray alloc] init];
+	titles = [[NSMutableArray alloc] init];
+	[titles addObject:@"Label Cells"];
+	[titles addObject:@"Fast Cells"];
+	[titles addObject:@"HUD"];
 	
-	TKLabelCell *cell = [[TKLabelFieldCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier];
-	cell.label.text = @"Label";
-	[(TKLabelFieldCell*)cell field].text = @"Field";
-	//(TKLabelFieldCell*)cell.field.text = @"Field";
-	[cells addObject:cell];
-	[cell release];
 	
-	cell = [[TKLabelTextViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier];
-	cell.label.text = @"Text View";
-	[cells addObject:cell];
-	[cell release];
+
 	
-	cell = [[TKLabelTextFieldCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier];
-	cell.label.text = @"Text Field";
-	[cells addObject:cell];
-	[cell release];
-	
+	/*
 	LoadingHUDView *loading  = [[LoadingHUDView alloc] init];
 	[self.view addSubview:loading];
 	
@@ -44,7 +35,7 @@
 	
 	[loading startAnimating];
 	loading.center = CGPointMake(self.view.bounds.size.width/2, 200);
-	
+	*/
 	
 }
 
@@ -98,31 +89,37 @@
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [cells count];
+    return [titles count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-	return [cells objectAtIndex:indexPath.row];
-}
-
-- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-	if(indexPath.row == 1){
-		return 120.0;
-	}
-	return 44.0;
 	
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    // Set up the cell...
+	cell.text = [titles objectAtIndex:indexPath.row];
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	
+    return cell;
+	
+	
+
 }
 
-/*
+
+
+
 // Override to support row selection in the table view.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    // Navigation logic may go here -- for example, create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController animated:YES];
-	// [anotherViewController release];
+	LabelViewController *anotherViewController = [[LabelViewController alloc] initWithStyle:UITableViewStyleGrouped];
+	[self.navigationController pushViewController:anotherViewController animated:YES];
+	[anotherViewController release];
 }
-*/
+
 
 
 /*

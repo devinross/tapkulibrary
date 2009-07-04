@@ -30,6 +30,12 @@
 	CGRect r = CGRectInset(self.bounds, 16, 8);
 	r.origin.x += 73;
 	r.size.width -= 73;
+	
+	if(self.editing){
+		r.origin.x += 30;
+		r.size.width -= 30;
+	}
+	
 	textView.frame = r;
 	
 	
@@ -47,7 +53,6 @@
 	}
 	
 }
-
 - (void) setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
 	[super setHighlighted:highlighted animated:animated];
 	if(highlighted){

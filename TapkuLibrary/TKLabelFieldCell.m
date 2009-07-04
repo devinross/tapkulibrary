@@ -31,6 +31,12 @@
 	CGRect r = CGRectInset(self.bounds, 16, 8);
 	r.origin.x += 80;
 	r.size.width -= 80;
+	
+	if(self.editing){
+		r.origin.x += 30;
+		r.size.width -= 30;
+	}
+	
 	field.frame = r;
 	
 	

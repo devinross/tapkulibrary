@@ -33,8 +33,13 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+	NSLog(@"Layout subviews %f",[self indentationWidth]);
 	
-	CGRect r = CGRectInset(self.bounds, 16, 8);
+	float insetx = 16;
+	if(self.editing) insetx += 30;
+	
+	
+	CGRect r = CGRectInset(self.bounds, insetx, 8);
 	r.size.width = 72;
 	r.size.height = 30;
 	label.frame = r;
@@ -42,7 +47,9 @@
 	
 }
 
-
+- (void)willTransitionToState:(UITableViewCellStateMask)state{
+	NSLog(@"Will translate");
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
 
