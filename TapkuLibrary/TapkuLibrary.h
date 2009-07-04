@@ -7,4 +7,7 @@
 #import "TKButtonCell.h"
 #import "TKLabelSwitchCell.h"
 
+
+#import "FSIndicatorCell.h"
+
 #import "LoadingHUDView.h"

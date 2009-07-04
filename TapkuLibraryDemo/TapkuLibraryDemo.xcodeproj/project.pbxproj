@@ -17,6 +17,7 @@
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		3B0279840FFC5CB1004A23C5 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B0279600FFC5B20004A23C5 /* libTapkuLibrary.a */; };
 		3B02855F0FFFBBD1004A23C5 /* LabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B02855E0FFFBBD1004A23C5 /* LabelViewController.m */; };
+		3B02863F0FFFC95B004A23C5 /* FastTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B02863E0FFFC95B004A23C5 /* FastTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,8 @@
 		3B0279590FFC5B20004A23C5 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = ../../../TapkuLibrary/TapkuLibrary.xcodeproj; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B02855D0FFFBBD1004A23C5 /* LabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelViewController.h; sourceTree = "<group>"; };
 		3B02855E0FFFBBD1004A23C5 /* LabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelViewController.m; sourceTree = "<group>"; };
+		3B02863D0FFFC95B004A23C5 /* FastTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastTableViewController.h; sourceTree = "<group>"; };
+		3B02863E0FFFC95B004A23C5 /* FastTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastTableViewController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TapkuLibraryDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TapkuLibraryDemo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +82,8 @@
 				1D3623250D0F684500981E51 /* TapkuLibraryDemoAppDelegate.m */,
 				3B02855D0FFFBBD1004A23C5 /* LabelViewController.h */,
 				3B02855E0FFFBBD1004A23C5 /* LabelViewController.m */,
+				3B02863D0FFFC95B004A23C5 /* FastTableViewController.h */,
+				3B02863E0FFFC95B004A23C5 /* FastTableViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -223,6 +228,7 @@
 				1D3623260D0F684500981E51 /* TapkuLibraryDemoAppDelegate.m in Sources */,
 				28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */,
 				3B02855F0FFFBBD1004A23C5 /* LabelViewController.m in Sources */,
+				3B02863F0FFFC95B004A23C5 /* FastTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

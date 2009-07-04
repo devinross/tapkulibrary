@@ -22,6 +22,10 @@
 		3B0280570FFD77E8004A23C5 /* TKButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0280550FFD77E8004A23C5 /* TKButtonCell.m */; };
 		3B0280B50FFD7AD3004A23C5 /* TKLabelSwitchCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B0280B30FFD7AD3004A23C5 /* TKLabelSwitchCell.h */; };
 		3B0280B60FFD7AD3004A23C5 /* TKLabelSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0280B40FFD7AD3004A23C5 /* TKLabelSwitchCell.m */; };
+		3B0286240FFFC5F3004A23C5 /* ABTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B0286220FFFC5F3004A23C5 /* ABTableViewCell.h */; };
+		3B0286250FFFC5F3004A23C5 /* ABTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0286230FFFC5F3004A23C5 /* ABTableViewCell.m */; };
+		3B02862C0FFFC660004A23C5 /* FSIndicatorCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B02862A0FFFC660004A23C5 /* FSIndicatorCell.h */; };
+		3B02862D0FFFC660004A23C5 /* FSIndicatorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B02862B0FFFC660004A23C5 /* FSIndicatorCell.m */; };
 		AA747D9F0F9514B9006C5449 /* TapkuLibrary_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* TapkuLibrary_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -42,6 +46,10 @@
 		3B0280550FFD77E8004A23C5 /* TKButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKButtonCell.m; sourceTree = "<group>"; };
 		3B0280B30FFD7AD3004A23C5 /* TKLabelSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKLabelSwitchCell.h; sourceTree = "<group>"; };
 		3B0280B40FFD7AD3004A23C5 /* TKLabelSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKLabelSwitchCell.m; sourceTree = "<group>"; };
+		3B0286220FFFC5F3004A23C5 /* ABTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTableViewCell.h; sourceTree = "<group>"; };
+		3B0286230FFFC5F3004A23C5 /* ABTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTableViewCell.m; sourceTree = "<group>"; };
+		3B02862A0FFFC660004A23C5 /* FSIndicatorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSIndicatorCell.h; sourceTree = "<group>"; };
+		3B02862B0FFFC660004A23C5 /* FSIndicatorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSIndicatorCell.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* TapkuLibrary_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapkuLibrary_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libTapkuLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTapkuLibrary.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +119,7 @@
 				3B0280B80FFD7ADA004A23C5 /* Label */,
 				3B0280540FFD77E8004A23C5 /* TKButtonCell.h */,
 				3B0280550FFD77E8004A23C5 /* TKButtonCell.m */,
+				3B0286270FFFC607004A23C5 /* Fast */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -132,6 +141,17 @@
 			name = Label;
 			sourceTree = "<group>";
 		};
+		3B0286270FFFC607004A23C5 /* Fast */ = {
+			isa = PBXGroup;
+			children = (
+				3B02862A0FFFC660004A23C5 /* FSIndicatorCell.h */,
+				3B02862B0FFFC660004A23C5 /* FSIndicatorCell.m */,
+				3B0286220FFFC5F3004A23C5 /* ABTableViewCell.h */,
+				3B0286230FFFC5F3004A23C5 /* ABTableViewCell.m */,
+			);
+			name = Fast;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -148,6 +168,8 @@
 				3B027BBE0FFC77D8004A23C5 /* LoadingHUDView.h in Headers */,
 				3B0280560FFD77E8004A23C5 /* TKButtonCell.h in Headers */,
 				3B0280B50FFD7AD3004A23C5 /* TKLabelSwitchCell.h in Headers */,
+				3B0286240FFFC5F3004A23C5 /* ABTableViewCell.h in Headers */,
+				3B02862C0FFFC660004A23C5 /* FSIndicatorCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +223,8 @@
 				3B027BBF0FFC77D8004A23C5 /* LoadingHUDView.m in Sources */,
 				3B0280570FFD77E8004A23C5 /* TKButtonCell.m in Sources */,
 				3B0280B60FFD7AD3004A23C5 /* TKLabelSwitchCell.m in Sources */,
+				3B0286250FFFC5F3004A23C5 /* ABTableViewCell.m in Sources */,
+				3B02862D0FFFC660004A23C5 /* FSIndicatorCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

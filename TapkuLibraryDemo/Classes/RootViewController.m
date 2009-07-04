@@ -8,7 +8,7 @@
 
 #import "RootViewController.h"
 #import "LabelViewController.h"
-
+#import "FastTableViewController.h"
 
 @implementation RootViewController
 
@@ -114,10 +114,16 @@
 
 // Override to support row selection in the table view.
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	if(indexPath.row ==0){
+		LabelViewController *anotherViewController = [[LabelViewController alloc] initWithStyle:UITableViewStyleGrouped];
+		[self.navigationController pushViewController:anotherViewController animated:YES];
+		[anotherViewController release];
+	}else {
+		FastTableViewController *fast = [[FastTableViewController alloc] initWithStyle:UITableViewStylePlain];
+		[self.navigationController pushViewController:fast animated:YES];
+		[fast release];
+	}
 
-	LabelViewController *anotherViewController = [[LabelViewController alloc] initWithStyle:UITableViewStyleGrouped];
-	[self.navigationController pushViewController:anotherViewController animated:YES];
-	[anotherViewController release];
 }
 
 
