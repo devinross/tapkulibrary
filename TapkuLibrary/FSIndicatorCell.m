@@ -51,7 +51,15 @@ static UIColor *indicatorBackgroundColor = nil;
 }
 
 - (void) setCount:(int)s{
+	NSLog(@"_count %d",_count);
 	if(s==_count) return;
+	if(s > 99 && _count < 100){
+		[indicatorFont release];
+		indicatorFont = [[UIFont boldSystemFontOfSize:12.0] retain];
+	}else if(s < 100 && _count > 99){
+		[indicatorFont release];
+		indicatorFont = [[UIFont boldSystemFontOfSize:16.0] retain];
+	}
 	_count = s;
 	_countStr = [[NSString stringWithFormat:@"%d",s] retain];
 	[self setNeedsDisplay];
@@ -102,6 +110,8 @@ static UIColor *indicatorBackgroundColor = nil;
 		CGContextClosePath(context);
 		CGContextDrawPath(context, kCGPathFill);
 		
+		if(_count > 99)
+			rrect.origin.y += 2;
 		
 		[indicatorColor set];
 		//[_countStr drawInRect:rrect withFont:indicatorFont];

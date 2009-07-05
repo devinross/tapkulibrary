@@ -23,12 +23,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	self.title = @"Fast Scroll";
+	
 	static NSString *CellIdentifier = @"Cell";
 	cells = [[NSMutableArray alloc] init];
 	
 	FSIndicatorCell *cell1 = [[FSIndicatorCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier];
 	cell1.text = @"Indicator Cell";
-	cell1.count = 20;
+	cell1.count = 50;
 	cell1.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	[cells addObject:cell1];
 	[cell1 release];

@@ -30,6 +30,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	self.title = @"HUD";
+	
 	loading  = [[LoadingHUDView alloc] init];
 	[self.view addSubview:loading];
 	[loading setTitle:@"Loading"];
