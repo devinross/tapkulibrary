@@ -51,7 +51,6 @@ static UIColor *indicatorBackgroundColor = nil;
 }
 
 - (void) setCount:(int)s{
-	NSLog(@"_count %d",_count);
 	if(s==_count) return;
 	if(s > 99 && _count < 100){
 		[indicatorFont release];

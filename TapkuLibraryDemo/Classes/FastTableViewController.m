@@ -29,6 +29,8 @@
 	static NSString *CellIdentifier = @"Cell";
 	cells = [[NSMutableArray alloc] init];
 	
+	
+	/*
 	FSIndicatorCell *cell1 = [[FSIndicatorCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier];
 	cell1.text = @"Indicator Cell";
 	cell1.count = 50;
@@ -36,6 +38,17 @@
 	[cells addObject:cell1];
 	[cell1 release];
 	
+	*/
+	
+	
+	for(int i=0;i<20;i++){
+		FSIndicatorCell *cell1 = [[FSIndicatorCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier];
+		cell1.text = @"Indicator Cell";
+		cell1.count = i;
+		cell1.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		[cells addObject:cell1];
+		[cell1 release];
+	}
 	
 	
 
