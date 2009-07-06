@@ -74,8 +74,8 @@
 
 
 - (void)dealloc {
-    [super dealloc];
 	[label release];
+    [super dealloc];
 }
 
 

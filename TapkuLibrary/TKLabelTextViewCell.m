@@ -65,8 +65,8 @@
 
 
 - (void)dealloc {
-    [super dealloc];
 	[textView release];
+	[super dealloc];
 }
 
 

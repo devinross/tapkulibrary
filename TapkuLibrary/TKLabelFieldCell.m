@@ -63,8 +63,8 @@
 
 
 - (void)dealloc {
-    [super dealloc];
 	[field release];
+    [super dealloc];
 }
 
 
