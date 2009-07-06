@@ -76,6 +76,8 @@ More Cells
 **[TKButtonCell](http://github.com/tapku/tapkulibrary/blob/810ba9fc7bbc8ca3a47324f214cd9bdc46e971f1/TapkuLibrary/TKButtonCell.h)** is a simple cell with a label in the middle.
 
 
+**[FSIndicatorCell](http://github.com/tapku/tapkulibrary/blob/43768ddfec2a6ee5f6ecc963893d0d39ff8ff0be/TapkuLibrary/FSIndicatorCell.h) Fast Scrolling (FS) cell with a Mail like indicator on the right side of the cell. 
+
 
 HUD UI
 ------
