@@ -87,4 +87,15 @@ HUD UI
 [![](http://farm3.static.flickr.com/2584/3684191507_90b3cc32cf_o.png)](http://farm3.static.flickr.com/2584/3684191507_90b3cc32cf_o.png)
 
 
+
+Info View Controller
+--------------------
+**[TKInfoHeaderTableViewController]()** a table view controller similar to the interface seen in the application Tweetie.
+
+
+Map View
+--------
+
+**[TKMapView]()** allows you to place pins on a map using touch.
+
  

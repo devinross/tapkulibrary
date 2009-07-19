@@ -19,6 +19,11 @@
 		3B02855F0FFFBBD1004A23C5 /* LabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B02855E0FFFBBD1004A23C5 /* LabelViewController.m */; };
 		3B02863F0FFFC95B004A23C5 /* FastTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B02863E0FFFC95B004A23C5 /* FastTableViewController.m */; };
 		3B02874F0FFFD55C004A23C5 /* HUDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B02874E0FFFD55C004A23C5 /* HUDViewController.m */; };
+		3B5834C5101159750082E0D8 /* GraphController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5834C4101159750082E0D8 /* GraphController.m */; };
+		3B5834C8101159A90082E0D8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5834C7101159A90082E0D8 /* QuartzCore.framework */; };
+		3B7228EE100925DE00816B29 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7228ED100925DE00816B29 /* MapViewController.m */; };
+		3B722914100928BD00816B29 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B722913100928BD00816B29 /* MapKit.framework */; };
+		3B723356100BB79600816B29 /* InfoHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B723355100BB79600816B29 /* InfoHeader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +63,14 @@
 		3B02863E0FFFC95B004A23C5 /* FastTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastTableViewController.m; sourceTree = "<group>"; };
 		3B02874D0FFFD55C004A23C5 /* HUDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDViewController.h; sourceTree = "<group>"; };
 		3B02874E0FFFD55C004A23C5 /* HUDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDViewController.m; sourceTree = "<group>"; };
+		3B5834C3101159750082E0D8 /* GraphController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphController.h; sourceTree = "<group>"; };
+		3B5834C4101159750082E0D8 /* GraphController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphController.m; sourceTree = "<group>"; };
+		3B5834C7101159A90082E0D8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3B7228EC100925DE00816B29 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		3B7228ED100925DE00816B29 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		3B722913100928BD00816B29 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		3B723354100BB79600816B29 /* InfoHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoHeader.h; sourceTree = "<group>"; };
+		3B723355100BB79600816B29 /* InfoHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoHeader.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TapkuLibraryDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TapkuLibraryDemo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +83,8 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
 				3B0279840FFC5CB1004A23C5 /* libTapkuLibrary.a in Frameworks */,
+				3B722914100928BD00816B29 /* MapKit.framework in Frameworks */,
+				3B5834C8101159A90082E0D8 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,10 +94,10 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
-				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				1D3623240D0F684500981E51 /* TapkuLibraryDemoAppDelegate.h */,
 				1D3623250D0F684500981E51 /* TapkuLibraryDemoAppDelegate.m */,
+				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
+				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				3B0287510FFFD57E004A23C5 /* View Controllers */,
 			);
 			path = Classes;
@@ -104,6 +119,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				3B5834C7101159A90082E0D8 /* QuartzCore.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -130,6 +146,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B722913100928BD00816B29 /* MapKit.framework */,
 				3B0279590FFC5B20004A23C5 /* TapkuLibrary.xcodeproj */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -149,12 +166,18 @@
 		3B0287510FFFD57E004A23C5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3B723354100BB79600816B29 /* InfoHeader.h */,
+				3B723355100BB79600816B29 /* InfoHeader.m */,
 				3B02855D0FFFBBD1004A23C5 /* LabelViewController.h */,
 				3B02855E0FFFBBD1004A23C5 /* LabelViewController.m */,
 				3B02863D0FFFC95B004A23C5 /* FastTableViewController.h */,
 				3B02863E0FFFC95B004A23C5 /* FastTableViewController.m */,
 				3B02874D0FFFD55C004A23C5 /* HUDViewController.h */,
 				3B02874E0FFFD55C004A23C5 /* HUDViewController.m */,
+				3B7228EC100925DE00816B29 /* MapViewController.h */,
+				3B7228ED100925DE00816B29 /* MapViewController.m */,
+				3B5834C3101159750082E0D8 /* GraphController.h */,
+				3B5834C4101159750082E0D8 /* GraphController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -243,6 +266,9 @@
 				3B02855F0FFFBBD1004A23C5 /* LabelViewController.m in Sources */,
 				3B02863F0FFFC95B004A23C5 /* FastTableViewController.m in Sources */,
 				3B02874F0FFFD55C004A23C5 /* HUDViewController.m in Sources */,
+				3B7228EE100925DE00816B29 /* MapViewController.m in Sources */,
+				3B723356100BB79600816B29 /* InfoHeader.m in Sources */,
+				3B5834C5101159750082E0D8 /* GraphController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

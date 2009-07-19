@@ -33,7 +33,7 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-	NSLog(@"Layout subviews %f",[self indentationWidth]);
+	//NSLog(@"Layout subviews %f",[self indentationWidth]);
 	
 	float insetx = 16;
 	if(self.editing) insetx += 30;

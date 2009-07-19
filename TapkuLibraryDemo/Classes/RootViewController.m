@@ -10,6 +10,9 @@
 #import "LabelViewController.h"
 #import "FastTableViewController.h"
 #import "HUDViewController.h"
+#import "MapViewController.h"
+#import "InfoHeader.h"
+
 
 @implementation RootViewController
 
@@ -23,6 +26,8 @@
 	[titles addObject:@"Label Cells"];
 	[titles addObject:@"Fast Cells"];
 	[titles addObject:@"HUD"];
+	[titles addObject:@"MapView"];
+	[titles addObject:@"Info Header"];
 	
 	
 
@@ -114,10 +119,18 @@
 		FastTableViewController *fast = [[FastTableViewController alloc] initWithStyle:UITableViewStylePlain];
 		[self.navigationController pushViewController:fast animated:YES];
 		[fast release];
-	}else{
+	}else if(indexPath.row == 2) {
 		HUDViewController *hud = [[HUDViewController alloc] init];
 		[self.navigationController pushViewController:hud animated:YES];
 		[hud release];
+	}else if(indexPath.row==3){
+		//MapViewController *mvc = [[MapViewController alloc] init];
+		//[self.navigationController pushViewController:mvc animated:YES];
+		//[mvc release];
+	}else{
+		InfoHeader *mvc = [[InfoHeader alloc] init];
+		[self.navigationController pushViewController:mvc animated:YES];
+		[mvc release];
 	}
 
 }

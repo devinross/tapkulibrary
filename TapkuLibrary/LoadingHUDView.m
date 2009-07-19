@@ -72,7 +72,7 @@
 	
 	
 }
-- (void)drawRect:(CGRect)rect {
+- (void) drawRect:(CGRect)rect {
 	
 	if(_hidden) return;
 	
@@ -84,6 +84,12 @@
 	
 	CGSize s1 = [self calculateHeightOfTextFromWidth:_title font:titleFont width:200 linebreak:UILineBreakModeTailTruncation];
 	CGSize s2 = [self calculateHeightOfTextFromWidth:_message font:messageFont width:200 linebreak:UILineBreakModeCharacterWrap];
+	
+	if([_title length] < 1)
+		s1.height = 0;
+	if([_message length] < 1)
+		s2.height = 0;
+	
 	
 	float h = s1.height + s2.height + 16;
 	float w = s1.width;
@@ -129,6 +135,8 @@
 				withFont:messageFont
 		   lineBreakMode:UILineBreakModeCharacterWrap 
 			   alignment:UITextAlignmentCenter];
+	
+	CGContextFlush(UIGraphicsGetCurrentContext());
 
 	
 }
