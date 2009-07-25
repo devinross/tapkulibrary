@@ -28,17 +28,25 @@
 		3B02862D0FFFC660004A23C5 /* FSIndicatorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B02862B0FFFC660004A23C5 /* FSIndicatorCell.m */; };
 		3B583415101152A40082E0D8 /* TKTimeGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B583413101152A40082E0D8 /* TKTimeGraph.h */; };
 		3B583416101152A40082E0D8 /* TKTimeGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B583414101152A40082E0D8 /* TKTimeGraph.m */; };
+		3B702C5A101AA082008C3D59 /* TKTimeGraphController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B702C58101AA082008C3D59 /* TKTimeGraphController.h */; };
+		3B702C5B101AA082008C3D59 /* TKTimeGraphController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B702C59101AA082008C3D59 /* TKTimeGraphController.m */; };
 		3B7228E01009221D00816B29 /* TKMapView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B7228DE1009221D00816B29 /* TKMapView.h */; };
 		3B7228E11009221D00816B29 /* TKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7228DF1009221D00816B29 /* TKMapView.m */; };
 		3B7228E51009229400816B29 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B7228E41009229400816B29 /* MapKit.framework */; };
 		3B722A421009339100816B29 /* TKPlace.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B722A401009339100816B29 /* TKPlace.h */; };
 		3B722A431009339100816B29 /* TKPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B722A411009339100816B29 /* TKPlace.m */; };
-		3B72334E100BB6C700816B29 /* TKInfoHeaderTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B72334C100BB6C700816B29 /* TKInfoHeaderTableViewController.h */; };
-		3B72334F100BB6C700816B29 /* TKInfoHeaderTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B72334D100BB6C700816B29 /* TKInfoHeaderTableViewController.m */; };
-		3B72337F100BB8E400816B29 /* InfoHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B72337D100BB8E400816B29 /* InfoHeaderView.h */; };
-		3B723380100BB8E400816B29 /* InfoHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B72337E100BB8E400816B29 /* InfoHeaderView.m */; };
+		3B72334E100BB6C700816B29 /* TKOverviewTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B72334C100BB6C700816B29 /* TKOverviewTableViewController.h */; };
+		3B72334F100BB6C700816B29 /* TKOverviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B72334D100BB6C700816B29 /* TKOverviewTableViewController.m */; };
+		3B72337F100BB8E400816B29 /* TKOverviewHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B72337D100BB8E400816B29 /* TKOverviewHeaderView.h */; };
+		3B723380100BB8E400816B29 /* TKOverviewHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B72337E100BB8E400816B29 /* TKOverviewHeaderView.m */; };
 		3B723399100BBBE000816B29 /* QuartzDrawing.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B723397100BBBE000816B29 /* QuartzDrawing.h */; };
 		3B72339A100BBBE000816B29 /* QuartzDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B723398100BBBE000816B29 /* QuartzDrawing.m */; };
+		3B907C921014FB06006FEA40 /* FSSubtitleCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B907C901014FB06006FEA40 /* FSSubtitleCell.h */; };
+		3B907C931014FB06006FEA40 /* FSSubtitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B907C911014FB06006FEA40 /* FSSubtitleCell.m */; };
+		3B907D531015071A006FEA40 /* TKOverviewIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B907D511015071A006FEA40 /* TKOverviewIndicatorView.h */; };
+		3B907D541015071A006FEA40 /* TKOverviewIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B907D521015071A006FEA40 /* TKOverviewIndicatorView.m */; };
+		3BAD71621019B1E9002363FD /* TKEmptyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAD71601019B1E9002363FD /* TKEmptyView.h */; };
+		3BAD71631019B1E9002363FD /* TKEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAD71611019B1E9002363FD /* TKEmptyView.m */; };
 		AA747D9F0F9514B9006C5449 /* TapkuLibrary_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* TapkuLibrary_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -75,17 +83,34 @@
 		3B58350D10115B1B0082E0D8 /* tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tick.png; sourceTree = "<group>"; };
 		3B58350E10115B1B0082E0D8 /* vertical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vertical.png; sourceTree = "<group>"; };
 		3B58351310115B7A0082E0D8 /* mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask.png; sourceTree = "<group>"; };
+		3B702C58101AA082008C3D59 /* TKTimeGraphController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKTimeGraphController.h; sourceTree = "<group>"; };
+		3B702C59101AA082008C3D59 /* TKTimeGraphController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKTimeGraphController.m; sourceTree = "<group>"; };
+		3B702E10101AAA60008C3D59 /* ind_blue_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ind_blue_left.png; sourceTree = "<group>"; };
+		3B702E11101AAA60008C3D59 /* ind_blue_middle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ind_blue_middle.png; sourceTree = "<group>"; };
+		3B702E12101AAA60008C3D59 /* ind_blue_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ind_blue_right.png; sourceTree = "<group>"; };
+		3B702E13101AAA60008C3D59 /* ind_green_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ind_green_left.png; sourceTree = "<group>"; };
+		3B702E14101AAA60008C3D59 /* ind_green_middle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ind_green_middle.png; sourceTree = "<group>"; };
+		3B702E15101AAA60008C3D59 /* ind_green_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ind_green_right.png; sourceTree = "<group>"; };
+		3B702E16101AAA60008C3D59 /* ind_red_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ind_red_left.png; sourceTree = "<group>"; };
+		3B702E17101AAA60008C3D59 /* ind_red_middle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ind_red_middle.png; sourceTree = "<group>"; };
+		3B702E18101AAA60008C3D59 /* ind_red_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ind_red_right.png; sourceTree = "<group>"; };
 		3B7228DE1009221D00816B29 /* TKMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKMapView.h; sourceTree = "<group>"; };
 		3B7228DF1009221D00816B29 /* TKMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKMapView.m; sourceTree = "<group>"; };
 		3B7228E41009229400816B29 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3B722A401009339100816B29 /* TKPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKPlace.h; sourceTree = "<group>"; };
 		3B722A411009339100816B29 /* TKPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKPlace.m; sourceTree = "<group>"; };
-		3B72334C100BB6C700816B29 /* TKInfoHeaderTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKInfoHeaderTableViewController.h; sourceTree = "<group>"; };
-		3B72334D100BB6C700816B29 /* TKInfoHeaderTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKInfoHeaderTableViewController.m; sourceTree = "<group>"; };
-		3B72337D100BB8E400816B29 /* InfoHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoHeaderView.h; sourceTree = "<group>"; };
-		3B72337E100BB8E400816B29 /* InfoHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoHeaderView.m; sourceTree = "<group>"; };
+		3B72334C100BB6C700816B29 /* TKOverviewTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKOverviewTableViewController.h; sourceTree = "<group>"; };
+		3B72334D100BB6C700816B29 /* TKOverviewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKOverviewTableViewController.m; sourceTree = "<group>"; };
+		3B72337D100BB8E400816B29 /* TKOverviewHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKOverviewHeaderView.h; sourceTree = "<group>"; };
+		3B72337E100BB8E400816B29 /* TKOverviewHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKOverviewHeaderView.m; sourceTree = "<group>"; };
 		3B723397100BBBE000816B29 /* QuartzDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuartzDrawing.h; sourceTree = "<group>"; };
 		3B723398100BBBE000816B29 /* QuartzDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuartzDrawing.m; sourceTree = "<group>"; };
+		3B907C901014FB06006FEA40 /* FSSubtitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSubtitleCell.h; sourceTree = "<group>"; };
+		3B907C911014FB06006FEA40 /* FSSubtitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSubtitleCell.m; sourceTree = "<group>"; };
+		3B907D511015071A006FEA40 /* TKOverviewIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKOverviewIndicatorView.h; sourceTree = "<group>"; };
+		3B907D521015071A006FEA40 /* TKOverviewIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKOverviewIndicatorView.m; sourceTree = "<group>"; };
+		3BAD71601019B1E9002363FD /* TKEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKEmptyView.h; sourceTree = "<group>"; };
+		3BAD71611019B1E9002363FD /* TKEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKEmptyView.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* TapkuLibrary_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapkuLibrary_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libTapkuLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTapkuLibrary.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,7 +165,8 @@
 				3B027BB90FFC77CC004A23C5 /* Cells */,
 				3B723348100BB69B00816B29 /* HUD */,
 				3B723349100BB6A000816B29 /* Map */,
-				3B723350100BB6CD00816B29 /* InfoVC */,
+				3B723350100BB6CD00816B29 /* Overview View Controller */,
+				3BAD758D101A9681002363FD /* Empty View */,
 				3B583418101152A60082E0D8 /* Graph */,
 			);
 			name = Classes;
@@ -187,6 +213,8 @@
 			children = (
 				3B02862A0FFFC660004A23C5 /* FSIndicatorCell.h */,
 				3B02862B0FFFC660004A23C5 /* FSIndicatorCell.m */,
+				3B907C901014FB06006FEA40 /* FSSubtitleCell.h */,
+				3B907C911014FB06006FEA40 /* FSSubtitleCell.m */,
 				3B0286220FFFC5F3004A23C5 /* ABTableViewCell.h */,
 				3B0286230FFFC5F3004A23C5 /* ABTableViewCell.m */,
 			);
@@ -196,6 +224,8 @@
 		3B583418101152A60082E0D8 /* Graph */ = {
 			isa = PBXGroup;
 			children = (
+				3B702C58101AA082008C3D59 /* TKTimeGraphController.h */,
+				3B702C59101AA082008C3D59 /* TKTimeGraphController.m */,
 				3B583413101152A40082E0D8 /* TKTimeGraph.h */,
 				3B583414101152A40082E0D8 /* TKTimeGraph.m */,
 			);
@@ -205,6 +235,7 @@
 		3B58350410115B1B0082E0D8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3B702E0F101AAA60008C3D59 /* overview */,
 				3B58350510115B1B0082E0D8 /* graph */,
 			);
 			path = Images;
@@ -227,6 +258,22 @@
 			path = graph;
 			sourceTree = "<group>";
 		};
+		3B702E0F101AAA60008C3D59 /* overview */ = {
+			isa = PBXGroup;
+			children = (
+				3B702E10101AAA60008C3D59 /* ind_blue_left.png */,
+				3B702E11101AAA60008C3D59 /* ind_blue_middle.png */,
+				3B702E12101AAA60008C3D59 /* ind_blue_right.png */,
+				3B702E13101AAA60008C3D59 /* ind_green_left.png */,
+				3B702E14101AAA60008C3D59 /* ind_green_middle.png */,
+				3B702E15101AAA60008C3D59 /* ind_green_right.png */,
+				3B702E16101AAA60008C3D59 /* ind_red_left.png */,
+				3B702E17101AAA60008C3D59 /* ind_red_middle.png */,
+				3B702E18101AAA60008C3D59 /* ind_red_right.png */,
+			);
+			path = overview;
+			sourceTree = "<group>";
+		};
 		3B723348100BB69B00816B29 /* HUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,17 +294,28 @@
 			name = Map;
 			sourceTree = "<group>";
 		};
-		3B723350100BB6CD00816B29 /* InfoVC */ = {
+		3B723350100BB6CD00816B29 /* Overview View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3B72337D100BB8E400816B29 /* InfoHeaderView.h */,
-				3B72337E100BB8E400816B29 /* InfoHeaderView.m */,
-				3B72334C100BB6C700816B29 /* TKInfoHeaderTableViewController.h */,
-				3B72334D100BB6C700816B29 /* TKInfoHeaderTableViewController.m */,
+				3B72334C100BB6C700816B29 /* TKOverviewTableViewController.h */,
+				3B72334D100BB6C700816B29 /* TKOverviewTableViewController.m */,
+				3B72337D100BB8E400816B29 /* TKOverviewHeaderView.h */,
+				3B72337E100BB8E400816B29 /* TKOverviewHeaderView.m */,
+				3B907D511015071A006FEA40 /* TKOverviewIndicatorView.h */,
+				3B907D521015071A006FEA40 /* TKOverviewIndicatorView.m */,
 				3B723397100BBBE000816B29 /* QuartzDrawing.h */,
 				3B723398100BBBE000816B29 /* QuartzDrawing.m */,
 			);
-			name = InfoVC;
+			name = "Overview View Controller";
+			sourceTree = "<group>";
+		};
+		3BAD758D101A9681002363FD /* Empty View */ = {
+			isa = PBXGroup;
+			children = (
+				3BAD71601019B1E9002363FD /* TKEmptyView.h */,
+				3BAD71611019B1E9002363FD /* TKEmptyView.m */,
+			);
+			name = "Empty View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,10 +338,14 @@
 				3B02862C0FFFC660004A23C5 /* FSIndicatorCell.h in Headers */,
 				3B7228E01009221D00816B29 /* TKMapView.h in Headers */,
 				3B722A421009339100816B29 /* TKPlace.h in Headers */,
-				3B72334E100BB6C700816B29 /* TKInfoHeaderTableViewController.h in Headers */,
-				3B72337F100BB8E400816B29 /* InfoHeaderView.h in Headers */,
+				3B72334E100BB6C700816B29 /* TKOverviewTableViewController.h in Headers */,
+				3B72337F100BB8E400816B29 /* TKOverviewHeaderView.h in Headers */,
 				3B723399100BBBE000816B29 /* QuartzDrawing.h in Headers */,
 				3B583415101152A40082E0D8 /* TKTimeGraph.h in Headers */,
+				3B907C921014FB06006FEA40 /* FSSubtitleCell.h in Headers */,
+				3B907D531015071A006FEA40 /* TKOverviewIndicatorView.h in Headers */,
+				3BAD71621019B1E9002363FD /* TKEmptyView.h in Headers */,
+				3B702C5A101AA082008C3D59 /* TKTimeGraphController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,10 +403,14 @@
 				3B02862D0FFFC660004A23C5 /* FSIndicatorCell.m in Sources */,
 				3B7228E11009221D00816B29 /* TKMapView.m in Sources */,
 				3B722A431009339100816B29 /* TKPlace.m in Sources */,
-				3B72334F100BB6C700816B29 /* TKInfoHeaderTableViewController.m in Sources */,
-				3B723380100BB8E400816B29 /* InfoHeaderView.m in Sources */,
+				3B72334F100BB6C700816B29 /* TKOverviewTableViewController.m in Sources */,
+				3B723380100BB8E400816B29 /* TKOverviewHeaderView.m in Sources */,
 				3B72339A100BBBE000816B29 /* QuartzDrawing.m in Sources */,
 				3B583416101152A40082E0D8 /* TKTimeGraph.m in Sources */,
+				3B907C931014FB06006FEA40 /* FSSubtitleCell.m in Sources */,
+				3B907D541015071A006FEA40 /* TKOverviewIndicatorView.m in Sources */,
+				3BAD71631019B1E9002363FD /* TKEmptyView.m in Sources */,
+				3B702C5B101AA082008C3D59 /* TKTimeGraphController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

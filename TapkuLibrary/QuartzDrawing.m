@@ -1,10 +1,33 @@
 //
 //  QuartzDrawing.m
-//  TapkuLibrary
-//
 //  Created by Devin Ross on 7/13/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
+/*
+ 
+ tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ 
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without
+ restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following
+ conditions:
+ 
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+ 
+ */
 
 #import "QuartzDrawing.h"
 
@@ -51,45 +74,35 @@ CGFloat demoRGInnerRadius(CGRect bounds)
 + (void) drawLinearGradientWithFrame:(CGRect)rect colors:(CGFloat[])colours{
 
 	
-	//NSLog(@"DRAW GRADIENT %f %f %f %f",rect.origin.x,rect.origin.y,rect.size.width,rect.size.height);
+	
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
-	
 	CGColorSpaceRef rgb = CGColorSpaceCreateDeviceRGB();
 	
-	
-	
-
+	/*
+	 //NSLog(@"DRAW GRADIENT %f %f %f %f",rect.origin.x,rect.origin.y,rect.size.width,rect.size.height);
 	CGFloat colors[] =
 	{
 		204.0 / 255.0, 224.0 / 255.0, 244.0 / 255.0, 1.00,
 		29.0 / 255.0, 156.0 / 255.0, 215.0 / 255.0, 1.00
 	};
+	 //NSLog(@"%f %d %f %d",colours[0],sizeof(colours),colors[0],sizeof(colors));
+	 //NSLog(@"/%f %f %f",sizeof(colors),sizeof(colors[0])*4,sizeof(colors)/(sizeof(colors[0])*4));
+	 */
 	
-	//NSLog(@"%f %d %f %d",colours[0],sizeof(colours),colors[0],sizeof(colors));
-	
-	//NSLog(@"/%f %f %f",sizeof(colors),sizeof(colors[0])*4,sizeof(colors)/(sizeof(colors[0])*4));
+
 
 	CGGradientRef gradient = CGGradientCreateWithColorComponents(rgb, colours, NULL, 2);
 	CGColorSpaceRelease(rgb);
 	
-	
-	
-	
-
-	// Linear Gradients
 	CGPoint start, end;
-	
-	
-	
+
 	CGContextSaveGState(context);
 	CGContextClipToRect(context, rect);
 	start = demoLGStart(rect);
 	end = demoLGEnd(rect);
-	//NSLog(@"Start (%f, %f), End (%f, %f)",start.x,start.y,end.x,end.y);
 	CGContextDrawLinearGradient(context, gradient, start, end, kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation);
 	CGContextRestoreGState(context);
-	
 	
 	CGGradientRelease(gradient);
 	

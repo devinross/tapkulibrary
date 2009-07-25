@@ -1,16 +1,55 @@
 //
 //  TKMapView.m
-//  TapkuLibrary
-//
 //  Created by Devin Ross on 7/11/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
+/*
+ 
+ tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ 
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without
+ restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following
+ conditions:
+ 
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+ 
+ */
 
 #import "TKMapView.h"
 
 
 @implementation TKMapView
+@synthesize mapView,delegate,pinMode;
 - (id)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        // Initialization code
+		mapView = [[MKMapView alloc] initWithFrame:frame];
+		[self addSubview:mapView];
+		overlay = [[TKOverlayView alloc] initWithFrame:frame];
+		overlay.delegate = self;
+		overlay.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+		pinMode = NO;
+    }
+    return self;
+}
+
+- (id)init{
+	NSLog(@"INIT");
+	CGRect frame = CGRectMake(0, 0, 50, 50);
     if (self = [super initWithFrame:frame]) {
         // Initialization code
 		mapView = [[MKMapView alloc] initWithFrame:frame];
@@ -32,7 +71,7 @@
 
 - (void) didTouchAtPoint:(CGPoint)point{
 
-	TKPlace *place = [[TKPlace alloc] init];
+	//TKPlace *place = [[TKPlace alloc] init];
 	
 	CGRect r = mapView.bounds;
 	
@@ -59,11 +98,13 @@
 	NSLog(@"Center (%f, %f)",coord.longitude,coord.latitude);
 	NSLog(@"%f %f",corner.longitude,corner.latitude);
 
-	place.coordinate = corner;
-	place.title = @"Place";
-	[mapView addAnnotation:place];
-	[place release];
+	//place.coordinate = corner;
+	//place.title = @"Place";
+	//[mapView addAnnotation:place];
+	//[place release];
 	
+	
+	[delegate didPlacePinAtCoordinate:corner];
 }
 
 

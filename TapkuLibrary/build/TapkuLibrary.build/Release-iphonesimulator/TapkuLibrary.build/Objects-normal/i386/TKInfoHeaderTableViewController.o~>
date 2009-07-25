@@ -1,0 +1,57 @@
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:9:44: error: TKInfoHeaderTableViewController.h: No such file or directory
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:15: warning: cannot find interface declaration for 'TKInfoHeaderTableViewController'
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m: In function '-[TKInfoHeaderTableViewController viewDidLoad]':
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:16: error: no super class declared in @interface for 'TKInfoHeaderTableViewController'
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:19: error: 'tableView' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:19: error: (Each undeclared identifier is reported only once
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:19: error: for each function it appears in.)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:19: error: 'UITableView' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:19: warning: implicit declaration of function 'CGRectMake'
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:19: error: request for member 'view' in something not a structure or union
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:19: error: request for member 'view' in something not a structure or union
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:20: error: 'UITableViewStyleGrouped' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:21: error: 'UIViewAutoresizingFlexibleHeight' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:22: error: request for member 'view' in something not a structure or union
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:23: error: 'UIColor' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:27: error: 'header' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:27: error: 'InfoHeaderView' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:28: error: request for member 'view' in something not a structure or union
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m: At top level:
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:35: error: expected ')' before 'UITableView'
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:38: error: expected ')' before 'UITableView'
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:41: error: expected ')' before 'UITableViewCell'
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:41: error: expected ')' before 'UITableView'
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m: In function '-[TKInfoHeaderTableViewController tableView:cellForRowAtIndexPath:]':
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:45: error: 'UITableViewCell' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:45: error: 'cell' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:45: warning: no '-dequeueReusableCellWithIdentifier:' method found
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:45: warning: (Messages without a matching method signature
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:45: warning: will be assumed to return 'id' and accept
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:45: warning: '...' as arguments.)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:47: error: 'UITableViewCellStyleDefault' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m: At top level:
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:54: error: expected ')' before 'UITableView'
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m: In function '-[TKInfoHeaderTableViewController titleLabel]':
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:60: error: 'header' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m: In function '-[TKInfoHeaderTableViewController setTitleLabel:]':
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:63: error: 'header' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m: In function '-[TKInfoHeaderTableViewController subtitleLabel]':
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:66: error: 'header' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m: In function '-[TKInfoHeaderTableViewController setSubtitleLabel:]':
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:69: error: 'header' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m: In function '-[TKInfoHeaderTableViewController indicatorLabel]':
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:74: error: 'header' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m: In function '-[TKInfoHeaderTableViewController setIndicatorLabel:]':
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:77: error: 'header' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m: At top level:
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:80: error: expected ')' before 'InfoIndicatorColor'
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m: In function '-[TKInfoHeaderTableViewController setColor:]':
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:81: error: 'header' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m: At top level:
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:83: error: expected ')' before 'InfoIndicatorColor'
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m: In function '-[TKInfoHeaderTableViewController color]':
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:84: error: 'header' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m: In function '-[TKInfoHeaderTableViewController didReceiveMemoryWarning]':
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:97: error: no super class declared in @interface for 'TKInfoHeaderTableViewController'
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m: In function '-[TKInfoHeaderTableViewController dealloc]':
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKInfoHeaderTableViewController.m:106: error: no super class declared in @interface for 'TKInfoHeaderTableViewController'
