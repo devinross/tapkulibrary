@@ -6,8 +6,10 @@ TapkuLibrary is a collection of iPhone UI classes to help speed up development. 
 
 [![](http://farm3.static.flickr.com/2511/3755788838_43ee0c4476_m.jpg)](http://farm3.static.flickr.com/2511/3755788838_74c8e2ea92_o.png)
 [![](http://farm3.static.flickr.com/2638/3754988385_a2d2b25e0d_m.jpg)](http://farm3.static.flickr.com/2638/3754988385_06bf7eafe9_o.png)
-[![](http://farm3.static.flickr.com/2631/3694645475_581d05ca82.jpg)](http://farm3.static.flickr.com/2631/3694645475_581d05ca82.jpg)
 [![](http://farm3.static.flickr.com/2646/3755788742_607c924243_m.jpg)](http://farm3.static.flickr.com/2646/3755788742_d397bc7b9b_o.png)
+[![](http://farm3.static.flickr.com/2576/3754988285_10e2dfbcbf_m.jpg)](http://farm3.static.flickr.com/2576/3754988285_c6e3638348_o.png)
+[![](http://farm3.static.flickr.com/2477/3755788660_e233d90eaa_m.jpg)](http://farm3.static.flickr.com/2477/3755788660_cd5c7a9c2b_o.png)
+[![](http://farm4.static.flickr.com/3461/3755788602_f53989ff11_m.jpg)](http://farm4.static.flickr.com/3461/3755788602_aa7b56001c_o.png)
 
 Adding TapkuLibrary to your project
 ==============================
