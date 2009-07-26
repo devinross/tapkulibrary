@@ -34,47 +34,55 @@
 
 @implementation MapViewController
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 	mapView = [[TKMapView alloc] initWithFrame:self.view.bounds];
+	mapView.delegate = self;
 	[self.view addSubview:mapView];
 	
 	button = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
-	[button setTitle:@"Bttn" forState:0];
-	[button addTarget:self action:@selector(swithc:) forControlEvents:UIControlEventTouchUpInside];
-	[self.view addSubview:button];
-	button.frame = CGRectMake(0, 0, 50, 50);
+	
+	
+	button = [[UIBarButtonItem alloc] initWithTitle:@"Add Pin" style:UIBarButtonItemStylePlain target:self action:@selector(addPinMode:)];
+	self.navigationItem.rightBarButtonItem = button;
 	
 	
 	
-	//[mapView setPinMode:YES];
+
 }
 
 
-- (void) swithc:(id)sender{
-	[mapView setPinMode:YES];
-}
-
-
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-
-- (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+- (void) addPinMode:(id)sender{
 	
-	// Release any cached data, images, etc that aren't in use.
+	if(mapView.pinMode){
+		button.style = UIBarButtonItemStylePlain;
+		mapView.mapView.mapType = MKMapTypeStandard;
+	}
+		
+	else{
+		mapView.mapView.mapType = MKMapTypeHybrid;
+		button.style = UIBarButtonItemStyleDone;
+	}
+		
+	[mapView setPinMode:!mapView.pinMode];
 }
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
+
+
+- (void) didPlacePinAtCoordinate:(CLLocationCoordinate2D)location{
+	TKPlace *place = [[TKPlace alloc] init];
+	place.title = [NSString stringWithFormat:@"%f,%f",location.latitude,location.longitude];
+	NSLog(@"(%f,%f)",location.latitude,location.longitude);
+	place.coordinate = location;
+	[mapView.mapView addAnnotation:place];
+	[place release];
 }
+
+
+
 - (void)dealloc {
+	[button release];
+	[mapView release];
     [super dealloc];
 }
 

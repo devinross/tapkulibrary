@@ -1,8 +1,7 @@
 //
-//  InfoHeader.h
+//  OverviewController.h
 //  Created by Devin Ross on 7/13/09.
 //
-
 /*
  
  tapku.com || http://github.com/tapku/tapkulibrary/tree/master

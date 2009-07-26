@@ -71,14 +71,14 @@
 
 - (void) didTouchAtPoint:(CGPoint)point{
 
-	//TKPlace *place = [[TKPlace alloc] init];
+
 	
 	CGRect r = mapView.bounds;
 	
 	float longitudePercent = point.x / r.size.width;
 	float latitudePercent = point.y / r.size.height;
 	
-	NSLog(@"-(%f,%f)",longitudePercent,latitudePercent);
+	//NSLog(@"-(%f,%f)",longitudePercent,latitudePercent);
 	
 	
 
@@ -90,18 +90,11 @@
 	
 	
 	CLLocationCoordinate2D corner;
-	//corner.latitude = lat;
-	//corner.longitude = lon;
 	corner.latitude = lat - span.latitudeDelta * latitudePercent; // up and down
 	corner.longitude = lon + span.longitudeDelta * longitudePercent; // left right
 	
-	NSLog(@"Center (%f, %f)",coord.longitude,coord.latitude);
-	NSLog(@"%f %f",corner.longitude,corner.latitude);
-
-	//place.coordinate = corner;
-	//place.title = @"Place";
-	//[mapView addAnnotation:place];
-	//[place release];
+	//NSLog(@"Center (%f, %f)",coord.longitude,coord.latitude);
+	//NSLog(@"%f %f",corner.longitude,corner.latitude);
 	
 	
 	[delegate didPlacePinAtCoordinate:corner];
@@ -140,7 +133,6 @@
 
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-	//NSLog(@"Touch");
 	[super touchesBegan:touches withEvent:event];
 }
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{

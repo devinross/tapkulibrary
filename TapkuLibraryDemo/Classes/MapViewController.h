@@ -32,9 +32,9 @@
 #import <UIKit/UIKit.h>
 #import <TapkuLibrary/TapkuLibrary.h>
 
-@interface MapViewController : UIViewController {
+@interface MapViewController : UIViewController <TKMapViewDelegate> {
 	TKMapView *mapView;
-	UIButton *button;
+	UIBarButtonItem *button;
 }
 
 @end
