@@ -50,10 +50,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	emptyView = [[TKEmptyView alloc] initWithFrame:self.view.bounds];
-	emptyView.mask = [UIImage imageNamed:@"note.png"];
-	emptyView.title.text = @"Empty Page";
-	emptyView.subtitle.text = @"All You Need is A 200 x 200 pixel B & W Image";
+	emptyView = [[TKEmptyView alloc] initWithFrame:self.view.bounds 
+									emptyViewImage:TKEmptyViewImageHeart 
+											 title:@"Empty Page"
+										  subtitle:@"All You Need is A 200 x 200 pixel transparent image"];
+
 	[self.view addSubview:emptyView];
 }
 

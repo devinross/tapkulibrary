@@ -41,6 +41,10 @@
 }
 
 
+- (id) initWithTitle:(NSString*)ttl message:(NSString*)msg;
+- (id) initWithTitle:(NSString*)ttl;
+
+
 - (void) startAnimating;
 - (void) stopAnimating;
 

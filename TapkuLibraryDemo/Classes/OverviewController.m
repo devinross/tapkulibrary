@@ -53,8 +53,8 @@
     [super viewDidLoad];
 	self.header.title.text = @"Title Label";
 	self.header.subtitle.text = @"Subtitle";
-	self.header.indicator.text = @"Blue";
-	self.header.indicator.color = TKOverviewIndicatorViewColorBlue;
+	self.header.indicator.text = @"Green";
+	self.header.indicator.color = TKOverviewIndicatorViewColorGreen;
 }
 
 

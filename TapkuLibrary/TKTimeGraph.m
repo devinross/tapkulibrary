@@ -30,6 +30,7 @@
  */
 
 #import "TKTimeGraph.h"
+#import "TKGlobal.h"
 
 #define stageHeight 240.0
 #define stageTopMargin 30.0
@@ -74,7 +75,8 @@
 		[self addSubview:scrollView];
 		
 		
-		border = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mask.png"]];
+
+		border = [[UIImageView alloc] initWithImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/mask.png")]];
 		[self addSubview:border];
 		
 
@@ -155,7 +157,9 @@
 	CGContextFillRect(context, CGRectMake(0, 0, 480.0, 270.0));
 }
 - (void) drawBottomLine:(CGContextRef)context{
-	UIImageView *line = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bottomline.png"]];
+	
+	
+	UIImageView *line = [[UIImageView alloc] initWithImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/bottomline.png")]];
 	[line setFrame:CGRectMake(2, 270, 475, 1)];
 	[self addSubview:line];
 	[line release];
@@ -171,9 +175,10 @@
 		yline++;
 		yline = stageHeight + stageTopMargin - yline;		
 		
+
+
 		
-		
-		UIImageView *line = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"horizontalline.png"]];
+		UIImageView *line = [[UIImageView alloc] initWithImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/horizontalline.png")]];
 		[line setFrame:CGRectMake(0, yline, 480, 1)];
 		[self addSubview:line];
 		[self sendSubviewToBack:line];
@@ -356,7 +361,7 @@
 		
 
 
-		UIImageView *vert = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tick.png"]];
+		UIImageView *vert = [[UIImageView alloc] initWithImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/tick.png")]];
 		[vert setFrame:CGRectMake(x, stageHeight, 1, 8)];
 		[self addSubview:vert];
 		
@@ -477,10 +482,10 @@
 - (id)initWithFrame:(CGRect)frame title:(NSString*)str sideUp:(BOOL)up{
 	[super initWithFrame:frame];
 	if(up){
-		background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"popup.png"]];
+		background = [[UIImageView alloc] initWithImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/popup.png")]];
 		label = [[UILabel alloc] initWithFrame:CGRectMake(3, 5, kIndicatorWidth - 6, 20)];
 	}else{
-		background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"popdown.png"]];
+		background = [[UIImageView alloc] initWithImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/popdown.png")]];
 		label = [[UILabel alloc] initWithFrame:CGRectMake(3, 14, kIndicatorWidth - 6, 20)];
 	}
 	

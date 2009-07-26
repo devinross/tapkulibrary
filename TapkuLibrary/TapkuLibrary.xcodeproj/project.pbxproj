@@ -39,12 +39,16 @@
 		3B72334F100BB6C700816B29 /* TKOverviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B72334D100BB6C700816B29 /* TKOverviewTableViewController.m */; };
 		3B72337F100BB8E400816B29 /* TKOverviewHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B72337D100BB8E400816B29 /* TKOverviewHeaderView.h */; };
 		3B723380100BB8E400816B29 /* TKOverviewHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B72337E100BB8E400816B29 /* TKOverviewHeaderView.m */; };
-		3B723399100BBBE000816B29 /* QuartzDrawing.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B723397100BBBE000816B29 /* QuartzDrawing.h */; };
-		3B72339A100BBBE000816B29 /* QuartzDrawing.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B723398100BBBE000816B29 /* QuartzDrawing.m */; };
 		3B907C921014FB06006FEA40 /* FSSubtitleCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B907C901014FB06006FEA40 /* FSSubtitleCell.h */; };
 		3B907C931014FB06006FEA40 /* FSSubtitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B907C911014FB06006FEA40 /* FSSubtitleCell.m */; };
 		3B907D531015071A006FEA40 /* TKOverviewIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B907D511015071A006FEA40 /* TKOverviewIndicatorView.h */; };
 		3B907D541015071A006FEA40 /* TKOverviewIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B907D521015071A006FEA40 /* TKOverviewIndicatorView.m */; };
+		3B9D47DE101B995C00FEF5E2 /* TKGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B9D47DC101B995C00FEF5E2 /* TKGlobal.h */; };
+		3B9D47DF101B995C00FEF5E2 /* TKGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9D47DD101B995C00FEF5E2 /* TKGlobal.m */; };
+		3B9D4844101BA33600FEF5E2 /* UIImageAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B9D4842101BA33600FEF5E2 /* UIImageAdditions.h */; };
+		3B9D4845101BA33600FEF5E2 /* UIImageAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9D4843101BA33600FEF5E2 /* UIImageAdditions.m */; };
+		3B9D4B2E101BFFF700FEF5E2 /* UIViewAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B9D4B2C101BFFF700FEF5E2 /* UIViewAdditions.h */; };
+		3B9D4B2F101BFFF700FEF5E2 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9D4B2D101BFFF700FEF5E2 /* UIViewAdditions.m */; };
 		3BAD71621019B1E9002363FD /* TKEmptyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAD71601019B1E9002363FD /* TKEmptyView.h */; };
 		3BAD71631019B1E9002363FD /* TKEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAD71611019B1E9002363FD /* TKEmptyView.m */; };
 		AA747D9F0F9514B9006C5449 /* TapkuLibrary_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* TapkuLibrary_Prefix.pch */; };
@@ -73,27 +77,8 @@
 		3B02862B0FFFC660004A23C5 /* FSIndicatorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSIndicatorCell.m; sourceTree = "<group>"; };
 		3B583413101152A40082E0D8 /* TKTimeGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKTimeGraph.h; sourceTree = "<group>"; };
 		3B583414101152A40082E0D8 /* TKTimeGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKTimeGraph.m; sourceTree = "<group>"; };
-		3B58350610115B1B0082E0D8 /* bottomline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomline.png; sourceTree = "<group>"; };
-		3B58350710115B1B0082E0D8 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
-		3B58350810115B1B0082E0D8 /* close_touch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close_touch.png; sourceTree = "<group>"; };
-		3B58350910115B1B0082E0D8 /* goalline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goalline.png; sourceTree = "<group>"; };
-		3B58350A10115B1B0082E0D8 /* horizontalline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = horizontalline.png; sourceTree = "<group>"; };
-		3B58350B10115B1B0082E0D8 /* popdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popdown.png; sourceTree = "<group>"; };
-		3B58350C10115B1B0082E0D8 /* popup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popup.png; sourceTree = "<group>"; };
-		3B58350D10115B1B0082E0D8 /* tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tick.png; sourceTree = "<group>"; };
-		3B58350E10115B1B0082E0D8 /* vertical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vertical.png; sourceTree = "<group>"; };
-		3B58351310115B7A0082E0D8 /* mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mask.png; sourceTree = "<group>"; };
 		3B702C58101AA082008C3D59 /* TKTimeGraphController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKTimeGraphController.h; sourceTree = "<group>"; };
 		3B702C59101AA082008C3D59 /* TKTimeGraphController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKTimeGraphController.m; sourceTree = "<group>"; };
-		3B702E10101AAA60008C3D59 /* ind_blue_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ind_blue_left.png; sourceTree = "<group>"; };
-		3B702E11101AAA60008C3D59 /* ind_blue_middle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ind_blue_middle.png; sourceTree = "<group>"; };
-		3B702E12101AAA60008C3D59 /* ind_blue_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ind_blue_right.png; sourceTree = "<group>"; };
-		3B702E13101AAA60008C3D59 /* ind_green_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ind_green_left.png; sourceTree = "<group>"; };
-		3B702E14101AAA60008C3D59 /* ind_green_middle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ind_green_middle.png; sourceTree = "<group>"; };
-		3B702E15101AAA60008C3D59 /* ind_green_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ind_green_right.png; sourceTree = "<group>"; };
-		3B702E16101AAA60008C3D59 /* ind_red_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ind_red_left.png; sourceTree = "<group>"; };
-		3B702E17101AAA60008C3D59 /* ind_red_middle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ind_red_middle.png; sourceTree = "<group>"; };
-		3B702E18101AAA60008C3D59 /* ind_red_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ind_red_right.png; sourceTree = "<group>"; };
 		3B7228DE1009221D00816B29 /* TKMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKMapView.h; sourceTree = "<group>"; };
 		3B7228DF1009221D00816B29 /* TKMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKMapView.m; sourceTree = "<group>"; };
 		3B7228E41009229400816B29 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -103,12 +88,16 @@
 		3B72334D100BB6C700816B29 /* TKOverviewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKOverviewTableViewController.m; sourceTree = "<group>"; };
 		3B72337D100BB8E400816B29 /* TKOverviewHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKOverviewHeaderView.h; sourceTree = "<group>"; };
 		3B72337E100BB8E400816B29 /* TKOverviewHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKOverviewHeaderView.m; sourceTree = "<group>"; };
-		3B723397100BBBE000816B29 /* QuartzDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuartzDrawing.h; sourceTree = "<group>"; };
-		3B723398100BBBE000816B29 /* QuartzDrawing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuartzDrawing.m; sourceTree = "<group>"; };
 		3B907C901014FB06006FEA40 /* FSSubtitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSubtitleCell.h; sourceTree = "<group>"; };
 		3B907C911014FB06006FEA40 /* FSSubtitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSubtitleCell.m; sourceTree = "<group>"; };
 		3B907D511015071A006FEA40 /* TKOverviewIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKOverviewIndicatorView.h; sourceTree = "<group>"; };
 		3B907D521015071A006FEA40 /* TKOverviewIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKOverviewIndicatorView.m; sourceTree = "<group>"; };
+		3B9D47DC101B995C00FEF5E2 /* TKGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKGlobal.h; sourceTree = "<group>"; };
+		3B9D47DD101B995C00FEF5E2 /* TKGlobal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKGlobal.m; sourceTree = "<group>"; };
+		3B9D4842101BA33600FEF5E2 /* UIImageAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageAdditions.h; sourceTree = "<group>"; };
+		3B9D4843101BA33600FEF5E2 /* UIImageAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageAdditions.m; sourceTree = "<group>"; };
+		3B9D4B2C101BFFF700FEF5E2 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
+		3B9D4B2D101BFFF700FEF5E2 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
 		3BAD71601019B1E9002363FD /* TKEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKEmptyView.h; sourceTree = "<group>"; };
 		3BAD71611019B1E9002363FD /* TKEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKEmptyView.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* TapkuLibrary_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapkuLibrary_Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -141,7 +130,6 @@
 			isa = PBXGroup;
 			children = (
 				08FB77AEFE84172EC02AAC07 /* Classes */,
-				3B58350410115B1B0082E0D8 /* Images */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
@@ -162,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				3B0279370FFC598A004A23C5 /* TapkuLibrary.h */,
+				3B9D4933101BA7C500FEF5E2 /* Global */,
 				3B027BB90FFC77CC004A23C5 /* Cells */,
 				3B723348100BB69B00816B29 /* HUD */,
 				3B723349100BB6A000816B29 /* Map */,
@@ -232,48 +221,6 @@
 			name = Graph;
 			sourceTree = "<group>";
 		};
-		3B58350410115B1B0082E0D8 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				3B702E0F101AAA60008C3D59 /* overview */,
-				3B58350510115B1B0082E0D8 /* graph */,
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
-		3B58350510115B1B0082E0D8 /* graph */ = {
-			isa = PBXGroup;
-			children = (
-				3B58351310115B7A0082E0D8 /* mask.png */,
-				3B58350610115B1B0082E0D8 /* bottomline.png */,
-				3B58350710115B1B0082E0D8 /* close.png */,
-				3B58350810115B1B0082E0D8 /* close_touch.png */,
-				3B58350910115B1B0082E0D8 /* goalline.png */,
-				3B58350A10115B1B0082E0D8 /* horizontalline.png */,
-				3B58350B10115B1B0082E0D8 /* popdown.png */,
-				3B58350C10115B1B0082E0D8 /* popup.png */,
-				3B58350D10115B1B0082E0D8 /* tick.png */,
-				3B58350E10115B1B0082E0D8 /* vertical.png */,
-			);
-			path = graph;
-			sourceTree = "<group>";
-		};
-		3B702E0F101AAA60008C3D59 /* overview */ = {
-			isa = PBXGroup;
-			children = (
-				3B702E10101AAA60008C3D59 /* ind_blue_left.png */,
-				3B702E11101AAA60008C3D59 /* ind_blue_middle.png */,
-				3B702E12101AAA60008C3D59 /* ind_blue_right.png */,
-				3B702E13101AAA60008C3D59 /* ind_green_left.png */,
-				3B702E14101AAA60008C3D59 /* ind_green_middle.png */,
-				3B702E15101AAA60008C3D59 /* ind_green_right.png */,
-				3B702E16101AAA60008C3D59 /* ind_red_left.png */,
-				3B702E17101AAA60008C3D59 /* ind_red_middle.png */,
-				3B702E18101AAA60008C3D59 /* ind_red_right.png */,
-			);
-			path = overview;
-			sourceTree = "<group>";
-		};
 		3B723348100BB69B00816B29 /* HUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,10 +250,21 @@
 				3B72337E100BB8E400816B29 /* TKOverviewHeaderView.m */,
 				3B907D511015071A006FEA40 /* TKOverviewIndicatorView.h */,
 				3B907D521015071A006FEA40 /* TKOverviewIndicatorView.m */,
-				3B723397100BBBE000816B29 /* QuartzDrawing.h */,
-				3B723398100BBBE000816B29 /* QuartzDrawing.m */,
 			);
 			name = "Overview View Controller";
+			sourceTree = "<group>";
+		};
+		3B9D4933101BA7C500FEF5E2 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				3B9D47DC101B995C00FEF5E2 /* TKGlobal.h */,
+				3B9D47DD101B995C00FEF5E2 /* TKGlobal.m */,
+				3B9D4842101BA33600FEF5E2 /* UIImageAdditions.h */,
+				3B9D4843101BA33600FEF5E2 /* UIImageAdditions.m */,
+				3B9D4B2C101BFFF700FEF5E2 /* UIViewAdditions.h */,
+				3B9D4B2D101BFFF700FEF5E2 /* UIViewAdditions.m */,
+			);
+			name = Global;
 			sourceTree = "<group>";
 		};
 		3BAD758D101A9681002363FD /* Empty View */ = {
@@ -340,12 +298,14 @@
 				3B722A421009339100816B29 /* TKPlace.h in Headers */,
 				3B72334E100BB6C700816B29 /* TKOverviewTableViewController.h in Headers */,
 				3B72337F100BB8E400816B29 /* TKOverviewHeaderView.h in Headers */,
-				3B723399100BBBE000816B29 /* QuartzDrawing.h in Headers */,
 				3B583415101152A40082E0D8 /* TKTimeGraph.h in Headers */,
 				3B907C921014FB06006FEA40 /* FSSubtitleCell.h in Headers */,
 				3B907D531015071A006FEA40 /* TKOverviewIndicatorView.h in Headers */,
 				3BAD71621019B1E9002363FD /* TKEmptyView.h in Headers */,
 				3B702C5A101AA082008C3D59 /* TKTimeGraphController.h in Headers */,
+				3B9D47DE101B995C00FEF5E2 /* TKGlobal.h in Headers */,
+				3B9D4844101BA33600FEF5E2 /* UIImageAdditions.h in Headers */,
+				3B9D4B2E101BFFF700FEF5E2 /* UIViewAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,12 +365,14 @@
 				3B722A431009339100816B29 /* TKPlace.m in Sources */,
 				3B72334F100BB6C700816B29 /* TKOverviewTableViewController.m in Sources */,
 				3B723380100BB8E400816B29 /* TKOverviewHeaderView.m in Sources */,
-				3B72339A100BBBE000816B29 /* QuartzDrawing.m in Sources */,
 				3B583416101152A40082E0D8 /* TKTimeGraph.m in Sources */,
 				3B907C931014FB06006FEA40 /* FSSubtitleCell.m in Sources */,
 				3B907D541015071A006FEA40 /* TKOverviewIndicatorView.m in Sources */,
 				3BAD71631019B1E9002363FD /* TKEmptyView.m in Sources */,
 				3B702C5B101AA082008C3D59 /* TKTimeGraphController.m in Sources */,
+				3B9D47DF101B995C00FEF5E2 /* TKGlobal.m in Sources */,
+				3B9D4845101BA33600FEF5E2 /* UIImageAdditions.m in Sources */,
+				3B9D4B2F101BFFF700FEF5E2 /* UIViewAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -32,6 +32,22 @@
 @implementation LoadingHUDView
 
 
+
+- (id) initWithTitle:(NSString*)ttl message:(NSString*)msg{
+	if(self = [self init]){
+		self.title = ttl;
+		self.message=msg;
+		
+	}
+	return self;
+}
+- (id) initWithTitle:(NSString*)ttl{
+	if(self = [self initWithTitle:ttl message:nil]){
+		
+	}
+	return self;	
+}
+
 - (id) init{
 	if (self = [super initWithFrame:CGRectMake(0, 0, 280, 100)]) {
 		

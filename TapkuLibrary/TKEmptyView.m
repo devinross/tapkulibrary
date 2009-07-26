@@ -30,136 +30,159 @@
  */
 
 #import "TKEmptyView.h"
-#import "QuartzDrawing.h"
+#import "TKGlobal.h"
+#import "UIViewAdditions.h"
+
 
 @implementation TKEmptyView
 @synthesize title, subtitle, mask;
+
+
+
+- (UIImage*) predefinedImage:(TKEmptyViewImage)img{
+
+	
+	switch (img) {
+		case TKEmptyViewImageChatBubble:
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/chatbubble.png")];
+			break;
+		case TKEmptyViewImageClock:
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/clock.png")];
+			break;
+		case TKEmptyViewImageCompass:
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/compass.png")];
+			break;
+		case TKEmptyViewImageEye:
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/eye.png")];
+			break;
+		case TKEmptyViewImageHeart:
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/heart.png")];
+			break;
+		case TKEmptyViewImageMovieClip:
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/movieclip.png")];
+			break;
+		case TKEmptyViewImageMusicNote:
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/note.png")];
+			break;
+		case TKEmptyViewImagePhotos:
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/photos.png")];
+			break;
+		case TKEmptyViewImagePictureFrame:
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/pictureframe.png")];
+			break;
+		case TKEmptyViewImageSearch:
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/search.png")];
+			break;
+		case TKEmptyViewImageSign:
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/sign.png")];
+			break;
+		case TKEmptyViewImageStar:
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/star.png")];
+			break;
+		case TKEmptyViewImageStopwatch:
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/stopwatch.png")];
+			break;
+		default:
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/star.png")];
+			break;
+	}
+	return nil;
+}
+
+
+
+- (id) initWithFrame:(CGRect)frame mask:(UIImage*)image title:(NSString*)titleString subtitle:(NSString*)subtitleString{
+	if(self = [self initWithFrame:frame]){
+		
+		self.mask = image;
+		title.text = titleString;
+		subtitle.text = subtitleString;
+		
+	}
+	return self;
+	
+}
+- (id) initWithFrame:(CGRect)frame emptyViewImage:(TKEmptyViewImage)image title:(NSString*)titleString subtitle:(NSString*)subtitleString{
+	if(self = [self initWithFrame:frame]){
+		
+		self.mask = [self predefinedImage:image];
+		title.text = titleString;
+		subtitle.text = subtitleString;
+		
+	}
+	return self;
+}
+
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
 		
 		self.backgroundColor = [UIColor whiteColor];
 		
-
-
-		shadow = [[TKDropShadowImage alloc] initWithFrame: CGRectMake(self.frame.size.width/2 - 100, self.frame.size.height/2 -150 + 2, 200, 200)];
-		[self addSubview:shadow];
-		gradient = [[TKGradientImage alloc] initWithFrame: CGRectMake(self.frame.size.width/2-100, self.frame.size.height/2-150, 200, 200)];
-		[self addSubview:gradient];
-
-		
 		title = [[UILabel alloc] initWithFrame:CGRectInset(self.bounds, 10, 0)];
 		title.font = [UIFont boldSystemFontOfSize:18];
 		title.adjustsFontSizeToFitWidth = YES;
-		CGRect r= title.frame;
-		r.size.height = 22;
-		r.origin.y = self.frame.size.height/2 + 80;
-		title.frame=r;
 		title.textColor = [UIColor grayColor];
 		title.textAlignment = UITextAlignmentCenter;
 		[self addSubview:title];
 		
+		CGRect r= title.frame;
+		r.size.height = 22;
+		r.origin.y = self.frame.size.height/2 + 50;
+		title.frame=r;
+		
+		
+		
 		subtitle = [[UILabel alloc] initWithFrame:CGRectInset(self.bounds, 10, 0)];
 		subtitle.font = [UIFont boldSystemFontOfSize:12];
 		subtitle.adjustsFontSizeToFitWidth = YES;
-		r= subtitle.frame;
-		r.size.height = 20;
-		r.origin.y = self.frame.size.height/2 + 110;
-		subtitle.frame=r;
 		subtitle.textColor = [UIColor grayColor];
 		subtitle.textAlignment = UITextAlignmentCenter;
 		[self addSubview:subtitle];
+		
+		r= subtitle.frame;
+		r.size.height = 20;
+		r.origin.y = self.frame.size.height/2 + 80;
+		subtitle.frame=r;
+
+		
 		
 		
     }
     return self;
 }
+
+- (void) drawRect:(CGRect)rect {
+	
+	
+	
+	CGFloat color[] = { 139/255.0, 152/255.0, 173/255.0, 1.0 };
+	[mask drawInRect:CGRectMake((int)self.bounds.size.width/2 - mask.size.width/2, 50, mask.size.width, mask.size.height) asAlphaMaskForColor:color];
+	
+	
+	
+	CGFloat colors[] = {
+		171/255.0, 180/255.0, 196/255.0, 1.00,
+		213/255.0, 217/255.0, 225/255.0, 1.00
+	};
+	[mask drawInRect:CGRectMake((int)self.bounds.size.width/2 - mask.size.width/2, 48, mask.size.width, mask.size.height) asAlphaMaskForGradient:colors];
+	
+}
+
+
 - (void) setMask:(UIImage*)m{
 	[mask release];
 	mask = [m retain];
-	gradient.mask = m;
-	shadow.mask = m;
+	[self setNeedsDisplay];
 }
 - (void)dealloc {
 	
 	[title release];
 	[subtitle release];
-	[shadow release];
-	[gradient release];
 	[mask release];
 	
     [super dealloc];
 }
 
 
-@end
-
-
-@implementation TKDropShadowImage
-@synthesize mask;
-
-- (id)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
-		self.backgroundColor = [UIColor clearColor];
-    }
-    return self;
-}
-- (void) setMask:(UIImage*)m{
-	[mask release];
-	mask = [m retain];
-	[self setNeedsDisplay];
-}
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-	
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	CGContextTranslateCTM(context, 0.0, self.bounds.size.height);
-	CGContextScaleCTM(context, 1.0, -1.0);
-	CGContextClipToMask(context, CGRectMake(0, 0, 200, 200), [mask CGImage]);
-	CGContextSetRGBFillColor(context, 139/255.0, 152/255.0, 173/255.0, 1.0);
-	CGContextFillRect(context, CGRectMake(0, 0.0, 200.0, 200.0));
-	
-}
-- (void)dealloc {
-	[mask release]; 
-	[super dealloc];
-}
-@end
-
-@implementation TKGradientImage
-@synthesize mask;
-
-- (id)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
-		self.backgroundColor = [UIColor clearColor];
-    }
-    return self;
-}
-- (void) setMask:(UIImage*)m{
-	[mask release];
-	mask = [m retain];
-	[self setNeedsDisplay];
-}
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-	
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	CGContextTranslateCTM(context, 0.0, self.bounds.size.height);
-	CGContextScaleCTM(context, 1.0, -1.0);
-	CGContextClipToMask(context, CGRectMake(0, 0, 200, 200), [mask CGImage]);
-	
-	CGFloat colors[] = {
-		171/255.0, 180/255.0, 196/255.0, 1.00,
-		//175/255.0, 184/255.0, 198/255.0, 1.00,
-		213/255.0, 217/255.0, 225/255.0, 1.00
-		
-	};
-	
-	[QuartzDrawing drawLinearGradientWithFrame:CGRectMake(0, 0, 200, 200) colors:colors];
-	
-}
-- (void)dealloc {
-	[mask release]; 
-	[super dealloc];
-}
 @end

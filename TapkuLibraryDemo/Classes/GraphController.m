@@ -65,8 +65,8 @@
 	return 20;
 }
 - (NSNumber*) timeGraph:(TKTimeGraph*)graph yValueForPoint:(int)x{
-
-	return [NSNumber numberWithDouble:20.0*x];
+	int z = (x * 20) % 3;
+	return [NSNumber numberWithDouble:20.0*x - (z * (x-4) )];
 }
 - (NSString*) timeGraph:(TKTimeGraph*)graph xLabelForPoint:(int)x{
 

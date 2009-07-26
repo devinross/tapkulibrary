@@ -29,6 +29,7 @@
  
  */
 #import <UIKit/UIKit.h>
+#import "TKGlobal.h"
 
 
 typedef enum {

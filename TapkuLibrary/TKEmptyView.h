@@ -34,10 +34,28 @@
 
 @class TKDropShadowImage, TKGradientImage;
 
+
+
+typedef enum {
+	TKEmptyViewImageChatBubble,
+	TKEmptyViewImageClock,
+	TKEmptyViewImageCompass,
+	TKEmptyViewImageEye,
+	TKEmptyViewImageHeart,
+	TKEmptyViewImageMovieClip,
+	TKEmptyViewImageMusicNote,
+	TKEmptyViewImagePhotos,
+	TKEmptyViewImagePictureFrame,
+	TKEmptyViewImageSearch,
+	TKEmptyViewImageSign,
+	TKEmptyViewImageStar,
+	TKEmptyViewImageStopwatch 
+} TKEmptyViewImage;
+
+
+
 @interface TKEmptyView : UIView {
 	UIImage *mask;
-	TKDropShadowImage *shadow;
-	TKGradientImage *gradient;
 	
 	UILabel *title;
 	UILabel *subtitle;
@@ -48,7 +66,22 @@
 @property (retain,nonatomic) UIImage *mask;
 
 
+- (id) initWithFrame:(CGRect)frame 
+				mask:(UIImage*)image 
+			   title:(NSString*)titleString 
+			subtitle:(NSString*)subtitleString;
+
+
+- (id) initWithFrame:(CGRect)frame 
+	  emptyViewImage:(TKEmptyViewImage)image 
+			   title:(NSString*)titleString 
+			subtitle:(NSString*)subtitleString;
+
+
 @end
+
+
+
 
 
 

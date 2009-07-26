@@ -30,7 +30,8 @@
  */
 
 #import "TKOverviewHeaderView.h"
-#import "QuartzDrawing.h"
+#import "TKGlobal.h"
+
 
 @implementation TKOverviewHeaderView
 @synthesize title,subtitle,indicator;
@@ -73,19 +74,19 @@
 		169 / 255.0,  178.0 / 255.0, 185 / 255.0, 1.00
 	};
 	
-	[QuartzDrawing drawLinearGradientWithFrame:CGRectMake(0, 0, 320, 64) colors:colors];
+	[UIView drawLinearGradientInRect:CGRectMake(0, 0, 320, 64) colors:colors];
 	
 	CGFloat colors2[] =
 	{
 		152/255.0, 156/255.0, 161/255.0, 0.6,
 		152/255.0, 156/255.0, 161/255.0, 0.1
 	};
-	[QuartzDrawing drawLinearGradientWithFrame:CGRectMake(0, 65, 320, 5) colors:colors2];
+	[UIView drawLinearGradientInRect:CGRectMake(0, 65, 320, 5) colors:colors2];
 	
 	CGFloat line[]={
 		94 / 255.0,  103 / 255.0, 109 / 255.0, 1.00
 	};
-	[QuartzDrawing drawLineWithFrame:CGRectMake(0, 64.5, 320, 64.5) colors:line];
+	[UIView drawLineInRect:CGRectMake(0, 64.5, 320, 64.5) colors:line];
 
 }
 - (void)dealloc {

@@ -90,20 +90,34 @@ static UIImage *middle = nil;
 	[left release];
 	[right release];
 	[middle release];
+	
+	
+	
+	
+
+	NSString *bundle = TKBUNDLE(@"TapkuLibrary.bundle/Images/overview/");
+	NSLog(@"%@",bundle);
+	
+
+	
 	if(color == TKOverviewIndicatorViewColorBlue){
 		
-		left = [[UIImage imageNamed:@"ind_blue_left.png"] retain];
-		middle = [[UIImage imageNamed: @"ind_blue_middle.png"] retain];
-		right = [[UIImage imageNamed: @"ind_blue_right.png"] retain];
+		left = [UIImage imageFromPath:[bundle stringByAppendingPathComponent:@"ind_blue_left.png"]];
+		middle = [UIImage imageFromPath:[bundle stringByAppendingPathComponent:@"ind_blue_middle.png"]];
+		right = [UIImage imageFromPath:[bundle stringByAppendingPathComponent:@"ind_blue_right.png"]];
 	}else if(color == TKOverviewIndicatorViewColorGreen){
-		left = [[UIImage imageNamed:@"ind_green_left.png"] retain];
-		middle = [[UIImage imageNamed: @"ind_green_middle.png"] retain];
-		right = [[UIImage imageNamed: @"ind_green_right.png"] retain];
+		left = [UIImage imageFromPath:[bundle stringByAppendingPathComponent:@"ind_green_left.png"]];
+		middle = [UIImage imageFromPath:[bundle stringByAppendingPathComponent:@"ind_green_middle.png"]];
+		right =  [UIImage imageFromPath:[bundle stringByAppendingPathComponent:@"ind_green_right.png"]];
 	}else{
-		left = [[UIImage imageNamed:@"ind_red_left.png"] retain];
-		middle = [[UIImage imageNamed: @"ind_red_middle.png"] retain];
-		right = [[UIImage imageNamed: @"ind_red_right.png"] retain];
+		left = [UIImage imageFromPath:[bundle stringByAppendingPathComponent:@"ind_red_left.png"]];
+		middle = [UIImage imageFromPath:[bundle stringByAppendingPathComponent:@"ind_red_middle.png"]];
+		right =[UIImage imageFromPath:[bundle stringByAppendingPathComponent:@"ind_red_right.png"]];
 	}
+	
+	[left retain];
+	[right retain];
+	[middle retain];
 	[self setNeedsDisplay];
 }
 

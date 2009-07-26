@@ -30,7 +30,7 @@
  */
 
 #import "TKTimeGraphController.h"
-
+#import "TKGlobal.h"
 
 @implementation TKTimeGraphController
 
@@ -57,8 +57,11 @@
 	
 	close = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
 	close.frame = CGRectMake(0, 0, 50, 50);
-	[close setImage:[UIImage imageNamed:@"close.png"] forState:UIControlStateNormal];
-	[close setImage:[UIImage imageNamed:@"close_touch.png"] forState:UIControlStateHighlighted];
+	
+	
+	
+	[close setImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/close.png")] forState:UIControlStateNormal];
+	[close setImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/close_touch.png")] forState:UIControlStateHighlighted];
 	[close addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:close];
  

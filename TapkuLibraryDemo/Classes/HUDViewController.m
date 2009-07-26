@@ -55,17 +55,14 @@
 	
 	self.title = @"HUD";
 	
-	loading  = [[LoadingHUDView alloc] init];
+	loading  = [[LoadingHUDView alloc] initWithTitle:@"Loading" message:@"Description Here"];
 	[self.view addSubview:loading];
-	[loading setTitle:@"Loading"];
-	[loading setMessage:@"Description Here"];
 	[loading startAnimating];
 	loading.center = CGPointMake(self.view.bounds.size.width/2, 150);
 	
 	
-	loading2  = [[LoadingHUDView alloc] init];
+	loading2  = [[LoadingHUDView alloc] initWithTitle:@"Loading"];
 	[self.view addSubview:loading2];
-	[loading2 setTitle:@"Loading"];
 	[loading2 startAnimating];
 	loading2.center = CGPointMake(self.view.bounds.size.width/2, 300);
 }
