@@ -109,7 +109,7 @@ Map View
 
 Empy View
 ---------
-**[TKEmptyView](http://github.com/tapku/tapkulibrary/blob/d12f30f79964ff5809d9d6fd9c6112a1a34db68e/TapkuLibrary/TKEmptyView.h)** allows is a blank screen view. You can take a black and white 200px x 200px image and it will be styled correctly to match Apple use in various applications.
+**[TKEmptyView](http://github.com/tapku/tapkulibrary/blob/d12f30f79964ff5809d9d6fd9c6112a1a34db68e/TapkuLibrary/TKEmptyView.h)** allows is a blank screen view. You can take a transparent 200px x 200px image and it will be styled correctly to match Apple use in various applications.
 
 [![](http://farm3.static.flickr.com/2651/3756242644_742e9b43d3_m.jpg)](http://www.flickr.com/photos/40064022@N02/3756242644/)
 
