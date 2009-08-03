@@ -1,6 +1,6 @@
 TapkuLibrary
 =======
-TapkuLibrary is a collection of iPhone UI classes to help speed up development. Currently most of the UI consists of UITableViewCells.
+TapkuLibrary is a collection of iPhone UI classes intended for broad use in applications.
 
 [http://tapku.com](http://tapku.com)
 
