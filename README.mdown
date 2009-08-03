@@ -125,5 +125,6 @@ Graph View Controller
 Calendar View Controller
 ------------------------
 **[TKCalendarViewController](http://github.com/tapku/tapkulibrary/blob/85b9d19454393ae65725bc92c2fb9b04404778c4/TapkuLibrary/TKCalendarViewController.h)** is a controller and view that replicates the Calendar app. 
-[![](http://farm4.static.flickr.com/3014/3787030864_6675021cd6_o.png)]
+
+![](http://farm4.static.flickr.com/3014/3787030864_6675021cd6_o.png)
  
