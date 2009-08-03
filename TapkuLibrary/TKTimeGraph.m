@@ -45,6 +45,7 @@
 - (void) drawBackground:(CGContextRef)context;
 - (void) drawBottomLine:(CGContextRef)context;
 - (void) drawHorizontalLines:(CGContextRef)context;
+- (void) drawGoalLine:(CGContextRef)context;
 
 - (void) getDelegateData;
 
@@ -53,6 +54,7 @@
 
 
 @end
+
 @implementation TKTimeGraph
 @synthesize delegate, data;
 
@@ -68,6 +70,9 @@
 		title.font = [UIFont boldSystemFontOfSize:16.0];
 		title.textAlignment = UITextAlignmentCenter;
 		[self addSubview:title];
+		CGRect r = CGRectInset(frame,60, 8);
+		r.size.height = 20;
+		title.frame = r;
 		
 		scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, stageTopMargin, self.frame.size.width, frame.size.height - 30)];
 		scrollView.showsHorizontalScrollIndicator = YES;
@@ -76,8 +81,7 @@
 		
 		
 
-		border = [[UIImageView alloc] initWithImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/mask.png")]];
-		[self addSubview:border];
+
 		
 
     }
@@ -86,14 +90,10 @@
 
 - (void)drawRect:(CGRect)rect {
 	//NSLog(@"drawRect");
-	
-	
     // Drawing code
-	
-	title.text = [delegate titleForTimeGraph:self];
-	CGRect r = CGRectInset(rect,60, 8);
-	r.size.height = 20;
-	title.frame = r;
+	if ([delegate respondsToSelector:@selector(titleForTimeGraph:)])
+		title.text = [delegate titleForTimeGraph:self];
+
 	
 	if(data == nil){
 		
@@ -104,7 +104,6 @@
 		
 		[NSThread detachNewThreadSelector:@selector(getDelegateData) toTarget:self withObject:nil];
 		
-		//[self getDelegateData];
 	}else{
 		CGContextRef context = UIGraphicsGetCurrentContext();
 		[self drawBackground:context];
@@ -114,12 +113,18 @@
 		float width = ([data count] + 1) * pointDistance;
 		float height = scrollView.frame.size.height;
 		
-		scrollView.contentSize = CGSizeMake( width,height);
+		scrollView.contentSize = CGSizeMake(width,height);
 		
 		pointsView = [[TKTimeGraphPointsView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
 		[pointsView setData:data];
 		pointsView.backgroundColor = [UIColor clearColor];
 		[scrollView addSubview:pointsView];
+		
+		if(goal)
+			[self drawGoalLine:context];
+		
+		border = [[UIImageView alloc] initWithImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/mask.png")]];
+		[self addSubview:border];
 		
 	}
 	
@@ -128,15 +133,14 @@
 
 
 - (void) loadDelegateDataComplete{
-	//NSLog(@"loadDelegateDataComplete");
+
 	[activity removeFromSuperview];
 	[activity release];
+	
 	[self setNeedsDisplay];
-	float width = ([data count] + 1) * pointDistance;
-	[scrollView setContentOffset:CGPointMake(width - 480,0) animated:NO];
+	
+	[scrollView setContentOffset:CGPointMake((([data count] + 1) * pointDistance) - 480,0) animated:NO];
 }
-
-
 - (void) noDelegateData{
 	[activity removeFromSuperview];
 	[activity release];
@@ -148,74 +152,23 @@
 	[nodata release];
 
 }
-- (void) drawBackground:(CGContextRef)context{
-	// GRAY BACKGROUND 
-	CGContextSetRGBFillColor(context, 1, 1, 1, 1.0);
-	CGContextFillRect(context, CGRectMake(0, 0, 480.0, 300.0));
-	
-	CGContextSetRGBFillColor(context, 240.0/255.0, 240.0/255.0, 240.0/255.0, 0.4);
-	CGContextFillRect(context, CGRectMake(0, 0, 480.0, 270.0));
-}
-- (void) drawBottomLine:(CGContextRef)context{
-	
-	
-	UIImageView *line = [[UIImageView alloc] initWithImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/bottomline.png")]];
-	[line setFrame:CGRectMake(2, 270, 475, 1)];
-	[self addSubview:line];
-	[line release];
-}
-- (void) drawHorizontalLines:(CGContextRef)context{
-	
-	// HORIZONTAL LINES
-	for(int i=0; i < 7;i++){
-		
-		int yline = ((stageHeight/7) * i);
-		int tim = [self yCoordinateToValue:yline];
-		yline = [self valueToYCoordinate:tim];
-		yline++;
-		yline = stageHeight + stageTopMargin - yline;		
-		
-
-
-		
-		UIImageView *line = [[UIImageView alloc] initWithImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/horizontalline.png")]];
-		[line setFrame:CGRectMake(0, yline, 480, 1)];
-		[self addSubview:line];
-		[self sendSubviewToBack:line];
-		[line release];
-		
-		/*
-		UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(3, yline-13, 55, 15)];
-		[lab setFont:[UIFont systemFontOfSize:11.0]];
-		[lab setTextColor:[UIColor grayColor]];
-		[lab setBackgroundColor:[UIColor clearColor]];
-		lab.text = [[delegate timeGraph:self yLabelForValue:tim] copy];
-		[self addSubview:lab];
-		[lab release];
-		*/
-		
-		
-		
-		
-		
-		
-	}
-	
-}
-
 - (void) getDelegateData{
 	
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
 	
 	int  numberOfPoints = [delegate numberofPointsOnTimeGraph:self];
+	
+	// no data
 	if(numberOfPoints < 1){
 		[self performSelectorOnMainThread:@selector(noDelegateData) withObject:nil waitUntilDone:NO];
 		[pool release];
-		 return;
+		return;
 	}
 	
 	data = [[NSMutableArray alloc] initWithCapacity:numberOfPoints];
+	
+	// get the first real value, first value could be nil
 	NSNumber *n;
 	int j = 0;
 	while(YES){
@@ -225,6 +178,8 @@
 	}
 	highValue = [n floatValue];
 	lowValue = [n floatValue];
+	
+	
 	
 	for(int i=0;i<numberOfPoints; i++){
 		
@@ -243,8 +198,19 @@
 		}
 		[data addObject:point];
 	}
+	goal = NO;
+	NSNumber *g;
+	if ([delegate respondsToSelector:@selector(goalValueForTimeGraph:)]){
+		
+		g=[delegate goalValueForTimeGraph:self];
+		goal=YES;
+		goalValue = [g floatValue];
+		
+		if(goalValue > highValue) highValue = goalValue;
+		if(goalValue < lowValue) lowValue = goalValue;
+	}
 	
-	
+
 	
 	highValue = highValue + highValue * 0.05;
 	lowValue = lowValue - lowValue * .05;
@@ -263,9 +229,94 @@
 	[pool release];
 }
 
+- (void) drawBackground:(CGContextRef)context{
+	// GRAY BACKGROUND 
+	CGContextSetRGBFillColor(context, 1, 1, 1, 1.0);
+	CGContextFillRect(context, CGRectMake(0, 0, 480.0, 300.0));
+	
+	CGContextSetRGBFillColor(context, 240.0/255.0, 240.0/255.0, 240.0/255.0, 0.4);
+	CGContextFillRect(context, CGRectMake(0, 0, 480.0, 270.0));
+}
+- (void) drawBottomLine:(CGContextRef)context{
+	
+	UIImage *line = [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/bottomline.png")];
+	[line drawAtPoint:CGPointMake(2,270)];
+	
+	
+	/*
+	
+	UIImageView *line = [[UIImageView alloc] initWithImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/bottomline.png")]];
+	[line setFrame:CGRectMake(2, 270, 475, 1)];
+	[self addSubview:line];
+	[line release];
+	 */
+}
+- (void) drawHorizontalLines:(CGContextRef)context{
+	
+	// HORIZONTAL LINES
+	
+	UIImage *line = [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/horizontalline.png")];
+	
+	for(int i=0; i < 7;i++){
+		
+		int yline = ((stageHeight/7) * i);
+		int tim = [self yCoordinateToValue:yline];
+		yline = [self valueToYCoordinate:tim];
+		yline++;
+		yline = stageHeight + stageTopMargin - yline;		
+		
+
+		
+
+		if(yline>268) yline = 270;
+		
+		//NSLog(@"yline %d",yline);
+		
+		[line drawAtPoint:CGPointMake(0,yline)];
+		/*
+		
+		UIImageView *line = [[UIImageView alloc] initWithImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/horizontalline.png")]];
+		[line setFrame:CGRectMake(0, yline, 480, 1)];
+		[self addSubview:line];
+		[self sendSubviewToBack:line];
+		[line release];
+		*/
+
+		/*
+		UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(3, yline-13, 55, 15)];
+		[lab setFont:[UIFont systemFontOfSize:11.0]];
+		[lab setTextColor:[UIColor grayColor]];
+		[lab setBackgroundColor:[UIColor clearColor]];
+		lab.text = [[delegate timeGraph:self yLabelForValue:tim] copy];
+		[self addSubview:lab];
+		[lab release];
+		*/
+
+		
+		
+		
+		
+		
+		
+	}
+	
+}
+- (void) drawGoalLine:(CGContextRef)context{
+	UIImage *img = [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/goalline.png")];
+	UIImageView *image = [[UIImageView alloc] initWithImage:img];
+	int y = [self valueToYCoordinate:goalValue];
+	CGRect r = image.frame;
+	r.origin.y = stageHeight + stageTopMargin - y - 19;
+	image.frame=r;
+	[self addSubview:image];
+	[image release];
+	
+}
+
+
+
 - (float) valueToYCoordinate:(float)value{
 	float ret = stageHeight * ((value - lowValue) / (highValue - lowValue));
-	//NSLog(@"%f * (%f-%f)/(%f-%f) = %f", stageHeight, value,lowValue,highValue,lowValue,ret );
 	return  ret;
 }
 - (float) yCoordinateToValue:(float)y{
@@ -290,26 +341,20 @@
 @end
 
 
+
+
 @implementation TKTimeGraphPointsView
 @synthesize data;
 
-- (id)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
-		//NSLog(@"Init");
-        // Initialization code
-		
 
 
-		
-    }
-    return self;
-}
 - (void) drawGraphFill:(CGContextRef) context{
 	
 	CGContextSetRGBFillColor(context, (230.0 / 255.0), (242.0/255.0), (250.0 / 255.0), 0.7);
 	CGContextSetLineWidth(context, 0);
 	
-	//CGContextMoveToPoint(context, pointDistance, stageHeight);
+	if([data count] < 2) return;
+
 	BOOL started = NO;
 	
 	int i=0;
@@ -321,7 +366,6 @@
 				CGContextMoveToPoint(context, (i+1) * pointDistance, stageHeight);
 				started = YES;
 			}
-			//NSLog(@"%f",[[d objectForKey:@"yCoordinate"] floatValue]);
 			CGContextAddLineToPoint(context,  (i+1) * pointDistance,[[[data objectAtIndex:i] objectForKey:@"yCoordinate"] floatValue]);
 			j=i;
 		}
@@ -333,6 +377,11 @@
 	CGContextDrawPath(context, kCGPathFillStroke);
 }
 - (void) drawGraphLine:(CGContextRef) context{
+	
+	
+	//if([data count] < 2) return;
+	
+	UIImage *tick = [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/tick.png")];
 	
 	
 	CGContextSetRGBStrokeColor(context, 68.0/255.0, 152.0/255.0, 211.0/255.0, 1.0);
@@ -361,9 +410,15 @@
 		
 
 
-		UIImageView *vert = [[UIImageView alloc] initWithImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/tick.png")]];
+		
+		
+		[tick drawAtPoint:CGPointMake(x,stageHeight)];
+		
+		/*
+		UIImageView *vert = [[UIImageView alloc] initWithImage:];
 		[vert setFrame:CGRectMake(x, stageHeight, 1, 8)];
 		[self addSubview:vert];
+		*/
 		
 		
 		
@@ -392,35 +447,26 @@
 			CGContextFillEllipseInRect(context, CGRectMake(x-4, y-4, 8.0, 8.0));
 		}
 		
-		
-		//CGContextStrokeEllipseInRect(context, CGRectMake(x-4, y-4, 8.0, 8.0) );
-		
-		//TouchPoint *v = [[TouchPoint alloc] initWithFrame:CGRectMake(x-15,y-15, 30.0, 30.0)];
-		//[v setBoxId:i];
-		//[v setDelegate:self];
-		//[v setBackgroundColor:[UIColor clearColor]];
-		//[self addSubview:v];
 	}
 	
 }
+
 - (void) drawRect:(CGRect)rect {
-	//NSLog(@"drawRect");
 	
-	if([data count] < 2) return;
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	[self drawGraphFill:context];
 	[self drawGraphLine:context];
 	[self drawPointCirles:context];
 
-	
 }
+
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-	//NSLog(@"Touch VIew");
+
 	[super touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event];
 	UITouch *t = [touches anyObject];
 	CGPoint point = [t locationInView:self];
-	//NSLog(@"Touched %f %f",point.x,point.y);
+
 	
 	
 	
@@ -445,7 +491,6 @@
 	float y = [[d objectForKey:@"yCoordinate"] floatValue];
 	float x = i * pointDistance;
 	
-	//NSLog(@"%d: %f",i,x);
 	NSString *str = [d objectForKey:@"yLabel"];
 	
 	if(y - kIndicatorHeight - 10 < 10)
@@ -472,10 +517,6 @@
 }
 
 @end
-
-
-
-
 
 @implementation TKTimeGraphIndicator
 

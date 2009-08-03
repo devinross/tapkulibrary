@@ -33,7 +33,6 @@
 
 // NOTE: YOU NEED TO MAKE SURE YOU HAVE THE OVERVIEW INDICATOR IMAGES TO DRAW INDICATOR IN HEADER PROPERLY
 
-#import <UIKit/UIKit.h>
 #import "TKOverviewHeaderView.h"
 #import "TKOverviewIndicatorView.h"
 

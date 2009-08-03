@@ -54,6 +54,7 @@
 	[titles addObject:@"Overview TableView Controller"];
 	[titles addObject:@"Empty TableView Filler"];
 	[titles addObject:@"Graph"];
+	[titles addObject:@"Calendar"];
 	
 }
 
@@ -109,11 +110,15 @@
 		EmptyViewController *e = [[EmptyViewController alloc] init];
 		[self.navigationController pushViewController:e animated:YES];
 		[e release];
-	}else{
+	}else if(indexPath.row==6){
 		GraphController *graph = [[GraphController alloc] init];
 		[graph setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
 		[self presentModalViewController:graph animated:YES];
 		[graph release];
+	}else if(indexPath.row==7){
+		TKCalendarViewController *cvc = [[TKCalendarViewController alloc] init];
+		[self.navigationController pushViewController:cvc animated:YES];
+		[cvc release];
 	}
 
 }

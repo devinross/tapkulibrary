@@ -31,7 +31,7 @@
 
  */
 
-#import <UIKit/UIKit.h>
+
 
 @interface TKLabelCell : UITableViewCell {
 	UILabel *label;

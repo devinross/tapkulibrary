@@ -8,6 +8,7 @@
 
 #import "UIViewAdditions.h"
 #import "UIImageAdditions.h"
+#import "NSDateAdditions.h"
 
 #define TKBUNDLE(_URL) [TKGlobal fullBundlePath:_URL]
 

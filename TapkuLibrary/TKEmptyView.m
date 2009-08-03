@@ -31,6 +31,7 @@
 
 #import "TKEmptyView.h"
 #import "TKGlobal.h"
+#import "UIImageAdditions.h"
 #import "UIViewAdditions.h"
 
 
@@ -40,6 +41,8 @@
 
 
 - (UIImage*) predefinedImage:(TKEmptyViewImage)img{
+	
+
 
 	
 	switch (img) {
@@ -82,10 +85,14 @@
 		case TKEmptyViewImageStopwatch:
 			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/stopwatch.png")];
 			break;
+		case TKEmptyViewImageKey:
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/key.png")];
+			break;
 		default:
 			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/star.png")];
 			break;
 	}
+
 	return nil;
 }
 
@@ -128,7 +135,7 @@
 		
 		CGRect r= title.frame;
 		r.size.height = 22;
-		r.origin.y = self.frame.size.height/2 + 50;
+		r.origin.y = self.frame.size.height/2 + 90;
 		title.frame=r;
 		
 		
@@ -142,7 +149,7 @@
 		
 		r= subtitle.frame;
 		r.size.height = 20;
-		r.origin.y = self.frame.size.height/2 + 80;
+		r.origin.y = self.frame.size.height/2 + 120;
 		subtitle.frame=r;
 
 		

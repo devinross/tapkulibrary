@@ -312,6 +312,10 @@
 				GCC_PREFIX_HEADER = TapkuLibraryDemo_Prefix.pch;
 				HEADER_SEARCH_PATHS = ../;
 				INFOPLIST_FILE = "TapkuLibraryDemo-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = TapkuLibraryDemo;
 			};
 			name = Debug;
@@ -324,6 +328,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TapkuLibraryDemo_Prefix.pch;
 				INFOPLIST_FILE = "TapkuLibraryDemo-Info.plist";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PRODUCT_NAME = TapkuLibraryDemo;
 			};
 			name = Release;

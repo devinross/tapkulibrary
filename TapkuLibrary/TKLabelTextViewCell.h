@@ -30,7 +30,7 @@
  */
 
 
-#import <UIKit/UIKit.h>
+
 #import "TKLabelCell.h"
 
 @interface TKLabelTextViewCell : TKLabelCell {

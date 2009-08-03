@@ -1,0 +1,13 @@
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarMonthView.m: In function '-[TKCalendarMonthView calculateMonthInfo]':
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarMonthView.m:47: error: 'date' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarMonthView.m:47: error: (Each undeclared identifier is reported only once
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarMonthView.m:47: error: for each function it appears in.)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarMonthView.m: In function '-[TKCalendarMonthView buildGrid]':
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarMonthView.m:72: error: 'date' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarMonthView.m:100: error: 'today' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarMonthView.m: In function '-[TKCalendarMonthView setDate:today:marked:]':
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarMonthView.m:147: error: 'today' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarMonthView.m:150: error: 'date' undeclared (first use in this function)
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarMonthView.m: At top level:
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarMonthView.m:40: error: synthesized property 'today' must either be named the same as a compatible ivar or must explicitly name an ivar
+/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarMonthView.m:40: error: synthesized property 'date' must either be named the same as a compatible ivar or must explicitly name an ivar

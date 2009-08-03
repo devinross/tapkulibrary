@@ -29,7 +29,6 @@
  
  */
 
-#import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
 @class TKTimeGraph, TKTimeGraphPointsView, TKTimeGraphIndicator;
@@ -37,11 +36,14 @@
 @protocol TKTimeGraphDelegate <NSObject>
 @optional
 - (NSString*) titleForTimeGraph:(TKTimeGraph*)graph;
+- (NSNumber*) goalValueForTimeGraph:(TKTimeGraph*)graph;
 @required
 - (int) numberofPointsOnTimeGraph:(TKTimeGraph*)graph;
 - (NSNumber*) timeGraph:(TKTimeGraph*)graph yValueForPoint:(int)x;
 - (NSString*) timeGraph:(TKTimeGraph*)graph xLabelForPoint:(int)x;
 - (NSString*) timeGraph:(TKTimeGraph*)graph yLabelForValue:(float)value;
+
+
 @end
 
 
@@ -50,6 +52,8 @@
 	// Data
 	float highValue;
 	float lowValue;
+	BOOL goal;
+	float goalValue;
 	NSMutableArray *data;
 	id<TKTimeGraphDelegate> delegate;
 	

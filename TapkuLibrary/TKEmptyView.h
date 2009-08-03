@@ -29,8 +29,7 @@
  
  */
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+
 
 @class TKDropShadowImage, TKGradientImage;
 
@@ -49,7 +48,8 @@ typedef enum {
 	TKEmptyViewImageSearch,
 	TKEmptyViewImageSign,
 	TKEmptyViewImageStar,
-	TKEmptyViewImageStopwatch 
+	TKEmptyViewImageStopwatch,
+	TKEmptyViewImageKey
 } TKEmptyViewImage;
 
 

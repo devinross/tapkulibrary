@@ -29,7 +29,7 @@
  
  */
 
-#import <UIKit/UIKit.h>
+
 #import "ABTableViewCell.h"
 
 @interface FSIndicatorCell : ABTableViewCell {

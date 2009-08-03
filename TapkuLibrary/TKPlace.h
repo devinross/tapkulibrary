@@ -29,7 +29,7 @@
  
  */
 
-#import <Foundation/Foundation.h>
+
 #import <MapKit/MapKit.h>
 
 @interface TKPlace : NSObject <MKAnnotation> {

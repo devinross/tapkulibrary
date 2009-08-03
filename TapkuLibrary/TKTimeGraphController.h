@@ -29,7 +29,7 @@
  
  */
 
-#import <UIKit/UIKit.h>
+
 #import "TKTimeGraph.h"
 
 @interface TKTimeGraphController : UIViewController  <TKTimeGraphDelegate>  {

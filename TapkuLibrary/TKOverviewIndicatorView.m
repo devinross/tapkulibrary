@@ -92,13 +92,7 @@ static UIImage *middle = nil;
 	[middle release];
 	
 	
-	
-	
-
 	NSString *bundle = TKBUNDLE(@"TapkuLibrary.bundle/Images/overview/");
-	NSLog(@"%@",bundle);
-	
-
 	
 	if(color == TKOverviewIndicatorViewColorBlue){
 		
