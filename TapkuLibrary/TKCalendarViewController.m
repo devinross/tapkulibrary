@@ -47,7 +47,7 @@
 	
 }
 
-- (NSArray*) calendarView:(TKCalendarView*)calendar daysOfMonthIsMarked:(NSDate*)monthDate{
+- (NSArray*) calendarView:(TKCalendarView*)calendar itemsForDaysInMonth:(NSDate*)monthDate{
 	
 	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 	NSDateComponents *comps = [gregorian components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit | NSWeekdayCalendarUnit) fromDate:monthDate];
@@ -77,7 +77,7 @@
 
 
 
-- (void) calendarView:(TKCalendarView*)calendar movedToMonth:(NSDate*)monthDate{
+- (void) calendarView:(TKCalendarView*)calendar willShowMonth:(NSDate*)monthDate{
 	
 }
 

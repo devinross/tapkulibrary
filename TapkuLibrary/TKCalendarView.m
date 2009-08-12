@@ -39,7 +39,6 @@
 - (void) moveCalendarMonthsDown;
 - (void) moveCalendarMonthsUp;
 
-
 @end
 
 @implementation TKCalendarView
@@ -47,22 +46,18 @@
 
 
 - (void) setMonthString:(NSString*)str{
-	//[monthString release];
 	monthString = [str copy];
 	[self setNeedsDisplay];
 }
 
 
-
 - (void) initialLoad{
-	
-	// ----------------------------
 	
 
 	TKCalendarMonthView *currentMonthView = [[TKCalendarMonthView alloc] initWithFrame:CGRectMake( 0, 0, 320, 320) 
 																			 startDate:currentMonth 
 																				 today:[[[NSDate date] dayNumber] intValue] 
-																				marked:[delegate calendarView:self daysOfMonthIsMarked:currentMonth]];
+																				marked:[delegate calendarView:self itemsForDaysInMonth:currentMonth]];
 
 	
 	[currentMonthView setDelegate:self];
@@ -79,10 +74,6 @@
 	imgrect.origin.y = r.size.height-132;
 	shadow.frame = imgrect;
 	// --------- SETTING UP FRAMES
-
-	
-	
-
 	 
 	
 	UIView *next = [[UIView alloc] initWithFrame:CGRectMake(0, currentMonthView.lines * 44, 320, 20)];
@@ -119,7 +110,7 @@
 		self.backgroundColor = [UIColor clearColor];
 		self.delegate = del;
 		currentMonth = [[NSDate firstOfCurrentMonth] retain];
-		monthString = [currentMonth monthYearString];
+		self.monthString = [currentMonth monthYearString];
 		[self loadButtons];
 
 
@@ -142,11 +133,10 @@
 }
 
 
+
+#pragma mark MONTH VIEW DELEGATE METHODS
 - (void) calendarMonth:(TKCalendarMonthView*)calendarMonth dateWasSelected:(NSInteger)integer{
-	
 	[delegate calendarView:self dateWasSelected:integer ofMonth:calendarMonth.dateOfFirst];
-	
-	
 }
 - (void) calendarMonth:(TKCalendarMonthView*)calendarMonth previousMonthDayWasSelected:(NSInteger)day{
 	[self moveCalendarMonthsDown];
@@ -162,13 +152,9 @@
 }
 
 
-- (void) printMonthDeck{
-	for(TKCalendarMonthView *m in deck){
-		NSLog(@"%@", [m.dateOfFirst monthYearString]);
-	}
-}
 
 
+#pragma mark MOVING THE CALENDAR UP AND DOWN TO NEW MONTH
 - (void) moveCalendarMonthsDown{
 	
 	
@@ -189,7 +175,7 @@
 	NSDate *newDate = [gregorian dateFromComponents:comp];
 	self.monthString = [newDate monthYearString];
 	
-	NSArray *ar = [delegate calendarView:self daysOfMonthIsMarked:newDate];
+	NSArray *ar = [delegate calendarView:self itemsForDaysInMonth:newDate];
 	
 	int todayNumber = -1;
 	if([[[NSDate date] monthYearString] isEqualToString:[newDate monthYearString]])
@@ -254,7 +240,7 @@
 	self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, scrollView.frame.size.width, scrollView.frame.size.height +44);
 	[self setNeedsDisplay];
 	
-	[delegate calendarView:self movedToMonth:[(TKCalendarMonthView*)prev dateOfFirst]];
+	[delegate calendarView:self willShowMonth:[(TKCalendarMonthView*)prev dateOfFirst]];
 	
 	
 	/*
@@ -357,7 +343,7 @@
 	NSDate *newDate = [gregorian dateFromComponents:comp];
 	self.monthString = [newDate monthYearString];
 	
-	NSArray *ar = [delegate calendarView:self daysOfMonthIsMarked:newDate];
+	NSArray *ar = [delegate calendarView:self itemsForDaysInMonth:newDate];
 	int todayNumber = -1;
 	
 	if([[[NSDate date] monthYearString] isEqualToString:[newDate monthYearString]])
@@ -423,7 +409,7 @@
 	self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, scrollView.frame.size.width, scrollView.frame.size.height +44);
 	[self setNeedsDisplay];
 	
-	[delegate calendarView:self movedToMonth:[(TKCalendarMonthView*)next dateOfFirst]];
+	[delegate calendarView:self willShowMonth:[(TKCalendarMonthView*)next dateOfFirst]];
 	
 	
 	/*
@@ -505,7 +491,6 @@
 	 
 	 */
 }
-
 - (void) animationStopped:(id)sender{
 	[scrollView bringSubviewToFront:[deck objectAtIndex:1]];
 	[[deck objectAtIndex:0] setAlpha:1];
@@ -515,6 +500,8 @@
 	[self setUserInteractionEnabled:YES];
 }
 
+
+#pragma mark LEFT & RIGHT BUTTON ACTIONS
 - (void) leftButtonTapped{
 	[self moveCalendarMonthsDown];
 	[[deck objectAtIndex:1] selectDay:1];
@@ -525,7 +512,6 @@
 	
 	
 }
-
 
 
 - (void)drawRect:(CGRect)rect {
@@ -547,10 +533,10 @@
 		i++;
 	}
 	
-	if(monthString != nil){
+	if(self.monthString != nil){
 		CGRect r = CGRectInset(self.frame, 55, 8);
 		r.size.height=42;
-		
+		NSLog(@"MONTH %@",monthString);
 		[[UIColor colorWithRed:75.0/255.0 green:92/255.0 blue:111/255.0 alpha:1] set];
 		f = [UIFont boldSystemFontOfSize:20.0];
 		[monthString drawInRect:r withFont:f lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];

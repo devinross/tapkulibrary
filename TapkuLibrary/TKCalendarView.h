@@ -63,7 +63,7 @@
 @required
 
 - (void) calendarView:(TKCalendarView*)calendar dateWasSelected:(NSInteger)integer ofMonth:(NSDate*)monthDate;
-- (NSArray*) calendarView:(TKCalendarView*)calendar daysOfMonthIsMarked:(NSDate*)monthDate;
-- (void) calendarView:(TKCalendarView*)calendar movedToMonth:(NSDate*)monthDate;
+- (NSArray*) calendarView:(TKCalendarView*)calendar itemsForDaysInMonth:(NSDate*)monthDate;
+- (void) calendarView:(TKCalendarView*)calendar willShowMonth:(NSDate*)monthDate;
 
 @end
