@@ -11,6 +11,7 @@ TapkuLibrary is a collection of iPhone UI classes intended for broad use in appl
 
 [![](http://farm4.static.flickr.com/3448/3756250354_30febfa4db_m.jpg)](http://www.flickr.com/photos/40064022@N02/3756250354/)
 [![](http://farm3.static.flickr.com/2618/3755432741_efd6133b50_m.jpg)](http://www.flickr.com/photos/40064022@N02/3755432741/)
+[![](http://farm4.static.flickr.com/3014/3787030864_6386a839cf_m.jpg)](http://www.flickr.com/photos/40064022@N02/3787030864/)
 
 Adding TapkuLibrary to your project
 ==============================
@@ -119,4 +120,11 @@ Graph View Controller
 
 [![](http://farm3.static.flickr.com/2618/3755432741_efd6133b50_m.jpg)](http://www.flickr.com/photos/40064022@N02/3755432741/)
 
+
+
+Calendar View Controller
+------------------------
+**[TKCalendarViewController](http://github.com/tapku/tapkulibrary/blob/85b9d19454393ae65725bc92c2fb9b04404778c4/TapkuLibrary/TKCalendarViewController.h)** is a controller and view that replicates the Calendar app. 
+
+![](http://farm4.static.flickr.com/3014/3787030864_6675021cd6_o.png)
  
