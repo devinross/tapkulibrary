@@ -58,9 +58,11 @@ static UIColor *indicatorBackgroundColor = nil;
 
 - (void)dealloc
 {
-	[textFont release];
-	[indicatorFont release];
-	[indicatorBackgroundColor release];
+	[_text release];
+	[_countStr release];
+	//[textFont release];
+	//[indicatorFont release];
+	//[indicatorBackgroundColor release];
     [super dealloc];
 }
 

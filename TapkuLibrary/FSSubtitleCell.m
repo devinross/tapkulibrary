@@ -117,6 +117,8 @@ static UIFont *subtitlefont = nil;
 
 
 - (void)dealloc {
+	[title release];
+	[subtitle release];
     [super dealloc];
 }
 
