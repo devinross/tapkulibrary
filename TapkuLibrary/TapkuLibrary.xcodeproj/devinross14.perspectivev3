@@ -232,8 +232,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -316,6 +314,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -333,7 +333,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3B8C5845104244D50081E8CF</string>
+										<string>3B82B4F11046D71D0003FA57</string>
 										<key>history</key>
 										<array>
 											<string>3B702D79101AA727008C3D59</string>
@@ -392,7 +392,7 @@
 											<string>3B8C5829104244D50081E8CF</string>
 											<string>3B8C582A104244D50081E8CF</string>
 											<string>3B8C582B104244D50081E8CF</string>
-											<string>3B8C582C104244D50081E8CF</string>
+											<string>3B8C5845104244D50081E8CF</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -453,30 +453,6 @@
 											<string>3B96F3E710273560006D6EDD</string>
 											<string>3B96F3F410273560006D6EDD</string>
 											<string>3B96F3F510273560006D6EDD</string>
-											<string>3B8C582D104244D50081E8CF</string>
-											<string>3B8C582E104244D50081E8CF</string>
-											<string>3B8C582F104244D50081E8CF</string>
-											<string>3B8C5830104244D50081E8CF</string>
-											<string>3B8C5831104244D50081E8CF</string>
-											<string>3B8C5832104244D50081E8CF</string>
-											<string>3B8C5833104244D50081E8CF</string>
-											<string>3B8C5834104244D50081E8CF</string>
-											<string>3B8C5835104244D50081E8CF</string>
-											<string>3B8C5836104244D50081E8CF</string>
-											<string>3B8C5837104244D50081E8CF</string>
-											<string>3B8C5838104244D50081E8CF</string>
-											<string>3B8C5839104244D50081E8CF</string>
-											<string>3B8C583A104244D50081E8CF</string>
-											<string>3B8C583B104244D50081E8CF</string>
-											<string>3B8C583C104244D50081E8CF</string>
-											<string>3B8C583D104244D50081E8CF</string>
-											<string>3B8C583E104244D50081E8CF</string>
-											<string>3B8C583F104244D50081E8CF</string>
-											<string>3B8C5840104244D50081E8CF</string>
-											<string>3B8C5841104244D50081E8CF</string>
-											<string>3B8C5842104244D50081E8CF</string>
-											<string>3B8C5843104244D50081E8CF</string>
-											<string>3B8C5844104244D50081E8CF</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -599,11 +575,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>3B8C58111041B8E30081E8CF</string>
+				<string>3B82B4DF1046D3FE0003FA57</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>3B8C58121041B8E30081E8CF</string>
+				<string>3B82B4E01046D3FE0003FA57</string>
 				<string>3B027A120FFC6213004A23C5</string>
-				<string>3B8C58131041B8E30081E8CF</string>
+				<string>3B82B4E11046D3FE0003FA57</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
