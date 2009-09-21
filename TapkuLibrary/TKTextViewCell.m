@@ -24,28 +24,14 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-	
 	CGRect r = CGRectInset(self.bounds, 16, 8);
-	
 	textView.frame = r;
-	
-	
 }
-
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-
     [super setSelected:selected animated:animated];
-	/*
-	if(selected){
-		textView.textColor = [UIColor whiteColor];
-	}else{
-		textView.textColor = [UIColor colorWithRed:74/255.0 green:110/255.0 blue:165/255.0 alpha:1.0];
-	}
-	 */
     // Configure the view for the selected state
 }
-
 
 - (void)dealloc {
     [super dealloc];

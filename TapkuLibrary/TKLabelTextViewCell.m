@@ -36,7 +36,7 @@
 
 @synthesize textView;
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
+- (id) initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
         // Initialization code
 		
@@ -47,7 +47,7 @@
     return self;
 }
 
-- (void)layoutSubviews {
+- (void) layoutSubviews {
     [super layoutSubviews];
 	
 	CGRect r = CGRectInset(self.bounds, 16, 8);
@@ -85,12 +85,12 @@
 	}
 }
 
-- (void)willTransitionToState:(UITableViewCellStateMask)state{
+- (void) willTransitionToState:(UITableViewCellStateMask)state{
 	[super willTransitionToState:state];
 	[self setNeedsDisplay];
 }
 
-- (void)dealloc {
+- (void) dealloc {
 	[textView release];
 	[super dealloc];
 }

@@ -48,12 +48,8 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-	
 	CGRect r = CGRectInset(self.bounds, 16, 8);
-
 	label.frame = r;
-	
-	
 }
 
 - (void) setText:(NSString*)str{
@@ -68,13 +64,11 @@
 
     [super setSelected:selected animated:animated];
 	
-	if(selected){
+	if(selected)
 		label.textColor = [UIColor whiteColor];
-	}else{
+	else
 		label.textColor = [UIColor colorWithRed:74/255.0 green:110/255.0 blue:165/255.0 alpha:1.0];
-	}
 
-    // Configure the view for the selected state
 }
 
 

@@ -36,7 +36,7 @@
 
 @synthesize label;
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
+- (id) initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
         // Initialization code
 		label = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -54,7 +54,7 @@
 }
 
 
-- (void)layoutSubviews {
+- (void) layoutSubviews {
     [super layoutSubviews];
 	//NSLog(@"Layout subviews %f",[self indentationWidth]);
 	
@@ -70,12 +70,12 @@
 	
 }
 
-- (void)willTransitionToState:(UITableViewCellStateMask)state{
+- (void) willTransitionToState:(UITableViewCellStateMask)state{
 	[super willTransitionToState:state];
 	[self setNeedsDisplay];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+- (void) setSelected:(BOOL)selected animated:(BOOL)animated {
 
     [super setSelected:selected animated:animated];
 	
@@ -98,7 +98,7 @@
 
 
 
-- (void)dealloc {
+- (void) dealloc {
 	[label release];
     [super dealloc];
 }
