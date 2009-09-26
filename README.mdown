@@ -4,14 +4,9 @@ TapkuLibrary is a collection of iPhone UI classes intended for broad use in appl
 
 [http://tapku.com](http://tapku.com)
 
-[![](http://farm3.static.flickr.com/2431/3756246980_f19d977d17_m.jpg)](http://www.flickr.com/photos/40064022@N02/3756246980/)
-[![](http://farm4.static.flickr.com/3439/3756245274_f31fd91406_m.jpg)](http://www.flickr.com/photos/40064022@N02/3756245274/)
-[![](http://farm3.static.flickr.com/2570/3755441447_0bb2e1805d_m.jpg)](http://www.flickr.com/photos/40064022@N02/3755441447/)
-[![](http://farm3.static.flickr.com/2651/3756242644_742e9b43d3_m.jpg)](http://www.flickr.com/photos/40064022@N02/3756242644/)
 
-[![](http://farm4.static.flickr.com/3448/3756250354_30febfa4db_m.jpg)](http://www.flickr.com/photos/40064022@N02/3756250354/)
-[![](http://farm3.static.flickr.com/2618/3755432741_efd6133b50_m.jpg)](http://www.flickr.com/photos/40064022@N02/3755432741/)
-[![](http://farm4.static.flickr.com/3014/3787030864_6386a839cf_m.jpg)](http://www.flickr.com/photos/40064022@N02/3787030864/)
+![](http://farm3.static.flickr.com/2650/3955573507_23c2781a9c_o.jpg)
+
 
 Adding TapkuLibrary to your project
 ==============================
@@ -91,15 +86,11 @@ HUD UI
 
 **[LoadingHUDView](http://github.com/tapku/tapkulibrary/blob/ef1d5e27e3a63e146f04f9e29494ac495ee0861f/TapkuLibrary/LoadingHUDView.h)** allows you to show a title and message to a loading indicator.
 
-[![](http://farm3.static.flickr.com/2584/3684191507_90b3cc32cf_o.png)](http://farm3.static.flickr.com/2584/3684191507_90b3cc32cf_o.png)
-
 
 
 Overvew View Controller
 -----------------------
 **[TKOverviewTableViewController]()** a table view controller similar to the interface seen in the application Tweetie.
-
-[![](http://farm3.static.flickr.com/2431/3756246980_f19d977d17_m.jpg)](http://www.flickr.com/photos/40064022@N02/3756246980/)
 
 
 Map View
@@ -112,19 +103,12 @@ Empy View
 ---------
 **[TKEmptyView](http://github.com/tapku/tapkulibrary/blob/d12f30f79964ff5809d9d6fd9c6112a1a34db68e/TapkuLibrary/TKEmptyView.h)** allows is a blank screen view. You can take a transparent 200px x 200px image and it will be styled correctly to match Apple use in various applications.
 
-[![](http://farm3.static.flickr.com/2651/3756242644_742e9b43d3_m.jpg)](http://www.flickr.com/photos/40064022@N02/3756242644/)
 
 Graph View Controller
 --------------------
 **[TKTimeGraphController](http://github.com/tapku/tapkulibrary/blob/d12f30f79964ff5809d9d6fd9c6112a1a34db68e/TapkuLibrary/TKTimeGraphController.h)** is a full screen scrollable graph. 
 
-[![](http://farm3.static.flickr.com/2618/3755432741_efd6133b50_m.jpg)](http://www.flickr.com/photos/40064022@N02/3755432741/)
-
-
 
 Calendar View Controller
 ------------------------
 **[TKCalendarViewController](http://github.com/tapku/tapkulibrary/blob/85b9d19454393ae65725bc92c2fb9b04404778c4/TapkuLibrary/TKCalendarViewController.h)** is a controller and view that replicates the Calendar app. 
-
-![](http://farm4.static.flickr.com/3014/3787030864_6675021cd6_o.png)
- 
