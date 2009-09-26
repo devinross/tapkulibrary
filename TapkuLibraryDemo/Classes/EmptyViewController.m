@@ -51,7 +51,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	emptyView = [[TKEmptyView alloc] initWithFrame:self.view.bounds 
-									emptyViewImage:TKEmptyViewImageKey
+									emptyViewImage:TKEmptyViewImagePhotos
 											 title:@"Empty Page"
 										  subtitle:@"All You Need is A 200 x 200 pixel transparent image"];
 
