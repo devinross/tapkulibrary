@@ -174,6 +174,7 @@
 	
 	NSDate *newDate = [gregorian dateFromComponents:comp];
 	self.monthString = [newDate monthYearString];
+	[gregorian release];
 	
 	NSArray *ar = [delegate calendarView:self itemsForDaysInMonth:newDate];
 	
@@ -342,6 +343,7 @@
 	
 	NSDate *newDate = [gregorian dateFromComponents:comp];
 	self.monthString = [newDate monthYearString];
+	[gregorian release];
 	
 	NSArray *ar = [delegate calendarView:self itemsForDaysInMonth:newDate];
 	int todayNumber = -1;

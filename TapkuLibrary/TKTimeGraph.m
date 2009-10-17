@@ -197,6 +197,7 @@
 			if(yValue < lowValue) lowValue = yValue;
 		}
 		[data addObject:point];
+		[point release];
 	}
 	goal = NO;
 	NSNumber *g;

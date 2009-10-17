@@ -57,8 +57,9 @@
 	
 	NSDate *lastDayInMonth = [gregorian dateFromComponents:comps];
 	int days = [[gregorian components:NSDayCalendarUnit fromDate:lastDayInMonth] day];
+	[gregorian release];
 	
-	NSMutableArray *ar = [[NSMutableArray alloc] initWithCapacity:days];
+	NSMutableArray *ar = [NSMutableArray arrayWithCapacity:days];
 	
 	for(int i = 0; i < days; i++){
 		if(i %2==0){
