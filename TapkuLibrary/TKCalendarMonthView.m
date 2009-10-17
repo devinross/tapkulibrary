@@ -157,6 +157,17 @@
 		
         dateOfFirst = [theDate retain];
 		weekdayOfFirst = [dateOfFirst weekday];
+		
+		// Calendar starting on Monday instead of Sunday (Australia, Europe agains US american calendar)
+		CFCalendarRef currentCalendar = CFCalendarCopyCurrent();
+		if (CFCalendarGetFirstWeekday(currentCalendar) == 2) {
+			weekdayOfFirst -= 1;
+			if (weekdayOfFirst == 0) {
+				weekdayOfFirst = 7;
+			}
+		}
+		CFRelease(currentCalendar);
+		
 		todayNumber = todayDay;
 		marks = [marksArray retain];
 		

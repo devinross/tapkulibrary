@@ -520,7 +520,18 @@
 	[[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/calendar/topbar.png")] drawAtPoint:CGPointMake(0,0)];
 	
 	
-	NSArray *days = [NSArray arrayWithObjects:@"Sun",@"Mon",@"Tue",@"Wed",@"Thu",@"Fri",@"Sat",nil];
+	
+	
+	NSArray *days = nil;
+	
+	// Calendar starting on Monday instead of Sunday (Australia, Europe agains US american calendar)
+	CFCalendarRef currentCalendar = CFCalendarCopyCurrent();
+	if (CFCalendarGetFirstWeekday(currentCalendar) == 2) {
+		days = [NSArray arrayWithObjects:@"Mon",@"Tue",@"Wed",@"Thu",@"Fri",@"Sat",@"Sun",nil];
+	} else {
+		days = [NSArray arrayWithObjects:@"Sun",@"Mon",@"Tue",@"Wed",@"Thu",@"Fri",@"Sat",nil];
+	}
+	CFRelease(currentCalendar);
 	
 	UIFont *f = [UIFont systemFontOfSize:10];
 	[[UIColor grayColor] set];
