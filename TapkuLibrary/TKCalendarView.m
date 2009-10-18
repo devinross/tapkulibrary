@@ -227,7 +227,7 @@
 	float scrol = prev.frame.origin.y;
 	
 	[UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationDuration:1];
+	[UIView setAnimationDuration:0.4];
 	[UIView setAnimationDelay:0.1];
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationDidStopSelector:@selector(animationStopped:)];
@@ -316,7 +316,7 @@
 	
 	
 	[UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationDuration:1];
+	[UIView setAnimationDuration:0.4];
 	[UIView setAnimationDelay:0.1];
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationDidStopSelector:@selector(animationStopped:)];
@@ -389,8 +389,17 @@
 	}
 	CFRelease(currentCalendar);
 	
-	UIFont *f = [UIFont systemFontOfSize:10];
-	[[UIColor grayColor] set];
+	UIFont *f = [UIFont boldSystemFontOfSize:10];
+	[[UIColor darkGrayColor] set];
+	
+	// Retrieve the graphics context 
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	
+	// Save the context state 
+	CGContextSaveGState(context);
+
+	// Set shadow
+	CGContextSetShadowWithColor(context,  CGSizeMake(0.0, -1.0), 0.5, [[UIColor whiteColor]CGColor]);
 	
 	int i = 0;
 	for(NSString *str in days){
@@ -399,6 +408,7 @@
 
 		i++;
 	}
+	
 	
 	if(self.monthString != nil){
 		CGRect r = CGRectInset(self.frame, 55, 8);
@@ -410,7 +420,8 @@
 		
 	}
 	
-
+	// Restore the context state
+	CGContextRestoreGState(context);
 	
 	
 }
