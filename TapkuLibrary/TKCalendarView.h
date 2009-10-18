@@ -41,8 +41,6 @@
 	UIButton *left;
 	UIButton *right;
 	
-	//UILabel *monthLabel;
-	
 	UIImageView *shadow;
 	UIScrollView *scrollView;
 	
@@ -55,6 +53,7 @@
 @property (assign,nonatomic) id <TKCalendarViewDelegate> delegate;
 
 - (id) initWithFrame:(CGRect)frame delegate:(id)delegate;
+- (void) reloadData;
 
 @end
 
