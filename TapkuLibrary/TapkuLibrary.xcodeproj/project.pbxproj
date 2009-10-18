@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3ABD69CB108B49C50039AD14 /* ODCalendarDayTimelineView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ABD69C9108B49C50039AD14 /* ODCalendarDayTimelineView.h */; };
+		3ABD69CC108B49C50039AD14 /* ODCalendarDayTimelineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABD69CA108B49C50039AD14 /* ODCalendarDayTimelineView.m */; };
 		3B0279070FFC55A8004A23C5 /* TKLabelCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B0279050FFC55A8004A23C5 /* TKLabelCell.h */; };
 		3B0279080FFC55A8004A23C5 /* TKLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0279060FFC55A8004A23C5 /* TKLabelCell.m */; };
 		3B0279390FFC598A004A23C5 /* TapkuLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B0279370FFC598A004A23C5 /* TapkuLibrary.h */; };
@@ -68,6 +70,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3ABD69C9108B49C50039AD14 /* ODCalendarDayTimelineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODCalendarDayTimelineView.h; sourceTree = "<group>"; };
+		3ABD69CA108B49C50039AD14 /* ODCalendarDayTimelineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODCalendarDayTimelineView.m; sourceTree = "<group>"; };
 		3B0279050FFC55A8004A23C5 /* TKLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKLabelCell.h; sourceTree = "<group>"; };
 		3B0279060FFC55A8004A23C5 /* TKLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKLabelCell.m; sourceTree = "<group>"; };
 		3B0279370FFC598A004A23C5 /* TapkuLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapkuLibrary.h; sourceTree = "<group>"; };
@@ -194,6 +198,28 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
+		3ABD69C7108B48DB0039AD14 /* Month View */ = {
+			isa = PBXGroup;
+			children = (
+				3B96E6AF10240B2D006D6EDD /* TKCalendarViewController.h */,
+				3B96E6B010240B2D006D6EDD /* TKCalendarViewController.m */,
+				3B96E6B110240B2D006D6EDD /* TKCalendarView.h */,
+				3B96E6B210240B2D006D6EDD /* TKCalendarView.m */,
+				3B96E6B310240B2D006D6EDD /* TKCalendarMonthView.h */,
+				3B96E6B410240B2D006D6EDD /* TKCalendarMonthView.m */,
+			);
+			name = "Month View";
+			sourceTree = "<group>";
+		};
+		3ABD69C8108B49160039AD14 /* Day View */ = {
+			isa = PBXGroup;
+			children = (
+				3ABD69C9108B49C50039AD14 /* ODCalendarDayTimelineView.h */,
+				3ABD69CA108B49C50039AD14 /* ODCalendarDayTimelineView.m */,
+			);
+			name = "Day View";
+			sourceTree = "<group>";
+		};
 		3B027BB90FFC77CC004A23C5 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,12 +312,8 @@
 		3B96E6BC10240B2F006D6EDD /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
-				3B96E6AF10240B2D006D6EDD /* TKCalendarViewController.h */,
-				3B96E6B010240B2D006D6EDD /* TKCalendarViewController.m */,
-				3B96E6B110240B2D006D6EDD /* TKCalendarView.h */,
-				3B96E6B210240B2D006D6EDD /* TKCalendarView.m */,
-				3B96E6B310240B2D006D6EDD /* TKCalendarMonthView.h */,
-				3B96E6B410240B2D006D6EDD /* TKCalendarMonthView.m */,
+				3ABD69C7108B48DB0039AD14 /* Month View */,
+				3ABD69C8108B49160039AD14 /* Day View */,
 			);
 			name = Calendar;
 			sourceTree = "<group>";
@@ -356,6 +378,7 @@
 				3B96E6B910240B2D006D6EDD /* TKCalendarMonthView.h in Headers */,
 				3B96F26110269DAA006D6EDD /* TKTextViewCell.h in Headers */,
 				3B96F2E51026A7DC006D6EDD /* TKSwitchCell.h in Headers */,
+				3ABD69CB108B49C50039AD14 /* ODCalendarDayTimelineView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +452,7 @@
 				3B96E6BA10240B2D006D6EDD /* TKCalendarMonthView.m in Sources */,
 				3B96F26210269DAA006D6EDD /* TKTextViewCell.m in Sources */,
 				3B96F2E61026A7DC006D6EDD /* TKSwitchCell.m in Sources */,
+				3ABD69CC108B49C50039AD14 /* ODCalendarDayTimelineView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
