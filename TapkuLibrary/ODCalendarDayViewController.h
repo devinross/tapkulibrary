@@ -1,8 +1,8 @@
 //
-//  ODCalendarDayTimelineView.h
+//  ODCalendarDayViewController.h
 //  TapkuLibrary
 //
-//  Created by Anthony Mittaz on 18/10/09.
+//  Created by Anthony Mittaz on 19/10/09.
 /*
  
  sync at me dot com || http://github.com/sync/tapkulibrary/
@@ -30,46 +30,15 @@
  
  */
 
+
 #import <UIKit/UIKit.h>
+#import "ODCalendarDayTimelineView.h"
 
-@protocol ODCalendarDayTimelineViewDelegate;
 
-@class ODTimelineView;
-
-@interface ODCalendarDayTimelineView : UIView {
-	UIScrollView *_scrollView;
-	ODTimelineView *_timelineView;
-	
-	id <ODCalendarDayTimelineViewDelegate> _delegate;
+@interface ODCalendarDayViewController : UIViewController <ODCalendarDayTimelineViewDelegate>{
+	ODCalendarDayTimelineView *_calendarDayTimelineView;
 }
 
-@property (nonatomic, readonly) UIScrollView *scrollView;
-@property (nonatomic, readonly) ODTimelineView *timelineView;
-
-@property (nonatomic, retain) id <ODCalendarDayTimelineViewDelegate> delegate;
-
-// Initialisation
-- (void)setupCustomInitialisation;
+@property (nonatomic, readonly) ODCalendarDayTimelineView *calendarDayTimelineView;
 
 @end
-
-@protocol ODCalendarDayTimelineViewDelegate<NSObject>
-@required
-
-- (NSArray *)calendarDayTimelineView:(ODCalendarDayTimelineView*)calendarDayTimeline eventsForDate:(NSDate *)eventDate;
-
-@end
-
-@interface ODTimelineView : UIView {
-	NSArray *_times;
-	NSArray *_periods;
-}
-
-@property (nonatomic, readonly) NSArray *times;
-@property (nonatomic, readonly) NSArray *periods;
-
-// Initialisation
-- (void)setupCustomInitialisation;
-
-@end
-

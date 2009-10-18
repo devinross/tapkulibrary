@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3ABD69CB108B49C50039AD14 /* ODCalendarDayTimelineView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ABD69C9108B49C50039AD14 /* ODCalendarDayTimelineView.h */; };
 		3ABD69CC108B49C50039AD14 /* ODCalendarDayTimelineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABD69CA108B49C50039AD14 /* ODCalendarDayTimelineView.m */; };
+		3ABD6A19108B64000039AD14 /* ODCalendarDayViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ABD6A17108B64000039AD14 /* ODCalendarDayViewController.h */; };
+		3ABD6A1A108B64000039AD14 /* ODCalendarDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABD6A18108B64000039AD14 /* ODCalendarDayViewController.m */; };
 		3B0279070FFC55A8004A23C5 /* TKLabelCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B0279050FFC55A8004A23C5 /* TKLabelCell.h */; };
 		3B0279080FFC55A8004A23C5 /* TKLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0279060FFC55A8004A23C5 /* TKLabelCell.m */; };
 		3B0279390FFC598A004A23C5 /* TapkuLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B0279370FFC598A004A23C5 /* TapkuLibrary.h */; };
@@ -72,6 +74,8 @@
 /* Begin PBXFileReference section */
 		3ABD69C9108B49C50039AD14 /* ODCalendarDayTimelineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODCalendarDayTimelineView.h; sourceTree = "<group>"; };
 		3ABD69CA108B49C50039AD14 /* ODCalendarDayTimelineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODCalendarDayTimelineView.m; sourceTree = "<group>"; };
+		3ABD6A17108B64000039AD14 /* ODCalendarDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODCalendarDayViewController.h; sourceTree = "<group>"; };
+		3ABD6A18108B64000039AD14 /* ODCalendarDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODCalendarDayViewController.m; sourceTree = "<group>"; };
 		3B0279050FFC55A8004A23C5 /* TKLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKLabelCell.h; sourceTree = "<group>"; };
 		3B0279060FFC55A8004A23C5 /* TKLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKLabelCell.m; sourceTree = "<group>"; };
 		3B0279370FFC598A004A23C5 /* TapkuLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapkuLibrary.h; sourceTree = "<group>"; };
@@ -214,6 +218,8 @@
 		3ABD69C8108B49160039AD14 /* Day View */ = {
 			isa = PBXGroup;
 			children = (
+				3ABD6A17108B64000039AD14 /* ODCalendarDayViewController.h */,
+				3ABD6A18108B64000039AD14 /* ODCalendarDayViewController.m */,
 				3ABD69C9108B49C50039AD14 /* ODCalendarDayTimelineView.h */,
 				3ABD69CA108B49C50039AD14 /* ODCalendarDayTimelineView.m */,
 			);
@@ -379,6 +385,7 @@
 				3B96F26110269DAA006D6EDD /* TKTextViewCell.h in Headers */,
 				3B96F2E51026A7DC006D6EDD /* TKSwitchCell.h in Headers */,
 				3ABD69CB108B49C50039AD14 /* ODCalendarDayTimelineView.h in Headers */,
+				3ABD6A19108B64000039AD14 /* ODCalendarDayViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +460,7 @@
 				3B96F26210269DAA006D6EDD /* TKTextViewCell.m in Sources */,
 				3B96F2E61026A7DC006D6EDD /* TKSwitchCell.m in Sources */,
 				3ABD69CC108B49C50039AD14 /* ODCalendarDayTimelineView.m in Sources */,
+				3ABD6A1A108B64000039AD14 /* ODCalendarDayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
