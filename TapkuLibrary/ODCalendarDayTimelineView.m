@@ -34,7 +34,7 @@
 
 #define HORIZONTAL_OFFSET 3.0
 #define VERTICAL_OFFSET 5.0
-#define VERTICAL_DIFF 50.0
+#define VERTICAL_DIFF 46.0
 
 #define TIME_WIDTH 20.0
 #define PERIOD_WIDTH 26.0
@@ -303,7 +303,7 @@
 		// Draw line with a black stroke color
 		CGContextSetStrokeColorWithColor(context, [[UIColor lightGrayColor] CGColor]);
 		// Draw line with a 1.0 stroke width
-		CGContextSetLineWidth(context, 1.0);
+		CGContextSetLineWidth(context, 0.5);
 		// Translate context for clear line
 		CGContextTranslateCTM(context, -0.5, -0.5);
 		
