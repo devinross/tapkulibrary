@@ -66,6 +66,27 @@
 	return weekday;
 }
 
+
+// Calendar starting on Monday instead of Sunday (Australia, Europe against US american calendar)
+- (int) weekdayMondayFirst{
+	
+	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+	NSDateComponents *comps = [gregorian components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit | NSWeekdayCalendarUnit) fromDate:self];
+	int weekday = [comps weekday];
+	[gregorian release];
+	
+	CFCalendarRef currentCalendar = CFCalendarCopyCurrent();
+	if (CFCalendarGetFirstWeekday(currentCalendar) == 2) {
+		weekday -= 1;
+		if (weekday == 0) {
+			weekday = 7;
+		}
+	}
+	CFRelease(currentCalendar);
+	
+	return weekday;
+}
+
 - (int) daysInMonth{
 
 	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];

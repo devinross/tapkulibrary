@@ -19,6 +19,7 @@
 @property (readonly,nonatomic) NSString *monthYearString;
 @property (readonly,nonatomic) NSNumber *dayNumber;
 @property (readonly,nonatomic) int weekday;
+@property (readonly,nonatomic) int weekdayMondayFirst;
 @property (readonly,nonatomic) int daysInMonth;
 
 @end
