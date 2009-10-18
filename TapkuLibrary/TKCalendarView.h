@@ -53,7 +53,7 @@
 @property (assign,nonatomic) id <TKCalendarViewDelegate> delegate;
 
 - (id) initWithFrame:(CGRect)frame delegate:(id)delegate;
-- (void) reloadData;
+- (void) reloadMarks;
 
 @end
 

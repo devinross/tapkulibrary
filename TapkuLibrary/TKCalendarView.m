@@ -132,9 +132,16 @@
     return self;
 }
 
-- (void) reloadData
+- (void) reloadMarks
 {
-	//[[deck objectAtIndex:1] selectDay:day];
+	if (deck && deck.count > 1) {
+		// Get the current month view
+		TKCalendarMonthView* current = [deck objectAtIndex:1];
+		// Ask the delegate for the new items
+		current.marks = [delegate calendarView:self itemsForDaysInMonth:currentMonth];
+		// Refresh the calendar
+		[current resetMarks];
+	}
 }
 
 
