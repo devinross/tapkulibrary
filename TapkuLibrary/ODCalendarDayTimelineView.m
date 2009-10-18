@@ -37,9 +37,11 @@
 #define VERTICAL_DIFF 50.0
 
 #define TIME_WIDTH 20.0
-#define PERIOD_WIDTH 30.0
+#define PERIOD_WIDTH 26.0
 
 #define FONT_SIZE 14.0
+
+#define HORIZONTAL_LINE_DIFF 10.0
 
 #define TIMELINE_HEIGHT 24*VERTICAL_OFFSET+23*VERTICAL_DIFF
 
@@ -260,7 +262,7 @@
 	
 	// Periods appearance
 	UIFont *periodFont = [UIFont systemFontOfSize:FONT_SIZE];
-	UIColor *periodColor = [UIColor darkGrayColor];
+	UIColor *periodColor = [UIColor grayColor];
 	
 	// Draw each times string
 	for (NSInteger i=0; i<self.times.count; i++) {
@@ -293,6 +295,36 @@
 				 lineBreakMode: UILineBreakModeWordWrap 
 					 alignment: UITextAlignmentRight];
 		}
+		
+		// Draw straight line
+		CGContextRef context = UIGraphicsGetCurrentContext();
+		// Save the context state 
+		CGContextSaveGState(context);
+		// Draw line with a black stroke color
+		CGContextSetStrokeColorWithColor(context, [[UIColor lightGrayColor] CGColor]);
+		// Draw line with a 1.0 stroke width
+		CGContextSetLineWidth(context, 1.0);
+		// Translate context for clear line
+		CGContextTranslateCTM(context, -0.5, -0.5);
+		
+		CGContextBeginPath(context);
+		CGContextMoveToPoint(context, HORIZONTAL_OFFSET + TIME_WIDTH + PERIOD_WIDTH + HORIZONTAL_LINE_DIFF, VERTICAL_OFFSET + i * VERTICAL_DIFF + roundf((FONT_SIZE + 4.0) / 2.0));
+		CGContextAddLineToPoint(context, self.bounds.size.width  - HORIZONTAL_LINE_DIFF, VERTICAL_OFFSET + i * VERTICAL_DIFF + roundf((FONT_SIZE + 4.0) / 2.0));
+		CGContextStrokePath(context);
+		
+		if (i != self.times.count-1) {		
+			CGContextBeginPath(context);
+			CGContextMoveToPoint(context, HORIZONTAL_OFFSET + TIME_WIDTH + PERIOD_WIDTH + HORIZONTAL_LINE_DIFF, VERTICAL_OFFSET + i * VERTICAL_DIFF + roundf((FONT_SIZE + 4.0) / 2.0) + roundf(VERTICAL_DIFF / 2.0));
+			CGContextAddLineToPoint(context, self.bounds.size.width  - HORIZONTAL_LINE_DIFF, VERTICAL_OFFSET + i * VERTICAL_DIFF + roundf((FONT_SIZE + 4.0) / 2.0) + roundf(VERTICAL_DIFF / 2.0));
+			CGFloat dash1[] = {2.0, 1.0};
+			CGContextSetLineDash(context, 0.0, dash1, 2);
+			CGContextStrokePath(context);
+		}
+		
+		// Restore the context state
+		CGContextRestoreGState(context);
+		
+		
 		
 	}
 }
