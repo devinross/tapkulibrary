@@ -167,7 +167,8 @@
 	if (self.delegate && [self.delegate respondsToSelector:@selector(calendarDayTimelineView:eventsForDate:)]) {
 		self.events = [self.delegate calendarDayTimelineView:self eventsForDate:self.currentDay];
 		for (ODCalendarDayEvent *event in self.events) {
-			if (event.startDate.isToday) {			
+			// Making sure delgate sending date that match current day
+			if ([event.startDate isSameDay:self.currentDay]) {
 				// Get the hour start position
 				NSInteger hourStart = [event.startDate hour];
 				CGFloat hourStartPosition = roundf((hourStart * VERTICAL_DIFF) + VERTICAL_OFFSET + ((FONT_SIZE + 4.0) / 2.0));
@@ -198,9 +199,11 @@
 				
 				if (minuteStartPosition == minuteEndPosition || hourEnd == 23) {
 					// Starting and ending date position are the same
-					// Take all half space
+					// Take all half hour space
+					// Or hour is at the end
 					eventHeight = (VERTICAL_DIFF / 2) - (2 * EVENT_VERTICAL_DIFF);
 				} else {
+					// Take all hour space
 					eventHeight = VERTICAL_DIFF - (2 * EVENT_VERTICAL_DIFF);
 				}
 				
