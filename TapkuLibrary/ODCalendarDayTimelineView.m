@@ -31,10 +31,12 @@
  */
 
 #import "ODCalendarDayTimelineView.h"
+#import "ODCalendarDayEvent.h"
+#import "NSDateAdditions.h"
 
 #define HORIZONTAL_OFFSET 3.0
 #define VERTICAL_OFFSET 5.0
-#define VERTICAL_DIFF 46.0
+#define VERTICAL_DIFF 50.0
 
 #define TIME_WIDTH 20.0
 #define PERIOD_WIDTH 26.0
@@ -45,10 +47,15 @@
 
 #define TIMELINE_HEIGHT 24*VERTICAL_OFFSET+23*VERTICAL_DIFF
 
+#define EVENT_VERTICAL_DIFF 0.0
+#define EVENT_HORIZONTAL_DIFF 2.0
+
 
 @implementation ODCalendarDayTimelineView
 
 @synthesize delegate=_delegate;
+@synthesize events=_events;
+@synthesize currentDay=_currentDay;
 
 #pragma mark -
 #pragma mark Initialisation
@@ -76,11 +83,27 @@
 - (void)setupCustomInitialisation
 {
 	// Initialization code
+	self.events = nil;
+	self.currentDay = nil;
 	// Add main scroll view
 	[self addSubview:self.scrollView];
 	// Add timeline view inside scrollview
 	[self.scrollView addSubview:self.timelineView];
+	// Get notified when current day is changed
+	// Observe when app got online (facebook connect)
+	[self addObserver:self forKeyPath: @"currentDay"
+					 options:0
+					 context:@selector(reloadDay)];
 }
+
+#pragma mark -
+#pragma mark Execut Method When Notification Fire
+
+//help executing a method when a notification fire
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+	[self performSelector: (SEL)context withObject: change];
+} 
 
 #pragma mark -
 #pragma mark Setup
@@ -111,6 +134,106 @@
 }
 
 #pragma mark -
+#pragma mark View Event
+
+- (void)didMoveToWindow
+{
+	if (self.superview != nil) {
+		[self reloadDay];
+	}
+}
+
+#pragma mark -
+#pragma mark Reload Day
+
+- (void)reloadDay
+{
+	// If no current day was given
+	// Make it today
+	if (!self.currentDay) {
+		// Dont' want to inform the observer
+		_currentDay = [[NSDate date]retain];
+	}
+	
+	// Remove all previous view event
+	for (id view in self.scrollView.subviews) {
+		if (![NSStringFromClass([view class])isEqualToString:@"ODTimelineView"]) {
+			[view removeFromSuperview];
+		}
+	}
+	
+	// Ask the delgate about the events that correspond
+	// the the currently displayed day view
+	if (self.delegate && [self.delegate respondsToSelector:@selector(calendarDayTimelineView:eventsForDate:)]) {
+		self.events = [self.delegate calendarDayTimelineView:self eventsForDate:self.currentDay];
+		for (ODCalendarDayEvent *event in self.events) {
+			if (event.startDate.isToday) {			
+				// Get the hour start position
+				NSInteger hourStart = [event.startDate hour];
+				CGFloat hourStartPosition = roundf((hourStart * VERTICAL_DIFF) + VERTICAL_OFFSET + ((FONT_SIZE + 4.0) / 2.0));
+				// Get the minute start position
+				// Round minute to each 5
+				NSInteger minuteStart = [event.startDate minute];
+				minuteStart = round(minuteStart / 5.0) * 5;
+				CGFloat minuteStartPosition = roundf((minuteStart < 30)?0:VERTICAL_DIFF / 2.0);
+				
+				
+				
+				// Get the hour end position
+				NSInteger hourEnd = [event.endDate hour];
+				if (![event.startDate isSameDay:event.endDate]) {
+					hourEnd = 23;
+				}
+				CGFloat hourEndPosition = roundf((hourEnd * VERTICAL_DIFF) + VERTICAL_OFFSET + ((FONT_SIZE + 4.0) / 2.0));
+				// Get the minute end position
+				// Round minute to each 5
+				NSInteger minuteEnd = [event.endDate minute];
+				if (![event.startDate isSameDay:event.endDate]) {
+					minuteEnd = 55;
+				}
+				minuteEnd = round(minuteEnd / 5.0) * 5;
+				CGFloat minuteEndPosition = roundf((minuteEnd < 30)?0:VERTICAL_DIFF / 2.0);
+				
+				CGFloat eventHeight = 0.0;
+				
+				if (minuteStartPosition == minuteEndPosition || hourEnd == 23) {
+					// Starting and ending date position are the same
+					// Take all half space
+					eventHeight = (VERTICAL_DIFF / 2) - (2 * EVENT_VERTICAL_DIFF);
+				} else {
+					eventHeight = VERTICAL_DIFF - (2 * EVENT_VERTICAL_DIFF);
+				}
+				
+				if (hourStartPosition != hourEndPosition) {
+					eventHeight += (hourEndPosition + minuteEndPosition) - hourStartPosition; 
+				}
+				
+				CGRect eventFrame = CGRectMake(HORIZONTAL_OFFSET + TIME_WIDTH + PERIOD_WIDTH + HORIZONTAL_LINE_DIFF + EVENT_HORIZONTAL_DIFF,
+											   hourStartPosition + minuteStartPosition + EVENT_VERTICAL_DIFF,
+											   self.bounds.size.width  - (HORIZONTAL_OFFSET + TIME_WIDTH + PERIOD_WIDTH + HORIZONTAL_LINE_DIFF) - HORIZONTAL_LINE_DIFF - EVENT_HORIZONTAL_DIFF, 
+											   eventHeight);
+				
+				UIView *fakeView = [[UIView alloc]initWithFrame:CGRectIntegral(eventFrame)];
+				fakeView.backgroundColor = [UIColor purpleColor];
+				fakeView.alpha = 0.7;
+				CALayer *layer = [fakeView layer];
+				layer.masksToBounds = YES;
+				[layer setCornerRadius:5.0];
+				// You can even add a border
+				[layer setBorderWidth:0.5];
+				[layer setBorderColor:[[UIColor lightGrayColor] CGColor]];
+				// Add subview to the main scrollview
+				[self.scrollView addSubview:fakeView];
+				
+				
+				// Log the extracted date values
+				NSLog(@"hourStart: %d minuteStart: %d", hourStart, minuteStart);
+			}
+		}
+	}	
+}
+
+#pragma mark -
 #pragma mark Drawing
 
 - (void)drawRect:(CGRect)rect {
@@ -121,6 +244,11 @@
 #pragma mark Dealloc
 
 - (void)dealloc {
+	// Remove observers
+	[self removeObserver:self forKeyPath: @"currentDay"];
+	
+	[_currentDay release];
+	[_events release];
 	[_timelineView release];
 	[_scrollView release];
 	
@@ -278,7 +406,7 @@
 			timeRect = CGRectMake(HORIZONTAL_OFFSET, VERTICAL_OFFSET + i * VERTICAL_DIFF, TIME_WIDTH + PERIOD_WIDTH, FONT_SIZE + 4.0);
 		}
 		
-		[time drawInRect:timeRect
+		[time drawInRect:CGRectIntegral(timeRect)
 			   withFont:timeFont 
 		  lineBreakMode:UILineBreakModeWordWrap 
 			  alignment:UITextAlignmentRight];
@@ -290,7 +418,7 @@
 			
 			NSString *period = [self.periods objectAtIndex:i];
 			
-			[period drawInRect: CGRectMake(HORIZONTAL_OFFSET + TIME_WIDTH, VERTICAL_OFFSET + i * VERTICAL_DIFF, PERIOD_WIDTH, FONT_SIZE + 4.0) 
+			[period drawInRect: CGRectIntegral(CGRectMake(HORIZONTAL_OFFSET + TIME_WIDTH, VERTICAL_OFFSET + i * VERTICAL_DIFF, PERIOD_WIDTH, FONT_SIZE + 4.0)) 
 					  withFont: periodFont 
 				 lineBreakMode: UILineBreakModeWordWrap 
 					 alignment: UITextAlignmentRight];
@@ -309,13 +437,13 @@
 		
 		CGContextBeginPath(context);
 		CGContextMoveToPoint(context, HORIZONTAL_OFFSET + TIME_WIDTH + PERIOD_WIDTH + HORIZONTAL_LINE_DIFF, VERTICAL_OFFSET + i * VERTICAL_DIFF + roundf((FONT_SIZE + 4.0) / 2.0));
-		CGContextAddLineToPoint(context, self.bounds.size.width  - HORIZONTAL_LINE_DIFF, VERTICAL_OFFSET + i * VERTICAL_DIFF + roundf((FONT_SIZE + 4.0) / 2.0));
+		CGContextAddLineToPoint(context, self.bounds.size.width, VERTICAL_OFFSET + i * VERTICAL_DIFF + roundf((FONT_SIZE + 4.0) / 2.0));
 		CGContextStrokePath(context);
 		
 		if (i != self.times.count-1) {		
 			CGContextBeginPath(context);
 			CGContextMoveToPoint(context, HORIZONTAL_OFFSET + TIME_WIDTH + PERIOD_WIDTH + HORIZONTAL_LINE_DIFF, VERTICAL_OFFSET + i * VERTICAL_DIFF + roundf((FONT_SIZE + 4.0) / 2.0) + roundf(VERTICAL_DIFF / 2.0));
-			CGContextAddLineToPoint(context, self.bounds.size.width  - HORIZONTAL_LINE_DIFF, VERTICAL_OFFSET + i * VERTICAL_DIFF + roundf((FONT_SIZE + 4.0) / 2.0) + roundf(VERTICAL_DIFF / 2.0));
+			CGContextAddLineToPoint(context, self.bounds.size.width, VERTICAL_OFFSET + i * VERTICAL_DIFF + roundf((FONT_SIZE + 4.0) / 2.0) + roundf(VERTICAL_DIFF / 2.0));
 			CGFloat dash1[] = {2.0, 1.0};
 			CGContextSetLineDash(context, 0.0, dash1, 2);
 			CGContextStrokePath(context);

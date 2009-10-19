@@ -31,6 +31,7 @@
  */
 
 #import "ODCalendarDayViewController.h"
+#import "ODCalendarDayEvent.h"
 
 
 @implementation ODCalendarDayViewController
@@ -61,7 +62,17 @@
 
 - (NSArray *)calendarDayTimelineView:(ODCalendarDayTimelineView*)calendarDayTimeline eventsForDate:(NSDate *)eventDate
 {
-	return nil;
+	ODCalendarDayEvent *eventFirst = [ODCalendarDayEvent eventWithId:nil 
+													  startDate:[[NSDate date]addTimeInterval:60 * 60 * 2] 
+														endDate:[[NSDate date]addTimeInterval:60 * 60 * 24]
+														  title:@"First"];
+	
+	ODCalendarDayEvent *eventSecond = [ODCalendarDayEvent eventWithId:nil 
+													  startDate:[NSDate date] 
+														endDate:[NSDate date]
+														  title:@"Second"];
+	
+	return [NSArray arrayWithObjects:eventFirst, eventSecond, nil];
 }
 
 /*

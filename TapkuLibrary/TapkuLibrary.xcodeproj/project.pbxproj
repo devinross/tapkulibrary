@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A9D679B108CA65900F70559 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A9D679A108CA65900F70559 /* QuartzCore.framework */; };
+		3A9D67E8108CAB8E00F70559 /* ODCalendarDayEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A9D67E6108CAB8E00F70559 /* ODCalendarDayEvent.h */; };
+		3A9D67E9108CAB8E00F70559 /* ODCalendarDayEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9D67E7108CAB8E00F70559 /* ODCalendarDayEvent.m */; };
 		3ABD69CB108B49C50039AD14 /* ODCalendarDayTimelineView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ABD69C9108B49C50039AD14 /* ODCalendarDayTimelineView.h */; };
 		3ABD69CC108B49C50039AD14 /* ODCalendarDayTimelineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABD69CA108B49C50039AD14 /* ODCalendarDayTimelineView.m */; };
 		3ABD6A19108B64000039AD14 /* ODCalendarDayViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ABD6A17108B64000039AD14 /* ODCalendarDayViewController.h */; };
@@ -72,6 +75,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A9D679A108CA65900F70559 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3A9D67E6108CAB8E00F70559 /* ODCalendarDayEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODCalendarDayEvent.h; sourceTree = "<group>"; };
+		3A9D67E7108CAB8E00F70559 /* ODCalendarDayEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODCalendarDayEvent.m; sourceTree = "<group>"; };
 		3ABD69C9108B49C50039AD14 /* ODCalendarDayTimelineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODCalendarDayTimelineView.h; sourceTree = "<group>"; };
 		3ABD69CA108B49C50039AD14 /* ODCalendarDayTimelineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODCalendarDayTimelineView.m; sourceTree = "<group>"; };
 		3ABD6A17108B64000039AD14 /* ODCalendarDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODCalendarDayViewController.h; sourceTree = "<group>"; };
@@ -144,6 +150,7 @@
 			files = (
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 				3B7228E51009229400816B29 /* MapKit.framework in Frameworks */,
+				3A9D679B108CA65900F70559 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +179,7 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A9D679A108CA65900F70559 /* QuartzCore.framework */,
 				3B7228E41009229400816B29 /* MapKit.framework */,
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 			);
@@ -220,6 +228,8 @@
 			children = (
 				3ABD6A17108B64000039AD14 /* ODCalendarDayViewController.h */,
 				3ABD6A18108B64000039AD14 /* ODCalendarDayViewController.m */,
+				3A9D67E6108CAB8E00F70559 /* ODCalendarDayEvent.h */,
+				3A9D67E7108CAB8E00F70559 /* ODCalendarDayEvent.m */,
 				3ABD69C9108B49C50039AD14 /* ODCalendarDayTimelineView.h */,
 				3ABD69CA108B49C50039AD14 /* ODCalendarDayTimelineView.m */,
 			);
@@ -386,6 +396,7 @@
 				3B96F2E51026A7DC006D6EDD /* TKSwitchCell.h in Headers */,
 				3ABD69CB108B49C50039AD14 /* ODCalendarDayTimelineView.h in Headers */,
 				3ABD6A19108B64000039AD14 /* ODCalendarDayViewController.h in Headers */,
+				3A9D67E8108CAB8E00F70559 /* ODCalendarDayEvent.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +472,7 @@
 				3B96F2E61026A7DC006D6EDD /* TKSwitchCell.m in Sources */,
 				3ABD69CC108B49C50039AD14 /* ODCalendarDayTimelineView.m in Sources */,
 				3ABD6A1A108B64000039AD14 /* ODCalendarDayViewController.m in Sources */,
+				3A9D67E9108CAB8E00F70559 /* ODCalendarDayEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

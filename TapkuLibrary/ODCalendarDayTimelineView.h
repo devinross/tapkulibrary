@@ -40,16 +40,25 @@
 	UIScrollView *_scrollView;
 	ODTimelineView *_timelineView;
 	
+	NSArray *_events;
+	NSDate *_currentDay;
+	
 	id <ODCalendarDayTimelineViewDelegate> _delegate;
 }
 
 @property (nonatomic, readonly) UIScrollView *scrollView;
 @property (nonatomic, readonly) ODTimelineView *timelineView;
 
+@property (nonatomic, retain) NSArray *events;
+@property (nonatomic, copy) NSDate *currentDay;
+
 @property (nonatomic, retain) id <ODCalendarDayTimelineViewDelegate> delegate;
 
 // Initialisation
 - (void)setupCustomInitialisation;
+
+// Reload Day
+- (void)reloadDay;
 
 @end
 
