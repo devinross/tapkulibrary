@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		3A9D679B108CA65900F70559 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A9D679A108CA65900F70559 /* QuartzCore.framework */; };
-		3A9D67E8108CAB8E00F70559 /* ODCalendarDayEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A9D67E6108CAB8E00F70559 /* ODCalendarDayEvent.h */; };
-		3A9D67E9108CAB8E00F70559 /* ODCalendarDayEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9D67E7108CAB8E00F70559 /* ODCalendarDayEvent.m */; };
+		3A9D69F9108CCC5900F70559 /* TapDetectingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A9D69F7108CCC5900F70559 /* TapDetectingView.h */; };
+		3A9D69FA108CCC5900F70559 /* TapDetectingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9D69F8108CCC5900F70559 /* TapDetectingView.m */; };
+		3A9D6A00108CCCA000F70559 /* ODCalendarDayEventView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A9D69FE108CCCA000F70559 /* ODCalendarDayEventView.h */; };
+		3A9D6A01108CCCA000F70559 /* ODCalendarDayEventView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9D69FF108CCCA000F70559 /* ODCalendarDayEventView.m */; };
 		3ABD69CB108B49C50039AD14 /* ODCalendarDayTimelineView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ABD69C9108B49C50039AD14 /* ODCalendarDayTimelineView.h */; };
 		3ABD69CC108B49C50039AD14 /* ODCalendarDayTimelineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABD69CA108B49C50039AD14 /* ODCalendarDayTimelineView.m */; };
 		3ABD6A19108B64000039AD14 /* ODCalendarDayViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3ABD6A17108B64000039AD14 /* ODCalendarDayViewController.h */; };
@@ -76,8 +78,10 @@
 
 /* Begin PBXFileReference section */
 		3A9D679A108CA65900F70559 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		3A9D67E6108CAB8E00F70559 /* ODCalendarDayEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODCalendarDayEvent.h; sourceTree = "<group>"; };
-		3A9D67E7108CAB8E00F70559 /* ODCalendarDayEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODCalendarDayEvent.m; sourceTree = "<group>"; };
+		3A9D69F7108CCC5900F70559 /* TapDetectingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapDetectingView.h; sourceTree = "<group>"; };
+		3A9D69F8108CCC5900F70559 /* TapDetectingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapDetectingView.m; sourceTree = "<group>"; };
+		3A9D69FE108CCCA000F70559 /* ODCalendarDayEventView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODCalendarDayEventView.h; sourceTree = "<group>"; };
+		3A9D69FF108CCCA000F70559 /* ODCalendarDayEventView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODCalendarDayEventView.m; sourceTree = "<group>"; };
 		3ABD69C9108B49C50039AD14 /* ODCalendarDayTimelineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODCalendarDayTimelineView.h; sourceTree = "<group>"; };
 		3ABD69CA108B49C50039AD14 /* ODCalendarDayTimelineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODCalendarDayTimelineView.m; sourceTree = "<group>"; };
 		3ABD6A17108B64000039AD14 /* ODCalendarDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODCalendarDayViewController.h; sourceTree = "<group>"; };
@@ -197,6 +201,7 @@
 				3B723350100BB6CD00816B29 /* Overview View Controller */,
 				3BAD758D101A9681002363FD /* Empty View */,
 				3B583418101152A60082E0D8 /* Graph */,
+				3A9D69FB108CCC6600F70559 /* Tap Detecting View */,
 				3B96E6BC10240B2F006D6EDD /* Calendar */,
 			);
 			name = Classes;
@@ -208,6 +213,15 @@
 				AA747D9E0F9514B9006C5449 /* TapkuLibrary_Prefix.pch */,
 			);
 			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		3A9D69FB108CCC6600F70559 /* Tap Detecting View */ = {
+			isa = PBXGroup;
+			children = (
+				3A9D69F7108CCC5900F70559 /* TapDetectingView.h */,
+				3A9D69F8108CCC5900F70559 /* TapDetectingView.m */,
+			);
+			name = "Tap Detecting View";
 			sourceTree = "<group>";
 		};
 		3ABD69C7108B48DB0039AD14 /* Month View */ = {
@@ -228,8 +242,8 @@
 			children = (
 				3ABD6A17108B64000039AD14 /* ODCalendarDayViewController.h */,
 				3ABD6A18108B64000039AD14 /* ODCalendarDayViewController.m */,
-				3A9D67E6108CAB8E00F70559 /* ODCalendarDayEvent.h */,
-				3A9D67E7108CAB8E00F70559 /* ODCalendarDayEvent.m */,
+				3A9D69FE108CCCA000F70559 /* ODCalendarDayEventView.h */,
+				3A9D69FF108CCCA000F70559 /* ODCalendarDayEventView.m */,
 				3ABD69C9108B49C50039AD14 /* ODCalendarDayTimelineView.h */,
 				3ABD69CA108B49C50039AD14 /* ODCalendarDayTimelineView.m */,
 			);
@@ -396,7 +410,8 @@
 				3B96F2E51026A7DC006D6EDD /* TKSwitchCell.h in Headers */,
 				3ABD69CB108B49C50039AD14 /* ODCalendarDayTimelineView.h in Headers */,
 				3ABD6A19108B64000039AD14 /* ODCalendarDayViewController.h in Headers */,
-				3A9D67E8108CAB8E00F70559 /* ODCalendarDayEvent.h in Headers */,
+				3A9D69F9108CCC5900F70559 /* TapDetectingView.h in Headers */,
+				3A9D6A00108CCCA000F70559 /* ODCalendarDayEventView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,7 +487,8 @@
 				3B96F2E61026A7DC006D6EDD /* TKSwitchCell.m in Sources */,
 				3ABD69CC108B49C50039AD14 /* ODCalendarDayTimelineView.m in Sources */,
 				3ABD6A1A108B64000039AD14 /* ODCalendarDayViewController.m in Sources */,
-				3A9D67E9108CAB8E00F70559 /* ODCalendarDayEvent.m in Sources */,
+				3A9D69FA108CCC5900F70559 /* TapDetectingView.m in Sources */,
+				3A9D6A01108CCCA000F70559 /* ODCalendarDayEventView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

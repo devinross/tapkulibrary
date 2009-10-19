@@ -1,5 +1,5 @@
 //
-//  ODCalendarDayEvent.h
+//  ODCalendarDayEventView.h
 //  TapkuLibrary
 //
 //  Created by Anthony Mittaz on 20/10/09.
@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TapDetectingView.h"
 
-
-@interface ODCalendarDayEvent : NSObject {
+@interface ODCalendarDayEventView : TapDetectingView {
 	NSNumber *_id;
 	NSDate *_startDate;
 	NSDate *_endDate;
@@ -21,6 +21,8 @@
 @property (nonatomic, copy) NSDate *endDate;
 @property (nonatomic, copy) NSString *title;
 
-+ (id)eventWithId:(NSNumber *)id startDate:(NSDate *)startDate endDate:(NSDate *)endDate title:(NSString *)title;
+- (void)setupCustomInitialisation;
+
++ (id)eventViewWithFrame:(CGRect)frame id:(NSNumber *)id startDate:(NSDate *)startDate endDate:(NSDate *)endDate title:(NSString *)title;
 
 @end

@@ -31,7 +31,7 @@
  */
 
 #import "ODCalendarDayTimelineView.h"
-#import "ODCalendarDayEvent.h"
+#import "ODCalendarDayEventView.h"
 #import "NSDateAdditions.h"
 
 #define HORIZONTAL_OFFSET 3.0
@@ -166,7 +166,7 @@
 	// the the currently displayed day view
 	if (self.delegate && [self.delegate respondsToSelector:@selector(calendarDayTimelineView:eventsForDate:)]) {
 		self.events = [self.delegate calendarDayTimelineView:self eventsForDate:self.currentDay];
-		for (ODCalendarDayEvent *event in self.events) {
+		for (ODCalendarDayEventView *event in self.events) {
 			// Making sure delgate sending date that match current day
 			if ([event.startDate isSameDay:self.currentDay]) {
 				// Get the hour start position
@@ -190,7 +190,7 @@
 				// Round minute to each 5
 				NSInteger minuteEnd = [event.endDate minute];
 				if (![event.startDate isSameDay:event.endDate]) {
-					minuteEnd = 55;
+					minuteEnd = 25;
 				}
 				minuteEnd = round(minuteEnd / 5.0) * 5;
 				CGFloat minuteEndPosition = roundf((minuteEnd < 30)?0:VERTICAL_DIFF / 2.0);
@@ -216,17 +216,9 @@
 											   self.bounds.size.width  - (HORIZONTAL_OFFSET + TIME_WIDTH + PERIOD_WIDTH + HORIZONTAL_LINE_DIFF) - HORIZONTAL_LINE_DIFF - EVENT_HORIZONTAL_DIFF, 
 											   eventHeight);
 				
-				UIView *fakeView = [[UIView alloc]initWithFrame:CGRectIntegral(eventFrame)];
-				fakeView.backgroundColor = [UIColor purpleColor];
-				fakeView.alpha = 0.7;
-				CALayer *layer = [fakeView layer];
-				layer.masksToBounds = YES;
-				[layer setCornerRadius:5.0];
-				// You can even add a border
-				[layer setBorderWidth:0.5];
-				[layer setBorderColor:[[UIColor lightGrayColor] CGColor]];
-				// Add subview to the main scrollview
-				[self.scrollView addSubview:fakeView];
+				event.frame = CGRectIntegral(eventFrame);
+				[event setNeedsDisplay];
+				[self.scrollView addSubview:event];
 				
 				
 				// Log the extracted date values
