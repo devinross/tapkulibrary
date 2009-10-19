@@ -66,13 +66,15 @@
 																		 id:nil 
 																  startDate:[[NSDate date]addTimeInterval:60 * 60 * 2] 
 																	endDate:[[NSDate date]addTimeInterval:60 * 60 * 24]
-																	  title:@"First"];
+																	  title:@"First"
+																   location:@"Test Location"];
 	
 	ODCalendarDayEventView *eventViewSecond = [ODCalendarDayEventView eventViewWithFrame:CGRectZero
 																				  id:nil
 															 			   startDate:[NSDate date] 
 																			 endDate:[NSDate date]
-																			   title:@"Second"];
+																			   title:@"Second ultra mega hypra long text to test again with more"
+																		    location:nil];
 	
 	return [NSArray arrayWithObjects:eventViewFirst, eventViewSecond, nil];
 }

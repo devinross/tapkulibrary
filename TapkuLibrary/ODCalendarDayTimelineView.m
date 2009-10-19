@@ -35,7 +35,6 @@
 
 #define HORIZONTAL_OFFSET 3.0
 #define VERTICAL_OFFSET 5.0
-#define VERTICAL_DIFF 50.0
 
 #define TIME_WIDTH 20.0
 #define PERIOD_WIDTH 26.0
