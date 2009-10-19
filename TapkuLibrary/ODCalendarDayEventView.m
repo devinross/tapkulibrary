@@ -44,6 +44,8 @@
 	self.endDate = nil;
 	self.title = nil;
 	
+	twoFingerTapIsPossible = FALSE;
+	
 	self.backgroundColor = [UIColor purpleColor];
 	self.alpha = 0.7;
 	CALayer *layer = [self layer];

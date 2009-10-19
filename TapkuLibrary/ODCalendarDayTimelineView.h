@@ -31,12 +31,13 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "ODCalendarDayEventView.h"
 
 @protocol ODCalendarDayTimelineViewDelegate;
 
 @class ODTimelineView;
 
-@interface ODCalendarDayTimelineView : UIView {
+@interface ODCalendarDayTimelineView : UIView <TapDetectingViewDelegate>{
 	UIScrollView *_scrollView;
 	ODTimelineView *_timelineView;
 	
@@ -66,6 +67,9 @@
 @required
 
 - (NSArray *)calendarDayTimelineView:(ODCalendarDayTimelineView*)calendarDayTimeline eventsForDate:(NSDate *)eventDate;
+
+@optional
+- (void)calendarDayTimelineView:(ODCalendarDayTimelineView*)calendarDayTimeline eventViewWasSelected:(ODCalendarDayEventView *)eventView;
 
 @end
 

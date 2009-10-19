@@ -31,7 +31,6 @@
  */
 
 #import "ODCalendarDayTimelineView.h"
-#import "ODCalendarDayEventView.h"
 #import "NSDateAdditions.h"
 
 #define HORIZONTAL_OFFSET 3.0
@@ -138,7 +137,7 @@
 
 - (void)didMoveToWindow
 {
-	if (self.superview != nil) {
+	if (self.window != nil) {
 		[self reloadDay];
 	}
 }
@@ -190,7 +189,7 @@
 				// Round minute to each 5
 				NSInteger minuteEnd = [event.endDate minute];
 				if (![event.startDate isSameDay:event.endDate]) {
-					minuteEnd = 25;
+					minuteEnd = 55;
 				}
 				minuteEnd = round(minuteEnd / 5.0) * 5;
 				CGFloat minuteEndPosition = roundf((minuteEnd < 30)?0:VERTICAL_DIFF / 2.0);
@@ -208,7 +207,7 @@
 				}
 				
 				if (hourStartPosition != hourEndPosition) {
-					eventHeight += (hourEndPosition + minuteEndPosition) - hourStartPosition; 
+					eventHeight += (hourEndPosition + minuteEndPosition) - hourStartPosition - minuteStartPosition; 
 				}
 				
 				CGRect eventFrame = CGRectMake(HORIZONTAL_OFFSET + TIME_WIDTH + PERIOD_WIDTH + HORIZONTAL_LINE_DIFF + EVENT_HORIZONTAL_DIFF,
@@ -217,6 +216,7 @@
 											   eventHeight);
 				
 				event.frame = CGRectIntegral(eventFrame);
+				event.delegate = self;
 				[event setNeedsDisplay];
 				[self.scrollView addSubview:event];
 				
@@ -226,6 +226,21 @@
 			}
 		}
 	}	
+}
+
+#pragma mark -
+#pragma mark Tap Detecting View
+
+- (void)tapDetectingView:(TapDetectingView *)view gotSingleTapAtPoint:(CGPoint)tapPoint
+{
+	if (self.delegate && [self.delegate respondsToSelector:@selector(calendarDayTimelineView:eventViewWasSelected:)]) {
+		[self.delegate calendarDayTimelineView:self eventViewWasSelected:(ODCalendarDayEventView *)view];
+	}
+}
+
+- (void)tapDetectingView:(TapDetectingView *)view gotDoubleTapAtPoint:(CGPoint)tapPoint
+{
+	NSLog(@"Double Tapped Calendar Day View");
 }
 
 #pragma mark -

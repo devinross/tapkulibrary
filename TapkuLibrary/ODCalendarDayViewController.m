@@ -77,6 +77,11 @@
 	return [NSArray arrayWithObjects:eventViewFirst, eventViewSecond, nil];
 }
 
+- (void)calendarDayTimelineView:(ODCalendarDayTimelineView*)calendarDayTimeline eventViewWasSelected:(ODCalendarDayEventView *)eventView
+{
+	NSLog(@"CalendarDayTimelineView: EventViewWasSelected");
+}
+
 /*
  - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
  
