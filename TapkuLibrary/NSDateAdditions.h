@@ -27,6 +27,7 @@
 @property (readonly,nonatomic) int minute;
 @property (readonly,nonatomic) BOOL isToday;
 
+
 - (BOOL)isSameDay:(NSDate*)anotherDate;
 
 @end
