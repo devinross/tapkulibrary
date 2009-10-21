@@ -31,7 +31,7 @@
 }
 
 
-+ (NSDate*) firstOfCurrentMonthForDate {
+- (NSDate*) firstOfCurrentMonthForDate {
 	
 	NSDate *day = self;
 	NSCalendar *gregorian = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
@@ -41,7 +41,7 @@
 	
 }
 
-+ (NSDate*) lastOfCurrentMonthForDate {
+- (NSDate*) lastOfCurrentMonthForDate {
 	NSDate *day = self;
 	NSCalendar *gregorian = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
 	NSDateComponents *comp = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit) fromDate:day];
