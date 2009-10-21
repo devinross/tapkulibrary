@@ -13,8 +13,6 @@
 
 + (NSDate*) firstOfCurrentMonth;
 + (NSDate*) lastOfCurrentMonth;
-- (NSDate*) firstOfCurrentMonthForDate;
-- (NSDate*) lastOfCurrentMonthForDate;
 
 @property (readonly,nonatomic) NSString *monthString;
 @property (readonly,nonatomic) NSString *yearString;
@@ -27,7 +25,7 @@
 @property (readonly,nonatomic) int minute;
 @property (readonly,nonatomic) BOOL isToday;
 @property (readonly,nonatomic) NSDate* firstOfCurrentMonthForDate;
-@property (readonly,nonatomic) NSDate* lastOfCurrentMonthForDate;
+@property (readonly,nonatomic) NSDate* firstOfNextMonthForDate;
 
 
 - (BOOL)isSameDay:(NSDate*)anotherDate;
