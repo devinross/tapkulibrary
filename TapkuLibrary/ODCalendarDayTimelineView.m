@@ -113,7 +113,7 @@
 		_scrollView.contentSize = CGSizeMake(self.bounds.size.width,TIMELINE_HEIGHT);
 		_scrollView.scrollEnabled = TRUE;
 		_scrollView.backgroundColor =[UIColor whiteColor];
-		scrollView.alwaysBounceVertical = TRUE;
+		_scrollView.alwaysBounceVertical = TRUE;
 	}
 	return _scrollView;
 }
