@@ -30,6 +30,20 @@
 	return [gregorian dateFromComponents:comp];
 }
 
+- (NSDate*) timelessDate {
+	NSDate *day = self;
+	NSCalendar *gregorian = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+	NSDateComponents *comp = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:day];
+	return [gregorian dateFromComponents:comp];
+}
+
+- (NSDate*) monthlessDate {
+	NSDate *day = self;
+	NSCalendar *gregorian = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+	NSDateComponents *comp = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit) fromDate:day];
+	return [gregorian dateFromComponents:comp];
+}
+
 
 - (NSDate*) firstOfCurrentMonthForDate {
 	
@@ -153,6 +167,38 @@
 	[gregorian release];
 	
 	return minute;
+}
+
+/* ----- start snippet from http://www.alexcurylo.com/blog/2009/07/25/snippet-naturaldates/ ----- */
+
+
+- (int)differenceInDaysTo:(NSDate *)toDate
+{
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    NSDateComponents *components = [gregorian components:NSDayCalendarUnit
+                                                fromDate:self
+                                                  toDate:toDate
+                                                 options:0];
+    NSInteger days = [components day];
+    [gregorian release];
+    return days;
+}
+
+/* ----- end snippet from http://www.alexcurylo.com/blog/2009/07/25/snippet-naturaldates/ ----- */
+
+
+- (int)differenceInMonthsTo:(NSDate *)toDate
+{
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    
+    NSDateComponents *components = [gregorian components:NSMonthCalendarUnit
+                                                fromDate:[self monthlessDate]
+                                                  toDate:[toDate monthlessDate]
+                                                 options:0];
+    NSInteger months = [components month];
+    [gregorian release];
+    return months;
 }
 
 /* ----- start snippet from http://www.alexcurylo.com/blog/2009/07/25/snippet-naturaldates/ ----- */

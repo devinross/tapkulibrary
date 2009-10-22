@@ -42,7 +42,7 @@
 @end
 
 @implementation TKCalendarView
-@synthesize delegate,monthString;
+@synthesize delegate,monthString,selectedMonth;
 
 
 - (void) setMonthString:(NSString*)str{
@@ -111,6 +111,7 @@
 		self.delegate = del;
 		currentMonth = [[NSDate firstOfCurrentMonth] retain];
 		self.monthString = [currentMonth monthYearString];
+		self.selectedMonth = currentMonth;
 		[self loadButtons];
 
 
@@ -138,7 +139,7 @@
 		// Get the current month view
 		TKCalendarMonthView* current = [deck objectAtIndex:1];
 		// Ask the delegate for the new items
-		current.marks = [delegate calendarView:self itemsForDaysInMonth:currentMonth];
+		current.marks = [delegate calendarView:self itemsForDaysInMonth:current.dateOfFirst];
 		// Refresh the calendar
 		[current resetMarks];
 	}
@@ -149,23 +150,17 @@
 	if (deck && deck.count > 1) {
 		// Get the new month view
 		TKCalendarMonthView* current = [deck objectAtIndex:1];
-		// Get the current Month index
-		NSInteger month = [current.dateOfFirst month];
-		// Get the new date month index
-		NSInteger newMonth = [date month];
-		// Compute difference
-		if (newMonth == month) {
+		NSInteger difference = [[date monthlessDate] differenceInMonthsTo:[current.dateOfFirst monthlessDate]];
+		if (difference == 0) {
 			// Month is already selected 
 			// Do nothing
-		} else if (newMonth > month) {
+		} else if (difference < 0) {
 			// Going up
-			NSInteger difference = newMonth - month;
-			for (NSInteger i=0; i < difference; i++) {
+			for (NSInteger i=0; i > difference; i--) {
 				[self moveCalendarMonthsUpAnimated:FALSE];
 			}
 		} else {
 			// Going down
-			NSInteger difference = month - newMonth;
 			for (NSInteger i=0; i < difference; i++) {
 				[self moveCalendarMonthsDownAnimated:FALSE];
 			}
@@ -220,6 +215,7 @@
 	
 	NSDate *newDate = [gregorian dateFromComponents:comp];
 	self.monthString = [newDate monthYearString];
+	self.selectedMonth = newDate;
 	[gregorian release];
 	
 	NSArray *ar = [delegate calendarView:self itemsForDaysInMonth:newDate];
@@ -286,7 +282,9 @@
 	
 	
 	current.alpha = 0;
-	[UIView commitAnimations];
+	if (animated) {	
+		[UIView commitAnimations];
+	}
 	
 	self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, scrollView.frame.size.width, scrollView.frame.size.height +44);
 	[self setNeedsDisplay];
@@ -311,6 +309,7 @@
 	
 	NSDate *newDate = [gregorian dateFromComponents:comp];
 	self.monthString = [newDate monthYearString];
+	self.selectedMonth = newDate;
 	[gregorian release];
 	
 	NSArray *ar = [delegate calendarView:self itemsForDaysInMonth:newDate];
@@ -465,6 +464,8 @@
 
 
 - (void)dealloc {
+	[selectedMonth release];
+	
     [super dealloc];
 }
 

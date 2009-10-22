@@ -46,10 +46,12 @@
 	
 	NSString *monthString;
 	
-
+	NSDate *selectedMonth;
 	
 }
 @property (copy,nonatomic) NSString *monthString;
+@property (copy,nonatomic) NSDate *selectedMonth;
+
 @property (assign,nonatomic) id <TKCalendarViewDelegate> delegate;
 
 - (id) initWithFrame:(CGRect)frame delegate:(id)delegate;
