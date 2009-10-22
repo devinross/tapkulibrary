@@ -36,8 +36,8 @@
 
 @interface TKCalendarView (PrivateMethods)
 
-- (void) moveCalendarMonthsDown;
-- (void) moveCalendarMonthsUp;
+- (void) moveCalendarMonthsDownAnimated:(BOOL)animated;
+- (void) moveCalendarMonthsUpAnimated:(BOOL)animated;
 
 @end
 
@@ -144,14 +144,44 @@
 	}
 }
 
-
+- (void) selectDate:(NSDate *)date
+{
+	if (deck && deck.count > 1) {
+		// Get the new month view
+		TKCalendarMonthView* current = [deck objectAtIndex:1];
+		// Get the current Month index
+		NSInteger month = [current.dateOfFirst month];
+		// Get the new date month index
+		NSInteger newMonth = [date month];
+		// Compute difference
+		if (newMonth == month) {
+			// Month is already selected 
+			// Do nothing
+		} else if (newMonth > month) {
+			// Going up
+			NSInteger difference = newMonth - month;
+			for (NSInteger i=0; i < difference; i++) {
+				[self moveCalendarMonthsUpAnimated:FALSE];
+			}
+		} else {
+			// Going down
+			NSInteger difference = month - newMonth;
+			for (NSInteger i=0; i < difference; i++) {
+				[self moveCalendarMonthsDownAnimated:FALSE];
+			}
+		}
+		current = [deck objectAtIndex:1];
+		// Select Date
+		[current selectDay:[[date dayNumber]integerValue]];
+	}
+}
 
 #pragma mark MONTH VIEW DELEGATE METHODS
 - (void) calendarMonth:(TKCalendarMonthView*)calendarMonth dateWasSelected:(NSInteger)integer{
 	[delegate calendarView:self dateWasSelected:integer ofMonth:calendarMonth.dateOfFirst];
 }
 - (void) calendarMonth:(TKCalendarMonthView*)calendarMonth previousMonthDayWasSelected:(NSInteger)day{
-	[self moveCalendarMonthsDown];
+	[self moveCalendarMonthsDownAnimated:TRUE];
 	[[deck objectAtIndex:1] selectDay:day];
 	// selectDay: is in charge of informing the delegate when a dateWasSelected
 	// If uncomment this, delegate will be informed twice
@@ -159,7 +189,7 @@
 	return;
 }
 - (void) calendarMonth:(TKCalendarMonthView*)calendarMonth nextMonthDayWasSelected:(NSInteger)day{
-	[self moveCalendarMonthsUp];
+	[self moveCalendarMonthsUpAnimated:TRUE];
 	[[deck objectAtIndex:1] selectDay:day];
 	// selectDay: is in charge of informing the delegate when a dateWasSelected
 	// If uncomment this, delegate will be informed twice
@@ -171,7 +201,7 @@
 
 
 #pragma mark MOVING THE CALENDAR UP AND DOWN TO NEW MONTH
-- (void) moveCalendarMonthsDown{
+- (void) moveCalendarMonthsDownAnimated:(BOOL)animated{
 	
 	
 	[self setUserInteractionEnabled:NO];
@@ -226,11 +256,15 @@
 	prev.frame = r;
 	float scrol = prev.frame.origin.y;
 	
-	[UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationDuration:0.4];
-	[UIView setAnimationDelay:0.1];
-	[UIView setAnimationDelegate:self];
-	[UIView setAnimationDidStopSelector:@selector(animationStopped:)];
+	if (animated) {	
+		[UIView beginAnimations:nil context:NULL];
+		[UIView setAnimationDuration:0.4];
+		[UIView setAnimationDelay:0.1];
+		[UIView setAnimationDelegate:self];
+		[UIView setAnimationDidStopSelector:@selector(animationStopped:)];
+	} else {
+		[self performSelector:@selector(animationStopped:) withObject:self];
+	}
 	
 	
 	
@@ -259,7 +293,7 @@
 	
 	[delegate calendarView:self willShowMonth:[(TKCalendarMonthView*)prev dateOfFirst]];
 }
-- (void) moveCalendarMonthsUp{
+- (void) moveCalendarMonthsUpAnimated:(BOOL)animated{
 	
 	[self setUserInteractionEnabled:NO];
 	
@@ -314,12 +348,15 @@
 		r.origin.y += 44;
 	next.frame = r;
 	
-	
-	[UIView beginAnimations:nil context:NULL];
-	[UIView setAnimationDuration:0.4];
-	[UIView setAnimationDelay:0.1];
-	[UIView setAnimationDelegate:self];
-	[UIView setAnimationDidStopSelector:@selector(animationStopped:)];
+	if (animated) {	
+		[UIView beginAnimations:nil context:NULL];
+		[UIView setAnimationDuration:0.4];
+		[UIView setAnimationDelay:0.1];
+		[UIView setAnimationDelegate:self];
+		[UIView setAnimationDidStopSelector:@selector(animationStopped:)];		
+	} else {
+		[self performSelector:@selector(animationStopped:) withObject:self];
+	}
 	
 	float scrol = next.frame.origin.y;
 	
@@ -359,11 +396,11 @@
 
 #pragma mark LEFT & RIGHT BUTTON ACTIONS
 - (void) leftButtonTapped{
-	[self moveCalendarMonthsDown];
+	[self moveCalendarMonthsDownAnimated:TRUE];
 	[[deck objectAtIndex:1] selectDay:1];
 }
 - (void) rightButtonTapped{
-	[self moveCalendarMonthsUp];
+	[self moveCalendarMonthsUpAnimated:TRUE];
 	[[deck objectAtIndex:1] selectDay:1];
 	
 	

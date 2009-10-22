@@ -118,6 +118,19 @@
 	return days;
 }
 
+- (int) month
+{
+	// !!! hour between 0 - 24 - Check at midnight
+	
+	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+	NSDateComponents *comp = [gregorian components:(NSMonthCalendarUnit) fromDate:self];
+	
+	int month = [comp month];
+	[gregorian release];
+	
+	return month;
+}
+
 - (int) hour
 {
 	// !!! hour between 0 - 24 - Check at midnight

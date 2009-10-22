@@ -21,6 +21,7 @@
 @property (readonly,nonatomic) int weekday;
 @property (readonly,nonatomic) int weekdayMondayFirst;
 @property (readonly,nonatomic) int daysInMonth;
+@property (readonly,nonatomic) int month;
 @property (readonly,nonatomic) int hour;
 @property (readonly,nonatomic) int minute;
 @property (readonly,nonatomic) BOOL isToday;

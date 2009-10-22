@@ -54,6 +54,7 @@
 
 - (id) initWithFrame:(CGRect)frame delegate:(id)delegate;
 - (void) reloadMarks;
+- (void) selectDate:(NSDate *)date;
 
 @end
 
