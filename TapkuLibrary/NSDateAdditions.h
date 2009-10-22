@@ -17,6 +17,7 @@
 - (int)differenceInDaysTo:(NSDate *)toDate;
 - (int)differenceInMonthsTo:(NSDate *)toDate;
 
+@property (readonly,nonatomic) NSString *hourString;
 @property (readonly,nonatomic) NSString *monthString;
 @property (readonly,nonatomic) NSString *yearString;
 @property (readonly,nonatomic) NSString *monthYearString;

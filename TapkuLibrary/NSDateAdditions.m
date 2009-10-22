@@ -71,6 +71,12 @@
 	return [NSNumber numberWithInt:[[dateFormatter stringFromDate:self] intValue]];
 }
 
+- (NSString*) hourString {
+	NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];	
+	[dateFormatter setDateFormat:@"h a"];
+	return [dateFormatter stringFromDate:self];
+}
+
 - (NSString*) monthString{
 	NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];	
 	[dateFormatter setDateFormat:@"MMMM"];
