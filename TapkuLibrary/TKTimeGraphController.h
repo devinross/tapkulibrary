@@ -32,7 +32,7 @@
 
 #import "TKTimeGraph.h"
 
-@interface TKTimeGraphController : UIViewController  <TKTimeGraphDelegate>  {
+@interface TKTimeGraphController : UIViewController  <TKTimeGraphDataSource>  {
 	UIButton *close;
 	TKTimeGraph *timeGraph;
 	UIStatusBarStyle statusColor;

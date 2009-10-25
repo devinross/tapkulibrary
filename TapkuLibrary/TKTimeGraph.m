@@ -88,48 +88,7 @@
     return self;
 }
 
-- (void)drawRect:(CGRect)rect {
-	//NSLog(@"drawRect");
-    // Drawing code
-	if ([delegate respondsToSelector:@selector(titleForTimeGraph:)])
-		title.text = [delegate titleForTimeGraph:self];
 
-	
-	if(data == nil){
-		
-		activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-		activity.center = CGPointMake(self.bounds.origin.x + self.bounds.size.width/2,self.bounds.origin.y + self.bounds.size.height/2);
-		[self addSubview:activity];
-		[activity startAnimating];
-		
-		[NSThread detachNewThreadSelector:@selector(getDelegateData) toTarget:self withObject:nil];
-		
-	}else{
-		CGContextRef context = UIGraphicsGetCurrentContext();
-		[self drawBackground:context];
-		[self drawBottomLine:context];
-		[self drawHorizontalLines:context];
-		
-		float width = ([data count] + 1) * pointDistance;
-		float height = scrollView.frame.size.height;
-		
-		scrollView.contentSize = CGSizeMake(width,height);
-		
-		pointsView = [[TKTimeGraphPointsView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
-		[pointsView setData:data];
-		pointsView.backgroundColor = [UIColor clearColor];
-		[scrollView addSubview:pointsView];
-		
-		if(goal)
-			[self drawGoalLine:context];
-		
-		border = [[UIImageView alloc] initWithImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/mask.png")]];
-		[self addSubview:border];
-		
-	}
-	
-	
-}
 
 
 - (void) loadDelegateDataComplete{
@@ -197,6 +156,8 @@
 			if(yValue < lowValue) lowValue = yValue;
 		}
 		[data addObject:point];
+		
+		[point release];
 	}
 	goal = NO;
 	NSNumber *g;
@@ -227,6 +188,49 @@
 	
 	[self performSelectorOnMainThread:@selector(loadDelegateDataComplete) withObject:nil waitUntilDone:NO];
 	[pool release];
+}
+
+- (void)drawRect:(CGRect)rect {
+
+	
+	if ([delegate respondsToSelector:@selector(titleForTimeGraph:)])
+		title.text = [delegate titleForTimeGraph:self];
+	
+	
+	if(data == nil){
+		
+		activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+		activity.center = CGPointMake(self.bounds.origin.x + self.bounds.size.width/2,self.bounds.origin.y + self.bounds.size.height/2);
+		[self addSubview:activity];
+		[activity startAnimating];
+		
+		[NSThread detachNewThreadSelector:@selector(getDelegateData) toTarget:self withObject:nil];
+		
+	}else{
+		CGContextRef context = UIGraphicsGetCurrentContext();
+		[self drawBackground:context];
+		[self drawBottomLine:context];
+		[self drawHorizontalLines:context];
+		
+		float width = ([data count] + 1) * pointDistance;
+		float height = scrollView.frame.size.height;
+		
+		scrollView.contentSize = CGSizeMake(width,height);
+		
+		pointsView = [[TKTimeGraphPointsView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+		[pointsView setData:data];
+		pointsView.backgroundColor = [UIColor clearColor];
+		[scrollView addSubview:pointsView];
+		
+		if(goal)
+			[self drawGoalLine:context];
+		
+		border = [[UIImageView alloc] initWithImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/mask.png")]];
+		[self addSubview:border];
+		
+	}
+	
+	
 }
 
 - (void) drawBackground:(CGContextRef)context{
@@ -302,14 +306,20 @@
 	
 }
 - (void) drawGoalLine:(CGContextRef)context{
-	UIImage *img = [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/goalline.png")];
+	/*UIImage *img = [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/goalline.png")];
+	
 	UIImageView *image = [[UIImageView alloc] initWithImage:img];
 	int y = [self valueToYCoordinate:goalValue];
 	CGRect r = image.frame;
 	r.origin.y = stageHeight + stageTopMargin - y - 19;
 	image.frame=r;
 	[self addSubview:image];
-	[image release];
+	[image release];*/
+	
+	UIImage *img = [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/goalline.png")];
+	//481x19
+	[img drawInRect:CGRectMake(0, 0.5 + stageHeight + stageTopMargin - [self valueToYCoordinate:goalValue] - 19, 481, 19)];
+	
 	
 }
 
@@ -339,9 +349,6 @@
 
 
 @end
-
-
-
 
 @implementation TKTimeGraphPointsView
 @synthesize data;
@@ -450,7 +457,6 @@
 	}
 	
 }
-
 - (void) drawRect:(CGRect)rect {
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
