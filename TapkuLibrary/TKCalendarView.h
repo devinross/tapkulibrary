@@ -41,20 +41,22 @@
 	UIButton *left;
 	UIButton *right;
 	
-	//UILabel *monthLabel;
-	
 	UIImageView *shadow;
 	UIScrollView *scrollView;
 	
 	NSString *monthString;
 	
-
+	NSDate *selectedMonth;
 	
 }
 @property (copy,nonatomic) NSString *monthString;
+@property (copy,nonatomic) NSDate *selectedMonth;
+
 @property (assign,nonatomic) id <TKCalendarViewDelegate> delegate;
 
 - (id) initWithFrame:(CGRect)frame delegate:(id)delegate;
+- (void) reloadMarks;
+- (void) selectDate:(NSDate *)date;
 
 @end
 

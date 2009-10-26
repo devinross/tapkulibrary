@@ -55,6 +55,7 @@
 	[titles addObject:@"Empty TableView Filler"];
 	[titles addObject:@"Graph"];
 	[titles addObject:@"Calendar"];
+	[titles addObject:@"Calendar Daily"];
 	
 }
 
@@ -117,6 +118,10 @@
 		[graph release];
 	}else if(indexPath.row==7){
 		TKCalendarViewController *cvc = [[TKCalendarViewController alloc] init];
+		[self.navigationController pushViewController:cvc animated:YES];
+		[cvc release];
+	}else if(indexPath.row==8){
+		ODCalendarDayViewController *cvc = [[ODCalendarDayViewController alloc] init];
 		[self.navigationController pushViewController:cvc animated:YES];
 		[cvc release];
 	}

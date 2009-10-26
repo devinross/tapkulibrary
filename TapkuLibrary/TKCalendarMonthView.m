@@ -34,7 +34,7 @@
 
 
 @implementation TKCalendarMonthView
-@synthesize lines,weekdayOfFirst,delegate,dateOfFirst;
+@synthesize lines,weekdayOfFirst,delegate,dateOfFirst,marks;
 
 - (void) buildGrid{
 	
@@ -88,7 +88,7 @@
 		
 		TKCalendarDayView *dayView = [[TKCalendarDayView alloc] initWithFrame:CGRectMake((position - 1) * 46 - 1, line * 44, 47, 45)];
 		
-		[dayView setMarked:[[marks objectAtIndex:i-1] boolValue]];
+		[dayView setMarked:[[self.marks objectAtIndex:i-1] boolValue]];
 		
 		if(isCurrentMonth && i==todayNumber)
 			[dayView setToday:YES];
@@ -96,6 +96,11 @@
 			[dayView setToday:NO];
 		
 		dayView.str = [NSString stringWithFormat:@"%d",i];
+		
+		// Set the tag as the day view
+		// Will be used in order to reseet marks
+		// Each day view is easily accessible using viewWithTag
+		dayView.tag	= i;
 		
 		[self addSubview:dayView];
 		[dayTiles addObject:dayView];
@@ -141,6 +146,16 @@
 
 }
 
+- (void) resetMarks
+{
+	for (NSInteger i=1; i<=self.marks.count; i++) {
+		TKCalendarDayView *dayView = (TKCalendarDayView *)[self viewWithTag:i];
+		
+		[dayView setMarked:[[self.marks objectAtIndex:i-1] boolValue]];
+	}
+	[self setNeedsDisplay];
+}
+
 /*- (void) setDate:(NSDate*)firstOfMonth today:(int)dayOfDate marked:(NSArray*)marksArray{
 	todayNumber = dayOfDate;
 	
@@ -156,9 +171,12 @@
 	if (self = [self initWithFrame:frame]) {
 		
         dateOfFirst = [theDate retain];
-		weekdayOfFirst = [dateOfFirst weekday];
+		
+		// Calendar starting on Monday instead of Sunday (Australia, Europe against US american calendar)
+		weekdayOfFirst = [dateOfFirst weekdayMondayFirst];
+		
 		todayNumber = todayDay;
-		marks = [marksArray retain];
+		self.marks = marksArray;
 		
 
 		[self buildGrid];

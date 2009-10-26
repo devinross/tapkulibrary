@@ -156,7 +156,10 @@
 			if(yValue < lowValue) lowValue = yValue;
 		}
 		[data addObject:point];
+<<<<<<< HEAD:TapkuLibrary/TKTimeGraph.m
 		
+=======
+>>>>>>> 71a0ab3c899a66ea8d26e681a7c66bd02be0e507:TapkuLibrary/TKTimeGraph.m
 		[point release];
 	}
 	goal = NO;

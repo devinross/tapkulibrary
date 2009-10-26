@@ -14,11 +14,27 @@
 + (NSDate*) firstOfCurrentMonth;
 + (NSDate*) lastOfCurrentMonth;
 
+- (int)differenceInDaysTo:(NSDate *)toDate;
+- (int)differenceInMonthsTo:(NSDate *)toDate;
+
+@property (readonly,nonatomic) NSString *hourString;
 @property (readonly,nonatomic) NSString *monthString;
 @property (readonly,nonatomic) NSString *yearString;
 @property (readonly,nonatomic) NSString *monthYearString;
 @property (readonly,nonatomic) NSNumber *dayNumber;
 @property (readonly,nonatomic) int weekday;
+@property (readonly,nonatomic) int weekdayMondayFirst;
 @property (readonly,nonatomic) int daysInMonth;
+@property (readonly,nonatomic) int month;
+@property (readonly,nonatomic) int hour;
+@property (readonly,nonatomic) int minute;
+@property (readonly,nonatomic) BOOL isToday;
+@property (readonly,nonatomic) NSDate* firstOfCurrentMonthForDate;
+@property (readonly,nonatomic) NSDate* firstOfNextMonthForDate;
+@property (readonly,nonatomic) NSDate* timelessDate;
+@property (readonly,nonatomic) NSDate* monthlessDate;
+
+
+- (BOOL)isSameDay:(NSDate*)anotherDate;
 
 @end
