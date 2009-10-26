@@ -79,10 +79,6 @@
 		scrollView.backgroundColor = [UIColor clearColor];
 		[self addSubview:scrollView];
 		
-		
-
-
-		
 
     }
     return self;

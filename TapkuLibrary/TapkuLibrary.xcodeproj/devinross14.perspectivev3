@@ -331,7 +331,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3BEFA3711094CF010083F1C5</string>
+										<string>3BAC94F410952B0B00F235F1</string>
 										<key>history</key>
 										<array>
 											<string>3B702D79101AA727008C3D59</string>
@@ -390,7 +390,7 @@
 											<string>3BEFA3481094C1510083F1C5</string>
 											<string>3BEFA3491094C1510083F1C5</string>
 											<string>3BEFA34A1094C1510083F1C5</string>
-											<string>3BEFA34F1094C1740083F1C5</string>
+											<string>3BEFA3711094CF010083F1C5</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -430,6 +430,8 @@
 									<dict>
 										<key>Frame</key>
 										<string>{{10, 27}, {859, -27}}</string>
+										<key>RubberWindowFrame</key>
+										<string>67 125 1137 840 0 0 1680 1028 </string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
@@ -483,9 +485,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {859, -27}}</string>
-										<key>RubberWindowFrame</key>
-										<string>67 125 1137 840 0 0 1680 1028 </string>
+										<string>{{0, 0}, {568, 405}}</string>
 									</dict>
 									<key>Module</key>
 									<string>PBXBuildResultsModule</string>
@@ -513,11 +513,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>3BEFA3571094C1940083F1C5</string>
+				<string>3BAC94F510952B0B00F235F1</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>3BEFA3581094C1940083F1C5</string>
+				<string>3BAC94F610952B0B00F235F1</string>
 				<string>3B027A120FFC6213004A23C5</string>
-				<string>3BEFA3591094C1940083F1C5</string>
+				<string>3BAC94F710952B0B00F235F1</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
@@ -705,7 +705,9 @@
 	<key>WindowJustification</key>
 	<integer>5</integer>
 	<key>WindowOrderList</key>
-	<array/>
+	<array>
+		<string>/Users/devinross14/tapkulibrary/TapkuLibrary/TapkuLibrary.xcodeproj</string>
+	</array>
 	<key>WindowString</key>
 	<string>67 125 1137 840 0 0 1680 1028 </string>
 	<key>WindowToolsV3</key>
