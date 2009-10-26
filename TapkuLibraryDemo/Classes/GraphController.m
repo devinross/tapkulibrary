@@ -78,7 +78,9 @@
 	return [NSString stringWithFormat:@"%d",v];
 }
 
-
+- (NSNumber*) goalValueForTimeGraph:(TKTimeGraph*)graph{
+	return [NSNumber numberWithDouble:270.0];
+}
 
 
 /*
