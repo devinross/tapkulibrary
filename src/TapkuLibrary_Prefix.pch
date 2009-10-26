@@ -1,0 +1,20 @@
+//
+// Prefix header for all source files of the 'CocoaTouchStaticLibrary' target in the 'CocoaTouchStaticLibrary' project.
+//
+
+
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iPhone SDK 3.0 and later."
+#endif
+
+
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+	#import <UIKit/UIKit.h>
+	#import <QuartzCore/QuartzCore.h>
+	#import <MapKit/MapKit.h>
+#endif
