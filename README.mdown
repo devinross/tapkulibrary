@@ -11,21 +11,21 @@ TapkuLibrary is a collection of iPhone UI classes intended for broad use in appl
 Adding TapkuLibrary to your project
 ==============================
 
-TapkuLibrary is compiled as a static library, and the easiest way to add it to your project is to use Xcode's "dependent project" facilities.  Here is how:
+TapkuLibrary is compiled as a static library, and the easiest way to add it to your project is to use Xcode's "dependent project" facilities.  Here is how (FOLLOW CAREFULLY):
 
 1. Clone the TapkuLibrary git repository: `git clone git://github.com/tapku/tapkulibrary.git`.  Make sure 
    you store the repository in a permanent place because Xcode will need to reference the files
    every time you compile your project.
 
-2. Locate the "TapkuLibrary.xcodeproj" file under "TapkuLibrary".  Drag TapkuLibrary.xcodeproj and drop it onto
-   the root of your Xcode project's "Groups and Files"  sidebar.  A dialog will appear -- make sure 
+2. Locate the "TapkuLibrary.xcodeproj" file under "src".  Drag TapkuLibrary.xcodeproj and drop it onto
+   the root of your Xcode project's "Groups and Files"  sidebar of the project you want to include it in.  A dialog will appear -- make sure 
    "Copy items" is unchecked and "Reference Type" is "Relative to Project" before clicking "Add".
 
 3. Now you need to link the TapkuLibrary static library to your project.  Click the "TapkuLibrary.xcodeproj" 
    item that has just been added to the sidebar.  Under the "Details" table, you will see a single
    item: libTapkuLibrary.a.  Check the checkbox on the far right of libTapkuLibrary.a.
 
-4. Now you need to add TapkuLibrary as a dependency of your project, so Xcode compiles it whenever
+4. Add TapkuLibrary as a dependency of your project, so Xcode compiles it whenever
    you compile your project.  Expand the "Targets" section of the sidebar and double-click your
    application's target.  Under the "General" tab you will see a "Direct Dependencies" section. 
    Click the "+" button, select "TapkuLibrary", and click "Add Target".
@@ -35,18 +35,18 @@ TapkuLibrary is compiled as a static library, and the easiest way to add it to y
    "Create Folder References" is selected,  "Copy items" is unchecked, and "Reference Type" is 
    "Relative to Project" before clicking "Add".
 
-6. Now you need to add the Core Animation framework to your project.  Right click on the
+6. Now you need to add the Core Animation & MapKit frameworks to your project.  Right click on the
    "Frameworks" group in your project (or equivalent) and select Add > Existing Frameworks. 
-   Then locate QuartzCore.framework and add it to the project.
+   Then locate QuartzCore.framework & MapKit.framework and add it to the project.
 
 7. Finally, we need to tell your project where to find the TapkuLibrary headers.  Open your
    "Project Settings" and go to the "Build" tab. Look for "Header Search Paths" and double-click
-   it.  Add the relative path from your project's directory to the "TapkuLibrary" directory.  Then
-   go to "Other Linker Flags" under the "Linker" section, and add "-ObjC" to the list of flags.
+   it.  Add the relative path from your project's directory to the "src" directory.  Then
+   go to "Other Linker Flags" under the "Linker" section, and add "-ObjC" and "-all_load" to the list of flags.
 
 8. You're ready to go.  Just #import "TapkuLibrary/TapkuLibrary.h" anywhere you want to use TapkuLibrary classes
    in your project.
-  
+
 
 
 What's in TapkuLibrary?
