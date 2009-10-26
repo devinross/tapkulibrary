@@ -1,1182 +1,0 @@
-TTapkuLibrary
-v7
-r0
-t278045544.069311
-cCheck dependencies
-cProcessPCH /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch.gch TapkuLibrary_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelTextViewCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextViewCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelTextFieldCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextFieldCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelFieldCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelFieldCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/LoadingHUDView.o /Users/devinross14/tapkulibrary/TapkuLibrary/LoadingHUDView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKButtonCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKButtonCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelSwitchCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelSwitchCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/ABTableViewCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/ABTableViewCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/FSIndicatorCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/FSIndicatorCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKMapView.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKMapView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKPlace.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKPlace.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKOverviewTableViewController.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewTableViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKOverviewHeaderView.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewHeaderView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKTimeGraph.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKTimeGraph.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/FSSubtitleCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/FSSubtitleCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKOverviewIndicatorView.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewIndicatorView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKEmptyView.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKEmptyView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKTimeGraphController.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKTimeGraphController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKGlobal.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKGlobal.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/UIImageAdditions.o /Users/devinross14/tapkulibrary/TapkuLibrary/UIImageAdditions.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/UIViewAdditions.o /Users/devinross14/tapkulibrary/TapkuLibrary/UIViewAdditions.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/NSDateAdditions.o /Users/devinross14/tapkulibrary/TapkuLibrary/NSDateAdditions.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKCalendarViewController.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKCalendarView.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKCalendarMonthView.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarMonthView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKTextViewCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKTextViewCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKSwitchCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKSwitchCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cLibtool /Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/libTapkuLibrary.a normal i386
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.0.sdk
-c000000004ABDAC790000000000000110
-t1253944441
-s272
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.0.sdk/System/Library/Frameworks/Foundation.framework/Foundation
-c000000004A121FF90000000000396540
-t1242701817
-s3761472
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.0.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
-c000000004A0BAECB0000000000001355
-t1242279627
-s4949
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.0.sdk/System/Library/Frameworks/MapKit.framework/Headers/MapKit.h
-c000000004A0BC2A5000000000000017D
-t1242284709
-s381
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.0.sdk/System/Library/Frameworks/MapKit.framework/MapKit
-c000000004A12232A00000000001D2A20
-t1242702634
-s1911328
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.0.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.h
-c000000004A0BB209000000000000007D
-t1242280457
-s125
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.0.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
-c000000004A0CBEBD000000000000075E
-t1242349245
-s1886
-
-N/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS3.0.sdk/usr/include/Availability.h
-c000000004A0BB10100000000000019D8
-t1242280193
-s6616
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk
-c000000004ACF66AB00000000000000EE
-t1255106219
-s238
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/Foundation.framework/Foundation
-c000000004ABDC952000000000027E880
-t1253951826
-s2615424
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
-c000000004ABDC93F0000000000001355
-t1253951807
-s4949
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/MapKit.framework/Headers/MapKit.h
-c000000004ABDEF74000000000000017D
-t1253961588
-s381
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/MapKit.framework/MapKit
-c000000004ABDEF82000000000010EB60
-t1253961602
-s1108832
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/QuartzCore.h
-c000000004ABDCAC8000000000000007D
-t1253952200
-s125
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
-c000000004ABDEE1D0000000000000788
-t1253961245
-s1928
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/usr/include/Availability.h
-c000000004ABDCA4700000000000019F9
-t1253952071
-s6649
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/ABTableViewCell.h
-c00000000493EBE9E00000000000005C8
-t1228848798
-s1480
-i<UIKit/UIKit.h>
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/ABTableViewCell.m
-c000000004A664DCC00000000000008E7
-t1248218572
-s2279
-i"ABTableViewCell.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/FSIndicatorCell.h
-c000000004A6CA3200000000000000580
-t1248633632
-s1408
-i"ABTableViewCell.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/FSIndicatorCell.m
-c000000004A920BC7000000000000110B
-t1251085255
-s4363
-i"FSIndicatorCell.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/FSSubtitleCell.h
-c000000004A6A71920000000000000577
-t1248489874
-s1399
-i"ABTableViewCell.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/FSSubtitleCell.m
-c000000004A920BD50000000000000BC6
-t1251085269
-s3014
-i"FSSubtitleCell.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/LoadingHUDView.h
-c000000004A6CA3200000000000000621
-t1248633632
-s1569
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/LoadingHUDView.m
-c000000004A6BAD02000000000000156E
-t1248570626
-s5486
-i"LoadingHUDView.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/NSDateAdditions.h
-c000000004A75E5F7000000000000024C
-t1249240567
-s588
-i<Foundation/Foundation.h>
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/NSDateAdditions.m
-c000000004A75EB7000000000000009D4
-t1249241968
-s2516
-i"NSDateAdditions.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKButtonCell.h
-c000000004A6CA3200000000000000511
-t1248633632
-s1297
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKButtonCell.m
-c000000004AB78E8C0000000000000893
-t1253543564
-s2195
-i"TKButtonCell.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarMonthView.h
-c000000004A7648C30000000000000AA0
-t1249265859
-s2720
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarMonthView.m
-c000000004A764A550000000000002222
-t1249266261
-s8738
-i"TKCalendarMonthView.h"
-i"NSDateAdditions.h"
-i"TKGlobal.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarView.h
-c000000004A8241EE0000000000000821
-t1250050542
-s2081
-i"TKCalendarMonthView.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarView.m
-c000000004A8242620000000000003E63
-t1250050658
-s15971
-i"TKCalendarView.h"
-i"NSDateAdditions.h"
-i"TKCalendarMonthView.h"
-i"TKGlobal.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarViewController.h
-c000000004A73D9D00000000000000592
-t1249106384
-s1426
-i"TKCalendarView.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarViewController.m
-c000000004A8241F30000000000000C2F
-t1250050547
-s3119
-i"TKCalendarViewController.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKEmptyView.h
-c000000004A6D64AB0000000000000945
-t1248683179
-s2373
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKEmptyView.m
-c000000004A6DDB930000000000001656
-t1248713619
-s5718
-i"TKEmptyView.h"
-i"TKGlobal.h"
-i"UIImageAdditions.h"
-i"UIViewAdditions.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKGlobal.h
-c000000004A7474910000000000000179
-t1249146001
-s377
-i"UIViewAdditions.h"
-i"UIImageAdditions.h"
-i"NSDateAdditions.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKGlobal.m
-c000000004A6B716A0000000000000155
-t1248555370
-s341
-i"TKGlobal.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelCell.h
-c000000004A6CA320000000000000050F
-t1248633632
-s1295
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelCell.m
-c000000004AB78EAD0000000000000B00
-t1253543597
-s2816
-i"TKLabelCell.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelFieldCell.h
-c000000004AC14D91000000000000052F
-t1254182289
-s1327
-i"TKLabelCell.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelFieldCell.m
-c000000004A6A71260000000000000954
-t1248489766
-s2388
-i"TKLabelFieldCell.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelSwitchCell.h
-c000000004A6CA30B0000000000000534
-t1248633611
-s1332
-i"TKLabelCell.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelSwitchCell.m
-c000000004A6A713E0000000000000808
-t1248489790
-s2056
-i"TKLabelSwitchCell.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextFieldCell.h
-c000000004A6CA3200000000000000553
-t1248633632
-s1363
-i"TKLabelCell.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextFieldCell.m
-c000000004A6A71030000000000000AF6
-t1248489731
-s2806
-i"TKLabelTextFieldCell.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextViewCell.h
-c000000004A6CA320000000000000053D
-t1248633632
-s1341
-i"TKLabelCell.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextViewCell.m
-c000000004AB78EBA00000000000009FB
-t1253543610
-s2555
-i"TKLabelTextViewCell.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKMapView.h
-c000000004A6CA31F00000000000007A7
-t1248633631
-s1959
-i<MapKit/MapKit.h>
-i"TKPlace.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKMapView.m
-c000000004A6BF0CE0000000000000F36
-t1248587982
-s3894
-i"TKMapView.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewHeaderView.h
-c000000004A6CA2D600000000000005E9
-t1248633558
-s1513
-i"TKOverviewIndicatorView.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewHeaderView.m
-c000000004A6D3C180000000000000BDD
-t1248672792
-s3037
-i"TKOverviewHeaderView.h"
-i"TKGlobal.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewIndicatorView.h
-c000000004A6CA2D40000000000000676
-t1248633556
-s1654
-i"TKGlobal.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewIndicatorView.m
-c000000004A6CF0AB000000000000139B
-t1248653483
-s5019
-i"TKOverviewIndicatorView.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewTableViewController.h
-c000000004A6CA2D80000000000000688
-t1248633560
-s1672
-i"TKOverviewHeaderView.h"
-i"TKOverviewIndicatorView.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewTableViewController.m
-c000000004A6A72070000000000000D42
-t1248489991
-s3394
-i"TKOverviewTableViewController.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKPlace.h
-c000000004A6CA2C400000000000005DD
-t1248633540
-s1501
-i<MapKit/MapKit.h>
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKPlace.m
-c000000004A6A71EF0000000000000577
-t1248489967
-s1399
-i"TKPlace.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKSwitchCell.h
-c000000004A767BD0000000000000015A
-t1249278928
-s346
-i<UIKit/UIKit.h>
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKSwitchCell.m
-c000000004AB78E9B00000000000004B9
-t1253543579
-s1209
-i"TKSwitchCell.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKTextViewCell.h
-c000000004A766669000000000000051F
-t1249273449
-s1311
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKTextViewCell.m
-c000000004AB78E6E0000000000000399
-t1253543534
-s921
-i"TKTextViewCell.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKTimeGraph.h
-c000000004A6DE87600000000000009D8
-t1248716918
-s2520
-i<QuartzCore/QuartzCore.h>
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKTimeGraph.m
-c000000004A74B7A600000000000039C0
-t1249163174
-s14784
-i"TKTimeGraph.h"
-i"TKGlobal.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKTimeGraphController.h
-c000000004A6CA2EA0000000000000562
-t1248633578
-s1378
-i"TKTimeGraph.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TKTimeGraphController.m
-c000000004A6DE8450000000000000DC6
-t1248716869
-s3526
-i"TKTimeGraphController.h"
-i"TKGlobal.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/TapkuLibrary_Prefix.pch
-c000000004A6B6CAD000000000000015E
-t1248554157
-s350
-i<Availability.h>
-i<Foundation/Foundation.h>
-i<UIKit/UIKit.h>
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/UIImageAdditions.h
-c000000004A6BC854000000000000017D
-t1248577620
-s381
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/UIImageAdditions.m
-c000000004AD0471A0000000000000530
-t1255163674
-s1328
-i"UIImageAdditions.h"
-i"UIViewAdditions.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/UIViewAdditions.h
-c000000004A6BC9360000000000000145
-t1248577846
-s325
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/UIViewAdditions.m
-c000000004A6BD7B90000000000000831
-t1248581561
-s2097
-i"UIViewAdditions.h"
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphoneos/libTapkuLibrary.a
-t1255163686
-s791880
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/libTapkuLibrary.a
-t1256352744
-s676304
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/ABTableViewCell.o
-t1255162441
-s21536
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/FSIndicatorCell.o
-t1255162441
-s28960
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/FSSubtitleCell.o
-t1255162441
-s24768
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/LoadingHUDView.o
-t1255162441
-s28380
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/NSDateAdditions.o
-t1255162442
-s16924
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKButtonCell.o
-t1255162441
-s22044
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKCalendarMonthView.o
-t1255162442
-s47080
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKCalendarView.o
-t1255162442
-s57056
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKCalendarViewController.o
-t1255162442
-s40844
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKEmptyView.o
-t1255162442
-s27972
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKGlobal.o
-t1255162442
-s7360
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKLabelCell.o
-t1255162441
-s24660
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKLabelFieldCell.o
-t1255162441
-s23400
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKLabelSwitchCell.o
-t1255162441
-s21748
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKLabelTextFieldCell.o
-t1255162441
-s28764
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKLabelTextViewCell.o
-t1255162441
-s30172
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKMapView.o
-t1255162441
-s30164
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKOverviewHeaderView.o
-t1255162441
-s20784
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKOverviewIndicatorView.o
-t1255162442
-s25644
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKOverviewTableViewController.o
-t1255162441
-s46836
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKPlace.o
-t1255162441
-s14224
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKSwitchCell.o
-t1255162442
-s23124
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKTextViewCell.o
-t1255162442
-s27144
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKTimeGraph.o
-t1255162442
-s68992
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKTimeGraphController.o
-t1255162442
-s47516
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TapkuLibrary.LinkFileList
-c000000004AD042480000000000000F5B
-t1255162440
-s3931
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/UIImageAdditions.o
-t1255163685
-s12324
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/UIViewAdditions.o
-t1255162442
-s12300
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/ABTableViewCell.o
-t1256352742
-s20320
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/FSIndicatorCell.o
-t1256352742
-s25076
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/FSSubtitleCell.o
-t1256352743
-s22064
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/LoadingHUDView.o
-t1256352742
-s22128
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/NSDateAdditions.o
-t1256352743
-s14132
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKButtonCell.o
-t1256352742
-s20464
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKCalendarMonthView.o
-t1256352743
-s36152
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKCalendarView.o
-t1256352743
-s46604
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKCalendarViewController.o
-t1256352743
-s37764
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKEmptyView.o
-t1256352743
-s22408
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKGlobal.o
-t1256352743
-s6560
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelCell.o
-t1256352742
-s22464
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelFieldCell.o
-t1256352742
-s21452
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelSwitchCell.o
-t1256352742
-s20256
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelTextFieldCell.o
-t1256352742
-s24596
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelTextViewCell.o
-t1256352742
-s28104
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKMapView.o
-t1256352742
-s24436
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKOverviewHeaderView.o
-t1256352742
-s17396
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKOverviewIndicatorView.o
-t1256352743
-s21816
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKOverviewTableViewController.o
-t1256352742
-s41740
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKPlace.o
-t1256352742
-s11936
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKSwitchCell.o
-t1256352744
-s21268
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKTextViewCell.o
-t1256352743
-s25988
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKTimeGraph.o
-t1256352743
-s52200
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKTimeGraphController.o
-t1256352743
-s43928
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TapkuLibrary.LinkFileList
-c000000004AE26BE50000000000000FFD
-t1256352741
-s4093
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/UIImageAdditions.o
-t1256352743
-s11032
-
-N/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/UIViewAdditions.o
-t1256352743
-s10124
-
-N/var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-cyzmvxgmwmxqpmgkhhxjsihzrzpx/TapkuLibrary_Prefix.pch.gch
-t1255162440
-s7655552
-
-N/var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch.gch
-t1256352742
-s12740048
-
-CCheck dependencies
-r0
-lSLF07#2@18"Check dependencies278045541#278045541#0(0"0(0#1#0"4300885448#0"0#
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/ABTableViewCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/ABTableViewCell.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/FSIndicatorCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/FSIndicatorCell.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/FSSubtitleCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/FSSubtitleCell.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/LoadingHUDView.o /Users/devinross14/tapkulibrary/TapkuLibrary/LoadingHUDView.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/NSDateAdditions.o /Users/devinross14/tapkulibrary/TapkuLibrary/NSDateAdditions.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKButtonCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKButtonCell.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKCalendarMonthView.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarMonthView.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKCalendarView.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarView.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKCalendarViewController.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarViewController.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKEmptyView.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKEmptyView.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKGlobal.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKGlobal.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKLabelCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelCell.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKLabelFieldCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelFieldCell.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKLabelSwitchCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelSwitchCell.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKLabelTextFieldCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextFieldCell.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKLabelTextViewCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextViewCell.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKMapView.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKMapView.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKOverviewHeaderView.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewHeaderView.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKOverviewIndicatorView.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewIndicatorView.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKOverviewTableViewController.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewTableViewController.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKPlace.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKPlace.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKSwitchCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKSwitchCell.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKTextViewCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKTextViewCell.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKTimeGraph.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKTimeGraph.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/TKTimeGraphController.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKTimeGraphController.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/UIImageAdditions.o /Users/devinross14/tapkulibrary/TapkuLibrary/UIImageAdditions.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphoneos/TapkuLibrary.build/Objects-normal/armv6/UIViewAdditions.o /Users/devinross14/tapkulibrary/TapkuLibrary/UIViewAdditions.m normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/ABTableViewCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/ABTableViewCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045542.546452
-e278045542.641735
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/ABTableViewCell.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/ABTableViewCell.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/devinross14/tapkulibrary/TapkuLibrary/ABTableViewCell.m: In function '-[ABTableViewCell initWithFrame:reuseIdentifier:]':
-o/Users/devinross14/tapkulibrary/TapkuLibrary/ABTableViewCell.m:50: warning: 'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)
-lSLF07#2@70"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/ABTableViewCell.m278045542#278045542#0(424"/Users/devinross14/tapkulibrary/TapkuLibrary/ABTableViewCell.m: In function '-[ABTableViewCell initWithFrame:reuseIdentifier:]':/Users/devinross14/tapkulibrary/TapkuLibrary/ABTableViewCell.m:50: warning: 'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)1(22@218"'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)278045542#129#295#0(6@62"/Users/devinross14/tapkulibrary/TapkuLibrary/ABTableViewCell.m269911372#50#0#50#0#33"'*' is deprecated (declared at *)0(0#0#62"/Users/devinross14/tapkulibrary/TapkuLibrary/ABTableViewCell.m4300885448#2045"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/ABTableViewCell.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/ABTableViewCell.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/FSIndicatorCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/FSIndicatorCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045542.593617
-e278045542.740703
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/FSIndicatorCell.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/FSIndicatorCell.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@70"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/FSIndicatorCell.m278045542#278045542#0(0"0(0#0#62"/Users/devinross14/tapkulibrary/TapkuLibrary/FSIndicatorCell.m4300885448#2045"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/FSIndicatorCell.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/FSIndicatorCell.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/FSSubtitleCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/FSSubtitleCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045542.971725
-e278045543.061120
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/FSSubtitleCell.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/FSSubtitleCell.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@69"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/FSSubtitleCell.m278045542#278045543#0(0"0(0#0#61"/Users/devinross14/tapkulibrary/TapkuLibrary/FSSubtitleCell.m4300885448#2043"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/FSSubtitleCell.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/FSSubtitleCell.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/LoadingHUDView.o /Users/devinross14/tapkulibrary/TapkuLibrary/LoadingHUDView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045542.382195
-e278045542.546344
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/LoadingHUDView.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/LoadingHUDView.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@69"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/LoadingHUDView.m278045542#278045542#0(0"0(0#0#61"/Users/devinross14/tapkulibrary/TapkuLibrary/LoadingHUDView.m4300885448#2043"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/LoadingHUDView.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/LoadingHUDView.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/NSDateAdditions.o /Users/devinross14/tapkulibrary/TapkuLibrary/NSDateAdditions.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045543.477427
-e278045543.570714
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/NSDateAdditions.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/NSDateAdditions.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@70"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/NSDateAdditions.m278045543#278045543#0(0"0(0#0#62"/Users/devinross14/tapkulibrary/TapkuLibrary/NSDateAdditions.m4300885448#2045"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/NSDateAdditions.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/NSDateAdditions.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKButtonCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKButtonCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045542.399698
-e278045542.499016
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKButtonCell.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/TKButtonCell.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/devinross14/tapkulibrary/TapkuLibrary/TKButtonCell.m: In function '-[TKButtonCell initWithFrame:reuseIdentifier:]':
-o/Users/devinross14/tapkulibrary/TapkuLibrary/TKButtonCell.m:38: warning: 'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)
-lSLF07#2@67"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/TKButtonCell.m278045542#278045542#0(415"/Users/devinross14/tapkulibrary/TapkuLibrary/TKButtonCell.m: In function '-[TKButtonCell initWithFrame:reuseIdentifier:]':/Users/devinross14/tapkulibrary/TapkuLibrary/TKButtonCell.m:38: warning: 'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)1(22@218"'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)278045542#123#292#0(6@59"/Users/devinross14/tapkulibrary/TapkuLibrary/TKButtonCell.m275236364#38#0#38#0#33"'*' is deprecated (declared at *)0(0#0#59"/Users/devinross14/tapkulibrary/TapkuLibrary/TKButtonCell.m4300885448#2039"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/TKButtonCell.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKButtonCell.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKCalendarMonthView.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarMonthView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045543.641698
-e278045543.889514
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKCalendarMonthView.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarMonthView.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@74"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarMonthView.m278045543#278045543#0(0"0(0#0#66"/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarMonthView.m4300885448#2053"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarMonthView.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKCalendarMonthView.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKCalendarView.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045543.570810
-e278045543.953589
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKCalendarView.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarView.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@69"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarView.m278045543#278045543#0(0"0(0#0#61"/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarView.m4300885448#2043"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarView.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKCalendarView.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKCalendarViewController.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045543.530522
-e278045543.641378
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKCalendarViewController.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@79"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarViewController.m278045543#278045543#0(0"0(0#0#71"/Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarViewController.m4300885448#2063"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/TKCalendarViewController.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKCalendarViewController.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKEmptyView.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKEmptyView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045543.210168
-e278045543.376188
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKEmptyView.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/TKEmptyView.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@66"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/TKEmptyView.m278045543#278045543#0(0"0(0#0#58"/Users/devinross14/tapkulibrary/TapkuLibrary/TKEmptyView.m4300885448#2037"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/TKEmptyView.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKEmptyView.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKGlobal.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKGlobal.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045543.376281
-e278045543.417775
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKGlobal.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/TKGlobal.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@63"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/TKGlobal.m278045543#278045543#0(0"0(0#0#55"/Users/devinross14/tapkulibrary/TapkuLibrary/TKGlobal.m4300885448#2031"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/TKGlobal.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKGlobal.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045542.082939
-e278045542.243986
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelCell.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelCell.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelCell.m: In function '-[TKLabelCell initWithFrame:reuseIdentifier:]':
-o/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelCell.m:40: warning: 'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)
-lSLF07#2@66"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelCell.m278045542#278045542#0(412"/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelCell.m: In function '-[TKLabelCell initWithFrame:reuseIdentifier:]':/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelCell.m:40: warning: 'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)1(22@218"'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)278045542#121#291#0(6@58"/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelCell.m275236397#40#0#40#0#33"'*' is deprecated (declared at *)0(0#0#58"/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelCell.m4300885448#2037"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelCell.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelCell.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelFieldCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelFieldCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045542.244059
-e278045542.382115
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelFieldCell.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelFieldCell.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelFieldCell.m: In function '-[TKLabelFieldCell initWithFrame:reuseIdentifier:]':
-o/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelFieldCell.m:41: warning: 'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)
-lSLF07#2@71"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelFieldCell.m278045542#278045542#0(427"/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelFieldCell.m: In function '-[TKLabelFieldCell initWithFrame:reuseIdentifier:]':/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelFieldCell.m:41: warning: 'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)1(22@218"'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)278045542#131#296#0(6@63"/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelFieldCell.m270182566#41#0#41#0#33"'*' is deprecated (declared at *)0(0#0#63"/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelFieldCell.m4300885448#2047"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelFieldCell.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelFieldCell.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelSwitchCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelSwitchCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045542.499098
-e278045542.593518
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelSwitchCell.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelSwitchCell.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelSwitchCell.m: In function '-[TKLabelSwitchCell initWithFrame:reuseIdentifier:]':
-o/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelSwitchCell.m:39: warning: 'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)
-lSLF07#2@72"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelSwitchCell.m278045542#278045542#0(430"/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelSwitchCell.m: In function '-[TKLabelSwitchCell initWithFrame:reuseIdentifier:]':/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelSwitchCell.m:39: warning: 'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)1(22@218"'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)278045542#133#297#0(6@64"/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelSwitchCell.m270182590#39#0#39#0#33"'*' is deprecated (declared at *)0(0#0#64"/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelSwitchCell.m4300885448#2049"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelSwitchCell.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelSwitchCell.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelTextFieldCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextFieldCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045542.241351
-e278045542.399605
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelTextFieldCell.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextFieldCell.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextFieldCell.m: In function '-[TKLabelTextFieldCell initWithFrame:reuseIdentifier:]':
-o/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextFieldCell.m:40: warning: 'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)
-lSLF07#2@75"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextFieldCell.m278045542#278045542#0(439"/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextFieldCell.m: In function '-[TKLabelTextFieldCell initWithFrame:reuseIdentifier:]':/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextFieldCell.m:40: warning: 'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)1(22@218"'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)278045542#139#300#0(6@67"/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextFieldCell.m270182531#40#0#40#0#33"'*' is deprecated (declared at *)0(0#0#67"/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextFieldCell.m4300885448#2055"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextFieldCell.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelTextFieldCell.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelTextViewCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextViewCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045542.084101
-e278045542.241256
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelTextViewCell.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextViewCell.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextViewCell.m: In function '-[TKLabelTextViewCell initWithFrame:reuseIdentifier:]':
-o/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextViewCell.m:40: warning: 'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)
-lSLF07#2@74"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextViewCell.m278045542#278045542#0(436"/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextViewCell.m: In function '-[TKLabelTextViewCell initWithFrame:reuseIdentifier:]':/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextViewCell.m:40: warning: 'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)1(22@218"'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)278045542#137#299#0(6@66"/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextViewCell.m275236410#40#0#40#0#33"'*' is deprecated (declared at *)0(0#0#66"/Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextViewCell.m4300885448#2053"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/TKLabelTextViewCell.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKLabelTextViewCell.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKMapView.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKMapView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045542.641839
-e278045542.796286
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKMapView.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/TKMapView.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@64"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/TKMapView.m278045542#278045542#0(0"0(0#0#56"/Users/devinross14/tapkulibrary/TapkuLibrary/TKMapView.m4300885448#2033"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/TKMapView.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKMapView.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKOverviewHeaderView.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewHeaderView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045542.831092
-e278045542.971637
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKOverviewHeaderView.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewHeaderView.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@75"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewHeaderView.m278045542#278045542#0(0"0(0#0#67"/Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewHeaderView.m4300885448#2055"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewHeaderView.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKOverviewHeaderView.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKOverviewIndicatorView.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewIndicatorView.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045543.061285
-e278045543.210081
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKOverviewIndicatorView.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewIndicatorView.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@78"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewIndicatorView.m278045543#278045543#0(0"0(0#0#70"/Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewIndicatorView.m4300885448#2061"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewIndicatorView.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKOverviewIndicatorView.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKOverviewTableViewController.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewTableViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045542.796381
-e278045542.944341
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKOverviewTableViewController.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewTableViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@84"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewTableViewController.m278045542#278045542#0(0"0(0#0#76"/Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewTableViewController.m4300885448#2073"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/TKOverviewTableViewController.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKOverviewTableViewController.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKPlace.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKPlace.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045542.740790
-e278045542.830996
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKPlace.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/TKPlace.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@62"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/TKPlace.m278045542#278045542#0(0"0(0#0#54"/Users/devinross14/tapkulibrary/TapkuLibrary/TKPlace.m4300885448#2029"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/TKPlace.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKPlace.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKSwitchCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKSwitchCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045543.953680
-e278045544.040172
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKSwitchCell.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/TKSwitchCell.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/devinross14/tapkulibrary/TapkuLibrary/TKSwitchCell.m: In function '-[TKSwitchCell initWithFrame:reuseIdentifier:]':
-o/Users/devinross14/tapkulibrary/TapkuLibrary/TKSwitchCell.m:16: warning: 'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)
-lSLF07#2@67"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/TKSwitchCell.m278045543#278045544#0(415"/Users/devinross14/tapkulibrary/TapkuLibrary/TKSwitchCell.m: In function '-[TKSwitchCell initWithFrame:reuseIdentifier:]':/Users/devinross14/tapkulibrary/TapkuLibrary/TKSwitchCell.m:16: warning: 'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)1(22@218"'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)278045543#123#292#0(6@59"/Users/devinross14/tapkulibrary/TapkuLibrary/TKSwitchCell.m275236379#16#0#16#0#33"'*' is deprecated (declared at *)0(0#0#59"/Users/devinross14/tapkulibrary/TapkuLibrary/TKSwitchCell.m4300885448#2039"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/TKSwitchCell.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKSwitchCell.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKTextViewCell.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKTextViewCell.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045543.889599
-e278045543.967626
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKTextViewCell.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/TKTextViewCell.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/devinross14/tapkulibrary/TapkuLibrary/TKTextViewCell.m: In function '-[TKTextViewCell initWithFrame:reuseIdentifier:]':
-o/Users/devinross14/tapkulibrary/TapkuLibrary/TKTextViewCell.m:16: warning: 'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)
-lSLF07#2@69"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/TKTextViewCell.m278045543#278045543#0(421"/Users/devinross14/tapkulibrary/TapkuLibrary/TKTextViewCell.m: In function '-[TKTextViewCell initWithFrame:reuseIdentifier:]':/Users/devinross14/tapkulibrary/TapkuLibrary/TKTextViewCell.m:16: warning: 'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)1(22@218"'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:178)278045543#127#294#0(6@61"/Users/devinross14/tapkulibrary/TapkuLibrary/TKTextViewCell.m275236334#16#0#16#0#33"'*' is deprecated (declared at *)0(0#0#61"/Users/devinross14/tapkulibrary/TapkuLibrary/TKTextViewCell.m4300885448#2043"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/TKTextViewCell.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKTextViewCell.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKTimeGraph.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKTimeGraph.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045542.944423
-e278045543.313369
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKTimeGraph.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/TKTimeGraph.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@66"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/TKTimeGraph.m278045542#278045543#0(0"0(0#0#58"/Users/devinross14/tapkulibrary/TapkuLibrary/TKTimeGraph.m4300885448#2037"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/TKTimeGraph.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKTimeGraph.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKTimeGraphController.o /Users/devinross14/tapkulibrary/TapkuLibrary/TKTimeGraphController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045543.313453
-e278045543.456338
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKTimeGraphController.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/TKTimeGraphController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@76"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/TKTimeGraphController.m278045543#278045543#0(0"0(0#0#68"/Users/devinross14/tapkulibrary/TapkuLibrary/TKTimeGraphController.m4300885448#2057"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/TKTimeGraphController.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TKTimeGraphController.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/UIImageAdditions.o /Users/devinross14/tapkulibrary/TapkuLibrary/UIImageAdditions.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045543.417865
-e278045543.477341
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/UIImageAdditions.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/UIImageAdditions.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@71"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/UIImageAdditions.m278045543#278045543#0(0"0(0#0#63"/Users/devinross14/tapkulibrary/TapkuLibrary/UIImageAdditions.m4300885448#2047"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/UIImageAdditions.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/UIImageAdditions.o0#
-
-CCompileC build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/UIViewAdditions.o /Users/devinross14/tapkulibrary/TapkuLibrary/UIViewAdditions.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045543.456426
-e278045543.530414
-r1
-xCompileC
-xbuild/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/UIViewAdditions.o
-x/Users/devinross14/tapkulibrary/TapkuLibrary/UIViewAdditions.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@70"Compile /Users/devinross14/tapkulibrary/TapkuLibrary/UIViewAdditions.m278045543#278045543#0(0"0(0#0#62"/Users/devinross14/tapkulibrary/TapkuLibrary/UIViewAdditions.m4300885448#2045"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -include /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch -c /Users/devinross14/tapkulibrary/TapkuLibrary/UIViewAdditions.m -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/UIViewAdditions.o0#
-
-CLibtool /Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphoneos/libTapkuLibrary.a normal armv6
-r0
-
-CLibtool /Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/libTapkuLibrary.a normal i386
-s278045544.040259
-e278045544.069262
-r1
-xLibtool
-x/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/libTapkuLibrary.a
-xnormal
-xi386
-o/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/libtool: -dynamic not specified, -all_load invalid
-o/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC 
-lSLF07#2@67"Libtool build/Release-iphonesimulator/libTapkuLibrary.a normal i386278045544#278045544#0(251"/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/libtool: -dynamic not specified, -all_load invalid/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/libtool: -dynamic not specified the following flags are invalid: -ObjC 0(0#0#0"4300885448#820"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv MACOSX_DEPLOYMENT_TARGET 10.5    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/libtool -static -arch_only i386 -syslibroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -L/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -filelist /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/Objects-normal/i386/TapkuLibrary.LinkFileList -all_load -ObjC -framework Foundation -framework MapKit -o /Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/libTapkuLibrary.a0#
-
-CProcessPCH /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-cyzmvxgmwmxqpmgkhhxjsihzrzpx/TapkuLibrary_Prefix.pch.gch TapkuLibrary_Prefix.pch normal armv6 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CProcessPCH /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch.gch TapkuLibrary_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-s278045541.552810
-e278045542.082781
-r1
-xProcessPCH
-x/var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch.gch
-xTapkuLibrary_Prefix.pch
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@34"Precompile TapkuLibrary_Prefix.pch278045541#278045542#0(0"0(0#0#68"/Users/devinross14/tapkulibrary/TapkuLibrary/TapkuLibrary_Prefix.pch4300885448#1902"    cd /Users/devinross14/tapkulibrary/TapkuLibrary    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -Os -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.1.2.sdk -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-generated-files.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-own-target-headers.hmap -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-all-target-headers.hmap -iquote /Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/TapkuLibrary-project-headers.hmap -F/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/Release-iphonesimulator/include -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources/i386 -I/Users/devinross14/tapkulibrary/TapkuLibrary/build/TapkuLibrary.build/Release-iphonesimulator/TapkuLibrary.build/DerivedSources -c /Users/devinross14/tapkulibrary/TapkuLibrary/TapkuLibrary_Prefix.pch -o /var/folders/fS/fSfWvtlOElSXsswUZgFK4U+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/TapkuLibrary_Prefix-edpqxpbsnomgudawvpopcdruwdoh/TapkuLibrary_Prefix.pch.gch0#
-
