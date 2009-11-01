@@ -48,7 +48,7 @@
     return 2;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 3;
 }
 - (UITableViewCell *)tableView:(UITableView *)table cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -59,16 +59,34 @@
     }
     
     // Set up the cell...
+	if(indexPath.row == 0)
+		cell.textLabel.text = @"Blue";
+	if(indexPath.row == 1)
+		cell.textLabel.text = @"Red";
+	if(indexPath.row == 2)
+		cell.textLabel.text = @"Green";
+	
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+	if(indexPath.row==0){
+		self.header.indicator.color = TKOverviewIndicatorViewColorBlue;
+		self.header.indicator.text = @"Blue";
+	}else if(indexPath.row==1){
+		self.header.indicator.color = TKOverviewIndicatorViewColorRed;
+		self.header.indicator.text = @"Red";
+	}else if(indexPath.row==2){
+		self.header.indicator.color = TKOverviewIndicatorViewColorGreen;
+		self.header.indicator.text = @"Green";
+	}
+		
+	
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-	return [NSString stringWithFormat:@"%d Section",section+1];
+	return [NSString stringWithFormat:@"Section %d",section+1];
 }
 
 

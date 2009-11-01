@@ -32,7 +32,8 @@
 #import "TapkuLibrary.h"
 
 @interface RootViewController : UITableViewController {
-	NSMutableArray *titles;
+	//NSMutableArray *titles;
+	NSMutableArray *data;
 	
 }
 

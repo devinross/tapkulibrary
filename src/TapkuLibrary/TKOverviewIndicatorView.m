@@ -32,6 +32,7 @@
 
 #import "TKOverviewIndicatorView.h"
 #import "UIImageAdditions.h"
+#import "NSStringAdditions.h"
 
 @implementation TKOverviewIndicatorView
 @synthesize color;
@@ -81,6 +82,9 @@ static UIImage *middle = nil;
 }
 - (void) setText:(NSString*)str{
 	textLabel.text = str;
+	CGRect f = textLabel.frame;
+	f.size.width = [str sizeWithFont:textLabel.font].width;
+	textLabel.frame = f;
 	[self setNeedsDisplay];
 }
 
@@ -115,19 +119,14 @@ static UIImage *middle = nil;
 	[self setNeedsDisplay];
 }
 
-- (void)drawRect:(CGRect)rect {
+- (void) drawRect:(CGRect)rect {
     // Drawing code
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextTranslateCTM(context, 0.0, self.bounds.size.height);
 	CGContextScaleCTM(context, 1.0, -1.0);
 	
-	float w = 6 +  [TKOverviewIndicatorView calculateHeightOfTextFromWidth:textLabel.text 
-															font:textLabel.font 
-														   width:textLabel.bounds.size.width 
-													   linebreak:textLabel.lineBreakMode];
-	
-
+	float w = 6 + [textLabel.text heightWithFont:textLabel.font  width:textLabel.bounds.size.width  linebreak:textLabel.lineBreakMode].width;
 	float ow = self.frame.size.width - w - 5;
 	
 	

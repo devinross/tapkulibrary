@@ -133,7 +133,7 @@
 		
 		CGRect r= title.frame;
 		r.size.height = 22;
-		r.origin.y = self.frame.size.height/2 + 90;
+		r.origin.y = (int)(self.frame.size.height/2 + self.frame.size.height/8);
 		title.frame=r;
 		
 		
@@ -147,8 +147,10 @@
 		
 		r= subtitle.frame;
 		r.size.height = 20;
-		r.origin.y = self.frame.size.height/2 + 120;
+		r.origin.y = (int)(self.frame.size.height/2 + self.frame.size.height/8 + 30);
 		subtitle.frame=r;
+		
+		
 
 		
 		
@@ -162,16 +164,30 @@
 	
 	
 	CGFloat color[] = { 139/255.0, 152/255.0, 173/255.0, 1.0 };
-	[mask drawInRect:CGRectMake((int)self.bounds.size.width/2 - mask.size.width/2, 50, mask.size.width, mask.size.height) asAlphaMaskForColor:color];
+	float y = self.frame.size.height/2 - mask.size.height/2 - 40;
+	float x = self.bounds.size.width/2 - mask.size.width/2;
 	
+	NSLog(@"View size: %f %f %f",self.frame.size.height,mask.size.height,y);
 	
+
+	
+	[mask drawInRect:CGRectMake((int)x, (int)y, mask.size.width, mask.size.height) asAlphaMaskForColor:color];
 	
 	CGFloat colors[] = {
 		171/255.0, 180/255.0, 196/255.0, 1.00,
 		213/255.0, 217/255.0, 225/255.0, 1.00
 	};
-	[mask drawInRect:CGRectMake((int)self.bounds.size.width/2 - mask.size.width/2, 48, mask.size.width, mask.size.height) asAlphaMaskForGradient:colors];
+	[mask drawInRect:CGRectMake((int)x, (int)y - 2, mask.size.width, mask.size.height) asAlphaMaskForGradient:colors];
 	
+	
+	
+	CGRect r = title.frame;
+	r.origin.y = y + mask.size.height + 30;
+	title.frame = r;
+	
+	r = subtitle.frame;
+	r.origin.y = y + mask.size.height + 60;
+	subtitle.frame = r;
 }
 - (void) setMask:(UIImage*)m{
 	[mask release];

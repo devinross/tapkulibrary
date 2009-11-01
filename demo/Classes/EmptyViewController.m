@@ -49,8 +49,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	emptyView = [[TKEmptyView alloc] initWithFrame:self.view.bounds 
-									emptyViewImage:TKEmptyViewImageMusicNote
+	
+	CGRect r = self.view.bounds;
+	r.size.height -= self.navigationController.navigationBar.frame.size.height;
+
+	
+	emptyView = [[TKEmptyView alloc] initWithFrame:r 
+									emptyViewImage:TKEmptyViewImagePhotos
 											 title:@"Empty Page"
 										  subtitle:@"All You Need is A 200 x 200 pixel transparent image"];
 
