@@ -119,9 +119,7 @@
 	}
 	return self;
 }
-
-
-- (id)initWithFrame:(CGRect)frame {
+- (id) initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
 		
 		self.backgroundColor = [UIColor whiteColor];
@@ -175,14 +173,13 @@
 	[mask drawInRect:CGRectMake((int)self.bounds.size.width/2 - mask.size.width/2, 48, mask.size.width, mask.size.height) asAlphaMaskForGradient:colors];
 	
 }
-
-
 - (void) setMask:(UIImage*)m{
 	[mask release];
 	mask = [m retain];
 	[self setNeedsDisplay];
 }
-- (void)dealloc {
+
+- (void) dealloc {
 	
 	[title release];
 	[subtitle release];

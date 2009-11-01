@@ -1,5 +1,5 @@
 //
-//  TKCalendarView.h
+//  DaterViewController.m
 //  Created by Devin Ross on 7/28/09.
 //
 /*
@@ -28,65 +28,46 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
+#import "TKCalendarMonthViewController.h"
+#import "TKCalendarMonthView.h"
+
+
+@implementation TKCalendarMonthViewController
+@synthesize monthView;
 
 
 
-@class TKMonthGridView,TKCalendarDayView;
-@protocol TKCalendarMonthViewDelegate, TKCalendarMonthViewDataSource;
-
-
-@interface TKCalendarMonthView : UIView {
+- (void)viewDidLoad {
+    [super viewDidLoad];
 	
-	id <TKCalendarMonthViewDelegate> delegate;
-	id <TKCalendarMonthViewDataSource> dataSource;
-	
-	NSDate *currentMonth;
-	NSDate *selectedMonth;
-	NSMutableArray *deck;
-	
-	
-	UIButton *left;
-	NSString *monthYear;
-	UIButton *right;
-	
-	UIImageView *shadow;
-	UIScrollView *scrollView;
-	
-	
+	monthView = [[TKCalendarMonthView alloc] init];
+	monthView.delegate = self;
+	monthView.dataSource = self;
+	[self.view addSubview:monthView];
 }
-@property (readonly,nonatomic) NSString *monthYear;
-@property (readonly,nonatomic) NSDate *monthDate;
 
-@property (assign,nonatomic) id <TKCalendarMonthViewDataSource> dataSource;
-@property (assign,nonatomic) id <TKCalendarMonthViewDelegate> delegate;
 
-- (id) init;
-- (void) reload;
-- (void) selectDate:(NSDate *)date;
+- (BOOL) calendarMonthView:(TKCalendarMonthView*)monthView markForDay:(NSDate*)date{
+	return NO;
+}
 
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+	return NO;
+}
+- (void)didReceiveMemoryWarning {
+	// Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+	
+	// Release any cached data, images, etc that aren't in use.
+}
+- (void)viewDidUnload {
+	// Release any retained subviews of the main view.
+	// e.g. self.myOutlet = nil;
+}
+- (void)dealloc {
+	[monthView release];
+    [super dealloc];
+}
 
 @end
-
-
-@protocol TKCalendarMonthViewDataSource<NSObject>
-@required
-- (BOOL) calendarMonthView:(TKCalendarMonthView*)monthView markForDay:(NSDate*)date;
-@end
-
-
-@protocol TKCalendarMonthViewDelegate<NSObject>
-@optional
-- (void) calendarMonthView:(TKCalendarMonthView*)monthView dateWasSelected:(NSDate*)date;
-- (void) calendarMonthView:(TKCalendarMonthView*)monthView monthWillAppear:(NSDate*)month;
-@end
-
-
-
-
-
-
-
-
-
-
-

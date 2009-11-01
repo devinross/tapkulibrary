@@ -1,6 +1,6 @@
 //
-//  TKEmptyView.h
-//  Created by Devin Ross on 7/24/09.
+//  TKCalendarMonthTableViewController.h
+//  Created by Devin Ross on 10/31/09.
 //
 /*
  
@@ -29,50 +29,10 @@
  
  */
 
+#import "TKCalendarMonthViewController.h"
 
-
-typedef enum {
-	TKEmptyViewImageChatBubble,
-	TKEmptyViewImageClock,
-	TKEmptyViewImageCompass,
-	TKEmptyViewImageEye,
-	TKEmptyViewImageHeart,
-	TKEmptyViewImageMovieClip,
-	TKEmptyViewImageMusicNote,
-	TKEmptyViewImagePhotos,
-	TKEmptyViewImagePictureFrame,
-	TKEmptyViewImageSearch,
-	TKEmptyViewImageSign,
-	TKEmptyViewImageStar,
-	TKEmptyViewImageStopwatch,
-	TKEmptyViewImageKey
-} TKEmptyViewImage;
-
-
-
-@interface TKEmptyView : UIView {
-	UIImage *mask;
-	
-	UILabel *title;
-	UILabel *subtitle;
-
+@interface TKCalendarMonthTableViewController : TKCalendarMonthViewController <UITableViewDelegate, UITableViewDataSource>  {
+	UITableView *tableView;
 }
-@property (retain,nonatomic) UILabel *title;
-@property (retain,nonatomic) UILabel *subtitle;
-@property (retain,nonatomic) UIImage *mask;
-
-
-- (id) initWithFrame:(CGRect)frame 
-				mask:(UIImage*)image 
-			   title:(NSString*)titleString 
-			subtitle:(NSString*)subtitleString;
-
-
-- (id) initWithFrame:(CGRect)frame 
-	  emptyViewImage:(TKEmptyViewImage)image 
-			   title:(NSString*)titleString 
-			subtitle:(NSString*)subtitleString;
-
-
+@property (retain,nonatomic) UITableView *tableView;
 @end
-

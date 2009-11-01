@@ -29,6 +29,8 @@
  
  */
 #import "LoadingHUDView.h"
+#import "NSStringAdditions.h"
+
 @implementation LoadingHUDView
 
 
@@ -82,14 +84,11 @@
 				lineBreakMode:lineBreakMode];
 }
 - (void) adjustHeight{
-	CGSize s1 = [self calculateHeightOfTextFromWidth:_title 
-												font:[UIFont boldSystemFontOfSize:16] 
-											   width:200 
-										   linebreak:UILineBreakModeTailTruncation];
-	CGSize s2 = [self calculateHeightOfTextFromWidth:_message 
-												font:[UIFont systemFontOfSize:12] 
-											   width:200 
-										   linebreak:UILineBreakModeCharacterWrap];
+	
+	CGSize s1 = [_title heightWithFont:[UIFont boldSystemFontOfSize:16.0] width:200.0 linebreak:UILineBreakModeTailTruncation];
+	
+	CGSize s2 = [_message heightWithFont:[UIFont systemFontOfSize:12.0] width:200.0 linebreak:UILineBreakModeCharacterWrap];
+
 	CGRect r = self.frame;
 	r.size.height = s1.height + s2.height + 20;
 	self.frame = r;

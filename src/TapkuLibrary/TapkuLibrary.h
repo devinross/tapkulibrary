@@ -3,6 +3,7 @@
 #import "UIViewAdditions.h"
 #import "UIImageAdditions.h"
 #import "NSDateAdditions.h"
+#import "TKShakeWindow.h"
 
 // CELLS
 #import "TKLabelCell.h"
@@ -37,6 +38,7 @@
 
 
 // Calendar
-#import "TKCalendarViewController.h"
-#import "TKCalendarView.h"
+#import "TKCalendarMonthViewController.h"
+#import "TKCalendarMonthTableViewController.h"
+#import "TKCalendarMonthView.h"
 #import "ODCalendarDayViewController.h"

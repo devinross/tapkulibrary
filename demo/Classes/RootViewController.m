@@ -37,7 +37,7 @@
 #import "OverviewController.h"
 #import "EmptyViewController.h"
 #import "GraphController.h"
-
+#import "DemoCalendarMonth.h"
 @implementation RootViewController
 
 
@@ -87,44 +87,36 @@
 
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+	UIViewController *vc;
+	
+	
 	if(indexPath.row ==0){
-		LabelViewController *anotherViewController = [[LabelViewController alloc] initWithStyle:UITableViewStyleGrouped];
-		[self.navigationController pushViewController:anotherViewController animated:YES];
-		[anotherViewController release];
+		vc = [[LabelViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	}else if(indexPath.row == 1) {
-		FastTableViewController *fast = [[FastTableViewController alloc] initWithStyle:UITableViewStylePlain];
-		[self.navigationController pushViewController:fast animated:YES];
-		[fast release];
+		vc = [[FastTableViewController alloc] initWithStyle:UITableViewStylePlain];
 	}else if(indexPath.row == 2) {
-		HUDViewController *hud = [[HUDViewController alloc] init];
-		[self.navigationController pushViewController:hud animated:YES];
-		[hud release];
+		vc = [[HUDViewController alloc] init];
 	}else if(indexPath.row==3){
-		MapViewController *mvc = [[MapViewController alloc] init];
-		[self.navigationController pushViewController:mvc animated:YES];
-		[mvc release];
+		vc = [[MapViewController alloc] init];
 	}else if(indexPath.row==4){
-		OverviewController *mvc = [[OverviewController alloc] init];
-		[self.navigationController pushViewController:mvc animated:YES];
-		[mvc release];
+		vc = [[OverviewController alloc] init];
 	}else if(indexPath.row==5){
-		EmptyViewController *e = [[EmptyViewController alloc] init];
-		[self.navigationController pushViewController:e animated:YES];
-		[e release];
+		vc = [[EmptyViewController alloc] init];
 	}else if(indexPath.row==6){
 		GraphController *graph = [[GraphController alloc] init];
 		[graph setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
 		[self presentModalViewController:graph animated:YES];
 		[graph release];
+		return;
 	}else if(indexPath.row==7){
-		TKCalendarViewController *cvc = [[TKCalendarViewController alloc] init];
-		[self.navigationController pushViewController:cvc animated:YES];
-		[cvc release];
+		vc = [[DemoCalendarMonth alloc] init];
 	}else if(indexPath.row==8){
-		ODCalendarDayViewController *cvc = [[ODCalendarDayViewController alloc] init];
-		[self.navigationController pushViewController:cvc animated:YES];
-		[cvc release];
+		vc = [[ODCalendarDayViewController alloc] init];
 	}
+	
+	[self.navigationController pushViewController:vc animated:YES];
+	[vc release];
 
 }
 

@@ -169,25 +169,25 @@
 			// Making sure delgate sending date that match current day
 			if ([event.startDate isSameDay:self.currentDay]) {
 				// Get the hour start position
-				NSInteger hourStart = [event.startDate hour];
+				NSInteger hourStart = [event.startDate dateInformation].hour;
 				CGFloat hourStartPosition = roundf((hourStart * VERTICAL_DIFF) + VERTICAL_OFFSET + ((FONT_SIZE + 4.0) / 2.0));
 				// Get the minute start position
 				// Round minute to each 5
-				NSInteger minuteStart = [event.startDate minute];
+				NSInteger minuteStart = [event.startDate dateInformation].minute;
 				minuteStart = round(minuteStart / 5.0) * 5;
 				CGFloat minuteStartPosition = roundf((minuteStart < 30)?0:VERTICAL_DIFF / 2.0);
 				
 				
 				
 				// Get the hour end position
-				NSInteger hourEnd = [event.endDate hour];
+				NSInteger hourEnd = [event.endDate dateInformation].hour;
 				if (![event.startDate isSameDay:event.endDate]) {
 					hourEnd = 23;
 				}
 				CGFloat hourEndPosition = roundf((hourEnd * VERTICAL_DIFF) + VERTICAL_OFFSET + ((FONT_SIZE + 4.0) / 2.0));
 				// Get the minute end position
 				// Round minute to each 5
-				NSInteger minuteEnd = [event.endDate minute];
+				NSInteger minuteEnd = [event.endDate dateInformation].minute;
 				if (![event.startDate isSameDay:event.endDate]) {
 					minuteEnd = 55;
 				}

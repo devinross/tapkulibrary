@@ -25,6 +25,7 @@
 		3B7228EE100925DE00816B29 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7228ED100925DE00816B29 /* MapViewController.m */; };
 		3B722914100928BD00816B29 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B722913100928BD00816B29 /* MapKit.framework */; };
 		3B723356100BB79600816B29 /* OverviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B723355100BB79600816B29 /* OverviewController.m */; };
+		3B87A050109C047B002012FD /* DemoCalendarMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B87A04F109C047B002012FD /* DemoCalendarMonth.m */; };
 		3B9D483E101BA1F000FEF5E2 /* note.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B9D483D101BA1F000FEF5E2 /* note.png */; };
 		3BAC9B72109566E700F235F1 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC9B71109566E400F235F1 /* libTapkuLibrary.a */; };
 		3BAD71711019B379002363FD /* EmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAD71701019B379002363FD /* EmptyViewController.m */; };
@@ -76,6 +77,8 @@
 		3B722913100928BD00816B29 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3B723354100BB79600816B29 /* OverviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewController.h; sourceTree = "<group>"; };
 		3B723355100BB79600816B29 /* OverviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverviewController.m; sourceTree = "<group>"; };
+		3B87A04E109C047B002012FD /* DemoCalendarMonth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoCalendarMonth.h; sourceTree = "<group>"; };
+		3B87A04F109C047B002012FD /* DemoCalendarMonth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoCalendarMonth.m; sourceTree = "<group>"; };
 		3B9D483D101BA1F000FEF5E2 /* note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note.png; sourceTree = "<group>"; };
 		3BAC975A10953BB700F235F1 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = ../src/TapkuLibrary.xcodeproj; sourceTree = SOURCE_ROOT; };
 		3BAD716F1019B379002363FD /* EmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyViewController.h; sourceTree = "<group>"; };
@@ -184,6 +187,8 @@
 				3B5834C4101159750082E0D8 /* GraphController.m */,
 				3BAD716F1019B379002363FD /* EmptyViewController.h */,
 				3BAD71701019B379002363FD /* EmptyViewController.m */,
+				3B87A04E109C047B002012FD /* DemoCalendarMonth.h */,
+				3B87A04F109C047B002012FD /* DemoCalendarMonth.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -290,6 +295,7 @@
 				3B723356100BB79600816B29 /* OverviewController.m in Sources */,
 				3B5834C5101159750082E0D8 /* GraphController.m in Sources */,
 				3BAD71711019B379002363FD /* EmptyViewController.m in Sources */,
+				3B87A050109C047B002012FD /* DemoCalendarMonth.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
