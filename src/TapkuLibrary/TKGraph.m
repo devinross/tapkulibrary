@@ -48,8 +48,6 @@
 }
 @property (copy,nonatomic) NSString *title;
 @end
-
-
 @implementation TKGraphGoalLabel
 @synthesize title;
 
@@ -254,7 +252,6 @@
 
 
 
-
 @interface TKGraph (PrivateMethods)
 
 - (void) drawBackground:(CGContextRef)context;
@@ -263,13 +260,19 @@
 - (void) drawGoalLine:(CGContextRef)context;
 
 - (void) loadData;
+- (void) updateGoalLabel:(BOOL)animated;
 
 - (float) valueToYCoordinate:(float)value;
 - (float) yCoordinateToValue:(float)y;
 
 @end
 @implementation TKGraph
-@synthesize dataSource,showIndicator;
+@synthesize dataSource,touchIndicatorEnabled;
+
+- (void) setDataSource:(id<TKGraphDataSource>)src {
+	dataSource = src;
+	[self loadData];
+}
 
 
 - (id)initWithFrame:(CGRect)frame {
@@ -298,7 +301,7 @@
 		plotView.backgroundColor = [UIColor clearColor];
 		[scrollView addSubview:plotView];
 		
-		showIndicator = YES;
+		touchIndicatorEnabled = YES;
 		
     }
     return self;
@@ -340,7 +343,7 @@
 }
 
 - (void) loadData{
-	//NSLog(@"Load data");
+	NSLog(@"Load data");
 	
 	if ([dataSource respondsToSelector:@selector(titleForGraph:)])
 		title.text = [dataSource titleForGraph:self];
@@ -433,6 +436,33 @@
 }
 
 
+- (void) moveToPoint:(NSInteger)point animated:(BOOL)animated{
+	if(point > 0 || point < [data count]){
+
+		float x = point * pointDistance;
+		[scrollView setContentOffset:CGPointMake(x-480+pointDistance*2, 0) animated:animated];
+		[self updateGoalLabel:animated];
+		NSLog(@"SCROLLED");
+	}
+}
+- (void) updateGoalLabel:(BOOL)animated{
+	NSLog(@"SCROLLED1");
+	//if(goalLabel==nil)return;
+	NSLog(@"SCROLLED2");
+	CGRect r = goalLabel.frame;
+	r.origin.x = scrollView.contentOffset.x + 420;
+	if(animated){
+		[UIView beginAnimations:NULL context:nil];
+		[UIView setAnimationDuration:.2];
+		[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+	}
+	
+	goalLabel.frame = r;
+	if(animated)
+		[UIView commitAnimations];
+	
+	
+}
 
 #pragma mark TITLE TEXT
 - (NSString*) graphTitle{
@@ -444,13 +474,7 @@
 
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scroll{
-	CGRect r = goalLabel.frame;
-	r.origin.x = scroll.contentOffset.x + 420;
-	[UIView beginAnimations:NULL context:nil];
-	[UIView setAnimationDuration:.2];
-	[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-	goalLabel.frame = r;
-	[UIView commitAnimations];
+	[self updateGoalLabel:YES];
 }
 
 - (void) drawBackground:(CGContextRef)context{
@@ -525,24 +549,10 @@
 }
 
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-	
-	if(!showIndicator) return;
-	
-	UITouch *t = [touches anyObject];
-	CGPoint point = [t locationInView:plotView];
-	
-	
-	
-	
-	if(indicator != nil){
-		[indicator removeFromSuperview];
-		[indicator release];
-		indicator = nil;
-	}
-	
-	int i = (point.x-(pointDistance/2)) / pointDistance;
-	
+
+- (void) showIndicatorForPoint:(int)point{
+	NSLog(@"Show point %d",point);
+	int i = point;
 	
 	if(i >= [data count])
 		i = [data count] - 1;
@@ -582,6 +592,30 @@
 	a.toValue = [NSNumber numberWithFloat:1.0];
 	[[indicator layer] addAnimation:a forKey:@"changeopacity"];
 	indicator.layer.opacity = 1.0;
+}
+
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+	
+	if(!touchIndicatorEnabled) return;
+	
+	UITouch *t = [touches anyObject];
+	CGPoint point = [t locationInView:plotView];
+	
+	
+	
+	
+	if(indicator != nil){
+		[indicator removeFromSuperview];
+		[indicator release];
+		indicator = nil;
+	}
+	
+	int i = (point.x-(pointDistance/2)) / pointDistance;
+	
+	[self showIndicatorForPoint:i];
+	
+	
 }
 
 - (void)dealloc {

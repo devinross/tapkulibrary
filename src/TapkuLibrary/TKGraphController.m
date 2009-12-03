@@ -36,12 +36,32 @@
 @implementation TKGraphController
 @synthesize graph;
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (id) init{
+	if(self == [super init]){
+		
+	}
+	return self;
+}
+
+
+- (void) loadView{
+	NSLog(@"LoadView");
 	graph = [[TKGraph alloc] initWithFrame:CGRectMake(0, 0, 480, 300)];
 	graph.dataSource = self;
 	graph.backgroundColor = [UIColor whiteColor];
-	[self.view addSubview:graph];
+	
+	self.view = graph;
+
+
+}
+
+
+- (void)viewDidLoad {
+    
+	//graph = [[TKGraph alloc] initWithFrame:CGRectMake(0, 0, 480, 300)];
+	//graph.dataSource = self;
+	//graph.backgroundColor = [UIColor whiteColor];
+	//[self.view addSubview:graph];
 	
 	close = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
 	close.frame = CGRectMake(-10, 0, 60, 40);
@@ -52,16 +72,18 @@
 	[close setImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/close_touch.png")] forState:UIControlStateHighlighted];
 	[close addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:close];
+	
+	[super viewDidLoad];
  
 }
 
 
- - (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
 	 [super viewWillAppear:animated];
 	 statusColor = [UIApplication sharedApplication].statusBarStyle;
 	 [UIApplication sharedApplication].statusBarStyle =  UIStatusBarStyleBlackOpaque;
  }
- - (void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated {
 	 [super viewWillDisappear:animated];
 	 [UIApplication sharedApplication].statusBarStyle =  statusColor;
  }

@@ -56,16 +56,17 @@
 	UIView *goalLine;
 	TKGraphGoalLabel *goalLabel;
 	
-	BOOL showIndicator;
+	BOOL touchIndicatorEnabled;
 	TKGraphIndicator *indicator;
 	
 }
 
 @property (assign,nonatomic) id<TKGraphDataSource> dataSource;
 @property (copy,nonatomic) NSString *graphTitle;
-@property (assign,nonatomic) BOOL showIndicator;
+@property (assign,nonatomic) BOOL touchIndicatorEnabled;
 - (void) reload;
-
+- (void) moveToPoint:(NSInteger)point animated:(BOOL)animated;
+- (void) showIndicatorForPoint:(int)point;
 
 @end
 

@@ -33,26 +33,14 @@
 
 @implementation GraphController
 
-/*
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
-    }
-    return self;
-}
-*//*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
 
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	[graph moveToPoint:199 animated:YES];
+	[graph showIndicatorForPoint:199];
 }
-*/
+
 
 
 #pragma mark  TKGraph Delegate Methods
@@ -61,8 +49,8 @@
 	return @"Graph View";
 }
 - (int) numberofPointsOnGraph:(TKGraph*)graph{
-
-	return 20;
+	NSLog(@"Delegate");
+	return 200;
 }
 - (NSNumber*) graph:(TKGraph*)graph yValueForPoint:(int)x{
 	int z = (x * 20) % 3;
