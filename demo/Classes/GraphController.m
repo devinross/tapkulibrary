@@ -49,7 +49,6 @@
 	return @"Graph View";
 }
 - (int) numberofPointsOnGraph:(TKGraph*)graph{
-	NSLog(@"Delegate");
 	return 200;
 }
 - (NSNumber*) graph:(TKGraph*)graph yValueForPoint:(int)x{

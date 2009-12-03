@@ -275,7 +275,7 @@
 }
 
 
-- (id)initWithFrame:(CGRect)frame {
+- (id) initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
 
 		title = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -300,6 +300,8 @@
 		plotView = [[TKGraphPlotView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
 		plotView.backgroundColor = [UIColor clearColor];
 		[scrollView addSubview:plotView];
+		
+		goalLabel = [[TKGraphGoalLabel alloc] init];
 		
 		touchIndicatorEnabled = YES;
 		
@@ -343,7 +345,6 @@
 }
 
 - (void) loadData{
-	NSLog(@"Load data");
 	
 	if ([dataSource respondsToSelector:@selector(titleForGraph:)])
 		title.text = [dataSource titleForGraph:self];
@@ -437,18 +438,32 @@
 
 
 - (void) moveToPoint:(NSInteger)point animated:(BOOL)animated{
-	if(point > 0 || point < [data count]){
+	
+	if(point<0 || point >= [data count]) return;
+	
 
-		float x = point * pointDistance;
-		[scrollView setContentOffset:CGPointMake(x-480+pointDistance*2, 0) animated:animated];
-		[self updateGoalLabel:animated];
-		NSLog(@"SCROLLED");
+
+	float x = point * pointDistance;
+	[scrollView setContentOffset:CGPointMake(x-480+pointDistance*2, 0) animated:animated];
+	//[self updateGoalLabel:animated];
+	
+	
+	CGRect r = goalLabel.frame;
+	r.origin.x = x+25;
+	if(animated){
+		[UIView beginAnimations:NULL context:nil];
+		[UIView setAnimationDuration:.2];
+		[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
 	}
+	
+	goalLabel.frame = r;
+	if(animated)
+		[UIView commitAnimations];
+	
+		
+	
 }
 - (void) updateGoalLabel:(BOOL)animated{
-	NSLog(@"SCROLLED1");
-	//if(goalLabel==nil)return;
-	NSLog(@"SCROLLED2");
 	CGRect r = goalLabel.frame;
 	r.origin.x = scrollView.contentOffset.x + 420;
 	if(animated){
@@ -525,11 +540,11 @@
 	goalLine.frame = r;
 	[scrollView addSubview:goalLine];
 	
-	if(goalLabel==nil){
+	if(goalLabel==nil)
 		goalLabel = [[TKGraphGoalLabel alloc] init];
-		
-	}
-	r = CGRectMake(420, (int) (stageHeight   - [self valueToYCoordinate:goalValue]) - 9, 60, goalLabel.frame.size.height);
+	r = goalLabel.frame;
+	r.origin.y = (int) (stageHeight  - [self valueToYCoordinate:goalValue]) - 9;
+	//r = CGRectMake(scrollView.contentOffset.x + 420, (int) (stageHeight   - [self valueToYCoordinate:goalValue]) - 9, 60, goalLabel.frame.size.height);
 	goalLabel.frame = r;
 	goalLabel.title = @"GOAL";
 	[scrollView addSubview:goalLabel];
@@ -551,7 +566,6 @@
 
 
 - (void) showIndicatorForPoint:(int)point{
-	NSLog(@"Show point %d",point);
 	int i = point;
 	
 	if(i >= [data count])
