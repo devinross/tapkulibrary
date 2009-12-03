@@ -70,9 +70,7 @@
 }
 
 - (void) drawRect:(CGRect)rect{
-	NSLog(@"DRAW RECT");
 
-	
 	
 	[UIView drawRoundRectangleInRect:rect withRadius:4.0 color:[UIColor redColor]];
 	
@@ -342,7 +340,7 @@
 }
 
 - (void) loadData{
-	NSLog(@"Load data");
+	//NSLog(@"Load data");
 	
 	if ([dataSource respondsToSelector:@selector(titleForGraph:)])
 		title.text = [dataSource titleForGraph:self];
@@ -484,7 +482,7 @@
 
 		if(yline>268) yline = 270;
 		
-		NSLog(@"%d",yline);
+		///(@"%d",yline);
 		
 
 		[line drawAtPoint:CGPointMake(0,yline)];

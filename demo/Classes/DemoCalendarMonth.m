@@ -20,6 +20,7 @@
 // data source
 
 - (BOOL) calendarMonthView:(TKCalendarMonthView*)monthView markForDay:(NSDate*)date{
+	NSLog(@"Mark for day: %@",date);
 	return (rand() % 2 == 0) ? YES : NO;
 }
 
