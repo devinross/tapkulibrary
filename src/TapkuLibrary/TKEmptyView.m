@@ -167,7 +167,7 @@
 	float y = self.frame.size.height/2 - mask.size.height/2 - 40;
 	float x = self.bounds.size.width/2 - mask.size.width/2;
 	
-	NSLog(@"View size: %f %f %f",self.frame.size.height,mask.size.height,y);
+	//NSLog(@"View size: %f %f %f",self.frame.size.height,mask.size.height,y);
 	
 
 	

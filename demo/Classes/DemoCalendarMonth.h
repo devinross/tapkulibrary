@@ -6,7 +6,7 @@
 //  Copyright 2009 Devin Ross. All rights reserved.
 //
 
-#import "TapkuLibrary.h"
+#import <TapkuLibrary/TapkuLibrary.h>
 
 
 @interface DemoCalendarMonth : TKCalendarMonthTableViewController {

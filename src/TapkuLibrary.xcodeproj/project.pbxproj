@@ -530,6 +530,9 @@
 				GCC_PREFIX_HEADER = TapkuLibrary_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = TapkuLibrary;
+				SDKROOT = iphonesimulator3.0;
+				SKIP_INSTALL = YES;
+				ZERO_LINK = NO;
 			};
 			name = Debug;
 		};
@@ -544,6 +547,9 @@
 				GCC_PREFIX_HEADER = TapkuLibrary_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = TapkuLibrary;
+				SDKROOT = iphonesimulator3.0;
+				SKIP_INSTALL = YES;
+				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -555,12 +561,14 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
 				);
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.1.2;
+				SDKROOT = "";
+				VALID_ARCHS = i386;
 			};
 			name = Debug;
 		};
@@ -571,12 +579,14 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
 				);
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.1.2;
+				SDKROOT = "";
+				VALID_ARCHS = i386;
 			};
 			name = Release;
 		};

@@ -30,7 +30,7 @@
  */
 
 
-#import "TapkuLibrary.h"
+#import <TapkuLibrary/TapkuLibrary.h>
 
 
 @protocol TKMapViewDelegate;

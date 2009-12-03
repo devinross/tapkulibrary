@@ -86,7 +86,6 @@
 @end
 
 
-
 @interface TKCalendarMonthView (PrivateMethods)
 - (void) loadButtons;
 - (void) loadInitialGrids;
@@ -306,9 +305,6 @@
 // private animate to next/prev month
 - (void) moveCalendarAnimated:(BOOL)animated upwards:(BOOL)up{
 	
-	
-	
-	
 	[self setUserInteractionEnabled:NO];
 	UIView *prev = [deck objectAtIndex:0];
 	UIView *current = [deck objectAtIndex:1];
@@ -402,8 +398,8 @@
 	
 	if (animated) {	
 		[UIView beginAnimations:nil context:NULL];
-		[UIView setAnimationDuration:0.4];
-		[UIView setAnimationDelay:0.1];
+		[UIView setAnimationDuration:0.3];
+		[UIView setAnimationDelay:1];
 		[UIView setAnimationDelegate:self];
 		[UIView setAnimationDidStopSelector:@selector(animationStopped:)];
 	} else {
@@ -758,8 +754,8 @@
 		weekdayOfFirst = [dateOfFirst weekdayWithMondayFirst];
 		
 		todayNumber = todayDay;
-		self.marks = [marksArray retain];
-		
+		//self.marks = [marksArray retain];
+		self.marks = [[marksArray retain] autorelease];
 		
 		[self buildGrid];
 		self.backgroundColor = [UIColor clearColor];

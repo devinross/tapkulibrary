@@ -30,7 +30,7 @@
  */
 
 
-#import "TapkuLibrary.h"
+#import <TapkuLibrary/TapkuLibrary.h>
 
 @interface HUDViewController : UIViewController {
 	LoadingHUDView *loading;
