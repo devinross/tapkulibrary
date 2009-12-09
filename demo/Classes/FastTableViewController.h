@@ -33,7 +33,7 @@
 #import <TapkuLibrary/TapkuLibrary.h>
 
 @interface FastTableViewController : UITableViewController {
-	NSMutableArray *cells;
+	//NSMutableArray *cells;
 }
 
 @end

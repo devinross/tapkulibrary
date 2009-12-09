@@ -31,9 +31,24 @@
 
 
 #import <TapkuLibrary/TapkuLibrary.h>
+@class GraphPoint;
 
 @interface GraphController : TKGraphController {
-
+	
+	UIActivityIndicatorView *indicator;
+	
+	NSMutableArray *data;
 }
+
+@end
+
+
+
+@interface GraphPoint : NSObject <TKGraphViewPoint> {
+	int pk;
+	NSNumber *value;
+}
+
+- (id) initWithID:(int)pk value:(NSNumber*)number;
 
 @end

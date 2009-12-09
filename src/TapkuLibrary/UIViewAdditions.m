@@ -1,11 +1,33 @@
 //
 //  UIViewAdditions.m
-//  TapkuLibrary
-//
 //  Created by Devin Ross on 7/25/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
-
+/*
+ 
+ tapku.com || http://github.com/devinross/tapkulibrary
+ 
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without
+ restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following
+ conditions:
+ 
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+ 
+ */
 #import "UIViewAdditions.h"
 
 
@@ -71,26 +93,6 @@ CGFloat demoRGInnerRadius(CGRect bounds)
 
 
 
-+ (void) drawLineInRect:(CGRect)rect colors:(CGFloat[])colors {
-	
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	
-	CGContextSaveGState(context);
-	
-	CGContextSetRGBStrokeColor(context, colors[0], colors[1], colors[2], colors[3]);
-	
-	CGContextSetLineWidth(context, 1);
-	CGContextMoveToPoint(context, rect.origin.x, rect.origin.y);
-	CGContextAddLineToPoint(context,rect.size.width, rect.size.height);
-	CGContextStrokePath(context);
-	
-	
-	CGContextRestoreGState(context);
-	
-	
-}
-
-
 + (void) drawRoundRectangleInRect:(CGRect)rect withRadius:(CGFloat)radius color:(UIColor*)color{
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	[color set];
@@ -107,6 +109,43 @@ CGFloat demoRGInnerRadius(CGRect bounds)
 	CGContextClosePath(context);
 	CGContextDrawPath(context, kCGPathFill);
 }
+
+
+
+
++ (void) drawLineInRect:(CGRect)rect colors:(CGFloat[])colors {
+	
+	[UIView drawLineInRect:rect colors:colors width:1 cap:kCGLineCapButt];
+	
+}
++ (void) drawLineInRect:(CGRect)rect red:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha{
+	CGFloat colors[4];
+	colors[0] = red;
+	colors[1] = green;
+	colors[2] = blue;
+	colors[3] = alpha;
+	[UIView drawLineInRect:rect colors:colors];
+}
++ (void) drawLineInRect:(CGRect)rect colors:(CGFloat[])colors width:(CGFloat)lineWidth cap:(CGLineCap)cap{
+	
+	
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	CGContextSaveGState(context);
+	
+	
+	CGContextSetRGBStrokeColor(context, colors[0], colors[1], colors[2], colors[3]);
+	CGContextSetLineCap(context,cap);
+	CGContextSetLineWidth(context, lineWidth);
+
+	CGContextMoveToPoint(context, rect.origin.x, rect.origin.y);
+	CGContextAddLineToPoint(context,rect.origin.x+rect.size.width, rect.origin.y+rect.size.height);
+	CGContextStrokePath(context);
+	
+	
+	CGContextRestoreGState(context);
+	
+}
+
 
 
 @end

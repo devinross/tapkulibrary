@@ -4,7 +4,7 @@
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || http://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -30,16 +30,16 @@
  */
 
 
-#import "TKGraph.h"
-@class TKGraph;
-@protocol TKGraphDataSource;
+#import "TKGraphView.h"
+@class TKGraphView;
+//@protocol TKGraphDataSource;
 
 
 
-@interface TKGraphController : UIViewController  <TKGraphDataSource>  {
+@interface TKGraphController : UIViewController    {
 	UIButton *close;
-	TKGraph *graph;
+	TKGraphView *graph;
 	UIStatusBarStyle statusColor;
 }
-@property (nonatomic,retain) TKGraph *graph;
+@property (nonatomic,retain) TKGraphView *graph;
 @end

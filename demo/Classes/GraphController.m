@@ -31,57 +31,90 @@
 #import "GraphController.h"
 
 
+
+@implementation GraphPoint
+
+- (id) initWithID:(int)pkv value:(NSNumber*)number{
+	if(self = [super init]){
+		pk = pkv;
+		value = [number retain];
+	}
+	return self;
+	
+}
+
+- (NSNumber*) yValue{
+	return value;
+}
+- (NSString*) xLabel{
+	return [NSString stringWithFormat:@"%d",pk];
+}
+- (NSString*) yLabel{
+	return [NSString stringWithFormat:@"%d",[value intValue]];
+}
+
+
+@end
+
 @implementation GraphController
 
 
+- (void)viewDidLoad{
+	[super viewDidLoad];
+	
+	graph.title.text = @"Graph View";
+	[graph setPointDistance:15];
+	
+	graph.goalValue = [NSNumber numberWithFloat:5000];
+	
+	indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+	CGRect r = indicator.frame;
+	r.origin = self.view.bounds.origin;
+	r.origin.x = self.view.bounds.size.width / 2  - r.size.width / 2;
+	r.origin.y = self.view.bounds.size.height / 2  - r.size.height / 2;
+	indicator.frame = r;
+	[self.view addSubview:indicator];
+	[indicator startAnimating];
+	
+	data = [[NSMutableArray alloc] init];
+	
+	
 
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-	[graph moveToPoint:199 animated:YES];
-	[graph showIndicatorForPoint:199];
+	[NSThread detachNewThreadSelector:@selector(thread) toTarget:self withObject:nil];
+
+	
+	
+}
+
+- (void) thread{
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	
+	for(int i=0;i<600;i++){
+		int no = i%4==0 ? 10*i : 10 * i + 900;
+		no = no % 3 == 0 ? abs(600 - no) : no;
+		no = (no > 800) ? 3000 - no : no; 
+		
+		GraphPoint *gp = [[GraphPoint alloc] initWithID:i value:[NSNumber numberWithFloat:no]];
+		[data addObject:gp];
+		[gp release];
+	}
+	
+	[self performSelectorOnMainThread:@selector(threadComplete) withObject:nil waitUntilDone:NO];
+	
+	[pool drain];
+}
+- (void) threadComplete{
+	[indicator stopAnimating];
+	
+	[self.graph setGraphWithDataPoints:data];
+	self.graph.goalValue = [NSNumber numberWithFloat:5.0];
+	self.graph.goalShown = YES;
+	[self.graph scrollToPoint:80 animated:YES];
+	[self.graph showIndicatorForPoint:75];
 }
 
 
 
-#pragma mark  TKGraph Delegate Methods
-
-- (NSString*) titleForGraph:(TKGraph*)graph{
-	return @"Graph View";
-}
-- (int) numberofPointsOnGraph:(TKGraph*)graph{
-	return 200;
-}
-- (NSNumber*) graph:(TKGraph*)graph yValueForPoint:(int)x{
-	int z = (x * 20) % 3;
-	return [NSNumber numberWithDouble:20.0*x - (z * (x-4) )];
-}
-- (NSString*) graph:(TKGraph*)graph xLabelForPoint:(int)x{
-
-	return [NSString stringWithFormat:@"%d",x];
-}
-- (NSString*) graph:(TKGraph*)graph yLabelForValue:(float)value{
-
-	int v = value;
-	return [NSString stringWithFormat:@"%d",v];
-}
-- (NSNumber*) goalValueForGraph:(TKGraph*)graph{
-	return [NSNumber numberWithDouble:270.0];
-}
-
-
-- (NSString*) graph:(TKGraph*)graph titleForIndicatorAtXPoint:(NSInteger)x{
-	int z = (x * 20) % 3;
-	z = 20.0*x - (z * (x-4));
-	return [NSString stringWithFormat:@"%d",z];
-}
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -93,6 +126,8 @@
 	// e.g. self.myOutlet = nil;
 }
 - (void)dealloc {
+	[data release];
+	[indicator release];
     [super dealloc];
 }
 

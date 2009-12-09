@@ -4,7 +4,7 @@
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || http://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -85,10 +85,8 @@
 	};
 	[UIView drawLinearGradientInRect:CGRectMake(0, 65, 320, 5) colors:colors2];
 	
-	CGFloat line[]={
-		94 / 255.0,  103 / 255.0, 109 / 255.0, 1.00
-	};
-	[UIView drawLineInRect:CGRectMake(0, 64.5, 320, 64.5) colors:line];
+	CGFloat line[]={94 / 255.0,  103 / 255.0, 109 / 255.0, 1.00};
+	[UIView drawLineInRect:CGRectMake(0, 64.5, 320, 0) colors:line];
 
 }
 - (void)dealloc {

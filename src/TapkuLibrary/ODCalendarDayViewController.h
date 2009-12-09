@@ -1,11 +1,9 @@
 //
 //  ODCalendarDayViewController.h
-//  TapkuLibrary
-//
 //  Created by Anthony Mittaz on 19/10/09.
 /*
  
- sync at me dot com || http://github.com/sync/tapkulibrary/
+ tapku.com || http://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation

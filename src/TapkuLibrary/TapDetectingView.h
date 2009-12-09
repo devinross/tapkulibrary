@@ -1,4 +1,3 @@
-
 /*
      File: TapDetectingView.h
  Abstract: UIView subclass that responds to taps and notifies its delegate.

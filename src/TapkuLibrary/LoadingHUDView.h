@@ -4,7 +4,7 @@
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || http://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -41,8 +41,8 @@
 }
 
 
-- (id) initWithTitle:(NSString*)ttl message:(NSString*)msg;
-- (id) initWithTitle:(NSString*)ttl;
+- (id) initWithTitle:(NSString*)title message:(NSString*)message;
+- (id) initWithTitle:(NSString*)title;
 
 
 - (void) startAnimating;

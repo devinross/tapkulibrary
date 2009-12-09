@@ -4,7 +4,7 @@
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || http://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -28,7 +28,6 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
-
 
 #import "TKCalendarMonthView.h"
 

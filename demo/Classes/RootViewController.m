@@ -37,7 +37,7 @@
 	[data addObject:d];
 	
 	rows = [NSArray arrayWithObjects:@"Label Cells",@"Fast Scrolling Cells",nil];
-	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"TableView Cells",@"title",nil];
+	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Cells",@"title",nil];
 	[data addObject:d];
 	
 	rows = [NSArray arrayWithObjects:@"Place Pin MapView",@"Loading HUD",nil];

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B3991F010CED8FD00B8FF4F /* TKGraphView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B3991EE10CED8FD00B8FF4F /* TKGraphView.h */; };
+		3B3991F110CED8FD00B8FF4F /* TKGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3991EF10CED8FD00B8FF4F /* TKGraphView.m */; };
 		3B879FC6109BFC07002012FD /* TKCalendarMonthTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B879FC4109BFC07002012FD /* TKCalendarMonthTableViewController.h */; };
 		3B879FC7109BFC07002012FD /* TKCalendarMonthTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B879FC5109BFC07002012FD /* TKCalendarMonthTableViewController.m */; };
 		3BAC995A10953DF400F235F1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995510953DF400F235F1 /* SystemConfiguration.framework */; };
@@ -71,8 +73,6 @@
 		3BAC9A7F10953E5200F235F1 /* TKOverviewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A4C10953E5200F235F1 /* TKOverviewTableViewController.m */; };
 		3BAC9A8010953E5200F235F1 /* TKEmptyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A4E10953E5200F235F1 /* TKEmptyView.h */; };
 		3BAC9A8110953E5200F235F1 /* TKEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A4F10953E5200F235F1 /* TKEmptyView.m */; };
-		3BAC9A8210953E5200F235F1 /* TKGraph.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A5110953E5200F235F1 /* TKGraph.h */; };
-		3BAC9A8310953E5200F235F1 /* TKGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A5210953E5200F235F1 /* TKGraph.m */; };
 		3BAC9A8410953E5200F235F1 /* TKGraphController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A5310953E5200F235F1 /* TKGraphController.h */; };
 		3BAC9A8510953E5200F235F1 /* TKGraphController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A5410953E5200F235F1 /* TKGraphController.m */; };
 		3BEAE0901096C61A00A0A372 /* TKShakeWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BEAE08E1096C61A00A0A372 /* TKShakeWindow.h */; };
@@ -84,6 +84,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B3991EE10CED8FD00B8FF4F /* TKGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKGraphView.h; sourceTree = "<group>"; };
+		3B3991EF10CED8FD00B8FF4F /* TKGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKGraphView.m; sourceTree = "<group>"; };
 		3B879FC4109BFC07002012FD /* TKCalendarMonthTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCalendarMonthTableViewController.h; sourceTree = "<group>"; };
 		3B879FC5109BFC07002012FD /* TKCalendarMonthTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCalendarMonthTableViewController.m; sourceTree = "<group>"; };
 		3BAC995510953DF400F235F1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -148,8 +150,6 @@
 		3BAC9A4C10953E5200F235F1 /* TKOverviewTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKOverviewTableViewController.m; sourceTree = "<group>"; };
 		3BAC9A4E10953E5200F235F1 /* TKEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKEmptyView.h; sourceTree = "<group>"; };
 		3BAC9A4F10953E5200F235F1 /* TKEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKEmptyView.m; sourceTree = "<group>"; };
-		3BAC9A5110953E5200F235F1 /* TKGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKGraph.h; sourceTree = "<group>"; };
-		3BAC9A5210953E5200F235F1 /* TKGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKGraph.m; sourceTree = "<group>"; };
 		3BAC9A5310953E5200F235F1 /* TKGraphController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKGraphController.h; sourceTree = "<group>"; };
 		3BAC9A5410953E5200F235F1 /* TKGraphController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKGraphController.m; sourceTree = "<group>"; };
 		3BEAE08E1096C61A00A0A372 /* TKShakeWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKShakeWindow.h; sourceTree = "<group>"; };
@@ -369,8 +369,8 @@
 			children = (
 				3BAC9A5310953E5200F235F1 /* TKGraphController.h */,
 				3BAC9A5410953E5200F235F1 /* TKGraphController.m */,
-				3BAC9A5110953E5200F235F1 /* TKGraph.h */,
-				3BAC9A5210953E5200F235F1 /* TKGraph.m */,
+				3B3991EE10CED8FD00B8FF4F /* TKGraphView.h */,
+				3B3991EF10CED8FD00B8FF4F /* TKGraphView.m */,
 			);
 			name = Graph;
 			sourceTree = "<group>";
@@ -425,11 +425,11 @@
 				3BAC9A7C10953E5200F235F1 /* TKOverviewIndicatorView.h in Headers */,
 				3BAC9A7E10953E5200F235F1 /* TKOverviewTableViewController.h in Headers */,
 				3BAC9A8010953E5200F235F1 /* TKEmptyView.h in Headers */,
-				3BAC9A8210953E5200F235F1 /* TKGraph.h in Headers */,
 				3BAC9A8410953E5200F235F1 /* TKGraphController.h in Headers */,
 				3BF000FE10957EE50062DA49 /* NSStringAdditions.h in Headers */,
 				3BEAE0901096C61A00A0A372 /* TKShakeWindow.h in Headers */,
 				3B879FC6109BFC07002012FD /* TKCalendarMonthTableViewController.h in Headers */,
+				3B3991F010CED8FD00B8FF4F /* TKGraphView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,11 +504,11 @@
 				3BAC9A7D10953E5200F235F1 /* TKOverviewIndicatorView.m in Sources */,
 				3BAC9A7F10953E5200F235F1 /* TKOverviewTableViewController.m in Sources */,
 				3BAC9A8110953E5200F235F1 /* TKEmptyView.m in Sources */,
-				3BAC9A8310953E5200F235F1 /* TKGraph.m in Sources */,
 				3BAC9A8510953E5200F235F1 /* TKGraphController.m in Sources */,
 				3BF000FF10957EE50062DA49 /* NSStringAdditions.m in Sources */,
 				3BEAE0911096C61A00A0A372 /* TKShakeWindow.m in Sources */,
 				3B879FC7109BFC07002012FD /* TKCalendarMonthTableViewController.m in Sources */,
+				3B3991F110CED8FD00B8FF4F /* TKGraphView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

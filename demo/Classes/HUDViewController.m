@@ -45,13 +45,19 @@
 	loading  = [[LoadingHUDView alloc] initWithTitle:@"Loading" message:@"Description Here"];
 	[self.view addSubview:loading];
 	[loading startAnimating];
-	loading.center = CGPointMake(self.view.bounds.size.width/2, 150);
+	loading.center = CGPointMake(self.view.bounds.size.width/2, 105);
 	
 	
 	loading2  = [[LoadingHUDView alloc] initWithTitle:@"Loading"];
 	[self.view addSubview:loading2];
 	[loading2 startAnimating];
-	loading2.center = CGPointMake(self.view.bounds.size.width/2, 300);
+	loading2.center = CGPointMake(self.view.bounds.size.width/2, 215);
+	
+	
+	loading3  = [[LoadingHUDView alloc] initWithTitle:@"Lorem ipsum dolor sit amet" message:@"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec lectus quam, ac consectetur mauris. Donec est leo, hendrerit et tincidunt vel, pulvinar ut risus. Duis vulputate tincidunt erat. "];
+	[self.view addSubview:loading3];
+	[loading3 startAnimating];
+	loading3.center = CGPointMake(self.view.bounds.size.width/2, 310);
 }
 
 

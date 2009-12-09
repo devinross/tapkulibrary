@@ -4,7 +4,7 @@
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || http://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -36,25 +36,11 @@
 @implementation TKGraphController
 @synthesize graph;
 
-- (id) init{
-	if(self == [super init]){
-		
-	}
-	return self;
-}
-
 
 - (void) loadView{
-	NSLog(@"LoadView");
-	graph = [[TKGraph alloc] initWithFrame:CGRectMake(0, 0, 480, 300)];
-	graph.dataSource = self;
-	graph.backgroundColor = [UIColor whiteColor];
-	
+	graph = [[TKGraphView alloc] initWithFrame:CGRectMake(0, 0, 480, 300)];
 	self.view = graph;
-
-
 }
-
 
 - (void)viewDidLoad {
     
@@ -77,7 +63,6 @@
  
 }
 
-
 - (void)viewWillAppear:(BOOL)animated {
 	 [super viewWillAppear:animated];
 	 statusColor = [UIApplication sharedApplication].statusBarStyle;
@@ -89,36 +74,15 @@
  }
 
 
-
 - (void) close{
 	[self dismissModalViewControllerAnimated:YES];
 }
-
-#pragma mark  TKGraph Delegate Methods
-
-- (NSString*) titleForGraph:(TKGraph*)graph{
-	return nil;
-}
-- (NSInteger) numberofPointsOnGraph:(TKGraph*)graph{
-	return 0;
-}
-- (NSNumber*) graph:(TKGraph*)graph yValueForPoint:(int)x{
-	return [NSNumber numberWithInt:0];
-}
-- (NSString*) graph:(TKGraph*)graph xLabelForPoint:(int)x{
-	return nil;
-}
-- (NSString*) graph:(TKGraph*)graph yLabelForValue:(float)value{
-	return nil;
-}
-
 
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
-
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -130,7 +94,8 @@
 	// e.g. self.myOutlet = nil;
 }
 - (void)dealloc {
-    [super dealloc];
+	[graph release];
+	[super dealloc];
 }
 
 

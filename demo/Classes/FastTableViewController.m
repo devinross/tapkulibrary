@@ -40,20 +40,9 @@
     [super viewDidLoad];
 	
 	self.title = @"Fast Scroll";
-	static NSString *CellIdentifier = @"Cell";
-	cells = [[NSMutableArray alloc] init];
+
 	
-	
-	
-	for(int i=0;i<20;i++){
-		FSIndicatorCell *cell1 = [[FSIndicatorCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier];
-		cell1.text = @"Indicator Cell";
-		cell1.count = i;
-		cell1.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		[cells addObject:cell1];
-		[cell1 release];
-	}
-	
+
 	self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
@@ -67,11 +56,20 @@
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [cells count];
+    return 200;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-	return [cells objectAtIndex:indexPath.row];
+	
+	FSIndicatorCell *cell;
+	cell = (FSIndicatorCell*)[tableView dequeueReusableCellWithIdentifier:@"Fast"];
+	if(cell==nil) cell = [[[FSIndicatorCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"Fast"] autorelease];
+	
+	cell.text = @"Indicator Cell";
+	cell.count = indexPath.row + 12345;
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
+	return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Navigation logic may go here. Create and push another view controller.

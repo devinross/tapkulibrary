@@ -4,7 +4,7 @@
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || http://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -30,37 +30,36 @@
  */
 #import "LoadingHUDView.h"
 #import "NSStringAdditions.h"
+#import "UIViewAdditions.h"
+
+
+#define WIDTH_MARGIN 20
+#define HEIGHT_MARGIN 20
+
 
 @implementation LoadingHUDView
 
 
 
 - (id) initWithTitle:(NSString*)ttl message:(NSString*)msg{
-	if(self = [self init]){
-		self.title = ttl;
-		self.message=msg;
+	if(self = [super initWithFrame:CGRectMake(0, 0, 280, 200)]){
+		
+		_title = [ttl copy];
+		_message = [msg copy];
+		_activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+		[self addSubview:_activity];
+		_hidden = YES;
+		self.backgroundColor = [UIColor clearColor];
 		
 	}
 	return self;
 }
 - (id) initWithTitle:(NSString*)ttl{
-	if(self = [self initWithTitle:ttl message:nil]){
-		
-	}
+	if(![self initWithTitle:ttl message:nil]) return nil;
 	return self;	
 }
 
-- (id) init{
-	if (self = [super initWithFrame:CGRectMake(0, 0, 280, 100)]) {
-		
-		_activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-		[self addSubview:_activity];
-		self.backgroundColor = [UIColor clearColor];
-		_hidden = YES;
-		
-    }
-    return self;
-}
+
 
 - (void) startAnimating{
 	if(!_hidden) return;
@@ -94,87 +93,53 @@
 	self.frame = r;
 }
 
-- (void) drawRoundedRect:(CGRect)rrect radius:(CGFloat)radius{
-	
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	CGFloat minx = CGRectGetMinX(rrect), midx = CGRectGetMidX(rrect), maxx = CGRectGetMaxX(rrect);
-	CGFloat miny = CGRectGetMinY(rrect), midy = CGRectGetMidY(rrect), maxy = CGRectGetMaxY(rrect);
-	CGContextMoveToPoint(context, minx, midy);
-	CGContextAddArcToPoint(context, minx, miny, midx, miny, radius);
-	CGContextAddArcToPoint(context, maxx, miny, maxx, midy, radius);
-	CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, radius);
-	CGContextAddArcToPoint(context, minx, maxy, minx, midy, radius);
-	CGContextClosePath(context);
-	CGContextDrawPath(context, kCGPathFill);
-	
-	
-}
+
 - (void) drawRect:(CGRect)rect {
 	
 	if(_hidden) return;
+	int width, rWidth, rHeight, x;
 	
 	
 	UIFont *titleFont = [UIFont boldSystemFontOfSize:16];
 	UIFont *messageFont = [UIFont systemFontOfSize:12];
 	
-	
-	
 	CGSize s1 = [self calculateHeightOfTextFromWidth:_title font:titleFont width:200 linebreak:UILineBreakModeTailTruncation];
 	CGSize s2 = [self calculateHeightOfTextFromWidth:_message font:messageFont width:200 linebreak:UILineBreakModeCharacterWrap];
 	
-	if([_title length] < 1)
-		s1.height = 0;
-	if([_message length] < 1)
-		s2.height = 0;
+	if([_title length] < 1) s1.height = 0;
+	if([_message length] < 1) s2.height = 0;
 	
 	
-	float h = s1.height + s2.height + 16;
-	float w = s1.width;
-	if(s2.width > s1.width) w = s2.width;
-	w += 80;
-	float x = 140 - (w / 2);
+	rHeight = (s1.height + s2.height + (HEIGHT_MARGIN*2) + 10 + _activity.frame.size.height);
+	rWidth = width = (s2.width > s1.width) ? (int) s2.width : (int) s1.width;
+	rWidth += WIDTH_MARGIN * 2;
+	x = (280 - rWidth) / 2;
 	
-	CGPoint c = _activity.center;
-	c.y = h / 2;
-	c.x = x + 30;
-	_activity.center = c;
+	_activity.center = CGPointMake(280/2,HEIGHT_MARGIN + _activity.frame.size.height/2);
 	
 	
-
+	//NSLog(@"DRAW RECT %d %f",rHeight,self.frame.size.height);
+	
+	// DRAW ROUNDED RECTANGLE
 	[[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9] set];
-	CGRect rrect = CGRectMake((int)x, 0, (int)w,(int)h);
-	[self drawRoundedRect:rrect radius:5.0];
+	CGRect r = CGRectMake(x, 0, rWidth,rHeight);
+	[UIView drawRoundRectangleInRect:r 
+						  withRadius:5.0 
+							   color:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
 	
 
-	
+	// DRAW FIRST TEXT
 	[[UIColor whiteColor] set];
-	
-	float base = x+ 48;
-	float rest =  (w - 48) / 2 - ( s1.width / 2);
-	CGRect r = CGRectMake((int) (base+rest) , 8, (int)s1.width, (int)s1.height);
-	
-	CGSize s = [_title drawInRect:r 
-						 withFont:titleFont 
-					lineBreakMode:UILineBreakModeTailTruncation 
-						alignment:UITextAlignmentCenter];
+	r = CGRectMake(x+WIDTH_MARGIN, _activity.frame.size.height + 10 + HEIGHT_MARGIN, width, s1.height);
+	CGSize s = [_title drawInRect:r withFont:titleFont lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];
 
 	
-
+	// DRAW SECOND TEXT
 	r.origin.y += s.height;
-	r.size.width = s2.width;
 	r.size.height = s2.height;
+	[_message drawInRect:r withFont:messageFont lineBreakMode:UILineBreakModeCharacterWrap alignment:UITextAlignmentCenter];
 	
-	base = x+ 50;
-	rest = (w - 50) / 2 - ( s2.width / 2);
-	r.origin.x = (int) (base + rest);
 	
-	[_message drawInRect:r 
-				withFont:messageFont
-		   lineBreakMode:UILineBreakModeCharacterWrap 
-			   alignment:UITextAlignmentCenter];
-	
-	CGContextFlush(UIGraphicsGetCurrentContext());
-
 	
 }
 
@@ -182,23 +147,47 @@
 
 
 - (void) setTitle:(NSString*)str{
+	[_title release];
 	_title = [str copy];
-	//[self adjustHeight];
+	//[self updateHeight];
 	[self setNeedsDisplay];
 }
 - (NSString*) title{
 	return _title;
 }
 - (void) setMessage:(NSString*)str{
+	[_message release];
 	_message = [str copy];
-	//[self adjustHeight];
 	[self setNeedsDisplay];
 }
 - (NSString*) message{
 	return _message;
 }
 
-
+- (void) updateHeight{
+	
+	UIFont *titleFont = [UIFont boldSystemFontOfSize:16];
+	UIFont *messageFont = [UIFont systemFontOfSize:12];
+	
+	CGSize s1 = [self calculateHeightOfTextFromWidth:_title font:titleFont width:200 linebreak:UILineBreakModeTailTruncation];
+	CGSize s2 = [self calculateHeightOfTextFromWidth:_message font:messageFont width:200 linebreak:UILineBreakModeCharacterWrap];
+	
+	if([_title length] < 1) s1.height = 0;
+	if([_message length] < 1) s2.height = 0;
+	
+	
+	int rHeight = s1.height + s2.height + (HEIGHT_MARGIN*2) + 10 + _activity.frame.size.height;
+	
+	NSLog(@"UPDATE: %d %f",rHeight,self.frame.size.height);
+	
+	CGRect orect = self.bounds;
+	orect.size.height = rHeight;
+	self.bounds = orect;
+	
+	[self setNeedsDisplay];
+	
+	
+}
 
 - (void)dealloc {
 	[_activity release];

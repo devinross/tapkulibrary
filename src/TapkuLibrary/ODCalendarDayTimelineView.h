@@ -5,7 +5,7 @@
 //  Created by Anthony Mittaz on 18/10/09.
 /*
  
- sync at me dot com || http://github.com/sync/tapkulibrary/
+ tapku.com || http://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -28,7 +28,7 @@
  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  OTHER DEALINGS IN THE SOFTWARE.
  
- */
+*/
 
 #import <UIKit/UIKit.h>
 #import "ODCalendarDayEventView.h"

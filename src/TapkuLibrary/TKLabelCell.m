@@ -3,8 +3,8 @@
 //  Created by Devin Ross on 7/1/09.
 //
 /*
-
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ 
+ tapku.com || http://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
