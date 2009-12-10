@@ -28,7 +28,7 @@
 	NSArray *rows;
 	NSDictionary *d;
 	
-	rows = [NSArray arrayWithObjects:@"Graph View",@"Empty View",@"Overview TableView",nil];
+	rows = [NSArray arrayWithObjects:@"Graph View",@"Empty View",@"Overview TableView",@"Loading HUD",@"Map Pins",nil];
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Views",@"title",nil];
 	[data addObject:d];
 	
@@ -40,9 +40,6 @@
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Cells",@"title",nil];
 	[data addObject:d];
 	
-	rows = [NSArray arrayWithObjects:@"Place Pin MapView",@"Loading HUD",nil];
-	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Extra",@"title",nil];
-	[data addObject:d];
 	
 }
 
@@ -95,9 +92,9 @@
 		vc = [[LabelViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	else if(indexPath.section==2 && indexPath.row==1)
 		vc = [[FastTableViewController alloc] initWithStyle:UITableViewStylePlain];
-	else if(indexPath.section==3 && indexPath.row==0)
+	else if(indexPath.section==0 && indexPath.row==4)
 		vc = [[MapViewController alloc] init];
-	else if(indexPath.section==3 && indexPath.row==1)
+	else if(indexPath.section==0 && indexPath.row==3)
 		vc = [[HUDViewController alloc] init];
 	
 	[self.navigationController pushViewController:vc animated:YES];

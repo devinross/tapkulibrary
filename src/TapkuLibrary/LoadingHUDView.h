@@ -30,8 +30,6 @@
  */
 
 
-
-
 @interface LoadingHUDView : UIView {
 	UIActivityIndicatorView *_activity;
 	BOOL _hidden;
@@ -39,19 +37,14 @@
 	NSString *_title;
 	NSString *_message;
 }
-
+@property (copy,nonatomic) NSString *title;
+@property (copy,nonatomic) NSString *message;
 
 - (id) initWithTitle:(NSString*)title message:(NSString*)message;
 - (id) initWithTitle:(NSString*)title;
 
-
 - (void) startAnimating;
 - (void) stopAnimating;
-
-@property (copy,nonatomic) NSString *title;
-@property (copy,nonatomic) NSString *message;
-
-
 
 
 @end

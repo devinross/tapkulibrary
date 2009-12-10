@@ -36,9 +36,12 @@
 #define WIDTH_MARGIN 20
 #define HEIGHT_MARGIN 20
 
+@interface LoadingHUDView (PrivateMethods)
+- (CGSize) calculateHeightOfTextFromWidth:(NSString*)text font: (UIFont*)withFont width:(float)width linebreak:(UILineBreakMode)lineBreakMode;
+@end
+
 
 @implementation LoadingHUDView
-
 
 
 - (id) initWithTitle:(NSString*)ttl message:(NSString*)msg{
@@ -59,7 +62,74 @@
 	return self;	
 }
 
+- (void) drawRect:(CGRect)rect {
+	
+	if(_hidden) return;
+	int width, rWidth, rHeight, x;
+	
+	
+	UIFont *titleFont = [UIFont boldSystemFontOfSize:16];
+	UIFont *messageFont = [UIFont systemFontOfSize:12];
+	
+	CGSize s1 = [self calculateHeightOfTextFromWidth:_title font:titleFont width:200 linebreak:UILineBreakModeTailTruncation];
+	CGSize s2 = [self calculateHeightOfTextFromWidth:_message font:messageFont width:200 linebreak:UILineBreakModeCharacterWrap];
+	
+	if([_title length] < 1) s1.height = 0;
+	if([_message length] < 1) s2.height = 0;
+	
+	
+	rHeight = (s1.height + s2.height + (HEIGHT_MARGIN*2) + 10 + _activity.frame.size.height);
+	rWidth = width = (s2.width > s1.width) ? (int) s2.width : (int) s1.width;
+	rWidth += WIDTH_MARGIN * 2;
+	x = (280 - rWidth) / 2;
+	
+	_activity.center = CGPointMake(280/2,HEIGHT_MARGIN + _activity.frame.size.height/2);
+	
+	
+	//NSLog(@"DRAW RECT %d %f",rHeight,self.frame.size.height);
+	
+	// DRAW ROUNDED RECTANGLE
+	[[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9] set];
+	CGRect r = CGRectMake(x, 0, rWidth,rHeight);
+	[UIView drawRoundRectangleInRect:r 
+						  withRadius:5.0 
+							   color:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.75]];
+	
+	
+	// DRAW FIRST TEXT
+	[[UIColor whiteColor] set];
+	r = CGRectMake(x+WIDTH_MARGIN, _activity.frame.size.height + 10 + HEIGHT_MARGIN, width, s1.height);
+	CGSize s = [_title drawInRect:r withFont:titleFont lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];
+	
+	
+	// DRAW SECOND TEXT
+	r.origin.y += s.height;
+	r.size.height = s2.height;
+	[_message drawInRect:r withFont:messageFont lineBreakMode:UILineBreakModeCharacterWrap alignment:UITextAlignmentCenter];
+	
+	
+	
+}
 
+
+- (void) setTitle:(NSString*)str{
+	[_title release];
+	_title = [str copy];
+	//[self updateHeight];
+	[self setNeedsDisplay];
+}
+- (NSString*) title{
+	return _title;
+}
+
+- (void) setMessage:(NSString*)str{
+	[_message release];
+	_message = [str copy];
+	[self setNeedsDisplay];
+}
+- (NSString*) message{
+	return _message;
+}
 
 - (void) startAnimating{
 	if(!_hidden) return;
@@ -94,105 +164,9 @@
 }
 
 
-- (void) drawRect:(CGRect)rect {
-	
-	if(_hidden) return;
-	int width, rWidth, rHeight, x;
-	
-	
-	UIFont *titleFont = [UIFont boldSystemFontOfSize:16];
-	UIFont *messageFont = [UIFont systemFontOfSize:12];
-	
-	CGSize s1 = [self calculateHeightOfTextFromWidth:_title font:titleFont width:200 linebreak:UILineBreakModeTailTruncation];
-	CGSize s2 = [self calculateHeightOfTextFromWidth:_message font:messageFont width:200 linebreak:UILineBreakModeCharacterWrap];
-	
-	if([_title length] < 1) s1.height = 0;
-	if([_message length] < 1) s2.height = 0;
-	
-	
-	rHeight = (s1.height + s2.height + (HEIGHT_MARGIN*2) + 10 + _activity.frame.size.height);
-	rWidth = width = (s2.width > s1.width) ? (int) s2.width : (int) s1.width;
-	rWidth += WIDTH_MARGIN * 2;
-	x = (280 - rWidth) / 2;
-	
-	_activity.center = CGPointMake(280/2,HEIGHT_MARGIN + _activity.frame.size.height/2);
-	
-	
-	//NSLog(@"DRAW RECT %d %f",rHeight,self.frame.size.height);
-	
-	// DRAW ROUNDED RECTANGLE
-	[[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9] set];
-	CGRect r = CGRectMake(x, 0, rWidth,rHeight);
-	[UIView drawRoundRectangleInRect:r 
-						  withRadius:5.0 
-							   color:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
-	
-
-	// DRAW FIRST TEXT
-	[[UIColor whiteColor] set];
-	r = CGRectMake(x+WIDTH_MARGIN, _activity.frame.size.height + 10 + HEIGHT_MARGIN, width, s1.height);
-	CGSize s = [_title drawInRect:r withFont:titleFont lineBreakMode:UILineBreakModeTailTruncation alignment:UITextAlignmentCenter];
-
-	
-	// DRAW SECOND TEXT
-	r.origin.y += s.height;
-	r.size.height = s2.height;
-	[_message drawInRect:r withFont:messageFont lineBreakMode:UILineBreakModeCharacterWrap alignment:UITextAlignmentCenter];
-	
-	
-	
-}
-
-
-
-
-- (void) setTitle:(NSString*)str{
-	[_title release];
-	_title = [str copy];
-	//[self updateHeight];
-	[self setNeedsDisplay];
-}
-- (NSString*) title{
-	return _title;
-}
-- (void) setMessage:(NSString*)str{
-	[_message release];
-	_message = [str copy];
-	[self setNeedsDisplay];
-}
-- (NSString*) message{
-	return _message;
-}
-
-- (void) updateHeight{
-	
-	UIFont *titleFont = [UIFont boldSystemFontOfSize:16];
-	UIFont *messageFont = [UIFont systemFontOfSize:12];
-	
-	CGSize s1 = [self calculateHeightOfTextFromWidth:_title font:titleFont width:200 linebreak:UILineBreakModeTailTruncation];
-	CGSize s2 = [self calculateHeightOfTextFromWidth:_message font:messageFont width:200 linebreak:UILineBreakModeCharacterWrap];
-	
-	if([_title length] < 1) s1.height = 0;
-	if([_message length] < 1) s2.height = 0;
-	
-	
-	int rHeight = s1.height + s2.height + (HEIGHT_MARGIN*2) + 10 + _activity.frame.size.height;
-	
-	NSLog(@"UPDATE: %d %f",rHeight,self.frame.size.height);
-	
-	CGRect orect = self.bounds;
-	orect.size.height = rHeight;
-	self.bounds = orect;
-	
-	[self setNeedsDisplay];
-	
-	
-}
-
-- (void)dealloc {
+- (void) dealloc{
 	[_activity release];
 	[super dealloc];
 }
-
 
 @end

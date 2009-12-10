@@ -33,7 +33,7 @@
 #import <TapkuLibrary/TapkuLibrary.h>
 
 @interface HUDViewController : UIViewController {
-	LoadingHUDView *loading,*loading2,*loading3;
+	LoadingHUDView *loading,*loading2;
 }
 
 @end
