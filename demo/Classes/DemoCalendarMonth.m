@@ -18,14 +18,11 @@
 }
 
 // data source
-
 - (BOOL) calendarMonthView:(TKCalendarMonthView*)monthView markForDay:(NSDate*)date{
-	//NSLog(@"Mark for day: %@",date);
 	return (rand() % 2 == 0) ? YES : NO;
 }
 
 // delegate
-
 - (void) calendarMonthView:(TKCalendarMonthView*)monthView dateWasSelected:(NSDate*)date{
 	NSLog(@"%@",date);
 	[tableView reloadData];

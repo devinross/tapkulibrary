@@ -44,6 +44,7 @@
 	monthView.delegate = self;
 	monthView.dataSource = self;
 	[self.view addSubview:monthView];
+	[monthView reload];
 }
 
 

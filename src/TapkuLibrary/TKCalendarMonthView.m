@@ -37,7 +37,7 @@
 
 
 
-/// MONTH DAY GRID INTERFACE
+#pragma mark TKMonthGridView
 @interface TKMonthGridView : UIView {
 	
 	id delegate;
@@ -72,7 +72,8 @@
 - (void) setStartDate:(NSDate*)theDate today:(NSInteger)todayDay marks:(NSArray*)marksArray;
 
 @end
-/// CALENDAR DAY GRID INTERFACE
+
+#pragma mark TKCalendarDayView
 @interface TKCalendarDayView : UIView {
 	NSString *str;
 	BOOL selected;
@@ -93,6 +94,7 @@
 @end
 
 
+#pragma mark TKCalendarMonthView
 @interface TKCalendarMonthView (PrivateMethods)
 - (void) loadButtons;
 - (void) loadInitialGrids;
@@ -108,9 +110,6 @@
 
 @synthesize delegate,dataSource;
 @synthesize monthYear;
-
-
-
 
 
 // public
@@ -562,9 +561,7 @@
 @end
 
 
-
-
-
+#pragma mark TKMonthGridView
 @interface TKMonthGridView (PrivateMethods)
 - (void) buildGrid;
 //- (void) setStartDate:(NSDate*)theDate today:(NSInteger)todayDay marks:(NSArray*)marksArray;
@@ -906,6 +903,8 @@
 
 @end
 
+
+#pragma mark TKCalendarDayView
 @implementation TKCalendarDayView
 @synthesize selected,active,today,marked,str;
 
