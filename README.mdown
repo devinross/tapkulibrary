@@ -1,15 +1,16 @@
 TapkuLibrary
-=======
+============
 TapkuLibrary is a collection of iPhone UI classes intended for broad use in applications.
 
 [http://tapku.com](http://tapku.com)
+[http://devinsheaven.com](http://devinsheaven.com)
 
 
-![](http://farm3.static.flickr.com/2650/3955573507_23c2781a9c_o.jpg)
+![](http://farm3.static.flickr.com/2492/4175733982_f168ea3bd1_o.png)
 
 
 Adding TapkuLibrary to your project
-==============================
+===================================
 
 TapkuLibrary is compiled as a static library, and the easiest way to add it to your project is to use Xcode's "dependent project" facilities.  Here is how (FOLLOW CAREFULLY):
 
@@ -44,14 +45,49 @@ TapkuLibrary is compiled as a static library, and the easiest way to add it to y
    it.  Add the relative path from your project's directory to the "src" directory.  Then
    go to "Other Linker Flags" under the "Linker" section, and add "-ObjC" and "-all_load" to the list of flags.
 
-8. You're ready to go.  Just #import "TapkuLibrary/TapkuLibrary.h" anywhere you want to use TapkuLibrary classes
+8. You're ready to go.  Just #import <TapkuLibrary/TapkuLibrary.h> anywhere you want to use TapkuLibrary classes
    in your project.
 
 
 
 What's in TapkuLibrary?
 ==================
+
+
+Calendar View Controller
+------------------------
+**[TKCalendarMonthViewController](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKCalendarMonthViewController.h)** is a controller and view that replicates the Calendar app. 
+
+**[TKCalendarMonthTableViewController](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKCalendarMonthTableViewController.h)** is a controller and view that replicates the Calendar app (with a table underneath).
+
+Empty View
+---------
+**[TKEmptyView](TKEmptyView.h)** allows is a blank screen view. You can take a transparent 200px x 200px image and it will be styled correctly to match Apple use in various applications.
+
+
+Graph View Controller
+--------------------
+**[TKGraphController](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKGraphController.h)** is a full screen scrollable graph.
                   
+
+
+HUD UI
+------
+
+**[LoadingHUDView](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/LoadingHUDView.h)** allows you to show a title and message to a loading indicator.
+
+
+
+Overview View Controller
+-----------------------
+**[TKOverviewTableViewController](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKOverviewTableViewController.h)** a table view controller similar to the interface seen in the application Tweetie (1.0) & Cha-Ching.
+
+
+Map View
+--------
+
+**[TKMapView](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKMapView.h)** allows you to place pins on a map using touch.
+
 
 UITableView Label Cells
 -----------------------
@@ -70,8 +106,6 @@ UITableView Label Cells
 
 **[TKLabelSwitchCell](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKLabelSwitchCell.h)** is a cell with a switch.
 
-
-
 More UITableView Cells
 ----------------------
 
@@ -79,38 +113,3 @@ More UITableView Cells
 
 
 **[FSIndicatorCell](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/FSIndicatorCell.h)** Fast Scrolling (FS) cell with a Mail like indicator on the right side of the cell. 
-
-
-HUD UI
-------
-
-**[LoadingHUDView](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/LoadingHUDView.h)** allows you to show a title and message to a loading indicator.
-
-
-
-Overview View Controller
------------------------
-**[TKOverviewTableViewController](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKOverviewTableViewController.h)** a table view controller similar to the interface seen in the application Tweetie.
-
-
-Map View
---------
-
-**[TKMapView](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKMapView.h)** allows you to place pins on a map using touch.
-
-
-Empy View
----------
-**[TKEmptyView](TKEmptyView.h)** allows is a blank screen view. You can take a transparent 200px x 200px image and it will be styled correctly to match Apple use in various applications.
-
-
-Graph View Controller
---------------------
-**[TKGraphController](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKGraphController.h)** is a full screen scrollable graph. 
-
-
-Calendar View Controller
-------------------------
-**[TKCalendarMonthViewController](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKCalendarMonthViewController.h)** is a controller and view that replicates the Calendar app. 
-
-**[TKCalendarMonthTableViewController](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKCalendarMonthTableViewController.h)** is a controller and view that replicates the Calendar app (with a table underneath). 
