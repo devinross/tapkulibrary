@@ -184,24 +184,80 @@
 		3B319D6F10C74E4D006B2A57 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3B319D7010C74E4D006B2A57 /* OverviewController.h */,
-				3B319D7110C74E4D006B2A57 /* OverviewController.m */,
+				3BFECF0D10D1C69E0005C88A /* Calendar */,
+				3BFECF0F10D1C6AD0005C88A /* Overview */,
+				3BFECF0E10D1C6A60005C88A /* Graph */,
+				3BFECF0A10D1C5E50005C88A /* TableView */,
+				3BFECF1010D1C6BE0005C88A /* HUD */,
+				3BFECF1110D1C6C40005C88A /* Map */,
+				3BFECF1210D1C6C90005C88A /* Empty */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		3BFECF0A10D1C5E50005C88A /* TableView */ = {
+			isa = PBXGroup;
+			children = (
 				3B319D7210C74E4D006B2A57 /* LabelViewController.h */,
 				3B319D7310C74E4D006B2A57 /* LabelViewController.m */,
 				3B319D7410C74E4D006B2A57 /* FastTableViewController.h */,
 				3B319D7510C74E4D006B2A57 /* FastTableViewController.m */,
-				3B319D7610C74E4D006B2A57 /* HUDViewController.h */,
-				3B319D7710C74E4D006B2A57 /* HUDViewController.m */,
-				3B319D7810C74E4D006B2A57 /* MapViewController.h */,
-				3B319D7910C74E4D006B2A57 /* MapViewController.m */,
-				3B319D7A10C74E4D006B2A57 /* GraphController.h */,
-				3B319D7B10C74E4D006B2A57 /* GraphController.m */,
-				3B319D7C10C74E4D006B2A57 /* EmptyViewController.h */,
-				3B319D7D10C74E4D006B2A57 /* EmptyViewController.m */,
+			);
+			name = TableView;
+			sourceTree = "<group>";
+		};
+		3BFECF0D10D1C69E0005C88A /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
 				3B319D7E10C74E4D006B2A57 /* DemoCalendarMonth.h */,
 				3B319D7F10C74E4D006B2A57 /* DemoCalendarMonth.m */,
 			);
-			name = "View Controllers";
+			name = Calendar;
+			sourceTree = "<group>";
+		};
+		3BFECF0E10D1C6A60005C88A /* Graph */ = {
+			isa = PBXGroup;
+			children = (
+				3B319D7A10C74E4D006B2A57 /* GraphController.h */,
+				3B319D7B10C74E4D006B2A57 /* GraphController.m */,
+			);
+			name = Graph;
+			sourceTree = "<group>";
+		};
+		3BFECF0F10D1C6AD0005C88A /* Overview */ = {
+			isa = PBXGroup;
+			children = (
+				3B319D7010C74E4D006B2A57 /* OverviewController.h */,
+				3B319D7110C74E4D006B2A57 /* OverviewController.m */,
+			);
+			name = Overview;
+			sourceTree = "<group>";
+		};
+		3BFECF1010D1C6BE0005C88A /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				3B319D7610C74E4D006B2A57 /* HUDViewController.h */,
+				3B319D7710C74E4D006B2A57 /* HUDViewController.m */,
+			);
+			name = HUD;
+			sourceTree = "<group>";
+		};
+		3BFECF1110D1C6C40005C88A /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				3B319D7810C74E4D006B2A57 /* MapViewController.h */,
+				3B319D7910C74E4D006B2A57 /* MapViewController.m */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		3BFECF1210D1C6C90005C88A /* Empty */ = {
+			isa = PBXGroup;
+			children = (
+				3B319D7C10C74E4D006B2A57 /* EmptyViewController.h */,
+				3B319D7D10C74E4D006B2A57 /* EmptyViewController.m */,
+			);
+			name = Empty;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

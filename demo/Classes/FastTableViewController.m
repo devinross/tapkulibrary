@@ -66,7 +66,7 @@
 	if(cell==nil) cell = [[[FSIndicatorCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"Fast"] autorelease];
 	
 	cell.text = @"Indicator Cell";
-	cell.count = indexPath.row + 12345;
+	cell.count = indexPath.row ;
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
 	return cell;

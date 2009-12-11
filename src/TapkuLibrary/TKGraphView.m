@@ -475,7 +475,7 @@ static float highValue;
 }
 
 - (void) setGoalShown:(BOOL)yes{
-	
+	goalShown = yes;
 	if(!yes){
 		[goalLine removeFromSuperview];
 		[goalLabel removeFromSuperview];
@@ -505,6 +505,7 @@ static float highValue;
 	goalValue = [no retain];
 	
 	[self reload];
+	[self setGoalShown:goalShown];
 	
 }
 
