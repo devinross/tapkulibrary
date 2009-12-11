@@ -226,10 +226,10 @@
 				3BAC99F910953E2400F235F1 /* Calendar */,
 				3BAC9A5010953E5200F235F1 /* Graph */,
 				3BAC9A4D10953E5200F235F1 /* Empty View */,
-				3BAC9A2510953E5200F235F1 /* Cells */,
 				3BAC9A4110953E5200F235F1 /* Map */,
 				3BAC9A4610953E5200F235F1 /* Overview View Controller */,
 				3BAC9A3E10953E5200F235F1 /* HUD */,
+				3BAC9A2510953E5200F235F1 /* Cells */,
 			);
 			path = TapkuLibrary;
 			sourceTree = "<group>";
