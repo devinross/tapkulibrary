@@ -38,10 +38,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	
 	float y,height;
 	y = self.monthView.frame.origin.y + self.monthView.frame.size.height;
-	height = self.view.frame.size.height - y;
+	height = self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height - y;
+	
+
 	tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, y, 320, height) style:UITableViewStylePlain];
 	tableView.delegate = self;
 	tableView.dataSource = self;

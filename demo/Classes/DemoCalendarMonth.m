@@ -15,6 +15,9 @@
 	[super viewDidLoad];
 	
 	srand([[NSDate date] timeIntervalSince1970]);
+	
+	
+	self.tableView.rowHeight = 80;
 }
 
 // data source
