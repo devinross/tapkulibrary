@@ -15,6 +15,7 @@
 #import "EmptyViewController.h"
 #import "GraphController.h"
 #import "DemoCalendarMonth.h"
+#import "TKCoverFlowViewController.h"
 
 @implementation RootViewController
 
@@ -28,7 +29,7 @@
 	NSArray *rows;
 	NSDictionary *d;
 	
-	rows = [NSArray arrayWithObjects:@"Graph View",@"Empty View",@"Overview TableView",@"Loading HUD",@"Map Pins",nil];
+	rows = [NSArray arrayWithObjects:@"Graph View",@"Empty View",@"Overview TableView",@"Loading HUD",@"Map Pins",@"Coverflow",nil];
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Views",@"title",nil];
 	[data addObject:d];
 	
@@ -80,6 +81,10 @@
 		[self presentModalViewController:graph animated:YES];
 		[graph release];
 		return;
+	}else if(indexPath.section==0 && indexPath.row==5){
+		
+		vc = [[TKCoverFlowViewController alloc] init];
+		
 	}else if(indexPath.section==0 && indexPath.row==1)
 		vc = [[EmptyViewController alloc] init];
 	else if(indexPath.section==0 && indexPath.row==2)

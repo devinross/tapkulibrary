@@ -122,12 +122,13 @@
 - (id) initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
 		
-		self.backgroundColor = [UIColor whiteColor];
+		self.backgroundColor = [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1];
 		
 		title = [[UILabel alloc] initWithFrame:CGRectInset(self.bounds, 10, 0)];
 		title.font = [UIFont boldSystemFontOfSize:18];
 		title.adjustsFontSizeToFitWidth = YES;
 		title.textColor = [UIColor grayColor];
+		title.backgroundColor = [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1];
 		title.textAlignment = UITextAlignmentCenter;
 		[self addSubview:title];
 		
@@ -142,6 +143,7 @@
 		subtitle.font = [UIFont boldSystemFontOfSize:12];
 		subtitle.adjustsFontSizeToFitWidth = YES;
 		subtitle.textColor = [UIColor grayColor];
+		subtitle.backgroundColor = [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1];
 		subtitle.textAlignment = UITextAlignmentCenter;
 		[self addSubview:subtitle];
 		

@@ -218,9 +218,17 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
+		3B8B591810F0816300EABA45 /* Coverflow */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Coverflow;
+			sourceTree = "<group>";
+		};
 		3BAC98C910953DCC00F235F1 /* TapkuLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				3B8B591810F0816300EABA45 /* Coverflow */,
 				3BAC9A1B10953E5200F235F1 /* TapkuLibrary.h */,
 				3BAC9A1C10953E5200F235F1 /* Global */,
 				3BAC99F910953E2400F235F1 /* Calendar */,

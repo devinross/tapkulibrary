@@ -29,6 +29,8 @@
 		3B319D8510C74E4D006B2A57 /* GraphController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B319D7B10C74E4D006B2A57 /* GraphController.m */; };
 		3B319D8610C74E4D006B2A57 /* EmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B319D7D10C74E4D006B2A57 /* EmptyViewController.m */; };
 		3B319D8710C74E4D006B2A57 /* DemoCalendarMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B319D7F10C74E4D006B2A57 /* DemoCalendarMonth.m */; };
+		3B8B591B10F081A600EABA45 /* albumcover.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3B8B591A10F081A600EABA45 /* albumcover.jpg */; };
+		3B8B592210F081C000EABA45 /* TKCoverFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B8B592110F081C000EABA45 /* TKCoverFlowViewController.m */; };
 		3BFECE4B10D070DF0005C88A /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFECE4A10D070DF0005C88A /* image.png */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +86,9 @@
 		3B319D7D10C74E4D006B2A57 /* EmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyViewController.m; sourceTree = "<group>"; };
 		3B319D7E10C74E4D006B2A57 /* DemoCalendarMonth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoCalendarMonth.h; sourceTree = "<group>"; };
 		3B319D7F10C74E4D006B2A57 /* DemoCalendarMonth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoCalendarMonth.m; sourceTree = "<group>"; };
+		3B8B591A10F081A600EABA45 /* albumcover.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = albumcover.jpg; sourceTree = "<group>"; };
+		3B8B592010F081C000EABA45 /* TKCoverFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCoverFlowViewController.h; sourceTree = "<group>"; };
+		3B8B592110F081C000EABA45 /* TKCoverFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoverFlowViewController.m; sourceTree = "<group>"; };
 		3BFECE4A10D070DF0005C88A /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TapkuLibraryDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TapkuLibraryDemo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,6 +154,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3B8B591A10F081A600EABA45 /* albumcover.jpg */,
 				3BFECE4A10D070DF0005C88A /* image.png */,
 				3B319D6310C74DF7006B2A57 /* note.png */,
 				3B319D6110C74DED006B2A57 /* icon.png */,
@@ -191,6 +197,8 @@
 				3BFECF1010D1C6BE0005C88A /* HUD */,
 				3BFECF1110D1C6C40005C88A /* Map */,
 				3BFECF1210D1C6C90005C88A /* Empty */,
+				3B8B592010F081C000EABA45 /* TKCoverFlowViewController.h */,
+				3B8B592110F081C000EABA45 /* TKCoverFlowViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -332,6 +340,7 @@
 				3B319D6210C74DED006B2A57 /* icon.png in Resources */,
 				3B319D6410C74DF7006B2A57 /* note.png in Resources */,
 				3BFECE4B10D070DF0005C88A /* image.png in Resources */,
+				3B8B591B10F081A600EABA45 /* albumcover.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +362,7 @@
 				3B319D8510C74E4D006B2A57 /* GraphController.m in Sources */,
 				3B319D8610C74E4D006B2A57 /* EmptyViewController.m in Sources */,
 				3B319D8710C74E4D006B2A57 /* DemoCalendarMonth.m in Sources */,
+				3B8B592210F081C000EABA45 /* TKCoverFlowViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
