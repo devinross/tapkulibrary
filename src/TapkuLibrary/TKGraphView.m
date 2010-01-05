@@ -622,7 +622,7 @@ static float highValue;
 	}
 	
 	
-	
+	NSLog(@"GOAL %f",[goalValue floatValue]);
 	highValue = highValue + abs(highValue * 0.08);
 	lowValue = lowValue - abs(lowValue * .08);
 	

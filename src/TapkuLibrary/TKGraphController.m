@@ -42,7 +42,7 @@
 	self.view = graph;
 }
 
-- (void)viewDidLoad {
+- (void) viewDidLoad {
     
 	//graph = [[TKGraph alloc] initWithFrame:CGRectMake(0, 0, 480, 300)];
 	//graph.dataSource = self;
@@ -63,12 +63,12 @@
  
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void) viewWillAppear:(BOOL)animated {
 	 [super viewWillAppear:animated];
 	 statusColor = [UIApplication sharedApplication].statusBarStyle;
 	 [UIApplication sharedApplication].statusBarStyle =  UIStatusBarStyleBlackOpaque;
  }
-- (void)viewWillDisappear:(BOOL)animated {
+- (void) viewWillDisappear:(BOOL)animated {
 	 [super viewWillDisappear:animated];
 	 [UIApplication sharedApplication].statusBarStyle =  statusColor;
  }
@@ -80,20 +80,20 @@
 
 
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft || interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
-- (void)didReceiveMemoryWarning {
+- (void) didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
 	
 	// Release any cached data, images, etc that aren't in use.
 }
-- (void)viewDidUnload {
+- (void) viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
-- (void)dealloc {
+- (void) dealloc {
 	[graph release];
 	[super dealloc];
 }
