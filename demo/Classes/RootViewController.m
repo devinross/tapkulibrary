@@ -15,7 +15,7 @@
 #import "EmptyViewController.h"
 #import "GraphController.h"
 #import "DemoCalendarMonth.h"
-#import "TKCoverFlowViewController.h"
+#import "CoverflowViewController.h"
 
 @implementation RootViewController
 
@@ -29,12 +29,22 @@
 	NSArray *rows;
 	NSDictionary *d;
 	
-	rows = [NSArray arrayWithObjects:@"Graph View",@"Empty View",@"Overview TableView",@"Loading HUD",@"Map Pins",@"Coverflow",nil];
+	
+	
+	rows = [NSArray arrayWithObjects:@"Coverflow",@"Graph",@"Overview Tableview",nil];
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Views",@"title",nil];
+	[data addObject:d];
+	
+	rows = [NSArray arrayWithObjects:@"Empty Sign",@"Loading HUD",nil];
+	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"UI Elements",@"title",nil];
 	[data addObject:d];
 	
 	rows = [NSArray arrayWithObjects:@"Month",@"Day",nil];
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Calendar",@"title",nil];
+	[data addObject:d];
+	
+	rows = [NSArray arrayWithObjects:@"Place Pins",nil];
+	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Maps",@"title",nil];
 	[data addObject:d];
 	
 	rows = [NSArray arrayWithObjects:@"Label Cells",@"Fast Scrolling Cells",nil];
@@ -74,33 +84,48 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	UIViewController *vc;
+	int s = indexPath.section, r = indexPath.row;
 	
-	if(indexPath.section==0 && indexPath.row==0){
-		GraphController *graph = [[GraphController alloc] init];
-		[graph setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-		[self presentModalViewController:graph animated:YES];
-		[graph release];
+	if(s==0 && r < 2){
+		
+		if(r==0)
+			vc = [[CoverflowViewController alloc] init];
+		else 
+			vc = [[GraphController alloc] init];
+		
+		[vc setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+		[self presentModalViewController:vc animated:YES];
+		[vc release];
 		return;
-	}else if(indexPath.section==0 && indexPath.row==5){
-		
-		vc = [[TKCoverFlowViewController alloc] init];
-		
-	}else if(indexPath.section==0 && indexPath.row==1)
-		vc = [[EmptyViewController alloc] init];
-	else if(indexPath.section==0 && indexPath.row==2)
+	}
+	
+	else if(s==0 && r==2)
 		vc = [[OverviewController alloc] init];
-	else if(indexPath.section==1 && indexPath.row==0)
-		vc = [[DemoCalendarMonth alloc] init];
-	else if(indexPath.section==1 && indexPath.row==1)
-		vc = [[ODCalendarDayViewController alloc] init];
-	else if(indexPath.section==2 && indexPath.row==0)
-		vc = [[LabelViewController alloc] initWithStyle:UITableViewStyleGrouped];
-	else if(indexPath.section==2 && indexPath.row==1)
-		vc = [[FastTableViewController alloc] initWithStyle:UITableViewStylePlain];
-	else if(indexPath.section==0 && indexPath.row==4)
-		vc = [[MapViewController alloc] init];
-	else if(indexPath.section==0 && indexPath.row==3)
+	
+	else if(s==1 && r==0)
+		vc = [[EmptyViewController alloc] init];
+	
+	else if(s==1 && r==1)
 		vc = [[HUDViewController alloc] init];
+	
+	
+	
+	else if(s==2 && r==0)
+		vc = [[DemoCalendarMonth alloc] init];
+	else if(s==2 && r==1)
+		vc = [[ODCalendarDayViewController alloc] init];
+	
+	
+	else if(s==3 && r==0)
+		vc = [[MapViewController alloc] init];
+	
+	
+	else if(s==4 && r==0)
+		vc = [[LabelViewController alloc] initWithStyle:UITableViewStyleGrouped];
+	else if(s==4 && r==1)
+		vc = [[FastTableViewController alloc] initWithStyle:UITableViewStylePlain];
+	
+	
 	
 	[self.navigationController pushViewController:vc animated:YES];
 	[vc release];

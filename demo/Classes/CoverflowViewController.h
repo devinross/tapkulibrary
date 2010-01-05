@@ -1,3 +1,7 @@
+//
+//  CoverflowViewController.h
+//  Created by Devin Ross on 1/3/10.
+//
 /*
  
  tapku.com || http://github.com/devinross/tapkulibrary
@@ -24,52 +28,19 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
-
-#import "TKGlobal.h"
-#import "UIViewAdditions.h"
-#import "UIImageAdditions.h"
-#import "NSDateAdditions.h"
-#import "TKShakeWindow.h"
-
-// CELLS
-#import "TKLabelCell.h"
-#import "TKLabelTextViewCell.h"
-#import "TKLabelTextFieldCell.h"
-#import "TKLabelFieldCell.h"
-#import "TKLabelSwitchCell.h"
-#import "TKButtonCell.h"
-#import "TKTextViewCell.h"
-#import "TKSwitchCell.h"
-
-// FAST CELLS
-#import "FSIndicatorCell.h"
-#import "FSSubtitleCell.h"
-
-// HUD
-#import "LoadingHUDView.h"
-
-// GRAPH
-#import "TKGraphController.h"
-#import "TKGraphView.h"
-
-// Map View
-#import "TKMapView.h"
-#import "TKMapPlace.h"
-
-// Overview Controller
-#import "TKOverviewTableViewController.h"
-
-// Empty View
-#import "TKEmptyView.h"
+#import <TapkuLibrary/TapkuLibrary.h>
 
 
-// Calendar
-#import "TKCalendarMonthViewController.h"
-#import "TKCalendarMonthTableViewController.h"
-#import "TKCalendarMonthView.h"
-#import "ODCalendarDayViewController.h"
+@interface CoverflowViewController : UIViewController <TKCoverflowViewDelegate,TKCoverflowViewDataSource> {
+	
+	TKCoverflowView *coverflow; 
+	
+	UIButton *infoButton;
+	
+	NSMutableArray *covers; // album covers images
+}
 
-#import "TKCoverflowView.h"
-#import "TKCoverView.h"
+@property (retain,nonatomic) TKCoverflowView *coverflow;
 
+@end
 

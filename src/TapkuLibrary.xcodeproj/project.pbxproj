@@ -11,6 +11,10 @@
 		3B3991F110CED8FD00B8FF4F /* TKGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3991EF10CED8FD00B8FF4F /* TKGraphView.m */; };
 		3B879FC6109BFC07002012FD /* TKCalendarMonthTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B879FC4109BFC07002012FD /* TKCalendarMonthTableViewController.h */; };
 		3B879FC7109BFC07002012FD /* TKCalendarMonthTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B879FC5109BFC07002012FD /* TKCalendarMonthTableViewController.m */; };
+		3B917CEC10F34BF400049677 /* TKCoverflowView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B917CE810F34BF400049677 /* TKCoverflowView.h */; };
+		3B917CED10F34BF400049677 /* TKCoverflowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B917CE910F34BF400049677 /* TKCoverflowView.m */; };
+		3B917CEE10F34BF400049677 /* TKCoverView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B917CEA10F34BF400049677 /* TKCoverView.h */; };
+		3B917CEF10F34BF400049677 /* TKCoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B917CEB10F34BF400049677 /* TKCoverView.m */; };
 		3BAC995A10953DF400F235F1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995510953DF400F235F1 /* SystemConfiguration.framework */; };
 		3BAC995B10953DF400F235F1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995610953DF400F235F1 /* CoreGraphics.framework */; };
 		3BAC995C10953DF400F235F1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995710953DF400F235F1 /* UIKit.framework */; };
@@ -88,6 +92,10 @@
 		3B3991EF10CED8FD00B8FF4F /* TKGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKGraphView.m; sourceTree = "<group>"; };
 		3B879FC4109BFC07002012FD /* TKCalendarMonthTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCalendarMonthTableViewController.h; sourceTree = "<group>"; };
 		3B879FC5109BFC07002012FD /* TKCalendarMonthTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCalendarMonthTableViewController.m; sourceTree = "<group>"; };
+		3B917CE810F34BF400049677 /* TKCoverflowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCoverflowView.h; sourceTree = "<group>"; };
+		3B917CE910F34BF400049677 /* TKCoverflowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoverflowView.m; sourceTree = "<group>"; };
+		3B917CEA10F34BF400049677 /* TKCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCoverView.h; sourceTree = "<group>"; };
+		3B917CEB10F34BF400049677 /* TKCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoverView.m; sourceTree = "<group>"; };
 		3BAC995510953DF400F235F1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3BAC995610953DF400F235F1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3BAC995710953DF400F235F1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -221,6 +229,10 @@
 		3B8B591810F0816300EABA45 /* Coverflow */ = {
 			isa = PBXGroup;
 			children = (
+				3B917CE810F34BF400049677 /* TKCoverflowView.h */,
+				3B917CE910F34BF400049677 /* TKCoverflowView.m */,
+				3B917CEA10F34BF400049677 /* TKCoverView.h */,
+				3B917CEB10F34BF400049677 /* TKCoverView.m */,
 			);
 			name = Coverflow;
 			sourceTree = "<group>";
@@ -228,9 +240,9 @@
 		3BAC98C910953DCC00F235F1 /* TapkuLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				3B8B591810F0816300EABA45 /* Coverflow */,
 				3BAC9A1B10953E5200F235F1 /* TapkuLibrary.h */,
 				3BAC9A1C10953E5200F235F1 /* Global */,
+				3B8B591810F0816300EABA45 /* Coverflow */,
 				3BAC99F910953E2400F235F1 /* Calendar */,
 				3BAC9A5010953E5200F235F1 /* Graph */,
 				3BAC9A4D10953E5200F235F1 /* Empty View */,
@@ -438,6 +450,8 @@
 				3BEAE0901096C61A00A0A372 /* TKShakeWindow.h in Headers */,
 				3B879FC6109BFC07002012FD /* TKCalendarMonthTableViewController.h in Headers */,
 				3B3991F010CED8FD00B8FF4F /* TKGraphView.h in Headers */,
+				3B917CEC10F34BF400049677 /* TKCoverflowView.h in Headers */,
+				3B917CEE10F34BF400049677 /* TKCoverView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +531,8 @@
 				3BEAE0911096C61A00A0A372 /* TKShakeWindow.m in Sources */,
 				3B879FC7109BFC07002012FD /* TKCalendarMonthTableViewController.m in Sources */,
 				3B3991F110CED8FD00B8FF4F /* TKGraphView.m in Sources */,
+				3B917CED10F34BF400049677 /* TKCoverflowView.m in Sources */,
+				3B917CEF10F34BF400049677 /* TKCoverView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

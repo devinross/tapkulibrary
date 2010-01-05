@@ -1,3 +1,7 @@
+//
+//  TKCoverView.m
+//  Created by Devin Ross on 1/3/10.
+//
 /*
  
  tapku.com || http://github.com/devinross/tapkulibrary
@@ -25,51 +29,58 @@
  
  */
 
-#import "TKGlobal.h"
-#import "UIViewAdditions.h"
-#import "UIImageAdditions.h"
-#import "NSDateAdditions.h"
-#import "TKShakeWindow.h"
-
-// CELLS
-#import "TKLabelCell.h"
-#import "TKLabelTextViewCell.h"
-#import "TKLabelTextFieldCell.h"
-#import "TKLabelFieldCell.h"
-#import "TKLabelSwitchCell.h"
-#import "TKButtonCell.h"
-#import "TKTextViewCell.h"
-#import "TKSwitchCell.h"
-
-// FAST CELLS
-#import "FSIndicatorCell.h"
-#import "FSSubtitleCell.h"
-
-// HUD
-#import "LoadingHUDView.h"
-
-// GRAPH
-#import "TKGraphController.h"
-#import "TKGraphView.h"
-
-// Map View
-#import "TKMapView.h"
-#import "TKMapPlace.h"
-
-// Overview Controller
-#import "TKOverviewTableViewController.h"
-
-// Empty View
-#import "TKEmptyView.h"
-
-
-// Calendar
-#import "TKCalendarMonthViewController.h"
-#import "TKCalendarMonthTableViewController.h"
-#import "TKCalendarMonthView.h"
-#import "ODCalendarDayViewController.h"
-
-#import "TKCoverflowView.h"
 #import "TKCoverView.h"
 
+@implementation TKCoverView
+@synthesize image;
 
+
+- (id) initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        // Initialization code
+		//self.image = [UIImage imageNamed:@"albumcover.jpg"];
+		self.opaque = YES;
+    }
+    return self;
+}
+
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+	
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	
+	CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, 1.0);
+	CGContextFillRect(context, rect);
+	
+	
+	float h = rect.size.width * image.size.height / image.size.width;
+	
+	CGRect r = CGRectMake(0, 0, rect.size.width , h);
+	
+	[image drawInRect:r];
+	
+
+	r.origin.y = h;
+	
+
+	CGContextDrawImage(context,r,image.CGImage);
+	
+	r.size.height =  h > rect.size.height - r.size.height ? rect.size.height - r.size.height : h;
+	
+	[[UIImage imageNamed:@"gradient.png"] drawInRect:r];
+	
+}
+
+- (void) setImage:(UIImage *)img{
+	[image release];
+	image = [img retain];
+	[self setNeedsDisplay];
+}
+
+- (void) dealloc {
+	[image release];
+    [super dealloc];
+}
+
+
+@end
