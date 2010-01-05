@@ -55,6 +55,11 @@ What's in TapkuLibrary?
 ==================
 
 
+Coverflow View
+--------------
+
+**[TKCoverflowView](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKCoverflowView.h)**. If you've implemented a tableview, implementing a coverflow view is a snap!
+
 Calendar View Controller
 ------------------------
 **[TKCalendarMonthViewController](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKCalendarMonthViewController.h)** is a controller and view that replicates the Calendar app. 
