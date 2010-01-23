@@ -88,9 +88,10 @@
 - (void) thread{
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
+	srand([[NSDate date] timeIntervalSince1970]);
+	
 	for(int i=0;i<100;i++){
-		int no = i%4==0 ? 10*i : 10 * i + 900;
-		no = no % 3 == 0 ? abs(600 - no) : no;
+		int no = rand() % 100 + i;
 		
 		GraphPoint *gp = [[GraphPoint alloc] initWithID:i value:[NSNumber numberWithFloat:no]];
 		[data addObject:gp];
@@ -105,7 +106,7 @@
 	[indicator stopAnimating];
 	
 	[self.graph setGraphWithDataPoints:data];
-	self.graph.goalValue = [NSNumber numberWithFloat:500.0];
+	self.graph.goalValue = [NSNumber numberWithFloat:30.0];
 	self.graph.goalShown = YES;
 	[self.graph scrollToPoint:80 animated:YES];
 	[self.graph showIndicatorForPoint:75];

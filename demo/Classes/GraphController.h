@@ -43,7 +43,6 @@
 @end
 
 
-
 @interface GraphPoint : NSObject <TKGraphViewPoint> {
 	int pk;
 	NSNumber *value;

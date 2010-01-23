@@ -42,7 +42,7 @@
 
 
 @implementation LoadingHUDView
-
+@synthesize radius;
 
 - (id) initWithTitle:(NSString*)ttl message:(NSString*)msg{
 	if(self = [super initWithFrame:CGRectMake(0, 0, 280, 200)]){
@@ -92,7 +92,7 @@
 	[[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9] set];
 	CGRect r = CGRectMake(x, 0, rWidth,rHeight);
 	[UIView drawRoundRectangleInRect:r 
-						  withRadius:5.0 
+						  withRadius:10.0 
 							   color:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.75]];
 	
 	
@@ -131,6 +131,14 @@
 	return _message;
 }
 
+- (void) setRadius:(float)f{
+	if(f==radius) return;
+	
+	radius = f;
+	[self setNeedsDisplay];
+	
+}
+
 - (void) startAnimating{
 	if(!_hidden) return;
 	_hidden = NO;
@@ -154,9 +162,13 @@
 }
 - (void) adjustHeight{
 	
-	CGSize s1 = [_title heightWithFont:[UIFont boldSystemFontOfSize:16.0] width:200.0 linebreak:UILineBreakModeTailTruncation];
+	CGSize s1 = [_title heightWithFont:[UIFont boldSystemFontOfSize:16.0] 
+								 width:200.0 
+							 linebreak:UILineBreakModeTailTruncation];
 	
-	CGSize s2 = [_message heightWithFont:[UIFont systemFontOfSize:12.0] width:200.0 linebreak:UILineBreakModeCharacterWrap];
+	CGSize s2 = [_message heightWithFont:[UIFont systemFontOfSize:12.0] 
+								   width:200.0 
+							   linebreak:UILineBreakModeCharacterWrap];
 
 	CGRect r = self.frame;
 	r.size.height = s1.height + s2.height + 20;
@@ -166,6 +178,8 @@
 
 - (void) dealloc{
 	[_activity release];
+	[_title release];
+	[_message release];
 	[super dealloc];
 }
 

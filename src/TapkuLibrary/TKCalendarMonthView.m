@@ -196,6 +196,7 @@
 	[next release];
 	[prev release];
 	[currentGrid release];
+	[ar release];
 
 }
 
@@ -387,7 +388,7 @@
 	[deck removeObject:obj];
 	[deck insertObject:obj atIndex:0];
 	[obj release];
-
+	[ar release];
 	
 	CGRect r;
 	if(up){
@@ -414,8 +415,7 @@
 	
 	if (animated) {	
 		[UIView beginAnimations:nil context:NULL];
-		[UIView setAnimationDuration:1];
-		[UIView setAnimationDelay:.1];
+		[UIView setAnimationDuration:.4];
 		[UIView setAnimationDelegate:self];
 		[UIView setAnimationDidStopSelector:@selector(animationStopped:)];
 	} else {
@@ -917,6 +917,7 @@
 
 }
 - (void) setString:(NSString*)string selected:(BOOL)sel active:(BOOL)act today:(BOOL)tdy marked:(BOOL)mark{
+	[str release];
 	str = [string copy];
 	selected = sel;
 	active = act;
