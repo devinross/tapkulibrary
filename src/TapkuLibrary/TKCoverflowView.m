@@ -55,18 +55,18 @@
 	coverSize = CGSizeMake(224, 224);
 	
 	leftTransform = CATransform3DIdentity;
-	leftTransform = CATransform3DRotate(leftTransform, SIDE_COVER_ANGLE, 0.0f, 1.0f, 0.0f);
+	leftTransform = CATransform3DRotate(leftTransform, angle, 0.0f, 1.0f, 0.0f);
 	leftTransform = CATransform3DScale(leftTransform,.8,.8,1);
-	leftTransform = CATransform3DTranslate(leftTransform, 120, 0,-110);
+	leftTransform = CATransform3DTranslate(leftTransform, 100, 0,-110);
 	
 	rightTransform = CATransform3DIdentity;
-	rightTransform = CATransform3DRotate(rightTransform, SIDE_COVER_ANGLE, 0.0f, -1.0f, 0.0f);
-	rightTransform = CATransform3DScale(rightTransform,.8,.8,.5);
-	rightTransform = CATransform3DTranslate(rightTransform, -10, 0,-170);
+	rightTransform = CATransform3DRotate(rightTransform, angle, 0.0f, -1.0f, 0.0f);
+	rightTransform = CATransform3DScale(rightTransform,.8,.8,1);
+	rightTransform = CATransform3DTranslate(rightTransform, -100, 0,-110);
 	
 	
 	CATransform3D sublayerTransform = CATransform3DIdentity;
-	sublayerTransform.m34 = -0.001; // -0.01
+	sublayerTransform.m34 = -0.001;
 	[self.layer setSublayerTransform:sublayerTransform];
 	
 	margin = (self.frame.size.width / 2) - (self.contentSize.width /2);
@@ -186,7 +186,7 @@
 	
 	if(animated){
 		[UIView beginAnimations:string context:nil];
-		[UIView setAnimationDuration:0.2];
+		[UIView setAnimationDuration:0.3];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
 		[UIView setAnimationBeginsFromCurrentState:YES];
 		[UIView setAnimationDelegate:self];
@@ -222,7 +222,7 @@
 @end
 
 @implementation TKCoverflowView
-@synthesize delegate,dataSource,coverSize,numberOfCovers,coverSpacing;
+@synthesize delegate,dataSource,coverSize,numberOfCovers,coverSpacing,angle;
 
 
 - (id) initWithFrame:(CGRect)frame {
@@ -230,6 +230,7 @@
 		
 		numberOfCovers = 0;
 		coverSpacing = COVER_SPACING;
+		angle = SIDE_COVER_ANGLE;
 		
 		self.decelerationRate = UIScrollViewDecelerationRateFast;
 		self.showsHorizontalScrollIndicator = NO;
@@ -276,6 +277,24 @@
 	self.contentSize = CGSizeMake( (coverSpacing) * (numberOfCovers-1) + (margin*2) , self.frame.size.height);
 	
 }
+- (void) setAngle:(float)f{
+
+	angle = f;
+	
+	leftTransform = CATransform3DIdentity;
+	leftTransform = CATransform3DRotate(leftTransform, angle, 0.0f, 1.0f, 0.0f);
+	leftTransform = CATransform3DScale(leftTransform,.8,.8,1);
+	leftTransform = CATransform3DTranslate(leftTransform, 120, 0,-110);
+	
+	rightTransform = CATransform3DIdentity;
+	rightTransform = CATransform3DRotate(rightTransform, angle, 0.0f, -1.0f, 0.0f);
+	rightTransform = CATransform3DScale(rightTransform,.8,.8,.5);
+	rightTransform = CATransform3DTranslate(rightTransform, -10, 0,-170);
+	
+	
+	
+	[self setup];
+}
 
 
 
@@ -304,10 +323,6 @@
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	UITouch *touch = [touches anyObject];
-	
-	
-	
-	
 	
 	if(touch.view != self &&  [touch locationInView:touch.view].y < coverSize.height){
 		currentTouch = touch.view;

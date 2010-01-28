@@ -34,6 +34,15 @@
 @protocol TKCoverflowViewDelegate,TKCoverflowViewDataSource;
 @class TKCoverView;
 
+//#define TKCoverflowViewCoverPerspectiveNormal -0.001;
+//#define TKCoverflowViewCoverPerspectiveMore -0.0005;
+
+
+static const CGFloat TKCoverflowViewCoverAngleNormal = 1.4;
+
+static const CGFloat TKCoverflowViewCoverAngleMore = 1.4;
+static const CGFloat TKCoverflowViewCoverAngleLess = 1.1;
+
 @interface TKCoverflowView : UIScrollView <UIScrollViewDelegate> {
 
 	
@@ -56,6 +65,8 @@
 	float coverSpacing;
 	int coverBuffer;
 	CATransform3D leftTransform, rightTransform;
+	
+	float angle;
 
 	
 	id <TKCoverflowViewDelegate> delegate;
@@ -66,6 +77,7 @@
 @property (nonatomic, assign) CGSize coverSize; // default 124 x 124
 @property (nonatomic, assign) int numberOfCovers;
 @property (nonatomic, assign) float coverSpacing;
+@property (nonatomic, assign) float angle;
 
 - (TKCoverView*) dequeueReusableCoverView; // like a tableview
 

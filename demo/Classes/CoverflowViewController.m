@@ -50,7 +50,9 @@
 	covers = [[NSArray arrayWithObjects:
 			   [UIImage imageNamed:@"cover_2.jpg"],[UIImage imageNamed:@"cover_1.jpg"],
 			   [UIImage imageNamed:@"cover_3.jpg"],[UIImage imageNamed:@"cover_4.jpg"],
-			   [UIImage imageNamed:@"cover_5.jpg"],[UIImage imageNamed:@"cover_6.jpg"],nil] retain];
+			   [UIImage imageNamed:@"cover_5.jpg"],[UIImage imageNamed:@"cover_6.jpg"],
+			   [UIImage imageNamed:@"cover_7.jpg"],[UIImage imageNamed:@"cover_8.jpg"],
+			   [UIImage imageNamed:@"cover_9.jpg"],nil] retain];
 	
 	
 	coverflow = [[TKCoverflowView alloc] initWithFrame:CGRectMake(0, 0, 480, 300)];
@@ -86,8 +88,9 @@
 	if(cover == nil){
 		cover = [[[TKCoverView alloc] initWithFrame:CGRectMake(0, 0, 224, 300)] autorelease]; // 224
 	}
-	
+	cover.baseline = 224;
 	cover.image = [covers objectAtIndex:index%[covers count]];
+	
 	
 	return cover;
 	

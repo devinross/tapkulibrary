@@ -32,14 +32,15 @@
 #import "TKCoverView.h"
 
 @implementation TKCoverView
-@synthesize image;
+@synthesize image,baseline;
 
 
 - (id) initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         // Initialization code
 		//self.image = [UIImage imageNamed:@"albumcover.jpg"];
-		self.opaque = YES;
+		self.opaque = NO;
+		self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
@@ -49,18 +50,29 @@
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
-	CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, 1.0);
-	CGContextFillRect(context, rect);
+
 	
 	
 	float h = rect.size.width * image.size.height / image.size.width;
 	
-	CGRect r = CGRectMake(0, 0, rect.size.width , h);
+	float y = 0;
+	if(h < baseline)
+		y = baseline - h;
+	
+	CGRect r = CGRectMake(0, y, rect.size.width , h);
+	
+	CGRect rectangle = rect;
+	rectangle.origin.y += y + 1;
+	rectangle.size.height -= y;
+	CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, 1.0);
+	CGContextFillRect(context, rectangle);
 	
 	[image drawInRect:r];
 	
 
-	r.origin.y = h;
+	r.origin.y = h + y;
+	
+
 	
 
 	CGContextDrawImage(context,r,image.CGImage);
@@ -76,7 +88,10 @@
 	image = [img retain];
 	[self setNeedsDisplay];
 }
-
+- (void) setBaseline:(float)f{
+	baseline = f;
+	[self setNeedsDisplay];
+}
 - (void) dealloc {
 	[image release];
     [super dealloc];

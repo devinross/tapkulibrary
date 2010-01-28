@@ -33,6 +33,8 @@
 
 @interface TKCoverView : UIView {
 	UIImage *image;
+	float baseline;
 }
 @property (retain,nonatomic) UIImage *image;
+@property (assign,nonatomic) float baseline;
 @end

@@ -278,7 +278,7 @@ static float highValue;
 	
 	float z =  1.0 / (POINT_DISTANCE / 50.0);
 	int per = (int)z;
-	
+	per = (per<1) ? 1 : per;
 
 	for(int i=0;i<[self.data count];i += per){
 		
@@ -297,29 +297,7 @@ static float highValue;
 		[self addSubview:lab];
 		[lab release];
 		
-	}
-	/*
-	
-	
-	for(int i = 0; i < c; i+=50){
-		
-		int index = i / POINT_DISTANCE;
-		float x = (index+1.0) * POINT_DISTANCE + SCROLL_MARGINS;
-		NSObject <TKGraphViewPoint> *d = [data objectAtIndex:index];
-		CGFloat clr[] = {0,0,0,0.3};
-		
-		
-		[UIView drawLineInRect:CGRectMake(x-.5, SCROLL_HEIGHT, 0, 6) colors:clr];
-		
-		UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(x, SCROLL_HEIGHT+4, 50, 15)];
-		lab.text = [d xLabel];
-		[lab setFont:[UIFont boldSystemFontOfSize:10.0]];
-		[lab setTextColor:[UIColor grayColor]];
-		[lab setBackgroundColor:[UIColor clearColor]];
-		[self addSubview:lab];
-		
-	}*/
-	
+	}	
 }
 - (void) drawRect:(CGRect)rect {
 	
