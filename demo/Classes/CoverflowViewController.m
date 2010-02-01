@@ -59,7 +59,6 @@
 	coverflow.delegate = self;
 	coverflow.dataSource = self;
 	[self.view addSubview:coverflow];
-	
 	[coverflow setNumberOfCovers:60];
 
 	
@@ -81,7 +80,7 @@
 - (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasBroughtToFront:(int)index{
 	//NSLog(@"Front %d",index);
 }
-- (TKCoverView*) coverflowView:(TKCoverflowView*)coverflowView coverAtIndex:(int)index;{
+- (TKCoverView*) coverflowView:(TKCoverflowView*)coverflowView coverAtIndex:(int)index{
 	
 	TKCoverView *cover = [coverflowView dequeueReusableCoverView];
 	

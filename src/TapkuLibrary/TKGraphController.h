@@ -31,10 +31,6 @@
 
 
 #import "TKGraphView.h"
-@class TKGraphView;
-//@protocol TKGraphDataSource;
-
-
 
 @interface TKGraphController : UIViewController    {
 	UIButton *close;

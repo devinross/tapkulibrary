@@ -28,6 +28,7 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
+
 #import <QuartzCore/QuartzCore.h>
 @class TKGraph, TKGraphViewPlotView, TKGraphViewIndicator,TKGraphViewGoalLabel;
 @protocol TKGraphViewPoint;
@@ -56,11 +57,8 @@
 }
 
 @property (nonatomic,retain) UILabel *title;
-
 @property (nonatomic,assign) int pointDistance;
-
 @property (nonatomic,assign,getter=isTouchIndicatorEnabled) BOOL touchIndicatorEnabled;
-
 @property (nonatomic,copy) NSString *goalTitle;
 @property (nonatomic,assign,getter=isGoalShown) BOOL goalShown;
 @property (nonatomic,retain) NSNumber *goalValue;

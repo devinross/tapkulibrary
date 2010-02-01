@@ -32,7 +32,7 @@
 #import "TKCoverflowView.h"
 #import "TKCoverView.h"
 
-#define COVER_SPACING 50.0
+#define COVER_SPACING 40.0
 #define CENTER_COVER_OFFSET 70
 #define SIDE_COVER_ANGLE 1.4
 #define SIDE_COVER_ZPOSITION -80
@@ -57,12 +57,12 @@
 	leftTransform = CATransform3DIdentity;
 	leftTransform = CATransform3DRotate(leftTransform, angle, 0.0f, 1.0f, 0.0f);
 	leftTransform = CATransform3DScale(leftTransform,.8,.8,1);
-	leftTransform = CATransform3DTranslate(leftTransform, 100, 0,-110);
+	leftTransform = CATransform3DTranslate(leftTransform, 140, 0,-170);
 	
 	rightTransform = CATransform3DIdentity;
 	rightTransform = CATransform3DRotate(rightTransform, angle, 0.0f, -1.0f, 0.0f);
 	rightTransform = CATransform3DScale(rightTransform,.8,.8,1);
-	rightTransform = CATransform3DTranslate(rightTransform, -100, 0,-110);
+	rightTransform = CATransform3DTranslate(rightTransform, -140, 0,-170);
 	
 	
 	CATransform3D sublayerTransform = CATransform3DIdentity;
@@ -214,7 +214,7 @@
 	
 }
 
-- (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context{
+- (void) animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context{
 	if([finished boolValue] && [animationID intValue] == currentIndex  && [delegate respondsToSelector:@selector(coverflowView:coverAtIndexWasBroughtToFront:)])
 		[delegate coverflowView:self coverAtIndexWasBroughtToFront:currentIndex];
 }
@@ -377,6 +377,7 @@
 - (void)drawRect:(CGRect)rect {
     // Drawing code
 }
+
 - (void)dealloc {	
 	
 	[coverViews release];
