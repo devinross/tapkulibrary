@@ -46,12 +46,15 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    // Drawing code
 	
-	CGContextRef context = UIGraphicsGetCurrentContext();
+	//CGRect r = CGRectMake(0, 0, rect.size.width , rect.size.width * image.size.height / image.size.width);
+	//[image drawInRect:r];
+	
 	
 
-	
+	//CGRect r = CGRectMake(0, 0, rect.size.width , rect.size.width * image.size.height / image.size.width);
+
+	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	float h = rect.size.width * image.size.height / image.size.width;
 	
@@ -66,21 +69,15 @@
 	rectangle.size.height -= y;
 	CGContextSetRGBFillColor(context, 0.0, 0.0, 0.0, 1.0);
 	CGContextFillRect(context, rectangle);
-	
+	self.backgroundColor = [UIColor blackColor];
 	[image drawInRect:r];
 	
 
 	r.origin.y = h + y;
-	
-
-	
-
 	CGContextDrawImage(context,r,image.CGImage);
-	
 	r.size.height =  h > rect.size.height - r.size.height ? rect.size.height - r.size.height : h;
-	
 	[[UIImage imageNamed:@"gradient.png"] drawInRect:r];
-	
+
 }
 
 - (void) setImage:(UIImage *)img{

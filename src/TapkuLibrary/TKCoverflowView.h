@@ -34,12 +34,7 @@
 @protocol TKCoverflowViewDelegate,TKCoverflowViewDataSource;
 @class TKCoverView;
 
-//#define TKCoverflowViewCoverPerspectiveNormal -0.001;
-//#define TKCoverflowViewCoverPerspectiveMore -0.0005;
-
-
 static const CGFloat TKCoverflowViewCoverAngleNormal = 1.4;
-
 static const CGFloat TKCoverflowViewCoverAngleMore = 1.4;
 static const CGFloat TKCoverflowViewCoverAngleLess = 1.1;
 
@@ -54,6 +49,10 @@ static const CGFloat TKCoverflowViewCoverAngleLess = 1.1;
 	int numberOfCovers;
 	int currentIndex;
 	
+	BOOL fast;
+	float origin;
+	BOOL movingRight;
+
 	
 	UIView *currentTouch;
 	
@@ -63,8 +62,8 @@ static const CGFloat TKCoverflowViewCoverAngleLess = 1.1;
 	int margin;
 	CGSize coverSize;
 	float coverSpacing;
-	int coverBuffer;
-	CATransform3D leftTransform, rightTransform;
+	int coverBuffer,speedbuffer;
+	CATransform3D leftTransform, rightTransform, leftForward, rightForward;
 	
 	float angle;
 
@@ -89,8 +88,9 @@ static const CGFloat TKCoverflowViewCoverAngleLess = 1.1;
 @end
 
 @protocol TKCoverflowViewDelegate <NSObject>
-@optional
+@required
 - (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasBroughtToFront:(int)index;
+@optional
 - (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasDoubleTapped:(int)index;
 @end
 

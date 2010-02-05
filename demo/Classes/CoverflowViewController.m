@@ -44,7 +44,7 @@
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
-- (void)viewDidLoad {
+- (void) viewDidLoad {
     [super viewDidLoad];
 	
 	covers = [[NSArray arrayWithObjects:
@@ -59,7 +59,7 @@
 	coverflow.delegate = self;
 	coverflow.dataSource = self;
 	[self.view addSubview:coverflow];
-	[coverflow setNumberOfCovers:60];
+	[coverflow setNumberOfCovers:580];
 
 	
 	infoButton = [[UIButton buttonWithType:UIButtonTypeInfoLight] retain];
@@ -84,13 +84,16 @@
 	
 	TKCoverView *cover = [coverflowView dequeueReusableCoverView];
 	
+
 	if(cover == nil){
+		//NSLog(@"index: %d",index);
 		cover = [[[TKCoverView alloc] initWithFrame:CGRectMake(0, 0, 224, 300)] autorelease]; // 224
+		cover.baseline = 224;
+		
 	}
-	cover.baseline = 224;
 	cover.image = [covers objectAtIndex:index%[covers count]];
 	
-	
+
 	return cover;
 	
 }
