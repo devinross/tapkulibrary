@@ -91,6 +91,7 @@ static UIColor *indicatorBackgroundColor = nil;
 
 
 - (void)drawContentView:(CGRect)r{
+
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	

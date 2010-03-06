@@ -30,6 +30,7 @@
  */
 
 #import <QuartzCore/QuartzCore.h>
+#import <UIKit/UIKit.h>
 
 @protocol TKCoverflowViewDelegate,TKCoverflowViewDataSource;
 @class TKCoverView;
@@ -48,6 +49,8 @@ static const CGFloat TKCoverflowViewCoverAngleLess = 1.1;
 	
 	int numberOfCovers;
 	int currentIndex;
+	
+	int pad;
 	
 	BOOL fast;
 	float origin;

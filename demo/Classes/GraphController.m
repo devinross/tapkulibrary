@@ -90,7 +90,7 @@
 	
 	srand([[NSDate date] timeIntervalSince1970]);
 	
-	for(int i=0;i<100;i++){
+	for(int i=0;i<60;i++){
 		int no = rand() % 100 + i;
 		
 		GraphPoint *gp = [[GraphPoint alloc] initWithID:i value:[NSNumber numberWithFloat:no]];

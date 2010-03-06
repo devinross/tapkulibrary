@@ -29,7 +29,7 @@
  
  */
 
-
+#import <UIKit/UIKit.h>
 
 typedef enum {
 	TKEmptyViewImageChatBubble,

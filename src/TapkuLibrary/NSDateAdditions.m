@@ -198,7 +198,6 @@
 
 
 // Calendar starting on Monday instead of Sunday (Australia, Europe against US american calendar)
-
 - (int) weekdayWithMondayFirst{
 	
 	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -255,7 +254,6 @@
 }
 
 */
-
 /* ----- start snippet from http://www.alexcurylo.com/blog/2009/07/25/snippet-naturaldates/ ----- */
 
 

@@ -29,6 +29,7 @@
  
  */
 
+#import <UIKit/UIKit.h>
 
 @interface LoadingHUDView : UIView {
 	UIActivityIndicatorView *_activity;

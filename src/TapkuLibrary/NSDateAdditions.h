@@ -54,10 +54,7 @@ typedef struct TKDateInformation TKDateInformation;
 
 @property (readonly,nonatomic) NSString *month;
 @property (readonly,nonatomic) NSString *year;
-
 @property (readonly,nonatomic) int daysInMonth; // ie. 31, 30 29
-
-
 @property (readonly,nonatomic) int weekdayWithMondayFirst;
 
 

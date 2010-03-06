@@ -31,6 +31,7 @@
 
 #import "TKCoverflowView.h"
 #import "TKCoverView.h"
+#import "TKGlobal.h"
 
 #define COVER_SPACING 50.0
 #define CENTER_COVER_OFFSET 70
@@ -48,7 +49,7 @@
 
 - (void) deplaceAlbumsFrom:(int)start to:(int)end;
 - (void) deplaceAlbumsAtIndex:(int)cnt;
-- (void) placeAlbumsFrom:(int)start to:(int)end transform:(CATransform3D)transform;
+- (BOOL) placeAlbumsFrom:(int)start to:(int)end transform:(CATransform3D)transform;
 - (void) placeAlbumAtIndex:(int)cnt transform:(CATransform3D)transform;
 
 @end
@@ -58,6 +59,7 @@
 
 - (void) load{
 	
+	pad = -1;
 	
 
 	coverSize = CGSizeMake(224, 224);
@@ -153,17 +155,17 @@
 	}
 }
 
-- (void) placeAlbumsFrom:(int)start to:(int)end transform:(CATransform3D)trans{
+- (BOOL) placeAlbumsFrom:(int)start to:(int)end transform:(CATransform3D)trans{
 	
 	
 	
-	if(start >= end) return;
+	if(start >= end) return NO;
 	
-	//NSLog(@"(%d - %d)",start,end);
-	
+
 	for(int cnt=start;cnt<= end;cnt++){
 		[self placeAlbumAtIndex:cnt transform:trans];
 	}
+	return YES;
 	
 	
 }
@@ -171,7 +173,11 @@
 	
 	if(cnt >= [coverViews count]) return;
 	
+	
+	
 	if([coverViews objectAtIndex:cnt] == [NSNull null]){
+		
+
 		
 		TKCoverView *cover = [dataSource coverflowView:self coverAtIndex:cnt];
 		[coverViews replaceObjectAtIndex:cnt withObject:cover];
@@ -207,22 +213,16 @@
 	
 	if(loc == newLocation && newLength == len) return;
 	
-
 	if(movingRight){
 		
 		[self deplaceAlbumsFrom:loc to:newLocation];
 		[self placeAlbumsFrom:loc+len to:newLocation+len transform:fast ? rightForward : rightTransform];
 		
-		//if(loc != newLocation)
-		//	[self deplaceAlbumsAtIndex:loc];
-		//[self placeAlbumAtIndex:loc+len];
 	}else{
 		[self deplaceAlbumsFrom:newLength+newLocation to:loc+loc];
+
 		[self placeAlbumsFrom:newLocation to:loc transform:fast ? leftForward : leftTransform];
-		
-		//if(loc+len != newLocation+newLength)
-		//	[self deplaceAlbumsAtIndex:newLocation+newLength];
-		//[self placeAlbumAtIndex:newLocation];
+
 	}
 	
 	deck = NSMakeRange(newLocation, newLength);
@@ -415,12 +415,13 @@
 }
 
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView{
-	
-	
+
 	float oldOrigin = origin;
 	origin = self.contentOffset.x;
+	BOOL mr = movingRight;
 	movingRight = origin - oldOrigin > 0 ? YES : NO;
-	
+	if(mr == movingRight)
+		pad = -1;
 	
 	
 	
@@ -431,10 +432,12 @@
 	if(index < 0) index = 0;
 	if(index >= numberOfCovers) index = numberOfCovers-1;
 	
-	if( index > 10 && index < (numberOfCovers - 10) && abs(origin-oldOrigin) > 90)
+	if( index > 10 && index < (numberOfCovers - 10) && abs(origin-oldOrigin) > 100)
 		fast = YES;
 	else
 		fast = NO;
+	
+	fast = NO;
 	
 
 	[self animateToIndex:index  animated:YES];

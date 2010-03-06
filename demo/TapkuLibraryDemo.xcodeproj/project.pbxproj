@@ -36,7 +36,6 @@
 		3B917D3310F34D3200049677 /* cover_4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3B917D2C10F34D3200049677 /* cover_4.jpg */; };
 		3B917D3410F34D3200049677 /* cover_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3B917D2D10F34D3200049677 /* cover_5.jpg */; };
 		3B917D3510F34D3200049677 /* cover_6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3B917D2E10F34D3200049677 /* cover_6.jpg */; };
-		3B917D3610F34D3200049677 /* gradient.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B917D2F10F34D3200049677 /* gradient.png */; };
 		3BCAC5E411115335004DBAA6 /* cover_9.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3BCAC5E311115335004DBAA6 /* cover_9.jpeg */; };
 		3BCAC5E71111533A004DBAA6 /* cover_7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3BCAC5E51111533A004DBAA6 /* cover_7.jpg */; };
 		3BCAC5E81111533A004DBAA6 /* cover_8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3BCAC5E61111533A004DBAA6 /* cover_8.jpg */; };
@@ -103,7 +102,6 @@
 		3B917D2C10F34D3200049677 /* cover_4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_4.jpg; sourceTree = "<group>"; };
 		3B917D2D10F34D3200049677 /* cover_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_5.jpg; sourceTree = "<group>"; };
 		3B917D2E10F34D3200049677 /* cover_6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_6.jpg; sourceTree = "<group>"; };
-		3B917D2F10F34D3200049677 /* gradient.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gradient.png; sourceTree = "<group>"; };
 		3BCAC5E311115335004DBAA6 /* cover_9.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_9.jpeg; sourceTree = "<group>"; };
 		3BCAC5E51111533A004DBAA6 /* cover_7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_7.jpg; sourceTree = "<group>"; };
 		3BCAC5E61111533A004DBAA6 /* cover_8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_8.jpg; sourceTree = "<group>"; };
@@ -241,7 +239,6 @@
 				3B917D2D10F34D3200049677 /* cover_5.jpg */,
 				3B917D2E10F34D3200049677 /* cover_6.jpg */,
 				3BCAC5E311115335004DBAA6 /* cover_9.jpeg */,
-				3B917D2F10F34D3200049677 /* gradient.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -389,7 +386,6 @@
 				3B917D3310F34D3200049677 /* cover_4.jpg in Resources */,
 				3B917D3410F34D3200049677 /* cover_5.jpg in Resources */,
 				3B917D3510F34D3200049677 /* cover_6.jpg in Resources */,
-				3B917D3610F34D3200049677 /* gradient.png in Resources */,
 				3BCAC5E411115335004DBAA6 /* cover_9.jpeg in Resources */,
 				3BCAC5E71111533A004DBAA6 /* cover_7.jpg in Resources */,
 				3BCAC5E81111533A004DBAA6 /* cover_8.jpg in Resources */,
@@ -489,7 +485,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2A411C78-2BC6-4253-A795-6FA2C46BB521";
-				SDKROOT = iphoneos3.1.2;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Release;
 		};

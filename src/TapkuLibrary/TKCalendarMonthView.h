@@ -29,7 +29,7 @@
  
  */
 
-
+#import <UIKit/UIKit.h>
 
 @class TKMonthGridView,TKCalendarDayView;
 @protocol TKCalendarMonthViewDelegate, TKCalendarMonthViewDataSource;
@@ -56,7 +56,6 @@
 }
 @property (readonly,nonatomic) NSString *monthYear;
 @property (readonly,nonatomic) NSDate *monthDate;
-
 @property (assign,nonatomic) id <TKCalendarMonthViewDataSource> dataSource;
 @property (assign,nonatomic) id <TKCalendarMonthViewDelegate> delegate;
 
@@ -79,14 +78,4 @@
 - (void) calendarMonthView:(TKCalendarMonthView*)monthView dateWasSelected:(NSDate*)date;
 - (void) calendarMonthView:(TKCalendarMonthView*)monthView monthWillAppear:(NSDate*)month;
 @end
-
-
-
-
-
-
-
-
-
-
 

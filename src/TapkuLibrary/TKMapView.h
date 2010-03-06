@@ -29,6 +29,7 @@
  
  */
 
+#import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
 @class TKMapPlace,TKOverlayView,MKMapView;
