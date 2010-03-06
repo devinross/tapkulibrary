@@ -566,14 +566,21 @@
 }
 - (void) drawDayLabels:(CGRect)rect{
 	
+	NSString *mon = NSLocalizedString(@"Mon",@"Mon");
+	NSString *tue = NSLocalizedString(@"Tue",@"Tue");
+	NSString *wed = NSLocalizedString(@"Wed",@"Wed");
+	NSString *thu = NSLocalizedString(@"Thu",@"Thu");
+	NSString *fri = NSLocalizedString(@"Fri",@"Fri");
+	NSString *sat = NSLocalizedString(@"Sat",@"Sat");
+	NSString *sun = NSLocalizedString(@"Sun",@"Sun");
 	
 	// Calendar starting on Monday instead of Sunday (Australia, Europe agains US american calendar)
 	NSArray *days;
 	CFCalendarRef currentCalendar = CFCalendarCopyCurrent();
 	if (CFCalendarGetFirstWeekday(currentCalendar) == 2) 
-		days = [NSArray arrayWithObjects:@"Mon",@"Tue",@"Wed",@"Thu",@"Fri",@"Sat",@"Sun",nil];
+		days = [NSArray arrayWithObjects:mon,tue,wed,thu,fri,sat,sun,nil];
 	else 
-		days = [NSArray arrayWithObjects:@"Sun",@"Mon",@"Tue",@"Wed",@"Thu",@"Fri",@"Sat",nil];
+		days = [NSArray arrayWithObjects:sun,mon,tue,wed,thu,fri,sat,nil];
 	CFRelease(currentCalendar); 
 	
 	
