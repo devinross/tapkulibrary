@@ -395,6 +395,23 @@
 	
 	
 	
+	CGRect r = scrollView.frame;
+	r.size.height = ([(TKMonthGridView*)current lines] +1)*44;
+	scrollView.frame=r;
+	
+	CGRect imgrect = shadow.frame;
+	imgrect.origin.y = r.size.height-132;
+	shadow.frame = imgrect;
+	
+	self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, scrollView.frame.size.width, scrollView.frame.size.height+44);
+	
+	
+	[self setNeedsDisplay];
+	
+	if ([delegate respondsToSelector:@selector(calendarMonthView:monthWillAppear:)]){
+		[delegate calendarMonthView:self monthWillAppear:[current dateOfFirst]];
+	}
+	
 }
 
 
