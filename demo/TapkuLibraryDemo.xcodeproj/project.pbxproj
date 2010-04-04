@@ -20,7 +20,6 @@
 		3B319D3310C74D7A006B2A57 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B319D3210C74D7A006B2A57 /* QuartzCore.framework */; };
 		3B319D4E10C74DAF006B2A57 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B319D4D10C74DAF006B2A57 /* MapKit.framework */; };
 		3B319D6210C74DED006B2A57 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B319D6110C74DED006B2A57 /* icon.png */; };
-		3B319D6410C74DF7006B2A57 /* note.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B319D6310C74DF7006B2A57 /* note.png */; };
 		3B319D8010C74E4D006B2A57 /* OverviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B319D7110C74E4D006B2A57 /* OverviewController.m */; };
 		3B319D8110C74E4D006B2A57 /* LabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B319D7310C74E4D006B2A57 /* LabelViewController.m */; };
 		3B319D8210C74E4D006B2A57 /* FastTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B319D7510C74E4D006B2A57 /* FastTableViewController.m */; };
@@ -84,7 +83,6 @@
 		3B319D3210C74D7A006B2A57 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3B319D4D10C74DAF006B2A57 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3B319D6110C74DED006B2A57 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = SOURCE_ROOT; };
-		3B319D6310C74DF7006B2A57 /* note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note.png; sourceTree = "<group>"; };
 		3B319D7010C74E4D006B2A57 /* OverviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewController.h; sourceTree = "<group>"; };
 		3B319D7110C74E4D006B2A57 /* OverviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverviewController.m; sourceTree = "<group>"; };
 		3B319D7210C74E4D006B2A57 /* LabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelViewController.h; sourceTree = "<group>"; };
@@ -180,7 +178,6 @@
 				3B2A488B1163BDE500081421 /* TapkuLibrary.bundle */,
 				3B917D2810F34D3200049677 /* Images */,
 				3BFECE4A10D070DF0005C88A /* image.png */,
-				3B319D6310C74DF7006B2A57 /* note.png */,
 				3B319D6110C74DED006B2A57 /* icon.png */,
 				28F335F01007B36200424DE2 /* RootViewController.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
@@ -392,7 +389,6 @@
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				28F335F11007B36200424DE2 /* RootViewController.xib in Resources */,
 				3B319D6210C74DED006B2A57 /* icon.png in Resources */,
-				3B319D6410C74DF7006B2A57 /* note.png in Resources */,
 				3BFECE4B10D070DF0005C88A /* image.png in Resources */,
 				3B917D3010F34D3200049677 /* cover_1.jpg in Resources */,
 				3B917D3110F34D3200049677 /* cover_2.jpg in Resources */,
