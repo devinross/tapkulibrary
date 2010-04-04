@@ -36,6 +36,23 @@
 @synthesize field;
 
 
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+	
+	if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        // Initialization code
+		field = [[UITextField alloc] initWithFrame:CGRectZero];
+		field.autocorrectionType = UITextAutocorrectionTypeYes;
+		field.delegate = self;
+		[self addSubview:field];
+		//field.backgroundColor = [UIColor redColor];
+		field.font = [UIFont boldSystemFontOfSize:16.0];
+		
+    }
+    return self;
+	
+	
+}
+
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]) {
         // Initialization code

@@ -59,7 +59,7 @@
 
 - (void) load{
 	
-	pad = -1;
+	
 	
 
 	coverSize = CGSizeMake(224, 224);
@@ -76,14 +76,14 @@
 	
 	
 	leftForward = CATransform3DIdentity;
-	leftForward = CATransform3DRotate(leftForward, angle, 0.0f, 1.0f, 0.0f);
-	leftForward = CATransform3DScale(leftForward,.88,.88,1);
-	leftForward = CATransform3DTranslate(leftForward, COVER_SPACING_MAIN, 0,-150);
+	leftForward = CATransform3DRotate(leftForward, angle-0.2, 0.0f, 1.0f, 0.0f);
+	leftForward = CATransform3DScale(leftForward,1,1,1);
+	leftForward = CATransform3DTranslate(leftForward, COVER_SPACING_MAIN + - 100, 0,-65);
 	
 	rightForward = CATransform3DIdentity;
-	rightForward = CATransform3DRotate(rightForward, angle, 0.0f, -1.0f, 0.0f);
+	rightForward = CATransform3DRotate(rightForward, angle-0.2, 0.0f, -1.0f, 0.0f);
 	rightForward = CATransform3DScale(rightForward,1,1,1);
-	rightForward = CATransform3DTranslate(rightForward, -1 * COVER_SPACING_MAIN, 0,-150);
+	rightForward = CATransform3DTranslate(rightForward, -1 * (COVER_SPACING_MAIN - 50), 0,-65);
 
 	
 	
@@ -206,7 +206,7 @@
 	
 	int loc = deck.location, len = deck.length;
 	
-	int buff = fast ? speedbuffer : coverBuffer;
+	int buff = /* fast ? speedbuffer : */ coverBuffer;
 	
 	int newLocation = currentIndex - buff < 0 ? 0 : currentIndex-buff;
 	int newLength = currentIndex + buff > numberOfCovers ? numberOfCovers - newLocation : currentIndex + buff - newLocation;
@@ -216,12 +216,12 @@
 	if(movingRight){
 		
 		[self deplaceAlbumsFrom:loc to:newLocation];
-		[self placeAlbumsFrom:loc+len to:newLocation+len transform:fast ? rightForward : rightTransform];
+		[self placeAlbumsFrom:loc+len to:newLocation+len transform: /* fast ? rightForward : */ rightTransform];
 		
 	}else{
 		[self deplaceAlbumsFrom:newLength+newLocation to:loc+loc];
 
-		[self placeAlbumsFrom:newLocation to:loc transform:fast ? leftForward : leftTransform];
+		[self placeAlbumsFrom:newLocation to:loc transform:/* fast ? leftForward :*/ leftTransform];
 
 	}
 	
@@ -242,7 +242,16 @@
 	
 	if(animated){
 		[UIView beginAnimations:string context:nil];
-		[UIView setAnimationDuration:0.1];
+		
+		float speed = 0.1;
+		speed = velocity > 15 ? 0.06 :speed;
+		speed = velocity > 25 ? 0.02 :speed;
+		speed = velocity > 100 ? 0.0 : speed;
+
+		
+		
+		
+		[UIView setAnimationDuration:speed];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
 		[UIView setAnimationBeginsFromCurrentState:YES];
 		[UIView setAnimationDelegate:self];
@@ -251,17 +260,17 @@
 
 	for(UIView *v in views){
 		
-		if(fast && movingRight)
-			v.layer.transform = rightForward;
-		else if(fast)
-			v.layer.transform = leftForward;
+		//if(velocity > 50 && currentIndex > 20 && currentIndex < numberOfCovers - 20){
 			
-		else{
+			//v.layer.transform = !movingRight ? rightTransform : leftTransform;
+			
+		//}else{
+			
 			int i = [coverViews indexOfObject:v];
 			if(i < index) v.layer.transform = leftTransform;
 			else if(i > index) v.layer.transform = rightTransform;
 			else v.layer.transform = CATransform3DIdentity;
-		}
+		//}
 	}
 	
 	if(animated) [UIView commitAnimations];
@@ -415,15 +424,22 @@
 }
 
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView{
-
+	
+	
+	velocity = abs(pos - scrollView.contentOffset.x);
+	pos = scrollView.contentOffset.x;
+	
+	//if(velocity>10)
+		//NSLog(@"Velocity %d",velocity);
+	
+	
 	float oldOrigin = origin;
 	origin = self.contentOffset.x;
-	BOOL mr = movingRight;
+	//BOOL mr = movingRight;
 	movingRight = origin - oldOrigin > 0 ? YES : NO;
-	if(mr == movingRight)
-		pad = -1;
+
 	
-	
+	//NSLog(@"Speed: %f %f",_horizontalVelocity,_previousHorizontalVelocity);
 	
 	float scroll_size = scrollView.contentSize.width - self.frame.size.width;
 	int covers_per = scroll_size / (numberOfCovers-1);
@@ -432,12 +448,15 @@
 	if(index < 0) index = 0;
 	if(index >= numberOfCovers) index = numberOfCovers-1;
 	
+	
+	/*
 	if( index > 10 && index < (numberOfCovers - 10) && abs(origin-oldOrigin) > 100)
 		fast = YES;
 	else
 		fast = NO;
 	
 	fast = NO;
+	*/
 	
 
 	[self animateToIndex:index  animated:YES];

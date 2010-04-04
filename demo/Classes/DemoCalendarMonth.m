@@ -13,7 +13,8 @@
 - (void) viewDidLoad{
 	[super viewDidLoad];
 	//[self.monthView selectDate:[NSDate dateWithTimeIntervalSinceNow:-60*60*24*68]];
-	[self.monthView selectDate:[NSDate date]];
+	NSDate *date = [NSDate dateWithTimeIntervalSinceNow:10000000];
+	[self.monthView selectDate:date];
 	
 }
 

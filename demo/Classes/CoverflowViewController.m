@@ -87,7 +87,7 @@
 	if(cover == nil){
 		cover = [[[TKCoverView alloc] initWithFrame:CGRectMake(0, 0, 224, 300)] autorelease]; // 224
 		cover.baseline = 224;
-		//cover.tag = index;
+		
 	}
 	cover.image = [covers objectAtIndex:index%[covers count]];
 

@@ -46,13 +46,12 @@ static const CGFloat TKCoverflowViewCoverAngleLess = 1.1;
 	NSMutableArray *views;		// only covers view (no nulls)
 	NSMutableArray *yard;	   // covers ready for reuse
 	
-	
 	int numberOfCovers;
 	int currentIndex;
 	
-	int pad;
+
 	
-	BOOL fast;
+	//BOOL fast;
 	float origin;
 	BOOL movingRight;
 
@@ -67,9 +66,12 @@ static const CGFloat TKCoverflowViewCoverAngleLess = 1.1;
 	float coverSpacing;
 	int coverBuffer,speedbuffer;
 	CATransform3D leftTransform, rightTransform, leftForward, rightForward;
-	
 	float angle;
-
+	
+	
+	// SPEED
+	int pos;
+	int velocity;
 	
 	id <TKCoverflowViewDelegate> delegate;
 	id <TKCoverflowViewDataSource> dataSource;

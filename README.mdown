@@ -1,121 +1,22 @@
 TapkuLibrary
 ============
-TapkuLibrary is a collection of iPhone UI classes intended for broad use in applications.
+TapkuLibrary is a collection of iPhone classes intended for broad use in applications.
 
-[http://tapku.com](http://tapku.com)
 [http://devinsheaven.com](http://devinsheaven.com)
-
+[http://tapku.com](http://tapku.com)
 
 ![](http://farm3.static.flickr.com/2492/4175733982_f168ea3bd1_o.png)
 ![](http://farm5.static.flickr.com/4072/4247861508_046420c6fb_o.jpg)
 
 
-Adding TapkuLibrary to your project
-===================================
+Overview
+========
 
-TapkuLibrary is compiled as a static library, and the easiest way to add it to your project is to use Xcode's "dependent project" facilities.  Here is how (FOLLOW CAREFULLY):
-
-1. Clone the TapkuLibrary git repository: `git clone git://github.com/tapku/tapkulibrary.git`.  Make sure 
-   you store the repository in a permanent place because Xcode will need to reference the files
-   every time you compile your project.
-
-2. Locate the "TapkuLibrary.xcodeproj" file under "src".  Drag TapkuLibrary.xcodeproj and drop it onto
-   the root of your Xcode project's "Groups and Files"  sidebar of the project you want to include it in.  A dialog will appear -- make sure 
-   "Copy items" is unchecked and "Reference Type" is "Relative to Project" before clicking "Add".
-
-3. Now you need to link the TapkuLibrary static library to your project.  Click the "TapkuLibrary.xcodeproj" 
-   item that has just been added to the sidebar.  Under the "Details" table, you will see a single
-   item: libTapkuLibrary.a.  Check the checkbox on the far right of libTapkuLibrary.a.
-
-4. Add TapkuLibrary as a dependency of your project, so Xcode compiles it whenever
-   you compile your project.  Expand the "Targets" section of the sidebar and double-click your
-   application's target.  Under the "General" tab you will see a "Direct Dependencies" section. 
-   Click the "+" button, select "TapkuLibrary", and click "Add Target".
-
-5. Now you need to add the bundle of images and strings to your app.  Locate "TapkuLibrary.bundle" under
-   "TapkuLibrary" and drag and drop it into your project.  A dialog will appear -- make sure 
-   "Create Folder References" is selected,  "Copy items" is unchecked, and "Reference Type" is 
-   "Relative to Project" before clicking "Add".
-
-6. Now you need to add the Core Animation & MapKit frameworks to your project.  Right click on the
-   "Frameworks" group in your project (or equivalent) and select Add > Existing Frameworks. 
-   Then locate QuartzCore.framework & MapKit.framework and add it to the project.
-
-7. Finally, we need to tell your project where to find the TapkuLibrary headers.  Open your
-   "Project Settings" and go to the "Build" tab. Look for "Header Search Paths" and double-click
-   it.  Add the relative path from your project's directory to the "src" directory.  Then
-   go to "Other Linker Flags" under the "Linker" section, and add "-ObjC" and "-all_load" to the list of flags.
-
-8. You're ready to go.  Just #import <TapkuLibrary/TapkuLibrary.h> anywhere you want to use TapkuLibrary classes
-   in your project.
+The Tapku Library provides iPhone, iPod Touch and now iPad developers an extension to Cocoa Foundation and the UIKit frameworks to build iPhone OS applications. The framework contains user interface elements like [coverflow](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKCoverflowView.h), [calendar](src/TapkuLibrary/TKCalendarMonthTableViewController.h) and [charting](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKGraphController.h) user interface classes. Other useful functionality include new Table View Cells, easy creation of HTTP Post requests and [extending notifications for device shaking](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKShakeWindow.h).
 
 
 
-What's in TapkuLibrary?
-==================
+Great! Where do I begin? / [Documentation](http://wiki.github.com/devinross/tapkulibrary/)
+========================================
 
-
-Coverflow View
---------------
-
-**[TKCoverflowView](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKCoverflowView.h)**. If you've implemented a tableview, implementing a coverflow view is a snap!
-
-Calendar View Controller
-------------------------
-**[TKCalendarMonthViewController](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKCalendarMonthViewController.h)** is a controller and view that replicates the Calendar app. 
-
-**[TKCalendarMonthTableViewController](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKCalendarMonthTableViewController.h)** is a controller and view that replicates the Calendar app (with a table underneath).
-
-Empty View
----------
-**[TKEmptyView](TKEmptyView.h)** allows is a blank screen view. You can take a transparent 200px x 200px image and it will be styled correctly to match Apple use in various applications.
-
-
-Graph View Controller
---------------------
-**[TKGraphController](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKGraphController.h)** is a full screen scrollable graph.
-                  
-
-
-HUD UI
-------
-
-**[LoadingHUDView](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/LoadingHUDView.h)** allows you to show a title and message to a loading indicator.
-
-
-
-Overview View Controller
------------------------
-**[TKOverviewTableViewController](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKOverviewTableViewController.h)** a table view controller similar to the interface seen in the application Tweetie (1.0) & Cha-Ching.
-
-
-Map View
---------
-
-**[TKMapView](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKMapView.h)** allows you to place pins on a map using touch.
-
-
-UITableView Label Cells
------------------------
-
-**[TKLabelCell](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKLabelCell.h)** is a cell with a label intended to provide information on the rest of the cell similar to the cells that appear in the Address Book.
-
-
-**[TKLabelTextViewCell](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKLabelTextViewCell.h)** is a cell with a textview and label.
-
-
-**[TKLabelTextFieldCell](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKLabelTextFieldCell.h)** is a cell with a TextField.
-
-
-**[TKLabelFieldCell](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKLabelFieldCell.h)** is a cell with an ordinary field label.
-
-
-**[TKLabelSwitchCell](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKLabelSwitchCell.h)** is a cell with a switch.
-
-More UITableView Cells
-----------------------
-
-**[TKButtonCell](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKButtonCell.h)** is a simple cell with a label in the middle.
-
-
-**[FSIndicatorCell](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/FSIndicatorCell.h)** Fast Scrolling (FS) cell with a Mail like indicator on the right side of the cell. 
+The best place to start is by downloading the source and trying out the demo app. This demo gives an overview of the functionality of the framework. To figure out how to [properly use the library in your own project](http://wiki.github.com/devinross/tapkulibrary/how-to-use-this-library) and take a look at the documentation, take a look at the [wiki](http://wiki.github.com/devinross/tapkulibrary/).

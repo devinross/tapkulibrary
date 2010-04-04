@@ -90,4 +90,7 @@ typedef struct TKDateInformation TKDateInformation;
 @property (readonly,nonatomic) BOOL isToday;
 - (BOOL)isSameDay:(NSDate*)anotherDate;
 
+
+- (NSString*) dateDescription;
+
 @end

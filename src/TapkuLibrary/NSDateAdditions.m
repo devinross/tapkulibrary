@@ -70,8 +70,6 @@
 	[comp setSecond:info.second];
 	
 	return [gregorian dateFromComponents:comp];
-	
-	
 }
 
 
@@ -290,5 +288,12 @@
 } 
  
 /* ----- end snippet from http://www.alexcurylo.com/blog/2009/07/25/snippet-naturaldates/ ----- */
+
+
+- (NSString*) dateDescription{
+	
+	return [[self description] substringToIndex:10];
+	
+}
 
 @end

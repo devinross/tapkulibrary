@@ -66,29 +66,10 @@
 	[graph setPointDistance:15];
 	
 	
-	indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-	CGRect r = indicator.frame;
-	r.origin = self.view.bounds.origin;
-	r.origin.x = self.view.bounds.size.width / 2  - r.size.width / 2;
-	r.origin.y = self.view.bounds.size.height / 2  - r.size.height / 2;
-	indicator.frame = r;
-	[self.view addSubview:indicator];
-	[indicator startAnimating];
+
 	
 	data = [[NSMutableArray alloc] init];
 	
-	
-
-	[NSThread detachNewThreadSelector:@selector(thread) toTarget:self withObject:nil];
-
-	
-	
-}
-
-- (void) thread{
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	
-	srand([[NSDate date] timeIntervalSince1970]);
 	
 	for(int i=0;i<60;i++){
 		int no = rand() % 100 + i;
@@ -98,19 +79,17 @@
 		[gp release];
 	}
 	
-	[self performSelectorOnMainThread:@selector(threadComplete) withObject:nil waitUntilDone:NO];
-	
-	[pool drain];
-}
-- (void) threadComplete{
-	[indicator stopAnimating];
 	
 	[self.graph setGraphWithDataPoints:data];
 	self.graph.goalValue = [NSNumber numberWithFloat:30.0];
 	self.graph.goalShown = YES;
 	[self.graph scrollToPoint:80 animated:YES];
 	[self.graph showIndicatorForPoint:75];
+	
+	
+	
 }
+
 
 
 
