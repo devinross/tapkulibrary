@@ -31,6 +31,11 @@
 #import <Foundation/Foundation.h>
 
 
+#define TKShakeWindowBegan @"motionBegan"
+#define TKShakeWindowCancelled @"motionCancelled"
+#define TKShakeWindowEnded @"motionEnded"
+
+
 @interface TKShakeWindow : UIWindow {
 
 }

@@ -1,10 +1,10 @@
 //
-//  ShakeWindow.m
-//  Created by Devin Ross on 6/4/09.
+//  TKImageCenter.h
+//  Created by Devin Ross on 4/12/10.
 //
 /*
  
- tapku.com || http://github.com/devinross/tapkulibrary
+ tapku.com || http://github.com/tapku/tapkulibrary/tree/master
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -28,21 +28,24 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
-#import "TKShakeWindow.h"
 
 
-@implementation TKShakeWindow
+#import <Foundation/Foundation.h>
 
 
+@interface TKImageCenter : NSObject {
 
-- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-	[[NSNotificationCenter defaultCenter] postNotificationName:TKShakeWindowBegan object:self];
+	NSMutableArray *queue;
+	NSMutableDictionary *images;
+	
+	NSThread *thread;
+	
 }
-- (void)motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-	[[NSNotificationCenter defaultCenter] postNotificationName:TKShakeWindowCancelled object:self];
-}
-- (void)motionEnded:withEvent:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-	[[NSNotificationCenter defaultCenter] postNotificationName:TKShakeWindowEnded object:self];
-}
+
++ (TKImageCenter*) sharedImageCenter;
+
+- (UIImage*) imageAtURL:(NSString*)imageURL addToQueue:(BOOL)addToQueue;
+
+- (void) clearImages;
 
 @end

@@ -45,6 +45,18 @@
 
 @implementation ABTableViewCell
 
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
+	{
+		contentView = [[ABTableViewCellView alloc] initWithFrame:CGRectZero];
+		contentView.opaque = YES;
+		[self addSubview:contentView];
+		[contentView release];
+    }
+    return self;
+}
+
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier
 {
     if(self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier])

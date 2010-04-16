@@ -36,7 +36,7 @@
 	UISwitch *slider;
 }
 
-@property (copy,nonatomic) NSString *text;
+@property (retain,nonatomic) UILabel *title;
 @property (assign, nonatomic) UISwitch *slider;
 
 @end

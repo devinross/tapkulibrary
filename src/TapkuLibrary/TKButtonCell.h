@@ -32,9 +32,9 @@
 
 
 @interface TKButtonCell : UITableViewCell {
-	UILabel *label;
+	UILabel *title;
 }
 
-@property (copy,nonatomic) NSString *text;
+@property (retain,nonatomic) UILabel *title;
 
 @end

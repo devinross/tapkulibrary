@@ -52,6 +52,8 @@
 - (BOOL) placeAlbumsFrom:(int)start to:(int)end transform:(CATransform3D)transform;
 - (void) placeAlbumAtIndex:(int)cnt transform:(CATransform3D)transform;
 
+- (void) snapToAlbum;
+
 @end
 
 @implementation TKCoverflowView (hidden)
@@ -230,9 +232,22 @@
 	
 }
 
+- (void) snapToAlbum{
+	
+	float scroll_size = self.contentSize.width - self.frame.size.width;
+	int covers_per = scroll_size / (numberOfCovers-1);
+	float v = (currentIndex * covers_per) - (covers_per/2) + (COVER_SPACING/2);
+	[self setContentOffset:CGPointMake(v, 0) animated:YES];
+}
+
+
 - (void) animateToIndex:(int)index animated:(BOOL)animated{
 	
-	if(index == currentIndex) return;
+	if(index == currentIndex){
+		
+		
+		return;
+	} 
 	currentIndex = index;
 	
 
@@ -243,10 +258,10 @@
 	if(animated){
 		[UIView beginAnimations:string context:nil];
 		
-		float speed = 0.1;
-		speed = velocity > 15 ? 0.06 :speed;
-		speed = velocity > 25 ? 0.02 :speed;
-		speed = velocity > 100 ? 0.0 : speed;
+		float speed = 0.2;
+		speed = velocity > 20 ? 0.06 :speed;
+		speed = velocity > 40 ? 0.02 :speed;
+		speed = velocity > 130 ? 0.01 : speed;
 
 		
 		
@@ -394,13 +409,13 @@
 	if(touch.view != self &&  [touch locationInView:touch.view].y < coverSize.height){
 		currentTouch = touch.view;
 	}
-	
+
 }
 - (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
 
 }
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	
+
 	UITouch *touch = [touches anyObject];
 	
 	if(touch.view == currentTouch){
@@ -416,11 +431,15 @@
 		
 
 	}
+	
+
+	
 	currentTouch = nil;
 }
 - (void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
 	if(currentTouch!= nil)
 		currentTouch = nil;
+	
 }
 
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -467,6 +486,18 @@
 	
 	
 }
+- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+
+	if(!scrollView.tracking && !scrollView.decelerating) [self snapToAlbum];
+
+}
+- (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+	
+	if(!self.decelerating && !decelerate)[self snapToAlbum];
+
+}
+
+
 
 
 - (void)drawRect:(CGRect)rect {

@@ -1,10 +1,10 @@
 //
-//  ShakeWindow.m
-//  Created by Devin Ross on 6/4/09.
+//  FastSubtitleCellController.h
+//  Created by Devin Ross on 4/15/10.
 //
 /*
  
- tapku.com || http://github.com/devinross/tapkulibrary
+ tapku.com || http://github.com/tapku/tapkulibrary/tree/master
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -28,21 +28,12 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
-#import "TKShakeWindow.h"
+
+#import <TapkuLibrary/TapkuLibrary.h>
 
 
-@implementation TKShakeWindow
+@interface FastSubtitleCellController : UITableViewController {
 
-
-
-- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-	[[NSNotificationCenter defaultCenter] postNotificationName:TKShakeWindowBegan object:self];
-}
-- (void)motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-	[[NSNotificationCenter defaultCenter] postNotificationName:TKShakeWindowCancelled object:self];
-}
-- (void)motionEnded:withEvent:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-	[[NSNotificationCenter defaultCenter] postNotificationName:TKShakeWindowEnded object:self];
 }
 
 @end

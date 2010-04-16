@@ -7,6 +7,7 @@
 //
 
 #import "RootViewController.h"
+
 #import "LabelViewController.h"
 #import "FastTableViewController.h"
 #import "HUDViewController.h"
@@ -16,6 +17,10 @@
 #import "GraphController.h"
 #import "DemoCalendarMonth.h"
 #import "CoverflowViewController.h"
+#import "FastSubtitleCellController.h"
+#import "MoreCellsViewController.h"
+
+#import "ImageCenterViewController.h"
 
 @implementation RootViewController
 
@@ -35,7 +40,7 @@
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Views",@"title",nil];
 	[data addObject:d];
 	
-	rows = [NSArray arrayWithObjects:@"Empty Sign",@"Loading HUD",nil];
+	rows = [NSArray arrayWithObjects:@"Empty Sign",@"Loading HUD",@"Place Pins",nil];
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"UI Elements",@"title",nil];
 	[data addObject:d];
 	
@@ -43,12 +48,13 @@
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Calendar",@"title",nil];
 	[data addObject:d];
 	
-	rows = [NSArray arrayWithObjects:@"Place Pins",nil];
-	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Maps",@"title",nil];
+
+	rows = [NSArray arrayWithObjects:@"Label Cells",@"More Cells",@"Fast Scrolling Cells",@"Fast Subtitle Cells",nil];
+	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Table View Cells",@"title",@"Fast cells scroll smooth on older devices",@"footer",nil];
 	[data addObject:d];
 	
-	rows = [NSArray arrayWithObjects:@"Label Cells",@"Fast Scrolling Cells",nil];
-	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Cells",@"title",nil];
+	rows = [NSArray arrayWithObjects:@"Image Center",nil];
+	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Locating Images",@"title",@"Handles large amounts of Internet image requests",@"footer",nil];
 	[data addObject:d];
 	
 	
@@ -102,11 +108,15 @@
 	else if(s==0 && r==2)
 		vc = [[OverviewController alloc] init];
 	
+	
+	
 	else if(s==1 && r==0)
 		vc = [[EmptyViewController alloc] init];
 	
 	else if(s==1 && r==1)
 		vc = [[HUDViewController alloc] init];
+	else if(s==1 && r==2)
+		vc = [[MapViewController alloc] init];
 	
 	
 	
@@ -116,14 +126,20 @@
 		vc = [[ODCalendarDayViewController alloc] init];
 	
 	
-	else if(s==3 && r==0)
-		vc = [[MapViewController alloc] init];
 	
+	
+	
+	else if(s==3 && r==0)
+		vc = [[LabelViewController alloc] initWithStyle:UITableViewStyleGrouped];
+	else if(s==3 && r==1)
+		vc = [[MoreCellsViewController alloc] initWithStyle:UITableViewStyleGrouped];
+	else if(s==3 && r==2)
+		vc = [[FastTableViewController alloc] initWithStyle:UITableViewStylePlain];
+	else if(s==3 && r==3)
+		vc = [[FastSubtitleCellController alloc] initWithStyle:UITableViewStylePlain];
 	
 	else if(s==4 && r==0)
-		vc = [[LabelViewController alloc] initWithStyle:UITableViewStyleGrouped];
-	else if(s==4 && r==1)
-		vc = [[FastTableViewController alloc] initWithStyle:UITableViewStylePlain];
+		vc = [[ImageCenterViewController alloc] initWithStyle:UITableViewStylePlain];
 	
 	
 	
@@ -134,6 +150,9 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
 	return [[data objectAtIndex:section] objectForKey:@"title"];
+}
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
+	return [[data objectAtIndex:section] objectForKey:@"footer"];
 }
 
 

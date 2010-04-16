@@ -26,10 +26,19 @@
  */
 
 #import "TKGlobal.h"
+
+// ADDITIONS
 #import "UIViewAdditions.h"
 #import "UIImageAdditions.h"
 #import "NSDateAdditions.h"
+#import "NSStringAdditions.h"
+
+// UIWINDOW
 #import "TKShakeWindow.h"
+
+
+// IMAGE CENTER
+#import "TKImageCenter.h"
 
 
 // CELLS
@@ -74,7 +83,3 @@
 // Coverflow
 #import "TKCoverflowView.h"
 #import "TKCoverView.h"
-
-
-
-

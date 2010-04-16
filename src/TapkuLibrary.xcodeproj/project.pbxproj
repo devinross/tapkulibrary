@@ -89,6 +89,8 @@
 		3BAC995C10953DF400F235F1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995710953DF400F235F1 /* UIKit.framework */; };
 		3BAC995D10953DF400F235F1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995810953DF400F235F1 /* QuartzCore.framework */; };
 		3BAC995E10953DF400F235F1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995910953DF400F235F1 /* MapKit.framework */; };
+		3BB3A2241178185B00553093 /* TKImageCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB3A2221178185B00553093 /* TKImageCenter.m */; };
+		3BB3A2251178185B00553093 /* TKImageCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BB3A2231178185B00553093 /* TKImageCenter.h */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -178,6 +180,8 @@
 		3BAC9A4F10953E5200F235F1 /* TKEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKEmptyView.m; sourceTree = "<group>"; };
 		3BAC9A5310953E5200F235F1 /* TKGraphController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKGraphController.h; sourceTree = "<group>"; };
 		3BAC9A5410953E5200F235F1 /* TKGraphController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKGraphController.m; sourceTree = "<group>"; };
+		3BB3A2221178185B00553093 /* TKImageCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKImageCenter.m; sourceTree = "<group>"; };
+		3BB3A2231178185B00553093 /* TKImageCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKImageCenter.h; sourceTree = "<group>"; };
 		3BEAE08E1096C61A00A0A372 /* TKShakeWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKShakeWindow.h; sourceTree = "<group>"; };
 		3BEAE08F1096C61A00A0A372 /* TKShakeWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKShakeWindow.m; sourceTree = "<group>"; };
 		3BF000FC10957EE50062DA49 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringAdditions.h; sourceTree = "<group>"; };
@@ -286,6 +290,7 @@
 				3BAC9A1B10953E5200F235F1 /* TapkuLibrary.h */,
 				3B679C26115244FE00484D54 /* TapkuLibraryExtras.h */,
 				3BAC9A1C10953E5200F235F1 /* Global */,
+				3BB3A1D1117814BC00553093 /* Additions */,
 				3B8B591810F0816300EABA45 /* Coverflow */,
 				3BAC99F910953E2400F235F1 /* Calendar */,
 				3BAC9A5010953E5200F235F1 /* Graph */,
@@ -294,6 +299,8 @@
 				3BAC9A4610953E5200F235F1 /* Overview View Controller */,
 				3BAC9A3E10953E5200F235F1 /* HUD */,
 				3BAC9A2510953E5200F235F1 /* Cells */,
+				3BB3A1D2117814C600553093 /* Window */,
+				3BB3A2261178186100553093 /* Image Center */,
 			);
 			path = TapkuLibrary;
 			sourceTree = "<group>";
@@ -327,20 +334,6 @@
 			children = (
 				3BAC9A1D10953E5200F235F1 /* TKGlobal.h */,
 				3BAC9A1E10953E5200F235F1 /* TKGlobal.m */,
-				3BAC9A1F10953E5200F235F1 /* UIImageAdditions.h */,
-				3BAC9A2010953E5200F235F1 /* UIImageAdditions.m */,
-				3BAC9A2110953E5200F235F1 /* UIViewAdditions.h */,
-				3BAC9A2210953E5200F235F1 /* UIViewAdditions.m */,
-				3BAC9A2310953E5200F235F1 /* NSDateAdditions.h */,
-				3BAC9A2410953E5200F235F1 /* NSDateAdditions.m */,
-				3BF000FC10957EE50062DA49 /* NSStringAdditions.h */,
-				3BF000FD10957EE50062DA49 /* NSStringAdditions.m */,
-				3BEAE08E1096C61A00A0A372 /* TKShakeWindow.h */,
-				3BEAE08F1096C61A00A0A372 /* TKShakeWindow.m */,
-				3BA5CE14114472990027D844 /* NSDictionaryAdditions.h */,
-				3BA5CE15114472990027D844 /* NSDictionaryAdditions.m */,
-				3BA5CE16114472990027D844 /* NSMutableURLRequestAdditions.h */,
-				3BA5CE17114472990027D844 /* NSMutableURLRequestAdditions.m */,
 			);
 			name = Global;
 			sourceTree = "<group>";
@@ -443,6 +436,43 @@
 			name = Graph;
 			sourceTree = "<group>";
 		};
+		3BB3A1D1117814BC00553093 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				3BF000FC10957EE50062DA49 /* NSStringAdditions.h */,
+				3BF000FD10957EE50062DA49 /* NSStringAdditions.m */,
+				3BAC9A2310953E5200F235F1 /* NSDateAdditions.h */,
+				3BAC9A2410953E5200F235F1 /* NSDateAdditions.m */,
+				3BAC9A2110953E5200F235F1 /* UIViewAdditions.h */,
+				3BAC9A2210953E5200F235F1 /* UIViewAdditions.m */,
+				3BAC9A1F10953E5200F235F1 /* UIImageAdditions.h */,
+				3BAC9A2010953E5200F235F1 /* UIImageAdditions.m */,
+				3BA5CE14114472990027D844 /* NSDictionaryAdditions.h */,
+				3BA5CE15114472990027D844 /* NSDictionaryAdditions.m */,
+				3BA5CE16114472990027D844 /* NSMutableURLRequestAdditions.h */,
+				3BA5CE17114472990027D844 /* NSMutableURLRequestAdditions.m */,
+			);
+			name = Additions;
+			sourceTree = "<group>";
+		};
+		3BB3A1D2117814C600553093 /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				3BEAE08E1096C61A00A0A372 /* TKShakeWindow.h */,
+				3BEAE08F1096C61A00A0A372 /* TKShakeWindow.m */,
+			);
+			name = Window;
+			sourceTree = "<group>";
+		};
+		3BB3A2261178186100553093 /* Image Center */ = {
+			isa = PBXGroup;
+			children = (
+				3BB3A2231178185B00553093 /* TKImageCenter.h */,
+				3BB3A2221178185B00553093 /* TKImageCenter.m */,
+			);
+			name = "Image Center";
+			sourceTree = "<group>";
+		};
 		3BF002FE109662E30062DA49 /* Month */ = {
 			isa = PBXGroup;
 			children = (
@@ -511,6 +541,7 @@
 				3B6EDE1C11547C5500E454DA /* FSSubtitleCell.h in Headers */,
 				3B6EDE1E11547C5600E454DA /* FSIndicatorCell.h in Headers */,
 				3B6EDE2011547C5700E454DA /* ABTableViewCell.h in Headers */,
+				3BB3A2251178185B00553093 /* TKImageCenter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,6 +648,7 @@
 				3B6EDE1B11547C5500E454DA /* FSSubtitleCell.m in Sources */,
 				3B6EDE1D11547C5500E454DA /* FSIndicatorCell.m in Sources */,
 				3B6EDE1F11547C5600E454DA /* ABTableViewCell.m in Sources */,
+				3BB3A2241178185B00553093 /* TKImageCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

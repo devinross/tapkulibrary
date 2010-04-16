@@ -32,22 +32,30 @@
 
 
 @implementation TKSwitchCell
-@synthesize slider;
+@synthesize slider,title;
+
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+	
+	
+	if(![super initWithStyle:style reuseIdentifier:reuseIdentifier]) return nil;
+	
+	title = [[UILabel alloc] initWithFrame:CGRectZero];
+	title.font = [UIFont boldSystemFontOfSize:16.0];
+	title.adjustsFontSizeToFitWidth = YES;
+	[self addSubview:title];
+		
+	slider = [[UISwitch alloc] initWithFrame:CGRectZero];
+	[self addSubview:slider];
+		
+
+    return self;
+}
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]) {
-        // Initialization code
-		
-		title = [[UILabel alloc] initWithFrame:CGRectZero];
-		title.font = [UIFont boldSystemFontOfSize:16.0];
-		title.adjustsFontSizeToFitWidth = YES;
-		[self addSubview:title];
-		
-		slider = [[UISwitch alloc] initWithFrame:CGRectZero];
-		[self addSubview:slider];
-		
-    }
-    return self;
+	
+	return [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+
 }
 
 
@@ -67,23 +75,25 @@
 
 
 
-
-- (NSString*) text{
-	return title.text;
-}
-- (void) setText:(NSString*)txt{
-	title.text = txt;
-}
-
-
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+}
+- (void)setHighlighted:(BOOL)highlight animated:(BOOL)animated {
+	
+    [super setHighlighted:highlight animated:animated];
+	
+	if(highlight)
+		title.textColor = [UIColor whiteColor];
+	else
+		title.textColor = [UIColor blackColor];
+	
 }
 
 
 - (void)dealloc {
-    [super dealloc];
+	[slider release];
+	[title release];
+	[super dealloc];
 }
 
 

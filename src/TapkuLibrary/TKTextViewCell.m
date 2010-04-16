@@ -34,14 +34,21 @@
 @implementation TKTextViewCell
 @synthesize textView;
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]) {
-        // Initialization code
-		textView = [[UITextView alloc] initWithFrame:CGRectZero];
-		textView.font = [UIFont boldSystemFontOfSize:14.0];
-		[self addSubview:textView];
-    }
-    return self;
+
+- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+
+	if(![super initWithStyle:style reuseIdentifier:reuseIdentifier]) return nil;
+	
+	textView = [[UITextView alloc] initWithFrame:CGRectZero];
+	textView.font = [UIFont boldSystemFontOfSize:14.0];
+	[self addSubview:textView];
+	
+	return self;
+}
+
+
+- (id) initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
+	return [self initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:reuseIdentifier];
 }
 
 - (void)layoutSubviews {
@@ -50,13 +57,25 @@
 	textView.frame = r;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+- (void) setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     // Configure the view for the selected state
 }
 
-- (void)dealloc {
-    [super dealloc];
+- (void)setHighlighted:(BOOL)highlight animated:(BOOL)animated {
+	
+    [super setHighlighted:highlight animated:animated];
+	
+	if(highlight)
+		textView.textColor = [UIColor whiteColor];
+	else
+		textView.textColor = [UIColor blackColor];
+	
+}
+
+- (void) dealloc {
+	[textView release];
+	[super dealloc];
 }
 
 

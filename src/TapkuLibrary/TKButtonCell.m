@@ -33,48 +33,69 @@
 
 
 @implementation TKButtonCell
+@synthesize title;
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]) {
-        // Initialization code
-		label = [[UILabel alloc] initWithFrame:CGRectZero];
-		label.textAlignment = UITextAlignmentCenter;
-		label.font = [UIFont boldSystemFontOfSize:14.0];
-		[self addSubview:label];
+- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+	
+	
+	if(!(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
+	
+
+	[self addSubview:self.title];
 		
-    }
+
     return self;
 }
 
+- (id) initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
+	
+	return [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+	
+}
+
+
 - (void)layoutSubviews {
-    [super layoutSubviews];
+	[super layoutSubviews];
 	CGRect r = CGRectInset(self.bounds, 16, 8);
-	label.frame = r;
-}
-
-- (void) setText:(NSString*)str{
-	label.text = str;
-}
-- (NSString*)text{
-	return label.text;
+	self.title.frame = r;
 }
 
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+
+
+- (void) setSelected:(BOOL)selected animated:(BOOL)animated {
 
     [super setSelected:selected animated:animated];
 	
 	if(selected)
-		label.textColor = [UIColor whiteColor];
+		self.title.textColor = [UIColor whiteColor];
 	else
-		label.textColor = [UIColor colorWithRed:74/255.0 green:110/255.0 blue:165/255.0 alpha:1.0];
+		self.title.textColor = [UIColor colorWithRed:74/255.0 green:110/255.0 blue:165/255.0 alpha:1.0];
 
 }
+- (void) setHighlighted:(BOOL)highlight animated:(BOOL)animated {
+	
+    [super setHighlighted:highlight animated:animated];
+	
+	if(highlight)
+		self.title.textColor = [UIColor whiteColor];
+	else
+		self.title.textColor = [UIColor colorWithRed:74/255.0 green:110/255.0 blue:165/255.0 alpha:1.0];
+	
+}
 
+- (UILabel*) title{
+	if(title == nil){
+		title = [[UILabel alloc] initWithFrame:CGRectZero];
+		title.textAlignment = UITextAlignmentCenter;
+		title.font = [UIFont boldSystemFontOfSize:14.0];
+	}
+	return title;
+}
 
-- (void)dealloc {
-	[label dealloc];
-    [super dealloc];
+- (void) dealloc {
+	//[title dealloc];
+	[super dealloc];
 }
 
 

@@ -41,8 +41,7 @@ static UIFont *titlefont = nil;
 static UIFont *subtitlefont = nil;
 
 
-+ (void)initialize
-{
++ (void)initialize{
 	if(self == [FSSubtitleCell class])
 	{
 		titlefont = [[UIFont boldSystemFontOfSize:18] retain];
@@ -63,7 +62,7 @@ static UIFont *subtitlefont = nil;
 	[self setNeedsDisplay];
 }
 
-- (void)drawContentView:(CGRect)r{
+- (void) drawContentView:(CGRect)r{
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
