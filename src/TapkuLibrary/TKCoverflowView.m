@@ -104,9 +104,10 @@
 	
 	if(numberOfCovers < 1) return;
 	
-	coverBuffer = (int) ((self.frame.size.width - coverSize.width) / coverSpacing) + 1 / 2;
+	coverBuffer = (int) ((self.frame.size.width - coverSize.width) / coverSpacing) + 3;
 	speedbuffer = coverBuffer * 2;
 
+	NSLog(@"buffer: %d",coverBuffer);
 	
 	currentIndex = -1;
 	
@@ -236,7 +237,7 @@
 	
 	float scroll_size = self.contentSize.width - self.frame.size.width;
 	int covers_per = scroll_size / (numberOfCovers-1);
-	float v = (currentIndex * covers_per) - (covers_per/2) + (COVER_SPACING/2);
+	float v = (currentIndex * covers_per) - (covers_per/2) + (coverSpacing/2);
 	[self setContentOffset:CGPointMake(v, 0) animated:YES];
 }
 
@@ -258,10 +259,12 @@
 	if(animated){
 		[UIView beginAnimations:string context:nil];
 		
-		float speed = 0.2;
-		speed = velocity > 20 ? 0.06 :speed;
-		speed = velocity > 40 ? 0.02 :speed;
+		float speed = 0.3;
+		speed = velocity > 20 ? 0.1 :speed;
+		speed = velocity > 40 ? 0.05 :speed;
 		speed = velocity > 130 ? 0.01 : speed;
+		
+		NSLog(@"vel: %d",(int)velocity);
 
 		
 		

@@ -78,7 +78,7 @@ static const CGFloat TKCoverflowViewCoverAngleLess = 1.1;
 }
 @property (nonatomic, assign) id <TKCoverflowViewDelegate> delegate;
 @property (nonatomic, assign) id <TKCoverflowViewDataSource> dataSource;
-@property (nonatomic, assign) CGSize coverSize; // default 124 x 124
+@property (nonatomic, assign) CGSize coverSize; // default 224 x 224
 @property (nonatomic, assign) int numberOfCovers;
 @property (nonatomic, assign) float coverSpacing;
 @property (nonatomic, assign) float angle;
