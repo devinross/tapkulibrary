@@ -261,8 +261,9 @@
 		
 		float speed = 0.3;
 		speed = velocity > 20 ? 0.1 :speed;
-		speed = velocity > 40 ? 0.05 :speed;
-		speed = velocity > 130 ? 0.01 : speed;
+		speed = velocity > 40 ? 0.04 :speed;
+		speed = velocity > 80 ? 0.01 :speed;
+		speed = velocity > 130 ? 0.0 : speed;
 		
 		NSLog(@"vel: %d",(int)velocity);
 

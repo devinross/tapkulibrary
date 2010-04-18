@@ -708,7 +708,7 @@
 				);
 				PREBINDING = NO;
 				SDKROOT = iphoneos3.0;
-				VALID_ARCHS = i386;
+				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Debug;
 		};
@@ -725,8 +725,8 @@
 					"-ObjC",
 				);
 				PREBINDING = NO;
-				SDKROOT = "";
-				VALID_ARCHS = i386;
+				SDKROOT = iphoneos3.0;
+				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Release;
 		};

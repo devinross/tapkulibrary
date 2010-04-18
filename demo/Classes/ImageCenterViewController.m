@@ -43,10 +43,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	
 	self.tableView.rowHeight = 120;
-	
-	
 	
 	urlArray = [[NSArray arrayWithObjects:
 				 @"http://farm3.static.flickr.com/2797/4196552800_a5de0f3627_t.jpg",
@@ -56,7 +53,7 @@
 				 @"http://farm4.static.flickr.com/3236/2779325398_80347b2c6f_t.jpg",
 				 @"http://farm4.static.flickr.com/3629/3459136258_885598f06a_t.jpg",
 				 @"http://farm4.static.flickr.com/3619/3308615215_63752b7b27_t.jpg",
-				 @"http://farm4.static.flickr.com/3379/3337846702_4c3f21ecdb_t.jpg"
+				 @"http://farm4.static.flickr.com/3379/3337846702_4c3f21ecdb_t.jpg",
 				 @"http://farm1.static.flickr.com/3/2451788_febcdb12f6_t.jpg",
 				 @"http://farm4.static.flickr.com/3559/3681486285_2d92961aec_t.jpg",
 				 @"http://farm4.static.flickr.com/3630/3681486481_8f864b67a5_t.jpg",
@@ -73,24 +70,20 @@
 	}
 
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newImageRetrieved) name:@"newImage" object:nil];
-
 	
 }
 
 
 - (void) newImageRetrieved{
-	
 	[self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
 }
 
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
     return [urlArray count] * 3;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -103,13 +96,9 @@
     
 
 	cell.textLabel.text = [NSString stringWithFormat:@"Cell %d",indexPath.row];
-	
 	int i = indexPath.row;
 	
-	
-	if([images objectAtIndex:i] != [NSNull null])
-		cell.imageView.image = [images objectAtIndex:i];
-		
+	if([images objectAtIndex:i] != [NSNull null]) cell.imageView.image = [images objectAtIndex:i];
 	else{
 		
 		int index = i % [urlArray count];

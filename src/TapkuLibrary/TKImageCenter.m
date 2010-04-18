@@ -32,43 +32,42 @@
 
 #import "TKImageCenter.h"
 
-static TKImageCenter *sharedImageCenter = nil;
-
 @implementation TKImageCenter
+
+static TKImageCenter *sharedInstance = nil;
 
 + (TKImageCenter*) sharedImageCenter{
     @synchronized(self) {
-        if (sharedImageCenter == nil) {
-			sharedImageCenter = [[self alloc] init]; // assignment not done here
+        if (sharedInstance == nil) {
+			sharedInstance = [[self alloc] init];
         }
     }
-    return sharedImageCenter;
+    return sharedInstance;
 }
-+ (id)allocWithZone:(NSZone *)zone{
++ (id) allocWithZone:(NSZone *)zone{
     @synchronized(self) {
-        if (sharedImageCenter == nil) {
-            sharedImageCenter = [super allocWithZone:zone];
-            return sharedImageCenter;  // assignment and return on first allocation
+        if (sharedInstance == nil) {
+            sharedInstance = [super allocWithZone:zone];
+            return sharedInstance;
         }
     }
     return nil; //on subsequent allocation attempts return nil
 }
-- (id)copyWithZone:(NSZone *)zone{
+- (id) copyWithZone:(NSZone *)zone{
     return self;
 }
-- (id)retain{
+- (id) retain{
     return self;
 }
-- (unsigned)retainCount{
+- (unsigned) retainCount{
     return UINT_MAX;  //denotes an object that cannot be released
 }
-- (void)release{
+- (void) release{
     //do nothing
 }
-- (id)autorelease{
+- (id) autorelease{
     return self;
 }
-
 
 - (id) init{
 	if(![super init]) return nil;
@@ -78,7 +77,6 @@ static TKImageCenter *sharedImageCenter = nil;
 	
 	return self;
 }
-
 
 - (UIImage*) imageAtURL:(NSString*)imageURL addToQueue:(BOOL)addToQueue{
 	
@@ -99,7 +97,6 @@ static TKImageCenter *sharedImageCenter = nil;
 	
 	return nil;
 }
-
 
 - (void) getImages{
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
@@ -148,5 +145,4 @@ static TKImageCenter *sharedImageCenter = nil;
 	[super dealloc];
 }
 	 
-
 @end
