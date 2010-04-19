@@ -65,13 +65,13 @@ static const CGFloat TKCoverflowViewCoverAngleLess = 1.1;
 	CGSize coverSize;
 	float coverSpacing;
 	int coverBuffer,speedbuffer;
-	CATransform3D leftTransform, rightTransform, leftForward, rightForward;
+	CATransform3D leftTransform, rightTransform;
 	float angle;
 	
 	
 	// SPEED
 	int pos;
-	int velocity;
+	long velocity;
 	
 	id <TKCoverflowViewDelegate> delegate;
 	id <TKCoverflowViewDataSource> dataSource;

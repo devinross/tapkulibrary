@@ -158,7 +158,7 @@
 	[next release];
 	[prev release];
 	[currentGrid release];
-	[ar release];
+	//[ar release];
 	
 }
 
@@ -280,7 +280,7 @@
 	[deck removeObject:obj];
 	[deck insertObject:obj atIndex:0];
 	[obj release];
-	[ar release];
+	//[ar release];
 	
 	CGRect r;
 	if(up){

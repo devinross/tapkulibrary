@@ -49,8 +49,8 @@
 
 - (void) deplaceAlbumsFrom:(int)start to:(int)end;
 - (void) deplaceAlbumsAtIndex:(int)cnt;
-- (BOOL) placeAlbumsFrom:(int)start to:(int)end transform:(CATransform3D)transform;
-- (void) placeAlbumAtIndex:(int)cnt transform:(CATransform3D)transform;
+- (BOOL) placeAlbumsFrom:(int)start to:(int)end;
+- (void) placeAlbumAtIndex:(int)cnt;
 
 - (void) snapToAlbum;
 
@@ -61,32 +61,18 @@
 
 - (void) load{
 	
-	
-	
 
 	coverSize = CGSizeMake(224, 224);
 	
 	leftTransform = CATransform3DIdentity;
 	leftTransform = CATransform3DRotate(leftTransform, angle, 0.0f, 1.0f, 0.0f);
-	leftTransform = CATransform3DScale(leftTransform,.88,.88,1);
+	leftTransform = CATransform3DScale(leftTransform,1,1,1);
 	leftTransform = CATransform3DTranslate(leftTransform, COVER_SPACING_MAIN, 0,-150);
 	
 	rightTransform = CATransform3DIdentity;
 	rightTransform = CATransform3DRotate(rightTransform, angle, 0.0f, -1.0f, 0.0f);
 	rightTransform = CATransform3DScale(rightTransform,1,1,1);
 	rightTransform = CATransform3DTranslate(rightTransform, -1 * COVER_SPACING_MAIN, 0,-150);
-	
-	
-	leftForward = CATransform3DIdentity;
-	leftForward = CATransform3DRotate(leftForward, angle-0.2, 0.0f, 1.0f, 0.0f);
-	leftForward = CATransform3DScale(leftForward,1,1,1);
-	leftForward = CATransform3DTranslate(leftForward, COVER_SPACING_MAIN + - 100, 0,-65);
-	
-	rightForward = CATransform3DIdentity;
-	rightForward = CATransform3DRotate(rightForward, angle-0.2, 0.0f, -1.0f, 0.0f);
-	rightForward = CATransform3DScale(rightForward,1,1,1);
-	rightForward = CATransform3DTranslate(rightForward, -1 * (COVER_SPACING_MAIN - 50), 0,-65);
-
 	
 	
 	CATransform3D sublayerTransform = CATransform3DIdentity;
@@ -101,36 +87,33 @@
 	
 }
 - (void) setup{
+
+	currentIndex = -1;
+	for(UIView *v in views) [v removeFromSuperview];
+	[yard removeAllObjects];
+	[views removeAllObjects];
+	[coverViews release];
 	
 	if(numberOfCovers < 1) return;
 	
+	self.contentSize = CGSizeMake( (coverSpacing) * (numberOfCovers-1) + (margin*2) , self.frame.size.height);
 	coverBuffer = (int) ((self.frame.size.width - coverSize.width) / coverSpacing) + 3;
 	speedbuffer = coverBuffer * 2;
+	
 
-	NSLog(@"buffer: %d",coverBuffer);
-	
-	currentIndex = -1;
-	
-	for(UIView *v in views){
-		[v removeFromSuperview];
-	}
-	[yard removeAllObjects];
-	[views removeAllObjects];
-	
-	[coverViews release];
-	
-	
 	coverViews = [[NSMutableArray alloc] initWithCapacity:numberOfCovers];
-	for (unsigned i = 0; i < numberOfCovers; i++) {
-        [coverViews addObject:[NSNull null]];
-    }
+	for (unsigned i = 0; i < numberOfCovers; i++) [coverViews addObject:[NSNull null]];
+	deck = NSMakeRange(0, 0);
+	movingRight = YES;
 	
-	self.contentSize = CGSizeMake( (coverSpacing) * (numberOfCovers-1) + (margin*2) , self.frame.size.height);
+	//[self placeAlbumsFrom:deck.location to:deck.length transform:rightTransform];
 	
-	deck = NSMakeRange(0, coverBuffer * 2 + 1);
 	
-	[self placeAlbumsFrom:deck.location to:deck.location+deck.length transform:rightForward];
-	[self animateToIndex:0 animated:NO];
+
+	
+	currentIndex = 0;
+	[self newrange];
+	[self animateToIndex:currentIndex animated:NO];
 	
 }
 
@@ -139,13 +122,16 @@
 	
 	if(start >= end) return;
 	
-	for(int cnt=start;cnt<=end;cnt++){
+	for(int cnt=start;cnt<end;cnt++){
 		[self deplaceAlbumsAtIndex:cnt];
 	}
+	
 		
 }
 - (void) deplaceAlbumsAtIndex:(int)cnt{
 	if(cnt >= [coverViews count]) return;
+	
+	
 	
 	if([coverViews objectAtIndex:cnt] != [NSNull null]  ){
 		
@@ -158,29 +144,22 @@
 	}
 }
 
-- (BOOL) placeAlbumsFrom:(int)start to:(int)end transform:(CATransform3D)trans{
-	
-	
+- (BOOL) placeAlbumsFrom:(int)start to:(int)end{
 	
 	if(start >= end) return NO;
 	
-
-	for(int cnt=start;cnt<= end;cnt++){
-		[self placeAlbumAtIndex:cnt transform:trans];
-	}
+	for(int cnt=start;cnt<= end;cnt++) [self placeAlbumAtIndex:cnt];
+	
 	return YES;
 	
 	
 }
-- (void) placeAlbumAtIndex:(int)cnt transform:(CATransform3D)transform{
+- (void) placeAlbumAtIndex:(int)cnt{
 	
 	if(cnt >= [coverViews count]) return;
 	
 	
-	
 	if([coverViews objectAtIndex:cnt] == [NSNull null]){
-		
-
 		
 		TKCoverView *cover = [dataSource coverflowView:self coverAtIndex:cnt];
 		[coverViews replaceObjectAtIndex:cnt withObject:cover];
@@ -190,7 +169,6 @@
 		r.origin.x = (self.frame.size.width/2 - (coverSize.width/ 2)) + (coverSpacing) * cnt;
 		cover.frame = r;
 		
-		cover.layer.transform = transform;
 		
 		[self addSubview:cover];
 		if(cnt > currentIndex){
@@ -207,25 +185,25 @@
 
 - (void) newrange{
 	
-	int loc = deck.location, len = deck.length;
 	
-	int buff = /* fast ? speedbuffer : */ coverBuffer;
+	
+	int loc = deck.location, len = deck.length, buff = coverBuffer;
 	
 	int newLocation = currentIndex - buff < 0 ? 0 : currentIndex-buff;
 	int newLength = currentIndex + buff > numberOfCovers ? numberOfCovers - newLocation : currentIndex + buff - newLocation;
 	
-	if(loc == newLocation && newLength == len) return;
 	
-	if(movingRight){
+	
+	
+	if(loc == newLocation && newLength == len) return;
 		
-		[self deplaceAlbumsFrom:loc to:newLocation];
-		[self placeAlbumsFrom:loc+len to:newLocation+len transform: /* fast ? rightForward : */ rightTransform];
+	if(movingRight){
+		[self deplaceAlbumsFrom:loc to:MIN(newLocation,loc+len)];
+		[self placeAlbumsFrom:MAX(loc+len,newLocation) to:newLocation+newLength];
 		
 	}else{
-		[self deplaceAlbumsFrom:newLength+newLocation to:loc+loc];
-
-		[self placeAlbumsFrom:newLocation to:loc transform:/* fast ? leftForward :*/ leftTransform];
-
+		[self deplaceAlbumsFrom:MAX(newLength+newLocation,loc) to:loc+len];
+		[self placeAlbumsFrom:newLocation to:MIN(loc,newLocation+newLength)];
 	}
 	
 	deck = NSMakeRange(newLocation, newLength);
@@ -244,20 +222,11 @@
 
 - (void) animateToIndex:(int)index animated:(BOOL)animated{
 	
-	if(index == currentIndex){
-		
-		
-		return;
-	} 
-	currentIndex = index;
 	
-
-	[self newrange];
-
 	NSString *string = [NSString stringWithFormat:@"%d",currentIndex];
+	if(velocity> 200) animated = NO;
 	
 	if(animated){
-		[UIView beginAnimations:string context:nil];
 		
 		float speed = 0.3;
 		speed = velocity > 20 ? 0.1 :speed;
@@ -265,11 +234,7 @@
 		speed = velocity > 80 ? 0.01 :speed;
 		speed = velocity > 130 ? 0.0 : speed;
 		
-		NSLog(@"vel: %d",(int)velocity);
-
-		
-		
-		
+		[UIView beginAnimations:string context:nil];
 		[UIView setAnimationDuration:speed];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
 		[UIView setAnimationBeginsFromCurrentState:YES];
@@ -278,26 +243,15 @@
 	}
 
 	for(UIView *v in views){
-		
-		//if(velocity > 50 && currentIndex > 20 && currentIndex < numberOfCovers - 20){
-			
-			//v.layer.transform = !movingRight ? rightTransform : leftTransform;
-			
-		//}else{
-			
-			int i = [coverViews indexOfObject:v];
-			if(i < index) v.layer.transform = leftTransform;
-			else if(i > index) v.layer.transform = rightTransform;
-			else v.layer.transform = CATransform3DIdentity;
-		//}
+		int i = [coverViews indexOfObject:v];
+		if(i < index) v.layer.transform = leftTransform;
+		else if(i > index) v.layer.transform = rightTransform;
+		else v.layer.transform = CATransform3DIdentity;
 	}
 	
 	if(animated) [UIView commitAnimations];
 	else [delegate coverflowView:self coverAtIndexWasBroughtToFront:currentIndex];
 
-		
-
-	
 }
 
 - (void) animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context{
@@ -314,6 +268,8 @@
 - (id) initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
 		
+		
+
 		numberOfCovers = 0;
 		coverSpacing = COVER_SPACING;
 		angle = SIDE_COVER_ANGLE;
@@ -326,6 +282,7 @@
 		
 		[self load];
 		[self setup];
+
 		
     }
     return self;
@@ -363,6 +320,9 @@
 	speedbuffer = coverBuffer * 2;
 	self.contentSize = CGSizeMake( (coverSpacing) * (numberOfCovers-1) + (margin*2) , self.frame.size.height);
 	
+
+	
+	
 }
 - (void) setAngle:(float)f{
 
@@ -398,11 +358,13 @@
 }
 
 - (TKCoverView*) dequeueReusableCoverView{
+	
 	if(yard == nil || [yard count] < 1) return nil;
 	
 	TKCoverView *v = [[[yard lastObject] retain] autorelease];
 	v.layer.transform = CATransform3DIdentity;
 	[yard removeLastObject];
+
 	return v;
 }
 
@@ -449,42 +411,32 @@
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView{
 	
 	
+	
 	velocity = abs(pos - scrollView.contentOffset.x);
 	pos = scrollView.contentOffset.x;
-	
-	//if(velocity>10)
-		//NSLog(@"Velocity %d",velocity);
-	
-	
-	float oldOrigin = origin;
+	movingRight = self.contentOffset.x - origin > 0 ? YES : NO;
 	origin = self.contentOffset.x;
-	//BOOL mr = movingRight;
-	movingRight = origin - oldOrigin > 0 ? YES : NO;
 
-	
-	//NSLog(@"Speed: %f %f",_horizontalVelocity,_previousHorizontalVelocity);
-	
-	float scroll_size = scrollView.contentSize.width - self.frame.size.width;
-	int covers_per = scroll_size / (numberOfCovers-1);
+
+	int covers_per = (scrollView.contentSize.width - self.frame.size.width) / (numberOfCovers-1);
 	int index = (scrollView.contentOffset.x + (covers_per/2) )/ covers_per;
 	
-	if(index < 0) index = 0;
-	if(index >= numberOfCovers) index = numberOfCovers-1;
+	index = MIN(MAX(0,index),numberOfCovers-1);
 	
 	
-	/*
-	if( index > 10 && index < (numberOfCovers - 10) && abs(origin-oldOrigin) > 100)
-		fast = YES;
-	else
-		fast = NO;
-	
-	fast = NO;
-	*/
-	
-
-	[self animateToIndex:index  animated:YES];
 	
 	
+	
+	
+	if(index == currentIndex) return;
+	
+	currentIndex = index;
+	[self newrange];
+	
+	
+	
+	if(velocity > 150 && currentIndex > 15 && currentIndex < (numberOfCovers-16)) return;
+	[self animateToIndex:index animated:YES];
 	
 	return;
 	
@@ -500,8 +452,6 @@
 	if(!self.decelerating && !decelerate)[self snapToAlbum];
 
 }
-
-
 
 
 - (void)drawRect:(CGRect)rect {

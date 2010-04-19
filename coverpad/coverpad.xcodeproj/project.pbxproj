@@ -34,21 +34,21 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 3B8AFF1011798F9200505F73 /* TapkuLibrary.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D /* libTapkuLibrary.a */;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
 			remoteInfo = TapkuLibrary;
 		};
 		3B8AFF1711798F9200505F73 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3B8AFF1011798F9200505F73 /* TapkuLibrary.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 3B6EDD521154791900E454DA /* libTapkuLibraryExtra.a */;
+			remoteGlobalIDString = 3B6EDD521154791900E454DA;
 			remoteInfo = TapkuLibraryExtra;
 		};
 		3B8AFF3411798FDB00505F73 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3B8AFF1011798F9200505F73 /* TapkuLibrary.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D /* TapkuLibrary */;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = TapkuLibrary;
 		};
 /* End PBXContainerItemProxy section */

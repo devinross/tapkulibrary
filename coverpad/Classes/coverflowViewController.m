@@ -14,7 +14,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	
+
 
 	covers = [[NSArray arrayWithObjects:
 			   [UIImage imageNamed:@"cover_2.jpg"],[UIImage imageNamed:@"cover_1.jpg"],
@@ -23,19 +23,19 @@
 			   [UIImage imageNamed:@"cover_7.jpg"],[UIImage imageNamed:@"cover_8.jpg"],
 			   [UIImage imageNamed:@"cover_9.jpg"],nil] retain];
 	
-	
+
 	CGRect r = self.view.bounds;
 	coverflow = [[TKCoverflowView alloc] initWithFrame:r];
-	
 
-	coverflow.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 	coverflow.delegate = self;
 	coverflow.dataSource = self;
 	[self.view addSubview:coverflow];
-	coverflow.coverSpacing = 130;
-	coverflow.coverSize = CGSizeMake(400, 400);
+	coverflow.coverSpacing = 80;
+	coverflow.coverSize = CGSizeMake(300, 300);
 	
-	[coverflow setNumberOfCovers:580];
+	[coverflow setNumberOfCovers:1060];
+	
+
 }
 
 
@@ -47,9 +47,10 @@
 	TKCoverView *cover = [coverflowView dequeueReusableCoverView];
 	
 	if(cover == nil){
-		cover = [[[TKCoverView alloc] initWithFrame:CGRectMake(0, 0, 400, 800)] autorelease]; // 224
-		cover.baseline = 400;
-		
+
+
+		cover = [[[TKCoverView alloc] initWithFrame:CGRectMake(0, 0, 300, 600)] autorelease]; // 224
+		cover.baseline = 200;
 	}
 	cover.image = [covers objectAtIndex:index%[covers count]];
 	
@@ -66,9 +67,7 @@
 	[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:cover cache:YES];
 	[UIView commitAnimations];
 	
-	NSLog(@"Index: %d",index);
-	
-	
+
 	
 }
 

@@ -12,6 +12,8 @@
 @interface coverflowViewController : UIViewController <TKCoverflowViewDelegate,TKCoverflowViewDataSource> {
 	TKCoverflowView *coverflow;
 	NSArray *covers;
+	
+
 }
 
 @end
