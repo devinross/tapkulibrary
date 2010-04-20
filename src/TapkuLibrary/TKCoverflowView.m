@@ -79,7 +79,9 @@
 	sublayerTransform.m34 = -0.001;
 	[self.layer setSublayerTransform:sublayerTransform];
 	
-	margin = (self.frame.size.width / 2) - (self.contentSize.width /2);
+	margin = (self.frame.size.width / 2);
+	
+	NSLog(@"[load] Margin:%d, %f %f",margin,self.frame.size.width,self.contentSize.width);
 	
 	yard = [[NSMutableArray alloc] init];
 	views = [[NSMutableArray alloc] init];
@@ -98,7 +100,6 @@
 	
 	self.contentSize = CGSizeMake( (coverSpacing) * (numberOfCovers-1) + (margin*2) , self.frame.size.height);
 	coverBuffer = (int) ((self.frame.size.width - coverSize.width) / coverSpacing) + 3;
-	speedbuffer = coverBuffer * 2;
 	
 
 	coverViews = [[NSMutableArray alloc] initWithCapacity:numberOfCovers];
@@ -255,8 +256,23 @@
 }
 
 - (void) animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context{
+
+	int i = currentIndex-1;
+
+	for(;i > deck.location;i--){
+		[self sendSubviewToBack:[coverViews objectAtIndex:i]];
+	}
+	
+	i = currentIndex+1;
+	for(;i < deck.location+deck.length;i++){
+		[self bringSubviewToFront:[coverViews objectAtIndex:i]];
+	}
+
+	[self bringSubviewToFront:[coverViews objectAtIndex:currentIndex]];
+	
 	if([finished boolValue] && [animationID intValue] == currentIndex)
 		[delegate coverflowView:self coverAtIndexWasBroughtToFront:currentIndex];
+	
 }
 
 @end
@@ -288,6 +304,29 @@
     return self;
 }
 
+
+- (void) setFrame:(CGRect)r{
+	[super setFrame:r];
+	
+	[self setContentOffset:self.contentOffset animated:YES];
+	self.userInteractionEnabled = NO;
+	self.scrollEnabled = NO;
+	
+	margin = (self.frame.size.width / 2);
+	int cur = currentIndex;
+	[self setup];
+	
+	
+	self.scrollEnabled = YES;
+	self.userInteractionEnabled = YES;
+	
+	[self animateToIndex:cur animated:NO];
+
+}
+
+
+
+
 - (void) setNumberOfCovers:(int)cov{
 	
 	numberOfCovers = cov;
@@ -317,7 +356,6 @@
 		
 	}
 	coverBuffer = (int) ((self.frame.size.width - coverSize.width) / coverSpacing) + 1;
-	speedbuffer = coverBuffer * 2;
 	self.contentSize = CGSizeMake( (coverSpacing) * (numberOfCovers-1) + (margin*2) , self.frame.size.height);
 	
 

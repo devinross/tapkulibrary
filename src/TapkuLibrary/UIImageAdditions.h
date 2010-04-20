@@ -39,6 +39,7 @@
 
 - (void) drawInRect:(CGRect)rect asAlphaMaskForColor:(CGFloat[])color;
 - (void) drawInRect:(CGRect)rect asAlphaMaskForGradient:(CGFloat[])colors;
+- (void) drawInRect:(CGRect)rect withImageMask:(UIImage*)mask;
 
 @end
 

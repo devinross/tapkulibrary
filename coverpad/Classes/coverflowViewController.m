@@ -26,6 +26,8 @@
 
 	CGRect r = self.view.bounds;
 	coverflow = [[TKCoverflowView alloc] initWithFrame:r];
+	
+	coverflow.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
 	coverflow.delegate = self;
 	coverflow.dataSource = self;
@@ -74,7 +76,7 @@
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return NO;
+    return YES;
 }
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.

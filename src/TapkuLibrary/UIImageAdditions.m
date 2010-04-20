@@ -58,7 +58,6 @@
 	CGContextRestoreGState(context);
 }
 
-
 - (void) drawInRect:(CGRect)rect asAlphaMaskForGradient:(CGFloat[])colors{
 	
 	
@@ -79,6 +78,26 @@
 	
 	CGContextRestoreGState(context);
 	
+}
+
+- (void) drawInRect:(CGRect)rect withImageMask:(UIImage*)mask{
+	
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	
+	CGContextSaveGState(context);
+	
+	CGContextTranslateCTM(context, 0.0, rect.size.height);
+	CGContextScaleCTM(context, 1.0, -1.0);
+	
+	rect.origin.y = rect.origin.y * -1;
+	
+	CGContextClipToMask(context, rect, mask.CGImage);
+	//CGContextSetRGBFillColor(context, color[0], color[1], color[2], color[3]);
+	//CGContextFillRect(context, rect);
+	CGContextDrawImage(context,rect,self.CGImage);
+	
+	
+	CGContextRestoreGState(context);
 }
 
 

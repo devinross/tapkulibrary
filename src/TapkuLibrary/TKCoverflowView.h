@@ -49,9 +49,6 @@ static const CGFloat TKCoverflowViewCoverAngleLess = 1.1;
 	int numberOfCovers;
 	int currentIndex;
 	
-
-	
-	//BOOL fast;
 	float origin;
 	BOOL movingRight;
 
@@ -64,7 +61,7 @@ static const CGFloat TKCoverflowViewCoverAngleLess = 1.1;
 	int margin;
 	CGSize coverSize;
 	float coverSpacing;
-	int coverBuffer,speedbuffer;
+	int coverBuffer;
 	CATransform3D leftTransform, rightTransform;
 	float angle;
 	
