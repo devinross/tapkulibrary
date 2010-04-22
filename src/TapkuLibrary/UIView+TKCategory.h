@@ -1,3 +1,7 @@
+//
+//  UIViewAdditions.h
+//  Created by Devin Ross on 7/25/09.
+//
 /*
  
  tapku.com || http://github.com/devinross/tapkulibrary
@@ -26,5 +30,24 @@
  */
 
 
-#import "NSMutableURLRequest+TKCategory.h"
-#import "NSDictionary+TKCategory.h"
+#import <UIKit/UIKit.h>
+
+@interface UIView (TKCategory)
+
+
+// DRAW GRADIENT
++ (void) drawLinearGradientInRect:(CGRect)rect colors:(CGFloat[])colors;
+
+
+// DRAW ROUNDED RECTANGLE
++ (void) drawRoundRectangleInRect:(CGRect)rect withRadius:(CGFloat)radius color:(UIColor*)color;
+
+// DRAW LINE
++ (void) drawLineInRect:(CGRect)rect red:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
++ (void) drawLineInRect:(CGRect)rect colors:(CGFloat[])colors;
++ (void) drawLineInRect:(CGRect)rect colors:(CGFloat[])colors width:(CGFloat)lineWidth cap:(CGLineCap)cap;
+
+@end
+
+
+

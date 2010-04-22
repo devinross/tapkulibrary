@@ -1,3 +1,7 @@
+//
+//  NSStringAddition.h
+//  Created by Devin Ross on 10/26/09.
+//
 /*
  
  tapku.com || http://github.com/devinross/tapkulibrary
@@ -26,5 +30,10 @@
  */
 
 
-#import "NSMutableURLRequest+TKCategory.h"
-#import "NSDictionary+TKCategory.h"
+@interface NSString (TKCategory)
+
+
+- (CGSize) heightWithFont:(UIFont*)withFont width:(float)width linebreak:(UILineBreakMode)lineBreakMode;
+
+
+@end

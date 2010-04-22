@@ -81,8 +81,7 @@
 	
 	margin = (self.frame.size.width / 2);
 	
-	NSLog(@"[load] Margin:%d, %f %f",margin,self.frame.size.width,self.contentSize.width);
-	
+
 	yard = [[NSMutableArray alloc] init];
 	views = [[NSMutableArray alloc] init];
 	
@@ -225,15 +224,15 @@
 	
 	
 	NSString *string = [NSString stringWithFormat:@"%d",currentIndex];
-	if(velocity> 200) animated = NO;
+	if(velocity> 180) animated = NO;
 	
 	if(animated){
 		
 		float speed = 0.3;
-		speed = velocity > 20 ? 0.1 :speed;
-		speed = velocity > 40 ? 0.04 :speed;
+		speed = velocity > 15 ? 0.2 :speed;
+		speed = velocity > 25 ? 0.08 :speed;
+		speed = velocity > 40 ? 0.03 :speed;
 		speed = velocity > 80 ? 0.01 :speed;
-		speed = velocity > 130 ? 0.0 : speed;
 		
 		[UIView beginAnimations:string context:nil];
 		[UIView setAnimationDuration:speed];
@@ -461,23 +460,17 @@
 	
 	index = MIN(MAX(0,index),numberOfCovers-1);
 	
-	
-	
-	
-	
-	
+
 	if(index == currentIndex) return;
 	
 	currentIndex = index;
 	[self newrange];
 	
 	
-	
-	if(velocity > 150 && currentIndex > 15 && currentIndex < (numberOfCovers-16)) return;
+	if(velocity > 180 && currentIndex > 15 && currentIndex < (numberOfCovers-16)) return;
 	[self animateToIndex:index animated:YES];
 	
 	return;
-	
 	
 }
 - (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView{

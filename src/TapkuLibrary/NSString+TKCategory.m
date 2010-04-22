@@ -1,3 +1,7 @@
+//
+//  NSStringAddition.m
+//  Created by Devin Ross on 10/26/09.
+//
 /*
  
  tapku.com || http://github.com/devinross/tapkulibrary
@@ -24,7 +28,20 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
+#import "NSString+TKCategory.h"
 
 
-#import "NSMutableURLRequest+TKCategory.h"
-#import "NSDictionary+TKCategory.h"
+@implementation NSString (TKCategory)
+
+
+- (CGSize) heightWithFont:(UIFont*)withFont width:(float)width linebreak:(UILineBreakMode)lineBreakMode{
+
+	[withFont retain];
+	CGSize suggestedSize = [self sizeWithFont:withFont constrainedToSize:CGSizeMake(width, FLT_MAX) lineBreakMode:lineBreakMode];
+	[withFont release];
+	
+	return suggestedSize;
+}
+
+
+@end

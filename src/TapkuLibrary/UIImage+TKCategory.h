@@ -1,3 +1,7 @@
+//
+//  UIImageAdditions.h
+//  Created by Devin Ross on 7/25/09.
+//
 /*
  
  tapku.com || http://github.com/devinross/tapkulibrary
@@ -25,6 +29,17 @@
  
  */
 
+#import <UIKit/UIKit.h>
 
-#import "NSMutableURLRequest+TKCategory.h"
-#import "NSDictionary+TKCategory.h"
+@interface UIImage (TKCategory)
+
+
++ (UIImage*) imageFromPath:(NSString*)URL;
+
+
+- (void) drawInRect:(CGRect)rect asAlphaMaskForColor:(CGFloat[])color;
+- (void) drawInRect:(CGRect)rect asAlphaMaskForGradient:(CGFloat[])colors;
+- (void) drawInRect:(CGRect)rect withImageMask:(UIImage*)mask;
+
+@end
+
