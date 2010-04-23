@@ -31,8 +31,8 @@
 
 #import "TKEmptyView.h"
 #import "TKGlobal.h"
-#import "UIImageAdditions.h"
-#import "UIViewAdditions.h"
+#import "UIImage+TKCategory.h"
+#import "UIView+TKCategory.h"
 
 
 @implementation TKEmptyView

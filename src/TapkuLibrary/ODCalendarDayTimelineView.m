@@ -29,7 +29,7 @@
  */
 
 #import "ODCalendarDayTimelineView.h"
-#import "NSDateAdditions.h"
+#import "NSDate+TKCategory.h"
 
 #define HORIZONTAL_OFFSET 3.0
 #define VERTICAL_OFFSET 5.0

@@ -31,8 +31,8 @@
 
 
 #import "TKOverviewIndicatorView.h"
-#import "UIImageAdditions.h"
-#import "NSStringAdditions.h"
+#import "UIImage+TKCategory.h"
+#import "NSString+TKCategory.h"
 
 @implementation TKOverviewIndicatorView
 @synthesize color;

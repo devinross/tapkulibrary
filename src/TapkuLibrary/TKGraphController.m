@@ -31,7 +31,7 @@
 
 #import "TKGraphController.h"
 #import "TKGlobal.h"
-#import "UIImageAdditions.h"
+#import "UIImage+TKCategory.h"
 
 @implementation TKGraphController
 @synthesize graph;

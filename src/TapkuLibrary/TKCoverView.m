@@ -30,7 +30,7 @@
  */
 
 #import "TKCoverView.h"
-#import "UIImageAdditions.h"
+#import "UIImage+TKCategory.h"
 #import "TKGlobal.h"
 
 
