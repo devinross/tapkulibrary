@@ -29,9 +29,9 @@
  
  */
 #import "TKGraphView.h"
-#import "UIViewAdditions.h"
+#import "UIView+TKCategory.h"
 #import "TKGlobal.h"
-#import "UIImageAdditions.h"
+#import "UIImage+TKCategory.h"
 
 #define BOTTOM_LINE 270.0
 #define SCROLL_HEIGHT 230.0

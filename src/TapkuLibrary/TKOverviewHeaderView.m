@@ -31,7 +31,7 @@
 
 #import "TKOverviewHeaderView.h"
 #import "TKGlobal.h"
-#import "UIViewAdditions.h"
+#import "UIView+TKCategory.h"
 
 
 @implementation TKOverviewHeaderView

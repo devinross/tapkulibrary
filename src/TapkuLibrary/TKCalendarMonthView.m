@@ -29,11 +29,11 @@
  
  */
 #import "TKCalendarMonthView.h"
-#import "NSDateAdditions.h"
+#import "NSDate+TKCategory.h"
 #import "TKCalendarMonthView.h"
 #import "TKGlobal.h"
-#import "UIViewAdditions.h"
-#import "UIImageAdditions.h"
+#import "UIView+TKCategory.h"
+#import "UIImage+TKCategory.h"
 
 
 

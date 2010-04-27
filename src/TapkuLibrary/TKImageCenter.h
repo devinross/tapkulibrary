@@ -44,7 +44,7 @@
 
 + (TKImageCenter*) sharedImageCenter;
 
-- (UIImage*) imageAtURL:(NSString*)imageURL addToQueue:(BOOL)addToQueue;
+- (UIImage*) imageAtURL:(NSString*)imageURL cache:(BOOL)cache;
 
 - (void) clearImages;
 

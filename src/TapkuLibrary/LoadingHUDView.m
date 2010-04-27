@@ -29,8 +29,8 @@
  
  */
 #import "LoadingHUDView.h"
-#import "NSStringAdditions.h"
-#import "UIViewAdditions.h"
+#import "NSString+TKCategory.h"
+#import "UIView+TKCategory.h"
 
 
 #define WIDTH_MARGIN 20

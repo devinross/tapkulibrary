@@ -78,17 +78,19 @@ static TKImageCenter *sharedInstance = nil;
 	return self;
 }
 
-- (UIImage*) imageAtURL:(NSString*)imageURL addToQueue:(BOOL)addToQueue{
+
+
+- (UIImage*) imageAtURL:(NSString*)imageURL cache:(BOOL)cache{
 	
 	UIImage *img = [images objectForKey:imageURL];
 	if(img != nil) return img;
 	
 	
-	if(!addToQueue) return nil;
+	if(!cache) return nil;
 	
 	
 	[queue addObject:imageURL];
-	if(addToQueue && thread==nil){
+	if(cache && thread==nil){
 		thread = [[NSThread alloc] initWithTarget:self selector:@selector(getImages) object:nil];
 		[thread start];
 	}
