@@ -41,7 +41,7 @@
 	if(progressBar==nil){
 		progressBar = [[TKProgressBarView alloc] initWithStyle:TKProgressBarViewStyleLong];
 		CGRect r = self.progressBar.frame;
-		r.origin.x = 35;
+		r.origin.x = 37;
 		r.origin.y = 42;
 		self.progressBar.frame = r;
 	}
