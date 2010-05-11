@@ -60,8 +60,8 @@
 		3B6EDE0611547C4000E454DA /* TKOverviewIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A4910953E5200F235F1 /* TKOverviewIndicatorView.h */; };
 		3B6EDE0711547C4100E454DA /* TKOverviewHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A4810953E5200F235F1 /* TKOverviewHeaderView.m */; };
 		3B6EDE0811547C4100E454DA /* TKOverviewHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A4710953E5200F235F1 /* TKOverviewHeaderView.h */; };
-		3B6EDE0911547C4400E454DA /* LoadingHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A4010953E5200F235F1 /* LoadingHUDView.m */; };
-		3B6EDE0A11547C4400E454DA /* LoadingHUDView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A3F10953E5200F235F1 /* LoadingHUDView.h */; };
+		3B6EDE0911547C4400E454DA /* TKLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A4010953E5200F235F1 /* TKLoadingView.m */; };
+		3B6EDE0A11547C4400E454DA /* TKLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A3F10953E5200F235F1 /* TKLoadingView.h */; };
 		3B6EDE0B11547C4600E454DA /* TKTextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A3610953E5200F235F1 /* TKTextViewCell.m */; };
 		3B6EDE0C11547C4700E454DA /* TKTextViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A3510953E5200F235F1 /* TKTextViewCell.h */; };
 		3B6EDE0D11547C4700E454DA /* TKSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A3410953E5200F235F1 /* TKSwitchCell.m */; };
@@ -84,6 +84,8 @@
 		3B6EDE1E11547C5600E454DA /* FSIndicatorCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A3810953E5200F235F1 /* FSIndicatorCell.h */; };
 		3B6EDE1F11547C5600E454DA /* ABTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A3D10953E5200F235F1 /* ABTableViewCell.m */; };
 		3B6EDE2011547C5700E454DA /* ABTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A3C10953E5200F235F1 /* ABTableViewCell.h */; };
+		3BA577BA1199DF1600ECB85B /* TKProgressAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BA577B81199DF1600ECB85B /* TKProgressAlertView.h */; };
+		3BA577BB1199DF1600ECB85B /* TKProgressAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA577B91199DF1600ECB85B /* TKProgressAlertView.m */; };
 		3BAC995A10953DF400F235F1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995510953DF400F235F1 /* SystemConfiguration.framework */; };
 		3BAC995B10953DF400F235F1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995610953DF400F235F1 /* CoreGraphics.framework */; };
 		3BAC995C10953DF400F235F1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995710953DF400F235F1 /* UIKit.framework */; };
@@ -91,6 +93,8 @@
 		3BAC995E10953DF400F235F1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995910953DF400F235F1 /* MapKit.framework */; };
 		3BB3A2241178185B00553093 /* TKImageCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB3A2221178185B00553093 /* TKImageCenter.m */; };
 		3BB3A2251178185B00553093 /* TKImageCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BB3A2231178185B00553093 /* TKImageCenter.h */; };
+		3BB92D2211896022002FA0F9 /* TKProgressBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BB92D2011896022002FA0F9 /* TKProgressBarView.h */; };
+		3BB92D2311896022002FA0F9 /* TKProgressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB92D2111896022002FA0F9 /* TKProgressBarView.m */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +116,8 @@
 		3B917CE910F34BF400049677 /* TKCoverflowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoverflowView.m; sourceTree = "<group>"; };
 		3B917CEA10F34BF400049677 /* TKCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCoverView.h; sourceTree = "<group>"; };
 		3B917CEB10F34BF400049677 /* TKCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoverView.m; sourceTree = "<group>"; };
+		3BA577B81199DF1600ECB85B /* TKProgressAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKProgressAlertView.h; sourceTree = "<group>"; };
+		3BA577B91199DF1600ECB85B /* TKProgressAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKProgressAlertView.m; sourceTree = "<group>"; };
 		3BA5CE14114472990027D844 /* NSDictionary+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+TKCategory.h"; sourceTree = "<group>"; };
 		3BA5CE15114472990027D844 /* NSDictionary+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+TKCategory.m"; sourceTree = "<group>"; };
 		3BA5CE16114472990027D844 /* NSMutableURLRequest+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+TKCategory.h"; sourceTree = "<group>"; };
@@ -164,8 +170,8 @@
 		3BAC9A3B10953E5200F235F1 /* FSSubtitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSubtitleCell.m; sourceTree = "<group>"; };
 		3BAC9A3C10953E5200F235F1 /* ABTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABTableViewCell.h; sourceTree = "<group>"; };
 		3BAC9A3D10953E5200F235F1 /* ABTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTableViewCell.m; sourceTree = "<group>"; };
-		3BAC9A3F10953E5200F235F1 /* LoadingHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingHUDView.h; sourceTree = "<group>"; };
-		3BAC9A4010953E5200F235F1 /* LoadingHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingHUDView.m; sourceTree = "<group>"; };
+		3BAC9A3F10953E5200F235F1 /* TKLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKLoadingView.h; sourceTree = "<group>"; };
+		3BAC9A4010953E5200F235F1 /* TKLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKLoadingView.m; sourceTree = "<group>"; };
 		3BAC9A4210953E5200F235F1 /* TKMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKMapView.h; sourceTree = "<group>"; };
 		3BAC9A4310953E5200F235F1 /* TKMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKMapView.m; sourceTree = "<group>"; };
 		3BAC9A4410953E5200F235F1 /* TKMapPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKMapPlace.h; sourceTree = "<group>"; };
@@ -182,6 +188,8 @@
 		3BAC9A5410953E5200F235F1 /* TKGraphController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKGraphController.m; sourceTree = "<group>"; };
 		3BB3A2221178185B00553093 /* TKImageCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKImageCenter.m; sourceTree = "<group>"; };
 		3BB3A2231178185B00553093 /* TKImageCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKImageCenter.h; sourceTree = "<group>"; };
+		3BB92D2011896022002FA0F9 /* TKProgressBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKProgressBarView.h; sourceTree = "<group>"; };
+		3BB92D2111896022002FA0F9 /* TKProgressBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKProgressBarView.m; sourceTree = "<group>"; };
 		3BEAE08E1096C61A00A0A372 /* TKShakeWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKShakeWindow.h; sourceTree = "<group>"; };
 		3BEAE08F1096C61A00A0A372 /* TKShakeWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKShakeWindow.m; sourceTree = "<group>"; };
 		3BF000FC10957EE50062DA49 /* NSString+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TKCategory.h"; sourceTree = "<group>"; };
@@ -386,8 +394,12 @@
 		3BAC9A3E10953E5200F235F1 /* HUD */ = {
 			isa = PBXGroup;
 			children = (
-				3BAC9A3F10953E5200F235F1 /* LoadingHUDView.h */,
-				3BAC9A4010953E5200F235F1 /* LoadingHUDView.m */,
+				3BA577B81199DF1600ECB85B /* TKProgressAlertView.h */,
+				3BA577B91199DF1600ECB85B /* TKProgressAlertView.m */,
+				3BAC9A3F10953E5200F235F1 /* TKLoadingView.h */,
+				3BAC9A4010953E5200F235F1 /* TKLoadingView.m */,
+				3BB92D2011896022002FA0F9 /* TKProgressBarView.h */,
+				3BB92D2111896022002FA0F9 /* TKProgressBarView.m */,
 			);
 			name = HUD;
 			sourceTree = "<group>";
@@ -529,7 +541,7 @@
 				3B6EDE0411547C3F00E454DA /* TKOverviewTableViewController.h in Headers */,
 				3B6EDE0611547C4000E454DA /* TKOverviewIndicatorView.h in Headers */,
 				3B6EDE0811547C4100E454DA /* TKOverviewHeaderView.h in Headers */,
-				3B6EDE0A11547C4400E454DA /* LoadingHUDView.h in Headers */,
+				3B6EDE0A11547C4400E454DA /* TKLoadingView.h in Headers */,
 				3B6EDE0C11547C4700E454DA /* TKTextViewCell.h in Headers */,
 				3B6EDE0E11547C4800E454DA /* TKSwitchCell.h in Headers */,
 				3B6EDE1011547C4900E454DA /* TKLabelTextViewCell.h in Headers */,
@@ -542,6 +554,8 @@
 				3B6EDE1E11547C5600E454DA /* FSIndicatorCell.h in Headers */,
 				3B6EDE2011547C5700E454DA /* ABTableViewCell.h in Headers */,
 				3BB3A2251178185B00553093 /* TKImageCenter.h in Headers */,
+				3BB92D2211896022002FA0F9 /* TKProgressBarView.h in Headers */,
+				3BA577BA1199DF1600ECB85B /* TKProgressAlertView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,7 +650,7 @@
 				3B6EDE0311547C3F00E454DA /* TKOverviewTableViewController.m in Sources */,
 				3B6EDE0511547C3F00E454DA /* TKOverviewIndicatorView.m in Sources */,
 				3B6EDE0711547C4100E454DA /* TKOverviewHeaderView.m in Sources */,
-				3B6EDE0911547C4400E454DA /* LoadingHUDView.m in Sources */,
+				3B6EDE0911547C4400E454DA /* TKLoadingView.m in Sources */,
 				3B6EDE0B11547C4600E454DA /* TKTextViewCell.m in Sources */,
 				3B6EDE0D11547C4700E454DA /* TKSwitchCell.m in Sources */,
 				3B6EDE0F11547C4800E454DA /* TKLabelTextViewCell.m in Sources */,
@@ -649,6 +663,8 @@
 				3B6EDE1D11547C5500E454DA /* FSIndicatorCell.m in Sources */,
 				3B6EDE1F11547C5600E454DA /* ABTableViewCell.m in Sources */,
 				3BB3A2241178185B00553093 /* TKImageCenter.m in Sources */,
+				3BB92D2311896022002FA0F9 /* TKProgressBarView.m in Sources */,
+				3BA577BB1199DF1600ECB85B /* TKProgressAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

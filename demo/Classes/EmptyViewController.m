@@ -42,7 +42,7 @@
 
 	
 	emptyView = [[TKEmptyView alloc] initWithFrame:r 
-									emptyViewImage:TKEmptyViewImagePhotos
+									emptyViewImage:TKEmptyViewImageHeart
 											 title:@"Empty Page"
 										  subtitle:@"All You Need is A 200 x 200 pixel transparent image"];
 

@@ -54,7 +54,9 @@
 #import "FSSubtitleCell.h"
 
 // HUD
-#import "LoadingHUDView.h"
+#import "TKLoadingView.h"
+#import "TKProgressBarView.h"
+#import "TKProgressAlertView.h"
 
 // GRAPH
 #import "TKGraphController.h"

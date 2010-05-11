@@ -35,36 +35,95 @@
 @implementation HUDViewController
 
 
-
-
-- (void)viewDidLoad {
+- (void) viewDidLoad {
     [super viewDidLoad];
 	
 	self.title = @"HUD";
 	
-	UIImageView *img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"image.png"]];
+	UIImageView *img = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"image.png"]] autorelease];
 	[self.view addSubview:img];
-	[img release];
+
+
+	[self.view addSubview:self.loading];
+	[self.view addSubview:self.progressbar];
+
+
+	time = 0; 
+	timer = [[NSTimer timerWithTimeInterval:0.02 target:self selector:@selector(timer) userInfo:nil repeats:YES] retain];
+	[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
 	
 	
-	loading  = [[LoadingHUDView alloc] initWithTitle:@"Loading"];
-	[self.view addSubview:loading];
-	[loading startAnimating];
-	loading.center = CGPointMake(self.view.bounds.size.width/2, 160);
+	
+	UIBarButtonItem *show = [[UIBarButtonItem alloc] initWithTitle:@"Tap Me" style:UIBarButtonItemStylePlain target:self action:@selector(tapme)];
+	[self.navigationItem setRightBarButtonItem:show];
+	[show release];
+	
+}
+
+- (void) timer{
+	
+	if([self.progressbar  superview]){
+		
+		self.progressbar.progress = time / 100.0;
+		
+		time++;
+		if(time > 130) time = -30;
+		return;
+	}
+	
+	time++;
+	self.alertView.progressBar.progress = time / 200.0;
+	if(time > 240){
+		[self.view addSubview:self.progressbar];
+		[self.view addSubview:self.loading];
+		[self.alertView hide];
+		time = 0;
+	} 
 	
 	
-	loading2  = [[LoadingHUDView alloc] initWithTitle:@"Lorem ipsum dolor sit amet" message:@"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec lectus quam, ac consectetur mauris. Donec est leo, hendrerit et tincidunt vel, pulvinar ut risus. Duis vulputate tincidunt erat. "];
-	[self.view addSubview:loading2];
-	[loading2 startAnimating];
-	loading2.center = CGPointMake(self.view.bounds.size.width/2, 270);
+
+	
+}
+- (void) tapme{
+	[self.progressbar removeFromSuperview];
+
+	[self.loading removeFromSuperview];
+	[self.alertView show];
+	time = 0;
+}
+
+- (TKLoadingView *) loading{
+	if(loading==nil){
+		loading  = [[TKLoadingView alloc] initWithTitle:@"Loading"];
+		[loading startAnimating];
+		loading.center = CGPointMake(self.view.bounds.size.width/2, 160);
+	}
+	return loading;
+}
+- (TKProgressBarView *) progressbar{
+	if(progressbar==nil){
+		progressbar = [[TKProgressBarView alloc] initWithStyle:TKProgressBarViewStyleShort];
+		progressbar.center = CGPointMake(self.view.bounds.size.width/2, 320);
+		[progressbar setProgress:0.01];
+	}
+	return progressbar;
+}
+
+- (TKProgressAlertView *) alertView{
+	if(alertView==nil){
+		alertView = [[TKProgressAlertView alloc] initWithProgressTitle:@"Loading important stuff!"];
+	}
+	return alertView;
 }
 
 
 
 - (void)dealloc {
 	[loading release];
-	[loading2 release];
-    [super dealloc];
+	[progressbar release];
+	[timer invalidate];
+	[timer release];
+	[super dealloc];
 }
 
 
