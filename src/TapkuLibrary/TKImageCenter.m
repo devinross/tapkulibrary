@@ -80,7 +80,7 @@ static TKImageCenter *sharedInstance = nil;
 
 
 
-- (UIImage*) imageAtURL:(NSString*)imageURL cache:(BOOL)cache{
+- (UIImage*) imageAtURL:(NSString*)imageURL addToQueue:(BOOL)cache{
 	
 	UIImage *img = [images objectForKey:imageURL];
 	if(img != nil) return img;
