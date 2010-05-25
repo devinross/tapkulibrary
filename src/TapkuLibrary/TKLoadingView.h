@@ -1,10 +1,10 @@
 //
-//  HUDViewController.h
-//  Created by Devin Ross on 7/4/09.
+//  LoadingHUDView.h
+//  Created by Devin Ross on 7/2/09.
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || http://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -29,21 +29,27 @@
  
  */
 
+#import <UIKit/UIKit.h>
 
-#import <TapkuLibrary/TapkuLibrary.h>
+@interface TKLoadingView : UIView {
+	UIActivityIndicatorView *_activity;
+	BOOL _hidden;
 
-@interface HUDViewController : UIViewController {
-	TKLoadingView *loading;
-	TKProgressBarView *progressbar;
-	
-	TKProgressAlertView *alertView;
-	
-	
-	int time;
-	NSTimer *timer;
+	NSString *_title;
+	NSString *_message;
+	float radius;
 }
+@property (copy,nonatomic) NSString *title;
+@property (copy,nonatomic) NSString *message;
+@property (assign,nonatomic) float radius;
 
-@property (retain,nonatomic,readonly) TKLoadingView *loading;
-@property (retain,nonatomic,readonly) TKProgressBarView *progressbar;
-@property (retain,nonatomic,readonly) TKProgressAlertView *alertView;
+- (id) initWithTitle:(NSString*)title message:(NSString*)message;
+- (id) initWithTitle:(NSString*)title;
+
+- (void) startAnimating;
+- (void) stopAnimating;
+
+
+
+
 @end
