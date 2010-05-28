@@ -14,7 +14,7 @@
 
 - (id) initWithStyle:(TKProgressBarViewStyle)s{
 	
-	CGRect r = s==TKProgressBarViewStyleLong ? CGRectMake(0, 0, 210, 20) : CGRectMake(0, 0, 160, 42);
+	CGRect r = s==TKProgressBarViewStyleLong ? CGRectMake(0, 0, 210, 20) : CGRectMake(0, 0, 180, 42);
 	
 	if(![super initWithFrame:r]) return nil;
 	
@@ -80,9 +80,9 @@
 - (void) drawRect:(CGRect)rect {
 
 	if(style == TKProgressBarViewStyleLong) 
-		[self drawRect:rect borderRadius:8. borderWidth:2 barRadius:5. barInset:3];
+		[self drawRect:rect borderRadius:8. borderWidth:2. barRadius:5. barInset:3];
 	else
-		[self drawRect:rect borderRadius:17 borderWidth:4 barRadius:11 barInset:6];
+		[self drawRect:rect borderRadius:17. borderWidth:4. barRadius:11. barInset:6.];
 	
 }
 

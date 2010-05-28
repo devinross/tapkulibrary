@@ -1085,7 +1085,7 @@
 }
 
 
-- (void)dealloc {
+- (void) dealloc {
 	[str release];
     [super dealloc];
 }

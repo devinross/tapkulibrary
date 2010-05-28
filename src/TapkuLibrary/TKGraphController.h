@@ -38,4 +38,7 @@
 	UIStatusBarStyle statusColor;
 }
 @property (nonatomic,retain) TKGraphView *graph;
+
+- (id) init;
+
 @end

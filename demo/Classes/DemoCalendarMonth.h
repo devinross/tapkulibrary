@@ -11,8 +11,8 @@
 
 
 @interface DemoCalendarMonth : TKCalendarMonthTableViewController {
-
-
+	TKDateInformation currentDate;
+	NSMutableArray *currentMonthData;
 	
 }
 

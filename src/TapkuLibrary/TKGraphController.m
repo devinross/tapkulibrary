@@ -36,6 +36,11 @@
 @implementation TKGraphController
 @synthesize graph;
 
+- (id) init{
+	if(![super init]) return nil;
+	return self;
+}
+
 
 - (void) loadView{
 	graph = [[TKGraphView alloc] initWithFrame:CGRectMake(0, 0, 480, 300)];
