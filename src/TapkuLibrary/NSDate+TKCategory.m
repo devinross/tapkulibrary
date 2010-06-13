@@ -46,11 +46,11 @@
 	info.month = [comp month];
 	info.year = [comp year];
 	
-	
-	
 	info.hour = [comp hour];
 	info.minute = [comp minute];
 	info.second = [comp second];
+	
+	info.weekday = [comp weekday];
 	
 
 	[gregorian release];

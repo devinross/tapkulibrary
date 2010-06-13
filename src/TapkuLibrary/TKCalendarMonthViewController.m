@@ -36,7 +36,6 @@
 @synthesize monthView;
 
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
@@ -45,11 +44,13 @@
 	monthView.dataSource = self;
 	[self.view addSubview:monthView];
 	[monthView reload];
+	
 }
 
 
-- (BOOL) calendarMonthView:(TKCalendarMonthView*)monthView markForDay:(NSDate*)date{
-	return NO;
+- (NSArray*) calendarMonthView:(TKCalendarMonthView*)monthView marksFromDate:(NSDate*)startDate toDate:(NSDate*)lastDate{
+	return nil;
+	
 }
 
 

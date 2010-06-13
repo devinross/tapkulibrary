@@ -32,8 +32,6 @@
 		3B6EDDE911547C2500E454DA /* TKCoverflowView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B917CE810F34BF400049677 /* TKCoverflowView.h */; };
 		3B6EDDEA11547C2700E454DA /* TKCalendarMonthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC99FF10953E2400F235F1 /* TKCalendarMonthViewController.m */; };
 		3B6EDDEB11547C2800E454DA /* TKCalendarMonthViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC99FE10953E2400F235F1 /* TKCalendarMonthViewController.h */; };
-		3B6EDDEC11547C2800E454DA /* TKCalendarMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC99FD10953E2400F235F1 /* TKCalendarMonthView.m */; };
-		3B6EDDED11547C2800E454DA /* TKCalendarMonthView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC99FC10953E2400F235F1 /* TKCalendarMonthView.h */; };
 		3B6EDDEE11547C2900E454DA /* TKCalendarMonthTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B879FC5109BFC07002012FD /* TKCalendarMonthTableViewController.m */; };
 		3B6EDDEF11547C2900E454DA /* TKCalendarMonthTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B879FC4109BFC07002012FD /* TKCalendarMonthTableViewController.h */; };
 		3B6EDDF011547C2A00E454DA /* TapDetectingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A0810953E2400F235F1 /* TapDetectingView.m */; };
@@ -84,6 +82,10 @@
 		3B6EDE1E11547C5600E454DA /* FSIndicatorCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A3810953E5200F235F1 /* FSIndicatorCell.h */; };
 		3B6EDE1F11547C5600E454DA /* ABTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A3D10953E5200F235F1 /* ABTableViewCell.m */; };
 		3B6EDE2011547C5700E454DA /* ABTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A3C10953E5200F235F1 /* ABTableViewCell.h */; };
+		3B9724BD11C54C5C0027A97F /* TKCalendarMonthView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B9724B911C54C5C0027A97F /* TKCalendarMonthView.h */; };
+		3B9724BE11C54C5C0027A97F /* TKCalendarMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9724BA11C54C5C0027A97F /* TKCalendarMonthView.m */; };
+		3B9724BF11C54C5C0027A97F /* TKCalendarMonthTiles.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B9724BB11C54C5C0027A97F /* TKCalendarMonthTiles.h */; };
+		3B9724C011C54C5C0027A97F /* TKCalendarMonthTiles.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9724BC11C54C5C0027A97F /* TKCalendarMonthTiles.m */; };
 		3BA577BA1199DF1600ECB85B /* TKProgressAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BA577B81199DF1600ECB85B /* TKProgressAlertView.h */; };
 		3BA577BB1199DF1600ECB85B /* TKProgressAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA577B91199DF1600ECB85B /* TKProgressAlertView.m */; };
 		3BAC995A10953DF400F235F1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995510953DF400F235F1 /* SystemConfiguration.framework */; };
@@ -116,6 +118,10 @@
 		3B917CE910F34BF400049677 /* TKCoverflowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoverflowView.m; sourceTree = "<group>"; };
 		3B917CEA10F34BF400049677 /* TKCoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCoverView.h; sourceTree = "<group>"; };
 		3B917CEB10F34BF400049677 /* TKCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoverView.m; sourceTree = "<group>"; };
+		3B9724B911C54C5C0027A97F /* TKCalendarMonthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCalendarMonthView.h; sourceTree = "<group>"; };
+		3B9724BA11C54C5C0027A97F /* TKCalendarMonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCalendarMonthView.m; sourceTree = "<group>"; };
+		3B9724BB11C54C5C0027A97F /* TKCalendarMonthTiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCalendarMonthTiles.h; sourceTree = "<group>"; };
+		3B9724BC11C54C5C0027A97F /* TKCalendarMonthTiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCalendarMonthTiles.m; sourceTree = "<group>"; };
 		3BA577B81199DF1600ECB85B /* TKProgressAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKProgressAlertView.h; sourceTree = "<group>"; };
 		3BA577B91199DF1600ECB85B /* TKProgressAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKProgressAlertView.m; sourceTree = "<group>"; };
 		3BA5CE14114472990027D844 /* NSDictionary+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+TKCategory.h"; sourceTree = "<group>"; };
@@ -127,8 +133,6 @@
 		3BAC995710953DF400F235F1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3BAC995810953DF400F235F1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3BAC995910953DF400F235F1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		3BAC99FC10953E2400F235F1 /* TKCalendarMonthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCalendarMonthView.h; sourceTree = "<group>"; };
-		3BAC99FD10953E2400F235F1 /* TKCalendarMonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCalendarMonthView.m; sourceTree = "<group>"; };
 		3BAC99FE10953E2400F235F1 /* TKCalendarMonthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCalendarMonthViewController.h; sourceTree = "<group>"; };
 		3BAC99FF10953E2400F235F1 /* TKCalendarMonthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCalendarMonthViewController.m; sourceTree = "<group>"; };
 		3BAC9A0110953E2400F235F1 /* ODCalendarDayEventView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODCalendarDayEventView.h; sourceTree = "<group>"; };
@@ -492,8 +496,10 @@
 				3BAC99FF10953E2400F235F1 /* TKCalendarMonthViewController.m */,
 				3B879FC4109BFC07002012FD /* TKCalendarMonthTableViewController.h */,
 				3B879FC5109BFC07002012FD /* TKCalendarMonthTableViewController.m */,
-				3BAC99FC10953E2400F235F1 /* TKCalendarMonthView.h */,
-				3BAC99FD10953E2400F235F1 /* TKCalendarMonthView.m */,
+				3B9724B911C54C5C0027A97F /* TKCalendarMonthView.h */,
+				3B9724BA11C54C5C0027A97F /* TKCalendarMonthView.m */,
+				3B9724BB11C54C5C0027A97F /* TKCalendarMonthTiles.h */,
+				3B9724BC11C54C5C0027A97F /* TKCalendarMonthTiles.m */,
 			);
 			name = Month;
 			sourceTree = "<group>";
@@ -527,7 +533,6 @@
 				3B6EDDE711547C2400E454DA /* TKCoverView.h in Headers */,
 				3B6EDDE911547C2500E454DA /* TKCoverflowView.h in Headers */,
 				3B6EDDEB11547C2800E454DA /* TKCalendarMonthViewController.h in Headers */,
-				3B6EDDED11547C2800E454DA /* TKCalendarMonthView.h in Headers */,
 				3B6EDDEF11547C2900E454DA /* TKCalendarMonthTableViewController.h in Headers */,
 				3B6EDDF111547C2B00E454DA /* TapDetectingView.h in Headers */,
 				3B6EDDF311547C2C00E454DA /* ODCalendarDayViewController.h in Headers */,
@@ -556,6 +561,8 @@
 				3BB3A2251178185B00553093 /* TKImageCenter.h in Headers */,
 				3BB92D2211896022002FA0F9 /* TKProgressBarView.h in Headers */,
 				3BA577BA1199DF1600ECB85B /* TKProgressAlertView.h in Headers */,
+				3B9724BD11C54C5C0027A97F /* TKCalendarMonthView.h in Headers */,
+				3B9724BF11C54C5C0027A97F /* TKCalendarMonthTiles.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,7 +643,6 @@
 				3B6EDDE611547C2400E454DA /* TKCoverView.m in Sources */,
 				3B6EDDE811547C2400E454DA /* TKCoverflowView.m in Sources */,
 				3B6EDDEA11547C2700E454DA /* TKCalendarMonthViewController.m in Sources */,
-				3B6EDDEC11547C2800E454DA /* TKCalendarMonthView.m in Sources */,
 				3B6EDDEE11547C2900E454DA /* TKCalendarMonthTableViewController.m in Sources */,
 				3B6EDDF011547C2A00E454DA /* TapDetectingView.m in Sources */,
 				3B6EDDF211547C2C00E454DA /* ODCalendarDayViewController.m in Sources */,
@@ -665,6 +671,8 @@
 				3BB3A2241178185B00553093 /* TKImageCenter.m in Sources */,
 				3BB92D2311896022002FA0F9 /* TKProgressBarView.m in Sources */,
 				3BA577BB1199DF1600ECB85B /* TKProgressAlertView.m in Sources */,
+				3B9724BE11C54C5C0027A97F /* TKCalendarMonthView.m in Sources */,
+				3B9724C011C54C5C0027A97F /* TKCalendarMonthTiles.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -686,7 +694,7 @@
 				GCC_PREFIX_HEADER = TapkuLibrary_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = TapkuLibrary;
-				SDKROOT = iphonesimulator3.0;
+				SDKROOT = iphoneos4.0;
 				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
@@ -723,7 +731,7 @@
 					"-ObjC",
 				);
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos4.0;
 				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Debug;
@@ -741,7 +749,7 @@
 					"-ObjC",
 				);
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos4.0;
 				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Release;

@@ -35,4 +35,5 @@
 	UITableView *tableView;
 }
 @property (retain,nonatomic) UITableView *tableView;
+- (void) updateTableOffset;
 @end

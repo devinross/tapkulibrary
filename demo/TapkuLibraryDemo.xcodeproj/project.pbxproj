@@ -41,6 +41,7 @@
 		3BCAC5E411115335004DBAA6 /* cover_9.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3BCAC5E311115335004DBAA6 /* cover_9.jpeg */; };
 		3BCAC5E71111533A004DBAA6 /* cover_7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3BCAC5E51111533A004DBAA6 /* cover_7.jpg */; };
 		3BCAC5E81111533A004DBAA6 /* cover_8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3BCAC5E61111533A004DBAA6 /* cover_8.jpg */; };
+		3BD2E16E11B71241001376AB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BD2E16D11B71241001376AB /* Default.png */; };
 		3BFECE4B10D070DF0005C88A /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFECE4A10D070DF0005C88A /* image.png */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +120,7 @@
 		3BCAC5E311115335004DBAA6 /* cover_9.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_9.jpeg; sourceTree = "<group>"; };
 		3BCAC5E51111533A004DBAA6 /* cover_7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_7.jpg; sourceTree = "<group>"; };
 		3BCAC5E61111533A004DBAA6 /* cover_8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_8.jpg; sourceTree = "<group>"; };
+		3BD2E16D11B71241001376AB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		3BFECE4A10D070DF0005C88A /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TapkuLibraryDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TapkuLibraryDemo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -184,6 +186,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3BD2E16D11B71241001376AB /* Default.png */,
 				3B2A488B1163BDE500081421 /* TapkuLibrary.bundle */,
 				3B917D2810F34D3200049677 /* Images */,
 				3BFECE4A10D070DF0005C88A /* image.png */,
@@ -423,6 +426,7 @@
 				3BCAC5E71111533A004DBAA6 /* cover_7.jpg in Resources */,
 				3BCAC5E81111533A004DBAA6 /* cover_8.jpg in Resources */,
 				3B2A488C1163BDE500081421 /* TapkuLibrary.bundle in Resources */,
+				3BD2E16E11B71241001376AB /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,7 +483,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = TapkuLibraryDemo;
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos4.0;
 			};
 			name = Debug;
 		};
@@ -521,7 +525,7 @@
 				);
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5C08DA5A-560F-405C-B83B-12D4D75E6CF4";
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos4.0;
 			};
 			name = Debug;
 		};
@@ -541,7 +545,7 @@
 				);
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5C08DA5A-560F-405C-B83B-12D4D75E6CF4";
-				SDKROOT = iphoneos3.0;
+				SDKROOT = iphoneos4.0;
 			};
 			name = Release;
 		};

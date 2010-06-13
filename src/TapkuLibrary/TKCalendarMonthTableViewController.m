@@ -50,13 +50,6 @@
 	[self.view sendSubviewToBack:tableView];
 }
 
-- (void) calendarMonthView:(TKCalendarMonthView*)mv monthWillAppear:(NSDate*)month{
-	float y = mv.frame.origin.y + mv.frame.size.height;
-	float height = self.view.frame.size.height - y;
-	tableView.frame = CGRectMake(0, y, 320, height);
-}
-
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return 1;
 	
@@ -72,22 +65,31 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
     }
-    
-    
-	// Configure the cell.
+
 	
     return cell;
 	
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[self.monthView reload];
+
+
+- (void) calendarMonthView:(TKCalendarMonthView*)monthView didSelectDate:(NSDate*)d{
+}
+- (void) calendarMonthView:(TKCalendarMonthView*)monthView monthDidChange:(NSDate*)d{
+	[self updateTableOffset];
 }
 
 
-- (BOOL) calendarMonthView:(TKCalendarMonthView*)monthView markForDay:(NSDate*)date{
-
-	return NO;
+- (void) updateTableOffset{
+	
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDuration:0.4];
+	
+	float y = monthView.frame.origin.y + monthView.frame.size.height;
+	self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, y, self.tableView.frame.size.width, self.view.frame.size.height - y );
+	
+	[UIView commitAnimations];
 }
+
 
 
 

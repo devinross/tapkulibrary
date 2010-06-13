@@ -8,53 +8,64 @@
 
 #import "DemoCalendarMonth.h"
 
+
 @implementation DemoCalendarMonth
 
 
-- (void) generateRandomData{
+- (void) generateRandomDataForStartDate:(NSDate*)start endDate:(NSDate*)end{
 	
-	[currentMonthData removeAllObjects];
+	[dataArray release];
+	[dataDictionary release];
+	dataArray = [[NSMutableArray alloc] init];
+	dataDictionary = [[NSMutableDictionary alloc] init];
 	
-	for(int cnt=0;cnt<31;cnt++){
+	NSDate *d = start;
+	
+	while(YES){
+		
 		int r = rand();
 		if(r % 3==1){
-			[currentMonthData addObject:[NSArray arrayWithObjects:@"Item one",@"Item two",nil]];
+			[dataDictionary setObject:[NSArray arrayWithObjects:@"Item one",@"Item two",nil] forKey:d];
+			[dataArray addObject:[NSNumber numberWithBool:YES]];
 		}else if(r%4==1){
-			[currentMonthData addObject:[NSArray arrayWithObjects:@"Item one",nil]];
+			[dataDictionary setObject:[NSArray arrayWithObjects:@"Item one",nil] forKey:d];
+			[dataArray addObject:[NSNumber numberWithBool:YES]];
 		}else{
-			[currentMonthData addObject:[NSNull null]];
+			[dataArray addObject:[NSNumber numberWithBool:NO]];
 		}
 		
+		TKDateInformation info = [d dateInformation];
+		info.day++;
+		d = [NSDate dateFromDateInformation:info];
+		if([d compare:end]==NSOrderedDescending) break;
 	}
+	
+	
+
+	
+
 }
 
 - (void) viewDidLoad{
 	
 	srand([[NSDate date] timeIntervalSince1970]);
-	
-	
-	currentMonthData = [[NSMutableArray alloc] init];
-
-	[self generateRandomData];
-
 	[super viewDidLoad];
-	currentDate = [[NSDate date] dateInformation];
 	[self.monthView selectDate:[NSDate date]];
 }
 
-- (BOOL) calendarMonthView:(TKCalendarMonthView*)monthView markForDay:(NSDate*)date{
-	NSObject *obj = [currentMonthData objectAtIndex:[date dateInformation].day-1];
-	if((NSNull *)obj == [NSNull null]) return NO;
-	return YES;
+- (NSArray*) calendarMonthView:(TKCalendarMonthView*)monthView marksFromDate:(NSDate*)startDate toDate:(NSDate*)lastDate{
+	
+	[self generateRandomDataForStartDate:startDate endDate:lastDate];
+	return dataArray;
+	
 }
-- (void) calendarMonthView:(TKCalendarMonthView*)mv monthWillAppear:(NSDate*)month{
-	[super calendarMonthView:mv monthWillAppear:month];
-	[self generateRandomData];
-	[self.monthView reload];
-}
-- (void) calendarMonthView:(TKCalendarMonthView*)monthView dateWasSelected:(NSDate*)date{
-	currentDate = [date dateInformation];
+- (void) calendarMonthView:(TKCalendarMonthView*)monthView didSelectDate:(NSDate*)d{
 	[self.tableView reloadData];
+}
+- (void) calendarMonthView:(TKCalendarMonthView*)mv monthDidChange:(NSDate*)d{
+	[super calendarMonthView:mv monthDidChange:d];
+	[self.tableView reloadData];
+	NSLog(@"Month Did Change: %@ %@",d,[monthView dateSelected]);
 }
 
 
@@ -65,31 +76,26 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
 	
-	NSObject *obj = [currentMonthData objectAtIndex:currentDate.day-1];
-	if((NSNull *)obj == [NSNull null]) return 0;
-	return [(NSArray*)obj count];
+	NSArray *ar = [dataDictionary objectForKey:[monthView dateSelected]];
+	if(ar == nil) return 0;
+	return [ar count];
+	
+
 	
 }
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
-    
     UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-    }
+    if (cell == nil) cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
     
-	cell.textLabel.text = [[currentMonthData objectAtIndex:currentDate.day-1] objectAtIndex:indexPath.row];
     
-	// Configure the cell.
+	NSArray *ar = [dataDictionary objectForKey:[monthView dateSelected]];
+	cell.textLabel.text = [ar objectAtIndex:indexPath.row];
 	
     return cell;
 	
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[self.monthView reload];
-}
-
 
 
 @end

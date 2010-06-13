@@ -37,14 +37,15 @@
 
 	NSMutableArray *queue;
 	NSMutableDictionary *images;
-	
 	NSThread *thread;
 	
 }
 
 + (TKImageCenter*) sharedImageCenter;
 
-- (UIImage*) imageAtURL:(NSString*)imageURL addToQueue:(BOOL)cache;
+- (UIImage*) imageAtURL:(NSURL*)url queueIfNeeded:(BOOL)addToQueue;
+
+- (UIImage*) adjustImageRecieved:(UIImage*)image; // subclass to add cropping or manipulation
 
 - (void) clearImages;
 

@@ -1,6 +1,6 @@
 //
-//  TKCalendarView.h
-//  Created by Devin Ross on 7/28/09.
+//  TKCalendarMonthView.h
+//  Created by Devin Ross on 6/10/10.
 //
 /*
  
@@ -28,54 +28,50 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
-
 #import <UIKit/UIKit.h>
 
-@class TKMonthGridView,TKCalendarDayView;
+@class TKCalendarMonthTiles;
 @protocol TKCalendarMonthViewDelegate, TKCalendarMonthViewDataSource;
 
 
 @interface TKCalendarMonthView : UIView {
-	
+
+	TKCalendarMonthTiles *currentTile;
+	UIButton *leftArrow, *rightArrow;
+	UIImageView *topBackground, *shadow;
+	UILabel *monthYear;
+	UIScrollView *tileBox;
+	BOOL sunday;
+
 	id <TKCalendarMonthViewDelegate> delegate;
 	id <TKCalendarMonthViewDataSource> dataSource;
-	
-	NSDate *currentMonth;
-	NSDate *selectedMonth;
-	NSMutableArray *deck;
-	
-	
-	UIButton *left;
-	NSString *monthYear;
-	UIButton *right;
-	
-	UIImageView *shadow;
-	UIScrollView *scrollView;
-	
-	
+
 }
-@property (readonly,nonatomic) NSString *monthYear;
-@property (readonly,nonatomic) NSDate *monthDate;
-@property (assign,nonatomic) id <TKCalendarMonthViewDataSource> dataSource;
-@property (assign,nonatomic) id <TKCalendarMonthViewDelegate> delegate;
 
-- (id) init;
+@property (nonatomic,assign) id <TKCalendarMonthViewDelegate> delegate;
+@property (nonatomic,assign) id <TKCalendarMonthViewDataSource> dataSource;
+
+- (id) initWithSundayAsFirst:(BOOL)sunday;
+
+
+- (NSDate*) dateSelected;
+- (NSDate*) monthDate;
+- (void) selectDate:(NSDate*)date;
 - (void) reload;
-- (void) selectDate:(NSDate *)date;
-
 
 @end
 
 
-@protocol TKCalendarMonthViewDataSource<NSObject>
-@required
-- (BOOL) calendarMonthView:(TKCalendarMonthView*)monthView markForDay:(NSDate*)date;
-@end
+@protocol TKCalendarMonthViewDelegate <NSObject>
 
-
-@protocol TKCalendarMonthViewDelegate<NSObject>
 @optional
-- (void) calendarMonthView:(TKCalendarMonthView*)monthView dateWasSelected:(NSDate*)date;
-- (void) calendarMonthView:(TKCalendarMonthView*)monthView monthWillAppear:(NSDate*)month;
+- (void) calendarMonthView:(TKCalendarMonthView*)monthView didSelectDate:(NSDate*)d;
+- (void) calendarMonthView:(TKCalendarMonthView*)monthView monthDidChange:(NSDate*)d;
+
 @end
 
+@protocol TKCalendarMonthViewDataSource <NSObject>
+
+- (NSArray*) calendarMonthView:(TKCalendarMonthView*)monthView marksFromDate:(NSDate*)startDate toDate:(NSDate*)lastDate;
+
+@end

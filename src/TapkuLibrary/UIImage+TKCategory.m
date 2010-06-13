@@ -35,7 +35,8 @@
 @implementation UIImage (TKCategory)
 
 + (UIImage*) imageFromPath:(NSString*)URL{
-	return 	[UIImage imageWithData:[NSData dataWithContentsOfFile:URL]];
+	return [UIImage imageWithContentsOfFile:URL];
+	//return 	[UIImage imageWithData:[NSData dataWithContentsOfFile:URL]];
 }
 
 

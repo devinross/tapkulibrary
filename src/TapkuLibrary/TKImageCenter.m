@@ -69,28 +69,26 @@ static TKImageCenter *sharedInstance = nil;
     return self;
 }
 
+
 - (id) init{
 	if(![super init]) return nil;
-	
 	queue = [[NSMutableArray alloc] init];
 	images = [[NSMutableDictionary alloc] init];
-	
 	return self;
 }
 
 
-
-- (UIImage*) imageAtURL:(NSString*)imageURL addToQueue:(BOOL)cache{
+- (UIImage*) imageAtURL:(NSURL*)imageURL queueIfNeeded:(BOOL)addToQueue{
 	
 	UIImage *img = [images objectForKey:imageURL];
 	if(img != nil) return img;
 	
 	
-	if(!cache) return nil;
+	if(!addToQueue) return nil;
 	
 	
 	[queue addObject:imageURL];
-	if(cache && thread==nil){
+	if(addToQueue && thread==nil){
 		thread = [[NSThread alloc] initWithTarget:self selector:@selector(getImages) object:nil];
 		[thread start];
 	}
@@ -100,20 +98,30 @@ static TKImageCenter *sharedInstance = nil;
 	return nil;
 }
 
+- (UIImage*) adjustImageRecieved:(UIImage*)image{
+	return image;
+}
+
+
+
 - (void) getImages{
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
 	
 	while([queue count]>0){
-		NSString *url = [queue objectAtIndex:0];
-		UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
+		NSURL *url = [queue objectAtIndex:0];
+		UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
 		if(img != nil){
-			[images setObject:img forKey:url];
-			[[NSNotificationCenter defaultCenter] postNotificationName:@"newImage" object:self];
+			UIImage *transformImage = [self  adjustImageRecieved:img];
+			if(transformImage!= nil){
+				[images setObject:transformImage forKey:url];
+				[[NSNotificationCenter defaultCenter] postNotificationName:@"newImage" object:self];
+			}
+			
 		}
 		
 		for(int cnt=0;cnt < [queue count]; cnt++){
-			if([[queue objectAtIndex:cnt] isEqualToString:url]){
+			if([[queue objectAtIndex:cnt] isEqual:url]){
 				[queue removeObjectAtIndex:cnt];
 				cnt--;
 			}
@@ -129,7 +137,6 @@ static TKImageCenter *sharedInstance = nil;
 	[thread release];
 	thread = nil;
 }
-
 - (void) clearImages{
 	[thread cancel];
 	[thread release];
@@ -137,9 +144,7 @@ static TKImageCenter *sharedInstance = nil;
 	[images removeAllObjects];
 	[queue removeAllObjects];
 }
-
 - (void) dealloc{
-	
 	[queue release];
 	[images release];
 	[thread cancel];

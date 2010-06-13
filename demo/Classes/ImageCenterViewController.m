@@ -103,7 +103,9 @@
 		
 		int index = i % [urlArray count];
 		
-		UIImage *image = [[TKImageCenter sharedImageCenter] imageAtURL:[urlArray objectAtIndex:index] addToQueue:YES];
+		UIImage *image = [[TKImageCenter sharedImageCenter]  imageAtURL:[NSURL URLWithString:[urlArray objectAtIndex:index]] 
+														  queueIfNeeded:YES];
+		
 		if(image != nil){
 			[images replaceObjectAtIndex:i withObject:image];
 			cell.imageView.image = image;
