@@ -338,7 +338,16 @@
 		rightArrow.tag = 1;
 		[rightArrow addTarget:self action:@selector(changeMonth:) forControlEvents:UIControlEventTouchUpInside];
 		rightArrow.frame = CGRectMake(320-45, 0, 48, 45);
-		[rightArrow setImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/calendar/Month Calendar Right Arrow.png")] forState:0];
+		
+		
+		CGFloat scale = 1;
+		#if __IPHONE_OS_VERSION_MIN_REQUIRED > __IPHONE_4_0
+		NSObject *ob = [[UIScreen mainScreen] scale];
+		NSLog(@"--%@",ob);
+		#endif
+
+		NSString *path = [NSString stringWithFormat:@"TapkuLibrary.bundle/Images/calendar/Month Calendar Right Arrow%@.png",scale > 1 ? @"2x" : @""];
+		[rightArrow setImage:[UIImage imageFromPath:TKBUNDLE(path)] forState:0];
 		
 	}
 	return rightArrow;
