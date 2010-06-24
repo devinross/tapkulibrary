@@ -518,13 +518,14 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../src;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5C08DA5A-560F-405C-B83B-12D4D75E6CF4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9A0B1A78-1317-41B2-B938-E7F978D34933";
 				SDKROOT = iphoneos4.0;
 			};
 			name = Debug;
@@ -544,7 +545,7 @@
 					"-all_load",
 				);
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5C08DA5A-560F-405C-B83B-12D4D75E6CF4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9A0B1A78-1317-41B2-B938-E7F978D34933";
 				SDKROOT = iphoneos4.0;
 			};
 			name = Release;

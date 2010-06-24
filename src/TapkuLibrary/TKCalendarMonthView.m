@@ -35,6 +35,16 @@
 #import "TKGlobal.h"
 #import "UIImage+TKCategory.h"
 
+#define kSun NSLocalizedString(@"Sun",@"Sun")
+#define kMon NSLocalizedString(@"Mon",@"Mon")
+#define kTue NSLocalizedString(@"Tue",@"Tue")
+#define kWed NSLocalizedString(@"Wed",@"Wed")
+#define kThu NSLocalizedString(@"Thu",@"Thu")
+#define kFri NSLocalizedString(@"Fri",@"Fri")
+#define kSat NSLocalizedString(@"Sat",@"Sat")
+
+#define kCalendImagesPath @"TapkuLibrary.bundle/Images/calendar/"
+
 
 @interface TKCalendarMonthView (private)
 @property (readonly) UIScrollView *tileBox;
@@ -99,6 +109,7 @@
 @implementation TKCalendarMonthView
 @synthesize delegate,dataSource;
 
+
 - (id) init{
 	return [self initWithSundayAsFirst:YES];
 }
@@ -135,6 +146,30 @@
 	self.shadow.frame = CGRectMake(0, self.frame.size.height-self.shadow.frame.size.height+21, self.shadow.frame.size.width, self.shadow.frame.size.height);
 	
 	self.backgroundColor = [UIColor grayColor];
+	
+	
+	
+	NSArray *ar;
+	if(sunday)
+		ar = [NSArray arrayWithObjects:kSun,kMon,kTue,kWed,kThu,kFri,kSat,nil];
+	else
+		ar = [NSArray arrayWithObjects:kMon,kTue,kWed,kThu,kFri,kSat,kSun,nil];
+	int i = 0;
+	for(NSString *s in ar){
+		
+		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(46 * i, 30, 46, 15)];
+		[self addSubview:label];
+		label.text = s;
+		label.textAlignment = UITextAlignmentCenter;
+		label.shadowColor = [UIColor whiteColor];
+		label.shadowOffset = CGSizeMake(0, 1);
+		label.font = [UIFont systemFontOfSize:11];
+		label.backgroundColor = [UIColor clearColor];
+		label.textColor = [UIColor colorWithRed:59/255. green:73/255. blue:88/255. alpha:1];
+
+		i++;
+		[label release];
+	}
 	
 	return self;
 }
@@ -314,7 +349,8 @@
 }
 - (UILabel *) monthYear{
 	if(monthYear==nil){
-		monthYear = [[UILabel alloc] initWithFrame:CGRectInset(self.topBackground.bounds,40, 8)];
+		monthYear = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tileBox.frame.size.width, 38)];
+		
 		monthYear.textAlignment = UITextAlignmentCenter;
 		monthYear.backgroundColor = [UIColor clearColor];
 		monthYear.font = [UIFont boldSystemFontOfSize:22];
@@ -327,8 +363,15 @@
 		leftArrow = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
 		leftArrow.tag = 0;
 		[leftArrow addTarget:self action:@selector(changeMonth:) forControlEvents:UIControlEventTouchUpInside];
-		[leftArrow setImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/calendar/Month Calendar Left Arrow.png")] forState:0];
-		leftArrow.frame = CGRectMake(0, 0, 48, 45);
+		
+		
+		
+		CGFloat screenScale = [[UIScreen mainScreen] respondsToSelector:@selector(scale)] ? [[UIScreen mainScreen] scale] : 1.0f;
+		NSString *scale = screenScale > 1.0f ? @"@2x" : @"";
+		NSString *path = [NSString stringWithFormat:@"%@Month Calendar Left Arrow%@.png",kCalendImagesPath,scale];
+		[leftArrow setImage:[UIImage imageFromPath:TKBUNDLE(path)] forState:0];
+		
+		leftArrow.frame = CGRectMake(0, 0, 48, 38);
 	}
 	return leftArrow;
 }
@@ -337,16 +380,15 @@
 		rightArrow = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
 		rightArrow.tag = 1;
 		[rightArrow addTarget:self action:@selector(changeMonth:) forControlEvents:UIControlEventTouchUpInside];
-		rightArrow.frame = CGRectMake(320-45, 0, 48, 45);
+		rightArrow.frame = CGRectMake(320-45, 0, 48, 38);
 		
 		
-		CGFloat scale = 1;
-		#if __IPHONE_OS_VERSION_MIN_REQUIRED > __IPHONE_4_0
-		NSObject *ob = [[UIScreen mainScreen] scale];
-		NSLog(@"--%@",ob);
-		#endif
+		CGFloat screenScale = 1.0f;
+		if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
+			screenScale = [[UIScreen mainScreen] scale];
+		}
 
-		NSString *path = [NSString stringWithFormat:@"TapkuLibrary.bundle/Images/calendar/Month Calendar Right Arrow%@.png",scale > 1 ? @"2x" : @""];
+		NSString *path = [NSString stringWithFormat:@"%@Month Calendar Right Arrow%@.png",kCalendImagesPath,screenScale > 1.0f ? @"@2x" : @""];
 		[rightArrow setImage:[UIImage imageFromPath:TKBUNDLE(path)] forState:0];
 		
 	}
