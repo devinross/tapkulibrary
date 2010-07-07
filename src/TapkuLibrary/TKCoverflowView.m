@@ -253,24 +253,18 @@
 	else [delegate coverflowView:self coverAtIndexWasBroughtToFront:currentIndex];
 
 }
-
 - (void) animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context{
 
 	int i = currentIndex-1;
 
-	for(;i > deck.location;i--){
-		[self sendSubviewToBack:[coverViews objectAtIndex:i]];
-	}
-	
-	i = currentIndex+1;
-	for(;i < deck.location+deck.length;i++){
-		[self bringSubviewToFront:[coverViews objectAtIndex:i]];
-	}
+	if (i >= 0) for(;i > deck.location;i--) [self sendSubviewToBack:[coverViews objectAtIndex:i]];
 
+	i = currentIndex+1;
+	for(;i < deck.location+deck.length;i++) [self bringSubviewToFront:[coverViews objectAtIndex:i]];
+	
 	[self bringSubviewToFront:[coverViews objectAtIndex:currentIndex]];
 	
-	if([finished boolValue] && [animationID intValue] == currentIndex)
-		[delegate coverflowView:self coverAtIndexWasBroughtToFront:currentIndex];
+	if([finished boolValue] && [animationID intValue] == currentIndex) [delegate coverflowView:self coverAtIndexWasBroughtToFront:currentIndex];
 	
 }
 

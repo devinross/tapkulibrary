@@ -39,7 +39,6 @@
 	//return 	[UIImage imageWithData:[NSData dataWithContentsOfFile:URL]];
 }
 
-
 - (void) drawInRect:(CGRect)rect asAlphaMaskForColor:(CGFloat[])color{
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
@@ -101,7 +100,6 @@
 	
 	CGContextRestoreGState(context);
 }
-
 
 
 @end

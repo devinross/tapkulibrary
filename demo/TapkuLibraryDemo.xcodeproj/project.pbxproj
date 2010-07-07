@@ -42,6 +42,8 @@
 		3BCAC5E71111533A004DBAA6 /* cover_7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3BCAC5E51111533A004DBAA6 /* cover_7.jpg */; };
 		3BCAC5E81111533A004DBAA6 /* cover_8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3BCAC5E61111533A004DBAA6 /* cover_8.jpg */; };
 		3BD2E16E11B71241001376AB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BD2E16D11B71241001376AB /* Default.png */; };
+		3BF88A0A11E5145E00C9FC43 /* icon_57.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BF88A0811E5145E00C9FC43 /* icon_57.png */; };
+		3BF88A0B11E5145E00C9FC43 /* icon_114.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BF88A0911E5145E00C9FC43 /* icon_114.png */; };
 		3BFECE4B10D070DF0005C88A /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BFECE4A10D070DF0005C88A /* image.png */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +123,8 @@
 		3BCAC5E51111533A004DBAA6 /* cover_7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_7.jpg; sourceTree = "<group>"; };
 		3BCAC5E61111533A004DBAA6 /* cover_8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_8.jpg; sourceTree = "<group>"; };
 		3BD2E16D11B71241001376AB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		3BF88A0811E5145E00C9FC43 /* icon_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_57.png; sourceTree = "<group>"; };
+		3BF88A0911E5145E00C9FC43 /* icon_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_114.png; sourceTree = "<group>"; };
 		3BFECE4A10D070DF0005C88A /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TapkuLibraryDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TapkuLibraryDemo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -187,6 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				3BD2E16D11B71241001376AB /* Default.png */,
+				3BF88A0811E5145E00C9FC43 /* icon_57.png */,
+				3BF88A0911E5145E00C9FC43 /* icon_114.png */,
 				3B2A488B1163BDE500081421 /* TapkuLibrary.bundle */,
 				3B917D2810F34D3200049677 /* Images */,
 				3BFECE4A10D070DF0005C88A /* image.png */,
@@ -427,6 +433,8 @@
 				3BCAC5E81111533A004DBAA6 /* cover_8.jpg in Resources */,
 				3B2A488C1163BDE500081421 /* TapkuLibrary.bundle in Resources */,
 				3BD2E16E11B71241001376AB /* Default.png in Resources */,
+				3BF88A0A11E5145E00C9FC43 /* icon_57.png in Resources */,
+				3BF88A0B11E5145E00C9FC43 /* icon_114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
