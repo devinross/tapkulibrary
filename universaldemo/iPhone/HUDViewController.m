@@ -39,7 +39,7 @@
     [super viewDidLoad];
 	
 	self.title = @"HUD";
-	self.view.backgroundColor = [UIColor whiteColor];
+	self.view.backgroundColor = [UIColor grayColor];
 
 	[self.view addSubview:self.loading];
 	[self.view addSubview:self.progressbar];
@@ -91,7 +91,7 @@
 
 - (TKLoadingView *) loading{
 	if(loading==nil){
-		loading  = [[TKLoadingView alloc] initWithTitle:@"Loading"];
+		loading  = [[TKLoadingView alloc] initWithTitle:@"Loading..."];
 		[loading startAnimating];
 		loading.center = CGPointMake(self.view.bounds.size.width/2, 160);
 	}
