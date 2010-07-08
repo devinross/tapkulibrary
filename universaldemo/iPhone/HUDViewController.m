@@ -103,6 +103,7 @@
 		progressbar.center = CGPointMake(self.view.bounds.size.width/2, 320);
 		[progressbar setProgress:0.01];
 	}
+
 	return progressbar;
 }
 
