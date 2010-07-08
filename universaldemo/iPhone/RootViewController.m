@@ -158,7 +158,7 @@
 	else if(s==3 && r==3)
 		vc = [[FastSubtitleCellController alloc] initWithStyle:UITableViewStylePlain];
 	
-	else if(s==4 && r==0)
+	else
 		vc = [[ImageCenterViewController alloc] initWithStyle:UITableViewStylePlain];
 	
 	

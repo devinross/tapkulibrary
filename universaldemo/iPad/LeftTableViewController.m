@@ -84,6 +84,7 @@
 	
 	CoverflowViewController_iPad *coverflow = [[CoverflowViewController_iPad alloc] init];	
 	[self.detailViewController setupWithMainController:coverflow];
+	[coverflow release];
 	
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
