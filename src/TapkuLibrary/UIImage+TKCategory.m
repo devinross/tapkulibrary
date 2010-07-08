@@ -31,14 +31,13 @@
 
 #import "UIImage+TKCategory.h"
 #import "UIView+TKCategory.h"
+#import "TKGlobal.h"
 
 @implementation UIImage (TKCategory)
 
 + (UIImage*) imageFromPath:(NSString*)URL{
 	return [UIImage imageWithContentsOfFile:URL];
-	//return 	[UIImage imageWithData:[NSData dataWithContentsOfFile:URL]];
 }
-
 - (void) drawInRect:(CGRect)rect asAlphaMaskForColor:(CGFloat[])color{
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
@@ -58,7 +57,6 @@
 	
 	CGContextRestoreGState(context);
 }
-
 - (void) drawInRect:(CGRect)rect asAlphaMaskForGradient:(CGFloat[])colors{
 	
 	
@@ -80,7 +78,6 @@
 	CGContextRestoreGState(context);
 	
 }
-
 - (void) drawInRect:(CGRect)rect withImageMask:(UIImage*)mask{
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
@@ -100,6 +97,16 @@
 	
 	CGContextRestoreGState(context);
 }
-
++ (UIImage*) imageNamedTK:(NSString*)str{
+	
+	CGFloat s = 1.0f;
+	if([[UIScreen mainScreen] respondsToSelector:@selector(scale)]){
+		s = [[UIScreen mainScreen] scale];
+	}
+	
+	NSString *path = [NSString stringWithFormat:@"%@%@.png",str,s > 1 ? @"@2x":@""];
+	return [UIImage imageWithContentsOfFile:TKBUNDLE(path)];
+	
+}
 
 @end

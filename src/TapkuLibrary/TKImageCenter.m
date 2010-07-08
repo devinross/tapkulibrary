@@ -33,24 +33,25 @@
 #import "TKImageCenter.h"
 
 @implementation TKImageCenter
-
 static TKImageCenter *sharedInstance = nil;
 
 + (TKImageCenter*) sharedImageCenter{
-    @synchronized(self) {
+ //   @synchronized(self) {
         if (sharedInstance == nil) {
 			sharedInstance = [[self alloc] init];
         }
-    }
+ //   }
     return sharedInstance;
 }
+
+
 + (id) allocWithZone:(NSZone *)zone{
-    @synchronized(self) {
+  //  @synchronized(self) {
         if (sharedInstance == nil) {
             sharedInstance = [super allocWithZone:zone];
             return sharedInstance;
         }
-    }
+  //  }
     return nil; //on subsequent allocation attempts return nil
 }
 - (id) copyWithZone:(NSZone *)zone{

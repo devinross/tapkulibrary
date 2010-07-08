@@ -1,5 +1,5 @@
 //
-//  TKCalendarMonthView.ms
+//  TKCalendarMonthView.m
 //  Created by Devin Ross on 6/10/10.
 //
 /*
@@ -371,10 +371,8 @@
 		
 		
 		
-		CGFloat screenScale = [[UIScreen mainScreen] respondsToSelector:@selector(scale)] ? [[UIScreen mainScreen] scale] : 1.0f;
-		NSString *scale = screenScale > 1.0f ? @"@2x" : @"";
-		NSString *path = [NSString stringWithFormat:@"%@Month Calendar Left Arrow%@.png",kCalendImagesPath,scale];
-		[leftArrow setImage:[UIImage imageFromPath:TKBUNDLE(path)] forState:0];
+
+		[leftArrow setImage:[UIImage imageNamedTK:@"TapkuLibrary.bundle/Images/calendar/Month Calendar Left Arrow"] forState:0];
 		
 		leftArrow.frame = CGRectMake(0, 0, 48, 38);
 	}
@@ -387,14 +385,9 @@
 		[rightArrow addTarget:self action:@selector(changeMonth:) forControlEvents:UIControlEventTouchUpInside];
 		rightArrow.frame = CGRectMake(320-45, 0, 48, 38);
 		
-		
-		CGFloat screenScale = 1.0f;
-		if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
-			screenScale = [[UIScreen mainScreen] scale];
-		}
 
-		NSString *path = [NSString stringWithFormat:@"%@Month Calendar Right Arrow%@.png",kCalendImagesPath,screenScale > 1.0f ? @"@2x" : @""];
-		[rightArrow setImage:[UIImage imageFromPath:TKBUNDLE(path)] forState:0];
+
+		[rightArrow setImage:[UIImage imageNamedTK:@"TapkuLibrary.bundle/Images/calendar/Month Calendar Right Arrow"] forState:0];
 		
 	}
 	return rightArrow;

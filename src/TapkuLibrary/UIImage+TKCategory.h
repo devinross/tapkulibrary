@@ -35,7 +35,7 @@
 
 
 + (UIImage*) imageFromPath:(NSString*)URL;
-
++ (UIImage*) imageNamedTK:(NSString*)path;
 
 - (void) drawInRect:(CGRect)rect asAlphaMaskForColor:(CGFloat[])color;
 - (void) drawInRect:(CGRect)rect asAlphaMaskForGradient:(CGFloat[])colors;

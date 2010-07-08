@@ -59,8 +59,8 @@
 	
 	
 	
-	[close setImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/close.png")] forState:UIControlStateNormal];
-	[close setImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/close_touch.png")] forState:UIControlStateHighlighted];
+	[close setImage:[UIImage imageNamedTK:@"TapkuLibrary.bundle/Images/graph/close"] forState:UIControlStateNormal];
+	[close setImage:[UIImage imageNamedTK:@"TapkuLibrary.bundle/Images/graph/close_touch"] forState:UIControlStateHighlighted];
 	[close addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:close];
 	

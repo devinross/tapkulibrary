@@ -35,36 +35,27 @@
 @protocol TKCoverflowViewDelegate,TKCoverflowViewDataSource;
 @class TKCoverView;
 
-static const CGFloat TKCoverflowViewCoverAngleNormal = 1.4;
-static const CGFloat TKCoverflowViewCoverAngleMore = 1.4;
-static const CGFloat TKCoverflowViewCoverAngleLess = 1.1;
 
 @interface TKCoverflowView : UIScrollView <UIScrollViewDelegate> {
 
 	
 	NSMutableArray *coverViews;  // sequential covers
 	NSMutableArray *views;		// only covers view (no nulls)
-	NSMutableArray *yard;	   // covers ready for reuse
+	NSMutableArray *yard;	   // covers ready for reuse (ie. graveyard)
 	
-	int numberOfCovers;
-	int currentIndex;
+
 	
 	float origin;
 	BOOL movingRight;
 
-	
 	UIView *currentTouch;
-	
 	NSRange deck;
 	
 	
-	int margin;
-	CGSize coverSize;
-	float coverSpacing;
-	int coverBuffer;
+	int margin, coverBuffer, currentIndex, numberOfCovers;
+	CGSize coverSize,currentSize;
+	float coverSpacing,coverAngle,spaceFromCurrent;
 	CATransform3D leftTransform, rightTransform;
-	float angle;
-	
 	
 	// SPEED
 	int pos;
@@ -78,7 +69,7 @@ static const CGFloat TKCoverflowViewCoverAngleLess = 1.1;
 @property (nonatomic, assign) CGSize coverSize; // default 224 x 224
 @property (nonatomic, assign) int numberOfCovers;
 @property (nonatomic, assign) float coverSpacing;
-@property (nonatomic, assign) float angle;
+@property (nonatomic, assign) float coverAngle;
 
 - (TKCoverView*) dequeueReusableCoverView; // like a tableview
 

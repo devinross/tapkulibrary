@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme>
+   <BuildAction
+      buildConfiguration = "Debug">
+   </BuildAction>
+   <TestAction>
+   </TestAction>
+   <LaunchAction
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.GDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.GDB">
+      <BuildableProductRunnable>
+         <BuildableProductReference
+            BuildableProductIdentifier = "unviersaldemo.app">
+         </BuildableProductReference>
+/>
+      </BuildableProductRunnable>
+      <AdditionalOptions>
+      </AdditionalOptions>
+   </LaunchAction>
+</Scheme>

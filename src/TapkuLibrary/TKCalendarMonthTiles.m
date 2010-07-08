@@ -399,7 +399,7 @@
 }
 - (UIImageView *) selectedImageView{
 	if(selectedImageView==nil){
-		selectedImageView = [[UIImageView alloc] initWithImage:[UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/calendar/Month Calendar Date Tile Selected.png")]];
+		selectedImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamedTK:@"TapkuLibrary.bundle/Images/calendar/Month Calendar Date Tile Selected"]];
 	}
 	return selectedImageView;
 }

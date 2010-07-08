@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme>
+   <BuildAction
+      buildConfiguration = "Debug">
+      <BuildableProductReferences>
+         <BuildableProductReference
+            BuildableProductIdentifier = "libTapkuLibraryExtra.a">
+         </BuildableProductReference>
+      </BuildableProductReferences>
+   </BuildAction>
+   <TestAction>
+   </TestAction>
+   <LaunchAction
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.GDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.GDB">
+      <AdditionalOptions>
+      </AdditionalOptions>
+   </LaunchAction>
+</Scheme>

@@ -56,9 +56,13 @@
 		[self addSubview:self.imageView];
 		[self addSubview:self.gradient];
 		
+		self.layer.anchorPoint = CGPointMake(0.5, 0.5);
+		
     }
     return self;
 }
+
+
 
 - (void) drawRect:(CGRect)rect {
 	
