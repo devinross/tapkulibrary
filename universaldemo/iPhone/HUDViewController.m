@@ -39,7 +39,7 @@
     [super viewDidLoad];
 	
 	self.title = @"HUD";
-	self.backgroundColor = [UIColor whiteColor];
+	self.view.backgroundColor = [UIColor whiteColor];
 
 	[self.view addSubview:self.loading];
 	[self.view addSubview:self.progressbar];
