@@ -427,9 +427,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* unviersaldemo */ = {
+		1D6058900D05DD3D006BFB54 /* universaldemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "unviersaldemo" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "universaldemo" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -440,7 +440,7 @@
 			dependencies = (
 				3BF88BC911E5478E00C9FC43 /* PBXTargetDependency */,
 			);
-			name = unviersaldemo;
+			name = universaldemo;
 			productName = unviersaldemo;
 			productReference = 1D6058910D05DD3D006BFB54 /* unviersaldemo.app */;
 			productType = "com.apple.product-type.application";
@@ -463,7 +463,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* unviersaldemo */,
+				1D6058900D05DD3D006BFB54 /* universaldemo */,
 			);
 		};
 /* End PBXProject section */
@@ -635,7 +635,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "unviersaldemo" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "universaldemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,

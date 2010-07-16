@@ -238,6 +238,7 @@
 	
 	[UIView commitAnimations];
 	
+	oldTile = currentTile;
 	currentTile = newTile;
 	monthYear.text = [NSString stringWithFormat:@"%@ %@",[nextMonth month],[nextMonth year]];
 	
@@ -254,6 +255,8 @@
 }
 - (void) animationEnded{
 	self.userInteractionEnabled = YES;
+	[oldTile release];
+	oldTile = nil;
 }
 
 - (NSDate*) dateSelected{

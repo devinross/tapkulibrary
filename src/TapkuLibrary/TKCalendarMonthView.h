@@ -36,7 +36,7 @@
 
 @interface TKCalendarMonthView : UIView {
 
-	TKCalendarMonthTiles *currentTile;
+	TKCalendarMonthTiles *currentTile,*oldTile;
 	UIButton *leftArrow, *rightArrow;
 	UIImageView *topBackground, *shadow;
 	UILabel *monthYear;
