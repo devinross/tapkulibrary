@@ -185,6 +185,7 @@
 	[newTile setTarget:self action:@selector(tile:)];
 	
 	
+	
 	int overlap =  0;
 	
 	if(isNext){
@@ -280,6 +281,7 @@
 		TKCalendarMonthTiles *newTile = [[TKCalendarMonthTiles alloc] initWithMonth:month 
 																			  marks:data 
 																   startDayOnSunday:sunday];
+		[newTile setTarget:self action:@selector(tile:)];
 		[currentTile removeFromSuperview];
 		[currentTile release];
 		currentTile = newTile;
