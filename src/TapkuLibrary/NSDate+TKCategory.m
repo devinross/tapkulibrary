@@ -40,7 +40,7 @@
 	
 	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
 	NSDateComponents *comp = [gregorian components:(NSMonthCalendarUnit | NSMinuteCalendarUnit | NSYearCalendarUnit | 
-													NSDayCalendarUnit | NSWeekdayCalendarUnit | NSHourCalendarUnit) 
+													NSDayCalendarUnit | NSWeekdayCalendarUnit | NSHourCalendarUnit | NSSecondCalendarUnit) 
 										  fromDate:self];
 	info.day = [comp day];
 	info.month = [comp month];
