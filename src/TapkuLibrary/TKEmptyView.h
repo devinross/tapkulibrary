@@ -30,6 +30,7 @@
  */
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 typedef enum {
 	TKEmptyViewImageChatBubble,
@@ -52,15 +53,13 @@ typedef enum {
 
 @interface TKEmptyView : UIView {
 	UIImage *mask;
-	
-	UILabel *title;
-	UILabel *subtitle;
-
+	CATextLayer *titleLayer, *subtitleLayer;
+	CALayer *maskedLayer;
 }
-@property (retain,nonatomic) UILabel *title;
-@property (retain,nonatomic) UILabel *subtitle;
-@property (retain,nonatomic) UIImage *mask;
 
+@property (retain,nonatomic) UIImage *mask;
+@property (copy,nonatomic) NSString *title;
+@property (copy,nonatomic) NSString *subtitle;
 
 - (id) initWithFrame:(CGRect)frame 
 				mask:(UIImage*)image 

@@ -36,18 +36,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
-	CGRect r = self.view.bounds;
-	r.size.height -= self.navigationController.navigationBar.frame.size.height;
 
 	
-	emptyView = [[TKEmptyView alloc] initWithFrame:r 
+	emptyView = [[TKEmptyView alloc] initWithFrame:self.view.bounds 
 									emptyViewImage:TKEmptyViewImageHeart
 											 title:@"Empty Page"
-										  subtitle:@"All You Need is A 200 x 200 pixel transparent image"];
+										  subtitle:@"All you need is a transparent image"];
+	emptyView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 
 	[self.view addSubview:emptyView];
 
+}
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
 }
 
 - (void)dealloc {

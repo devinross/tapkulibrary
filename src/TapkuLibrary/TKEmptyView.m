@@ -36,67 +36,78 @@
 
 
 @implementation TKEmptyView
-@synthesize title, subtitle, mask;
+@synthesize mask;
+
+- (void) setTitle:(NSString *)s{
+	titleLayer.string = s;
+}
+- (void) setSubtitle:(NSString *)s{
+	subtitleLayer.string = s;
+}
+- (NSString*) title{
+	return titleLayer.string;
+}
+- (NSString*) subtitle{
+	return subtitleLayer.string;
+}
+
 
 
 
 - (UIImage*) predefinedImage:(TKEmptyViewImage)img{
 	
-	
-	NSString *str;
 
 
 	
 	switch (img) {
 		case TKEmptyViewImageChatBubble:
-			str = @"TapkuLibrary.bundle/Images/empty/chatbubble";
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/chatbubble.png")];
 			break;
 		case TKEmptyViewImageClock:
-			str = @"TapkuLibrary.bundle/Images/empty/clock";
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/clock.png")];
 			break;
 		case TKEmptyViewImageCompass:
-			str = @"TapkuLibrary.bundle/Images/empty/compass";
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/compass.png")];
 			break;
 		case TKEmptyViewImageEye:
-			str = @"TapkuLibrary.bundle/Images/empty/eye";
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/eye.png")];
 			break;
 		case TKEmptyViewImageHeart:
-			str = @"TapkuLibrary.bundle/Images/empty/heart";
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/heart.png")];
 			break;
 		case TKEmptyViewImageMovieClip:
-			str = @"TapkuLibrary.bundle/Images/empty/movieclip";
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/movieclip.png")];
 			break;
 		case TKEmptyViewImageMusicNote:
-			str = @"TapkuLibrary.bundle/Images/empty/note";
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/note.png")];
 			break;
 		case TKEmptyViewImagePhotos:
-			str = @"TapkuLibrary.bundle/Images/empty/photos";
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/photos.png")];
 			break;
 		case TKEmptyViewImagePictureFrame:
-			str = @"TapkuLibrary.bundle/Images/empty/pictureframe";
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/pictureframe.png")];
 			break;
 		case TKEmptyViewImageSearch:
-			str = @"TapkuLibrary.bundle/Images/empty/search";
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/search.png")];
 			break;
 		case TKEmptyViewImageSign:
-			str = @"TapkuLibrary.bundle/Images/empty/sign";
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/sign.png")];
 			break;
 		case TKEmptyViewImageStar:
-			str = @"TapkuLibrary.bundle/Images/empty/star";
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/star.png")];
 			break;
 		case TKEmptyViewImageStopwatch:
-			str = @"TapkuLibrary.bundle/Images/empty/stopwatch";
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/stopwatch.png")];
 			break;
 		case TKEmptyViewImageKey:
-			str = @"TapkuLibrary.bundle/Images/empty/key";
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/key.png")];
 			break;
 		default:
-			str = @"TapkuLibrary.bundle/Images/empty/star";
+			return [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/empty/star.png")];
 			break;
 	}
 
-	
-	return [UIImage imageNamedTK:str];
+	return nil;
 }
 
 
@@ -105,8 +116,8 @@
 	if(self = [self initWithFrame:frame]){
 		
 		self.mask = image;
-		title.text = titleString;
-		subtitle.text = subtitleString;
+		titleLayer.string = titleString;
+		subtitleLayer.string = subtitleString;
 		
 	}
 	return self;
@@ -116,8 +127,8 @@
 	if(self = [self initWithFrame:frame]){
 		
 		self.mask = [self predefinedImage:image];
-		title.text = titleString;
-		subtitle.text = subtitleString;
+		titleLayer.string = titleString;
+		subtitleLayer.string = subtitleString;
 		
 	}
 	return self;
@@ -127,36 +138,22 @@
 		
 		self.backgroundColor = [UIColor whiteColor];
 		
-		title = [[UILabel alloc] initWithFrame:CGRectInset(self.bounds, 10, 0)];
-		title.font = [UIFont boldSystemFontOfSize:18];
-		title.adjustsFontSizeToFitWidth = YES;
-		title.textColor = [UIColor grayColor];
-		title.backgroundColor = [UIColor whiteColor];
-		title.textAlignment = UITextAlignmentCenter;
-		[self addSubview:title];
+		titleLayer = [[CATextLayer layer] retain];
+		titleLayer.fontSize = 18;
+		titleLayer.alignmentMode = kCAAlignmentCenter;
+		titleLayer.foregroundColor = [UIColor grayColor].CGColor;
+		[self.layer addSublayer:titleLayer];
 		
-		CGRect r= title.frame;
-		r.size.height = 22;
-		r.origin.y = (int)(self.frame.size.height/2 + self.frame.size.height/8);
-		title.frame=r;
-		
-		
-		
-		subtitle = [[UILabel alloc] initWithFrame:CGRectInset(self.bounds, 10, 0)];
-		subtitle.font = [UIFont boldSystemFontOfSize:12];
-		subtitle.adjustsFontSizeToFitWidth = YES;
-		subtitle.textColor = [UIColor grayColor];
-		subtitle.backgroundColor = [UIColor whiteColor];
-		subtitle.textAlignment = UITextAlignmentCenter;
-		[self addSubview:subtitle];
-		
-		r= subtitle.frame;
-		r.size.height = 20;
-		r.origin.y = (int)(self.frame.size.height/2 + self.frame.size.height/8 + 30);
-		subtitle.frame=r;
-		
+		subtitleLayer = [[CATextLayer layer] retain];
+		subtitleLayer.fontSize = 13;
+		subtitleLayer.alignmentMode = kCAAlignmentCenter;
+
+		subtitleLayer.foregroundColor = [UIColor grayColor].CGColor;
+		[self.layer addSublayer:subtitleLayer];
 		
 
+		maskedLayer = [[CALayer layer] retain];
+		[self.layer addSublayer:maskedLayer];
 		
 		
 		
@@ -164,46 +161,75 @@
     return self;
 }
 
-- (void) drawRect:(CGRect)rect {
+- (void) layoutSubviews{
+	[super layoutSubviews];
+	
+	maskedLayer.transform = CATransform3DIdentity;
+	maskedLayer.frame = CGRectMake(0, 0, mask.size.width, mask.size.height);
+	
+	CGFloat p1 = mask.size.width / self.frame.size.width;
+	CGFloat p2 = mask.size.height / self.frame.size.height;
+	
+	CGFloat up = 20;
+	
+	if(p1>p2 && p1 > 0.80){
+		maskedLayer.transform = CATransform3DMakeScale(p1-.3, p1-.3, 1);
+		up = MAX(20,(-mask.size.height + self.frame.size.height)*0.5);
+	}else if(p2 > 0.80){
+		maskedLayer.transform = CATransform3DMakeScale(p2-.3,p2-.3, 1);
+		up = MAX(20,(-mask.size.height + self.frame.size.height)*0.5);
+
+	}
+	
+	maskedLayer.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2 - up);
 	
 	
-	
-	CGFloat color[] = { 139/255.0, 152/255.0, 173/255.0, 1.0 };
-	float y = self.frame.size.height/2 - mask.size.height/2 - 40;
-	float x = self.bounds.size.width/2 - mask.size.width/2;
-	
-	//NSLog(@"View size: %f %f %f",self.frame.size.height,mask.size.height,y);
 	
 
 	
-	[mask drawInRect:CGRectMake((int)x, (int)y, mask.size.width, mask.size.height) asAlphaMaskForColor:color];
+	CGRect r = CGRectMake(10, (int)(maskedLayer.frame.size.height + maskedLayer.frame.origin.y+10), self.bounds.size.width-20 , 20) ;
+	titleLayer.frame = r;
+	r.origin.y += 20;
+	subtitleLayer.frame = r;
+}
+
+
+
+- (void) setMask:(UIImage*)m{
+	//[mask release];
+	//mask = [m retain];
+	//[self setNeedsDisplay];
+	
+	UIGraphicsBeginImageContext(CGSizeMake(m.size.width, m.size.height+2));
+	
+	CGFloat color[] = { 139/255.0, 152/255.0, 173/255.0, 1.0 };
+
+	[m drawInRect:CGRectMake(0, 2, m.size.width, m.size.height) asAlphaMaskForColor:color];
 	
 	CGFloat colors[] = {
 		171/255.0, 180/255.0, 196/255.0, 1.00,
 		213/255.0, 217/255.0, 225/255.0, 1.00
 	};
-	[mask drawInRect:CGRectMake((int)x, (int)y - 2, mask.size.width, mask.size.height) asAlphaMaskForGradient:colors];
+	[m drawInRect:CGRectMake(0, 0, m.size.width, m.size.height) asAlphaMaskForGradient:colors];
+	
+	
+
+	
+	
+	UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+	
+	mask = [image retain];
+	maskedLayer.contents = (id)mask.CGImage;
 	
 	
 	
-	CGRect r = title.frame;
-	r.origin.y = y + mask.size.height + 30;
-	title.frame = r;
-	
-	r = subtitle.frame;
-	r.origin.y = y + mask.size.height + 60;
-	subtitle.frame = r;
-}
-- (void) setMask:(UIImage*)m{
-	[mask release];
-	mask = [m retain];
-	[self setNeedsDisplay];
 }
 
 - (void) dealloc {
 	
-	[title release];
-	[subtitle release];
+	[subtitleLayer release];
+	[titleLayer release];
 	[mask release];
 	
     [super dealloc];
