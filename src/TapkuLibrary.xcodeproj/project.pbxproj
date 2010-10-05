@@ -97,6 +97,8 @@
 		3BB3A2251178185B00553093 /* TKImageCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BB3A2231178185B00553093 /* TKImageCenter.h */; };
 		3BB92D2211896022002FA0F9 /* TKProgressBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BB92D2011896022002FA0F9 /* TKProgressBarView.h */; };
 		3BB92D2311896022002FA0F9 /* TKProgressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB92D2111896022002FA0F9 /* TKProgressBarView.m */; };
+		3BD32972125B753900BE5EAF /* TKAlertCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BD32970125B753900BE5EAF /* TKAlertCenter.h */; };
+		3BD32973125B753900BE5EAF /* TKAlertCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD32971125B753900BE5EAF /* TKAlertCenter.m */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -194,6 +196,8 @@
 		3BB3A2231178185B00553093 /* TKImageCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKImageCenter.h; sourceTree = "<group>"; };
 		3BB92D2011896022002FA0F9 /* TKProgressBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKProgressBarView.h; sourceTree = "<group>"; };
 		3BB92D2111896022002FA0F9 /* TKProgressBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKProgressBarView.m; sourceTree = "<group>"; };
+		3BD32970125B753900BE5EAF /* TKAlertCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAlertCenter.h; sourceTree = "<group>"; };
+		3BD32971125B753900BE5EAF /* TKAlertCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAlertCenter.m; sourceTree = "<group>"; };
 		3BEAE08E1096C61A00A0A372 /* TKShakeWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKShakeWindow.h; sourceTree = "<group>"; };
 		3BEAE08F1096C61A00A0A372 /* TKShakeWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKShakeWindow.m; sourceTree = "<group>"; };
 		3BF000FC10957EE50062DA49 /* NSString+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TKCategory.h"; sourceTree = "<group>"; };
@@ -312,6 +316,7 @@
 				3BAC9A3E10953E5200F235F1 /* HUD */,
 				3BAC9A2510953E5200F235F1 /* Cells */,
 				3BB3A1D2117814C600553093 /* Window */,
+				3BD32974125B754500BE5EAF /* Alert Center */,
 				3BB3A2261178186100553093 /* Image Center */,
 			);
 			path = TapkuLibrary;
@@ -489,6 +494,15 @@
 			name = "Image Center";
 			sourceTree = "<group>";
 		};
+		3BD32974125B754500BE5EAF /* Alert Center */ = {
+			isa = PBXGroup;
+			children = (
+				3BD32970125B753900BE5EAF /* TKAlertCenter.h */,
+				3BD32971125B753900BE5EAF /* TKAlertCenter.m */,
+			);
+			name = "Alert Center";
+			sourceTree = "<group>";
+		};
 		3BF002FE109662E30062DA49 /* Month */ = {
 			isa = PBXGroup;
 			children = (
@@ -563,6 +577,7 @@
 				3BA577BA1199DF1600ECB85B /* TKProgressAlertView.h in Headers */,
 				3B9724BD11C54C5C0027A97F /* TKCalendarMonthView.h in Headers */,
 				3B9724BF11C54C5C0027A97F /* TKCalendarMonthTiles.h in Headers */,
+				3BD32972125B753900BE5EAF /* TKAlertCenter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,7 +625,14 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "TapkuLibrary" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 0867D691FE84028FC02AAC07 /* TapkuLibrary */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
@@ -673,6 +695,7 @@
 				3BA577BB1199DF1600ECB85B /* TKProgressAlertView.m in Sources */,
 				3B9724BE11C54C5C0027A97F /* TKCalendarMonthView.m in Sources */,
 				3B9724C011C54C5C0027A97F /* TKCalendarMonthTiles.m in Sources */,
+				3BD32973125B753900BE5EAF /* TKAlertCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
