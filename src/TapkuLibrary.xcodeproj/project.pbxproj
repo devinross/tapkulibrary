@@ -755,7 +755,7 @@
 					"-ObjC",
 				);
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.1;
 				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Debug;

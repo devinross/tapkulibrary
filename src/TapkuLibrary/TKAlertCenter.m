@@ -34,6 +34,19 @@
 @end
 
 
+@interface TKAlertView : UIView {
+	UILabel *message;
+	UIImage *image;
+}
+
+- (id) init;
+- (void) setMessageText:(NSString*)str;
+- (void) setImage:(UIImage*)image;
+
+@end
+
+
+
 @implementation TKAlertCenter
 @synthesize alerts;
 
@@ -134,17 +147,6 @@
 @end
 
 
-
-@interface TKAlertView : UIView {
-	UILabel *message;
-	UIImage *image;
-}
-
-- (id) init;
-- (void) setMessageText:(NSString*)str;
-- (void) setImage:(UIImage*)image;
-
-@end
 
 
 
