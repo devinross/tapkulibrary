@@ -717,7 +717,7 @@
 				GCC_PREFIX_HEADER = TapkuLibrary_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
 				PRODUCT_NAME = TapkuLibrary;
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos4.1;
 				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
