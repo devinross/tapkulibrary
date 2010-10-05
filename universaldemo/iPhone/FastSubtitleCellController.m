@@ -154,7 +154,7 @@
 	 */
 	
 	NSString *subtitle = ((FSSubtitleCell *)[tableView cellForRowAtIndexPath:indexPath]).subtitle;
-	[[TKAlertCenter defaultCenter] postAlertWithMessage:subtitle image:nil];
+	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at eros odio, et consectetur neque. Nunc consectetur quam in massa blandit congue. Duis eget nulla ut quam porta elementum cursus eu quam. Mauris ultricies turpis in erat auctor porta. Quisque urna metus, gravida eget ultrices vel, adipiscing quis magna. Aliquam mattis purus nec urna bibendum vel viverra eros condimentum. Duis volutpat, nunc nec fermentum laoreet, sem sem aliquet nisl, sed sollicitudin est mi non sapien. Nullam cursus dapibus imperdiet. Cras nec auctor eros. Ut turpis risus, gravida sed ultrices et, venenatis id diam. Ut id libero enim. Fusce elementum pharetra elit, quis suscipit lectus commodo posuere."];
 }
 
 

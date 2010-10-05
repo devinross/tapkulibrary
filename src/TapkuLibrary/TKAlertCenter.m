@@ -35,7 +35,8 @@
 
 
 @interface TKAlertView : UIView {
-	UILabel *message;
+	CGRect messageRect;
+	NSString *text;
 	UIImage *image;
 }
 
@@ -159,48 +160,34 @@
 	
 	if(!(self = [super initWithFrame:CGRectMake(0, 0, 100, 100)])) return nil;
 	
-	
+	messageRect = CGRectInset(self.bounds, 10, 10);
 	self.backgroundColor = [UIColor clearColor];
-	message = [[UILabel alloc] initWithFrame:CGRectInset(self.bounds, 10, 10)];
-	message.backgroundColor = [UIColor clearColor];
-	message.textColor = [UIColor whiteColor];
-	message.font = [UIFont boldSystemFontOfSize:14];
-	message.textAlignment = UITextAlignmentCenter;
-	message.numberOfLines = 3;
-	[self addSubview:message];
 	
 	return self;
 	
 }
 - (void) adjust{
 	
-	
-	CGSize s = [message.text sizeWithFont:message.font constrainedToSize:CGSizeMake(160,200)] ;
+	CGSize s = [text sizeWithFont:[UIFont boldSystemFontOfSize:14] constrainedToSize:CGSizeMake(160,200) lineBreakMode:UILineBreakModeWordWrap];
 	
 	float imageAdjustment = 0;
 	if (image) {
-		float imageAdjustment = 7+image.size.height;
+		imageAdjustment = 7+image.size.height;
 	}
+	
 	self.bounds = CGRectMake(0, 0, s.width+40, s.height+15+15+imageAdjustment);
 	
-	
-	CGRect mr = message.frame;
-	mr.size = s;
-	mr.size.height += 5;
-	mr.origin.x = 20;
-	mr.origin.y = 15+imageAdjustment;
-	
-	message.frame = mr;
-	
-	
-	
-	
+	messageRect.size = s;
+	messageRect.size.height += 5;
+	messageRect.origin.x = 20;
+	messageRect.origin.y = 15+imageAdjustment;
+
 	[self setNeedsLayout];
 	[self setNeedsDisplay];
 	
 }
 - (void) setMessageText:(NSString*)str{
-	message.text = str;
+	text = [str retain];
 	[self adjust];
 }
 - (void) setImage:(UIImage*)img{
@@ -211,16 +198,18 @@
 }
 - (void) drawRect:(CGRect)rect{
 	[UIView drawRoundRectangleInRect:rect withRadius:10 color:[UIColor colorWithWhite:0 alpha:0.8]];
-	
+	[[UIColor whiteColor] set];
+	[text drawInRect:messageRect withFont:[UIFont boldSystemFontOfSize:14] lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];
 	
 	CGRect r = CGRectZero;
 	r.origin.y = 15;
 	r.origin.x = (rect.size.width-image.size.width)/2;
 	r.size = image.size;
+	
 	[image drawInRect:r];
 }
 - (void) dealloc{
-	[message release];
+	[text release];
 	[image release];
 	[super dealloc];
 }
