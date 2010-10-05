@@ -73,7 +73,7 @@
 - (void) showAlerts{
 	
 	if([self.alerts count] < 1) {
-		active = YES;
+		active = NO;
 		return;
 	}
 	
@@ -131,7 +131,7 @@
 	
 	[alertView removeFromSuperview];
 	[alerts removeObjectAtIndex:0];
-	if([alerts count] > 0) [self showAlerts];
+	[self showAlerts];
 	
 }
 - (void) postAlertWithMessage:(NSString*)message image:(UIImage*)image{

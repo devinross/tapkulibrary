@@ -152,6 +152,9 @@
 	 [self.navigationController pushViewController:detailViewController animated:YES];
 	 [detailViewController release];
 	 */
+	
+	NSString *subtitle = ((FSSubtitleCell *)[tableView cellForRowAtIndexPath:indexPath]).subtitle;
+	[[TKAlertCenter defaultCenter] postAlertWithMessage:subtitle image:nil];
 }
 
 

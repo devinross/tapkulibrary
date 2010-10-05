@@ -81,3 +81,6 @@
 // Coverflow
 #import "TKCoverflowView.h"
 #import "TKCoverView.h"
+
+// Alert Center
+#import "TKAlertCenter.h"
