@@ -138,6 +138,9 @@
 	[self.alerts addObject:[NSArray arrayWithObjects:message,image,nil]];
 	if(!active) [self showAlerts];
 }
+- (void) postAlertWithMessage:(NSString*)message{
+	[self postAlertWithMessage:message image:nil];
+}
 - (void) dealloc{
 	[alerts release];
 	[alertView release];
@@ -174,14 +177,18 @@
 	
 	CGSize s = [message.text sizeWithFont:message.font constrainedToSize:CGSizeMake(160,200)] ;
 	
-	self.bounds = CGRectMake(0, 0, s.width+40, s.height+15+15+7+image.size.height);
+	float imageAdjustment = 0;
+	if (image) {
+		float imageAdjustment = 7+image.size.height;
+	}
+	self.bounds = CGRectMake(0, 0, s.width+40, s.height+15+15+imageAdjustment);
 	
 	
 	CGRect mr = message.frame;
 	mr.size = s;
 	mr.size.height += 5;
 	mr.origin.x = 20;
-	mr.origin.y = 15+7+image.size.height;
+	mr.origin.y = 15+imageAdjustment;
 	
 	message.frame = mr;
 	

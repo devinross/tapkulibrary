@@ -43,6 +43,7 @@
 + (TKAlertCenter*) defaultCenter;
 
 - (void) postAlertWithMessage:(NSString*)message image:(UIImage*)image;
+- (void) postAlertWithMessage:(NSString *)message;
 
 @end
 
