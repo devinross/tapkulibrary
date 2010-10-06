@@ -104,11 +104,13 @@
 	rr.origin.y = (int)rr.origin.y;
 	alertView.frame = rr;
 	
-	
-	
-	
-	
-	alertView.transform = CGAffineTransformMakeScale(2, 2);
+	UIInterfaceOrientation o = [UIApplication sharedApplication].statusBarOrientation;
+	CGFloat degrees = 0;
+	if(o == UIInterfaceOrientationLandscapeLeft ) degrees = -90;
+	else if(o == UIInterfaceOrientationLandscapeRight ) degrees = 90;
+	else if(o == UIInterfaceOrientationPortraitUpsideDown) degrees = 180;
+	alertView.transform = CGAffineTransformMakeRotation(degrees * M_PI / 180);
+	alertView.transform = CGAffineTransformScale(alertView.transform, 2, 2);
 	
 	
 	
@@ -116,7 +118,11 @@
 	[UIView setAnimationDuration:0.15];
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationDidStopSelector:@selector(animationStep2)];
-	alertView.transform = CGAffineTransformIdentity;
+	
+
+	alertView.transform = CGAffineTransformMakeRotation(degrees * M_PI / 180);
+	alertView.frame = CGRectMake((int)alertView.frame.origin.x, (int)alertView.frame.origin.y, alertView.frame.size.width, alertView.frame.size.height);
+	
 	alertView.alpha = 1;
 	[UIView commitAnimations];
 	
@@ -127,7 +133,15 @@
 	[UIView setAnimationDelay:1];
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationDidStopSelector:@selector(animationStep3)];
-	alertView.transform = CGAffineTransformMakeScale(0.5, 0.5);
+	
+	UIInterfaceOrientation o = [UIApplication sharedApplication].statusBarOrientation;
+	CGFloat degrees = 0;
+	if(o == UIInterfaceOrientationLandscapeLeft ) degrees = -90;
+	else if(o == UIInterfaceOrientationLandscapeRight ) degrees = 90;
+	else if(o == UIInterfaceOrientationPortraitUpsideDown) degrees = 180;
+	alertView.transform = CGAffineTransformMakeRotation(degrees * M_PI / 180);
+	alertView.transform = CGAffineTransformScale(alertView.transform, 0.5, 0.5);
+	
 	alertView.alpha = 0;
 	[UIView commitAnimations];
 }
