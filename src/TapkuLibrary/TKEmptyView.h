@@ -51,15 +51,14 @@ typedef enum {
 
 
 
-@interface TKEmptyView : UIView {
-	UIImage *mask;
-	CATextLayer *titleLayer, *subtitleLayer;
-	CALayer *maskedLayer;
+@interface TKEmptyView : UIView {	
+	UILabel *titleLabel, *subtitleLabel;
+	UIImageView *imageView;
 }
 
-@property (retain,nonatomic) UIImage *mask;
-@property (copy,nonatomic) NSString *title;
-@property (copy,nonatomic) NSString *subtitle;
+@property (retain,nonatomic) UIImageView *imageView;
+@property (retain,nonatomic) UILabel *titleLabel;
+@property (retain,nonatomic) UILabel *subtitleLabel;
 
 - (id) initWithFrame:(CGRect)frame 
 				mask:(UIImage*)image 
@@ -71,6 +70,9 @@ typedef enum {
 	  emptyViewImage:(TKEmptyViewImage)image 
 			   title:(NSString*)titleString 
 			subtitle:(NSString*)subtitleString;
+
+
+- (void) setImage:(UIImage*)image;
 
 
 @end

@@ -24,8 +24,6 @@
 	
 	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Tap Me" style:UIBarButtonItemStylePlain target:self action:@selector(beer)] autorelease];
 	
-
-	
 	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"Hi!"];
 	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"This is the alert system"];
 	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"Use images too!" image:[UIImage imageNamed:@"beer"]];
