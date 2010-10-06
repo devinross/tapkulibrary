@@ -87,9 +87,12 @@
 	
 	
 	NSArray *ar = [self.alerts objectAtIndex:0];
-
 	
-	if([ar count] > 1) [alertView setImage:[[self.alerts objectAtIndex:0] objectAtIndex:1]];
+	UIImage *img = nil;
+	if([ar count] > 1) img = [[self.alerts objectAtIndex:0] objectAtIndex:1];
+	
+	[alertView setImage:img];
+
 	if([ar count] > 0) [alertView setMessageText:[[self.alerts objectAtIndex:0] objectAtIndex:0]];
 	
 	alertView.center = [UIApplication sharedApplication].keyWindow.center;

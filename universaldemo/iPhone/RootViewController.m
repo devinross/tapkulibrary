@@ -42,7 +42,7 @@
 #import "CoverflowViewController.h"
 #import "FastSubtitleCellController.h"
 #import "MoreCellsViewController.h"
-
+#import "AlertsViewController.h"
 #import "ImageCenterViewController.h"
 
 @implementation RootViewController
@@ -63,7 +63,7 @@
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Views",@"title",nil];
 	[data addObject:d];
 	
-	rows = [NSArray arrayWithObjects:@"Empty Sign",@"Loading HUD",@"Place Pins",nil];
+	rows = [NSArray arrayWithObjects:@"Empty Sign",@"Loading HUD",@"Alerts",@"Place Pins",nil];
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"UI Elements",@"title",nil];
 	[data addObject:d];
 	
@@ -136,6 +136,8 @@
 	else if(s==1 && r==1)
 		vc = [[HUDViewController alloc] init];
 	else if(s==1 && r==2)
+		vc = [[AlertsViewController alloc] init];
+	else if(s==1 && r==3)
 		vc = [[MapViewController alloc] init];
 	
 	
