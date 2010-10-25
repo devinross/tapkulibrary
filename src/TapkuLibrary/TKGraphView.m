@@ -153,6 +153,7 @@ static float highValue;
 
 @interface TKGraphViewPlotView : UIView {
 	NSArray *data;
+	NSMutableArray *labels;
 }
 
 @property (retain,nonatomic) NSArray *data;
@@ -163,6 +164,9 @@ static float highValue;
 @synthesize data;
 
 - (void) setData:(NSArray *)d{
+	
+	[labels makeObjectsPerformSelector:@selector(removeFromSuperview)];
+	[labels release]; labels = nil;
 	[data release];
 	data = [d retain];
 	[self setNeedsDisplay];
@@ -280,6 +284,8 @@ static float highValue;
 	int per = (int)z;
 	per = (per<1) ? 1 : per;
 
+	labels = [[NSMutableArray alloc] initWithCapacity:[self.data count]];
+	
 	for(int i=0;i<[self.data count];i += per){
 		
 		float x = (i+1.0) * POINT_DISTANCE + SCROLL_MARGINS;
@@ -295,6 +301,7 @@ static float highValue;
 		[lab setTextColor:[UIColor grayColor]];
 		[lab setBackgroundColor:[UIColor clearColor]];
 		[self addSubview:lab];
+		[labels addObject:lab];
 		[lab release];
 		
 	}	
@@ -319,6 +326,7 @@ static float highValue;
 }
 
 - (void) dealloc{
+	[labels release];
 	[data release];
 	[super dealloc];
 }

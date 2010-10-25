@@ -32,6 +32,8 @@
 #import <QuartzCore/QuartzCore.h>
 @class TKGraph, TKGraphViewPlotView, TKGraphViewIndicator,TKGraphViewGoalLabel;
 @protocol TKGraphViewPoint;
+
+
 @interface TKGraphView : UIView <UIScrollViewDelegate> {
 	
 	// DATA
