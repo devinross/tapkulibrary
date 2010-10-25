@@ -33,7 +33,6 @@
 
 
 // OVERLAY CLASS DEFINITION & IMPLEMENTATION
-
 @interface TKOverlayView : UIView {
 	id target;
 	SEL action;
@@ -43,37 +42,30 @@
 - (id) initWithFrame:(CGRect)frame target:(id)target action:(SEL)action;
 @property (readonly,nonatomic) CGPoint point;
 @end
-
 @implementation TKOverlayView
 @synthesize point;
 
 - (id) initWithFrame:(CGRect)frame target:(id)t action:(SEL)a{
-	if (self = [super initWithFrame:frame]) {
-        // Initialization code
-		target = t;
-		action = a;
-    }
+	
+	if(!(self = [super initWithFrame:frame])) return nil;
+
+	target = t;
+	action = a;
+    
     return self;
 }
 
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
 
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{}
 
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-	[super touchesBegan:touches withEvent:event];
-}
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-	//NSLog(@"Moved");
-}
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
 	UITouch *touch = [touches anyObject];
 	point = [touch locationInView:self];
 	[target performSelector:action];
 }
 - (void)dealloc {
+	target = nil;
+	action = nil;
     [super dealloc];
 }
 
@@ -88,36 +80,36 @@
 @synthesize mapView,delegate,pinMode;
 
 - (id)init{
-	return [self initWithFrame:CGRectMake(0, 0, 50, 50)];
+	return [self initWithFrame:CGRectMake(0, 0, 100, 100)];
 }
 - (id)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
-		mapView = [[MKMapView alloc] initWithFrame:frame];
-		[self addSubview:mapView];
-		overlay = [[TKOverlayView alloc] initWithFrame:frame target:self action:@selector(didTouch)];
-		overlay.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
-		pinMode = NO;
-    }
+	
+	if(!(self = [super initWithFrame:frame])) return nil;
+	
+	CGRect b = frame;
+	b.origin = CGPointZero;
+	
+	mapView = [[MKMapView alloc] initWithFrame:b];
+	[self addSubview:mapView];
+	
+	overlay = [[TKOverlayView alloc] initWithFrame:b target:self action:@selector(didTouch)];
+	overlay.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+	pinMode = NO;
+
     return self;
 }
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)dealloc {
+	[overlay release];
+	[mapView release];
+    [super dealloc];
 }
 
-
-// OVERLAY DELEGATE FUNCTION
 - (void) didTouch{
-
-
 	
 	CGRect r = mapView.bounds;
 	
 	float longitudePercent = overlay.point.x / r.size.width;
 	float latitudePercent = overlay.point.y / r.size.height;
-	
-	//NSLog(@"-(%f,%f)",longitudePercent,latitudePercent);
-	
-	
 
 	CLLocationCoordinate2D coord = mapView.centerCoordinate;
 	MKCoordinateSpan span = mapView.region.span;
@@ -130,14 +122,8 @@
 	corner.latitude = lat - span.latitudeDelta * latitudePercent; // up and down
 	corner.longitude = lon + span.longitudeDelta * longitudePercent; // left right
 	
-	//NSLog(@"Center (%f, %f)",coord.longitude,coord.latitude);
-	//NSLog(@"%f %f",corner.longitude,corner.latitude);
-	
-	
 	[delegate didPlacePinAtCoordinate:corner];
 }
-
-
 - (void) setPinMode:(BOOL)pinIsMode{
 	pinMode = pinIsMode;
 	if(pinMode){
@@ -148,14 +134,4 @@
 }
 
 
-- (void)dealloc {
-	[overlay release];
-	[mapView release];
-    [super dealloc];
-}
-
 @end
-
-
-
-
