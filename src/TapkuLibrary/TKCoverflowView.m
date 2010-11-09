@@ -30,7 +30,7 @@
 */
 
 #import "TKCoverflowView.h"
-#import "TKCoverView.h"
+#import "TKCoverflowCoverView.h"
 #import "TKGlobal.h"
 
 #define COVER_SPACING 70.0
@@ -179,7 +179,7 @@
 	
 	if([coverViews objectAtIndex:cnt] == [NSNull null]){
 		
-		TKCoverView *cover = [dataSource coverflowView:self coverAtIndex:cnt];
+		TKCoverflowCoverView *cover = [dataSource coverflowView:self coverAtIndex:cnt];
 		[coverViews replaceObjectAtIndex:cnt withObject:cover];
 		
 		CGRect r = cover.frame;
@@ -364,7 +364,7 @@
 }
 
 
-- (TKCoverView *) coverAtIndex:(int)index{
+- (TKCoverflowCoverView *) coverAtIndex:(int)index{
 	if([coverViews objectAtIndex:index] != [NSNull null]) return [coverViews objectAtIndex:index];
 	return nil;
 }
@@ -375,11 +375,11 @@
 	[self animateToIndex:index animated:animated];
 }
 
-- (TKCoverView*) dequeueReusableCoverView{
+- (TKCoverflowCoverView*) dequeueReusableCoverView{
 	
 	if([yard count] < 1)  return nil;
 	
-	TKCoverView *v = [[[yard lastObject] retain] autorelease];
+	TKCoverflowCoverView *v = [[[yard lastObject] retain] autorelease];
 	v.layer.transform = CATransform3DIdentity;
 	[yard removeLastObject];
 

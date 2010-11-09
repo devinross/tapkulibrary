@@ -568,7 +568,7 @@ static float highValue;
 	
 	
 	if(data==nil || [data count] < 1)  return;
-	UIImage *line = [UIImage imageFromPath:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/horizontalline.png")];
+	UIImage *line = [UIImage imageWithContentsOfFile:TKBUNDLE(@"TapkuLibrary.bundle/Images/graph/horizontalline.png")];
 	
 	for(int i=0; i < 8;i++){
 		

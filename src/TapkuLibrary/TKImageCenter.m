@@ -33,44 +33,15 @@
 #import "TKImageCenter.h"
 
 @implementation TKImageCenter
-static TKImageCenter *sharedInstance = nil;
+
 
 + (TKImageCenter*) sharedImageCenter{
- //   @synchronized(self) {
-        if (sharedInstance == nil) {
-			sharedInstance = [[self alloc] init];
-        }
- //   }
-    return sharedInstance;
+	static TKImageCenter *sharedInstance = nil;
+	if (!sharedInstance) {
+		sharedInstance = [[TKImageCenter alloc] init];
+	}
+	return sharedInstance;
 }
-
-
-+ (id) allocWithZone:(NSZone *)zone{
-  //  @synchronized(self) {
-        if (sharedInstance == nil) {
-            sharedInstance = [super allocWithZone:zone];
-            return sharedInstance;
-        }
-  //  }
-    return nil; //on subsequent allocation attempts return nil
-}
-- (id) copyWithZone:(NSZone *)zone{
-    return self;
-}
-- (id) retain{
-    return self;
-}
-- (unsigned) retainCount{
-    return UINT_MAX;  //denotes an object that cannot be released
-}
-- (void) release{
-    //do nothing
-}
-- (id) autorelease{
-    return self;
-}
-
-
 - (id) init{
 	if(![super init]) return nil;
 	queue = [[NSMutableArray alloc] init];
@@ -102,7 +73,6 @@ static TKImageCenter *sharedInstance = nil;
 - (UIImage*) adjustImageRecieved:(UIImage*)image{
 	return image;
 }
-
 
 
 - (void) getImages{

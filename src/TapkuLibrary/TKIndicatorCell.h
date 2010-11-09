@@ -1,6 +1,6 @@
 //
-//  UIImageAdditions.h
-//  Created by Devin Ross on 7/25/09.
+//  TKIndicatorCell.h
+//  Created by Devin Ross on 7/4/09.
 //
 /*
  
@@ -29,19 +29,16 @@
  
  */
 
-#import <UIKit/UIKit.h>
 
-@interface UIImage (TKCategory)
+#import "ABTableViewCell.h"
 
+@interface TKIndicatorCell : ABTableViewCell {
+	NSString *_text;
+	int _count;
+	NSString *_countStr;
+}
 
-+ (UIImage*) imageNamedTK:(NSString*)path;
-
-- (UIImage *) imageCroppedToRect:(CGRect)rect;
-- (UIImage *) squareImage;
-
-- (void) drawInRect:(CGRect)rect asAlphaMaskForColor:(CGFloat[])color;
-- (void) drawInRect:(CGRect)rect asAlphaMaskForGradient:(CGFloat[])colors;
-- (void) drawInRect:(CGRect)rect withImageMask:(UIImage*)mask;
+@property (copy,nonatomic) NSString *text;
+@property (assign, nonatomic) int count;
 
 @end
-

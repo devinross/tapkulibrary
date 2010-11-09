@@ -61,9 +61,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
 	
-	FSIndicatorCell *cell;
-	cell = (FSIndicatorCell*)[tableView dequeueReusableCellWithIdentifier:@"Fast"];
-	if(cell==nil) cell = [[[FSIndicatorCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"Fast"] autorelease];
+	TKIndicatorCell *cell;
+	cell = (TKIndicatorCell*)[tableView dequeueReusableCellWithIdentifier:@"Fast"];
+	if(cell==nil) cell = [[[TKIndicatorCell alloc] initWithFrame:CGRectZero reuseIdentifier:@"Fast"] autorelease];
 	
 	cell.text = @"Indicator Cell";
 	cell.count = indexPath.row ;

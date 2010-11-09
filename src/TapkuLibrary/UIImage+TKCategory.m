@@ -35,9 +35,30 @@
 
 @implementation UIImage (TKCategory)
 
-+ (UIImage*) imageFromPath:(NSString*)URL{
-	return [UIImage imageWithContentsOfFile:URL];
++ (UIImage*) imageNamedTK:(NSString*)str{
+	
+	CGFloat s = 1.0f;
+	if([[UIScreen mainScreen] respondsToSelector:@selector(scale)]){
+		s = [[UIScreen mainScreen] scale];
+	}
+	
+	NSString *path = [NSString stringWithFormat:@"%@%@.png",str,s > 1 ? @"@2x":@""];
+	return [UIImage imageWithContentsOfFile:TKBUNDLE(path)];
+	
 }
+
+- (UIImage *) imageCroppedToRect:(CGRect)rect{
+	CGImageRef imageRef = CGImageCreateWithImageInRect([self CGImage], rect);
+	UIImage *cropped = [UIImage imageWithCGImage:imageRef];
+	CGImageRelease(imageRef);
+	return cropped; // autoreleased
+}
+
+- (UIImage *) squareImage{
+	CGFloat shortestSide = self.size.width <= self.size.height ? self.size.width : self.size.height;	
+	return [self imageCroppedToRect:CGRectMake(0.0, 0.0, shortestSide, shortestSide)];
+}
+
 - (void) drawInRect:(CGRect)rect asAlphaMaskForColor:(CGFloat[])color{
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
@@ -97,16 +118,6 @@
 	
 	CGContextRestoreGState(context);
 }
-+ (UIImage*) imageNamedTK:(NSString*)str{
-	
-	CGFloat s = 1.0f;
-	if([[UIScreen mainScreen] respondsToSelector:@selector(scale)]){
-		s = [[UIScreen mainScreen] scale];
-	}
-	
-	NSString *path = [NSString stringWithFormat:@"%@%@.png",str,s > 1 ? @"@2x":@""];
-	return [UIImage imageWithContentsOfFile:TKBUNDLE(path)];
-	
-}
+
 
 @end

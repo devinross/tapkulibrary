@@ -1,6 +1,6 @@
 //
-//  UIImageAdditions.h
-//  Created by Devin Ross on 7/25/09.
+//  NSArray+TKCategory.m
+//  Created by Devin Ross on 11/9/10.
 //
 /*
  
@@ -29,19 +29,16 @@
  
  */
 
-#import <UIKit/UIKit.h>
+#import "NSArray+TKCategory.h"
 
-@interface UIImage (TKCategory)
+@implementation NSArray (TKCategory)
 
+- (id) firstObject{
+	return [self objectAtIndex:0];
+}
 
-+ (UIImage*) imageNamedTK:(NSString*)path;
-
-- (UIImage *) imageCroppedToRect:(CGRect)rect;
-- (UIImage *) squareImage;
-
-- (void) drawInRect:(CGRect)rect asAlphaMaskForColor:(CGFloat[])color;
-- (void) drawInRect:(CGRect)rect asAlphaMaskForGradient:(CGFloat[])colors;
-- (void) drawInRect:(CGRect)rect withImageMask:(UIImage*)mask;
+- (id) randomObject{
+	return [self objectAtIndex:arc4random() % [self count]];
+}
 
 @end
-

@@ -33,8 +33,7 @@
 #import "NSDate+TKCategory.h"
 #import "NSString+TKCategory.h"
 
-// UIWINDOW
-#import "TKShakeWindow.h"
+#import "TKWindow.h"
 
 // IMAGE CENTER
 #import "TKImageCenter.h"
@@ -50,11 +49,11 @@
 #import "TKSwitchCell.h"
 
 // FAST CELLS
-#import "FSIndicatorCell.h"
-#import "FSSubtitleCell.h"
+#import "TKIndicatorCell.h"
 
 // HUD
 #import "TKLoadingView.h"
+#import "TKAlertCenter.h"
 #import "TKProgressBarView.h"
 #import "TKProgressAlertView.h"
 
@@ -65,9 +64,6 @@
 // Map View
 #import "TKMapView.h"
 #import "TKMapPlace.h"
-
-// Overview Controller
-#import "TKOverviewTableViewController.h"
 
 // Empty View
 #import "TKEmptyView.h"
@@ -80,7 +76,5 @@
 
 // Coverflow
 #import "TKCoverflowView.h"
-#import "TKCoverView.h"
+#import "TKCoverflowCoverView.h"
 
-// Alert Center
-#import "TKAlertCenter.h"

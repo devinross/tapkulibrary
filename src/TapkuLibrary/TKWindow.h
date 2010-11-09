@@ -1,6 +1,6 @@
 //
-//  UIImageAdditions.h
-//  Created by Devin Ross on 7/25/09.
+//  ShakeWindow.h
+//  Created by Devin Ross on 6/4/09.
 //
 /*
  
@@ -28,20 +28,16 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
-
-#import <UIKit/UIKit.h>
-
-@interface UIImage (TKCategory)
+#import <Foundation/Foundation.h>
 
 
-+ (UIImage*) imageNamedTK:(NSString*)path;
+#define TKWindowShakeBegan @"motionBegan"
+#define TKWindowShakeCancelled @"motionCancelled"
+#define TKWindowShakeEnded @"motionEnded"
 
-- (UIImage *) imageCroppedToRect:(CGRect)rect;
-- (UIImage *) squareImage;
 
-- (void) drawInRect:(CGRect)rect asAlphaMaskForColor:(CGFloat[])color;
-- (void) drawInRect:(CGRect)rect asAlphaMaskForGradient:(CGFloat[])colors;
-- (void) drawInRect:(CGRect)rect withImageMask:(UIImage*)mask;
+@interface TKWindow : UIWindow {
+
+}
 
 @end
-

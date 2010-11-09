@@ -46,10 +46,6 @@
 	data = [NSMutableArray array];
 
 	[data addObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithObjects:@"Coverflow",nil],@"rows",@"",@"title",nil]];
-	//[data addObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithObjects:@"Empty Sign",@"Loading HUD",@"Place Pins",nil],@"rows",@"UI Elements",@"title",nil]];
-	//[data addObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithObjects:@"Month",@"Day",nil],@"rows",@"Calendar",@"title",nil]];
-	//[data addObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithObjects:@"Label Cells",@"More Cells",@"Fast Scrolling Cells",@"Fast Subtitle Cells",nil],@"rows",@"Table View Cells",@"title",@"Fast cells scroll smooth on older devices",@"footer",nil]];
-	//[data addObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithObjects:@"Image Center",nil],@"rows",@"Locating Images",@"title",@"Handles large amounts of Internet image requests",@"footer",nil]];
 
 	[data retain];
 	
@@ -82,9 +78,15 @@
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tv deselectRowAtIndexPath:indexPath animated:YES];
 	
-	CoverflowViewController_iPad *coverflow = [[CoverflowViewController_iPad alloc] init];	
-	[self.detailViewController setupWithMainController:coverflow];
-	[coverflow release];
+	
+	UIViewController *vc;
+	
+	if(indexPath.row == 0){
+		vc = [[CoverflowViewController_iPad alloc] init];
+	}
+	
+	[self.detailViewController setupWithMainController:vc];
+	[vc release];
 	
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{

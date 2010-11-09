@@ -1,6 +1,6 @@
 //
-//  UIImageAdditions.h
-//  Created by Devin Ross on 7/25/09.
+//  TKCoverView.h
+//  Created by Devin Ross on 1/3/10.
 //
 /*
  
@@ -29,19 +29,16 @@
  
  */
 
-#import <UIKit/UIKit.h>
-
-@interface UIImage (TKCategory)
 
 
-+ (UIImage*) imageNamedTK:(NSString*)path;
-
-- (UIImage *) imageCroppedToRect:(CGRect)rect;
-- (UIImage *) squareImage;
-
-- (void) drawInRect:(CGRect)rect asAlphaMaskForColor:(CGFloat[])color;
-- (void) drawInRect:(CGRect)rect asAlphaMaskForGradient:(CGFloat[])colors;
-- (void) drawInRect:(CGRect)rect withImageMask:(UIImage*)mask;
-
+@interface TKCoverflowCoverView : UIView {
+	UIImage *image;
+	float baseline;
+	
+	UIImageView *imageView;
+	UIImageView *gradient;
+	UIImageView *reflected;
+}
+@property (retain,nonatomic) UIImage *image;
+@property (assign,nonatomic) float baseline;
 @end
-

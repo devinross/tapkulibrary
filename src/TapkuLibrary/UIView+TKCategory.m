@@ -65,6 +65,36 @@ CGFloat demoRGInnerRadius(CGRect bounds)
 }
 
 
++ (void) drawGradientInRect:(CGRect)rect withColors:(NSArray*)colors{
+	
+	NSMutableArray *ar = [NSMutableArray array];
+	for(UIColor *c in colors){
+		[ar addObject:(id)c.CGColor];
+	}
+	
+	
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	CGContextSaveGState(context);
+	
+	
+	
+	CGColorSpaceRef colorSpace = CGColorGetColorSpace([[colors lastObject] CGColor]);
+	CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef)ar, NULL);
+	
+
+	CGContextClipToRect(context, rect);
+	
+	CGPoint start = CGPointMake(0.0, 0.0);
+	CGPoint end = CGPointMake(0.0, rect.size.height);
+	
+	CGContextDrawLinearGradient(context, gradient, start, end, kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation);
+	
+	CGColorSpaceRelease(colorSpace);
+	CGGradientRelease(gradient);
+	CGContextRestoreGState(context);
+	
+}
+
 
 + (void) drawLinearGradientInRect:(CGRect)rect colors:(CGFloat[])colours{
 	

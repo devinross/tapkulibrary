@@ -28,7 +28,6 @@
 	[request setHTTPMethod:@"POST"];
 	[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
 	[request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-	[request setTimeoutInterval:30.0];
 	[request setHTTPBody:postData];
 	
 	
@@ -49,7 +48,6 @@
 	[request setHTTPMethod:@"POST"];
 	[request setValue:postLength forHTTPHeaderField:@"Content-Length"];
 	[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-	[request setTimeoutInterval:30.0];
 	[request setHTTPBody:requestData];
 
 	

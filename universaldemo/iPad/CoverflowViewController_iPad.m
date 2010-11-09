@@ -67,14 +67,14 @@
 - (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasBroughtToFront:(int)index{
 
 }
-- (TKCoverView*) coverflowView:(TKCoverflowView*)coverflowView coverAtIndex:(int)index{
+- (TKCoverflowCoverView*) coverflowView:(TKCoverflowView*)coverflowView coverAtIndex:(int)index{
 	
-	TKCoverView *cover = [coverflowView dequeueReusableCoverView];
+	TKCoverflowCoverView *cover = [coverflowView dequeueReusableCoverView];
 	
 	if(cover == nil){
 
 
-		cover = [[[TKCoverView alloc] initWithFrame:CGRectMake(0, 0, 300, 600)] autorelease]; // 224
+		cover = [[[TKCoverflowCoverView alloc] initWithFrame:CGRectMake(0, 0, 300, 600)] autorelease]; // 224
 		cover.baseline = 200;
 	}
 	cover.image = [covers objectAtIndex:index%[covers count]];
@@ -85,7 +85,7 @@
 - (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasDoubleTapped:(int)index{
 	
 	
-	TKCoverView *cover = [coverflowView coverAtIndex:index];
+	TKCoverflowCoverView *cover = [coverflowView coverAtIndex:index];
 	if(cover == nil) return;
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationDuration:1];

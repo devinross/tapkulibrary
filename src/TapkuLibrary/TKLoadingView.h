@@ -1,5 +1,5 @@
 //
-//  LoadingHUDView.h
+//  TKLoadingView.h
 //  Created by Devin Ross on 7/2/09.
 //
 /*

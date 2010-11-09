@@ -36,6 +36,7 @@
 
 
 // DRAW GRADIENT
++ (void) drawGradientInRect:(CGRect)rect withColors:(NSArray*)colors;
 + (void) drawLinearGradientInRect:(CGRect)rect colors:(CGFloat[])colors;
 
 

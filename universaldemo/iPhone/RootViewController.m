@@ -35,12 +35,10 @@
 #import "FastTableViewController.h"
 #import "HUDViewController.h"
 #import "MapViewController.h"
-#import "OverviewController.h"
 #import "EmptyViewController.h"
 #import "GraphController.h"
 #import "DemoCalendarMonth.h"
 #import "CoverflowViewController.h"
-#import "FastSubtitleCellController.h"
 #import "MoreCellsViewController.h"
 #import "AlertsViewController.h"
 #import "ImageCenterViewController.h"
@@ -59,7 +57,7 @@
 	
 	
 	
-	rows = [NSArray arrayWithObjects:@"Coverflow",@"Graph",@"Overview Tableview",nil];
+	rows = [NSArray arrayWithObjects:@"Coverflow",@"Graph",nil];
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Views",@"title",nil];
 	[data addObject:d];
 	
@@ -67,12 +65,12 @@
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"UI Elements",@"title",nil];
 	[data addObject:d];
 	
-	rows = [NSArray arrayWithObjects:@"Month",@"Day",nil];
+	rows = [NSArray arrayWithObjects:@"Month",nil];
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Calendar",@"title",nil];
 	[data addObject:d];
 	
 
-	rows = [NSArray arrayWithObjects:@"Label Cells",@"More Cells",@"Fast Scrolling Cells",@"Fast Subtitle Cells",nil];
+	rows = [NSArray arrayWithObjects:@"Label Cells",@"More Cells",@"Indicator Cells",nil];
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Table View Cells",@"title",@"Fast cells scroll smooth on older devices",@"footer",nil];
 	[data addObject:d];
 	
@@ -125,8 +123,7 @@
 		return;
 	}
 	
-	else if(s==0 && r==2)
-		vc = [[OverviewController alloc] init];
+
 	
 	
 	
@@ -157,8 +154,6 @@
 		vc = [[MoreCellsViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	else if(s==3 && r==2)
 		vc = [[FastTableViewController alloc] initWithStyle:UITableViewStylePlain];
-	else if(s==3 && r==3)
-		vc = [[FastSubtitleCellController alloc] initWithStyle:UITableViewStylePlain];
 	
 	else
 		vc = [[ImageCenterViewController alloc] initWithStyle:UITableViewStylePlain];

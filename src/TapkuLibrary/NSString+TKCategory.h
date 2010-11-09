@@ -29,11 +29,13 @@
  
  */
 
+#import <Foundation/Foundation.h>
 
 @interface NSString (TKCategory)
 
-
-- (CGSize) heightWithFont:(UIFont*)withFont width:(float)width linebreak:(UILineBreakMode)lineBreakMode;
-
+- (BOOL) isEmail;
+- (NSString*) URLEncode;
+- (NSString *) escapeHTML;
+- (NSString *) unescapeHTML;
 
 @end

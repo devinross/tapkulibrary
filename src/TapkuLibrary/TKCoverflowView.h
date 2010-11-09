@@ -33,7 +33,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol TKCoverflowViewDelegate,TKCoverflowViewDataSource;
-@class TKCoverView;
+@class TKCoverflowCoverView;
 
 
 @interface TKCoverflowView : UIScrollView <UIScrollViewDelegate> {
@@ -71,9 +71,9 @@
 @property (nonatomic, assign) float coverSpacing;
 @property (nonatomic, assign) float coverAngle;
 
-- (TKCoverView*) dequeueReusableCoverView; // like a tableview
+- (TKCoverflowCoverView*) dequeueReusableCoverView; // like a tableview
 
-- (TKCoverView*) coverAtIndex:(int)index; // returns nil if cover is outside active range
+- (TKCoverflowCoverView*) coverAtIndex:(int)index; // returns nil if cover is outside active range
 - (int) indexOfFrontCoverView;
 - (void) bringCoverAtIndexToFront:(int)index animated:(BOOL)animated;
 
@@ -89,5 +89,5 @@
 
 @protocol TKCoverflowViewDataSource <NSObject>
 @required
-- (TKCoverView*) coverflowView:(TKCoverflowView*)coverflowView coverAtIndex:(int)index;
+- (TKCoverflowCoverView*) coverflowView:(TKCoverflowView*)coverflowView coverAtIndex:(int)index;
 @end

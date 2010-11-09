@@ -107,7 +107,7 @@
 	}
 
 	NSString *path = [NSString stringWithFormat:@"TapkuLibrary.bundle/Images/empty/%@%@.png",str,scale];
-	return [UIImage imageFromPath:TKBUNDLE(path)];
+	return [UIImage imageWithContentsOfFile:TKBUNDLE(path)];
 }
 
 

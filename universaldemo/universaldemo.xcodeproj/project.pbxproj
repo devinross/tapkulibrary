@@ -23,14 +23,12 @@
 		3BF88B9711E5468D00C9FC43 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF88B7411E5468D00C9FC43 /* RootViewController.m */; };
 		3BF88B9811E5468D00C9FC43 /* CoverflowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF88B7811E5468D00C9FC43 /* CoverflowViewController.m */; };
 		3BF88B9911E5468D00C9FC43 /* GraphController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF88B7B11E5468D00C9FC43 /* GraphController.m */; };
-		3BF88B9A11E5468D00C9FC43 /* OverviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF88B7E11E5468D00C9FC43 /* OverviewController.m */; };
 		3BF88B9B11E5468D00C9FC43 /* EmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF88B8111E5468D00C9FC43 /* EmptyViewController.m */; };
 		3BF88B9C11E5468D00C9FC43 /* HUDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF88B8411E5468D00C9FC43 /* HUDViewController.m */; };
 		3BF88B9D11E5468D00C9FC43 /* DemoCalendarMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF88B8711E5468D00C9FC43 /* DemoCalendarMonth.m */; };
 		3BF88B9E11E5468D00C9FC43 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF88B8A11E5468D00C9FC43 /* MapViewController.m */; };
 		3BF88B9F11E5468D00C9FC43 /* LabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF88B8D11E5468D00C9FC43 /* LabelViewController.m */; };
 		3BF88BA011E5468D00C9FC43 /* FastTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF88B8F11E5468D00C9FC43 /* FastTableViewController.m */; };
-		3BF88BA111E5468D00C9FC43 /* FastSubtitleCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF88B9111E5468D00C9FC43 /* FastSubtitleCellController.m */; };
 		3BF88BA211E5468D00C9FC43 /* MoreCellsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF88B9311E5468D00C9FC43 /* MoreCellsViewController.m */; };
 		3BF88BA311E5468D00C9FC43 /* ImageCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF88B9611E5468D00C9FC43 /* ImageCenterViewController.m */; };
 		3BF88BC711E5478500C9FC43 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF88BC411E5478100C9FC43 /* libTapkuLibrary.a */; };
@@ -109,8 +107,6 @@
 		3BF88B7811E5468D00C9FC43 /* CoverflowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoverflowViewController.m; sourceTree = "<group>"; };
 		3BF88B7A11E5468D00C9FC43 /* GraphController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphController.h; sourceTree = "<group>"; };
 		3BF88B7B11E5468D00C9FC43 /* GraphController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphController.m; sourceTree = "<group>"; };
-		3BF88B7D11E5468D00C9FC43 /* OverviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverviewController.h; sourceTree = "<group>"; };
-		3BF88B7E11E5468D00C9FC43 /* OverviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverviewController.m; sourceTree = "<group>"; };
 		3BF88B8011E5468D00C9FC43 /* EmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyViewController.h; sourceTree = "<group>"; };
 		3BF88B8111E5468D00C9FC43 /* EmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyViewController.m; sourceTree = "<group>"; };
 		3BF88B8311E5468D00C9FC43 /* HUDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDViewController.h; sourceTree = "<group>"; };
@@ -123,8 +119,6 @@
 		3BF88B8D11E5468D00C9FC43 /* LabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelViewController.m; sourceTree = "<group>"; };
 		3BF88B8E11E5468D00C9FC43 /* FastTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastTableViewController.h; sourceTree = "<group>"; };
 		3BF88B8F11E5468D00C9FC43 /* FastTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastTableViewController.m; sourceTree = "<group>"; };
-		3BF88B9011E5468D00C9FC43 /* FastSubtitleCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastSubtitleCellController.h; sourceTree = "<group>"; };
-		3BF88B9111E5468D00C9FC43 /* FastSubtitleCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastSubtitleCellController.m; sourceTree = "<group>"; };
 		3BF88B9211E5468D00C9FC43 /* MoreCellsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreCellsViewController.h; sourceTree = "<group>"; };
 		3BF88B9311E5468D00C9FC43 /* MoreCellsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreCellsViewController.m; sourceTree = "<group>"; };
 		3BF88B9511E5468D00C9FC43 /* ImageCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCenterViewController.h; sourceTree = "<group>"; };
@@ -288,7 +282,6 @@
 				3BF88B8511E5468D00C9FC43 /* Calendar */,
 				3BF88B8211E5468D00C9FC43 /* HUD */,
 				3BF88B7F11E5468D00C9FC43 /* Empty */,
-				3BF88B7C11E5468D00C9FC43 /* Overview */,
 				3BF88B7911E5468D00C9FC43 /* Graph */,
 				3BF88B7611E5468D00C9FC43 /* Coverflow */,
 				3BD32F03125CE78500BE5EAF /* Alerts */,
@@ -312,15 +305,6 @@
 				3BF88B7B11E5468D00C9FC43 /* GraphController.m */,
 			);
 			name = Graph;
-			sourceTree = "<group>";
-		};
-		3BF88B7C11E5468D00C9FC43 /* Overview */ = {
-			isa = PBXGroup;
-			children = (
-				3BF88B7D11E5468D00C9FC43 /* OverviewController.h */,
-				3BF88B7E11E5468D00C9FC43 /* OverviewController.m */,
-			);
-			name = Overview;
 			sourceTree = "<group>";
 		};
 		3BF88B7F11E5468D00C9FC43 /* Empty */ = {
@@ -366,8 +350,6 @@
 				3BF88B8D11E5468D00C9FC43 /* LabelViewController.m */,
 				3BF88B8E11E5468D00C9FC43 /* FastTableViewController.h */,
 				3BF88B8F11E5468D00C9FC43 /* FastTableViewController.m */,
-				3BF88B9011E5468D00C9FC43 /* FastSubtitleCellController.h */,
-				3BF88B9111E5468D00C9FC43 /* FastSubtitleCellController.m */,
 				3BF88B9211E5468D00C9FC43 /* MoreCellsViewController.h */,
 				3BF88B9311E5468D00C9FC43 /* MoreCellsViewController.m */,
 			);
@@ -557,14 +539,12 @@
 				3BF88B9711E5468D00C9FC43 /* RootViewController.m in Sources */,
 				3BF88B9811E5468D00C9FC43 /* CoverflowViewController.m in Sources */,
 				3BF88B9911E5468D00C9FC43 /* GraphController.m in Sources */,
-				3BF88B9A11E5468D00C9FC43 /* OverviewController.m in Sources */,
 				3BF88B9B11E5468D00C9FC43 /* EmptyViewController.m in Sources */,
 				3BF88B9C11E5468D00C9FC43 /* HUDViewController.m in Sources */,
 				3BF88B9D11E5468D00C9FC43 /* DemoCalendarMonth.m in Sources */,
 				3BF88B9E11E5468D00C9FC43 /* MapViewController.m in Sources */,
 				3BF88B9F11E5468D00C9FC43 /* LabelViewController.m in Sources */,
 				3BF88BA011E5468D00C9FC43 /* FastTableViewController.m in Sources */,
-				3BF88BA111E5468D00C9FC43 /* FastSubtitleCellController.m in Sources */,
 				3BF88BA211E5468D00C9FC43 /* MoreCellsViewController.m in Sources */,
 				3BF88BA311E5468D00C9FC43 /* ImageCenterViewController.m in Sources */,
 				3BF88D0511E54F8A00C9FC43 /* LeftTableViewController.m in Sources */,
