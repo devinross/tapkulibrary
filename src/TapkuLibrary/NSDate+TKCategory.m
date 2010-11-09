@@ -74,7 +74,6 @@
 
 
 // ------------------
-
 - (NSString*) month{
 	NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];	
 	[dateFormatter setDateFormat:@"MMMM"];
@@ -85,7 +84,6 @@
 	[dateFormatter setDateFormat:@"yyyy"];
 	return [dateFormatter stringFromDate:self];
 }
-
 - (int) daysInMonth{
 	
 	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -98,8 +96,6 @@
 	
 	return days;
 }
-
-
 // ------------------
 
 
@@ -144,7 +140,6 @@
 	return [gregorian dateFromComponents:comp];
 	
 }
-
 - (NSDate*) firstOfNextMonthForDate {
 	NSDate *day = self;
 	NSCalendar *gregorian = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
@@ -160,25 +155,21 @@
 	[dateFormatter setDateFormat:@"d"];
 	return [NSNumber numberWithInt:[[dateFormatter stringFromDate:self] intValue]];
 }
-
 - (NSString*) hourString {
 	NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];	
 	[dateFormatter setDateFormat:@"h a"];
 	return [dateFormatter stringFromDate:self];
 }
-
 - (NSString*) monthString{
 	NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];	
 	[dateFormatter setDateFormat:@"MMMM"];
 	return [dateFormatter stringFromDate:self];
 }
-
 - (NSString*) yearString{
 	NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];	
 	[dateFormatter setDateFormat:@"yyyy"];
 	return [dateFormatter stringFromDate:self];
 }
-
 - (NSString*) monthYearString{
 	NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];	
 	[dateFormatter setDateFormat:@"MMMM yyyy"];
@@ -217,44 +208,9 @@
 
 
 
-/*
- 
-- (int) month{
-	// !!! hour between 0 - 24 - Check at midnight
-	
-	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-	NSDateComponents *comp = [gregorian components:(NSMonthCalendarUnit) fromDate:self];
-	
-	int month = [comp month];
-	[gregorian release];
-	
-	return month;
-}
-- (int) hour{
-	// !!! hour between 0 - 24 - Check at midnight
-	
-	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-	NSDateComponents *comp = [gregorian components:(NSHourCalendarUnit) fromDate:self];
-	
-	int hour = [comp hour];
-	[gregorian release];
-	
-	return hour;
-}
-- (int) minute{
-	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-	NSDateComponents *comp = [gregorian components:(NSMinuteCalendarUnit) fromDate:self];
-	
-	int minute = [comp minute];
-	[gregorian release];
-	
-	return minute;
-}
 
-*/
+
 /* ----- start snippet from http://www.alexcurylo.com/blog/2009/07/25/snippet-naturaldates/ ----- */
-
-
 - (int)differenceInDaysTo:(NSDate *)toDate{
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     
