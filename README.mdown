@@ -1,22 +1,40 @@
 TapkuLibrary
 ============
-TapkuLibrary is a collection of iPhone classes intended for broad use in applications.
-
-[http://devinsheaven.com](http://devinsheaven.com)
-[http://tapku.com](http://tapku.com)
-
-![](http://farm3.static.flickr.com/2492/4175733982_f168ea3bd1_o.png)
-![](http://farm5.static.flickr.com/4072/4247861508_046420c6fb_o.jpg)
+TapkuLibrary is a framework built on Cocoa and UIKit of iOS classes intended for broad use in applications.
 
 
-Overview
-========
+Classes
+-------
+* [TKCoverflowView](tree/master/src/TapkuLibrary/TKCoverflowView.h)
+* [TKCalendarMonthView](tree/master/src/TapkuLibrary/TKCalendarMonthView.h)
+* [TKImageCenter](tree/master/src/TapkuLibrary/TKImageCenter.h)
+* [TKGraphView](tree/master/src/TapkuLibrary/TKGraphView.h)
+* [TKAlertCenter](tree/master/src/TapkuLibrary/TKAlertCenter.h)
+* [TKProgressAlertView](tree/master/src/TapkuLibrary/TKProgressAlertView.h)
+* [TKLoadingView](tree/master/src/TapkuLibrary/TKLoadingView.h)
+* [TKButtonCell](tree/master/src/TapkuLibrary/TKButtonCell.h)
+* [TKLabelCell](tree/master/src/TapkuLibrary/TKLabelCell.h)
+* [TKEmptyView](tree/master/src/TapkuLibrary/TKEmptyView.h)
+* [TKWindow](tree/master/src/TapkuLibrary/TKWindow.h)
+(and more)
 
-The Tapku Library provides iPhone, iPod Touch and now iPad developers an extension to Cocoa Foundation and the UIKit frameworks to build iPhone OS applications. The framework contains user interface elements like [coverflow](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKCoverflowView.h), [calendar](src/TapkuLibrary/TKCalendarMonthTableViewController.h) and [charting](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKGraphController.h) user interface classes. Other useful functionality include new Table View Cells, easy creation of HTTP Post requests and [extending notifications for device shaking](http://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKShakeWindow.h).
-
+Categories
+----------
+* [NSString](tree/master/src/TapkuLibrary/NSString+TKCategory.h)
+* [NSDate](tree/master/src/TapkuLibrary/NSDate+TKCategory.h)
+* [NSArray](tree/master/src/TapkuLibrary/NSArray+TKCategory.h)
+* [UIView](tree/master/src/TapkuLibrary/UIView+TKCategory.h)
+* [UIImage](tree/master/src/TapkuLibrary/UIImage+TKCategory.h)
 
 
 Great! Where do I begin? / [Documentation](http://wiki.github.com/devinross/tapkulibrary/)
 ========================================
 
 The best place to start is by downloading the source and trying out the demo app. This demo gives an overview of the functionality of the framework. To figure out how to [properly use the library in your own project](http://wiki.github.com/devinross/tapkulibrary/how-to-use-this-library) and take a look at the documentation, take a look at the [wiki](http://wiki.github.com/devinross/tapkulibrary/).
+
+
+Links
+------
+* [Creator's Homepage](http://devinsheaven.com)
+* [Framework Landing Page](http://tapku.com)
+* [Documentation](http://wiki.github.com/devinross/tapkulibrary/)
