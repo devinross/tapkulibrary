@@ -1,6 +1,6 @@
 TapkuLibrary
 ============
-TapkuLibrary is a framework built on Cocoa and UIKit of iOS classes intended for broad use in applications.
+TapkuLibrary is an open source iOS framework built on Cocoa and UIKit intended for broad use in applications. If you really like the framework, [drop me a line](http://devinsheaven.com/about#contact), I'd lover to hear about it.
 
 
 Classes
@@ -16,7 +16,7 @@ Classes
 * [TKLabelCell](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKLabelCell.h)
 * [TKEmptyView](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKEmptyView.h)
 * [TKWindow](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKWindow.h)
-* (and more)
+* [(and more)](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary)
 
 Categories
 ----------
