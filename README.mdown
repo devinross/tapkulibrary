@@ -1,6 +1,6 @@
 TapkuLibrary
 ============
-TapkuLibrary is an open source iOS framework built on Cocoa and UIKit intended for broad use in applications. If you really like the framework, [drop me a line](http://devinsheaven.com/about#contact), I'd lover to hear about it.
+TapkuLibrary is an open source iOS framework built on Cocoa and UIKit intended for broad use in applications. If you really like the framework, [drop me a line](http://devinsheaven.com/about#contact), I'd lover to hear about it. Many thanks to those who have contributed to the project.
 
 
 Classes
