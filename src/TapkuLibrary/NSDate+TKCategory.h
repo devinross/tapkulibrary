@@ -31,8 +31,6 @@
 #import <Foundation/Foundation.h>
 
 
-@interface NSDate (TKCategory)
-
 struct TKDateInformation {
 	int day;
 	int month;
@@ -43,53 +41,29 @@ struct TKDateInformation {
 	int minute;
 	int hour;
 	int second;
-
+	
 };
 typedef struct TKDateInformation TKDateInformation;
 
 
-- (TKDateInformation) dateInformation;
-+ (NSDate*) dateFromDateInformation:(TKDateInformation)info;
 
+
+@interface NSDate (TKCategory)
 
 @property (readonly,nonatomic) NSString *month;
 @property (readonly,nonatomic) NSString *year;
 @property (readonly,nonatomic) int daysInMonth; // ie. 31, 30 29
 @property (readonly,nonatomic) int weekdayWithMondayFirst;
-
-
-
-/*
- 
- + (NSDate*) firstOfCurrentMonth;
- + (NSDate*) lastOfCurrentMonth;
- 
-//@property (readonly,nonatomic) NSString *hourString;
-//@property (readonly,nonatomic) NSString *monthString;
-//@property (readonly,nonatomic) NSString *yearString;
-//@property (readonly,nonatomic) NSString *monthYearString;
-//@property (readonly,nonatomic) NSNumber *dayNumber;
-//@property (readonly,nonatomic) int weekday;
-
-
-//@property (readonly,nonatomic) int month;
-//@property (readonly,nonatomic) int hour;
-//@property (readonly,nonatomic) int minute;
-
-
-
-@property (readonly,nonatomic) NSDate* firstOfCurrentMonthForDate;
-@property (readonly,nonatomic) NSDate* firstOfNextMonthForDate;
-@property (readonly,nonatomic) NSDate* timelessDate;
-@property (readonly,nonatomic) NSDate* monthlessDate;
-*/
-
-- (int)differenceInDaysTo:(NSDate *)toDate;
-- (int)differenceInMonthsTo:(NSDate *)toDate;
-
 @property (readonly,nonatomic) BOOL isToday;
-- (BOOL)isSameDay:(NSDate*)anotherDate;
 
+
+- (BOOL)isSameDay:(NSDate*)anotherDate;
+- (int) differenceInDaysTo:(NSDate *)toDate;
+- (int) differenceInMonthsTo:(NSDate *)toDate;
+
+
+- (TKDateInformation) dateInformation;
++ (NSDate*) dateFromDateInformation:(TKDateInformation)info;
 
 - (NSString*) dateDescription;
 
