@@ -3,8 +3,8 @@ TapkuLibrary
 TapkuLibrary is an open source iOS framework built on Cocoa and UIKit intended for broad use in applications. If you really like the framework, [drop me a line](http://devinsheaven.com/about#contact), I'd love to hear about it. Many thanks to those who have contributed to the project.
 
 
-Classes
--------
+## Classes
+
 * [TKCoverflowView](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKCoverflowView.h)
 * [TKCalendarMonthView](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKCalendarMonthView.h)
 * [TKImageCenter](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKImageCenter.h)
@@ -18,8 +18,8 @@ Classes
 * [TKWindow](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKWindow.h)
 * [(and more)](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary)
 
-Categories
-----------
+## Categories
+
 * [NSString](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/NSString+TKCategory.h)
 * [NSDate](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/NSDate+TKCategory.h)
 * [NSArray](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/NSArray+TKCategory.h)
@@ -27,14 +27,13 @@ Categories
 * [UIImage](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/UIImage+TKCategory.h)
 
 
-Adding Tapku To Your Project / [Documentation](http://wiki.github.com/devinross/tapkulibrary/)
-========================================
+## Adding Tapku To Your Project / [Documentation](http://wiki.github.com/devinross/tapkulibrary/)
 
-The best place to start is by downloading the source and trying out the demo app. This demo gives a brief overview of the functionality of the framework. Instructions on [adding the framework in your own project](http://wiki.github.com/devinross/tapkulibrary/how-to-use-this-library) and documentation, can be found on the [wiki](http://wiki.github.com/devinross/tapkulibrary/).
+The best place to start is by downloading the source and trying out the demo app. The demo project gives a brief overview of the functionality of the framework. Instructions on [adding the framework in your own project](http://wiki.github.com/devinross/tapkulibrary/how-to-use-this-library) and documentation, can be found on the [wiki](http://wiki.github.com/devinross/tapkulibrary/).
 
 
-Links
-------
+## Links
+
 * [Creator's Homepage](http://devinsheaven.com)
 * [Framework Landing Page](http://tapku.com)
 * [Documentation](http://wiki.github.com/devinross/tapkulibrary/)
