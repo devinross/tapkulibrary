@@ -5,8 +5,8 @@ TapkuLibrary is a framework built on Cocoa and UIKit of iOS classes intended for
 
 Classes
 -------
-* [TKCoverflowView](/tree/master/src/TapkuLibrary/TKCoverflowView.h)
-* [TKCalendarMonthView](./tree/master/src/TapkuLibrary/TKCalendarMonthView.h)
+* [TKCoverflowView][]
+* [TKCalendarMonthView][]
 * [TKImageCenter](tree/master/src/TapkuLibrary/TKImageCenter.h)
 * [TKGraphView](tree/master/src/TapkuLibrary/TKGraphView.h)
 * [TKAlertCenter](tree/master/src/TapkuLibrary/TKAlertCenter.h)
@@ -16,7 +16,7 @@ Classes
 * [TKLabelCell](tree/master/src/TapkuLibrary/TKLabelCell.h)
 * [TKEmptyView](tree/master/src/TapkuLibrary/TKEmptyView.h)
 * [TKWindow](tree/master/src/TapkuLibrary/TKWindow.h)
-(and more)
+* (and more)
 
 Categories
 ----------
