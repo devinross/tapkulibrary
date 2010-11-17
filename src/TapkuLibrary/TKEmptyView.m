@@ -118,16 +118,22 @@
 		self.backgroundColor = [UIColor whiteColor];
 		
 		titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-		titleLabel.font = [UIFont boldSystemFontOfSize:16];
-		titleLabel.textColor = [UIColor darkGrayColor];
+		titleLabel.backgroundColor = [UIColor clearColor];
+		titleLabel.font = [UIFont boldSystemFontOfSize:18];
+		titleLabel.textColor = [UIColor colorWithRed:128/255. green:136/255. blue:149/255. alpha:1];
 		titleLabel.textAlignment = UITextAlignmentCenter;
+		titleLabel.shadowColor = [UIColor whiteColor];
+		titleLabel.shadowOffset = CGSizeMake(0, 1);
 		
 		titleLabel.text = titleString;
 		
 		subtitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-		subtitleLabel.font = [UIFont systemFontOfSize:13];
-		subtitleLabel.textColor = [UIColor grayColor];
+		subtitleLabel.backgroundColor = [UIColor clearColor];
+		subtitleLabel.font = [UIFont systemFontOfSize:14];
+		subtitleLabel.textColor = [UIColor colorWithRed:128/255. green:136/255. blue:149/255. alpha:1];
 		subtitleLabel.textAlignment = UITextAlignmentCenter;
+		subtitleLabel.shadowColor = [UIColor whiteColor];
+		subtitleLabel.shadowOffset = CGSizeMake(0, 1);
 		
 		subtitleLabel.text = subtitleString;
 		
@@ -151,55 +157,80 @@
 	return [self initWithFrame:frame emptyViewImage:TKEmptyViewImageStar title:@"" subtitle:@""];
 }
 
+- (void) drawRect:(CGRect)rect{
+	
+	
+	//CGContextRef context = UIGraphicsGetCurrentContext();
+
+	
+	UIColor *top = [UIColor colorWithRed:242/255.0 green:244/255.0 blue:246/255.0 alpha:1];
+	UIColor *bot = [UIColor colorWithRed:225/255.0 green:229/255.0 blue:235/255.0 alpha:1];
+	
+	[UIView drawGradientInRect:rect withColors:[NSArray arrayWithObjects:top,bot,nil]];
+	
+
+
+}
+
 - (void) layoutSubviews{
 	[super layoutSubviews];
 	
 	CGRect rect = self.frame;
 
-	CGRect titleRect = CGRectMake(0, 0, rect.size.width, 20);
-	CGRect subtitleRect = CGRectMake(0, 0, rect.size.width, 16);
+	titleLabel.frame = CGRectMake(0, 0, rect.size.width, 20);
+	subtitleLabel.frame = CGRectMake(0, 0, rect.size.width, 16);
 	
-	imageView.center = CGPointMake((int)(rect.size.width/2),(int)(rect.size.height/2 - (rect.size.height/8)));
-	imageView.frame = CGRectMake(imageView.frame.origin.x, imageView.frame.origin.y, imageView.frame.size.width, imageView.frame.size.height);
+	imageView.center = CGPointMake(rect.size.width/2, rect.size.height/2 - rect.size.height/12 );
+	imageView.frame = CGRectMake((int)imageView.frame.origin.x, (int)imageView.frame.origin.y, imageView.frame.size.width, imageView.frame.size.height);
 	
 	
-	titleRect.origin.y = (int)imageView.frame.size.height+imageView.frame.origin.y+ 5;
-	subtitleRect.origin.y =  (int)titleRect.origin.y + titleRect.size.height + 5;
+	titleLabel.center = CGPointMake(rect.size.width/2, MAX(rect.size.height/2 +  rect.size.height/4,imageView.frame.origin.y+imageView.frame.size.height+14));
+	subtitleLabel.center = CGPointMake(titleLabel.center.x, titleLabel.center.y + 20);
+
+		
 	
-	subtitleLabel.frame = subtitleRect;
-	titleLabel.frame = titleRect;
 	
+	
+	
+	//imageView.backgroundColor = [UIColor redColor];
 	
 }
 
 
 - (void) setImage:(UIImage*)image{
+	//imageView.image = image;
 	imageView.image = [self maskedImageWithImage:image];
 	[self layoutSubviews];
+	[self setNeedsDisplay];
 }
-
+- (void) setEmptyImage:(TKEmptyViewImage)image{
+	[self setImage:[self predefinedImage:image]];
+}
 - (UIImage*) maskedImageWithImage:(UIImage*)m{
 	
 	if(m==nil) return nil;
-	
-	
-	UIGraphicsBeginImageContext(CGSizeMake(m.size.width*m.scale, (m.size.height+2)*m.scale));
-	
-	CGFloat color[] = { 139/255.0, 152/255.0, 173/255.0, 1.0 };
-	CGFloat colors[] = { 171/255.0, 180/255.0, 196/255.0, 1.00,   213/255.0, 217/255.0, 225/255.0, 1.00 };
 
-	[m drawInRect:CGRectMake(0, 2*m.scale, m.size.width*m.scale, m.size.height*m.scale) asAlphaMaskForColor:color];
-	[m drawInRect:CGRectMake(0, 0, m.size.width*m.scale, m.size.height*m.scale) asAlphaMaskForGradient:colors];
+	UIGraphicsBeginImageContext(CGSizeMake((m.size.width)*m.scale , (m.size.height+2)*m.scale));
+	CGContextRef context = UIGraphicsGetCurrentContext();
+
+	NSArray *colors = [NSArray arrayWithObjects:
+				   [UIColor colorWithRed:174/255.0 green:182/255.0 blue:195/255.0 alpha:1],
+				   [UIColor colorWithRed:197/255.0 green:202/255.0 blue:211/255.0 alpha:1],nil];
+	
+	//CGFloat colors[] = { 174/255.0, 182/255.0, 195/255.0, 1.00, 197/255.0, 202/255.0, 211/255.0, 1.00};
+
+	CGContextSetShadowWithColor(context, CGSizeMake(1, 4),4, [UIColor colorWithWhite:0 alpha:0.1].CGColor);
+	[m drawInRect:CGRectMake(0, 0+(1*m.scale),m.size.width, m.size.height)];
+	//[m drawInRect:CGRectMake(0, 0, m.size.width*m.scale, m.size.height*m.scale) asAlphaMaskForGradient:colors];
+	[m drawMaskedGradientInRect:CGRectMake(0, 0, m.size.width*m.scale, m.size.height*m.scale) withColors:colors];
 	
 	UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
 	UIGraphicsEndImageContext();
-	
 	UIImage *scaledImage = [UIImage imageWithCGImage:image.CGImage scale:m.scale orientation:UIImageOrientationUp];
 	
 
 	
 	return scaledImage;
-	
 }
 
 

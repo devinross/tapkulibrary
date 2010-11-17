@@ -73,6 +73,7 @@ typedef enum {
 
 
 - (void) setImage:(UIImage*)image;
+- (void) setEmptyImage:(TKEmptyViewImage)image;
 
 
 @end

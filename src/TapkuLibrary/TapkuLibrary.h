@@ -28,10 +28,14 @@
 #import "TKGlobal.h"
 
 // ADDITIONS
+#import "NSString+TKCategory.h"
+#import "NSDate+TKCategory.h"
+#import "NSArray+TKCategory.h"
 #import "UIView+TKCategory.h"
 #import "UIImage+TKCategory.h"
-#import "NSDate+TKCategory.h"
-#import "NSString+TKCategory.h"
+#import "UIScrollview+TKCategory.h"
+
+
 
 #import "TKWindow.h"
 
@@ -47,8 +51,6 @@
 #import "TKButtonCell.h"
 #import "TKTextViewCell.h"
 #import "TKSwitchCell.h"
-
-// FAST CELLS
 #import "TKIndicatorCell.h"
 
 // HUD

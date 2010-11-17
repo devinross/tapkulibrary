@@ -51,6 +51,11 @@
 
 - (void) show{
 	[super show];
+	
+	for (UIView *subview in [self subviews]) {
+		if ([subview isKindOfClass:[UIImageView class]])  subview.hidden = YES;
+	}
+	
 	self.backgroundColor = [UIColor clearColor];
 	[self addSubview:self.progressBar];
 	[self addSubview:self.label];

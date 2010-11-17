@@ -39,7 +39,7 @@
 
 	
 	emptyView = [[TKEmptyView alloc] initWithFrame:self.view.bounds 
-									emptyViewImage:TKEmptyViewImageHeart
+									emptyViewImage:TKEmptyViewImageMovieClip
 											 title:@"Empty Page"
 										  subtitle:@"All you need is a transparent image"];
 	emptyView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;

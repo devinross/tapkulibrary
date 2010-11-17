@@ -236,8 +236,11 @@
 	if(firstOfPrev>0){
 		[color set];
 		for(int i = firstOfPrev;i<= lastOfPrev;i++){
-			r = [self rectForCellAtIndex:index] ;
-			[self drawTileInRect:r day:i mark:[[marks objectAtIndex:index] boolValue] font:font font2:font2];
+			r = [self rectForCellAtIndex:index];
+			if ([marks count] > 0)
+				[self drawTileInRect:r day:i mark:[[marks objectAtIndex:index] boolValue] font:font font2:font2];
+			else
+				[self drawTileInRect:r day:i mark:NO font:font font2:font2];
 			index++;
 		}
 	}
@@ -250,7 +253,10 @@
 		r = [self rectForCellAtIndex:index];
 		if(today == i) [[UIColor whiteColor] set];
 		
-		[self drawTileInRect:r day:i mark:[[marks objectAtIndex:index] boolValue] font:font font2:font2];
+		if ([marks count] > 0) 
+			[self drawTileInRect:r day:i mark:[[marks objectAtIndex:index] boolValue] font:font font2:font2];
+		else
+			[self drawTileInRect:r day:i mark:NO font:font font2:font2];
 		if(today == i) [color set];
 		index++;
 	}
@@ -259,7 +265,10 @@
 	int i = 1;
 	while(index % 7 != 0){
 		r = [self rectForCellAtIndex:index] ;
-		[self drawTileInRect:r day:i mark:[[marks objectAtIndex:index] boolValue] font:font font2:font2];
+		if ([marks count] > 0) 
+			[self drawTileInRect:r day:i mark:[[marks objectAtIndex:index] boolValue] font:font font2:font2];
+		else
+			[self drawTileInRect:r day:i mark:NO font:font font2:font2];
 		i++;
 		index++;
 	}
@@ -296,8 +305,16 @@
 	
 	[self addSubview:self.selectedImageView];
 	self.currentDay.text = [NSString stringWithFormat:@"%d",day];
-	if([[marks objectAtIndex: row * 7 + column ] boolValue]){
-		[self.selectedImageView addSubview:self.dot];
+	
+	if ([marks count] > 0) {
+		
+		if([[marks objectAtIndex: row * 7 + column ] boolValue]){
+			[self.selectedImageView addSubview:self.dot];
+		}else{
+			[self.dot removeFromSuperview];
+		}
+		
+		
 	}else{
 		[self.dot removeFromSuperview];
 	}
@@ -368,10 +385,16 @@
 	[self addSubview:self.selectedImageView];
 	self.currentDay.text = [NSString stringWithFormat:@"%d",day];
 	
-	if([[marks objectAtIndex: row * 7 + column] boolValue])
-		[self.selectedImageView addSubview:self.dot];
-	else
+	if ([marks count] > 0) {
+		if([[marks objectAtIndex: row * 7 + column] boolValue])
+			[self.selectedImageView addSubview:self.dot];
+		else
+			[self.dot removeFromSuperview];
+	}else{
 		[self.dot removeFromSuperview];
+	}
+	
+
 	
 	
 	CGRect r = self.selectedImageView.frame;

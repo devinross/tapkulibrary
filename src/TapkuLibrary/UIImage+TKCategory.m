@@ -59,46 +59,9 @@
 	return [self imageCroppedToRect:CGRectMake(0.0, 0.0, shortestSide, shortestSide)];
 }
 
-- (void) drawInRect:(CGRect)rect asAlphaMaskForColor:(CGFloat[])color{
-	
-	CGContextRef context = UIGraphicsGetCurrentContext();
 
-	CGContextSaveGState(context);
-	
-	CGContextTranslateCTM(context, 0.0, rect.size.height);
-	CGContextScaleCTM(context, 1.0, -1.0);
-	
-	rect.origin.y = rect.origin.y * -1;
-	
-	CGContextClipToMask(context, rect, self.CGImage);
-	CGContextSetRGBFillColor(context, color[0], color[1], color[2], color[3]);
-	CGContextFillRect(context, rect);
-	
 
-	
-	CGContextRestoreGState(context);
-}
-- (void) drawInRect:(CGRect)rect asAlphaMaskForGradient:(CGFloat[])colors{
-	
-	
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	
-	CGContextSaveGState(context);
-	
-	CGContextTranslateCTM(context, 0.0, rect.size.height);
-	CGContextScaleCTM(context, 1.0, -1.0);
-	
-	rect.origin.y = rect.origin.y * -1;
-	
-	CGContextClipToMask(context, rect, self.CGImage);
-	[UIView drawLinearGradientInRect:rect colors:colors];
 
-	
-
-	
-	CGContextRestoreGState(context);
-	
-}
 - (void) drawInRect:(CGRect)rect withImageMask:(UIImage*)mask{
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
@@ -119,5 +82,40 @@
 	CGContextRestoreGState(context);
 }
 
+- (void) drawMaskedColorInRect:(CGRect)rect withColor:(UIColor*)color{
+	
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	CGContextSaveGState(context);
+	
+	
+	CGContextSetFillColorWithColor(context, color.CGColor);
+	
+	CGContextTranslateCTM(context, 0.0, rect.size.height);
+	CGContextScaleCTM(context, 1.0, -1.0);
+	rect.origin.y = rect.origin.y * -1;
+	
+	
+	CGContextClipToMask(context, rect, self.CGImage);
+	CGContextFillRect(context, rect);
+	
+	CGContextRestoreGState(context);
+	
+}
+- (void) drawMaskedGradientInRect:(CGRect)rect withColors:(NSArray*)colors{
+	
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	CGContextSaveGState(context);
+
+	CGContextTranslateCTM(context, 0.0, rect.size.height);
+	CGContextScaleCTM(context, 1.0, -1.0);
+	
+	rect.origin.y = rect.origin.y * -1;
+	
+	CGContextClipToMask(context, rect, self.CGImage);
+	
+	[UIView drawGradientInRect:rect withColors:colors];
+	
+	CGContextRestoreGState(context);
+}
 
 @end

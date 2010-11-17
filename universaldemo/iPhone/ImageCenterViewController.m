@@ -53,7 +53,6 @@
 				 @"http://farm4.static.flickr.com/3236/2779325398_80347b2c6f_t.jpg",
 				 @"http://farm4.static.flickr.com/3629/3459136258_885598f06a_t.jpg",
 				 @"http://farm4.static.flickr.com/3619/3308615215_63752b7b27_t.jpg",
-				 @"http://farm4.static.flickr.com/3379/3337846702_4c3f21ecdb_t.jpg",
 				 @"http://farm1.static.flickr.com/3/2451788_febcdb12f6_t.jpg",
 				 @"http://farm4.static.flickr.com/3559/3681486285_2d92961aec_t.jpg",
 				 @"http://farm4.static.flickr.com/3630/3681486481_8f864b67a5_t.jpg",

@@ -360,8 +360,7 @@ static float highValue;
 	
 
 	titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-	titleLabel.backgroundColor = [UIColor colorWithRed:249./255 green:249./255 blue:249./255 alpha:1.0];
-	titleLabel.opaque = YES;
+	titleLabel.backgroundColor = [UIColor clearColor];
 	titleLabel.font = [UIFont boldSystemFontOfSize:16.0];
 	titleLabel.textAlignment = UITextAlignmentCenter;
 	[self addSubview:titleLabel];
