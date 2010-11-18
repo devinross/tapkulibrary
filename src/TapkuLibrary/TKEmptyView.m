@@ -185,25 +185,19 @@
 	titleLabel.frame = CGRectMake(0, 0, rect.size.width, 20);
 	subtitleLabel.frame = CGRectMake(0, 0, rect.size.width, 16);
 	
+	imageView.frame = CGRectMake(0, 0, imageView.image.size.width, imageView.image.size.height);
 	imageView.center = CGPointMake(rect.size.width/2, rect.size.height/2 - rect.size.height/12 );
-	imageView.frame = CGRectMake((int)imageView.frame.origin.x, (int)imageView.frame.origin.y, imageView.frame.size.width, imageView.frame.size.height);
+	imageView.frame = CGRectMake((int)imageView.frame.origin.x, (int)imageView.frame.origin.y, imageView.image.size.width, imageView.image.size.height);
 	
 	
 	titleLabel.center = CGPointMake(rect.size.width/2, MAX(rect.size.height/2 +  rect.size.height/4,imageView.frame.origin.y+imageView.frame.size.height+14));
 	subtitleLabel.center = CGPointMake(titleLabel.center.x, titleLabel.center.y + 20);
 
-		
-	
-	
-	
-	
-	//imageView.backgroundColor = [UIColor redColor];
-	
+
 }
 
 
 - (void) setImage:(UIImage*)image{
-	//imageView.image = image;
 	imageView.image = [self maskedImageWithImage:image];
 	[self layoutSubviews];
 	[self setNeedsDisplay];
@@ -222,11 +216,9 @@
 				   [UIColor colorWithRed:174/255.0 green:182/255.0 blue:195/255.0 alpha:1],
 				   [UIColor colorWithRed:197/255.0 green:202/255.0 blue:211/255.0 alpha:1],nil];
 	
-	//CGFloat colors[] = { 174/255.0, 182/255.0, 195/255.0, 1.00, 197/255.0, 202/255.0, 211/255.0, 1.00};
 
 	CGContextSetShadowWithColor(context, CGSizeMake(1, 4),4, [UIColor colorWithWhite:0 alpha:0.1].CGColor);
 	[m drawInRect:CGRectMake(0, 0+(1*m.scale),m.size.width*m.scale, m.size.height*m.scale)];
-	//[m drawInRect:CGRectMake(0, 0, m.size.width*m.scale, m.size.height*m.scale) asAlphaMaskForGradient:colors];
 	[m drawMaskedGradientInRect:CGRectMake(0, 0, m.size.width*m.scale, m.size.height*m.scale) withColors:colors];
 	
 	UIImage* image = UIGraphicsGetImageFromCurrentImageContext();
