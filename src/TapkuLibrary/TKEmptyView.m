@@ -95,6 +95,9 @@
 		case TKEmptyViewImageKey:
 			str = @"key";
 			break;
+		case TKEmptyViewImageMale:
+			str = @"malePerson";
+			break;
 		default:
 			str = @"star";
 			break;
@@ -107,6 +110,8 @@
 	}
 
 	NSString *path = [NSString stringWithFormat:@"TapkuLibrary.bundle/Images/empty/%@%@.png",str,scale];
+	
+
 	return [UIImage imageWithContentsOfFile:TKBUNDLE(path)];
 }
 
@@ -220,7 +225,7 @@
 	//CGFloat colors[] = { 174/255.0, 182/255.0, 195/255.0, 1.00, 197/255.0, 202/255.0, 211/255.0, 1.00};
 
 	CGContextSetShadowWithColor(context, CGSizeMake(1, 4),4, [UIColor colorWithWhite:0 alpha:0.1].CGColor);
-	[m drawInRect:CGRectMake(0, 0+(1*m.scale),m.size.width, m.size.height)];
+	[m drawInRect:CGRectMake(0, 0+(1*m.scale),m.size.width*m.scale, m.size.height*m.scale)];
 	//[m drawInRect:CGRectMake(0, 0, m.size.width*m.scale, m.size.height*m.scale) asAlphaMaskForGradient:colors];
 	[m drawMaskedGradientInRect:CGRectMake(0, 0, m.size.width*m.scale, m.size.height*m.scale) withColors:colors];
 	

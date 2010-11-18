@@ -46,7 +46,8 @@ typedef enum {
 	TKEmptyViewImageSign,
 	TKEmptyViewImageStar,
 	TKEmptyViewImageStopwatch,
-	TKEmptyViewImageKey
+	TKEmptyViewImageKey,
+	TKEmptyViewImageMale
 } TKEmptyViewImage;
 
 

@@ -13,6 +13,7 @@
 		2860E328111B887F00E27156 /* AppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E326111B887F00E27156 /* AppDelegate_iPhone.m */; };
 		2860E32E111B888700E27156 /* AppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E32C111B888700E27156 /* AppDelegate_iPad.m */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		3BBF821E12958DE2008AB2B1 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3BBF821D12958DE2008AB2B1 /* TapkuLibrary.bundle */; };
 		3BD32F01125CE77300BE5EAF /* AlertsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD32F00125CE77300BE5EAF /* AlertsViewController.m */; };
 		3BD32F22125CED5200BE5EAF /* beer.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BD32F20125CED5200BE5EAF /* beer.png */; };
 		3BD32F23125CED5200BE5EAF /* beer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BD32F21125CED5200BE5EAF /* beer@2x.png */; };
@@ -34,7 +35,6 @@
 		3BF88BC711E5478500C9FC43 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF88BC411E5478100C9FC43 /* libTapkuLibrary.a */; };
 		3BF88C0111E547A800C9FC43 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF88C0011E547A800C9FC43 /* MapKit.framework */; };
 		3BF88C1B11E547BE00C9FC43 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF88BEB11E547A000C9FC43 /* QuartzCore.framework */; };
-		3BF88C4A11E54AD400C9FC43 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3BF88C4911E54AD400C9FC43 /* TapkuLibrary.bundle */; };
 		3BF88CAA11E54B4800C9FC43 /* cover_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3BF88CA111E54B4800C9FC43 /* cover_1.jpg */; };
 		3BF88CAB11E54B4800C9FC43 /* cover_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3BF88CA211E54B4800C9FC43 /* cover_2.jpg */; };
 		3BF88CAC11E54B4800C9FC43 /* cover_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3BF88CA311E54B4800C9FC43 /* cover_3.jpg */; };
@@ -93,6 +93,7 @@
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Shared/main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* universaldemo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = universaldemo_Prefix.pch; sourceTree = "<group>"; };
+		3BBF821D12958DE2008AB2B1 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = ../src/TapkuLibrary.bundle; sourceTree = SOURCE_ROOT; };
 		3BD32EFF125CE77300BE5EAF /* AlertsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertsViewController.h; sourceTree = "<group>"; };
 		3BD32F00125CE77300BE5EAF /* AlertsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertsViewController.m; sourceTree = "<group>"; };
 		3BD32F20125CED5200BE5EAF /* beer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beer.png; sourceTree = "<group>"; };
@@ -126,7 +127,6 @@
 		3BF88BBE11E5478100C9FC43 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = ../src/TapkuLibrary.xcodeproj; sourceTree = SOURCE_ROOT; };
 		3BF88BEB11E547A000C9FC43 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3BF88C0011E547A800C9FC43 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		3BF88C4911E54AD400C9FC43 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = ../src/TapkuLibrary.bundle; sourceTree = SOURCE_ROOT; };
 		3BF88CA111E54B4800C9FC43 /* cover_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_1.jpg; sourceTree = "<group>"; };
 		3BF88CA211E54B4800C9FC43 /* cover_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_2.jpg; sourceTree = "<group>"; };
 		3BF88CA311E54B4800C9FC43 /* cover_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_3.jpg; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 		28EEBF621118D79A00187D67 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				3BF88C4911E54AD400C9FC43 /* TapkuLibrary.bundle */,
+				3BBF821D12958DE2008AB2B1 /* TapkuLibrary.bundle */,
 				3BF88B1711E544FF00C9FC43 /* Images */,
 				8D1107310486CEB800E47090 /* universaldemo-Info.plist */,
 			);
@@ -502,7 +502,6 @@
 				3BF88B1D11E544FF00C9FC43 /* icon_57.png in Resources */,
 				3BF88B1E11E544FF00C9FC43 /* icon_74.png in Resources */,
 				3BF88B1F11E544FF00C9FC43 /* launch_iphone.png in Resources */,
-				3BF88C4A11E54AD400C9FC43 /* TapkuLibrary.bundle in Resources */,
 				3BF88CAA11E54B4800C9FC43 /* cover_1.jpg in Resources */,
 				3BF88CAB11E54B4800C9FC43 /* cover_2.jpg in Resources */,
 				3BF88CAC11E54B4800C9FC43 /* cover_3.jpg in Resources */,
@@ -523,6 +522,7 @@
 				3BF88F9811E57C9000C9FC43 /* ipadcover_9.jpg in Resources */,
 				3BD32F22125CED5200BE5EAF /* beer.png in Resources */,
 				3BD32F23125CED5200BE5EAF /* beer@2x.png in Resources */,
+				3BBF821E12958DE2008AB2B1 /* TapkuLibrary.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
