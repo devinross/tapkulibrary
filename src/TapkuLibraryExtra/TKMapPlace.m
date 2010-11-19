@@ -1,3 +1,7 @@
+//
+//  TKMapPlace.m
+//  Created by Devin Ross on 4/15/09.
+//
 /*
  
  tapku.com || http://github.com/devinross/tapkulibrary
@@ -25,50 +29,20 @@
  
  */
 
-#import "TKGlobal.h"
-
-// ADDITIONS
-#import "NSString+TKCategory.h"
-#import "NSDate+TKCategory.h"
-#import "NSArray+TKCategory.h"
-#import "UIView+TKCategory.h"
-#import "UIImage+TKCategory.h"
-#import "UIScrollview+TKCategory.h"
-
-#import "TKWindow.h"
-#import "TKTableViewController.h"
-#import "TKEmptyView.h"
-#import "TKImageCenter.h"
-
-// CELLS
-#import "TKLabelCell.h"
-#import "TKLabelTextViewCell.h"
-#import "TKLabelTextFieldCell.h"
-#import "TKLabelFieldCell.h"
-#import "TKLabelSwitchCell.h"
-#import "TKButtonCell.h"
-#import "TKTextViewCell.h"
-#import "TKSwitchCell.h"
-#import "TKIndicatorCell.h"
-
-// HUD
-#import "TKLoadingView.h"
-#import "TKAlertCenter.h"
-#import "TKProgressBarView.h"
-#import "TKProgressAlertView.h"
-
-// GRAPH
-#import "TKGraphController.h"
-#import "TKGraphView.h"
+#import "TKMapPlace.h"
 
 
-// Calendar
-#import "TKCalendarMonthViewController.h"
-#import "TKCalendarMonthTableViewController.h"
-#import "TKCalendarMonthView.h"
-#import "ODCalendarDayViewController.h"
+@implementation TKMapPlace
+@synthesize title,coordinate, color;
 
-// Coverflow
-#import "TKCoverflowView.h"
-#import "TKCoverflowCoverView.h"
+- (id)init{
+	[super init];
+	return self;
+}
 
+- (void)dealloc {
+	[title release];
+	[super dealloc];
+}
+
+@end

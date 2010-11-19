@@ -14,6 +14,7 @@
 		2860E32E111B888700E27156 /* AppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E32C111B888700E27156 /* AppDelegate_iPad.m */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		3BBF821E12958DE2008AB2B1 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3BBF821D12958DE2008AB2B1 /* TapkuLibrary.bundle */; };
+		3BBF893C129707C2008AB2B1 /* libTapkuLibraryExtra.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF88BC611E5478100C9FC43 /* libTapkuLibraryExtra.a */; };
 		3BD32F01125CE77300BE5EAF /* AlertsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD32F00125CE77300BE5EAF /* AlertsViewController.m */; };
 		3BD32F22125CED5200BE5EAF /* beer.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BD32F20125CED5200BE5EAF /* beer.png */; };
 		3BD32F23125CED5200BE5EAF /* beer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BD32F21125CED5200BE5EAF /* beer@2x.png */; };
@@ -59,6 +60,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3BBF89A61297087E008AB2B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3BF88BBE11E5478100C9FC43 /* TapkuLibrary.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B6EDD511154791900E454DA /* TapkuLibraryExtra */;
+			remoteInfo = TapkuLibraryExtra;
+		};
 		3BF88BC311E5478100C9FC43 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3BF88BBE11E5478100C9FC43 /* TapkuLibrary.xcodeproj */;
@@ -84,7 +92,7 @@
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D6058910D05DD3D006BFB54 /* universaldemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = universaldemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* unviersaldemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = unviersaldemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2860E325111B887F00E27156 /* AppDelegate_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate_iPhone.h; sourceTree = "<group>"; };
 		2860E326111B887F00E27156 /* AppDelegate_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate_iPhone.m; sourceTree = "<group>"; };
@@ -165,6 +173,7 @@
 				3BF88BC711E5478500C9FC43 /* libTapkuLibrary.a in Frameworks */,
 				3BF88C0111E547A800C9FC43 /* MapKit.framework in Frameworks */,
 				3BF88C1B11E547BE00C9FC43 /* QuartzCore.framework in Frameworks */,
+				3BBF893C129707C2008AB2B1 /* libTapkuLibraryExtra.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,7 +183,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* universaldemo.app */,
+				1D6058910D05DD3D006BFB54 /* unviersaldemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -440,10 +449,11 @@
 			);
 			dependencies = (
 				3BF88BC911E5478E00C9FC43 /* PBXTargetDependency */,
+				3BBF89A71297087E008AB2B1 /* PBXTargetDependency */,
 			);
 			name = universaldemo;
 			productName = unviersaldemo;
-			productReference = 1D6058910D05DD3D006BFB54 /* universaldemo.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* unviersaldemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -557,6 +567,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3BBF89A71297087E008AB2B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TapkuLibraryExtra;
+			targetProxy = 3BBF89A61297087E008AB2B1 /* PBXContainerItemProxy */;
+		};
 		3BF88BC911E5478E00C9FC43 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = TapkuLibrary;

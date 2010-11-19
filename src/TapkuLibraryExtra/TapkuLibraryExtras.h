@@ -25,50 +25,11 @@
  
  */
 
-#import "TKGlobal.h"
-
-// ADDITIONS
-#import "NSString+TKCategory.h"
-#import "NSDate+TKCategory.h"
-#import "NSArray+TKCategory.h"
-#import "UIView+TKCategory.h"
-#import "UIImage+TKCategory.h"
-#import "UIScrollview+TKCategory.h"
-
-#import "TKWindow.h"
-#import "TKTableViewController.h"
-#import "TKEmptyView.h"
-#import "TKImageCenter.h"
-
-// CELLS
-#import "TKLabelCell.h"
-#import "TKLabelTextViewCell.h"
-#import "TKLabelTextFieldCell.h"
-#import "TKLabelFieldCell.h"
-#import "TKLabelSwitchCell.h"
-#import "TKButtonCell.h"
-#import "TKTextViewCell.h"
-#import "TKSwitchCell.h"
-#import "TKIndicatorCell.h"
-
-// HUD
-#import "TKLoadingView.h"
-#import "TKAlertCenter.h"
-#import "TKProgressBarView.h"
-#import "TKProgressAlertView.h"
-
-// GRAPH
-#import "TKGraphController.h"
-#import "TKGraphView.h"
+// TAPKU LIBRARY EXTRA holds classes that require additional resources (ie. JSON & MapKit)
 
 
-// Calendar
-#import "TKCalendarMonthViewController.h"
-#import "TKCalendarMonthTableViewController.h"
-#import "TKCalendarMonthView.h"
-#import "ODCalendarDayViewController.h"
+#import "NSMutableURLRequest+TKCategory.h"
+#import "NSDictionary+TKCategory.h"
 
-// Coverflow
-#import "TKCoverflowView.h"
-#import "TKCoverflowCoverView.h"
-
+#import "TKMapView.h"
+#import "TKMapPlace.h"

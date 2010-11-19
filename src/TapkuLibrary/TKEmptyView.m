@@ -161,20 +161,21 @@
 - (id) initWithFrame:(CGRect)frame {
 	return [self initWithFrame:frame emptyViewImage:TKEmptyViewImageStar title:@"" subtitle:@""];
 }
+- (void) dealloc {
+	
+	[subtitleLabel release];
+	[titleLabel release];
+	[imageView release];
+	
+    [super dealloc];
+}
+
 
 - (void) drawRect:(CGRect)rect{
-	
-	
-	//CGContextRef context = UIGraphicsGetCurrentContext();
 
-	
 	UIColor *top = [UIColor colorWithRed:242/255.0 green:244/255.0 blue:246/255.0 alpha:1];
 	UIColor *bot = [UIColor colorWithRed:225/255.0 green:229/255.0 blue:235/255.0 alpha:1];
-	
 	[UIView drawGradientInRect:rect withColors:[NSArray arrayWithObjects:top,bot,nil]];
-	
-
-
 }
 
 - (void) layoutSubviews{
@@ -231,14 +232,6 @@
 }
 
 
-- (void) dealloc {
-	
-	[subtitleLabel release];
-	[titleLabel release];
-	[imageView release];
-	
-    [super dealloc];
-}
 
 
 @end

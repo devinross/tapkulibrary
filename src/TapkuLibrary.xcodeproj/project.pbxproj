@@ -9,12 +9,6 @@
 /* Begin PBXBuildFile section */
 		3B1DCECA1289B84400884CDF /* NSArray+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B1DCEC81289B84400884CDF /* NSArray+TKCategory.h */; };
 		3B1DCECB1289B84400884CDF /* NSArray+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1DCEC91289B84400884CDF /* NSArray+TKCategory.m */; };
-		3B6EDD591154793800E454DA /* TapkuLibraryExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B679C26115244FE00484D54 /* TapkuLibraryExtras.h */; };
-		3B6EDD5D1154794300E454DA /* NSDictionary+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BA5CE14114472990027D844 /* NSDictionary+TKCategory.h */; };
-		3B6EDD5E1154794300E454DA /* NSDictionary+TKCategory.m in Headers */ = {isa = PBXBuildFile; fileRef = 3BA5CE15114472990027D844 /* NSDictionary+TKCategory.m */; };
-		3B6EDD5F1154794300E454DA /* NSMutableURLRequest+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BA5CE16114472990027D844 /* NSMutableURLRequest+TKCategory.h */; };
-		3B6EDD601154794300E454DA /* NSMutableURLRequest+TKCategory.m in Headers */ = {isa = PBXBuildFile; fileRef = 3BA5CE17114472990027D844 /* NSMutableURLRequest+TKCategory.m */; };
-		3B6EDD8B11547A2C00E454DA /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libTapkuLibrary.a */; };
 		3B6EDDD311547BEB00E454DA /* TapkuLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A1B10953E5200F235F1 /* TapkuLibrary.h */; };
 		3B6EDDD611547BF800E454DA /* TKGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A1E10953E5200F235F1 /* TKGlobal.m */; };
 		3B6EDDDA11547C1100E454DA /* UIView+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A2210953E5200F235F1 /* UIView+TKCategory.m */; };
@@ -50,10 +44,6 @@
 		3B6EDDFB11547C3500E454DA /* TKGraphController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A5410953E5200F235F1 /* TKGraphController.m */; };
 		3B6EDDFC11547C3800E454DA /* TKEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A4F10953E5200F235F1 /* TKEmptyView.m */; };
 		3B6EDDFD11547C3800E454DA /* TKEmptyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A4E10953E5200F235F1 /* TKEmptyView.h */; };
-		3B6EDDFF11547C3B00E454DA /* TKMapView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A4210953E5200F235F1 /* TKMapView.h */; };
-		3B6EDE0011547C3B00E454DA /* TKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A4310953E5200F235F1 /* TKMapView.m */; };
-		3B6EDE0111547C3C00E454DA /* TKMapPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A4510953E5200F235F1 /* TKMapPlace.m */; };
-		3B6EDE0211547C3C00E454DA /* TKMapPlace.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A4410953E5200F235F1 /* TKMapPlace.h */; };
 		3B6EDE0911547C4400E454DA /* TKLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A4010953E5200F235F1 /* TKLoadingView.m */; };
 		3B6EDE0A11547C4400E454DA /* TKLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A3F10953E5200F235F1 /* TKLoadingView.h */; };
 		3B6EDE0B11547C4600E454DA /* TKTextViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A3610953E5200F235F1 /* TKTextViewCell.m */; };
@@ -84,11 +74,47 @@
 		3BAC995B10953DF400F235F1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995610953DF400F235F1 /* CoreGraphics.framework */; };
 		3BAC995C10953DF400F235F1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995710953DF400F235F1 /* UIKit.framework */; };
 		3BAC995D10953DF400F235F1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995810953DF400F235F1 /* QuartzCore.framework */; };
-		3BAC995E10953DF400F235F1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995910953DF400F235F1 /* MapKit.framework */; };
 		3BB3A2241178185B00553093 /* TKImageCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB3A2221178185B00553093 /* TKImageCenter.m */; };
 		3BB3A2251178185B00553093 /* TKImageCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BB3A2231178185B00553093 /* TKImageCenter.h */; };
 		3BB92D2211896022002FA0F9 /* TKProgressBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BB92D2011896022002FA0F9 /* TKProgressBarView.h */; };
 		3BB92D2311896022002FA0F9 /* TKProgressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB92D2111896022002FA0F9 /* TKProgressBarView.m */; };
+		3BBF874B1296E976008AB2B1 /* TKTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF87491296E976008AB2B1 /* TKTableViewController.h */; };
+		3BBF874C1296E976008AB2B1 /* TKTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF874A1296E976008AB2B1 /* TKTableViewController.m */; };
+		3BBF88AC1297048A008AB2B1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995910953DF400F235F1 /* MapKit.framework */; };
+		3BBF890C1297061F008AB2B1 /* NSDictionary+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89031297061F008AB2B1 /* NSDictionary+TKCategory.h */; };
+		3BBF890D1297061F008AB2B1 /* NSDictionary+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89041297061F008AB2B1 /* NSDictionary+TKCategory.m */; };
+		3BBF890E1297061F008AB2B1 /* NSMutableURLRequest+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89051297061F008AB2B1 /* NSMutableURLRequest+TKCategory.h */; };
+		3BBF890F1297061F008AB2B1 /* NSMutableURLRequest+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89061297061F008AB2B1 /* NSMutableURLRequest+TKCategory.m */; };
+		3BBF89101297061F008AB2B1 /* TapkuLibraryExtras.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89071297061F008AB2B1 /* TapkuLibraryExtras.h */; };
+		3BBF89111297061F008AB2B1 /* TKMapPlace.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89081297061F008AB2B1 /* TKMapPlace.h */; };
+		3BBF89121297061F008AB2B1 /* TKMapPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89091297061F008AB2B1 /* TKMapPlace.m */; };
+		3BBF89131297061F008AB2B1 /* TKMapView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF890A1297061F008AB2B1 /* TKMapView.h */; };
+		3BBF89141297061F008AB2B1 /* TKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF890B1297061F008AB2B1 /* TKMapView.m */; };
+		3BBF89881297082B008AB2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		3BBF89891297082B008AB2B1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995710953DF400F235F1 /* UIKit.framework */; };
+		3BBF898A1297082B008AB2B1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995510953DF400F235F1 /* SystemConfiguration.framework */; };
+		3BBF898B1297082B008AB2B1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995610953DF400F235F1 /* CoreGraphics.framework */; };
+		3BBF898C1297082B008AB2B1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995810953DF400F235F1 /* QuartzCore.framework */; };
+		3BBF89E91297095F008AB2B1 /* CDataScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89D31297095F008AB2B1 /* CDataScanner.h */; };
+		3BBF89EA1297095F008AB2B1 /* CDataScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89D41297095F008AB2B1 /* CDataScanner.m */; };
+		3BBF89EB1297095F008AB2B1 /* CDataScanner_Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89D61297095F008AB2B1 /* CDataScanner_Extensions.h */; };
+		3BBF89EC1297095F008AB2B1 /* CDataScanner_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89D71297095F008AB2B1 /* CDataScanner_Extensions.m */; };
+		3BBF89ED1297095F008AB2B1 /* NSCharacterSet_Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89D81297095F008AB2B1 /* NSCharacterSet_Extensions.h */; };
+		3BBF89EE1297095F008AB2B1 /* NSCharacterSet_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89D91297095F008AB2B1 /* NSCharacterSet_Extensions.m */; };
+		3BBF89EF1297095F008AB2B1 /* NSDictionary_JSONExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89DA1297095F008AB2B1 /* NSDictionary_JSONExtensions.h */; };
+		3BBF89F01297095F008AB2B1 /* NSDictionary_JSONExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89DB1297095F008AB2B1 /* NSDictionary_JSONExtensions.m */; };
+		3BBF89F11297095F008AB2B1 /* NSScanner_Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89DC1297095F008AB2B1 /* NSScanner_Extensions.h */; };
+		3BBF89F21297095F008AB2B1 /* NSScanner_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89DD1297095F008AB2B1 /* NSScanner_Extensions.m */; };
+		3BBF89F31297095F008AB2B1 /* CJSONDataSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89DF1297095F008AB2B1 /* CJSONDataSerializer.h */; };
+		3BBF89F41297095F008AB2B1 /* CJSONDataSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89E01297095F008AB2B1 /* CJSONDataSerializer.m */; };
+		3BBF89F51297095F008AB2B1 /* CJSONDeserializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89E11297095F008AB2B1 /* CJSONDeserializer.h */; };
+		3BBF89F61297095F008AB2B1 /* CJSONDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89E21297095F008AB2B1 /* CJSONDeserializer.m */; };
+		3BBF89F71297095F008AB2B1 /* CJSONScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89E31297095F008AB2B1 /* CJSONScanner.h */; };
+		3BBF89F81297095F008AB2B1 /* CJSONScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89E41297095F008AB2B1 /* CJSONScanner.m */; };
+		3BBF89F91297095F008AB2B1 /* CJSONSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89E51297095F008AB2B1 /* CJSONSerializer.h */; };
+		3BBF89FA1297095F008AB2B1 /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89E61297095F008AB2B1 /* CJSONSerializer.m */; };
+		3BBF89FB1297095F008AB2B1 /* CSerializedJSONData.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89E71297095F008AB2B1 /* CSerializedJSONData.h */; };
+		3BBF89FC1297095F008AB2B1 /* CSerializedJSONData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89E81297095F008AB2B1 /* CSerializedJSONData.m */; };
 		3BD32972125B753900BE5EAF /* TKAlertCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BD32970125B753900BE5EAF /* TKAlertCenter.h */; };
 		3BD32973125B753900BE5EAF /* TKAlertCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD32971125B753900BE5EAF /* TKAlertCenter.m */; };
 		3BE8FF8512945C4400DBF3FC /* UIScrollview+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BE8FF8312945C4400DBF3FC /* UIScrollview+TKCategory.h */; };
@@ -101,14 +127,6 @@
 		3B1DCEC91289B84400884CDF /* NSArray+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+TKCategory.m"; sourceTree = "<group>"; };
 		3B3991EE10CED8FD00B8FF4F /* TKGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKGraphView.h; sourceTree = "<group>"; };
 		3B3991EF10CED8FD00B8FF4F /* TKGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKGraphView.m; sourceTree = "<group>"; };
-		3B679C26115244FE00484D54 /* TapkuLibraryExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapkuLibraryExtras.h; sourceTree = "<group>"; };
-		3B6EDCAE1154783900E454DA /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
-		3B6EDCAF1154783900E454DA /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
-		3B6EDCB01154783900E454DA /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
-		3B6EDCB11154783900E454DA /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
-		3B6EDCB21154783900E454DA /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
-		3B6EDCB31154783900E454DA /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
-		3B6EDCB41154783900E454DA /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		3B6EDD521154791900E454DA /* libTapkuLibraryExtra.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTapkuLibraryExtra.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B879FC4109BFC07002012FD /* TKCalendarMonthTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCalendarMonthTableViewController.h; sourceTree = "<group>"; };
 		3B879FC5109BFC07002012FD /* TKCalendarMonthTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCalendarMonthTableViewController.m; sourceTree = "<group>"; };
@@ -120,10 +138,6 @@
 		3B9724BA11C54C5C0027A97F /* TKCalendarMonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCalendarMonthView.m; sourceTree = "<group>"; };
 		3BA577B81199DF1600ECB85B /* TKProgressAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKProgressAlertView.h; sourceTree = "<group>"; };
 		3BA577B91199DF1600ECB85B /* TKProgressAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKProgressAlertView.m; sourceTree = "<group>"; };
-		3BA5CE14114472990027D844 /* NSDictionary+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+TKCategory.h"; sourceTree = "<group>"; };
-		3BA5CE15114472990027D844 /* NSDictionary+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+TKCategory.m"; sourceTree = "<group>"; };
-		3BA5CE16114472990027D844 /* NSMutableURLRequest+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+TKCategory.h"; sourceTree = "<group>"; };
-		3BA5CE17114472990027D844 /* NSMutableURLRequest+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+TKCategory.m"; sourceTree = "<group>"; };
 		3BAC995510953DF400F235F1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3BAC995610953DF400F235F1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3BAC995710953DF400F235F1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -170,10 +184,6 @@
 		3BAC9A3D10953E5200F235F1 /* ABTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABTableViewCell.m; sourceTree = "<group>"; };
 		3BAC9A3F10953E5200F235F1 /* TKLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKLoadingView.h; sourceTree = "<group>"; };
 		3BAC9A4010953E5200F235F1 /* TKLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKLoadingView.m; sourceTree = "<group>"; };
-		3BAC9A4210953E5200F235F1 /* TKMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKMapView.h; sourceTree = "<group>"; };
-		3BAC9A4310953E5200F235F1 /* TKMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKMapView.m; sourceTree = "<group>"; };
-		3BAC9A4410953E5200F235F1 /* TKMapPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKMapPlace.h; sourceTree = "<group>"; };
-		3BAC9A4510953E5200F235F1 /* TKMapPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKMapPlace.m; sourceTree = "<group>"; };
 		3BAC9A4E10953E5200F235F1 /* TKEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKEmptyView.h; sourceTree = "<group>"; };
 		3BAC9A4F10953E5200F235F1 /* TKEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKEmptyView.m; sourceTree = "<group>"; };
 		3BAC9A5310953E5200F235F1 /* TKGraphController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKGraphController.h; sourceTree = "<group>"; };
@@ -182,6 +192,39 @@
 		3BB3A2231178185B00553093 /* TKImageCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKImageCenter.h; sourceTree = "<group>"; };
 		3BB92D2011896022002FA0F9 /* TKProgressBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKProgressBarView.h; sourceTree = "<group>"; };
 		3BB92D2111896022002FA0F9 /* TKProgressBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKProgressBarView.m; sourceTree = "<group>"; };
+		3BBF87491296E976008AB2B1 /* TKTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKTableViewController.h; sourceTree = "<group>"; };
+		3BBF874A1296E976008AB2B1 /* TKTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKTableViewController.m; sourceTree = "<group>"; };
+		3BBF89031297061F008AB2B1 /* NSDictionary+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+TKCategory.h"; path = "TapkuLibraryExtra/NSDictionary+TKCategory.h"; sourceTree = SOURCE_ROOT; };
+		3BBF89041297061F008AB2B1 /* NSDictionary+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+TKCategory.m"; path = "TapkuLibraryExtra/NSDictionary+TKCategory.m"; sourceTree = SOURCE_ROOT; };
+		3BBF89051297061F008AB2B1 /* NSMutableURLRequest+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMutableURLRequest+TKCategory.h"; path = "TapkuLibraryExtra/NSMutableURLRequest+TKCategory.h"; sourceTree = SOURCE_ROOT; };
+		3BBF89061297061F008AB2B1 /* NSMutableURLRequest+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMutableURLRequest+TKCategory.m"; path = "TapkuLibraryExtra/NSMutableURLRequest+TKCategory.m"; sourceTree = SOURCE_ROOT; };
+		3BBF89071297061F008AB2B1 /* TapkuLibraryExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TapkuLibraryExtras.h; path = ../TapkuLibraryExtra/TapkuLibraryExtras.h; sourceTree = "<group>"; };
+		3BBF89081297061F008AB2B1 /* TKMapPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKMapPlace.h; path = TapkuLibraryExtra/TKMapPlace.h; sourceTree = SOURCE_ROOT; };
+		3BBF89091297061F008AB2B1 /* TKMapPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TKMapPlace.m; path = TapkuLibraryExtra/TKMapPlace.m; sourceTree = SOURCE_ROOT; };
+		3BBF890A1297061F008AB2B1 /* TKMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TKMapView.h; path = TapkuLibraryExtra/TKMapView.h; sourceTree = SOURCE_ROOT; };
+		3BBF890B1297061F008AB2B1 /* TKMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TKMapView.m; path = TapkuLibraryExtra/TKMapView.m; sourceTree = SOURCE_ROOT; };
+		3BBF89D01297095F008AB2B1 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		3BBF89D11297095F008AB2B1 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		3BBF89D31297095F008AB2B1 /* CDataScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataScanner.h; sourceTree = "<group>"; };
+		3BBF89D41297095F008AB2B1 /* CDataScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDataScanner.m; sourceTree = "<group>"; };
+		3BBF89D61297095F008AB2B1 /* CDataScanner_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataScanner_Extensions.h; sourceTree = "<group>"; };
+		3BBF89D71297095F008AB2B1 /* CDataScanner_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDataScanner_Extensions.m; sourceTree = "<group>"; };
+		3BBF89D81297095F008AB2B1 /* NSCharacterSet_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSCharacterSet_Extensions.h; sourceTree = "<group>"; };
+		3BBF89D91297095F008AB2B1 /* NSCharacterSet_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSCharacterSet_Extensions.m; sourceTree = "<group>"; };
+		3BBF89DA1297095F008AB2B1 /* NSDictionary_JSONExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionary_JSONExtensions.h; sourceTree = "<group>"; };
+		3BBF89DB1297095F008AB2B1 /* NSDictionary_JSONExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionary_JSONExtensions.m; sourceTree = "<group>"; };
+		3BBF89DC1297095F008AB2B1 /* NSScanner_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSScanner_Extensions.h; sourceTree = "<group>"; };
+		3BBF89DD1297095F008AB2B1 /* NSScanner_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSScanner_Extensions.m; sourceTree = "<group>"; };
+		3BBF89DF1297095F008AB2B1 /* CJSONDataSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONDataSerializer.h; sourceTree = "<group>"; };
+		3BBF89E01297095F008AB2B1 /* CJSONDataSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONDataSerializer.m; sourceTree = "<group>"; };
+		3BBF89E11297095F008AB2B1 /* CJSONDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONDeserializer.h; sourceTree = "<group>"; };
+		3BBF89E21297095F008AB2B1 /* CJSONDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONDeserializer.m; sourceTree = "<group>"; };
+		3BBF89E31297095F008AB2B1 /* CJSONScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONScanner.h; sourceTree = "<group>"; };
+		3BBF89E41297095F008AB2B1 /* CJSONScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONScanner.m; sourceTree = "<group>"; };
+		3BBF89E51297095F008AB2B1 /* CJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONSerializer.h; sourceTree = "<group>"; };
+		3BBF89E61297095F008AB2B1 /* CJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONSerializer.m; sourceTree = "<group>"; };
+		3BBF89E71297095F008AB2B1 /* CSerializedJSONData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSerializedJSONData.h; sourceTree = "<group>"; };
+		3BBF89E81297095F008AB2B1 /* CSerializedJSONData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSerializedJSONData.m; sourceTree = "<group>"; };
 		3BD32970125B753900BE5EAF /* TKAlertCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAlertCenter.h; sourceTree = "<group>"; };
 		3BD32971125B753900BE5EAF /* TKAlertCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAlertCenter.m; sourceTree = "<group>"; };
 		3BE8FF8312945C4400DBF3FC /* UIScrollview+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollview+TKCategory.h"; sourceTree = "<group>"; };
@@ -200,7 +243,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B6EDD8B11547A2C00E454DA /* libTapkuLibrary.a in Frameworks */,
+				3BBF89881297082B008AB2B1 /* Foundation.framework in Frameworks */,
+				3BBF89891297082B008AB2B1 /* UIKit.framework in Frameworks */,
+				3BBF898A1297082B008AB2B1 /* SystemConfiguration.framework in Frameworks */,
+				3BBF898B1297082B008AB2B1 /* CoreGraphics.framework in Frameworks */,
+				3BBF898C1297082B008AB2B1 /* QuartzCore.framework in Frameworks */,
+				3BBF88AC1297048A008AB2B1 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,7 +261,6 @@
 				3BAC995B10953DF400F235F1 /* CoreGraphics.framework in Frameworks */,
 				3BAC995C10953DF400F235F1 /* UIKit.framework in Frameworks */,
 				3BAC995D10953DF400F235F1 /* QuartzCore.framework in Frameworks */,
-				3BAC995E10953DF400F235F1 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				3BAC98C910953DCC00F235F1 /* TapkuLibrary */,
+				3BAC9A4110953E5200F235F1 /* TapkuLibraryExtra */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
@@ -243,13 +291,13 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3B6EDCAD1154783900E454DA /* JSON */,
+				3BBF89CF1297095F008AB2B1 /* TouchJSON */,
+				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
+				3BAC995710953DF400F235F1 /* UIKit.framework */,
 				3BAC995510953DF400F235F1 /* SystemConfiguration.framework */,
 				3BAC995610953DF400F235F1 /* CoreGraphics.framework */,
-				3BAC995710953DF400F235F1 /* UIKit.framework */,
 				3BAC995810953DF400F235F1 /* QuartzCore.framework */,
 				3BAC995910953DF400F235F1 /* MapKit.framework */,
-				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -260,32 +308,6 @@
 				AA747D9E0F9514B9006C5449 /* TapkuLibrary_Prefix.pch */,
 			);
 			name = "Other Sources";
-			sourceTree = "<group>";
-		};
-		3B1DCEA81289B40600884CDF /* Extras */ = {
-			isa = PBXGroup;
-			children = (
-				3BA5CE14114472990027D844 /* NSDictionary+TKCategory.h */,
-				3BA5CE15114472990027D844 /* NSDictionary+TKCategory.m */,
-				3BA5CE16114472990027D844 /* NSMutableURLRequest+TKCategory.h */,
-				3BA5CE17114472990027D844 /* NSMutableURLRequest+TKCategory.m */,
-			);
-			name = Extras;
-			sourceTree = "<group>";
-		};
-		3B6EDCAD1154783900E454DA /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				3B6EDCAE1154783900E454DA /* JSON.h */,
-				3B6EDCAF1154783900E454DA /* NSObject+SBJSON.h */,
-				3B6EDCB01154783900E454DA /* NSString+SBJSON.h */,
-				3B6EDCB11154783900E454DA /* SBJSON.h */,
-				3B6EDCB21154783900E454DA /* SBJsonBase.h */,
-				3B6EDCB31154783900E454DA /* SBJsonParser.h */,
-				3B6EDCB41154783900E454DA /* SBJsonWriter.h */,
-			);
-			name = JSON;
-			path = Frameworks/JSON;
 			sourceTree = "<group>";
 		};
 		3B8B591810F0816300EABA45 /* Coverflow */ = {
@@ -303,18 +325,8 @@
 			isa = PBXGroup;
 			children = (
 				3BAC9A1B10953E5200F235F1 /* TapkuLibrary.h */,
-				3B679C26115244FE00484D54 /* TapkuLibraryExtras.h */,
-				3BAC9A1C10953E5200F235F1 /* Global */,
-				3BB3A1D1117814BC00553093 /* Additions */,
-				3BAC99F910953E2400F235F1 /* Calendar */,
-				3B8B591810F0816300EABA45 /* Coverflow */,
-				3BAC9A5010953E5200F235F1 /* Graph */,
-				3BAC9A3E10953E5200F235F1 /* HUD */,
-				3BB3A2261178186100553093 /* Image Center */,
-				3BAC9A2510953E5200F235F1 /* Cells */,
-				3BAC9A4D10953E5200F235F1 /* Empty View */,
-				3BB3A1D2117814C600553093 /* Window */,
-				3BAC9A4110953E5200F235F1 /* Map */,
+				3BBF8A4012970B10008AB2B1 /* Base */,
+				3BBF8A4112970B3E008AB2B1 /* UI */,
 			);
 			path = TapkuLibrary;
 			sourceTree = "<group>";
@@ -341,15 +353,6 @@
 				3BAC9A0810953E2400F235F1 /* TapDetectingView.m */,
 			);
 			name = Day;
-			sourceTree = "<group>";
-		};
-		3BAC9A1C10953E5200F235F1 /* Global */ = {
-			isa = PBXGroup;
-			children = (
-				3BAC9A1D10953E5200F235F1 /* TKGlobal.h */,
-				3BAC9A1E10953E5200F235F1 /* TKGlobal.m */,
-			);
-			name = Global;
 			sourceTree = "<group>";
 		};
 		3BAC9A2510953E5200F235F1 /* Cells */ = {
@@ -402,15 +405,15 @@
 			name = HUD;
 			sourceTree = "<group>";
 		};
-		3BAC9A4110953E5200F235F1 /* Map */ = {
+		3BAC9A4110953E5200F235F1 /* TapkuLibraryExtra */ = {
 			isa = PBXGroup;
 			children = (
-				3BAC9A4210953E5200F235F1 /* TKMapView.h */,
-				3BAC9A4310953E5200F235F1 /* TKMapView.m */,
-				3BAC9A4410953E5200F235F1 /* TKMapPlace.h */,
-				3BAC9A4510953E5200F235F1 /* TKMapPlace.m */,
+				3BBF89071297061F008AB2B1 /* TapkuLibraryExtras.h */,
+				3BBF89161297062E008AB2B1 /* Additions */,
+				3BBF891512970627008AB2B1 /* Map */,
 			);
-			name = Map;
+			name = TapkuLibraryExtra;
+			path = TapkuLibrary;
 			sourceTree = "<group>";
 		};
 		3BAC9A4D10953E5200F235F1 /* Empty View */ = {
@@ -448,18 +451,8 @@
 				3BAC9A2010953E5200F235F1 /* UIImage+TKCategory.m */,
 				3BE8FF8312945C4400DBF3FC /* UIScrollview+TKCategory.h */,
 				3BE8FF8412945C4400DBF3FC /* UIScrollview+TKCategory.m */,
-				3B1DCEA81289B40600884CDF /* Extras */,
 			);
 			name = Additions;
-			sourceTree = "<group>";
-		};
-		3BB3A1D2117814C600553093 /* Window */ = {
-			isa = PBXGroup;
-			children = (
-				3BEAE08E1096C61A00A0A372 /* TKWindow.h */,
-				3BEAE08F1096C61A00A0A372 /* TKWindow.m */,
-			);
-			name = Window;
 			sourceTree = "<group>";
 		};
 		3BB3A2261178186100553093 /* Image Center */ = {
@@ -469,6 +462,110 @@
 				3BB3A2221178185B00553093 /* TKImageCenter.m */,
 			);
 			name = "Image Center";
+			sourceTree = "<group>";
+		};
+		3BBF891512970627008AB2B1 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				3BBF89081297061F008AB2B1 /* TKMapPlace.h */,
+				3BBF89091297061F008AB2B1 /* TKMapPlace.m */,
+				3BBF890A1297061F008AB2B1 /* TKMapView.h */,
+				3BBF890B1297061F008AB2B1 /* TKMapView.m */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		3BBF89161297062E008AB2B1 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				3BBF89031297061F008AB2B1 /* NSDictionary+TKCategory.h */,
+				3BBF89041297061F008AB2B1 /* NSDictionary+TKCategory.m */,
+				3BBF89051297061F008AB2B1 /* NSMutableURLRequest+TKCategory.h */,
+				3BBF89061297061F008AB2B1 /* NSMutableURLRequest+TKCategory.m */,
+			);
+			name = Additions;
+			sourceTree = "<group>";
+		};
+		3BBF89CF1297095F008AB2B1 /* TouchJSON */ = {
+			isa = PBXGroup;
+			children = (
+				3BBF89D01297095F008AB2B1 /* LICENSE.txt */,
+				3BBF89D11297095F008AB2B1 /* README.txt */,
+				3BBF89D21297095F008AB2B1 /* Source */,
+			);
+			name = TouchJSON;
+			path = Frameworks/TouchJSON;
+			sourceTree = "<group>";
+		};
+		3BBF89D21297095F008AB2B1 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				3BBF89D31297095F008AB2B1 /* CDataScanner.h */,
+				3BBF89D41297095F008AB2B1 /* CDataScanner.m */,
+				3BBF89D51297095F008AB2B1 /* Extensions */,
+				3BBF89DE1297095F008AB2B1 /* JSON */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		3BBF89D51297095F008AB2B1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3BBF89D61297095F008AB2B1 /* CDataScanner_Extensions.h */,
+				3BBF89D71297095F008AB2B1 /* CDataScanner_Extensions.m */,
+				3BBF89D81297095F008AB2B1 /* NSCharacterSet_Extensions.h */,
+				3BBF89D91297095F008AB2B1 /* NSCharacterSet_Extensions.m */,
+				3BBF89DA1297095F008AB2B1 /* NSDictionary_JSONExtensions.h */,
+				3BBF89DB1297095F008AB2B1 /* NSDictionary_JSONExtensions.m */,
+				3BBF89DC1297095F008AB2B1 /* NSScanner_Extensions.h */,
+				3BBF89DD1297095F008AB2B1 /* NSScanner_Extensions.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3BBF89DE1297095F008AB2B1 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				3BBF89DF1297095F008AB2B1 /* CJSONDataSerializer.h */,
+				3BBF89E01297095F008AB2B1 /* CJSONDataSerializer.m */,
+				3BBF89E11297095F008AB2B1 /* CJSONDeserializer.h */,
+				3BBF89E21297095F008AB2B1 /* CJSONDeserializer.m */,
+				3BBF89E31297095F008AB2B1 /* CJSONScanner.h */,
+				3BBF89E41297095F008AB2B1 /* CJSONScanner.m */,
+				3BBF89E51297095F008AB2B1 /* CJSONSerializer.h */,
+				3BBF89E61297095F008AB2B1 /* CJSONSerializer.m */,
+				3BBF89E71297095F008AB2B1 /* CSerializedJSONData.h */,
+				3BBF89E81297095F008AB2B1 /* CSerializedJSONData.m */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		3BBF8A4012970B10008AB2B1 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				3BAC9A1D10953E5200F235F1 /* TKGlobal.h */,
+				3BAC9A1E10953E5200F235F1 /* TKGlobal.m */,
+				3BB3A1D1117814BC00553093 /* Additions */,
+				3BBF87491296E976008AB2B1 /* TKTableViewController.h */,
+				3BBF874A1296E976008AB2B1 /* TKTableViewController.m */,
+				3BEAE08E1096C61A00A0A372 /* TKWindow.h */,
+				3BEAE08F1096C61A00A0A372 /* TKWindow.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		3BBF8A4112970B3E008AB2B1 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				3BAC99F910953E2400F235F1 /* Calendar */,
+				3B8B591810F0816300EABA45 /* Coverflow */,
+				3BAC9A4D10953E5200F235F1 /* Empty View */,
+				3BAC9A5010953E5200F235F1 /* Graph */,
+				3BAC9A3E10953E5200F235F1 /* HUD */,
+				3BB3A2261178186100553093 /* Image Center */,
+				3BAC9A2510953E5200F235F1 /* Cells */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 		3BF002FE109662E30062DA49 /* Month */ = {
@@ -491,11 +588,21 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B6EDD591154793800E454DA /* TapkuLibraryExtras.h in Headers */,
-				3B6EDD5D1154794300E454DA /* NSDictionary+TKCategory.h in Headers */,
-				3B6EDD5E1154794300E454DA /* NSDictionary+TKCategory.m in Headers */,
-				3B6EDD5F1154794300E454DA /* NSMutableURLRequest+TKCategory.h in Headers */,
-				3B6EDD601154794300E454DA /* NSMutableURLRequest+TKCategory.m in Headers */,
+				3BBF890C1297061F008AB2B1 /* NSDictionary+TKCategory.h in Headers */,
+				3BBF890E1297061F008AB2B1 /* NSMutableURLRequest+TKCategory.h in Headers */,
+				3BBF89101297061F008AB2B1 /* TapkuLibraryExtras.h in Headers */,
+				3BBF89111297061F008AB2B1 /* TKMapPlace.h in Headers */,
+				3BBF89131297061F008AB2B1 /* TKMapView.h in Headers */,
+				3BBF89E91297095F008AB2B1 /* CDataScanner.h in Headers */,
+				3BBF89EB1297095F008AB2B1 /* CDataScanner_Extensions.h in Headers */,
+				3BBF89ED1297095F008AB2B1 /* NSCharacterSet_Extensions.h in Headers */,
+				3BBF89EF1297095F008AB2B1 /* NSDictionary_JSONExtensions.h in Headers */,
+				3BBF89F11297095F008AB2B1 /* NSScanner_Extensions.h in Headers */,
+				3BBF89F31297095F008AB2B1 /* CJSONDataSerializer.h in Headers */,
+				3BBF89F51297095F008AB2B1 /* CJSONDeserializer.h in Headers */,
+				3BBF89F71297095F008AB2B1 /* CJSONScanner.h in Headers */,
+				3BBF89F91297095F008AB2B1 /* CJSONSerializer.h in Headers */,
+				3BBF89FB1297095F008AB2B1 /* CSerializedJSONData.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,8 +628,6 @@
 				3B6EDDF911547C3400E454DA /* TKGraphView.h in Headers */,
 				3B6EDDFA11547C3400E454DA /* TKGraphController.h in Headers */,
 				3B6EDDFD11547C3800E454DA /* TKEmptyView.h in Headers */,
-				3B6EDDFF11547C3B00E454DA /* TKMapView.h in Headers */,
-				3B6EDE0211547C3C00E454DA /* TKMapPlace.h in Headers */,
 				3B6EDE0A11547C4400E454DA /* TKLoadingView.h in Headers */,
 				3B6EDE0C11547C4700E454DA /* TKTextViewCell.h in Headers */,
 				3B6EDE0E11547C4800E454DA /* TKSwitchCell.h in Headers */,
@@ -541,6 +646,7 @@
 				3BD32972125B753900BE5EAF /* TKAlertCenter.h in Headers */,
 				3B1DCECA1289B84400884CDF /* NSArray+TKCategory.h in Headers */,
 				3BE8FF8512945C4400DBF3FC /* UIScrollview+TKCategory.h in Headers */,
+				3BBF874B1296E976008AB2B1 /* TKTableViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +718,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BBF890D1297061F008AB2B1 /* NSDictionary+TKCategory.m in Sources */,
+				3BBF890F1297061F008AB2B1 /* NSMutableURLRequest+TKCategory.m in Sources */,
+				3BBF89121297061F008AB2B1 /* TKMapPlace.m in Sources */,
+				3BBF89141297061F008AB2B1 /* TKMapView.m in Sources */,
+				3BBF89EA1297095F008AB2B1 /* CDataScanner.m in Sources */,
+				3BBF89EC1297095F008AB2B1 /* CDataScanner_Extensions.m in Sources */,
+				3BBF89EE1297095F008AB2B1 /* NSCharacterSet_Extensions.m in Sources */,
+				3BBF89F01297095F008AB2B1 /* NSDictionary_JSONExtensions.m in Sources */,
+				3BBF89F21297095F008AB2B1 /* NSScanner_Extensions.m in Sources */,
+				3BBF89F41297095F008AB2B1 /* CJSONDataSerializer.m in Sources */,
+				3BBF89F61297095F008AB2B1 /* CJSONDeserializer.m in Sources */,
+				3BBF89F81297095F008AB2B1 /* CJSONScanner.m in Sources */,
+				3BBF89FA1297095F008AB2B1 /* CJSONSerializer.m in Sources */,
+				3BBF89FC1297095F008AB2B1 /* CSerializedJSONData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,8 +756,6 @@
 				3B6EDDF811547C3300E454DA /* TKGraphView.m in Sources */,
 				3B6EDDFB11547C3500E454DA /* TKGraphController.m in Sources */,
 				3B6EDDFC11547C3800E454DA /* TKEmptyView.m in Sources */,
-				3B6EDE0011547C3B00E454DA /* TKMapView.m in Sources */,
-				3B6EDE0111547C3C00E454DA /* TKMapPlace.m in Sources */,
 				3B6EDE0911547C4400E454DA /* TKLoadingView.m in Sources */,
 				3B6EDE0B11547C4600E454DA /* TKTextViewCell.m in Sources */,
 				3B6EDE0D11547C4700E454DA /* TKSwitchCell.m in Sources */,
@@ -656,6 +774,7 @@
 				3BD32973125B753900BE5EAF /* TKAlertCenter.m in Sources */,
 				3B1DCECB1289B84400884CDF /* NSArray+TKCategory.m in Sources */,
 				3BE8FF8612945C4400DBF3FC /* UIScrollview+TKCategory.m in Sources */,
+				3BBF874C1296E976008AB2B1 /* TKTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,8 +795,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TapkuLibrary_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = TapkuLibrary;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
@@ -693,8 +813,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TapkuLibrary_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = TapkuLibrary;
-				SDKROOT = iphonesimulator3.0;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
@@ -708,14 +829,14 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
 				);
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Debug;
@@ -727,13 +848,14 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
 				);
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.0;
+				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Release;

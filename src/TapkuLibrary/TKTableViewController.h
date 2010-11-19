@@ -1,3 +1,7 @@
+//
+//  TKTableViewController.h
+//  Created by Devin Ross on 11/19/10.
+//
 /*
  
  tapku.com || http://github.com/devinross/tapkulibrary
@@ -25,50 +29,31 @@
  
  */
 
-#import "TKGlobal.h"
+#import <UIKit/UIKit.h>
+@class TKEmptyView;
 
-// ADDITIONS
-#import "NSString+TKCategory.h"
-#import "NSDate+TKCategory.h"
-#import "NSArray+TKCategory.h"
-#import "UIView+TKCategory.h"
-#import "UIImage+TKCategory.h"
-#import "UIScrollview+TKCategory.h"
-
-#import "TKWindow.h"
-#import "TKTableViewController.h"
-#import "TKEmptyView.h"
-#import "TKImageCenter.h"
-
-// CELLS
-#import "TKLabelCell.h"
-#import "TKLabelTextViewCell.h"
-#import "TKLabelTextFieldCell.h"
-#import "TKLabelFieldCell.h"
-#import "TKLabelSwitchCell.h"
-#import "TKButtonCell.h"
-#import "TKTextViewCell.h"
-#import "TKSwitchCell.h"
-#import "TKIndicatorCell.h"
-
-// HUD
-#import "TKLoadingView.h"
-#import "TKAlertCenter.h"
-#import "TKProgressBarView.h"
-#import "TKProgressAlertView.h"
-
-// GRAPH
-#import "TKGraphController.h"
-#import "TKGraphView.h"
+@interface TKTableViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,UISearchDisplayDelegate> {
+	
+	UITableView *_tableView;
+	TKEmptyView *_emptyView;
+	UIView *_loadingView;
+	UISearchBar *_searchBar;
+	UISearchDisplayController *_searchBarController;
+	
+	
+@private
+	UITableViewStyle _style;
+	
+}
 
 
-// Calendar
-#import "TKCalendarMonthViewController.h"
-#import "TKCalendarMonthTableViewController.h"
-#import "TKCalendarMonthView.h"
-#import "ODCalendarDayViewController.h"
+- (id) init;
+- (id) initWithStyle:(UITableViewStyle)style;
 
-// Coverflow
-#import "TKCoverflowView.h"
-#import "TKCoverflowCoverView.h"
+@property (retain,nonatomic) UITableView *tableView;
+@property (retain,nonatomic) UIView *loadingView;
+@property (retain,nonatomic) TKEmptyView *emptyView;
+@property (retain,nonatomic) UISearchBar *searchBar;
+@property (retain,nonatomic) UISearchDisplayController *searchBarController;
 
+@end

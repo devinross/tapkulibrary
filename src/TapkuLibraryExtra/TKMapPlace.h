@@ -1,3 +1,7 @@
+//
+//  TKMapPlace.h
+//  Created by Devin Ross on 4/15/09.
+//
 /*
  
  tapku.com || http://github.com/devinross/tapkulibrary
@@ -25,50 +29,17 @@
  
  */
 
-#import "TKGlobal.h"
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-// ADDITIONS
-#import "NSString+TKCategory.h"
-#import "NSDate+TKCategory.h"
-#import "NSArray+TKCategory.h"
-#import "UIView+TKCategory.h"
-#import "UIImage+TKCategory.h"
-#import "UIScrollview+TKCategory.h"
-
-#import "TKWindow.h"
-#import "TKTableViewController.h"
-#import "TKEmptyView.h"
-#import "TKImageCenter.h"
-
-// CELLS
-#import "TKLabelCell.h"
-#import "TKLabelTextViewCell.h"
-#import "TKLabelTextFieldCell.h"
-#import "TKLabelFieldCell.h"
-#import "TKLabelSwitchCell.h"
-#import "TKButtonCell.h"
-#import "TKTextViewCell.h"
-#import "TKSwitchCell.h"
-#import "TKIndicatorCell.h"
-
-// HUD
-#import "TKLoadingView.h"
-#import "TKAlertCenter.h"
-#import "TKProgressBarView.h"
-#import "TKProgressAlertView.h"
-
-// GRAPH
-#import "TKGraphController.h"
-#import "TKGraphView.h"
-
-
-// Calendar
-#import "TKCalendarMonthViewController.h"
-#import "TKCalendarMonthTableViewController.h"
-#import "TKCalendarMonthView.h"
-#import "ODCalendarDayViewController.h"
-
-// Coverflow
-#import "TKCoverflowView.h"
-#import "TKCoverflowCoverView.h"
-
+@interface TKMapPlace : NSObject <MKAnnotation> {
+	NSString *title;
+	CLLocationCoordinate2D coordinate;
+	MKPinAnnotationColor color;
+	
+}
+@property (copy) NSString *title;
+@property (assign,nonatomic) CLLocationCoordinate2D coordinate;
+@property (assign, nonatomic) MKPinAnnotationColor color;
+@end

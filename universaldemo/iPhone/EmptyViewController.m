@@ -39,12 +39,14 @@
 
 	
 	emptyView = [[TKEmptyView alloc] initWithFrame:self.view.bounds 
-									emptyViewImage:TKEmptyViewImageMale
+									emptyViewImage:TKEmptyViewImageStar
 											 title:@"Empty Page"
 										  subtitle:@"All you need is a transparent image"];
 	emptyView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 
 	[self.view addSubview:emptyView];
+	
+	[emptyView setEmptyImage:TKEmptyViewImageMale];
 
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
