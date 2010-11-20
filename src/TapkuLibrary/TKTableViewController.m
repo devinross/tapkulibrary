@@ -97,7 +97,7 @@
 // PROPERTIES
 - (UITableView*) tableView{
 	if(_tableView==nil){
-		_tableView =  [[UITableView alloc] initWithFrame:CGRectZero style:_style];
+		_tableView =  [[UITableView alloc] initWithFrame:self.view.bounds style:_style];
 		_tableView.delegate = self;
 		_tableView.dataSource = self;
 		_tableView.showsVerticalScrollIndicator = YES;
