@@ -95,26 +95,6 @@
 		3BBF898A1297082B008AB2B1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995510953DF400F235F1 /* SystemConfiguration.framework */; };
 		3BBF898B1297082B008AB2B1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995610953DF400F235F1 /* CoreGraphics.framework */; };
 		3BBF898C1297082B008AB2B1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995810953DF400F235F1 /* QuartzCore.framework */; };
-		3BBF89E91297095F008AB2B1 /* CDataScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89D31297095F008AB2B1 /* CDataScanner.h */; };
-		3BBF89EA1297095F008AB2B1 /* CDataScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89D41297095F008AB2B1 /* CDataScanner.m */; };
-		3BBF89EB1297095F008AB2B1 /* CDataScanner_Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89D61297095F008AB2B1 /* CDataScanner_Extensions.h */; };
-		3BBF89EC1297095F008AB2B1 /* CDataScanner_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89D71297095F008AB2B1 /* CDataScanner_Extensions.m */; };
-		3BBF89ED1297095F008AB2B1 /* NSCharacterSet_Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89D81297095F008AB2B1 /* NSCharacterSet_Extensions.h */; };
-		3BBF89EE1297095F008AB2B1 /* NSCharacterSet_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89D91297095F008AB2B1 /* NSCharacterSet_Extensions.m */; };
-		3BBF89EF1297095F008AB2B1 /* NSDictionary_JSONExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89DA1297095F008AB2B1 /* NSDictionary_JSONExtensions.h */; };
-		3BBF89F01297095F008AB2B1 /* NSDictionary_JSONExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89DB1297095F008AB2B1 /* NSDictionary_JSONExtensions.m */; };
-		3BBF89F11297095F008AB2B1 /* NSScanner_Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89DC1297095F008AB2B1 /* NSScanner_Extensions.h */; };
-		3BBF89F21297095F008AB2B1 /* NSScanner_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89DD1297095F008AB2B1 /* NSScanner_Extensions.m */; };
-		3BBF89F31297095F008AB2B1 /* CJSONDataSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89DF1297095F008AB2B1 /* CJSONDataSerializer.h */; };
-		3BBF89F41297095F008AB2B1 /* CJSONDataSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89E01297095F008AB2B1 /* CJSONDataSerializer.m */; };
-		3BBF89F51297095F008AB2B1 /* CJSONDeserializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89E11297095F008AB2B1 /* CJSONDeserializer.h */; };
-		3BBF89F61297095F008AB2B1 /* CJSONDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89E21297095F008AB2B1 /* CJSONDeserializer.m */; };
-		3BBF89F71297095F008AB2B1 /* CJSONScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89E31297095F008AB2B1 /* CJSONScanner.h */; };
-		3BBF89F81297095F008AB2B1 /* CJSONScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89E41297095F008AB2B1 /* CJSONScanner.m */; };
-		3BBF89F91297095F008AB2B1 /* CJSONSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89E51297095F008AB2B1 /* CJSONSerializer.h */; };
-		3BBF89FA1297095F008AB2B1 /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89E61297095F008AB2B1 /* CJSONSerializer.m */; };
-		3BBF89FB1297095F008AB2B1 /* CSerializedJSONData.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BBF89E71297095F008AB2B1 /* CSerializedJSONData.h */; };
-		3BBF89FC1297095F008AB2B1 /* CSerializedJSONData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF89E81297095F008AB2B1 /* CSerializedJSONData.m */; };
 		3BD32972125B753900BE5EAF /* TKAlertCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BD32970125B753900BE5EAF /* TKAlertCenter.h */; };
 		3BD32973125B753900BE5EAF /* TKAlertCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD32971125B753900BE5EAF /* TKAlertCenter.m */; };
 		3BE8FF8512945C4400DBF3FC /* UIScrollview+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BE8FF8312945C4400DBF3FC /* UIScrollview+TKCategory.h */; };
@@ -593,16 +573,6 @@
 				3BBF89101297061F008AB2B1 /* TapkuLibraryExtras.h in Headers */,
 				3BBF89111297061F008AB2B1 /* TKMapPlace.h in Headers */,
 				3BBF89131297061F008AB2B1 /* TKMapView.h in Headers */,
-				3BBF89E91297095F008AB2B1 /* CDataScanner.h in Headers */,
-				3BBF89EB1297095F008AB2B1 /* CDataScanner_Extensions.h in Headers */,
-				3BBF89ED1297095F008AB2B1 /* NSCharacterSet_Extensions.h in Headers */,
-				3BBF89EF1297095F008AB2B1 /* NSDictionary_JSONExtensions.h in Headers */,
-				3BBF89F11297095F008AB2B1 /* NSScanner_Extensions.h in Headers */,
-				3BBF89F31297095F008AB2B1 /* CJSONDataSerializer.h in Headers */,
-				3BBF89F51297095F008AB2B1 /* CJSONDeserializer.h in Headers */,
-				3BBF89F71297095F008AB2B1 /* CJSONScanner.h in Headers */,
-				3BBF89F91297095F008AB2B1 /* CJSONSerializer.h in Headers */,
-				3BBF89FB1297095F008AB2B1 /* CSerializedJSONData.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -722,16 +692,6 @@
 				3BBF890F1297061F008AB2B1 /* NSMutableURLRequest+TKCategory.m in Sources */,
 				3BBF89121297061F008AB2B1 /* TKMapPlace.m in Sources */,
 				3BBF89141297061F008AB2B1 /* TKMapView.m in Sources */,
-				3BBF89EA1297095F008AB2B1 /* CDataScanner.m in Sources */,
-				3BBF89EC1297095F008AB2B1 /* CDataScanner_Extensions.m in Sources */,
-				3BBF89EE1297095F008AB2B1 /* NSCharacterSet_Extensions.m in Sources */,
-				3BBF89F01297095F008AB2B1 /* NSDictionary_JSONExtensions.m in Sources */,
-				3BBF89F21297095F008AB2B1 /* NSScanner_Extensions.m in Sources */,
-				3BBF89F41297095F008AB2B1 /* CJSONDataSerializer.m in Sources */,
-				3BBF89F61297095F008AB2B1 /* CJSONDeserializer.m in Sources */,
-				3BBF89F81297095F008AB2B1 /* CJSONScanner.m in Sources */,
-				3BBF89FA1297095F008AB2B1 /* CJSONSerializer.m in Sources */,
-				3BBF89FC1297095F008AB2B1 /* CSerializedJSONData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
