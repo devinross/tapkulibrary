@@ -34,6 +34,7 @@
 #import "TKGlobal.h"
 #import "UIImage+TKCategory.h"
 
+/*
 #define kSun NSLocalizedString(@"Sun",@"Sun")
 #define kMon NSLocalizedString(@"Mon",@"Mon")
 #define kTue NSLocalizedString(@"Tue",@"Tue")
@@ -41,7 +42,7 @@
 #define kThu NSLocalizedString(@"Thu",@"Thu")
 #define kFri NSLocalizedString(@"Fri",@"Fri")
 #define kSat NSLocalizedString(@"Sat",@"Sat")
-
+*/
 #define kCalendImagesPath @"TapkuLibrary.bundle/Images/calendar/"
 
 
@@ -337,9 +338,17 @@
 	if(selectedDay < 1 || selectedPortion != 1) return nil;
 	
 	TKDateInformation info = [monthDate dateInformation];
+	info.hour = 0;
+	info.minute = 0;
+	info.second = 0;
 	info.day = selectedDay;
-	return [NSDate dateFromDateInformation:info];
+	NSDate *d = [NSDate dateFromDateInformation:info];
 	
+	
+	//NSLog(@"%d %d %d %d %@",info.hour,info.minute,info.second,info.month,d);
+	
+	
+	return d;
 	
 }
 
@@ -586,11 +595,26 @@
 	
 	
 	
+	
+	
+	NSString * sun = [[NSDate dateWithTimeIntervalSince1970:-3*60*60*24] descriptionWithCalendarFormat:@"%a" timeZone:nil locale:[NSLocale currentLocale]];
+	NSString * mon = [[NSDate dateWithTimeIntervalSince1970:-2*60*60*24] descriptionWithCalendarFormat:@"%a" timeZone:nil locale:[NSLocale currentLocale]];
+	NSString * tue = [[NSDate dateWithTimeIntervalSince1970:-1*60*60*24] descriptionWithCalendarFormat:@"%a" timeZone:nil locale:[NSLocale currentLocale]];
+	NSString * wed = [[NSDate dateWithTimeIntervalSince1970:60*60*24] descriptionWithCalendarFormat:@"%a" timeZone:nil locale:[NSLocale currentLocale]];
+	NSString * thu = [[NSDate dateWithTimeIntervalSince1970:60*60*24*1] descriptionWithCalendarFormat:@"%a" timeZone:nil locale:[NSLocale currentLocale]];
+	NSString * fri = [[NSDate dateWithTimeIntervalSince1970:60*60*24*2] descriptionWithCalendarFormat:@"%a" timeZone:nil locale:[NSLocale currentLocale]];
+	NSString * sat = [[NSDate dateWithTimeIntervalSince1970:60*60*24*3] descriptionWithCalendarFormat:@"%a" timeZone:nil locale:[NSLocale currentLocale]];
+
+	
+	//NSLog(@"Day of the week: %@", weekdayString);
+	
+	//NSDate *d = [TKDateInformation dateWithInformation:testDate];
+	
+	
+	
 	NSArray *ar;
-	if(sunday)
-		ar = [NSArray arrayWithObjects:kSun,kMon,kTue,kWed,kThu,kFri,kSat,nil];
-	else
-		ar = [NSArray arrayWithObjects:kMon,kTue,kWed,kThu,kFri,kSat,kSun,nil];
+	if(sunday) ar = [NSArray arrayWithObjects:sun,mon,tue,wed,thu,fri,sat,nil];
+	else ar = [NSArray arrayWithObjects:mon,tue,wed,thu,fri,sat,sun,nil];
 	int i = 0;
 	for(NSString *s in ar){
 		
