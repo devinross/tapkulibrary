@@ -13,6 +13,9 @@
 		2860E328111B887F00E27156 /* AppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E326111B887F00E27156 /* AppDelegate_iPhone.m */; };
 		2860E32E111B888700E27156 /* AppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 2860E32C111B888700E27156 /* AppDelegate_iPad.m */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		3B30B21F129EE95B00466666 /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B30B21D129EE95B00466666 /* Back.png */; };
+		3B30B220129EE95B00466666 /* Back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B30B21E129EE95B00466666 /* Back@2x.png */; };
+		3B30B2B812A029EF00466666 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3B30B2B712A029EF00466666 /* TapkuLibrary.bundle */; };
 		3B4EDD83129B34F300E0C201 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3B4EDD6A129B34F300E0C201 /* LICENSE.txt */; };
 		3B4EDD84129B34F300E0C201 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3B4EDD6B129B34F300E0C201 /* README.txt */; };
 		3B4EDD85129B34F300E0C201 /* CDataScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4EDD6E129B34F300E0C201 /* CDataScanner.m */; };
@@ -25,7 +28,6 @@
 		3B4EDD8C129B34F300E0C201 /* CJSONScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4EDD7E129B34F300E0C201 /* CJSONScanner.m */; };
 		3B4EDD8D129B34F300E0C201 /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4EDD80129B34F300E0C201 /* CJSONSerializer.m */; };
 		3B4EDD8E129B34F300E0C201 /* CSerializedJSONData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4EDD82129B34F300E0C201 /* CSerializedJSONData.m */; };
-		3BBF821E12958DE2008AB2B1 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3BBF821D12958DE2008AB2B1 /* TapkuLibrary.bundle */; };
 		3BBF893C129707C2008AB2B1 /* libTapkuLibraryExtra.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF88BC611E5478100C9FC43 /* libTapkuLibraryExtra.a */; };
 		3BD32F01125CE77300BE5EAF /* AlertsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD32F00125CE77300BE5EAF /* AlertsViewController.m */; };
 		3BD32F22125CED5200BE5EAF /* beer.png in Resources */ = {isa = PBXBuildFile; fileRef = 3BD32F20125CED5200BE5EAF /* beer.png */; };
@@ -113,6 +115,9 @@
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Shared/main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* universaldemo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = universaldemo_Prefix.pch; sourceTree = "<group>"; };
+		3B30B21D129EE95B00466666 /* Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back.png; sourceTree = "<group>"; };
+		3B30B21E129EE95B00466666 /* Back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Back@2x.png"; sourceTree = "<group>"; };
+		3B30B2B712A029EF00466666 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = ../src/TapkuLibrary.bundle; sourceTree = SOURCE_ROOT; };
 		3B4EDD6A129B34F300E0C201 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		3B4EDD6B129B34F300E0C201 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		3B4EDD6D129B34F300E0C201 /* CDataScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataScanner.h; sourceTree = "<group>"; };
@@ -135,7 +140,6 @@
 		3B4EDD80129B34F300E0C201 /* CJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONSerializer.m; sourceTree = "<group>"; };
 		3B4EDD81129B34F300E0C201 /* CSerializedJSONData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSerializedJSONData.h; sourceTree = "<group>"; };
 		3B4EDD82129B34F300E0C201 /* CSerializedJSONData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSerializedJSONData.m; sourceTree = "<group>"; };
-		3BBF821D12958DE2008AB2B1 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = ../src/TapkuLibrary.bundle; sourceTree = SOURCE_ROOT; };
 		3BD32EFF125CE77300BE5EAF /* AlertsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertsViewController.h; sourceTree = "<group>"; };
 		3BD32F00125CE77300BE5EAF /* AlertsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertsViewController.m; sourceTree = "<group>"; };
 		3BD32F20125CED5200BE5EAF /* beer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beer.png; sourceTree = "<group>"; };
@@ -251,7 +255,7 @@
 		28EEBF621118D79A00187D67 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				3BBF821D12958DE2008AB2B1 /* TapkuLibrary.bundle */,
+				3B30B2B712A029EF00466666 /* TapkuLibrary.bundle */,
 				3BF88B1711E544FF00C9FC43 /* Images */,
 				8D1107310486CEB800E47090 /* universaldemo-Info.plist */,
 			);
@@ -360,12 +364,14 @@
 		3BF88B1711E544FF00C9FC43 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3B30B21D129EE95B00466666 /* Back.png */,
+				3B30B21E129EE95B00466666 /* Back@2x.png */,
 				3BD32F20125CED5200BE5EAF /* beer.png */,
 				3BD32F21125CED5200BE5EAF /* beer@2x.png */,
+				3BF88B1B11E544FF00C9FC43 /* launch_iphone.png */,
 				3BF88CB311E54B4E00C9FC43 /* Icon */,
 				3BF88F8611E57C9000C9FC43 /* coverflow_ipad */,
 				3BF88CA011E54B4800C9FC43 /* coverflow_iphone */,
-				3BF88B1B11E544FF00C9FC43 /* launch_iphone.png */,
 			);
 			name = Images;
 			path = Shared/Images;
@@ -621,9 +627,11 @@
 				3BF88F9811E57C9000C9FC43 /* ipadcover_9.jpg in Resources */,
 				3BD32F22125CED5200BE5EAF /* beer.png in Resources */,
 				3BD32F23125CED5200BE5EAF /* beer@2x.png in Resources */,
-				3BBF821E12958DE2008AB2B1 /* TapkuLibrary.bundle in Resources */,
 				3B4EDD83129B34F300E0C201 /* LICENSE.txt in Resources */,
 				3B4EDD84129B34F300E0C201 /* README.txt in Resources */,
+				3B30B21F129EE95B00466666 /* Back.png in Resources */,
+				3B30B220129EE95B00466666 /* Back@2x.png in Resources */,
+				3B30B2B812A029EF00466666 /* TapkuLibrary.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -593,17 +593,21 @@
 	
 	self.backgroundColor = [UIColor grayColor];
 	
+	NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+	[dateFormat setDateFormat:@"eee"];
 	
 	
 	
 	
-	NSString * sun = [[NSDate dateWithTimeIntervalSince1970:-3*60*60*24] descriptionWithCalendarFormat:@"%a" timeZone:nil locale:[NSLocale currentLocale]];
-	NSString * mon = [[NSDate dateWithTimeIntervalSince1970:-2*60*60*24] descriptionWithCalendarFormat:@"%a" timeZone:nil locale:[NSLocale currentLocale]];
-	NSString * tue = [[NSDate dateWithTimeIntervalSince1970:-1*60*60*24] descriptionWithCalendarFormat:@"%a" timeZone:nil locale:[NSLocale currentLocale]];
-	NSString * wed = [[NSDate dateWithTimeIntervalSince1970:60*60*24] descriptionWithCalendarFormat:@"%a" timeZone:nil locale:[NSLocale currentLocale]];
-	NSString * thu = [[NSDate dateWithTimeIntervalSince1970:60*60*24*1] descriptionWithCalendarFormat:@"%a" timeZone:nil locale:[NSLocale currentLocale]];
-	NSString * fri = [[NSDate dateWithTimeIntervalSince1970:60*60*24*2] descriptionWithCalendarFormat:@"%a" timeZone:nil locale:[NSLocale currentLocale]];
-	NSString * sat = [[NSDate dateWithTimeIntervalSince1970:60*60*24*3] descriptionWithCalendarFormat:@"%a" timeZone:nil locale:[NSLocale currentLocale]];
+	NSString * sun = [dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970:-3*60*60*24]];
+	NSString * mon = [dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970:-2*60*60*24]];
+	NSString * tue = [dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970:-1*60*60*24]];
+	NSString * wed = [dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970:0]];
+	NSString * thu = [dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970:60*60*24*1]];
+	NSString * fri = [dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970:60*60*24*2]];
+	NSString * sat = [dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970:60*60*24*3]];
+	
+	[dateFormat release];
 
 	
 	//NSLog(@"Day of the week: %@", weekdayString);

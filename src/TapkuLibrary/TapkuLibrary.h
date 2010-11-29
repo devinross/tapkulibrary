@@ -34,11 +34,16 @@
 #import "UIView+TKCategory.h"
 #import "UIImage+TKCategory.h"
 #import "UIScrollview+TKCategory.h"
+#import "UINavigationController+TKCategory.h"
+#import "UINavigationBar+TKCategory.h"
+#import "UIToolbar+TKCategory.h"
 
 #import "TKWindow.h"
 #import "TKTableViewController.h"
 #import "TKEmptyView.h"
 #import "TKImageCenter.h"
+#import "TKViewController.h"
+#import "TKBarButtonItem.h"
 
 // CELLS
 #import "TKLabelCell.h"

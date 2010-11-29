@@ -42,14 +42,9 @@
 	mapView.delegate = self;
 	[self.view addSubview:mapView];
 	
-	button = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
-	
-	
-	button = [[UIBarButtonItem alloc] initWithTitle:@"Add Pin" style:UIBarButtonItemStylePlain target:self action:@selector(addPinMode:)];
-	self.navigationItem.rightBarButtonItem = button;
-	
-	
-	
+
+	addPin = [[TKBarButtonItem alloc] initWithTitle:@"Add Pin" style:TKBarButtonItemStylePlain target:self action:@selector(addPinMode:)];
+	self.navigationItem.rightBarButtonItem = addPin;
 
 }
 
@@ -57,13 +52,13 @@
 - (void) addPinMode:(id)sender{
 	
 	if(mapView.pinMode){
-		button.style = UIBarButtonItemStylePlain;
+		addPin.style = TKBarButtonItemStylePlain;
 		mapView.mapView.mapType = MKMapTypeStandard;
 	}
 		
 	else{
 		mapView.mapView.mapType = MKMapTypeHybrid;
-		button.style = UIBarButtonItemStyleDone;
+		addPin.style = TKBarButtonItemStyleDone;
 	}
 		
 	[mapView setPinMode:!mapView.pinMode];

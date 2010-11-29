@@ -45,11 +45,11 @@
 
 @implementation RootViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (id) initWithStyle:(UITableViewStyle)s{
+	if(!(self = [super initWithStyle:s])) return nil;
 	
 	self.title = @"Tapku Library";
-	
+	self.tkBackButton = [[[TKBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back"] style:TKBarButtonItemStyleBack target:nil action:nil] autorelease];
 	data = [[NSMutableArray alloc] init];
 	
 	NSArray *rows;
@@ -69,7 +69,7 @@
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Calendar",@"title",nil];
 	[data addObject:d];
 	
-
+	
 	rows = [NSArray arrayWithObjects:@"Label Cells",@"More Cells",@"Indicator Cells",nil];
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Table View Cells",@"title",@"Fast cells scroll smooth on older devices",@"footer",nil];
 	[data addObject:d];
@@ -78,8 +78,10 @@
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Locating Images",@"title",@"Handles large amounts of Internet image requests",@"footer",nil];
 	[data addObject:d];
 	
-	
+	return self;
 }
+
+
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -105,7 +107,10 @@
 	
 	
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+	[tv deselectRowAtIndexPath:indexPath animated:YES];
+	
 	
 	UIViewController *vc;
 	int s = indexPath.section, r = indexPath.row;

@@ -1,10 +1,10 @@
 //
-//  RootViewController.h
-//  Created by Devin Ross on 12/2/09.
+//  UINavigationBar+TKCategory.h
+//  Created by Devin Ross on 11/24/10.
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || http://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -29,11 +29,12 @@
  
  */
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <TapkuLibrary/TapkuLibrary.h>
 
-@interface RootViewController : TKTableViewController {
-	NSMutableArray *data;
-}
+@interface UINavigationBar (TKCategory)
+
+- (void) TKdrawRect:(CGRect)rect;
 
 @end

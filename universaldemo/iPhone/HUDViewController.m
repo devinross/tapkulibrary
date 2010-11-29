@@ -34,12 +34,20 @@
 
 @implementation HUDViewController
 
+- (id) init{
+	if(!(self=[super init])) return nil;
+	
+	self.title = @"HUD";
+	
+	return self;
+}
+
 
 - (void) viewDidLoad {
     [super viewDidLoad];
 	
-	self.title = @"HUD";
 	self.view.backgroundColor = [UIColor grayColor];
+
 
 	[self.view addSubview:self.loading];
 	[self.view addSubview:self.progressbar];
@@ -48,12 +56,9 @@
 	time = 0; 
 	timer = [[NSTimer timerWithTimeInterval:0.02 target:self selector:@selector(timer) userInfo:nil repeats:YES] retain];
 	[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+	self.navigationItem.rightBarButtonItem = [[[TKBarButtonItem alloc] initWithTitle:@"Tap Me" style:TKBarButtonItemStylePlain target:self action:@selector(tapme)] autorelease];
 	
-	
-	
-	UIBarButtonItem *show = [[UIBarButtonItem alloc] initWithTitle:@"Tap Me" style:UIBarButtonItemStylePlain target:self action:@selector(tapme)];
-	[self.navigationItem setRightBarButtonItem:show];
-	[show release];
+
 	
 }
 
@@ -106,14 +111,12 @@
 
 	return progressbar;
 }
-
 - (TKProgressAlertView *) alertView{
 	if(alertView==nil){
 		alertView = [[TKProgressAlertView alloc] initWithProgressTitle:@"Loading important stuff!"];
 	}
 	return alertView;
 }
-
 
 
 - (void)dealloc {
@@ -123,6 +126,5 @@
 	[timer release];
 	[super dealloc];
 }
-
 
 @end

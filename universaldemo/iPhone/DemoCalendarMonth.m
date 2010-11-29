@@ -63,14 +63,13 @@
 }
 - (void) calendarMonthView:(TKCalendarMonthView*)monthView didSelectDate:(NSDate*)d{
 	
-	NSLog(@"%@",d);
+
 	
 	[self.tableView reloadData];
 }
 - (void) calendarMonthView:(TKCalendarMonthView*)mv monthDidChange:(NSDate*)d{
 	[super calendarMonthView:mv monthDidChange:d];
 	[self.tableView reloadData];
-	NSLog(@"Month Did Change: %@ %@",d,[monthView dateSelected]);
 }
 
 

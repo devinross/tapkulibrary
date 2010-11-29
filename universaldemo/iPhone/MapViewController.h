@@ -40,6 +40,7 @@
 @interface MapViewController : UIViewController <TKMapViewDelegate> {
 	TKMapView *mapView;
 	UIBarButtonItem *button;
+	TKBarButtonItem *addPin;
 }
 
 @end

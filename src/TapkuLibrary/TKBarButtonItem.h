@@ -1,10 +1,10 @@
 //
-//  RootViewController.h
-//  Created by Devin Ross on 12/2/09.
+//  TKBarButtonItem.h
+//  Created by Devin Ross on 11/24/10.
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || http://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -29,11 +29,27 @@
  
  */
 
-#import <UIKit/UIKit.h>
-#import <TapkuLibrary/TapkuLibrary.h>
+#import <Foundation/Foundation.h>
 
-@interface RootViewController : TKTableViewController {
-	NSMutableArray *data;
+typedef enum {
+    TKBarButtonItemStylePlain,
+    TKBarButtonItemStyleBack,
+	TKBarButtonItemStyleDone
+} TKBarButtonItemStyle;
+
+
+@interface TKBarButtonItem : UIBarButtonItem {
+	
+	UIButton *_buttonContainer;
+	TKBarButtonItemStyle _style;
+
 }
+
+- (id) initWithTitle:(NSString*)title style:(TKBarButtonItemStyle)style target:(id)target action:(SEL)action;
+- (id) initWithImage:(UIImage*)image  style:(TKBarButtonItemStyle)style target:(id)target action:(SEL)action;
+
+- (TKBarButtonItemStyle) style;
+- (void) setStyle:(TKBarButtonItemStyle)s;
+- (void) setTarget:(id)target action:(SEL)action;
 
 @end

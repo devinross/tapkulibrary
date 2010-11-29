@@ -30,8 +30,6 @@
  */
 
 #import "LabelViewController.h"
-
-
 @implementation LabelViewController
 
 
@@ -74,6 +72,8 @@
 }
 
 
+
+
 #pragma mark Table view methods
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -85,12 +85,7 @@
     
 	return [cells objectAtIndex:indexPath.row];
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController];
-	// [anotherViewController release];
-}
+
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 	if(indexPath.row == 1){
 		return 120.0;

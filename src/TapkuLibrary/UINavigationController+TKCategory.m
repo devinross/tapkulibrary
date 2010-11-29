@@ -1,10 +1,10 @@
 //
-//  RootViewController.h
-//  Created by Devin Ross on 12/2/09.
+//  UINavigationController+TKCategory.m
+//  Created by Devin Ross on 11/24/10.
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || http://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -29,11 +29,24 @@
  
  */
 
-#import <UIKit/UIKit.h>
-#import <TapkuLibrary/TapkuLibrary.h>
+#import "UINavigationController+TKCategory.h"
+#import "TKViewController.h"
+#import "TKBarButtonItem.h"
 
-@interface RootViewController : TKTableViewController {
-	NSMutableArray *data;
+@implementation UINavigationController (TKCategory)
+
+- (void) TKpushViewController:(UIViewController *)viewController animated:(BOOL)animated{
+	
+	if(self.navigationBar.barStyle == UIBarStyleDefault && [self.viewControllers count] > 0 && viewController.navigationItem.leftBarButtonItem == nil && [self.topViewController isKindOfClass:NSClassFromString(@"TKViewController")]){
+		TKViewController *vc = (TKViewController*)self.topViewController;
+		if(vc.tkBackButton){
+			[vc.tkBackButton setStyle:TKBarButtonItemStyleBack];
+			[vc.tkBackButton setTarget:self.topViewController.navigationController action:@selector(popViewControllerAnimated:)];
+			viewController.navigationItem.leftBarButtonItem = vc.tkBackButton;
+		}
+	}
+	
+	[self TKpushViewController:viewController animated:animated];
 }
 
 @end

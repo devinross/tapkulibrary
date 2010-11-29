@@ -30,9 +30,10 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "TKViewController.h"
 @class TKEmptyView;
 
-@interface TKTableViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,UISearchDisplayDelegate> {
+@interface TKTableViewController : TKViewController <UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,UISearchDisplayDelegate> {
 	
 	UITableView *_tableView;
 	TKEmptyView *_emptyView;

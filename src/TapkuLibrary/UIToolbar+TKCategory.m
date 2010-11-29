@@ -1,10 +1,10 @@
 //
-//  RootViewController.h
-//  Created by Devin Ross on 12/2/09.
+//  UIToolbar+TKCategory.m
+//  Created by Devin Ross on 11/24/10.
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || http://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -29,11 +29,24 @@
  
  */
 
-#import <UIKit/UIKit.h>
-#import <TapkuLibrary/TapkuLibrary.h>
+#import "UIToolbar+TKCategory.h"
 
-@interface RootViewController : TKTableViewController {
-	NSMutableArray *data;
+
+@implementation UIToolbar (TKCategory)
+
+- (void) TKdrawRect:(CGRect)rect{
+	
+	[UIView drawGradientInRect:rect withColors:[NSArray arrayWithObjects:
+												[UIColor colorWithRed:176/255.0 green:188/255.0 blue:204/255.0 alpha:1],
+												[UIColor colorWithRed:109/255.0 green:132/255.0 blue:162/255.0 alpha:1],nil]];
+	
+	[[UIColor colorWithRed:45/255.0 green:54/255.0 blue:66/255.0 alpha:1] set];
+	CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, rect.size.width, 1));
+	
+	[[UIColor colorWithRed:205/255.0 green:213/255.0 blue:223/255.0 alpha:1] set];
+	CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0, 1, rect.size.width, 1));
+	
+
 }
 
 @end

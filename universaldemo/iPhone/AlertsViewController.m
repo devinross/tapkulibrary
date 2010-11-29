@@ -22,7 +22,9 @@
 - (void) viewDidAppear:(BOOL)animated{
 	[super viewDidAppear:animated];
 	
-	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Tap Me" style:UIBarButtonItemStylePlain target:self action:@selector(beer)] autorelease];
+	self.navigationItem.rightBarButtonItem = [[[TKBarButtonItem alloc] initWithTitle:@"Tap Me" style:TKBarButtonItemStylePlain target:self action:@selector(beer)] autorelease];
+
+	
 	
 	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"Hi!"];
 	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"This is the alert system"];

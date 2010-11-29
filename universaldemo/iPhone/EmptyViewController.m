@@ -33,25 +33,21 @@
 
 @implementation EmptyViewController
 
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
+- (void) loadView{
+	
+	[super loadView];
 	
 	emptyView = [[TKEmptyView alloc] initWithFrame:self.view.bounds 
-									emptyViewImage:TKEmptyViewImageStar
+									emptyViewImage:TKEmptyViewImageMale
 											 title:@"Empty Page"
 										  subtitle:@"All you need is a transparent image"];
-	emptyView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-
-	[self.view addSubview:emptyView];
 	
-	[emptyView setEmptyImage:TKEmptyViewImageMale];
+	emptyView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+	[self.view addSubview:emptyView];
 
+	
 }
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
-}
+
 
 - (void)dealloc {
 	[emptyView release];
