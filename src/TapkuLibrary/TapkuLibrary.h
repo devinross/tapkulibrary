@@ -71,7 +71,7 @@
 #import "TKCalendarMonthViewController.h"
 #import "TKCalendarMonthTableViewController.h"
 #import "TKCalendarMonthView.h"
-#import "ODCalendarDayViewController.h"
+#import "TKCalendarDayViewController.h"
 
 // Coverflow
 #import "TKCoverflowView.h"

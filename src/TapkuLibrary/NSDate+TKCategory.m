@@ -33,6 +33,31 @@
 
 @implementation NSDate (TKCategory)
 
+- (TKDateInformation) dateInformationWithTimeZone:(NSTimeZone*)tz{
+	
+	
+	TKDateInformation info;
+	
+	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+	[gregorian setTimeZone:tz];
+	NSDateComponents *comp = [gregorian components:(NSMonthCalendarUnit | NSMinuteCalendarUnit | NSYearCalendarUnit | 
+													NSDayCalendarUnit | NSWeekdayCalendarUnit | NSHourCalendarUnit | NSSecondCalendarUnit) 
+										  fromDate:self];
+	info.day = [comp day];
+	info.month = [comp month];
+	info.year = [comp year];
+	
+	info.hour = [comp hour];
+	info.minute = [comp minute];
+	info.second = [comp second];
+	
+	info.weekday = [comp weekday];
+	
+	
+	[gregorian release];
+	return info;
+	
+}
 
 - (TKDateInformation) dateInformation{
 	
@@ -57,6 +82,24 @@
 	return info;
 }
 
++ (NSDate*) dateFromDateInformation:(TKDateInformation)info timeZone:(NSTimeZone*)tz{
+	
+	NSCalendar *gregorian = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+	[gregorian setTimeZone:tz];
+	NSDateComponents *comp = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit) fromDate:[NSDate date]];
+	
+	[comp setDay:info.day];
+	[comp setMonth:info.month];
+	[comp setYear:info.year];
+	[comp setHour:info.hour];
+	[comp setMinute:info.minute];
+	[comp setSecond:info.second];
+	[comp setTimeZone:tz];
+	
+	return [gregorian dateFromComponents:comp];
+}
+
+
 + (NSDate*) dateFromDateInformation:(TKDateInformation)info{
 	
 	NSCalendar *gregorian = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
@@ -68,10 +111,18 @@
 	[comp setHour:info.hour];
 	[comp setMinute:info.minute];
 	[comp setSecond:info.second];
+	//[comp setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 	
 	return [gregorian dateFromComponents:comp];
 }
 
+
+- (int) daysBetweenDate:(NSDate*)d{
+	
+	NSTimeInterval time = [self timeIntervalSinceDate:d];
+	return abs(time / 60 / 60/ 24);
+	
+}
 
 // ------------------
 - (NSString*) month{
@@ -83,18 +134,6 @@
 	NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];	
 	[dateFormatter setDateFormat:@"yyyy"];
 	return [dateFormatter stringFromDate:self];
-}
-- (int) daysInMonth{
-	
-	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-	NSDateComponents *comp = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit) fromDate:self];
-	[comp setDay:0];
-	[comp setMonth:comp.month+1];
-	
-	int days = [[gregorian components:NSDayCalendarUnit fromDate:[gregorian dateFromComponents:comp]] day];
-	[gregorian release];
-	
-	return days;
 }
 // ------------------
 
@@ -211,7 +250,7 @@
 
 
 /* ----- start snippet from http://www.alexcurylo.com/blog/2009/07/25/snippet-naturaldates/ ----- */
-- (int)differenceInDaysTo:(NSDate *)toDate{
+- (int) differenceInDaysTo:(NSDate *)toDate{
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     
     NSDateComponents *components = [gregorian components:NSDayCalendarUnit
@@ -222,7 +261,7 @@
     [gregorian release];
     return days;
 }
-- (int)differenceInMonthsTo:(NSDate *)toDate{
+- (int) differenceInMonthsTo:(NSDate *)toDate{
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     
     NSDateComponents *components = [gregorian components:NSMonthCalendarUnit
@@ -233,23 +272,42 @@
     [gregorian release];
     return months;
 }
-- (BOOL)isSameDay:(NSDate*)anotherDate{
+- (BOOL) isSameDay:(NSDate*)anotherDate{
 	NSCalendar* calendar = [NSCalendar currentCalendar];
 	NSDateComponents* components1 = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:self];
 	NSDateComponents* components2 = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:anotherDate];
 	return ([components1 year] == [components2 year] && [components1 month] == [components2 month] && [components1 day] == [components2 day]);
 } 
-- (BOOL)isToday{
+- (BOOL) isToday{
 	return [self isSameDay:[NSDate date]];
 } 
- 
-/* ----- end snippet from http://www.alexcurylo.com/blog/2009/07/25/snippet-naturaldates/ ----- */
+/* ----- end snippet ----- */
 
 
 - (NSString*) dateDescription{
-	
 	return [[self description] substringToIndex:10];
+}
+- (NSDate *) dateByAddingDays:(NSUInteger)days {
+	NSDateComponents *c = [[[NSDateComponents alloc] init] autorelease];
+	c.day = days;
+	return [[NSCalendar currentCalendar] dateByAddingComponents:c toDate:self options:0];
+}
++ (NSDate *) dateWithDatePart:(NSDate *)aDate andTimePart:(NSDate *)aTime {
+	NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+	[dateFormatter setDateFormat:@"dd/MM/yyyy"];
+	NSString *datePortion = [dateFormatter stringFromDate:aDate];
 	
+	[dateFormatter setDateFormat:@"HH:mm"];
+	NSString *timePortion = [dateFormatter stringFromDate:aTime];
+	
+	[dateFormatter setDateFormat:@"dd/MM/yyyy HH:mm"];
+	NSString *dateTime = [NSString stringWithFormat:@"%@ %@",datePortion,timePortion];
+	return [dateFormatter dateFromString:dateTime];
+}
+
+
++ (NSString*) dateInformationDescriptionWithInformation:(TKDateInformation)info{
+	return [NSString stringWithFormat:@"%d %d %d %d:%d:%d",info.month,info.day,info.year,info.hour,info.minute,info.second];
 }
 
 @end

@@ -32,27 +32,33 @@
 #import "NSDate+TKCategory.h"
 
 @implementation TKCalendarMonthTableViewController
-@synthesize tableView;
+@synthesize tableView = _tableView;
 
+- (void) dealloc {
+	self.tableView = nil;
+    [super dealloc];
+}
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void) loadView{
+	[super loadView];
 	
 	float y,height;
 	y = self.monthView.frame.origin.y + self.monthView.frame.size.height;
 	height = self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height - y;
 	
-
-	tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, y, 320, height) style:UITableViewStylePlain];
-	tableView.delegate = self;
-	tableView.dataSource = self;
-	[self.view addSubview:tableView];
-	[self.view sendSubviewToBack:tableView];
+	
+	_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, y, 320, height) style:UITableViewStylePlain];
+	_tableView.delegate = self;
+	_tableView.dataSource = self;
+	[self.view addSubview:_tableView];
+	[self.view sendSubviewToBack:_tableView];
 }
 
+
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 1;
-	
+	return 0;	
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 0;
@@ -78,13 +84,12 @@
 	[self updateTableOffset];
 }
 
-
 - (void) updateTableOffset{
 	
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationDuration:0.4];
 	
-	float y = monthView.frame.origin.y + monthView.frame.size.height;
+	float y = self.monthView.frame.origin.y + self.monthView.frame.size.height;
 	self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, y, self.tableView.frame.size.width, self.view.frame.size.height - y );
 	
 	[UIView commitAnimations];
@@ -93,10 +98,7 @@
 
 
 
-- (void)dealloc {
-	[tableView release];
-    [super dealloc];
-}
+
 
 
 @end

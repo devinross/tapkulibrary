@@ -1,6 +1,6 @@
 //
 //  ODCalendarDayViewController.h
-//  Created by Anthony Mittaz on 19/10/09.
+//  Created by Devin Ross on 7/28/09.
 /*
  
  tapku.com || http://github.com/devinross/tapkulibrary
@@ -30,13 +30,13 @@
 
 
 #import <UIKit/UIKit.h>
-#import "ODCalendarDayTimelineView.h"
+#import "TKCalendarDayTimelineView.h"
 
 
-@interface ODCalendarDayViewController : UIViewController <ODCalendarDayTimelineViewDelegate>{
-	ODCalendarDayTimelineView *_calendarDayTimelineView;
+@interface TKCalendarDayViewController : UIViewController <TKCalendarDayTimelineViewDelegate>{
+	TKCalendarDayTimelineView *_calendarDayTimelineView;
 }
 
-@property (nonatomic, readonly) ODCalendarDayTimelineView *calendarDayTimelineView;
+@property (nonatomic, readonly) TKCalendarDayTimelineView *calendarDayTimelineView;
 
 @end

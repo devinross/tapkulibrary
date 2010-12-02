@@ -34,7 +34,7 @@
 
 @interface TKViewController : UIViewController {
 
-	TKBarButtonItem *tkBackButton;
+	TKBarButtonItem *_tkBackButton;
 	
 }
 @property (retain,nonatomic) TKBarButtonItem *tkBackButton;

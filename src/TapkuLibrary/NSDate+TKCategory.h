@@ -31,6 +31,8 @@
 #import <Foundation/Foundation.h>
 
 
+@interface NSDate (TKCategory)
+
 struct TKDateInformation {
 	int day;
 	int month;
@@ -45,26 +47,33 @@ struct TKDateInformation {
 };
 typedef struct TKDateInformation TKDateInformation;
 
+- (TKDateInformation) dateInformation;
+- (TKDateInformation) dateInformationWithTimeZone:(NSTimeZone*)tz;
++ (NSDate*) dateFromDateInformation:(TKDateInformation)info;
++ (NSDate*) dateFromDateInformation:(TKDateInformation)info timeZone:(NSTimeZone*)tz;
 
 
 
-@interface NSDate (TKCategory)
+
 
 @property (readonly,nonatomic) NSString *month;
 @property (readonly,nonatomic) NSString *year;
-@property (readonly,nonatomic) int daysInMonth; // ie. 31, 30 29
 @property (readonly,nonatomic) int weekdayWithMondayFirst;
 @property (readonly,nonatomic) BOOL isToday;
 
 
-- (BOOL)isSameDay:(NSDate*)anotherDate;
+- (BOOL) isSameDay:(NSDate*)anotherDate;
 - (int) differenceInDaysTo:(NSDate *)toDate;
 - (int) differenceInMonthsTo:(NSDate *)toDate;
 
+- (int) daysBetweenDate:(NSDate*)d;
 
-- (TKDateInformation) dateInformation;
-+ (NSDate*) dateFromDateInformation:(TKDateInformation)info;
+
 
 - (NSString*) dateDescription;
+- (NSDate *) dateByAddingDays:(NSUInteger)days;
++ (NSDate *) dateWithDatePart:(NSDate *)aDate andTimePart:(NSDate *)aTime;
+
++ (NSString*) dateInformationDescriptionWithInformation:(TKDateInformation)info;
 
 @end

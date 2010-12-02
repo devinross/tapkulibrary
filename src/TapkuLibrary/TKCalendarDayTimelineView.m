@@ -1,6 +1,6 @@
 //
 //  ODCalendarDayTimelineView.m
-//  Created by Anthony Mittaz on 18/10/09.
+//  Created by Devin Ross on 7/28/09.
 /*
  
  tapku.com || http://github.com/devinross/tapkulibrary
@@ -28,8 +28,10 @@
  
  */
 
-#import "ODCalendarDayTimelineView.h"
+#import "TKCalendarDayTimelineView.h"
 #import "NSDate+TKCategory.h"
+#import "UIImage+TKCategory.h"
+#import "TKGlobal.h"
 
 #define HORIZONTAL_OFFSET 3.0
 #define VERTICAL_OFFSET 5.0
@@ -41,17 +43,32 @@
 
 #define HORIZONTAL_LINE_DIFF 10.0
 
+#define TOP_BAR_HEIGHT 45.0
+
 #define TIMELINE_HEIGHT 24*VERTICAL_OFFSET+23*VERTICAL_DIFF
 
 #define EVENT_VERTICAL_DIFF 0.0
 #define EVENT_HORIZONTAL_DIFF 2.0
 
+#define EVENT_SAME_HOUR 3.0
 
-@implementation ODCalendarDayTimelineView
+
+@interface TKCalendarDayTimelineView (private)
+@property (readonly) UIImageView *topBackground;
+@property (readonly) UILabel *monthYear;
+@property (readonly) UIButton *leftArrow;
+@property (readonly) UIButton *rightArrow;
+@property (readonly) UIImageView *shadow;
+
+@end
+
+
+@implementation TKCalendarDayTimelineView
 
 @synthesize delegate=_delegate;
 @synthesize events=_events;
 @synthesize currentDay=_currentDay;
+@synthesize timelineColor, is24hClock, hourColor;
 
 #pragma mark -
 #pragma mark Initialisation
@@ -81,6 +98,16 @@
 	// Initialization code
 	self.events = nil;
 	self.currentDay = nil;
+	
+	[self addSubview:self.topBackground];
+	
+	[self addSubview:self.monthYear];
+	
+	
+	[self addSubview:self.leftArrow];
+	[self addSubview:self.rightArrow];
+	
+	
 	// Add main scroll view
 	[self addSubview:self.scrollView];
 	// Add timeline view inside scrollview
@@ -107,7 +134,7 @@
 - (UIScrollView *)scrollView
 {
 	if (!_scrollView) {
-		_scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+		_scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0f, TOP_BAR_HEIGHT, self.bounds.size.width, self.bounds.size.height-TOP_BAR_HEIGHT)];
 		_scrollView.contentSize = CGSizeMake(self.bounds.size.width,TIMELINE_HEIGHT);
 		_scrollView.scrollEnabled = TRUE;
 		_scrollView.backgroundColor =[UIColor whiteColor];
@@ -116,18 +143,26 @@
 	return _scrollView;
 }
 
-- (ODTimelineView *)timelineView
+- (TKTimelineView *)timelineView
 {
 	if (!_timelineView) {
-		_timelineView = [[ODTimelineView alloc]initWithFrame:CGRectMake(self.bounds.origin.x, 
+		_timelineView = [[TKTimelineView alloc]initWithFrame:CGRectMake(self.bounds.origin.x, 
 																		self.bounds.origin.y,
 																		self.bounds.size.width,
 																		TIMELINE_HEIGHT)];
 		_timelineView.backgroundColor = [UIColor whiteColor];
-		
+		_timelineView.delegate = self;		
 		
 	}
 	return _timelineView;
+}
+
+-(void)setTimelineColor:(UIColor*) aColor {
+	_timelineView.backgroundColor = aColor;
+}
+
+-(void)setIs24hClock:(BOOL)aIs24hClock {
+	_timelineView.is24hClock = aIs24hClock;
 }
 
 #pragma mark -
@@ -159,11 +194,26 @@
 		}
 	}
 	
+	NSDateFormatter *format = [[NSDateFormatter alloc]init];
+	[format setDateFormat:@"EEEE  dd MM yyyy"];	
+	NSString *displayDate = [format stringFromDate:_currentDay];
+	self.monthYear.text = displayDate;
+	[format release];
+	
 	// Ask the delgate about the events that correspond
 	// the the currently displayed day view
 	if (self.delegate && [self.delegate respondsToSelector:@selector(calendarDayTimelineView:eventsForDate:)]) {
 		self.events = [self.delegate calendarDayTimelineView:self eventsForDate:self.currentDay];
-		for (ODCalendarDayEventView *event in self.events) {
+		NSMutableArray *sameTimeEvents = [[NSMutableArray alloc] init];
+		NSInteger offsetCount = 0;
+		//number of nested appointments
+		NSInteger repeatNumber = 0;
+		//number of pixels to offset horizontally when they are nested
+		CGFloat horizOffset = 0.0f;
+		//starting point to check if they match
+		CGFloat startMarker = 0.0f;
+		CGFloat endMarker = 0.0f;
+		for (TKCalendarDayEventView *event in self.events) {
 			// Making sure delgate sending date that match current day
 			if ([event.startDate isSameDay:self.currentDay]) {
 				// Get the hour start position
@@ -173,7 +223,7 @@
 				// Round minute to each 5
 				NSInteger minuteStart = [event.startDate dateInformation].minute;
 				minuteStart = round(minuteStart / 5.0) * 5;
-				CGFloat minuteStartPosition = roundf((minuteStart < 30)?0:VERTICAL_DIFF / 2.0);
+				CGFloat minuteStartPosition = roundf((CGFloat)minuteStart / 60.0f * VERTICAL_DIFF);
 				
 				
 				
@@ -190,27 +240,41 @@
 					minuteEnd = 55;
 				}
 				minuteEnd = round(minuteEnd / 5.0) * 5;
-				CGFloat minuteEndPosition = roundf((minuteEnd < 30)?0:VERTICAL_DIFF / 2.0);
+				CGFloat minuteEndPosition = roundf((CGFloat)minuteEnd / 60.0f * VERTICAL_DIFF);
 				
 				CGFloat eventHeight = 0.0;
 				
-				if (minuteStartPosition == minuteEndPosition || hourEnd == 23) {
-					// Starting and ending date position are the same
-					// Take all half hour space
-					// Or hour is at the end
-					eventHeight = (VERTICAL_DIFF / 2) - (2 * EVENT_VERTICAL_DIFF);
-				} else {
-					// Take all hour space
-					eventHeight = VERTICAL_DIFF - (2 * EVENT_VERTICAL_DIFF);
-				}
+				eventHeight = (hourEndPosition + minuteEndPosition) - hourStartPosition - minuteStartPosition;
+				if (eventHeight < VERTICAL_DIFF/2) eventHeight = VERTICAL_DIFF/2;
 				
-				if (hourStartPosition != hourEndPosition) {
-					eventHeight += (hourEndPosition + minuteEndPosition) - hourStartPosition - minuteStartPosition; 
+				//nobre additions - split control and offset control				
+				//split control - adjusts balloon widths so their times/titles don't overlap
+				//offset control - adjusts starting balloon position so you can see all starts/ends
+				if ((hourStartPosition + minuteStartPosition) - startMarker <= VERTICAL_DIFF/2) {				
+					repeatNumber++;
 				}
+				else {
+					repeatNumber = 0;
+					[sameTimeEvents removeAllObjects];
+					//if this event starts before the last event's end, we have to offset it!
+					if (hourStartPosition + minuteStartPosition < endMarker) {
+						horizOffset = EVENT_SAME_HOUR * ++offsetCount;
+					}
+					else {
+						horizOffset = 0.0f;
+						offsetCount = 0;
+					}
+				}				
+				//refresh the markers
+				startMarker = hourStartPosition + minuteStartPosition;				
+				endMarker = hourEndPosition + minuteEndPosition;
 				
-				CGRect eventFrame = CGRectMake(HORIZONTAL_OFFSET + TIME_WIDTH + PERIOD_WIDTH + HORIZONTAL_LINE_DIFF + EVENT_HORIZONTAL_DIFF,
+				
+				CGFloat eventWidth = (self.bounds.size.width  - (HORIZONTAL_OFFSET + TIME_WIDTH + PERIOD_WIDTH + HORIZONTAL_LINE_DIFF) - HORIZONTAL_LINE_DIFF - EVENT_HORIZONTAL_DIFF)/(repeatNumber+1);
+				CGFloat eventOriginX = HORIZONTAL_OFFSET + TIME_WIDTH + PERIOD_WIDTH + HORIZONTAL_LINE_DIFF + EVENT_HORIZONTAL_DIFF + horizOffset;
+				CGRect eventFrame = CGRectMake(eventOriginX + (repeatNumber*eventWidth),
 											   hourStartPosition + minuteStartPosition + EVENT_VERTICAL_DIFF,
-											   self.bounds.size.width  - (HORIZONTAL_OFFSET + TIME_WIDTH + PERIOD_WIDTH + HORIZONTAL_LINE_DIFF) - HORIZONTAL_LINE_DIFF - EVENT_HORIZONTAL_DIFF, 
+											   eventWidth,
 											   eventHeight);
 				
 				event.frame = CGRectIntegral(eventFrame);
@@ -218,27 +282,62 @@
 				[event setNeedsDisplay];
 				[self.scrollView addSubview:event];
 				
-				
+				for (int i = [sameTimeEvents count]-1; i >= 0; i--) {
+					TKCalendarDayEventView *sameTimeEvent = [sameTimeEvents objectAtIndex:i];
+					CGRect newFrame = sameTimeEvent.frame;
+					newFrame.size.width = eventWidth;
+					newFrame.origin.x = eventOriginX + (i*eventWidth);
+					sameTimeEvent.frame = CGRectIntegral(newFrame);
+				}				
+				[sameTimeEvents addObject:event];
 				// Log the extracted date values
 				NSLog(@"hourStart: %d minuteStart: %d", hourStart, minuteStart);
 			}
 		}
+		[sameTimeEvents release];
 	}	
 }
 
 #pragma mark -
 #pragma mark Tap Detecting View
 
+-(NSDate*)getTimeFromOffset:(CGFloat)offset {
+	CGFloat hora = (offset - VERTICAL_OFFSET)/VERTICAL_DIFF;
+	NSInteger intHour = (int)hora;
+	CGFloat minutePart = hora-intHour;
+	NSInteger intMinute = 0;
+	if (minutePart > 0.5) {
+		intMinute = 30;		
+	}
+	NSDateFormatter *format = [[NSDateFormatter alloc]init];
+	[format setDateFormat:@"HH:mm"];
+	NSDate *timeTapped = [format dateFromString:[NSString stringWithFormat:@"%i:%i", intHour, intMinute]];
+	[format release];
+	return [NSDate dateWithDatePart:self.currentDay andTimePart:timeTapped];
+}
+
 - (void)tapDetectingView:(TapDetectingView *)view gotSingleTapAtPoint:(CGPoint)tapPoint
 {
 	if (self.delegate && [self.delegate respondsToSelector:@selector(calendarDayTimelineView:eventViewWasSelected:)]) {
-		[self.delegate calendarDayTimelineView:self eventViewWasSelected:(ODCalendarDayEventView *)view];
+		if (view != _timelineView) 
+		[self.delegate calendarDayTimelineView:self eventViewWasSelected:(TKCalendarDayEventView *)view];
 	}
 }
 
 - (void)tapDetectingView:(TapDetectingView *)view gotDoubleTapAtPoint:(CGPoint)tapPoint
 {
-	NSLog(@"Double Tapped Calendar Day View");
+	CGPoint pointInTimeLine = CGPointZero;
+	if (view == _timelineView) {
+		pointInTimeLine = tapPoint;
+		NSLog(@"Double Tapped TimelineView at point %@", NSStringFromCGPoint(pointInTimeLine));
+	}
+	else {
+		pointInTimeLine = [view convertPoint:tapPoint toView:self.scrollView];
+		NSLog(@"Double Tapped EventView at point %@", NSStringFromCGPoint(pointInTimeLine));		
+	}
+	if (self.delegate && [self.delegate respondsToSelector:@selector(calendarDayTimelineView:eventDateWasSelected:)]) {
+		[self.delegate calendarDayTimelineView:self eventDateWasSelected:[self getTimeFromOffset:pointInTimeLine.y]];
+	}
 }
 
 #pragma mark -
@@ -247,6 +346,71 @@
 - (void)drawRect:(CGRect)rect {
     // Drawing code
 }
+
+- (UIImageView *) topBackground{
+	if(topBackground==nil){
+		topBackground = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:TKBUNDLE(@"TapkuLibrary.bundle/Images/calendar/Month Grid Top Bar.png")]];
+	}
+	return topBackground;
+}
+
+- (UILabel *) monthYear{
+	if(monthYear==nil){
+		monthYear = [[UILabel alloc] initWithFrame:CGRectMake(0, 3, 320, 38)];
+		monthYear.textAlignment = UITextAlignmentCenter;
+		monthYear.backgroundColor = [UIColor clearColor];
+		monthYear.font = [UIFont boldSystemFontOfSize:19.0f];
+		monthYear.textColor = [UIColor colorWithRed:59/255. green:73/255. blue:88/255. alpha:1];
+	}
+	return monthYear;
+}
+
+-(void) nextDay:(id)sender {
+	NSDate *tomorrow = [self.currentDay dateByAddingDays:1];
+	self.currentDay = tomorrow;
+}
+
+-(void) previousDay:(id)sender {
+	NSDate *yesterday = [self.currentDay dateByAddingDays:-1];
+	self.currentDay = yesterday;
+}
+
+- (UIButton *) leftArrow{
+	if(leftArrow==nil){
+		leftArrow = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+		leftArrow.tag = 0;
+		[leftArrow addTarget:self action:@selector(previousDay:) forControlEvents:UIControlEventTouchUpInside];
+		
+		
+		
+		
+		[leftArrow setImage:[UIImage imageNamedTK:@"TapkuLibrary.bundle/Images/calendar/Month Calendar Left Arrow"] forState:0];
+		
+		leftArrow.frame = CGRectMake(0, 3, 48, 38);
+	}
+	return leftArrow;
+}
+- (UIButton *) rightArrow{
+	if(rightArrow==nil){
+		rightArrow = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+		rightArrow.tag = 1;
+		[rightArrow addTarget:self action:@selector(nextDay:) forControlEvents:UIControlEventTouchUpInside];
+		rightArrow.frame = CGRectMake(320-45, 3, 48, 38);
+		
+		
+		
+		[rightArrow setImage:[UIImage imageNamedTK:@"TapkuLibrary.bundle/Images/calendar/Month Calendar Right Arrow"] forState:0];
+		
+	}
+	return rightArrow;
+}
+- (UIImageView *) shadow{
+	if(shadow==nil){
+		shadow = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:TKBUNDLE(@"TapkuLibrary.bundle/Images/calendar/Month Calendar Shadow.png")]];
+	}
+	return shadow;
+}
+
 
 #pragma mark -
 #pragma mark Dealloc
@@ -259,6 +423,15 @@
 	[_events release];
 	[_timelineView release];
 	[_scrollView release];
+
+	[timelineColor release];
+	[hourColor release];
+	
+	[rightArrow release];
+	[leftArrow release];
+	[topBackground release];
+	[shadow release];
+	[monthYear release];
 	
     [super dealloc];
 }
@@ -266,10 +439,11 @@
 
 @end
 
-@implementation ODTimelineView
+@implementation TKTimelineView
 
 @synthesize times=_times;
 @synthesize periods=_periods;
+@synthesize is24hClock, hourColor;
 
 #pragma mark -
 #pragma mark Initialisation
@@ -309,33 +483,64 @@
 - (NSArray *)times
 {
 	if (!_times) {
-		_times = [[NSArray alloc]initWithObjects:
-				  @"12",
-				  @"1",
-				  @"2",
-				  @"3",
-				  @"4",
-				  @"5",
-				  @"6",
-				  @"7",
-				  @"8",
-				  @"9",
-				  @"10",
-				  @"11",
-				  @"Noon",
-				  @"1",
-				  @"2",
-				  @"3",
-				  @"4",
-				  @"5",
-				  @"6",
-				  @"7",
-				  @"8",
-				  @"9",
-				  @"10",
-				  @"11",
-				  @"12",
-				  nil];
+		if (is24hClock) {
+			_times = [[NSArray alloc]initWithObjects:
+					  @"00:00",
+					  @"01:00",
+					  @"02:00",
+					  @"03:00",
+					  @"04:00",
+					  @"05:00",
+					  @"06:00",
+					  @"07:00",
+					  @"08:00",
+					  @"09:00",
+					  @"10:00",
+					  @"11:00",
+					  @"12:00",
+					  @"13:00",
+					  @"14:00",
+					  @"15:00",
+					  @"16:00",
+					  @"17:00",
+					  @"18:00",
+					  @"19:00",
+					  @"20:00",
+					  @"21:00",
+					  @"22:00",
+					  @"23:00",
+					  @"00:00",
+					  nil];
+		}
+		else {
+			_times = [[NSArray alloc]initWithObjects:
+					  @"12",
+					  @"1",
+					  @"2",
+					  @"3",
+					  @"4",
+					  @"5",
+					  @"6",
+					  @"7",
+					  @"8",
+					  @"9",
+					  @"10",
+					  @"11",
+					  @"Noon",
+					  @"1",
+					  @"2",
+					  @"3",
+					  @"4",
+					  @"5",
+					  @"6",
+					  @"7",
+					  @"8",
+					  @"9",
+					  @"10",
+					  @"11",
+					  @"12",
+					  nil];
+		}
 
 	}
 	return _times;
@@ -347,6 +552,7 @@
 
 - (NSArray *)periods
 {
+	if (is24hClock) return nil;
 	if (!_periods) {
 		_periods = [[NSArray alloc]initWithObjects:
 				  @"AM",
@@ -388,17 +594,17 @@
 	
 	// Just making sure that times and periods are correctly initialized
 	// Should have exactly the same number of objects
-	if (self.times.count != self.periods.count) {
+	if ((!is24hClock && self.times.count != self.periods.count)) {
 		return;
 	}
 	
 	// Times appearance
 	UIFont *timeFont = [UIFont boldSystemFontOfSize:FONT_SIZE];
-	UIColor *timeColor = [UIColor blackColor];
+	UIColor *timeColor = hourColor ? hourColor : [UIColor blackColor];
 	
 	// Periods appearance
 	UIFont *periodFont = [UIFont systemFontOfSize:FONT_SIZE];
-	UIColor *periodColor = [UIColor grayColor];
+	UIColor *periodColor = hourColor ? hourColor : [UIColor grayColor];
 	
 	// Draw each times string
 	for (NSInteger i=0; i<self.times.count; i++) {
@@ -407,10 +613,10 @@
 		
 		NSString *time = [self.times objectAtIndex:i];
 		
-		CGRect timeRect = CGRectMake(HORIZONTAL_OFFSET, VERTICAL_OFFSET + i * VERTICAL_DIFF, TIME_WIDTH, FONT_SIZE + 4.0);
+		CGRect timeRect = CGRectMake(HORIZONTAL_OFFSET, VERTICAL_OFFSET + i * VERTICAL_DIFF, TIME_WIDTH + (is24hClock?PERIOD_WIDTH:0), FONT_SIZE + 4.0);
 		
 		// Find noon
-		if (i == 24/2) {
+		if (!is24hClock && i == 24/2) {
 			timeRect = CGRectMake(HORIZONTAL_OFFSET, VERTICAL_OFFSET + i * VERTICAL_DIFF, TIME_WIDTH + PERIOD_WIDTH, FONT_SIZE + 4.0);
 		}
 		
@@ -421,7 +627,7 @@
 		
 		// Draw period
 		// Only if it is not noon
-		if (i != 24/2) {
+		if (!is24hClock && i != 24/2) {
 			[periodColor set];
 			
 			NSString *period = [self.periods objectAtIndex:i];
@@ -471,6 +677,7 @@
 - (void)dealloc {
 	[_times release];
 	[_periods release];
+	[hourColor release];
 	
     [super dealloc];
 }

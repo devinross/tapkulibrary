@@ -42,12 +42,12 @@
 		3B6EDDEF11547C2900E454DA /* TKCalendarMonthTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B879FC4109BFC07002012FD /* TKCalendarMonthTableViewController.h */; };
 		3B6EDDF011547C2A00E454DA /* TapDetectingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A0810953E2400F235F1 /* TapDetectingView.m */; };
 		3B6EDDF111547C2B00E454DA /* TapDetectingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A0710953E2400F235F1 /* TapDetectingView.h */; };
-		3B6EDDF211547C2C00E454DA /* ODCalendarDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A0610953E2400F235F1 /* ODCalendarDayViewController.m */; };
-		3B6EDDF311547C2C00E454DA /* ODCalendarDayViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A0510953E2400F235F1 /* ODCalendarDayViewController.h */; };
-		3B6EDDF411547C2D00E454DA /* ODCalendarDayTimelineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A0410953E2400F235F1 /* ODCalendarDayTimelineView.m */; };
-		3B6EDDF511547C3000E454DA /* ODCalendarDayTimelineView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A0310953E2400F235F1 /* ODCalendarDayTimelineView.h */; };
-		3B6EDDF611547C3000E454DA /* ODCalendarDayEventView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A0210953E2400F235F1 /* ODCalendarDayEventView.m */; };
-		3B6EDDF711547C3100E454DA /* ODCalendarDayEventView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A0110953E2400F235F1 /* ODCalendarDayEventView.h */; };
+		3B6EDDF211547C2C00E454DA /* TKCalendarDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A0610953E2400F235F1 /* TKCalendarDayViewController.m */; };
+		3B6EDDF311547C2C00E454DA /* TKCalendarDayViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A0510953E2400F235F1 /* TKCalendarDayViewController.h */; };
+		3B6EDDF411547C2D00E454DA /* TKCalendarDayTimelineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A0410953E2400F235F1 /* TKCalendarDayTimelineView.m */; };
+		3B6EDDF511547C3000E454DA /* TKCalendarDayTimelineView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A0310953E2400F235F1 /* TKCalendarDayTimelineView.h */; };
+		3B6EDDF611547C3000E454DA /* TKCalendarDayEventView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A0210953E2400F235F1 /* TKCalendarDayEventView.m */; };
+		3B6EDDF711547C3100E454DA /* TKCalendarDayEventView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A0110953E2400F235F1 /* TKCalendarDayEventView.h */; };
 		3B6EDDF811547C3300E454DA /* TKGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3991EF10CED8FD00B8FF4F /* TKGraphView.m */; };
 		3B6EDDF911547C3400E454DA /* TKGraphView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B3991EE10CED8FD00B8FF4F /* TKGraphView.h */; };
 		3B6EDDFA11547C3400E454DA /* TKGraphController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A5310953E5200F235F1 /* TKGraphController.h */; };
@@ -145,12 +145,12 @@
 		3BAC995910953DF400F235F1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3BAC99FE10953E2400F235F1 /* TKCalendarMonthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCalendarMonthViewController.h; sourceTree = "<group>"; };
 		3BAC99FF10953E2400F235F1 /* TKCalendarMonthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCalendarMonthViewController.m; sourceTree = "<group>"; };
-		3BAC9A0110953E2400F235F1 /* ODCalendarDayEventView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODCalendarDayEventView.h; sourceTree = "<group>"; };
-		3BAC9A0210953E2400F235F1 /* ODCalendarDayEventView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODCalendarDayEventView.m; sourceTree = "<group>"; };
-		3BAC9A0310953E2400F235F1 /* ODCalendarDayTimelineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODCalendarDayTimelineView.h; sourceTree = "<group>"; };
-		3BAC9A0410953E2400F235F1 /* ODCalendarDayTimelineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODCalendarDayTimelineView.m; sourceTree = "<group>"; };
-		3BAC9A0510953E2400F235F1 /* ODCalendarDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODCalendarDayViewController.h; sourceTree = "<group>"; };
-		3BAC9A0610953E2400F235F1 /* ODCalendarDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODCalendarDayViewController.m; sourceTree = "<group>"; };
+		3BAC9A0110953E2400F235F1 /* TKCalendarDayEventView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCalendarDayEventView.h; sourceTree = "<group>"; };
+		3BAC9A0210953E2400F235F1 /* TKCalendarDayEventView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCalendarDayEventView.m; sourceTree = "<group>"; };
+		3BAC9A0310953E2400F235F1 /* TKCalendarDayTimelineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCalendarDayTimelineView.h; sourceTree = "<group>"; };
+		3BAC9A0410953E2400F235F1 /* TKCalendarDayTimelineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCalendarDayTimelineView.m; sourceTree = "<group>"; };
+		3BAC9A0510953E2400F235F1 /* TKCalendarDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCalendarDayViewController.h; sourceTree = "<group>"; };
+		3BAC9A0610953E2400F235F1 /* TKCalendarDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCalendarDayViewController.m; sourceTree = "<group>"; };
 		3BAC9A0710953E2400F235F1 /* TapDetectingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapDetectingView.h; sourceTree = "<group>"; };
 		3BAC9A0810953E2400F235F1 /* TapDetectingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapDetectingView.m; sourceTree = "<group>"; };
 		3BAC9A1B10953E5200F235F1 /* TapkuLibrary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapkuLibrary.h; sourceTree = "<group>"; };
@@ -343,12 +343,12 @@
 		3BAC9A0010953E2400F235F1 /* Day */ = {
 			isa = PBXGroup;
 			children = (
-				3BAC9A0110953E2400F235F1 /* ODCalendarDayEventView.h */,
-				3BAC9A0210953E2400F235F1 /* ODCalendarDayEventView.m */,
-				3BAC9A0310953E2400F235F1 /* ODCalendarDayTimelineView.h */,
-				3BAC9A0410953E2400F235F1 /* ODCalendarDayTimelineView.m */,
-				3BAC9A0510953E2400F235F1 /* ODCalendarDayViewController.h */,
-				3BAC9A0610953E2400F235F1 /* ODCalendarDayViewController.m */,
+				3BAC9A0510953E2400F235F1 /* TKCalendarDayViewController.h */,
+				3BAC9A0610953E2400F235F1 /* TKCalendarDayViewController.m */,
+				3BAC9A0110953E2400F235F1 /* TKCalendarDayEventView.h */,
+				3BAC9A0210953E2400F235F1 /* TKCalendarDayEventView.m */,
+				3BAC9A0310953E2400F235F1 /* TKCalendarDayTimelineView.h */,
+				3BAC9A0410953E2400F235F1 /* TKCalendarDayTimelineView.m */,
 				3BAC9A0710953E2400F235F1 /* TapDetectingView.h */,
 				3BAC9A0810953E2400F235F1 /* TapDetectingView.m */,
 			);
@@ -622,9 +622,9 @@
 				3B6EDDEB11547C2800E454DA /* TKCalendarMonthViewController.h in Headers */,
 				3B6EDDEF11547C2900E454DA /* TKCalendarMonthTableViewController.h in Headers */,
 				3B6EDDF111547C2B00E454DA /* TapDetectingView.h in Headers */,
-				3B6EDDF311547C2C00E454DA /* ODCalendarDayViewController.h in Headers */,
-				3B6EDDF511547C3000E454DA /* ODCalendarDayTimelineView.h in Headers */,
-				3B6EDDF711547C3100E454DA /* ODCalendarDayEventView.h in Headers */,
+				3B6EDDF311547C2C00E454DA /* TKCalendarDayViewController.h in Headers */,
+				3B6EDDF511547C3000E454DA /* TKCalendarDayTimelineView.h in Headers */,
+				3B6EDDF711547C3100E454DA /* TKCalendarDayEventView.h in Headers */,
 				3B6EDDF911547C3400E454DA /* TKGraphView.h in Headers */,
 				3B6EDDFA11547C3400E454DA /* TKGraphController.h in Headers */,
 				3B6EDDFD11547C3800E454DA /* TKEmptyView.h in Headers */,
@@ -745,9 +745,9 @@
 				3B6EDDEA11547C2700E454DA /* TKCalendarMonthViewController.m in Sources */,
 				3B6EDDEE11547C2900E454DA /* TKCalendarMonthTableViewController.m in Sources */,
 				3B6EDDF011547C2A00E454DA /* TapDetectingView.m in Sources */,
-				3B6EDDF211547C2C00E454DA /* ODCalendarDayViewController.m in Sources */,
-				3B6EDDF411547C2D00E454DA /* ODCalendarDayTimelineView.m in Sources */,
-				3B6EDDF611547C3000E454DA /* ODCalendarDayEventView.m in Sources */,
+				3B6EDDF211547C2C00E454DA /* TKCalendarDayViewController.m in Sources */,
+				3B6EDDF411547C2D00E454DA /* TKCalendarDayTimelineView.m in Sources */,
+				3B6EDDF611547C3000E454DA /* TKCalendarDayEventView.m in Sources */,
 				3B6EDDF811547C3300E454DA /* TKGraphView.m in Sources */,
 				3B6EDDFB11547C3500E454DA /* TKGraphController.m in Sources */,
 				3B6EDDFC11547C3800E454DA /* TKEmptyView.m in Sources */,

@@ -1,6 +1,6 @@
 //
 //  ODCalendarDayEventView.m
-//  Created by Anthony Mittaz on 20/10/09.
+//  Created by Devin Ross on 7/28/09.
 //
 /*
  
@@ -28,7 +28,7 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
-#import "ODCalendarDayEventView.h"
+#import "TKCalendarDayEventView.h"
 
 
 #define HORIZONTAL_OFFSET 4.0
@@ -36,14 +36,14 @@
 
 #define FONT_SIZE 12.0
 
-
-@implementation ODCalendarDayEventView
+@implementation TKCalendarDayEventView
 
 @synthesize id=_id;
 @synthesize startDate=_startDate;
 @synthesize endDate=_endDate;
 @synthesize title=_title;
 @synthesize location=_location;
+@synthesize balloonColorTop, balloonColorBottom, textColor; 
 
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 // Only when xibless (interface buildder)
@@ -75,8 +75,9 @@
 	self.location = nil;
 	
 	twoFingerTapIsPossible = FALSE;
-	
-	self.backgroundColor = [UIColor purpleColor];
+	self.balloonColorTop = [UIColor purpleColor];
+	self.balloonColorBottom = nil;
+	self.textColor = [UIColor whiteColor];
 	self.alpha = 0.8;
 	CALayer *layer = [self layer];
 	layer.masksToBounds = YES;
@@ -88,7 +89,7 @@
 
 + (id)eventViewWithFrame:(CGRect)frame id:(NSNumber *)id startDate:(NSDate *)startDate endDate:(NSDate *)endDate title:(NSString *)title location:(NSString *)location;
 {
-	ODCalendarDayEventView *event = [[[ODCalendarDayEventView alloc]initWithFrame:frame]autorelease];
+	TKCalendarDayEventView *event = [[[TKCalendarDayEventView alloc]initWithFrame:frame]autorelease];
 	event.id = id;
 	event.startDate = startDate;
 	event.endDate = endDate;
@@ -103,50 +104,72 @@
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	// Save the context state 
-	CGContextSaveGState(context);
+	CGContextSaveGState(context);	
+	
+	//if the developer really want a standard fill color
+	if (balloonColorTop == balloonColorBottom) {
+		self.backgroundColor = balloonColorTop;
+	}
+	//if we have 2 different colors, we draw a gradient
+	else {		
+		UIColor *lowerColor = nil;
+		//if there is no bottom color set, we get a darker version of the top one
+		if (!balloonColorBottom) {
+			const CGFloat *components = CGColorGetComponents([balloonColorTop CGColor]);
+			lowerColor = [UIColor colorWithRed:components[0]-0.25f green:components[1]-0.25f blue:components[2]-0.25f alpha:components[3]];
+		}
+		else {
+			lowerColor = balloonColorBottom;
+		}
+		//create a colorspace and linear gradient from the colors
+		CFArrayRef colors = (CFArrayRef)[NSArray arrayWithObjects:(id)[balloonColorTop CGColor], (id)[lowerColor CGColor], nil];		
+		CGColorSpaceRef myColorspace = CGColorSpaceCreateDeviceRGB();
+		CGGradientRef myGradient = CGGradientCreateWithColors(myColorspace, colors, NULL);
+		//draw the gradient
+		CGContextDrawLinearGradient(context, myGradient, CGPointMake(0.0f,0.0f), CGPointMake(0.0f,self.bounds.size.height), 0);
+		CFRelease(myGradient);
+		CFRelease(myColorspace);		
+	}
 	
 	// Set shadow
 	CGContextSetShadowWithColor(context,  CGSizeMake(0.0, 1.0), 0.7, [[UIColor blackColor]CGColor]);
 	
 	// Set text color
-	[[UIColor whiteColor]set];
+	[textColor set];
+	
+	CGFloat availableHeight = self.bounds.size.height - VERTICAL_OFFSET - VERTICAL_OFFSET;
 	
 	CGRect titleRect = CGRectMake(self.bounds.origin.x + HORIZONTAL_OFFSET, 
 								  self.bounds.origin.y + VERTICAL_OFFSET, 
 								  self.bounds.size.width - 2 * HORIZONTAL_OFFSET, 
-								  FONT_SIZE + 4.0);
+								  availableHeight);
+	CGSize titleSize = CGSizeZero;
 	
 	CGRect locationRect = CGRectMake(self.bounds.origin.x + HORIZONTAL_OFFSET, 
-								  self.bounds.origin.y + VERTICAL_OFFSET + FONT_SIZE + 4.0, 
+								  self.bounds.origin.y + VERTICAL_OFFSET, 
 								  self.bounds.size.width - 2 * HORIZONTAL_OFFSET, 
-								  FONT_SIZE + 4.0);
+								  availableHeight);
 	
     // Drawing code
-	if (self.bounds.size.height > VERTICAL_DIFF) {
-		// Draw both title and location
-		if (self.title) {
-			[self.title drawInRect:CGRectIntegral(titleRect) 
-					 withFont:[UIFont boldSystemFontOfSize:FONT_SIZE] 
-				lineBreakMode:UILineBreakModeTailTruncation 
-					alignment:UITextAlignmentLeft];
-		}
+	// Draw both title and location
+	if (self.title) {
+		titleSize = [self.title drawInRect:CGRectIntegral(titleRect) 
+								  withFont:[UIFont boldSystemFontOfSize:FONT_SIZE] 
+							 lineBreakMode:(availableHeight < VERTICAL_DIFF ? UILineBreakModeTailTruncation : UILineBreakModeWordWrap)
+								 alignment:UITextAlignmentLeft];
+	}
+	if (titleSize.height + FONT_SIZE < availableHeight) {
 		if (self.location) {
+			locationRect.origin.y += titleSize.height;
+			locationRect.size.height -= titleSize.height;
+			UILineBreakMode breaking = (locationRect.size.height < FONT_SIZE + VERTICAL_OFFSET ? UILineBreakModeTailTruncation : UILineBreakModeWordWrap);
 			[self.location drawInRect:CGRectIntegral(locationRect) 
 						  withFont:[UIFont systemFontOfSize:FONT_SIZE] 
-					 lineBreakMode:UILineBreakModeTailTruncation 
+					 lineBreakMode:breaking
 						 alignment:UITextAlignmentLeft];
 			
 		}
-	} else {
-		// Draw only title
-		if (self.title) {
-			[self.title drawInRect:CGRectIntegral(titleRect) 
-						  withFont:[UIFont boldSystemFontOfSize:FONT_SIZE] 
-					 lineBreakMode:UILineBreakModeTailTruncation 
-						 alignment:UITextAlignmentLeft];
-		}
-	}
-	
+	}		
 	// Restore the context state
 	CGContextRestoreGState(context);
 }
@@ -157,6 +180,9 @@
 	[_endDate release];
 	[_title release];
 	[_location release];
+	[balloonColorTop release];
+	[balloonColorBottom release];	
+	[textColor release];
 	
     [super dealloc];
 }

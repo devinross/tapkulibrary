@@ -32,7 +32,7 @@
 #import "TKCalendarMonthViewController.h"
 
 @interface TKCalendarMonthTableViewController : TKCalendarMonthViewController <UITableViewDelegate, UITableViewDataSource>  {
-	UITableView *tableView;
+	UITableView *_tableView;
 }
 @property (retain,nonatomic) UITableView *tableView;
 - (void) updateTableOffset;

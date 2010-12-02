@@ -52,6 +52,8 @@
 	self.tkBackButton = [[[TKBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back"] style:TKBarButtonItemStyleBack target:nil action:nil] autorelease];
 	data = [[NSMutableArray alloc] init];
 	
+
+	
 	NSArray *rows;
 	NSDictionary *d;
 	
@@ -145,9 +147,9 @@
 	
 	
 	else if(s==2 && r==0)
-		vc = [[DemoCalendarMonth alloc] init];
+		vc = [[DemoCalendarMonth alloc] initWithSunday:YES];
 	else if(s==2 && r==1)
-		vc = [[ODCalendarDayViewController alloc] init];
+		vc = [[TKCalendarDayViewController alloc] init];
 	
 	
 	
@@ -159,7 +161,6 @@
 		vc = [[MoreCellsViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	else if(s==3 && r==2)
 		vc = [[FastTableViewController alloc] initWithStyle:UITableViewStylePlain];
-	
 	else
 		vc = [[ImageCenterViewController alloc] initWithStyle:UITableViewStylePlain];
 	

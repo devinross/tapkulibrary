@@ -33,7 +33,7 @@
 #import "TKBarButtonItem.h"
 
 @implementation TKViewController
-@synthesize tkBackButton;
+@synthesize tkBackButton = _tkBackButton;
 
 
 - (void)dealloc {

@@ -1,6 +1,6 @@
 //
 //  ODCalendarDayViewController.m
-//  Created by Anthony Mittaz on 19/10/09.
+//  Created by Devin Ross on 7/28/09.
 /*
  
  tapku.com || http://github.com/devinross/tapkulibrary
@@ -28,26 +28,30 @@
  
  */
 
-#import "ODCalendarDayViewController.h"
-#import "ODCalendarDayEventView.h"
+#import "TKCalendarDayViewController.h"
+#import "TKCalendarDayEventView.h"
 
 
-@implementation ODCalendarDayViewController
+@implementation TKCalendarDayViewController
 
-#pragma mark -
-#pragma mark Setup
-
-- (ODCalendarDayTimelineView *)calendarDayTimelineView
-{
-	if (!_calendarDayTimelineView) {
-		_calendarDayTimelineView = [[ODCalendarDayTimelineView alloc]initWithFrame:self.view.bounds];
-		_calendarDayTimelineView.delegate = self;
-	}
-	return _calendarDayTimelineView;
+- (void) didReceiveMemoryWarning {
+	// Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+	
+	// Release any cached data, images, etc that aren't in use.
+}
+- (void) viewDidUnload {
+	// Release any retained subviews of the main view.
+	// e.g. self.myOutlet = nil;
+}
+- (void) dealloc {
+	[_calendarDayTimelineView release];
+	
+    [super dealloc];
 }
 
-#pragma mark -
-#pragma mark View Events
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,19 +59,16 @@
 	[self.view addSubview:self.calendarDayTimelineView];
 }
 
-#pragma mark -
-#pragma mark Calendar Day Timeline View delegate
 
-- (NSArray *)calendarDayTimelineView:(ODCalendarDayTimelineView*)calendarDayTimeline eventsForDate:(NSDate *)eventDate
-{
-	ODCalendarDayEventView *eventViewFirst = [ODCalendarDayEventView eventViewWithFrame:CGRectZero
+- (NSArray *)calendarDayTimelineView:(TKCalendarDayTimelineView*)calendarDayTimeline eventsForDate:(NSDate *)eventDate{
+	TKCalendarDayEventView *eventViewFirst = [TKCalendarDayEventView eventViewWithFrame:CGRectZero
 																		 id:nil 
 																  startDate:[[NSDate date]addTimeInterval:60 * 60 * 2] 
 																	endDate:[[NSDate date]addTimeInterval:60 * 60 * 24]
 																	  title:@"First"
 																   location:@"Test Location"];
 	
-	ODCalendarDayEventView *eventViewSecond = [ODCalendarDayEventView eventViewWithFrame:CGRectZero
+	TKCalendarDayEventView *eventViewSecond = [TKCalendarDayEventView eventViewWithFrame:CGRectZero
 																				  id:nil
 															 			   startDate:[NSDate date] 
 																			 endDate:[NSDate date]
@@ -76,37 +77,19 @@
 	
 	return [NSArray arrayWithObjects:eventViewFirst, eventViewSecond, nil];
 }
-
-- (void)calendarDayTimelineView:(ODCalendarDayTimelineView*)calendarDayTimeline eventViewWasSelected:(ODCalendarDayEventView *)eventView
-{
+- (void)calendarDayTimelineView:(TKCalendarDayTimelineView*)calendarDayTimeline eventViewWasSelected:(TKCalendarDayEventView *)eventView{
 	NSLog(@"CalendarDayTimelineView: EventViewWasSelected");
 }
 
-/*
- - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
- 
- //return (interfaceOrientation == UIInterfaceOrientationPortrait);
- }*/
 
-- (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
+- (TKCalendarDayTimelineView *) calendarDayTimelineView{
+	if (!_calendarDayTimelineView) {
+		_calendarDayTimelineView = [[TKCalendarDayTimelineView alloc]initWithFrame:self.view.bounds];
+		_calendarDayTimelineView.delegate = self;
+	}
+	return _calendarDayTimelineView;
 }
 
-#pragma mark -
-#pragma mark Dealloc
-
-- (void)dealloc {
-	[_calendarDayTimelineView release];
-	
-    [super dealloc];
-}
 
 
 @end

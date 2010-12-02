@@ -1,6 +1,6 @@
 //
 //  ODCalendarDayEventView.h
-//  Created by Anthony Mittaz on 20/10/09.
+//  Created by Devin Ross on 7/28/09.
 //
 /*
  
@@ -33,12 +33,15 @@
 
 #define VERTICAL_DIFF 50.0
 
-@interface ODCalendarDayEventView : TapDetectingView {
+@interface TKCalendarDayEventView : TapDetectingView {
 	NSNumber *_id;
 	NSDate *_startDate;
 	NSDate *_endDate;
 	NSString *_title;
 	NSString *_location;
+	UIColor *balloonColorTop;
+	UIColor *balloonColorBottom;
+	UIColor *textColor;
 }
 
 @property (nonatomic, copy) NSNumber *id;
@@ -46,6 +49,9 @@
 @property (nonatomic, copy) NSDate *endDate;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *location;
+@property (nonatomic, retain) UIColor *balloonColorTop;
+@property (nonatomic, retain) UIColor *balloonColorBottom;
+@property (nonatomic, copy) UIColor *textColor;
 
 - (void)setupCustomInitialisation;
 

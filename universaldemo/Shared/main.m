@@ -55,8 +55,9 @@ int main(int argc, char *argv[]) {
 		
 	}
 	
-	NSString *del = [[UIDevice currentDevice] userInterfaceIdiom] ==  UIUserInterfaceIdiomPad ? @"AppDelegate_iPad" : @"AppDelegate_iPhone";
-    int retVal = UIApplicationMain(argc, argv, nil, del);
+	//NSString *del = [[UIDevice currentDevice] userInterfaceIdiom] ==  UIUserInterfaceIdiomPad ? @"AppDelegate_iPad" : @"AppDelegate_iPhone";
+    NSString *del = @"AppDelegate_iPhone";
+	int retVal = UIApplicationMain(argc, argv, nil, del);
     [pool release];
     return retVal;
 }

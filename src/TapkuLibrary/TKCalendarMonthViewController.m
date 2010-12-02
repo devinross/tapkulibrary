@@ -33,17 +33,42 @@
 
 
 @implementation TKCalendarMonthViewController
-@synthesize monthView;
+@synthesize monthView = _monthView;
+
+- (id) init{
+	return [self initWithSunday:YES];
+}
+- (id) initWithSunday:(BOOL)sundayFirst{
+	if(!(self = [super init])) return nil;
+	_sundayFirst = sundayFirst;
+	return self;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+	return NO;
+}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+- (void)viewDidUnload {
+	self.monthView.delegate = nil;
+	self.monthView.dataSource = nil;
+	self.monthView = nil;
+}
+- (void)dealloc {
+	self.monthView = nil;
+    [super dealloc];
+}
 
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void) loadView{
+	[super loadView];
 	
-	monthView = [[TKCalendarMonthView alloc] init];
-	monthView.delegate = self;
-	monthView.dataSource = self;
-	[self.view addSubview:monthView];
-	[monthView reload];
+	_monthView = [[TKCalendarMonthView alloc] initWithSundayAsFirst:_sundayFirst];
+	_monthView.delegate = self;
+	_monthView.dataSource = self;
+	[self.view addSubview:_monthView];
+	[_monthView reload];
 	
 }
 
@@ -53,23 +78,5 @@
 	
 }
 
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	return NO;
-}
-- (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-}
-- (void)dealloc {
-	[monthView release];
-    [super dealloc];
-}
 
 @end

@@ -36,9 +36,15 @@
 @protocol TKCalendarMonthViewDelegate,TKCalendarMonthViewDataSource;
 
 @interface TKCalendarMonthViewController : UIViewController <TKCalendarMonthViewDelegate,TKCalendarMonthViewDataSource> {
-	TKCalendarMonthView *monthView;
+	TKCalendarMonthView *_monthView;
+	BOOL _sundayFirst;
 }
+
+- (id) init;
+- (id) initWithSunday:(BOOL)sundayFirst;
+
 @property (retain,nonatomic) TKCalendarMonthView *monthView;
+
 
 @end
 

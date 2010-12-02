@@ -121,6 +121,8 @@
 		_loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		
 		UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+		act.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+
 		act.center = _loadingView.center;
 		[act startAnimating];
 		[_loadingView addSubview:act];
@@ -130,7 +132,6 @@
 }
 - (UISearchBar*) searchBar{
 	if(_searchBar==nil){
-		self.searchBarController;
 		_searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
 		_searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	}

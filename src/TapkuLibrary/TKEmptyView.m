@@ -98,6 +98,9 @@
 		case TKEmptyViewImageMale:
 			str = @"malePerson";
 			break;
+		case TKEmptyViewImageTelevision:
+			str = @"television";
+			break;
 		default:
 			str = @"star";
 			break;

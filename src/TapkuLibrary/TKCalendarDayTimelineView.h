@@ -1,8 +1,6 @@
 //
 //  ODCalendarDayTimelineView.h
-//  TapkuLibrary
-//
-//  Created by Anthony Mittaz on 18/10/09.
+//  Created by Devin Ross on 7/28/09.
 /*
  
  tapku.com || http://github.com/devinross/tapkulibrary
@@ -31,29 +29,40 @@
 */
 
 #import <UIKit/UIKit.h>
-#import "ODCalendarDayEventView.h"
+#import "TKCalendarDayEventView.h"
 
-@protocol ODCalendarDayTimelineViewDelegate;
+@protocol TKCalendarDayTimelineViewDelegate;
 
-@class ODTimelineView;
+@class TKTimelineView;
 
-@interface ODCalendarDayTimelineView : UIView <TapDetectingViewDelegate>{
+@interface TKCalendarDayTimelineView : UIView <TapDetectingViewDelegate>{
 	UIScrollView *_scrollView;
-	ODTimelineView *_timelineView;
+	TKTimelineView *_timelineView;
 	
 	NSArray *_events;
 	NSDate *_currentDay;
 	
-	id <ODCalendarDayTimelineViewDelegate> _delegate;
+	id <TKCalendarDayTimelineViewDelegate> _delegate;
+	UIColor *timelineColor;
+	UIColor *hourColor;
+	BOOL is24hClock;
+	//montagem da barra superior de seleção de dias 
+	UIButton *leftArrow, *rightArrow;
+	UIImageView *topBackground, *shadow;
+	UILabel *monthYear;	
 }
 
 @property (nonatomic, readonly) UIScrollView *scrollView;
-@property (nonatomic, readonly) ODTimelineView *timelineView;
+@property (nonatomic, readonly) TKTimelineView *timelineView;
 
 @property (nonatomic, retain) NSArray *events;
 @property (nonatomic, copy) NSDate *currentDay;
 
-@property (nonatomic, retain) id <ODCalendarDayTimelineViewDelegate> delegate;
+@property (nonatomic, retain) id <TKCalendarDayTimelineViewDelegate> delegate;
+
+@property (nonatomic, retain) UIColor *timelineColor;
+@property (nonatomic, retain) UIColor *hourColor;
+@property (nonatomic) BOOL is24hClock;
 
 // Initialisation
 - (void)setupCustomInitialisation;
@@ -63,26 +72,30 @@
 
 @end
 
-@protocol ODCalendarDayTimelineViewDelegate<NSObject>
+@protocol TKCalendarDayTimelineViewDelegate<NSObject>
 @required
 
-- (NSArray *)calendarDayTimelineView:(ODCalendarDayTimelineView*)calendarDayTimeline eventsForDate:(NSDate *)eventDate;
+- (NSArray *) calendarDayTimelineView:(TKCalendarDayTimelineView*)calendarDayTimeline eventsForDate:(NSDate *)eventDate;
 
 @optional
-- (void)calendarDayTimelineView:(ODCalendarDayTimelineView*)calendarDayTimeline eventViewWasSelected:(ODCalendarDayEventView *)eventView;
+- (void) calendarDayTimelineView:(TKCalendarDayTimelineView*)calendarDayTimeline eventViewWasSelected:(TKCalendarDayEventView *)eventView;
+- (void) calendarDayTimelineView:(TKCalendarDayTimelineView*)calendarDayTimeline eventDateWasSelected:(NSDate*)eventDate;
 
 @end
 
-@interface ODTimelineView : UIView {
+@interface TKTimelineView : TapDetectingView {
 	NSArray *_times;
 	NSArray *_periods;
+	BOOL is24hClock;
+	UIColor *hourColor;	
 }
 
 @property (nonatomic, readonly) NSArray *times;
 @property (nonatomic, readonly) NSArray *periods;
+@property (nonatomic, retain) UIColor *hourColor;
+@property (nonatomic) BOOL is24hClock;
 
 // Initialisation
 - (void)setupCustomInitialisation;
 
 @end
-
