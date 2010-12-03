@@ -76,7 +76,7 @@
 	
 	float w = image.size.width;
 	float h = image.size.height;
-	float factor = self.frame.size.width / (h>w?h:w);
+	float factor = self.bounds.size.width / (h>w?h:w);
 	h = factor * h;
 	w = factor * w;
 	float y = baseline - h > 0 ? baseline - h : 0;
