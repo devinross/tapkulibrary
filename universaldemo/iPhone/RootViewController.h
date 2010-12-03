@@ -34,6 +34,7 @@
 
 @interface RootViewController : TKTableViewController {
 	NSMutableArray *data;
+	BOOL flag;
 }
 
 @end

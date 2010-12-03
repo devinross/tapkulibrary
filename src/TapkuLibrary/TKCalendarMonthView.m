@@ -137,8 +137,6 @@
 @synthesize monthDate;
 
 
-
-
 + (NSArray*) rangeOfDatesInMonthGrid:(NSDate*)date startOnSunday:(BOOL)sunday{
 	
 	NSDate *firstDate, *lastDate;
@@ -587,8 +585,6 @@
 @property (readonly) UIButton *rightArrow;
 @property (readonly) UIImageView *shadow;
 
-
-
 @end
 
 
@@ -639,25 +635,44 @@
 	
 	NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
 	[dateFormat setDateFormat:@"eee"];
+	[dateFormat setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 	
 	
+	TKDateInformation sund;
+	sund.day = 5;
+	sund.month = 12;
+	sund.year = 2010;
+	sund.hour = 0;
+	sund.minute = 0;
+	sund.second = 0;
 	
+	//NSDate *dd = [NSDate dateFromDateInformation:sund timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+	//NSLog(@"%@ %@",dd,[NSDate dateInformationDescriptionWithInformation:sund]);
 	
-	NSString * sun = [dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970:-3*60*60*24]];
-	NSString * mon = [dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970:-2*60*60*24]];
-	NSString * tue = [dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970:-1*60*60*24]];
-	NSString * wed = [dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970:0]];
-	NSString * thu = [dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970:60*60*24*1]];
-	NSString * fri = [dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970:60*60*24*2]];
-	NSString * sat = [dateFormat stringFromDate:[NSDate dateWithTimeIntervalSince1970:60*60*24*3]];
+	NSTimeZone *tz = [NSTimeZone timeZoneForSecondsFromGMT:0];
+	NSString * sun = [dateFormat stringFromDate:[NSDate dateFromDateInformation:sund timeZone:tz]];
+	
+	sund.day = 6;
+	NSString *mon = [dateFormat stringFromDate:[NSDate dateFromDateInformation:sund timeZone:tz]];
+	
+	sund.day = 7;
+	NSString *tue = [dateFormat stringFromDate:[NSDate dateFromDateInformation:sund timeZone:tz]];
+	
+	sund.day = 8;
+	NSString *wed = [dateFormat stringFromDate:[NSDate dateFromDateInformation:sund timeZone:tz]];
+	
+	sund.day = 9;
+	NSString *thu = [dateFormat stringFromDate:[NSDate dateFromDateInformation:sund timeZone:tz]];
+	
+	sund.day = 10;
+	NSString *fri = [dateFormat stringFromDate:[NSDate dateFromDateInformation:sund timeZone:tz]];
+	
+	sund.day = 11;
+	NSString *sat = [dateFormat stringFromDate:[NSDate dateFromDateInformation:sund timeZone:tz]];
 	
 	[dateFormat release];
 
-	
-	//NSLog(@"Day of the week: %@", weekdayString);
-	//NSDate *d = [TKDateInformation dateWithInformation:testDate];
-	
-	
+
 	
 	NSArray *ar;
 	if(sunday) ar = [NSArray arrayWithObjects:sun,mon,tue,wed,thu,fri,sat,nil];
@@ -700,9 +715,6 @@
 	
 	TKDateInformation nextInfo = [nextMonth dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 	NSDate *localNextMonth = [NSDate dateFromDateInformation:nextInfo];
-	
-	
-	
 	
 	
 	NSArray *dates = [TKCalendarMonthTiles rangeOfDatesInMonthGrid:nextMonth startOnSunday:sunday];
@@ -758,8 +770,6 @@
 		
 		self.shadow.frame = CGRectMake(0, self.frame.size.height-self.shadow.frame.size.height+21, self.shadow.frame.size.width, self.shadow.frame.size.height);
 		
-		
-		
 	}
 	
 	
@@ -775,7 +785,6 @@
 	
 
 }
-
 - (void) changeMonth:(UIButton *)sender{
 	
 	[self changeMonthAnimation:sender];

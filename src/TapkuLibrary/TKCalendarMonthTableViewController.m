@@ -34,6 +34,11 @@
 @implementation TKCalendarMonthTableViewController
 @synthesize tableView = _tableView;
 
+- (void) viewDidUnload {
+	self.tableView.delegate = nil;
+	self.tableView.dataSource = nil;
+	self.tableView = nil;
+}
 - (void) dealloc {
 	self.tableView = nil;
     [super dealloc];

@@ -42,10 +42,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 
-	CGRect frame = [UIScreen mainScreen].bounds;
-	window = [[UIWindow alloc] initWithFrame:frame];
+	CGRect r = [UIScreen mainScreen].bounds;
+	window = [[UIWindow alloc] initWithFrame:r];
 	window.backgroundColor = [UIColor blackColor];
-    [window makeKeyAndVisible];
+	[window makeKeyAndVisible];
+
+    
 	
 	root = [[RootViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	navigationController = [[UINavigationController alloc] initWithRootViewController:root];
@@ -98,6 +100,8 @@
 
 - (void)dealloc {
     [window release];
+	[root release];
+	[navigationController release];
     [super dealloc];
 }
 

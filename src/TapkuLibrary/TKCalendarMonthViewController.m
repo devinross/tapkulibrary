@@ -44,18 +44,20 @@
 	return self;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return NO;
 }
-- (void)didReceiveMemoryWarning {
+- (void) didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-- (void)viewDidUnload {
+- (void) viewDidUnload {
 	self.monthView.delegate = nil;
 	self.monthView.dataSource = nil;
 	self.monthView = nil;
 }
-- (void)dealloc {
+- (void) dealloc {
+	self.monthView.delegate = nil;
+	self.monthView.dataSource = nil;
 	self.monthView = nil;
     [super dealloc];
 }

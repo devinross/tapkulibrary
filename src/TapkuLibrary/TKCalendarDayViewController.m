@@ -33,6 +33,7 @@
 
 
 @implementation TKCalendarDayViewController
+@synthesize calendarDayTimelineView;
 
 - (void) didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -41,12 +42,10 @@
 	// Release any cached data, images, etc that aren't in use.
 }
 - (void) viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
+	self.calendarDayTimelineView = nil;
 }
 - (void) dealloc {
-	[_calendarDayTimelineView release];
-	
+	self.calendarDayTimelineView = nil;
     [super dealloc];
 }
 

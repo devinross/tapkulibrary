@@ -86,6 +86,8 @@
 
 
 
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [data count];
 }
@@ -100,7 +102,6 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    // Set up the cell...
 	cell.textLabel.text = [[[data objectAtIndex:indexPath.section] objectForKey:@"rows"] objectAtIndex:indexPath.row];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
@@ -110,7 +111,6 @@
 	
 }
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	
 	[tv deselectRowAtIndexPath:indexPath animated:YES];
 	
 	
@@ -150,9 +150,6 @@
 		vc = [[DemoCalendarMonth alloc] initWithSunday:YES];
 	else if(s==2 && r==1)
 		vc = [[TKCalendarDayViewController alloc] init];
-	
-	
-	
 	
 	
 	else if(s==3 && r==0)
