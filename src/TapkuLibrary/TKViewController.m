@@ -37,7 +37,7 @@
 
 
 - (void)dealloc {
-	self.tkBackButton = nil;
+	[_tkBackButton release], _tkBackButton = nil;
     [super dealloc];
 }
 

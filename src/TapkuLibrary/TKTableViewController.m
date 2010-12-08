@@ -73,6 +73,13 @@
 
 - (void) loadView{
 	[super loadView];
+	
+	_tableView =  [[UITableView alloc] initWithFrame:self.view.bounds style:_style];
+	_tableView.delegate = self;
+	_tableView.dataSource = self;
+	_tableView.showsVerticalScrollIndicator = YES;
+	_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	
 	[self.view addSubview:self.tableView];
 }
 
@@ -95,16 +102,6 @@
 
 // -----------------------------
 // PROPERTIES
-- (UITableView*) tableView{
-	if(_tableView==nil){
-		_tableView =  [[UITableView alloc] initWithFrame:self.view.bounds style:_style];
-		_tableView.delegate = self;
-		_tableView.dataSource = self;
-		_tableView.showsVerticalScrollIndicator = YES;
-		_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	}
-	return _tableView;
-}
 - (TKEmptyView*) emptyView{
 	if(_emptyView==nil){
 		_emptyView = [[TKEmptyView alloc] initWithFrame:self.view.bounds 
