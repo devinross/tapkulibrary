@@ -31,6 +31,7 @@
 
 
 #import "TKImageCenter.h"
+#import "NSArray+TKCategory.h"
 
 @implementation TKImageCenter
 
@@ -50,49 +51,66 @@
 }
 
 
-- (UIImage*) imageAtURL:(NSURL*)imageURL queueIfNeeded:(BOOL)addToQueue{
+- (UIImage*) imageAtURL:(NSString*)imageURL queueIfNeeded:(BOOL)addToQueue{
 	
 	UIImage *img = [images objectForKey:imageURL];
 	if(img != nil) return img;
 	
 	
-	if(!addToQueue) return nil;
 	
-	
-	[queue addObject:imageURL];
-	if(addToQueue && thread==nil){
-		thread = [[NSThread alloc] initWithTarget:self selector:@selector(getImages) object:nil];
-		[thread start];
+	if(addToQueue){
+		
+		if(thread==nil){
+			thread = [[NSThread alloc] initWithTarget:self selector:@selector(startupThreadWithImage:) object:imageURL];
+			[thread start];
+		}else
+			[queue addObject:imageURL];
+			//[self performSelector:@selector(addImageURLToQueue:) onThread:thread withObject:imageURL waitUntilDone:NO];
+		
 	}
+	
+	
 	
 	
 	
 	return nil;
 }
 
+- (void) addImageURLToQueue:(NSString*)imageURL{
+	if(![queue containsObject:imageURL]){
+		[queue addObject:imageURL];
+	}
+}
+
+
 - (UIImage*) adjustImageRecieved:(UIImage*)image{
 	return image;
 }
-
+- (void) sendNewImageNotification:(NSArray*)ar{
+	[images setObject:[ar firstObject] forKey:[ar lastObject]];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"newImage" object:self];
+}
 
 - (void) getImages{
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	
 	
 	while([queue count]>0){
-		NSURL *url = [queue objectAtIndex:0];
-		UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+		NSString *str = [queue objectAtIndex:0];
+		UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:str]]];
 		if(img != nil){
 			UIImage *transformImage = [self  adjustImageRecieved:img];
 			if(transformImage!= nil){
-				[images setObject:transformImage forKey:url];
-				[[NSNotificationCenter defaultCenter] postNotificationName:@"newImage" object:self];
+				//[images setObject:transformImage forKey:url];
+				[self performSelectorOnMainThread:@selector(sendNewImageNotification:) 
+									   withObject:[NSArray arrayWithObjects:transformImage,str,nil] 
+									waitUntilDone:NO];
 			}
 			
 		}
 		
 		for(int cnt=0;cnt < [queue count]; cnt++){
-			if([[queue objectAtIndex:cnt] isEqual:url]){
+			if([[queue objectAtIndex:cnt] isEqual:str]){
 				[queue removeObjectAtIndex:cnt];
 				cnt--;
 			}
@@ -108,6 +126,15 @@
 	[thread release];
 	thread = nil;
 }
+- (void) startupThreadWithImage:(NSString*)imageURL{
+	
+	[queue addObject:imageURL];
+	[self getImages];
+	
+}
+
+
+
 - (void) clearImages{
 	[thread cancel];
 	[thread release];

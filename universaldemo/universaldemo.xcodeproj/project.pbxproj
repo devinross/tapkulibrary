@@ -380,7 +380,6 @@
 		3BF88B7511E5468D00C9FC43 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3BF88B9411E5468D00C9FC43 /* Image Center */,
 				3BF88B8B11E5468D00C9FC43 /* TableView */,
 				3BF88B8811E5468D00C9FC43 /* Map */,
 				3BF88B8511E5468D00C9FC43 /* Calendar */,
@@ -389,6 +388,7 @@
 				3BF88B7911E5468D00C9FC43 /* Graph */,
 				3BF88B7611E5468D00C9FC43 /* Coverflow */,
 				3BD32F03125CE78500BE5EAF /* Alerts */,
+				3BF88B9411E5468D00C9FC43 /* Image Center */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";

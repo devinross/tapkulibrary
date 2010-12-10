@@ -43,7 +43,7 @@
 
 + (TKImageCenter*) sharedImageCenter;
 
-- (UIImage*) imageAtURL:(NSURL*)url queueIfNeeded:(BOOL)addToQueue;
+- (UIImage*) imageAtURL:(NSString*)url queueIfNeeded:(BOOL)addToQueue;
 
 - (UIImage*) adjustImageRecieved:(UIImage*)image; // subclass to add cropping or manipulation
 

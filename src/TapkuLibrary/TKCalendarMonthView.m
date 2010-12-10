@@ -854,13 +854,9 @@
 	
 	if([ar count] < 2){
 		
-		NSDate *d = [currentTile monthDate];
-		TKDateInformation info = [d dateInformation];
-		info.day = [[ar objectAtIndex:0] intValue];
-		
-		NSDate *select = [NSDate dateFromDateInformation:info];
 		if([delegate respondsToSelector:@selector(calendarMonthView:didSelectDate:)])
-			[delegate calendarMonthView:self didSelectDate:select];
+			[delegate calendarMonthView:self didSelectDate:[self dateSelected]];
+	
 	}else{
 		
 		int direction = [[ar lastObject] intValue];

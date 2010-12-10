@@ -40,17 +40,16 @@
 
 
 
-- (void)viewDidLoad {
+- (void) viewDidLoad {
     [super viewDidLoad];
 	
 	self.tableView.rowHeight = 120;
 	
-	urlArray = [[NSArray arrayWithObjects:
+	urlArray = [[NSArray alloc] initWithObjects:
 				 @"http://farm3.static.flickr.com/2797/4196552800_a5de0f3627_t.jpg",
 				 @"http://farm3.static.flickr.com/2380/2417672368_a41257399f_t.jpg",
 				 @"http://farm3.static.flickr.com/2063/2181373837_b32a7e36fd_t.jpg",
 				 @"http://farm4.static.flickr.com/3018/2458286264_8e5bae7ec3_t.jpg",
-				 @"http://farm4.static.flickr.com/3236/2779325398_80347b2c6f_t.jpg",
 				 @"http://farm4.static.flickr.com/3629/3459136258_885598f06a_t.jpg",
 				 @"http://farm4.static.flickr.com/3619/3308615215_63752b7b27_t.jpg",
 				 @"http://farm1.static.flickr.com/3/2451788_febcdb12f6_t.jpg",
@@ -61,7 +60,7 @@
 				 @"http://farm4.static.flickr.com/3229/2723469734_8eeec4e2e4_t.jpg",
 				 @"http://farm4.static.flickr.com/3664/3660136156_dbf8852267_t.jpg",
 				 @"http://farm4.static.flickr.com/3369/3659337053_180878a026_t.jpg",
-				 nil] retain];
+				 nil];
 			  
 	images = [[NSMutableArray alloc] init];
 	for(int i=0;i<[urlArray count] * 3;i++){
@@ -70,22 +69,53 @@
 
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newImageRetrieved) name:@"newImage" object:nil];
 	
+	
+	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,100)];
+	
+	UILabel *lab = [[UILabel alloc] initWithFrame:CGRectInset(v.bounds, 20, 20)];
+	lab.text = @"The image center handles large amounts of network image requests. Good for things like twitter avatars.";
+	lab.numberOfLines = 3;
+	lab.font = [UIFont boldSystemFontOfSize:13];
+	lab.textColor = [UIColor grayColor];
+	[v addSubview:lab];
+	[lab release];
+	
+	self.tableView.tableHeaderView = v;
+	[v release];
+	
+	
 }
 
 
 - (void) newImageRetrieved{
-	[self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
+
+	for (UITableViewCell * cell in [self.tableView visibleCells]) {
+		if(cell.imageView.image == nil){
+			
+			int i = [self.tableView indexPathForCell:cell].row % [urlArray count];
+			UIImage *image = [[TKImageCenter sharedImageCenter] imageAtURL:[urlArray objectAtIndex:i] queueIfNeeded:NO];
+
+			if(image != nil){
+				[images replaceObjectAtIndex:i withObject:image];
+				cell.imageView.image = image;
+				[cell setNeedsLayout];
+			}
+	
+		}
+	}
 }
 
 
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+
+
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [urlArray count] * 3;
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
     
@@ -101,9 +131,7 @@
 	else{
 		
 		int index = i % [urlArray count];
-		
-		UIImage *image = [[TKImageCenter sharedImageCenter]  imageAtURL:[NSURL URLWithString:[urlArray objectAtIndex:index]] 
-														  queueIfNeeded:YES];
+		UIImage *image = [[TKImageCenter sharedImageCenter] imageAtURL:[urlArray objectAtIndex:index] queueIfNeeded:YES];
 		
 		if(image != nil){
 			[images replaceObjectAtIndex:i withObject:image];
@@ -119,9 +147,9 @@
 
 
 
-
-
 - (void)dealloc {
+	[images release];
+	[urlArray release];
     [super dealloc];
 }
 

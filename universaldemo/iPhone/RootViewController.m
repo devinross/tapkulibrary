@@ -59,7 +59,7 @@
 	
 	
 	
-	rows = [NSArray arrayWithObjects:@"Coverflow",@"Graph",nil];
+	rows = [NSArray arrayWithObjects:@"Coverflow",@"Graph",@"Month Grid Calendar",nil];
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Views",@"title",nil];
 	[data addObject:d];
 	
@@ -67,17 +67,17 @@
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"UI Elements",@"title",nil];
 	[data addObject:d];
 	
-	rows = [NSArray arrayWithObjects:@"Month",nil];
-	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Calendar",@"title",nil];
-	[data addObject:d];
+	//rows = [NSArray arrayWithObjects:@"Month",nil];
+	//d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Calendar",@"title",nil];
+	//[data addObject:d];
 	
 	
 	rows = [NSArray arrayWithObjects:@"Label Cells",@"More Cells",@"Indicator Cells",nil];
-	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Table View Cells",@"title",@"Fast cells scroll smooth on older devices",@"footer",nil];
+	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Table View Cells",@"title",@"",@"footer",nil];
 	[data addObject:d];
 	
 	rows = [NSArray arrayWithObjects:@"Image Center",nil];
-	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Locating Images",@"title",@"Handles large amounts of Internet image requests",@"footer",nil];
+	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Network",@"title",@"",@"footer",nil];
 	[data addObject:d];
 	
 	return self;
@@ -130,6 +130,8 @@
 		return;
 	}
 	
+	if(s==0&&r==2)
+		vc = [[DemoCalendarMonth alloc] initWithSunday:YES];
 
 	
 	
@@ -145,18 +147,18 @@
 		vc = [[MapViewController alloc] init];
 	
 	
-	
+	/*
 	else if(s==2 && r==0)
 		vc = [[DemoCalendarMonth alloc] initWithSunday:YES];
 	else if(s==2 && r==1)
 		vc = [[TKCalendarDayViewController alloc] init];
+	*/
 	
-	
-	else if(s==3 && r==0)
+	else if(s==2 && r==0)
 		vc = [[LabelViewController alloc] initWithStyle:UITableViewStyleGrouped];
-	else if(s==3 && r==1)
+	else if(s==2 && r==1)
 		vc = [[MoreCellsViewController alloc] initWithStyle:UITableViewStyleGrouped];
-	else if(s==3 && r==2)
+	else if(s==2 && r==2)
 		vc = [[FastTableViewController alloc] initWithStyle:UITableViewStylePlain];
 	else
 		vc = [[ImageCenterViewController alloc] initWithStyle:UITableViewStylePlain];

@@ -52,13 +52,11 @@
 - (void) addPinMode:(id)sender{
 	
 	if(mapView.pinMode){
-		addPin.style = TKBarButtonItemStylePlain;
 		mapView.mapView.mapType = MKMapTypeStandard;
-	}
-		
-	else{
+		[addPin setStyle:TKBarButtonItemStylePlain];
+	}else{
 		mapView.mapView.mapType = MKMapTypeHybrid;
-		addPin.style = TKBarButtonItemStyleDone;
+		[addPin setStyle:TKBarButtonItemStyleDone];
 	}
 		
 	[mapView setPinMode:!mapView.pinMode];

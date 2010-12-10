@@ -76,7 +76,8 @@
 		subtitleLabel.text = subtitleString;
 		
 		imageView = [[UIImageView alloc] initWithImage:[self maskedImageWithImage:image]];
-		
+		imageView.frame = CGRectMake((int)(frame.size.width/2)-(imageView.frame.size.width/2), (int)(frame.size.height/2)-(imageView.frame.size.height/2), imageView.image.size.width, imageView.image.size.height);
+
 		
 		[self addSubview:imageView];
 		[self addSubview:subtitleLabel];
@@ -109,30 +110,19 @@
 	UIColor *bot = [UIColor colorWithRed:225/255.0 green:229/255.0 blue:235/255.0 alpha:1];
 	[UIView drawGradientInRect:rect withColors:[NSArray arrayWithObjects:top,bot,nil]];
 }
-- (void) layoutSubviews{
-	[super layoutSubviews];
-	
+- (void) layoutSubviews{	
 	CGRect rect = self.frame;
-
-	titleLabel.frame = CGRectMake(10, 0, rect.size.width-20, 20);
-	subtitleLabel.frame = CGRectMake(10, 0, rect.size.width-20, 16);
 	
-	imageView.frame = CGRectMake(0, 0, imageView.image.size.width, imageView.image.size.height);
-	imageView.center = CGPointMake(rect.size.width/2, rect.size.height/2 - rect.size.height/12 );
-	imageView.frame = CGRectMake((int)imageView.frame.origin.x, (int)imageView.frame.origin.y, imageView.image.size.width, imageView.image.size.height);
+	imageView.frame = CGRectMake((int)(rect.size.width/2)-(imageView.frame.size.width/2), (int)(rect.size.height/2)-(imageView.frame.size.height/2 + imageView.frame.size.height/8), imageView.image.size.width, imageView.image.size.height);
+	titleLabel.frame = CGRectMake((int)0, (int)MAX( rect.size.height/2 +  rect.size.height/4,(int)imageView.frame.origin.y+imageView.frame.size.height+4) , rect.size.width , 20);
+	subtitleLabel.frame = CGRectMake((int)0, titleLabel.frame.origin.y + titleLabel.frame.size.height , rect.size.width , 16);
 	
-	
-	titleLabel.center = CGPointMake(rect.size.width/2, MAX(rect.size.height/2 +  rect.size.height/4,imageView.frame.origin.y+imageView.frame.size.height+14));
-	subtitleLabel.center = CGPointMake(titleLabel.center.x, titleLabel.center.y + 20);
-
-
 }
-
 
 - (void) setImage:(UIImage*)image{
 	imageView.image = [self maskedImageWithImage:image];
-	[self layoutSubviews];
-	[self setNeedsDisplay];
+	CGRect rect = self.frame;
+	imageView.frame = CGRectMake((int)(rect.size.width/2)-(imageView.frame.size.width/2), (int)(rect.size.height/2)-(imageView.frame.size.height/2 + imageView.frame.size.height/8), imageView.image.size.width, imageView.image.size.height);
 }
 - (void) setEmptyImage:(TKEmptyViewImage)image{
 	[self setImage:[self predefinedImage:image]];
