@@ -74,7 +74,7 @@
 - (void) loadView{
 	[super loadView];
 	
-	_tableView =  [[UITableView alloc] initWithFrame:self.view.bounds style:_style];
+	_tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:_style];
 	_tableView.delegate = self;
 	_tableView.dataSource = self;
 	_tableView.showsVerticalScrollIndicator = YES;
