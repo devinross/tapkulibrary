@@ -47,7 +47,14 @@
 	[self generateRandomDataForStartDate:startDate endDate:lastDate];
 	return dataArray;
 }
-- (void) calendarMonthView:(TKCalendarMonthView*)monthView didSelectDate:(NSDate*)d{
+- (void) calendarMonthView:(TKCalendarMonthView*)monthView didSelectDate:(NSDate*)date{
+	
+	// CHANGE THE DATE TO YOUR TIMEZONE
+	TKDateInformation info = [date dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+	NSDate *myTimeZoneDay = [NSDate dateFromDateInformation:info timeZone:[NSTimeZone systemTimeZone]];
+	
+	NSLog(@"Date Selected: %@",myTimeZoneDay);
+	
 	[self.tableView reloadData];
 }
 - (void) calendarMonthView:(TKCalendarMonthView*)mv monthDidChange:(NSDate*)d{
