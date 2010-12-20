@@ -183,6 +183,7 @@
 	TKDateInformation lastDateInfo = [lastInMonth dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 
 	
+	
 	if(lastDateInfo.weekday < 7 && sunday){
 		
 		lastDateInfo.day = 7 - lastDateInfo.weekday;
@@ -194,7 +195,7 @@
 		}
 		lastDate = [NSDate dateFromDateInformation:lastDateInfo timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 	
-	}else if(!sunday && info.weekday != 1){
+	}else if(!sunday && lastDateInfo.weekday != 1){
 		
 		
 		lastDateInfo.day = 8 - lastDateInfo.weekday;
@@ -203,10 +204,11 @@
 
 		
 		lastDate = [NSDate dateFromDateInformation:lastDateInfo timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-		
+
 	}else{
 		lastDate = lastInMonth;
 	}
+	
 	
 	return [NSArray arrayWithObjects:firstDate,lastDate,nil];
 }
@@ -231,6 +233,8 @@
 	daysInMonth = [[monthDate nextMonth] daysBetweenDate:monthDate];
 	
 	int row = (daysInMonth + dateInfo.weekday - 1);
+	if(!sunday) row--;
+	
 
 	row = (row / 7) + ((row % 7 == 0) ? 0:1);
 	float h = 44 * row;
