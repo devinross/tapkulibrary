@@ -150,6 +150,7 @@
 	NSDate *currentMonth = [NSDate dateFromDateInformation:info timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 	info = [currentMonth dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 	
+	
 	NSDate *previousMonth = [currentMonth previousMonth];
 	NSDate *nextMonth = [currentMonth nextMonth];
 	
@@ -165,12 +166,17 @@
 	}else if(!sunday && info.weekday != 2){
 		
 		TKDateInformation info2 = [previousMonth dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-		int preDayCnt = [previousMonth daysBetweenDate:currentMonth];		
-		info2.day = preDayCnt - info.weekday + 3;
+		int preDayCnt = [previousMonth daysBetweenDate:currentMonth];
+		if(info.weekday==1){
+			info2.day = preDayCnt - 5;
+		}else{
+			info2.day = preDayCnt - info.weekday + 3;
+		}
 		firstDate = [NSDate dateFromDateInformation:info2 timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 		
+		NSLog(@"day count: %d %d %d",preDayCnt,info.weekday,info2.day);
 		
-
+		
 	}else{
 		firstDate = currentMonth;
 	}
@@ -209,6 +215,8 @@
 		lastDate = lastInMonth;
 	}
 	
+	NSLog(@"SE %@ %@",firstDate,lastDate);
+	
 	
 	return [NSArray arrayWithObjects:firstDate,lastDate,nil];
 }
@@ -233,6 +241,7 @@
 	daysInMonth = [[monthDate nextMonth] daysBetweenDate:monthDate];
 	
 	int row = (daysInMonth + dateInfo.weekday - 1);
+	if(dateInfo.weekday==1&&!sunday) row = daysInMonth + 6;
 	if(!sunday) row--;
 	
 
@@ -247,9 +256,16 @@
 		firstOfPrev = preDayCnt - firstWeekday+2;
 		lastOfPrev = preDayCnt;
 	}else if(!sunday && firstWeekday != 2){
-		firstOfPrev = preDayCnt - firstWeekday+3;
+		
+		if(firstWeekday ==1){
+			firstOfPrev = preDayCnt - 5;
+		}else{
+			firstOfPrev = preDayCnt - firstWeekday+3;
+		}
 		lastOfPrev = preDayCnt;
+
 	}
+	
 	
 
 	
@@ -449,6 +465,7 @@
 	if(row == (int) (self.bounds.size.height / 44)) row --;
 	
 	int fir = firstWeekday - 1;
+	if(!startOnSunday && fir == 0) fir = 7;
 	if(!startOnSunday) fir--;
 	
 	
@@ -458,11 +475,14 @@
 		portion = 1;
 		day = row * 7 + column  - firstWeekday+2;
 		if(!startOnSunday) day++;
+		if(fir==6) day -= 7;
+
 	}
 	if(portion > 0 && day > daysInMonth){
 		portion = 2;
 		day = day - daysInMonth;
 	}
+	
 	
 	if(portion != 1){
 		self.selectedImageView.image = [UIImage imageWithContentsOfFile:TKBUNDLE(@"TapkuLibrary.bundle/Images/calendar/Month Calendar Date Tile Gray.png")];
