@@ -471,7 +471,7 @@
 		portion = 1;
 		day = row * 7 + column  - firstWeekday+2;
 		if(!startOnSunday) day++;
-		if(fir==6) day -= 7;
+		if(!startOnSunday && fir==6) day -= 7;
 
 	}
 	if(portion > 0 && day > daysInMonth){
