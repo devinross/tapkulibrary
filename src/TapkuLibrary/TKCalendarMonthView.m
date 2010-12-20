@@ -174,7 +174,6 @@
 		}
 		firstDate = [NSDate dateFromDateInformation:info2 timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 		
-		NSLog(@"day count: %d %d %d",preDayCnt,info.weekday,info2.day);
 		
 		
 	}else{
@@ -215,7 +214,6 @@
 		lastDate = lastInMonth;
 	}
 	
-	NSLog(@"SE %@ %@",firstDate,lastDate);
 	
 	
 	return [NSArray arrayWithObjects:firstDate,lastDate,nil];
@@ -444,9 +442,7 @@
 	info.day = selectedDay;
 	NSDate *d = [NSDate dateFromDateInformation:info timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 	
-	
-	//NSLog(@"%d %d %d %d %@",info.hour,info.minute,info.second,info.month,d);
-	
+		
 	
 	return d;
 	
@@ -670,8 +666,6 @@
 	sund.minute = 0;
 	sund.second = 0;
 	
-	//NSDate *dd = [NSDate dateFromDateInformation:sund timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-	//NSLog(@"%@ %@",dd,[NSDate dateInformationDescriptionWithInformation:sund]);
 	
 	NSTimeZone *tz = [NSTimeZone timeZoneForSecondsFromGMT:0];
 	NSString * sun = [dateFormat stringFromDate:[NSDate dateFromDateInformation:sund timeZone:tz]];
