@@ -206,6 +206,7 @@
 	
 }
 - (void) setMessageText:(NSString*)str{
+	[text release];
 	text = [str retain];
 	[self adjust];
 }
