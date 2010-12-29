@@ -132,7 +132,14 @@
 }
 - (void) animationStep2{
 	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDelay:1];
+
+	// depending on how many words are in the text
+	// change the animation duration accordingly
+	// avg person reads 200 words per minute
+	NSArray * words = [[[self.alerts objectAtIndex:0] objectAtIndex:0] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	double duration = MAX(((double)[words count]*60.0/200.0),1);
+	
+	[UIView setAnimationDelay:duration];
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationDidStopSelector:@selector(animationStep3)];
 	
@@ -206,6 +213,7 @@
 	
 }
 - (void) setMessageText:(NSString*)str{
+	[text release];
 	text = [str retain];
 	[self adjust];
 }
