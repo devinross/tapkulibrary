@@ -35,14 +35,17 @@
 @interface HUDViewController : UIViewController {
 	
 	TKLoadingView *loading;
-	TKProgressBarView *progressbar;
+	TKProgressBarView *progressBar;
 	TKProgressAlertView *alertView;
+	TKProgressCircleView *progressCircle;
 	int time;
 	NSTimer *timer;
 	
 }
 
-@property (retain,nonatomic,readonly) TKLoadingView *loading;
-@property (retain,nonatomic,readonly) TKProgressBarView *progressbar;
-@property (retain,nonatomic,readonly) TKProgressAlertView *alertView;
+@property (readonly) TKLoadingView *loading;
+@property (readonly) TKProgressBarView *progressBar;
+@property (readonly) TKProgressAlertView *alertView;
+@property (readonly) TKProgressCircleView *progressCircle;
+
 @end

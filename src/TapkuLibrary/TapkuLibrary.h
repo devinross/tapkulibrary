@@ -61,6 +61,7 @@
 #import "TKAlertCenter.h"
 #import "TKProgressBarView.h"
 #import "TKProgressAlertView.h"
+#import "TKProgressCircleView.h"
 
 // GRAPH
 #import "TKGraphController.h"

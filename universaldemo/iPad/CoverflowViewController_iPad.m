@@ -54,7 +54,7 @@
 	
 	coverflow = [[TKCoverflowView alloc] initWithFrame:r];
 	coverflow.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	coverflow.delegate = self;
+	coverflow.coverflowDelegate = self;
 	coverflow.dataSource = self;
 	[self.view addSubview:coverflow];
 	coverflow.coverSpacing = 100;

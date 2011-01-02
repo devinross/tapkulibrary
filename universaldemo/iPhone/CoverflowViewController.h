@@ -34,7 +34,7 @@
 
 
 
-@interface CoverflowViewController : UIViewController <TKCoverflowViewDelegate,TKCoverflowViewDataSource> {
+@interface CoverflowViewController : UIViewController <TKCoverflowViewDelegate,TKCoverflowViewDataSource,UIScrollViewDelegate> {
 	
 	TKCoverflowView *coverflow; 
 	

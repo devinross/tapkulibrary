@@ -44,6 +44,7 @@
     [super viewDidLoad];
 	
 	self.tableView.rowHeight = 120;
+	self.tableView.allowsSelection = NO;
 	
 	urlArray = [[NSArray alloc] initWithObjects:
 				 @"http://farm3.static.flickr.com/2797/4196552800_a5de0f3627_t.jpg",

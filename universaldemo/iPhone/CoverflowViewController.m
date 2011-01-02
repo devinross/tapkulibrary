@@ -56,7 +56,7 @@
 	
 	
 	coverflow = [[TKCoverflowView alloc] initWithFrame:CGRectMake(0, 0, 480, 300)];
-	coverflow.delegate = self;
+	coverflow.coverflowDelegate = self;
 	coverflow.dataSource = self;
 	[self.view addSubview:coverflow];
 	[coverflow setNumberOfCovers:580];

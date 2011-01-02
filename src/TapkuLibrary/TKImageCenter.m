@@ -75,7 +75,6 @@
 	
 	return nil;
 }
-
 - (void) addImageURLToQueue:(NSString*)imageURL{
 	if(![queue containsObject:imageURL]){
 		[queue addObject:imageURL];

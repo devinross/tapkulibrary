@@ -111,6 +111,8 @@
 		3BD32973125B753900BE5EAF /* TKAlertCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD32971125B753900BE5EAF /* TKAlertCenter.m */; };
 		3BE8FF8512945C4400DBF3FC /* UIScrollview+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BE8FF8312945C4400DBF3FC /* UIScrollview+TKCategory.h */; };
 		3BE8FF8612945C4400DBF3FC /* UIScrollview+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE8FF8412945C4400DBF3FC /* UIScrollview+TKCategory.m */; };
+		3BEE1CBB12CFB78300FECF6D /* TKProgressCircleView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BEE1CB912CFB78300FECF6D /* TKProgressCircleView.h */; };
+		3BEE1CBC12CFB78300FECF6D /* TKProgressCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE1CBA12CFB78300FECF6D /* TKProgressCircleView.m */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -235,6 +237,8 @@
 		3BE8FF8412945C4400DBF3FC /* UIScrollview+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollview+TKCategory.m"; sourceTree = "<group>"; };
 		3BEAE08E1096C61A00A0A372 /* TKWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKWindow.h; sourceTree = "<group>"; };
 		3BEAE08F1096C61A00A0A372 /* TKWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKWindow.m; sourceTree = "<group>"; };
+		3BEE1CB912CFB78300FECF6D /* TKProgressCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKProgressCircleView.h; sourceTree = "<group>"; };
+		3BEE1CBA12CFB78300FECF6D /* TKProgressCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKProgressCircleView.m; sourceTree = "<group>"; };
 		3BF000FC10957EE50062DA49 /* NSString+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TKCategory.h"; sourceTree = "<group>"; };
 		3BF000FD10957EE50062DA49 /* NSString+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TKCategory.m"; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* TapkuLibrary_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapkuLibrary_Prefix.pch; sourceTree = SOURCE_ROOT; };
@@ -403,6 +407,8 @@
 				3BA577B91199DF1600ECB85B /* TKProgressAlertView.m */,
 				3BB92D2011896022002FA0F9 /* TKProgressBarView.h */,
 				3BB92D2111896022002FA0F9 /* TKProgressBarView.m */,
+				3BEE1CB912CFB78300FECF6D /* TKProgressCircleView.h */,
+				3BEE1CBA12CFB78300FECF6D /* TKProgressCircleView.m */,
 				3BAC9A3F10953E5200F235F1 /* TKLoadingView.h */,
 				3BAC9A4010953E5200F235F1 /* TKLoadingView.m */,
 			);
@@ -659,6 +665,7 @@
 				3B30B17B129EE10B00466666 /* UIToolbar+TKCategory.h in Headers */,
 				3B30B192129EE17500466666 /* TKBarButtonItem.h in Headers */,
 				3BB96F5812B55CD600C38F46 /* UIImageView+TKCategory.h in Headers */,
+				3BEE1CBB12CFB78300FECF6D /* TKProgressCircleView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -783,6 +790,7 @@
 				3B30B177129EE0F400466666 /* UIToolbar+TKCategory.m in Sources */,
 				3B30B193129EE17500466666 /* TKBarButtonItem.m in Sources */,
 				3BB96F5912B55CD600C38F46 /* UIImageView+TKCategory.m in Sources */,
+				3BEE1CBC12CFB78300FECF6D /* TKProgressCircleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

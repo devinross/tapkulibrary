@@ -50,7 +50,8 @@
 
 
 	[self.view addSubview:self.loading];
-	[self.view addSubview:self.progressbar];
+	[self.view addSubview:self.progressBar];
+	[self.view addSubview:self.progressCircle];
 
 
 	time = 0; 
@@ -62,11 +63,26 @@
 	
 }
 
+
+- (void) viewDidAppear:(BOOL)animated{
+	[super viewDidAppear:animated];	
+	[self.progressCircle setProgress:1 animated:YES];
+}
+
 - (void) timer{
 	
-	if([self.progressbar  superview]){
+	////float p = self.progressCircle.progress+0.01;
+	//if(p>=1.0) p = 0;
+	
+	//[self.progressCircle setProgress:p animated:NO];
+	
+	
+	
+	
+	
+	if([self.progressBar  superview]){
 		
-		self.progressbar.progress = time / 100.0;
+		self.progressBar.progress = time / 100.0;
 		
 		time++;
 		if(time > 130) time = -30;
@@ -76,7 +92,7 @@
 	time++;
 	self.alertView.progressBar.progress = time / 200.0;
 	if(time > 240){
-		[self.view addSubview:self.progressbar];
+		[self.view addSubview:self.progressBar];
 		[self.view addSubview:self.loading];
 		[self.alertView hide];
 		time = 0;
@@ -87,11 +103,20 @@
 	
 }
 - (void) tapme{
-	[self.progressbar removeFromSuperview];
+	//[self.progressBar removeFromSuperview];
 
-	[self.loading removeFromSuperview];
-	[self.alertView show];
+	//[self.loading removeFromSuperview];
+	//[self.alertView show];
 	time = 0;
+	
+	[self.progressCircle setTwirlMode:!self.progressCircle.isTwirling];
+	if(!self.progressCircle.isTwirling){
+		[self.progressCircle setProgress:0 animated:NO];
+
+		[self.progressCircle setProgress:1 animated:YES];
+
+	}
+
 }
 
 - (TKLoadingView *) loading{
@@ -102,14 +127,14 @@
 	}
 	return loading;
 }
-- (TKProgressBarView *) progressbar{
-	if(progressbar==nil){
-		progressbar = [[TKProgressBarView alloc] initWithStyle:TKProgressBarViewStyleShort];
-		progressbar.center = CGPointMake(self.view.bounds.size.width/2, 320);
-		[progressbar setProgress:0.01];
+- (TKProgressBarView *) progressBar{
+	if(progressBar==nil){
+		progressBar = [[TKProgressBarView alloc] initWithStyle:TKProgressBarViewStyleShort];
+		progressBar.center = CGPointMake(self.view.bounds.size.width/2, 320);
+		[progressBar setProgress:0.01];
 	}
 
-	return progressbar;
+	return progressBar;
 }
 - (TKProgressAlertView *) alertView{
 	if(alertView==nil){
@@ -117,11 +142,17 @@
 	}
 	return alertView;
 }
+- (TKProgressCircleView *) progressCircle{
+	if(progressCircle==nil){
+		progressCircle = [[TKProgressCircleView alloc] init];
+	}
+	return progressCircle;
+}
 
 
 - (void)dealloc {
 	[loading release];
-	[progressbar release];
+	[progressBar release];
 	[timer invalidate];
 	[timer release];
 	[super dealloc];

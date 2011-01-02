@@ -32,7 +32,7 @@
 #import <UIKit/UIKit.h>
 #import <TapkuLibrary/TapkuLibrary.h>
 
-@interface CoverflowViewController_iPad : UIViewController <TKCoverflowViewDelegate,TKCoverflowViewDataSource> {
+@interface CoverflowViewController_iPad : UIViewController <TKCoverflowViewDelegate,TKCoverflowViewDataSource,UIScrollViewDelegate> {
 	
 	TKCoverflowView *coverflow;
 	NSArray *covers;
