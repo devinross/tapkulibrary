@@ -9,7 +9,7 @@
 #import "TKProgressCircleView.h"
 
 #define AnimationTimer 0.015
-#define AnimationIncrement 0.01
+#define AnimationIncrement 0.02
 
 @implementation TKProgressCircleView
 @synthesize  progress=_progress,twirlMode=_twirlMode;

@@ -65,15 +65,15 @@ typedef struct TKDateInformation TKDateInformation;
 - (BOOL) isSameDay:(NSDate*)anotherDate;
 - (int) differenceInDaysTo:(NSDate *)toDate;
 - (int) differenceInMonthsTo:(NSDate *)toDate;
-
 - (int) daysBetweenDate:(NSDate*)d;
-
 
 
 - (NSString*) dateDescription;
 - (NSDate *) dateByAddingDays:(NSUInteger)days;
 + (NSDate *) dateWithDatePart:(NSDate *)aDate andTimePart:(NSDate *)aTime;
-
 + (NSString*) dateInformationDescriptionWithInformation:(TKDateInformation)info;
+
+
++ (NSDate*) yesterday;
 
 @end

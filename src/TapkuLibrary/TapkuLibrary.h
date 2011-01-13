@@ -37,6 +37,7 @@
 #import "UINavigationController+TKCategory.h"
 #import "UINavigationBar+TKCategory.h"
 #import "UIToolbar+TKCategory.h"
+#import "UIButton+TKCategory.h"
 
 #import "TKWindow.h"
 #import "TKTableViewController.h"

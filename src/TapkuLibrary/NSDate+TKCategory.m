@@ -58,7 +58,6 @@
 	return info;
 	
 }
-
 - (TKDateInformation) dateInformation{
 	
 	TKDateInformation info;
@@ -81,7 +80,6 @@
 	[gregorian release];
 	return info;
 }
-
 + (NSDate*) dateFromDateInformation:(TKDateInformation)info timeZone:(NSTimeZone*)tz{
 	
 	NSCalendar *gregorian = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
@@ -98,8 +96,6 @@
 	
 	return [gregorian dateFromComponents:comp];
 }
-
-
 + (NSDate*) dateFromDateInformation:(TKDateInformation)info{
 	
 	NSCalendar *gregorian = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
@@ -245,6 +241,11 @@
 	return weekday;
 }
 
++ (NSDate*) yesterday{
+	TKDateInformation inf = [[NSDate date] dateInformation];
+	inf.day--;
+	return [NSDate dateFromDateInformation:inf];
+}
 
 
 

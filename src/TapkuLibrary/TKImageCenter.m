@@ -120,7 +120,6 @@
 	[pool release];
 }
 - (void) getImagesDidFinish{
-	
 	[thread cancel];
 	[thread release];
 	thread = nil;

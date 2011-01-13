@@ -1,6 +1,6 @@
 //
-//  TKBarButtonItem.h
-//  Created by Devin Ross on 11/24/10.
+//  UIImage+TKButton.h
+//  Created by Devin Ross on 1/9/11.
 //
 /*
  
@@ -29,27 +29,18 @@
  
  */
 
-#import <Foundation/Foundation.h>
 
-typedef enum {
-    TKBarButtonItemStylePlain,
-    TKBarButtonItemStyleBack,
-	TKBarButtonItemStyleDone
-} TKBarButtonItemStyle;
+#import <UIKit/UIKit.h>
 
 
-@interface TKBarButtonItem : UIBarButtonItem {
-	
-	UIButton *_buttonContainer;
-	TKBarButtonItemStyle _style;
+@interface UIButton (TKCategory)
 
-}
 
-- (id) initWithTitle:(NSString*)title style:(TKBarButtonItemStyle)buttonStyle target:(id)target action:(SEL)action;
-- (id) initWithImage:(UIImage*)image  style:(TKBarButtonItemStyle)buttonStyle target:(id)target action:(SEL)action;
-
-@property (nonatomic,assign) TKBarButtonItemStyle buttonStyle;
-
-- (void) setTarget:(id)target action:(SEL)action;
++ (id) buttonWithFrame:(CGRect)frame;
++ (id) buttonWithFrame:(CGRect)frame title:(NSString*)title;
++ (id) buttonWithFrame:(CGRect)frame title:(NSString*)title backgroundImage:(UIImage*)backgroundImage;
++ (id) buttonWithFrame:(CGRect)frame title:(NSString*)title backgroundImage:(UIImage*)backgroundImage highlightedBackgroundImage:(UIImage*)highlightedBackgroundImage;
++ (id) buttonWithFrame:(CGRect)frame image:(UIImage*)image;
++ (id) buttonWithFrame:(CGRect)frame image:(UIImage*)image highlightedImage:(UIImage*)highlightedImage;
 
 @end

@@ -131,7 +131,7 @@
 	}
 	
 	if(s==0&&r==2)
-		vc = [[DemoCalendarMonth alloc] initWithSunday:NO];
+		vc = [[DemoCalendarMonth alloc] initWithSunday:YES];
 
 	
 	

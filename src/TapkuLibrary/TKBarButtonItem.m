@@ -220,13 +220,11 @@
 	
 	[_buttonContainer addTarget:tt action:aa forControlEvents:UIControlEventTouchUpInside];
 }
-- (TKBarButtonItemStyle) style{
+- (TKBarButtonItemStyle) buttonStyle{
 	return _style;
 }
-- (void) setStyle:(TKBarButtonItemStyle)s{
-	
+- (void) setButtonStyle:(TKBarButtonItemStyle)s{
 	_style = s;
-	
 	[self setupButtonWithStyle:s];
 	
 

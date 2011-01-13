@@ -36,7 +36,7 @@
 @implementation MapViewController
 
 
-- (void)viewDidLoad {
+- (void) viewDidLoad {
     [super viewDidLoad];
 	mapView = [[TKMapView alloc] initWithFrame:self.view.bounds];
 	mapView.delegate = self;
@@ -53,10 +53,10 @@
 	
 	if(mapView.pinMode){
 		mapView.mapView.mapType = MKMapTypeStandard;
-		[addPin setStyle:TKBarButtonItemStylePlain];
+		[addPin setButtonStyle:TKBarButtonItemStylePlain];
 	}else{
 		mapView.mapView.mapType = MKMapTypeHybrid;
-		[addPin setStyle:TKBarButtonItemStyleDone];
+		[addPin setButtonStyle:TKBarButtonItemStyleDone];
 	}
 		
 	[mapView setPinMode:!mapView.pinMode];

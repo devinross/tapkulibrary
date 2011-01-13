@@ -247,7 +247,7 @@
 	float h = 44 * row;
 	
 	TKDateInformation todayInfo = [[NSDate date] dateInformation];
-	today = dateInfo.month == todayInfo.month && dateInfo.year == todayInfo.year ? todayInfo.day : 0;
+	today = dateInfo.month == todayInfo.month && dateInfo.year == todayInfo.year ? todayInfo.day : -5;
 	
 	int preDayCnt = [prev daysBetweenDate:monthDate];		
 	if(firstWeekday>1 && sunday){
@@ -665,6 +665,7 @@
 	sund.hour = 0;
 	sund.minute = 0;
 	sund.second = 0;
+	sund.weekday = 0;
 	
 	
 	NSTimeZone *tz = [NSTimeZone timeZoneForSecondsFromGMT:0];
