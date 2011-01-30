@@ -189,7 +189,7 @@
 	
 	// Remove all previous view event
 	for (id view in self.scrollView.subviews) {
-		if (![NSStringFromClass([view class])isEqualToString:@"ODTimelineView"]) {
+		if (![NSStringFromClass([view class])isEqualToString:@"TKTimelineView"]) {
 			[view removeFromSuperview];
 		}
 	}
