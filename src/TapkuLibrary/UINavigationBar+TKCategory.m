@@ -30,7 +30,7 @@
  */
 
 #import "UINavigationBar+TKCategory.h"
-
+#import "UIView+TKCategory.h"
 
 @implementation UINavigationBar (TKCategory)
 

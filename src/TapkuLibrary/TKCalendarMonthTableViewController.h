@@ -35,5 +35,5 @@
 	UITableView *_tableView;
 }
 @property (retain,nonatomic) UITableView *tableView;
-- (void) updateTableOffset;
+- (void) updateTableOffset:(BOOL)animated;
 @end

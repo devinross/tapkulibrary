@@ -55,9 +55,10 @@
 	
 	NSString *url = [NSString stringWithFormat:@"TapkuLibrary.bundle/Images/gui/%@%@.png",imageName,scale];
 	
+	
 	UIImage *img = [UIImage imageWithCGImage:[UIImage imageWithContentsOfFile:TKBUNDLE(url)].CGImage 
 									   scale:[[UIScreen mainScreen] scale] orientation:UIImageOrientationUp]; 
-	
+
 
 	return [img stretchableImageWithLeftCapWidth:24 topCapHeight:0];
 }
@@ -135,11 +136,15 @@
 		_buttonContainer.frame = CGRectMake(_buttonContainer.frame.origin.x, _buttonContainer.frame.origin.y, glyph.size.width + e.left + e.right, 30);
 	}
 	
+	UIImage *img = [self imageForStyle:s];
 	
-	[_buttonContainer setBackgroundImage:[self imageForStyle:s] forState:UIControlStateNormal];
+	//[_buttonContainer setImage:img forState:UIControlStateNormal];
+	[_buttonContainer setBackgroundImage:img forState:UIControlStateNormal];
 	[_buttonContainer setBackgroundImage:[self hoverImageForStyle:s] forState:UIControlStateHighlighted];
 	_buttonContainer.showsTouchWhenHighlighted = NO;
 	_buttonContainer.adjustsImageWhenHighlighted = NO;
+	
+
 }
 
 
@@ -186,7 +191,7 @@
 	[_buttonContainer setImage:img forState:UIControlStateNormal];
 	[_buttonContainer addTarget:t action:a forControlEvents:UIControlEventTouchUpInside];
 	[self setupButtonWithStyle:s];
-	
+		
 	self.customView = _buttonContainer;
 	
 	_style = s;
@@ -226,9 +231,6 @@
 - (void) setButtonStyle:(TKBarButtonItemStyle)s{
 	_style = s;
 	[self setupButtonWithStyle:s];
-	
-
-	
 }
 
 

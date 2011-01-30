@@ -31,7 +31,6 @@
 
 #import <UIKit/UIKit.h>
 
-
 typedef enum {
 	TKProgressBarViewStyleLong,
 	TKProgressBarViewStyleShort

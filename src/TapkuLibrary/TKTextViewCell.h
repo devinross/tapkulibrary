@@ -29,6 +29,8 @@
  
  */
 
+#import <UIKit/UIKit.h>
+
 @interface TKTextViewCell : UITableViewCell {
 	UITextView *textView;
 }

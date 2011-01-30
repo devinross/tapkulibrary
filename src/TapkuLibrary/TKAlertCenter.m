@@ -30,6 +30,7 @@
  */
 
 #import "TKAlertCenter.h"
+#import "UIView+TKCategory.h"
 
 @interface TKAlertCenter()
 @property (nonatomic,retain) NSMutableArray *alerts;

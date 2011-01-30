@@ -372,6 +372,12 @@
 	return currentIndex;
 }
 - (void) bringCoverAtIndexToFront:(int)index animated:(BOOL)animated{
+	
+	if(index == currentIndex) return;
+	
+    currentIndex = index;
+    [self snapToAlbum];
+	
 	[self animateToIndex:index animated:animated];
 }
 

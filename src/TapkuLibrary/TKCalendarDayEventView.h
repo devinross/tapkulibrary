@@ -29,6 +29,8 @@
  
  */
 
+#import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "TapDetectingView.h"
 
 #define VERTICAL_DIFF 50.0

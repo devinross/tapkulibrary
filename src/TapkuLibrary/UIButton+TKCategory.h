@@ -32,9 +32,7 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface UIButton (TKCategory)
-
 
 + (id) buttonWithFrame:(CGRect)frame;
 + (id) buttonWithFrame:(CGRect)frame title:(NSString*)title;

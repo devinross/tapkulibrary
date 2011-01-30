@@ -28,9 +28,9 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
-
-#import <QuartzCore/QuartzCore.h>
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 @protocol TKCoverflowViewDelegate,TKCoverflowViewDataSource;
 @class TKCoverflowCoverView;

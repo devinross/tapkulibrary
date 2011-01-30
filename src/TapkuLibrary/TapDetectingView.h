@@ -46,6 +46,8 @@
  
  */
 
+#import <UIKit/UIKit.h>
+
 @protocol TapDetectingViewDelegate;
 
 

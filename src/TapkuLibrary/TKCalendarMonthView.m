@@ -275,6 +275,15 @@
 	
 	return self;
 }
+- (void) dealloc {
+	[currentDay release];
+	[dot release];
+	[selectedImageView release];
+	[marks release];
+	[monthDate release];
+    [super dealloc];
+}
+
 - (void) setTarget:(id)t action:(SEL)a{
 	target = t;
 	action = a;
@@ -582,16 +591,6 @@
 	return selectedImageView;
 }
 
-- (void)dealloc {
-	[currentDay release];
-	[dot release];
-	[selectedImageView release];
-	[marks release];
-	[monthDate release];
-    [super dealloc];
-}
-
-
 @end
 
 
@@ -608,18 +607,18 @@
 @end
 
 
-
 @implementation TKCalendarMonthView
 @synthesize delegate,dataSource;
 
 
 - (id) init{
-	return [self initWithSundayAsFirst:YES];
+	self = [self initWithSundayAsFirst:YES];
+	return self;
 }
 - (id) initWithSundayAsFirst:(BOOL)s{
-	
 	if (!(self = [super initWithFrame:CGRectZero])) return nil;
-	
+	self.backgroundColor = [UIColor grayColor];
+
 	sunday = s;
 	
 	
@@ -647,11 +646,9 @@
 	
 	[self addSubview:self.leftArrow];
 	[self addSubview:self.rightArrow];
-	
 	[self addSubview:self.shadow];
 	self.shadow.frame = CGRectMake(0, self.frame.size.height-self.shadow.frame.size.height+21, self.shadow.frame.size.width, self.shadow.frame.size.height);
 	
-	self.backgroundColor = [UIColor grayColor];
 	
 	NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
 	[dateFormat setDateFormat:@"eee"];
@@ -807,8 +804,8 @@
 - (void) changeMonth:(UIButton *)sender{
 	
 	[self changeMonthAnimation:sender];
-	if([delegate respondsToSelector:@selector(calendarMonthView:monthDidChange:)])
-		[delegate calendarMonthView:self monthDidChange:currentTile.monthDate];
+	if([delegate respondsToSelector:@selector(calendarMonthView:monthDidChange:animated:)])
+		[delegate calendarMonthView:self monthDidChange:currentTile.monthDate animated:YES];
 
 }
 - (void) animationEnded{
@@ -833,7 +830,6 @@
 		return;
 	}else {
 		
-		//NSDate *month = [self firstOfMonthFromDate:date];
 		NSArray *dates = [TKCalendarMonthTiles rangeOfDatesInMonthGrid:month startOnSunday:sunday];
 		NSArray *data = [dataSource calendarMonthView:self marksFromDate:[dates objectAtIndex:0] toDate:[dates lastObject]];
 		TKCalendarMonthTiles *newTile = [[TKCalendarMonthTiles alloc] initWithMonth:month 
@@ -848,9 +844,11 @@
 		self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.bounds.size.width, self.tileBox.frame.size.height+self.tileBox.frame.origin.y);
 
 		self.shadow.frame = CGRectMake(0, self.frame.size.height-self.shadow.frame.size.height+21, self.shadow.frame.size.width, self.shadow.frame.size.height);
-		self.monthYear.text = [NSString stringWithFormat:@"%@ %@",[month month],[month year]];
+		self.monthYear.text = [NSString stringWithFormat:@"%@ %@",[date month],[date year]];
 		[currentTile selectDay:info.day];
 		
+		if([self.delegate respondsToSelector:@selector(calendarMonthView:monthDidChange:animated:)])
+			[self.delegate calendarMonthView:self monthDidChange:date animated:NO];
 		
 		
 	}
@@ -893,15 +891,13 @@
 		NSDate *dateForMonth = [NSDate  dateFromDateInformation:info]; 
 		[currentTile selectDay:day];
 		
-		if([delegate respondsToSelector:@selector(calendarMonthView:monthDidChange:)])
-			[delegate calendarMonthView:self monthDidChange:dateForMonth];
+		if([delegate respondsToSelector:@selector(calendarMonthView:monthDidChange:animated:)])
+			[delegate calendarMonthView:self monthDidChange:dateForMonth animated:YES];
 
 		
 	}
 	
 }
-
-
 
 
 - (UIImageView *) topBackground{
@@ -962,6 +958,5 @@
 	}
 	return shadow;
 }
-
 
 @end

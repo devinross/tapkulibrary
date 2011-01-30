@@ -30,7 +30,7 @@
  */
 
 #import "UIToolbar+TKCategory.h"
-
+#import "UIView+TKCategory.h"
 
 @implementation UIToolbar (TKCategory)
 

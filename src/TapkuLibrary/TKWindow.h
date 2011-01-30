@@ -28,8 +28,9 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
-#import <Foundation/Foundation.h>
 
+
+#import <UIKit/UIKit.h>
 
 #define TKWindowShakeBegan @"motionBegan"
 #define TKWindowShakeCancelled @"motionCancelled"

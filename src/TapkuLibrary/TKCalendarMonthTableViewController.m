@@ -85,19 +85,23 @@
 
 - (void) calendarMonthView:(TKCalendarMonthView*)monthView didSelectDate:(NSDate*)d{
 }
-- (void) calendarMonthView:(TKCalendarMonthView*)monthView monthDidChange:(NSDate*)d{
-	[self updateTableOffset];
+- (void) calendarMonthView:(TKCalendarMonthView*)monthView monthDidChange:(NSDate*)month animated:(BOOL)animated{
+	[self updateTableOffset:animated];
 }
 
-- (void) updateTableOffset{
+- (void) updateTableOffset:(BOOL)animated{
 	
-	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDuration:0.4];
+	
+	if(animated){
+		[UIView beginAnimations:nil context:nil];
+		[UIView setAnimationDuration:0.4];
+	}
+
 	
 	float y = self.monthView.frame.origin.y + self.monthView.frame.size.height;
 	self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, y, self.tableView.frame.size.width, self.view.frame.size.height - y );
 	
-	[UIView commitAnimations];
+	if(animated) [UIView commitAnimations];
 }
 
 

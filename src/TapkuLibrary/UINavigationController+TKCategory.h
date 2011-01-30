@@ -29,11 +29,9 @@
  
  */
 
-#import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
 
 @interface UINavigationController (TKCategory)
-
 
 - (void) TKpushViewController:(UIViewController *)viewController animated:(BOOL)animated;
 

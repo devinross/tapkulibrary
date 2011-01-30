@@ -28,7 +28,10 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
+
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+
 
 @class TKCalendarMonthTiles;
 @protocol TKCalendarMonthViewDelegate, TKCalendarMonthViewDataSource;
@@ -47,12 +50,10 @@
 	id <TKCalendarMonthViewDataSource> dataSource;
 
 }
+- (id) initWithSundayAsFirst:(BOOL)sunday; // or Monday
 
 @property (nonatomic,assign) id <TKCalendarMonthViewDelegate> delegate;
 @property (nonatomic,assign) id <TKCalendarMonthViewDataSource> dataSource;
-
-- (id) initWithSundayAsFirst:(BOOL)sunday; // or Monday
-
 
 - (NSDate*) dateSelected;
 - (NSDate*) monthDate;
@@ -63,15 +64,11 @@
 
 
 @protocol TKCalendarMonthViewDelegate <NSObject>
-
 @optional
-- (void) calendarMonthView:(TKCalendarMonthView*)monthView didSelectDate:(NSDate*)d;
-- (void) calendarMonthView:(TKCalendarMonthView*)monthView monthDidChange:(NSDate*)d;
-
+- (void) calendarMonthView:(TKCalendarMonthView*)monthView didSelectDate:(NSDate*)date;
+- (void) calendarMonthView:(TKCalendarMonthView*)monthView monthDidChange:(NSDate*)month animated:(BOOL)animated;
 @end
 
 @protocol TKCalendarMonthViewDataSource <NSObject>
-
 - (NSArray*) calendarMonthView:(TKCalendarMonthView*)monthView marksFromDate:(NSDate*)startDate toDate:(NSDate*)lastDate;
-
 @end

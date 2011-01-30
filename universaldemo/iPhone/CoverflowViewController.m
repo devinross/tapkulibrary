@@ -39,6 +39,12 @@
 	[super viewWillAppear:animated];
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque]; 
 }
+
+- (void) viewDidAppear:(BOOL)animated{
+	[super viewDidAppear:animated];
+	[coverflow bringCoverAtIndexToFront:5 animated:YES];
+}
+
 - (void) viewWillDisappear:(BOOL)animated{
 	[super viewWillDisappear:animated];
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
@@ -78,7 +84,7 @@
 
 
 - (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasBroughtToFront:(int)index{
-	//NSLog(@"Front %d",index);
+	NSLog(@"Front %d",index);
 }
 - (TKCoverflowCoverView*) coverflowView:(TKCoverflowView*)coverflowView coverAtIndex:(int)index{
 	

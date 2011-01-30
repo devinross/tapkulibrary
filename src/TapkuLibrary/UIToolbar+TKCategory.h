@@ -30,7 +30,6 @@
  */
 
 #import <UIKit/UIKit.h>
-#import <TapkuLibrary/TapkuLibrary.h>
 
 @interface UIToolbar (TKCategory)
 

@@ -29,7 +29,7 @@
  
  */
 
-
+#import <UIKit/UIKit.h>
 
 @interface TKButtonCell : UITableViewCell {
 	UILabel *title;

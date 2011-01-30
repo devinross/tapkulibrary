@@ -29,7 +29,10 @@
  
  */
 
+#import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+
+
 @class TKGraph, TKGraphViewPlotView, TKGraphViewIndicator,TKGraphViewGoalLabel;
 @protocol TKGraphViewPoint;
 

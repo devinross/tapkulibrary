@@ -41,6 +41,19 @@
 - (void) viewDidLoad{
 	[super viewDidLoad];
 	[self.monthView selectDate:[NSDate date]];
+
+}
+
+- (void) viewDidAppear:(BOOL)animated{
+	[super viewDidAppear:animated];
+	
+	
+	/*
+	TKDateInformation info = [[NSDate date] dateInformation];
+	info.year += 1;
+	NSDate *d = [NSDate dateFromDateInformation:info];
+	[self.monthView selectDate:d];
+	*/
 }
 
 - (NSArray*) calendarMonthView:(TKCalendarMonthView*)monthView marksFromDate:(NSDate*)startDate toDate:(NSDate*)lastDate{
@@ -57,8 +70,8 @@
 	
 	[self.tableView reloadData];
 }
-- (void) calendarMonthView:(TKCalendarMonthView*)mv monthDidChange:(NSDate*)d{
-	[super calendarMonthView:mv monthDidChange:d];
+- (void) calendarMonthView:(TKCalendarMonthView*)mv monthDidChange:(NSDate*)d animated:(BOOL)animated{
+	[super calendarMonthView:mv monthDidChange:d animated:animated];
 	[self.tableView reloadData];
 }
 

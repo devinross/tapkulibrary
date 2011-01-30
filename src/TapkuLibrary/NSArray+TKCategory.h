@@ -33,8 +33,8 @@
 
 @interface NSArray (TKCategory)
 
-- (id)firstObject;
+- (id) firstObject;
 
-- (id)randomObject;
+- (id) randomObject;
 
 @end

@@ -30,9 +30,9 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <TapkuLibrary/TapkuLibrary.h>
-@class TKAlertView;
+#import <UIKit/UIKit.h>
 
+@class TKAlertView;
 
 @interface TKAlertCenter : NSObject {
 

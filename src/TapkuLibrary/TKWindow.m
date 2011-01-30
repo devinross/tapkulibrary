@@ -28,20 +28,19 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
-#import "TKWindow.h"
 
+#import "TKWindow.h"
 
 @implementation TKWindow
 
 
-
-- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+- (void) motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
 	[[NSNotificationCenter defaultCenter] postNotificationName:TKWindowShakeBegan object:self];
 }
-- (void)motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+- (void) motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event {
 	[[NSNotificationCenter defaultCenter] postNotificationName:TKWindowShakeCancelled object:self];
 }
-- (void)motionEnded:withEvent:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+- (void) motionEnded:withEvent:(UIEventSubtype)motion withEvent:(UIEvent *)event {
 	[[NSNotificationCenter defaultCenter] postNotificationName:TKWindowShakeEnded object:self];
 }
 
