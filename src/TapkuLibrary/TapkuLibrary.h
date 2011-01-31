@@ -45,6 +45,7 @@
 #import "TKImageCenter.h"
 #import "TKViewController.h"
 #import "TKBarButtonItem.h"
+#import "TKAppDelegate.h"
 
 // CELLS
 #import "TKLabelCell.h"

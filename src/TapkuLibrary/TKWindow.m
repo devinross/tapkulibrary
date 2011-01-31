@@ -1,5 +1,5 @@
 //
-//  ShakeWindow.m
+//  TKWindow.m
 //  Created by Devin Ross on 6/4/09.
 //
 /*

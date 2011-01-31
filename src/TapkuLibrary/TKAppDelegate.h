@@ -1,6 +1,6 @@
 //
-//  TKWindow.h
-//  Created by Devin Ross on 6/4/09.
+//  TKAppDelegate.h
+//  Created by Devin Ross on 1/31/11.
 //
 /*
  
@@ -29,16 +29,23 @@
  
  */
 
-
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#define TKWindowShakeBegan @"motionBegan"
-#define TKWindowShakeCancelled @"motionCancelled"
-#define TKWindowShakeEnded @"motionEnded"
+@class TKWindow;
 
-
-@interface TKWindow : UIWindow {
-
+@interface TKAppDelegate : NSObject <UIApplicationDelegate> {
+	TKWindow *window;
 }
+
+@property (nonatomic,retain) TKWindow *window;
+
+
+// For subclassing, default implentation does nothing.
+// These methods are called upon open & closing respectively regardless.
+// Good for placing instructions needed regardless of multi-tasking
+
+- (void) applicationDidStartup:(UIApplication *)application;
+- (void) applicationWillShutdown:(UIApplication *)application;
 
 @end

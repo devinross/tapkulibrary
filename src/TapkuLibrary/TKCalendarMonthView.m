@@ -891,6 +891,10 @@
 		NSDate *dateForMonth = [NSDate  dateFromDateInformation:info]; 
 		[currentTile selectDay:day];
 		
+		
+		if([delegate respondsToSelector:@selector(calendarMonthView:didSelectDate:)])
+			[delegate calendarMonthView:self didSelectDate:dateForMonth];
+		
 		if([delegate respondsToSelector:@selector(calendarMonthView:monthDidChange:animated:)])
 			[delegate calendarMonthView:self monthDidChange:dateForMonth animated:YES];
 

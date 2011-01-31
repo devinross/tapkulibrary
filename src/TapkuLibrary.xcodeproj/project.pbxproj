@@ -80,6 +80,8 @@
 		3B6EDE2011547C5700E454DA /* ABTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A3C10953E5200F235F1 /* ABTableViewCell.h */; };
 		3B9724BD11C54C5C0027A97F /* TKCalendarMonthView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B9724B911C54C5C0027A97F /* TKCalendarMonthView.h */; };
 		3B9724BE11C54C5C0027A97F /* TKCalendarMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9724BA11C54C5C0027A97F /* TKCalendarMonthView.m */; };
+		3B9D93DA12F74F8F007D839C /* TKAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B9D93D812F74F8F007D839C /* TKAppDelegate.h */; };
+		3B9D93DB12F74F8F007D839C /* TKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9D93D912F74F8F007D839C /* TKAppDelegate.m */; };
 		3BA577BA1199DF1600ECB85B /* TKProgressAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BA577B81199DF1600ECB85B /* TKProgressAlertView.h */; };
 		3BA577BB1199DF1600ECB85B /* TKProgressAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA577B91199DF1600ECB85B /* TKProgressAlertView.m */; };
 		3BAC995A10953DF400F235F1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995510953DF400F235F1 /* SystemConfiguration.framework */; };
@@ -144,6 +146,8 @@
 		3B917CEB10F34BF400049677 /* TKCoverflowCoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoverflowCoverView.m; sourceTree = "<group>"; };
 		3B9724B911C54C5C0027A97F /* TKCalendarMonthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCalendarMonthView.h; sourceTree = "<group>"; };
 		3B9724BA11C54C5C0027A97F /* TKCalendarMonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCalendarMonthView.m; sourceTree = "<group>"; };
+		3B9D93D812F74F8F007D839C /* TKAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAppDelegate.h; sourceTree = "<group>"; };
+		3B9D93D912F74F8F007D839C /* TKAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAppDelegate.m; sourceTree = "<group>"; };
 		3BA577B81199DF1600ECB85B /* TKProgressAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKProgressAlertView.h; sourceTree = "<group>"; };
 		3BA577B91199DF1600ECB85B /* TKProgressAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKProgressAlertView.m; sourceTree = "<group>"; };
 		3BAC995510953DF400F235F1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -578,6 +582,8 @@
 				3B30B191129EE17500466666 /* TKBarButtonItem.m */,
 				3BEAE08E1096C61A00A0A372 /* TKWindow.h */,
 				3BEAE08F1096C61A00A0A372 /* TKWindow.m */,
+				3B9D93D812F74F8F007D839C /* TKAppDelegate.h */,
+				3B9D93D912F74F8F007D839C /* TKAppDelegate.m */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -673,6 +679,7 @@
 				3BB96F5812B55CD600C38F46 /* UIImageView+TKCategory.h in Headers */,
 				3BEE1CBB12CFB78300FECF6D /* TKProgressCircleView.h in Headers */,
 				3B4346E412DA6A240076579B /* UIButton+TKCategory.h in Headers */,
+				3B9D93DA12F74F8F007D839C /* TKAppDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -799,6 +806,7 @@
 				3BB96F5912B55CD600C38F46 /* UIImageView+TKCategory.m in Sources */,
 				3BEE1CBC12CFB78300FECF6D /* TKProgressCircleView.m in Sources */,
 				3B4346E512DA6A240076579B /* UIButton+TKCategory.m in Sources */,
+				3B9D93DB12F74F8F007D839C /* TKAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

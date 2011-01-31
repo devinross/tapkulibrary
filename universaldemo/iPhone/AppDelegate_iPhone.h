@@ -31,15 +31,14 @@
 
 
 #import <UIKit/UIKit.h>
+#import <TapkuLibrary/TapkuLibrary.h>
 @class RootViewController;
 
-@interface AppDelegate_iPhone : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
+@interface AppDelegate_iPhone : TKAppDelegate {
 	RootViewController *root;
 	UINavigationController *navigationController;
 }
 
-@property (nonatomic, retain) UIWindow *window;
 @property (nonatomic, retain) RootViewController *root;
 @property (nonatomic, retain) UINavigationController *navigationController;
 

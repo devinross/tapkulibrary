@@ -1,10 +1,10 @@
 //
-//  AppDelegate_iPhone.m
-//  Created by Devin Ross on 7/7/10.
+//  TKAppDelegate.m
+//  Created by Devin Ross on 1/31/11.
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || http://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -29,68 +29,49 @@
  
  */
 
-#import "AppDelegate_iPhone.h"
-#import "RootViewController.h"
+#import "TKAppDelegate.h"
+#import "TKWindow.h"
 
-@implementation AppDelegate_iPhone
-@synthesize root,navigationController;
+@implementation TKAppDelegate
+@synthesize window;
 
-
-#pragma mark -
-#pragma mark Application lifecycle
-
-- (void) applicationDidStartup:(UIApplication *)application{
-	// called by didFinishLaunching.. & willEnterForeground
-}
-- (void) applicationWillShutdown:(UIApplication *)application{
-	// called by willTerminate.. & didEnterBackground
-}
 
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-	[super application:application didFinishLaunchingWithOptions:launchOptions];
+	
+	window = [[TKWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+	window.backgroundColor = [UIColor blackColor];
+	[window makeKeyAndVisible];
+	
+    [self applicationDidStartup:application];
+	
 
-    
-	root = [[RootViewController alloc] initWithStyle:UITableViewStyleGrouped];
-	navigationController = [[UINavigationController alloc] initWithRootViewController:root];
-	[self.window addSubview:navigationController.view];
-	
-	
 	return YES;
 }
 - (void) applicationWillEnterForeground:(UIApplication *)application {
-	[super applicationWillEnterForeground:application];
-	
+	[self applicationDidStartup:application];
 }
+- (void) applicationDidStartup:(UIApplication *)application{}
 
 
 
 - (void) applicationDidEnterBackground:(UIApplication *)application {
-	[super applicationDidEnterBackground:application];
+	[self applicationWillShutdown:application];
 }
 - (void) applicationWillTerminate:(UIApplication *)application {
-	[super applicationWillTerminate:application];
+	[self applicationWillShutdown:application];
 }
+- (void) applicationWillShutdown:(UIApplication *)application{}
 
 
-- (void) applicationWillResignActive:(UIApplication *)application {}
-- (void) applicationDidBecomeActive:(UIApplication *)application {}
 
-#pragma mark -
-#pragma mark Memory management
-
-- (void) applicationDidReceiveMemoryWarning:(UIApplication *)application {
-    /*
-     Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
-     */
-}
 
 
 - (void) dealloc {
-	[root release];
-	[navigationController release];
+    [window release];
     [super dealloc];
 }
+
 
 
 @end
