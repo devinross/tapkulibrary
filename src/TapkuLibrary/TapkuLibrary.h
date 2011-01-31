@@ -33,6 +33,7 @@
 #import "NSArray+TKCategory.h"
 #import "UIView+TKCategory.h"
 #import "UIImage+TKCategory.h"
+#import "UIImageView+TKCategory.h"
 #import "UIScrollview+TKCategory.h"
 #import "UINavigationController+TKCategory.h"
 #import "UINavigationBar+TKCategory.h"
