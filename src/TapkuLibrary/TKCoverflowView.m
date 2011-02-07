@@ -63,8 +63,8 @@
 
 - (void) setupTransforms{
 
-	leftTransform = CATransform3DIdentity;
-	rightTransform = CATransform3DIdentity;
+	//leftTransform = CATransform3DIdentity;
+	//rightTransform = CATransform3DIdentity;
 	
 	leftTransform = CATransform3DMakeRotation(coverAngle, 0, 1, 0);
 	leftTransform = CATransform3DConcat(leftTransform,CATransform3DMakeTranslation(-spaceFromCurrent, 0, -300));
@@ -229,6 +229,26 @@
 
 - (void) adjustViewHeirarchy{
 	
+	/*
+	int zpos = 0;
+	
+	for(int i=deck.location;i<deck.location+deck.length;i++){
+		[[coverViews objectAtIndex:i] layer].zPosition = zpos;
+		
+		NSLog(@"%d %d %d",i,zpos,currentIndex);
+		
+		
+		if(i<currentIndex) zpos=zpos+10;
+		else zpos=zpos-10;
+		
+		
+		
+	}
+	*/
+	
+	
+	
+	
 	
 	int i = currentIndex-1;
 	if (i >= 0) for(;i > deck.location;i--) [self sendSubviewToBack:[coverViews objectAtIndex:i]];
@@ -241,14 +261,10 @@
 
 - (void) snapToAlbum{
 	
-	//float scroll_size = self.contentSize.width - currentSize.width;
-	//int covers_per = scroll_size / (numberOfCovers-1);
-	//float v = (currentIndex * covers_per) - (covers_per/2) + (coverSpacing/2);
-	
+
 	UIView *v = [coverViews objectAtIndex:currentIndex];
 	[self setContentOffset:CGPointMake(v.center.x - (currentSize.width/2), 0) animated:YES];
 	
-	//[self setContentOffset:CGPointMake(v, 0) animated:YES];
 }
 - (void) animateToIndex:(int)index animated:(BOOL)animated{
 	
@@ -309,6 +325,7 @@
 
 
 - (void) layoutSubviews{
+	
 	if(self.frame.size.width == currentSize.width && self.frame.size.height == currentSize.height) return;
 	currentSize = self.frame.size;
 	
@@ -340,7 +357,6 @@
 	
 
 }
-
 
 - (void) setNumberOfCovers:(int)cov{
 	numberOfCovers = cov;

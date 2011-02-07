@@ -48,12 +48,14 @@
 	[super viewDidAppear:animated];
 	
 	
-	/*
+	
 	TKDateInformation info = [[NSDate date] dateInformation];
-	info.year += 1;
+	//info.year += 1;
+	info.month = 3;
+	info.day = 25;
 	NSDate *d = [NSDate dateFromDateInformation:info];
 	[self.monthView selectDate:d];
-	*/
+	
 }
 
 - (NSArray*) calendarMonthView:(TKCalendarMonthView*)monthView marksFromDate:(NSDate*)startDate toDate:(NSDate*)lastDate{

@@ -34,29 +34,32 @@
 #import "TKGlobal.h"
 
 
-@interface TKCoverflowCoverView (private)
-
-@property (retain,nonatomic,readonly) UIImageView *imageView;
-@property (retain,nonatomic,readonly) UIImageView *gradient;
-@property (retain,nonatomic,readonly) UIImageView *reflected;
-
-@end
 
 
 @implementation TKCoverflowCoverView
-@synthesize image,baseline;
+@synthesize baseline;
 
 
 - (id) initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
 		self.opaque = NO;
 		self.backgroundColor = [UIColor clearColor];
-		
-		[self addSubview:self.reflected];
-		[self addSubview:self.imageView];
-		[self addSubview:self.gradient];
-		
 		self.layer.anchorPoint = CGPointMake(0.5, 0.5);
+		
+		imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.width)];
+		[self addSubview:imageView];
+		
+		reflected =  [[UIImageView alloc] initWithFrame:CGRectMake(0, self.frame.size.width, self.frame.size.width, self.frame.size.width)];
+		reflected.transform = CGAffineTransformScale(reflected.transform, 1, -1);
+		[self addSubview:reflected];
+
+		gradientLayer = [CAGradientLayer layer];
+		gradientLayer.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0 alpha:0.5].CGColor,(id)[UIColor colorWithWhite:0 alpha:1].CGColor,nil];
+		gradientLayer.startPoint = CGPointMake(0,0);
+		gradientLayer.endPoint = CGPointMake(0,0.3);
+		gradientLayer.frame = CGRectMake(0, self.frame.size.width, self.frame.size.width, self.frame.size.width);
+		[self.layer addSublayer:gradientLayer];
+		
 		
     }
     return self;
@@ -64,13 +67,9 @@
 
 
 
-- (void) drawRect:(CGRect)rect {
-	
-
-
-}
-
 - (void) setImage:(UIImage *)img{
+	
+	UIImage *image = img;
 	[image release];
 	image = [img retain];
 	
@@ -81,49 +80,31 @@
 	w = factor * w;
 	float y = baseline - h > 0 ? baseline - h : 0;
 	
-	self.imageView.frame = CGRectMake(0, y, w, h);
-	self.imageView.image = image;
+	imageView.frame = CGRectMake(0, y, w, h);
+	imageView.image = image;
 	
 	
+	gradientLayer.frame = CGRectMake(0, y + h, w, h);
 	
-	self.gradient.frame = CGRectMake(0, y + h, w, h);
-	
-	self.reflected.frame = CGRectMake(0, y + h, w, h);
-	self.reflected.image = image;
-	//[self setNeedsDisplay];
+	reflected.frame = CGRectMake(0, y + h, w, h);
+	reflected.image = image;
 }
+
+- (UIImage*) image{
+	return imageView.image;
+}
+
 - (void) setBaseline:(float)f{
 	baseline = f;
 	[self setNeedsDisplay];
 }
 
 
-- (UIImageView*) imageView{
-	if(imageView==nil){
-		imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.width)];
-	}
-	return imageView;
-}
-
-- (UIImageView*) reflected{
-	if(reflected==nil){
-		reflected =  [[UIImageView alloc] initWithFrame:CGRectMake(0, self.frame.size.width, self.frame.size.width, self.frame.size.width)];
-		reflected.transform = CGAffineTransformScale(reflected.transform, 1, -1);
-	}
-	return reflected;
-}
-
-- (UIImageView*) gradient{
-	if(gradient==nil){
-		gradient =  [[UIImageView alloc] initWithFrame:CGRectMake(0, self.frame.size.width, self.frame.size.width, self.frame.size.width)];
-		gradient.image = [UIImage imageWithContentsOfFile:TKBUNDLE(@"TapkuLibrary.bundle/Images/coverflow/coverflowgradient.png")];
-	}
-	return gradient;
-}
 
 
 - (void) dealloc {
-	[image release];
+	[reflected release];
+	[imageView release];
     [super dealloc];
 }
 

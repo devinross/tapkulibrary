@@ -34,13 +34,14 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface TKCoverflowCoverView : UIView {
-	UIImage *image;
 	float baseline;
 	
 	UIImageView *imageView;
-	UIImageView *gradient;
 	UIImageView *reflected;
+	CAGradientLayer *gradientLayer;
 }
+
 @property (retain,nonatomic) UIImage *image;
 @property (assign,nonatomic) float baseline;
+
 @end
