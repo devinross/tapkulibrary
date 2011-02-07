@@ -64,6 +64,11 @@
 
 }
 
+- (void) viewDidAppear:(BOOL)animated{
+	[super viewDidAppear:animated];
+	[coverflow bringCoverAtIndexToFront:8 animated:YES];
+}
+
 - (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasBroughtToFront:(int)index{
 
 }
@@ -72,8 +77,6 @@
 	TKCoverflowCoverView *cover = [coverflowView dequeueReusableCoverView];
 	
 	if(cover == nil){
-
-
 		cover = [[[TKCoverflowCoverView alloc] initWithFrame:CGRectMake(0, 0, 300, 600)] autorelease]; // 224
 		cover.baseline = 200;
 	}

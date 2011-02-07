@@ -63,9 +63,6 @@
 
 - (void) setupTransforms{
 
-	//leftTransform = CATransform3DIdentity;
-	//rightTransform = CATransform3DIdentity;
-	
 	leftTransform = CATransform3DMakeRotation(coverAngle, 0, 1, 0);
 	leftTransform = CATransform3DConcat(leftTransform,CATransform3DMakeTranslation(-spaceFromCurrent, 0, -300));
 	
@@ -254,7 +251,9 @@
 	if (i >= 0) for(;i > deck.location;i--) [self sendSubviewToBack:[coverViews objectAtIndex:i]];
 	i = currentIndex+1;
 	if(i<numberOfCovers-1) for(;i < deck.location+deck.length;i++) [self sendSubviewToBack:[coverViews objectAtIndex:i]];
-	[self bringSubviewToFront:[coverViews objectAtIndex:currentIndex]];
+	UIView *v = [coverViews objectAtIndex:currentIndex];
+	if((NSObject*)v != [NSNull null])
+		[self bringSubviewToFront:[coverViews objectAtIndex:currentIndex]];
 	
 	
 }
@@ -263,7 +262,16 @@
 	
 
 	UIView *v = [coverViews objectAtIndex:currentIndex];
-	[self setContentOffset:CGPointMake(v.center.x - (currentSize.width/2), 0) animated:YES];
+	
+	if((NSObject*)v!=[NSNull null]){
+		[self setContentOffset:CGPointMake(v.center.x - (currentSize.width/2), 0) animated:YES];
+		NSLog(@"HERE");
+	}else{
+		NSLog(@"snap %d",currentIndex);
+		
+		[self setContentOffset:CGPointMake(coverSpacing*currentIndex, 0) animated:YES];
+	}
+	
 	
 }
 - (void) animateToIndex:(int)index animated:(BOOL)animated{
@@ -366,6 +374,7 @@
 	coverSpacing = space;
 	[self setupTransforms];
 	[self setup];
+	[self layoutSubviews];
 }
 - (void) setCoverAngle:(float)f{
 	coverAngle = f;
@@ -486,16 +495,11 @@
 }
 
 
-- (void)dealloc {	
+- (void) dealloc {	
 	
-	[yard release];
-	yard = nil;
-	
-	[views release];
-	views = nil;
-	
-	[coverViews release];
-	coverViews = nil;
+	[yard release],yard = nil;
+	[views release],views = nil;
+	[coverViews release],coverViews = nil;
 
 	currentTouch = nil;
 	coverflowDelegate = nil;

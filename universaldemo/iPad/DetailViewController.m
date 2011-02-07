@@ -58,7 +58,9 @@
 	self.mainController = controller;
 	CGRect r = CGRectMake(0, 44, self.view.frame.size.width, self.view.frame.size.height);
 	self.mainController.view.frame = r;
+	[self.mainController viewWillAppear:NO];
 	[self.view addSubview:self.mainController.view];
+	[self.mainController viewDidAppear:NO];
 	
 }
 
