@@ -37,7 +37,7 @@
 
 
 @implementation TKCoverflowCoverView
-@synthesize baseline;
+@synthesize baseline,gradientLayer;
 
 
 - (id) initWithFrame:(CGRect)frame {
@@ -66,7 +66,6 @@
 }
 
 
-
 - (void) setImage:(UIImage *)img{
 	
 	UIImage *image = img;
@@ -89,11 +88,9 @@
 	reflected.frame = CGRectMake(0, y + h, w, h);
 	reflected.image = image;
 }
-
 - (UIImage*) image{
 	return imageView.image;
 }
-
 - (void) setBaseline:(float)f{
 	baseline = f;
 	[self setNeedsDisplay];
