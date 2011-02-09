@@ -440,6 +440,28 @@ static float highValue;
 	
 }
 
+- (void) hideIndicator{
+	
+	if(indicator!=nil){
+		
+		UIView *v = indicator;
+		indicator = nil;
+		
+		[UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionBeginFromCurrentState 
+						 animations:^{
+							 v.alpha = 0;
+						 } 
+						 completion:^(BOOL completed){
+							 [v removeFromSuperview];
+							 [v release];
+							 
+						 }];
+		
+
+	}
+	
+}
+
 - (void) showIndicatorForPoint:(int)point{
 	int i = point;
 	
@@ -534,6 +556,11 @@ static float highValue;
 - (void) scrollViewDidEndDecelerating:(UIScrollView *)scroll{
 	[self moveGoalLabel:YES];
 }
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+	[self hideIndicator];
+
+}
+
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
 	
 	if(!touchIndicatorEnabled) return;

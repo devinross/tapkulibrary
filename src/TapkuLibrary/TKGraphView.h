@@ -72,6 +72,7 @@
 - (void) setGraphWithDataPoints:(NSArray*)dataPoints; // OBJECTS NEED TO IMPLEMENT TKGRAPHVIEWPOINT PROTOCOL
 
 - (void) showIndicatorForPoint:(int)point;
+- (void) hideIndicator;
 
 - (void) scrollToPoint:(NSInteger)point animated:(BOOL)animated;
 

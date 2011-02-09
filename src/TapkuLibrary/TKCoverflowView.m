@@ -284,7 +284,7 @@
 		
 		float speed = 0.2;
 		
-		if(velocity>80)speed=0.03;
+		if(velocity>80)speed=0.05;
 		[UIView beginAnimations:string context:nil];
 		[UIView setAnimationDuration:speed];
 		[UIView setAnimationCurve:UIViewAnimationCurveLinear];

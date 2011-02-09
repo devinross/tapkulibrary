@@ -42,7 +42,7 @@
 
 - (void) viewDidAppear:(BOOL)animated{
 	[super viewDidAppear:animated];
-	[coverflow bringCoverAtIndexToFront:[covers count] animated:YES];
+	[coverflow bringCoverAtIndexToFront:[covers count]*4 animated:YES];
 }
 
 - (void) viewWillDisappear:(BOOL)animated{
@@ -78,7 +78,6 @@
 }
 
 - (void) info{
-	NSLog(@"info");
 	[self dismissModalViewControllerAnimated:YES];
 }
 
