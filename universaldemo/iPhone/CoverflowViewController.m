@@ -42,7 +42,7 @@
 
 - (void) viewDidAppear:(BOOL)animated{
 	[super viewDidAppear:animated];
-	[coverflow bringCoverAtIndexToFront:[covers count]*4 animated:YES];
+	[coverflow bringCoverAtIndexToFront:[covers count]*2 animated:YES];
 }
 
 - (void) viewWillDisappear:(BOOL)animated{

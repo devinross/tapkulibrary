@@ -82,19 +82,18 @@
 	
 	return self;
 }
+- (void) dealloc {
+	[data release];
+    [super dealloc];
+}
 
-
-
-
-
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
     return [data count];
 }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [[[data objectAtIndex:section] objectForKey:@"rows"] count];
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -110,7 +109,7 @@
 	
 	
 }
-- (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void) tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tv deselectRowAtIndexPath:indexPath animated:YES];
 	
 	
@@ -169,19 +168,11 @@
 	[vc release];
 	
 }
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
 	return [[data objectAtIndex:section] objectForKey:@"title"];
 }
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
+- (NSString *) tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
 	return [[data objectAtIndex:section] objectForKey:@"footer"];
 }
 
-
-- (void)dealloc {
-	[data release];
-    [super dealloc];
-}
-
-
 @end
-

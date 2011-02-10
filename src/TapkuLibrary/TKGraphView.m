@@ -557,7 +557,13 @@ static float highValue;
 	[self moveGoalLabel:YES];
 }
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-	[self hideIndicator];
+	//[self hideIndicator];
+	
+	[UIView beginAnimations:nil context:nil];
+
+	indicator.alpha = 0;
+	[UIView commitAnimations];
+	
 
 }
 

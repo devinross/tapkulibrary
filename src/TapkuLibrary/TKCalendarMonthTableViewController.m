@@ -96,6 +96,7 @@
 	if(animated){
 		[UIView beginAnimations:nil context:nil];
 		[UIView setAnimationDuration:0.4];
+		[UIView setAnimationDelay:0.1];
 	}
 
 	
