@@ -46,6 +46,7 @@
 
 - (void) loadView{
 	[super loadView];
+	self.tableView.backgroundColor = [UIColor whiteColor];
 	
 	float y,height;
 	y = self.monthView.frame.origin.y + self.monthView.frame.size.height;

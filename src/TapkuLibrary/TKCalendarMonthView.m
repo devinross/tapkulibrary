@@ -748,12 +748,18 @@
 		overlap = [currentTile.monthDate compare:[dates lastObject]] !=  NSOrderedDescending ? 44 : 0;
 	}
 	
-	float y = isNext ? currentTile.bounds.size.height - overlap : newTile.bounds.size.height * -1 + overlap;
+	float y = isNext ? currentTile.bounds.size.height - overlap : newTile.bounds.size.height * -1 + overlap +2;
 	
 	newTile.frame = CGRectMake(0, y, newTile.frame.size.width, newTile.frame.size.height);
+	newTile.alpha = 0;
 	[self.tileBox addSubview:newTile];
-	[self.tileBox bringSubviewToFront:currentTile];
 	
+	
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDuration:0.1];
+	newTile.alpha = 1;
+
+	[UIView commitAnimations];
 	
 	
 	
@@ -763,13 +769,14 @@
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 	[UIView setAnimationDidStopSelector:@selector(animationEnded)];
+	[UIView setAnimationDelay:0.1];
 	[UIView setAnimationDuration:0.4];
 	
-	currentTile.alpha = 0.0;
+	
 	
 	if(isNext){
 		
-		currentTile.frame = CGRectMake(0, -1 * currentTile.bounds.size.height + overlap, currentTile.frame.size.width, currentTile.frame.size.height);
+		currentTile.frame = CGRectMake(0, -1 * currentTile.bounds.size.height + overlap + 2, currentTile.frame.size.width, currentTile.frame.size.height);
 		newTile.frame = CGRectMake(0, 1, newTile.frame.size.width, newTile.frame.size.height);
 		self.tileBox.frame = CGRectMake(self.tileBox.frame.origin.x, self.tileBox.frame.origin.y, self.tileBox.frame.size.width, newTile.frame.size.height);
 		self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.bounds.size.width, self.tileBox.frame.size.height+self.tileBox.frame.origin.y);
@@ -810,6 +817,7 @@
 }
 - (void) animationEnded{
 	self.userInteractionEnabled = YES;
+	[oldTile removeFromSuperview];
 	[oldTile release];
 	oldTile = nil;
 }
