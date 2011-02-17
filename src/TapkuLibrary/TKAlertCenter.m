@@ -69,9 +69,14 @@
 	alertView = [[TKAlertView alloc] init];
 	active = NO;
 	
-	[[UIApplication sharedApplication].keyWindow addSubview:alertView];
+	
+	alertFrame = [UIApplication sharedApplication].keyWindow.bounds;
 
 	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillDisappear:) name:UIKeyboardDidHideNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationWillChange:) name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
+
 	return self;
 }
 - (void) showAlerts{
@@ -98,9 +103,10 @@
 
 	if([ar count] > 0) [alertView setMessageText:[[self.alerts objectAtIndex:0] objectAtIndex:0]];
 	
-	alertView.center = [UIApplication sharedApplication].keyWindow.center;
-
 	
+	
+	alertView.center = CGPointMake(alertFrame.origin.x+alertFrame.size.width/2, alertFrame.origin.y+alertFrame.size.height/2);
+		
 	
 	CGRect rr = alertView.frame;
 	rr.origin.x = (int)rr.origin.x;
@@ -122,11 +128,10 @@
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationDidStopSelector:@selector(animationStep2)];
 	
-
 	alertView.transform = CGAffineTransformMakeRotation(degrees * M_PI / 180);
 	alertView.frame = CGRectMake((int)alertView.frame.origin.x, (int)alertView.frame.origin.y, alertView.frame.size.width, alertView.frame.size.height);
-	
 	alertView.alpha = 1;
+	
 	[UIView commitAnimations];
 	
 	
@@ -155,6 +160,7 @@
 	alertView.alpha = 0;
 	[UIView commitAnimations];
 }
+
 - (void) animationStep3{
 	
 	[alertView removeFromSuperview];
@@ -175,11 +181,76 @@
 	[super dealloc];
 }
 
+
+CGRect subtractRect(CGRect wf,CGRect kf){
+	
+	
+	
+	if(!CGPointEqualToPoint(CGPointZero,kf.origin)){
+		
+		if(kf.origin.x>0) kf.size.width = kf.origin.x;
+		if(kf.origin.y>0) kf.size.height = kf.origin.y;
+		kf.origin = CGPointZero;
+		
+	}else{
+		
+		
+		kf.origin.x = abs(kf.size.width - wf.size.width);
+		kf.origin.y = abs(kf.size.height -  wf.size.height);
+		
+		
+		if(kf.origin.x > 0){
+			CGFloat temp = kf.origin.x;
+			kf.origin.x = kf.size.width;
+			kf.size.width = temp;
+		}else if(kf.origin.y > 0){
+			CGFloat temp = kf.origin.y;
+			kf.origin.y = kf.size.height;
+			kf.size.height = temp;
+		}
+		
+	}
+	return CGRectIntersection(wf, kf);
+	
+	
+	
+}
+
+- (void) keyboardWillAppear:(NSNotification *)notification {
+	
+	NSDictionary *userInfo = [notification userInfo];
+	NSValue* aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+	CGRect kf = [aValue CGRectValue];
+	CGRect wf = [UIApplication sharedApplication].keyWindow.bounds;
+	alertFrame = subtractRect(wf,kf);
+	
+}
+- (void) keyboardWillDisappear:(NSNotification *) notification {
+	alertFrame = [UIApplication sharedApplication].keyWindow.bounds;
+
+}
+- (void) orientationWillChange:(NSNotification *) notification {
+	
+	NSDictionary *userInfo = [notification userInfo];
+	NSNumber *v = [userInfo objectForKey:UIApplicationStatusBarOrientationUserInfoKey];
+	UIInterfaceOrientation o = [v intValue];
+	
+	
+	
+	
+	CGFloat degrees = 0;
+	if(o == UIInterfaceOrientationLandscapeLeft ) degrees = -90;
+	else if(o == UIInterfaceOrientationLandscapeRight ) degrees = 90;
+	else if(o == UIInterfaceOrientationPortraitUpsideDown) degrees = 180;
+	alertView.transform = CGAffineTransformMakeRotation(degrees * M_PI / 180);
+	
+	
+	alertView.frame = CGRectMake((int)alertView.frame.origin.x, (int)alertView.frame.origin.y, (int)alertView.frame.size.width, (int)alertView.frame.size.height);
+
+	
+}
+
 @end
-
-
-
-
 
 @implementation TKAlertView
 

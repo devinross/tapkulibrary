@@ -15,6 +15,8 @@
 	if(!(self=[super init])) return nil;
 	self.title = NSLocalizedString(@"Alerts",@"Alerts");
 	
+	[TKAlertCenter defaultCenter];
+	
 	return self;
 }
 
@@ -22,6 +24,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.view.backgroundColor = [UIColor whiteColor];
+	
+	
+
 }
 
 
@@ -30,7 +35,7 @@
 	
 	self.navigationItem.rightBarButtonItem = [[[TKBarButtonItem alloc] initWithTitle:@"Tap Me" style:TKBarButtonItemStylePlain target:self action:@selector(beer)] autorelease];
 
-	
+
 	
 	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"Hi!"];
 	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"This is the alert system"];
@@ -44,7 +49,6 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
     return YES;
 }
 
