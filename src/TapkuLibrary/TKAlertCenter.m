@@ -73,7 +73,7 @@
 	alertFrame = [UIApplication sharedApplication].keyWindow.bounds;
 
 	
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardDidShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillDisappear:) name:UIKeyboardDidHideNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationWillChange:) name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
 
@@ -222,8 +222,13 @@ CGRect subtractRect(CGRect wf,CGRect kf){
 	NSValue* aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
 	CGRect kf = [aValue CGRectValue];
 	CGRect wf = [UIApplication sharedApplication].keyWindow.bounds;
-	alertFrame = subtractRect(wf,kf);
 	
+	[UIView beginAnimations:nil context:nil];
+	alertFrame = subtractRect(wf,kf);
+	alertView.center = CGPointMake(alertFrame.origin.x+alertFrame.size.width/2, alertFrame.origin.y+alertFrame.size.height/2);
+
+	[UIView commitAnimations];
+
 }
 - (void) keyboardWillDisappear:(NSNotification *) notification {
 	alertFrame = [UIApplication sharedApplication].keyWindow.bounds;
@@ -242,11 +247,11 @@ CGRect subtractRect(CGRect wf,CGRect kf){
 	if(o == UIInterfaceOrientationLandscapeLeft ) degrees = -90;
 	else if(o == UIInterfaceOrientationLandscapeRight ) degrees = 90;
 	else if(o == UIInterfaceOrientationPortraitUpsideDown) degrees = 180;
+	
+	[UIView beginAnimations:nil context:nil];
 	alertView.transform = CGAffineTransformMakeRotation(degrees * M_PI / 180);
-	
-	
 	alertView.frame = CGRectMake((int)alertView.frame.origin.x, (int)alertView.frame.origin.y, (int)alertView.frame.size.width, (int)alertView.frame.size.height);
-
+	[UIView commitAnimations];
 	
 }
 

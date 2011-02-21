@@ -41,7 +41,12 @@
 	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"This is the alert system"];
 	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"Use images too!" image:[UIImage imageNamed:@"beer"]];
 
+
 }
+
+
+
+
 
 
 - (void) beer{
