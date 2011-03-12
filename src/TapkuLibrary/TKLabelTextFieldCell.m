@@ -37,33 +37,30 @@
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-	
-	if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        // Initialization code
-		field = [[UITextField alloc] initWithFrame:CGRectZero];
-		field.autocorrectionType = UITextAutocorrectionTypeYes;
-		field.delegate = self;
-		[self addSubview:field];
-		//field.backgroundColor = [UIColor redColor];
-		field.font = [UIFont boldSystemFontOfSize:16.0];
+	if(!(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
+    
+    field = [[UITextField alloc] initWithFrame:CGRectZero];
+    field.autocorrectionType = UITextAutocorrectionTypeYes;
+    field.font = [UIFont boldSystemFontOfSize:16.0];
+    field.delegate = self;
+    [self addSubview:field];
 		
-    }
+    
     return self;
-	
-	
 }
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]) {
-        // Initialization code
-		field = [[UITextField alloc] initWithFrame:CGRectZero];
-		field.autocorrectionType = UITextAutocorrectionTypeYes;
-		field.delegate = self;
-		[self addSubview:field];
-		//field.backgroundColor = [UIColor redColor];
-		field.font = [UIFont boldSystemFontOfSize:16.0];
-		
-    }
+    if(!(self=[super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier])) return nil;
+
+    // Initialization code
+    field = [[UITextField alloc] initWithFrame:CGRectZero];
+    field.autocorrectionType = UITextAutocorrectionTypeYes;
+    field.delegate = self;
+    [self addSubview:field];
+    //field.backgroundColor = [UIColor redColor];
+    field.font = [UIFont boldSystemFontOfSize:16.0];
+    
+    
     return self;
 }
 

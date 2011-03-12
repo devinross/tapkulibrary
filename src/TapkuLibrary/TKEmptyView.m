@@ -47,45 +47,42 @@
 @synthesize imageView,titleLabel,subtitleLabel;
 
 
-
-
 - (id) initWithFrame:(CGRect)frame mask:(UIImage*)image title:(NSString*)titleString subtitle:(NSString*)subtitleString{
-	if(self = [super initWithFrame:frame]){
+    if(!(self=[super initWithFrame:frame])) return nil;
 		
-		
-		self.backgroundColor = [UIColor whiteColor];
-		
-		titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-		titleLabel.backgroundColor = [UIColor clearColor];
-		titleLabel.font = [UIFont boldSystemFontOfSize:18];
-		titleLabel.textColor = [UIColor colorWithRed:128/255. green:136/255. blue:149/255. alpha:1];
-		titleLabel.textAlignment = UITextAlignmentCenter;
-		titleLabel.shadowColor = [UIColor whiteColor];
-		titleLabel.shadowOffset = CGSizeMake(0, 1);
-		
-		titleLabel.text = titleString;
-		
-		subtitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-		subtitleLabel.backgroundColor = [UIColor clearColor];
-		subtitleLabel.font = [UIFont systemFontOfSize:14];
-		subtitleLabel.textColor = [UIColor colorWithRed:128/255. green:136/255. blue:149/255. alpha:1];
-		subtitleLabel.textAlignment = UITextAlignmentCenter;
-		subtitleLabel.shadowColor = [UIColor whiteColor];
-		subtitleLabel.shadowOffset = CGSizeMake(0, 1);
-		
-		subtitleLabel.text = subtitleString;
-		
-		imageView = [[UIImageView alloc] initWithImage:[self maskedImageWithImage:image]];
-		imageView.frame = CGRectMake((int)(frame.size.width/2)-(imageView.frame.size.width/2), (int)(frame.size.height/2)-(imageView.frame.size.height/2), imageView.image.size.width, imageView.image.size.height);
+    self.backgroundColor = [UIColor whiteColor];
+    
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    titleLabel.textColor = [UIColor colorWithRed:128/255. green:136/255. blue:149/255. alpha:1];
+    titleLabel.textAlignment = UITextAlignmentCenter;
+    titleLabel.shadowColor = [UIColor whiteColor];
+    titleLabel.shadowOffset = CGSizeMake(0, 1);
+    
+    titleLabel.text = titleString;
+    
+    subtitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    subtitleLabel.backgroundColor = [UIColor clearColor];
+    subtitleLabel.font = [UIFont systemFontOfSize:14];
+    subtitleLabel.textColor = [UIColor colorWithRed:128/255. green:136/255. blue:149/255. alpha:1];
+    subtitleLabel.textAlignment = UITextAlignmentCenter;
+    subtitleLabel.shadowColor = [UIColor whiteColor];
+    subtitleLabel.shadowOffset = CGSizeMake(0, 1);
+    
+    subtitleLabel.text = subtitleString;
+    
+    imageView = [[UIImageView alloc] initWithImage:[self maskedImageWithImage:image]];
+    imageView.frame = CGRectMake((int)(frame.size.width/2)-(imageView.frame.size.width/2), (int)(frame.size.height/2)-(imageView.frame.size.height/2), imageView.image.size.width, imageView.image.size.height);
+
+    
+    [self addSubview:imageView];
+    [self addSubview:subtitleLabel];
+    [self addSubview:titleLabel];
+    
 
 		
-		[self addSubview:imageView];
-		[self addSubview:subtitleLabel];
-		[self addSubview:titleLabel];
-		
-
-		
-	}
+	
 	return self;
 	
 }

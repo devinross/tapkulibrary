@@ -828,6 +828,7 @@
 				GCC_PREFIX_HEADER = TapkuLibrary_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = TapkuLibrary;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -862,15 +863,14 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				ONLY_ACTIVE_ARCH = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
 				);
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
-				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Debug;
 		};
@@ -882,15 +882,14 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				ONLY_ACTIVE_ARCH = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-all_load",
 					"-ObjC",
 				);
 				PREBINDING = NO;
 				SDKROOT = iphoneos;
-				VALID_ARCHS = "armv6 armv7";
 			};
 			name = Release;
 		};

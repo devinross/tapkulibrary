@@ -38,12 +38,12 @@
 
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]) {
-        // Initialization code
-		field = [[UILabel alloc] initWithFrame:CGRectZero];
-		[self addSubview:field];
-		field.font = [UIFont boldSystemFontOfSize:16.0];
-    }
+    if(!(self=[super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier])) return nil;
+
+    field = [[UILabel alloc] initWithFrame:CGRectZero];
+    [self addSubview:field];
+    field.font = [UIFont boldSystemFontOfSize:16.0];
+    
     return self;
 }
 

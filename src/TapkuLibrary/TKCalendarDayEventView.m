@@ -48,20 +48,16 @@
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 // Only when xibless (interface buildder)
 - (id)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
-        // Custom initialization
-		[self setupCustomInitialisation];
-    }
+    if(!(self=[super initWithFrame:frame])) return nil;
+    [self setupCustomInitialisation];
     return self;
 }
 
 // The designated initializer. Override to perform setup that is required before the view is loaded.
 // Only when using xib (interface buildder)
 - (id)initWithCoder:(NSCoder *)decoder {
-	if (self = [super initWithCoder:decoder]) {
-		// Custom initialization
-		[self setupCustomInitialisation];
-	}
+    if(!(self=[super initWithCoder:decoder])) return nil;
+    [self setupCustomInitialisation];
 	return self;
 }
 

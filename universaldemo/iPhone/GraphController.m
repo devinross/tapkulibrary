@@ -35,10 +35,11 @@
 @implementation GraphPoint
 
 - (id) initWithID:(int)pkv value:(NSNumber*)number{
-	if(self = [super init]){
-		pk = pkv;
-		value = [number retain];
-	}
+    if(!(self=[super init])) return nil;
+    
+    pk = pkv;
+    value = [number retain];
+	
 	return self;
 	
 }

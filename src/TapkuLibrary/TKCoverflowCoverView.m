@@ -41,27 +41,28 @@
 
 
 - (id) initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
-		self.opaque = NO;
-		self.backgroundColor = [UIColor clearColor];
-		self.layer.anchorPoint = CGPointMake(0.5, 0.5);
-		
-		imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.width)];
-		[self addSubview:imageView];
-		
-		reflected =  [[UIImageView alloc] initWithFrame:CGRectMake(0, self.frame.size.width, self.frame.size.width, self.frame.size.width)];
-		reflected.transform = CGAffineTransformScale(reflected.transform, 1, -1);
-		[self addSubview:reflected];
+    if(!(self=[super initWithFrame:frame])) return nil;
+    
+    self.opaque = NO;
+    self.backgroundColor = [UIColor clearColor];
+    self.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    
+    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.width)];
+    [self addSubview:imageView];
+    
+    reflected =  [[UIImageView alloc] initWithFrame:CGRectMake(0, self.frame.size.width, self.frame.size.width, self.frame.size.width)];
+    reflected.transform = CGAffineTransformScale(reflected.transform, 1, -1);
+    [self addSubview:reflected];
 
-		gradientLayer = [CAGradientLayer layer];
-		gradientLayer.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0 alpha:0.5].CGColor,(id)[UIColor colorWithWhite:0 alpha:1].CGColor,nil];
-		gradientLayer.startPoint = CGPointMake(0,0);
-		gradientLayer.endPoint = CGPointMake(0,0.3);
-		gradientLayer.frame = CGRectMake(0, self.frame.size.width, self.frame.size.width, self.frame.size.width);
-		[self.layer addSublayer:gradientLayer];
-		
-		
-    }
+    gradientLayer = [CAGradientLayer layer];
+    gradientLayer.colors = [NSArray arrayWithObjects:(id)[UIColor colorWithWhite:0 alpha:0.5].CGColor,(id)[UIColor colorWithWhite:0 alpha:1].CGColor,nil];
+    gradientLayer.startPoint = CGPointMake(0,0);
+    gradientLayer.endPoint = CGPointMake(0,0.3);
+    gradientLayer.frame = CGRectMake(0, self.frame.size.width, self.frame.size.width, self.frame.size.width);
+    [self.layer addSublayer:gradientLayer];
+    
+    
+    
     return self;
 }
 

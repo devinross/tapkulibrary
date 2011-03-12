@@ -33,8 +33,58 @@
 #import "TKImageCenter.h"
 #import "NSArray+TKCategory.h"
 
-@implementation TKImageCenter
 
+
+@interface ImageLoadOperation : NSOperation {
+    NSString *imageURL;
+	TKImageCenter *imageCenter;
+}
+
+@property(copy) NSString *imageURL;
+@property(assign) TKImageCenter *imageCenter;
+
+- (id)initWithImageURLString:(NSString*)imageURL;
+
+@end
+@implementation ImageLoadOperation
+@synthesize imageURL,imageCenter;
+
+- (id) initWithImageURLString:(NSString*)url{
+    if (!(self=[super init])) return nil;
+    self.imageURL = url;
+    return self;
+}
+
+- (void) dealloc {
+    self.imageURL = nil;
+    [super dealloc];
+}
+
+- (void) main {
+	
+	UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.imageURL]]];
+	if(img!=nil){
+		
+		
+		img = [imageCenter adjustImageRecieved:img];
+		
+		if(img!=nil){
+			[imageCenter performSelectorOnMainThread:@selector(sendNewImageNotification:) 
+										  withObject:[NSArray arrayWithObjects:img,self.imageURL,nil] 
+									   waitUntilDone:YES];
+		}
+		
+
+		
+	}
+	
+}
+
+@end
+
+
+@implementation TKImageCenter
+@synthesize queue,images;
 
 + (TKImageCenter*) sharedImageCenter{
 	static TKImageCenter *sharedInstance = nil;
@@ -44,8 +94,8 @@
 	return sharedInstance;
 }
 - (id) init{
-	if(![super init]) return nil;
-	queue = [[NSMutableArray alloc] init];
+	if(!(self=[super init])) return nil;
+	queue = [[NSOperationQueue alloc] init];
 	images = [[NSMutableDictionary alloc] init];
 	return self;
 }
@@ -56,95 +106,37 @@
 	UIImage *img = [images objectForKey:imageURL];
 	if(img != nil) return img;
 	
-	
-	
-	if(addToQueue){
-		
-		if(thread==nil){
-			thread = [[NSThread alloc] initWithTarget:self selector:@selector(startupThreadWithImage:) object:imageURL];
-			[thread start];
-		}else
-			[queue addObject:imageURL];
-			//[self performSelector:@selector(addImageURLToQueue:) onThread:thread withObject:imageURL waitUntilDone:NO];
-		
-	}
-	
-	
-	
-	
+	ImageLoadOperation *op = [[ImageLoadOperation alloc] initWithImageURLString:imageURL];
+	op.imageCenter = self;
+	[queue addOperation:op];
+	[op release];
 	
 	return nil;
-}
-- (void) addImageURLToQueue:(NSString*)imageURL{
-	if(![queue containsObject:imageURL]){
-		[queue addObject:imageURL];
-	}
+	
 }
 
 
 - (UIImage*) adjustImageRecieved:(UIImage*)image{
 	return image;
 }
+
 - (void) sendNewImageNotification:(NSArray*)ar{
 	[images setObject:[ar firstObject] forKey:[ar lastObject]];
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"newImage" object:self];
 }
 
-- (void) getImages{
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	
-	
-	while([queue count]>0){
-		NSString *str = [queue objectAtIndex:0];
-		UIImage *img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:str]]];
-		if(img != nil){
-			UIImage *transformImage = [self  adjustImageRecieved:img];
-			if(transformImage!= nil){
-				//[images setObject:transformImage forKey:url];
-				[self performSelectorOnMainThread:@selector(sendNewImageNotification:) 
-									   withObject:[NSArray arrayWithObjects:transformImage,str,nil] 
-									waitUntilDone:NO];
-			}
-			
-		}
-		
-		for(int cnt=0;cnt < [queue count]; cnt++){
-			if([[queue objectAtIndex:cnt] isEqual:str]){
-				[queue removeObjectAtIndex:cnt];
-				cnt--;
-			}
-		}
-	}
-	
-	[self performSelectorOnMainThread:@selector(getImagesDidFinish) withObject:nil waitUntilDone:NO];
-	[pool release];
-}
-- (void) getImagesDidFinish{
-	[thread cancel];
-	[thread release];
-	thread = nil;
-}
-- (void) startupThreadWithImage:(NSString*)imageURL{
-	
-	[queue addObject:imageURL];
-	[self getImages];
-	
-}
+
+
 
 
 
 - (void) clearImages{
-	[thread cancel];
-	[thread release];
-	thread = nil;
+	[queue cancelAllOperations];
 	[images removeAllObjects];
-	[queue removeAllObjects];
 }
 - (void) dealloc{
 	[queue release];
 	[images release];
-	[thread cancel];
-	[thread release];
 	[super dealloc];
 }
 	 

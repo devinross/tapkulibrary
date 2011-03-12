@@ -34,8 +34,7 @@
 
 @implementation ABTableViewCellView
 
-- (void)drawRect:(CGRect)r
-{
+- (void) drawRect:(CGRect)r{
 	[(ABTableViewCell *)[self superview] drawContentView:r];
 }
 
@@ -45,27 +44,25 @@
 
 @implementation ABTableViewCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])
-	{
-		contentView = [[ABTableViewCellView alloc] initWithFrame:CGRectZero];
-		contentView.opaque = YES;
-		[self addSubview:contentView];
-		[contentView release];
-    }
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    if(!(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
+    
+    contentView = [[ABTableViewCellView alloc] initWithFrame:CGRectZero];
+    contentView.opaque = YES;
+    [self addSubview:contentView];
+    [contentView release];
+    
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier
-{
-    if(self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier])
-	{
-		contentView = [[ABTableViewCellView alloc] initWithFrame:CGRectZero];
-		contentView.opaque = YES;
-		[self addSubview:contentView];
-		[contentView release];
-    }
+- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier{
+    if(!(self=[super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier])) return nil;
+
+    contentView = [[ABTableViewCellView alloc] initWithFrame:CGRectZero];
+    contentView.opaque = YES;
+    [self addSubview:contentView];
+    [contentView release];
+
     return self;
 }
 

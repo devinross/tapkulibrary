@@ -37,13 +37,11 @@
 @synthesize textView;
 
 - (id) initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier]) {
-        // Initialization code
-		
-		textView = [[UITextView alloc] initWithFrame:CGRectZero];
-		[self addSubview:textView];
-		//textView.backgroundColor = [UIColor blueColor];
-    }
+    if(!(self=[super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier])) return nil;
+
+    textView = [[UITextView alloc] initWithFrame:CGRectZero];
+    [self addSubview:textView];
+    
     return self;
 }
 

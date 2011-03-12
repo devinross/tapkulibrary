@@ -45,16 +45,16 @@
 @synthesize radius;
 
 - (id) initWithTitle:(NSString*)ttl message:(NSString*)msg{
-	if(self = [super initWithFrame:CGRectMake(0, 0, 280, 200)]){
+	if(!(self = [super initWithFrame:CGRectMake(0, 0, 280, 200)])) return nil;
 		
-		_title = [ttl copy];
-		_message = [msg copy];
-		_activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-		[self addSubview:_activity];
-		_hidden = YES;
-		self.backgroundColor = [UIColor clearColor];
-		
-	}
+    _title = [ttl copy];
+    _message = [msg copy];
+    _activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    [self addSubview:_activity];
+    _hidden = YES;
+    self.backgroundColor = [UIColor clearColor];
+    
+	
 	return self;
 }
 - (id) initWithTitle:(NSString*)ttl{

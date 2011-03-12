@@ -33,15 +33,20 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#define NewImageCenterImage @"newImage"
+
 @interface TKImageCenter : NSObject {
 
-	NSMutableArray *queue;
+	NSOperationQueue *queue;
 	NSMutableDictionary *images;
-	NSThread *thread;
 	
 }
 
 + (TKImageCenter*) sharedImageCenter;
+
+@property (nonatomic,retain) NSOperationQueue *queue;
+@property (nonatomic,retain) NSMutableDictionary *images;
+
 
 - (UIImage*) imageAtURL:(NSString*)url queueIfNeeded:(BOOL)addToQueue;
 

@@ -37,19 +37,20 @@
 @synthesize label;
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        // Initialization code
-		label = [[UILabel alloc] initWithFrame:CGRectZero];
-		label.textAlignment = UITextAlignmentRight;
-		label.textColor = [UIColor grayColor];
-		label.font = [UIFont boldSystemFontOfSize:12.0];
-		[self addSubview:label];
-		label.adjustsFontSizeToFitWidth = YES;
-		label.baselineAdjustment = UIBaselineAdjustmentNone;
-		
-		//label.backgroundColor = [UIColor redColor];
-		label.numberOfLines = 20;
-    }
+    if(!(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
+
+    // Initialization code
+    label = [[UILabel alloc] initWithFrame:CGRectZero];
+    label.textAlignment = UITextAlignmentRight;
+    label.textColor = [UIColor grayColor];
+    label.font = [UIFont boldSystemFontOfSize:12.0];
+    [self addSubview:label];
+    label.adjustsFontSizeToFitWidth = YES;
+    label.baselineAdjustment = UIBaselineAdjustmentNone;
+    
+    //label.backgroundColor = [UIColor redColor];
+    label.numberOfLines = 20;
+    
     return self;
 }
 

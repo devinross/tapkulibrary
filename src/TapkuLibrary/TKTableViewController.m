@@ -54,7 +54,7 @@
 - (void) didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-- (void) unloadSubviews{
+- (void) _unloadSubviews{
 	self.tableView = nil;
 	self.emptyView = nil;
 	self.loadingView = nil;
@@ -62,11 +62,11 @@
 	self.searchBarController = nil;
 }
 - (void) viewDidUnload {
-	[self unloadSubviews];
+	[self _unloadSubviews];
 	[super viewDidUnload];
 }
 - (void) dealloc {
-	[self unloadSubviews];
+	[self _unloadSubviews];
     [super dealloc];
 }
 // -----------------------------
