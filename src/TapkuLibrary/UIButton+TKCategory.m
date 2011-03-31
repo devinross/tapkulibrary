@@ -41,7 +41,7 @@
 	return [UIButton buttonWithFrame:frame title:nil];
 }
 + (id) buttonWithFrame:(CGRect)frame title:(NSString*)title{
-	return [UIButton buttonWithFrame:frame title:nil backgroundImage:nil];
+	return [UIButton buttonWithFrame:frame title:title backgroundImage:nil];
 }
 + (id) buttonWithFrame:(CGRect)frame title:(NSString*)title backgroundImage:(UIImage*)backgroundImage{
 	return [UIButton buttonWithFrame:frame title:title backgroundImage:backgroundImage highlightedBackgroundImage:nil];

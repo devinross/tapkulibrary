@@ -36,7 +36,7 @@
 
 @implementation TKTableViewController
 @synthesize tableView = _tableView, emptyView = _emptyView, loadingView = _loadingView;
-@synthesize searchBar = _searchBar, searchBarController = _searchBarController;
+@synthesize searchBar = _searchBar, searchBarDisplayController = _searchBarDisplayController;
 
 // -----------------------------
 // INIT & FRIENDS
@@ -46,9 +46,7 @@
 }
 - (id) initWithStyle:(UITableViewStyle)style{
 	if(!(self = [super init])) return nil;
-	
 	_style = style;
-	
 	return self;
 }
 - (void) didReceiveMemoryWarning {
@@ -59,7 +57,7 @@
 	self.emptyView = nil;
 	self.loadingView = nil;
 	self.searchBar = nil;
-	self.searchBarController = nil;
+	self.searchBarDisplayController = nil;
 }
 - (void) viewDidUnload {
 	[self _unloadSubviews];
@@ -113,7 +111,7 @@
 }
 - (UIView*) loadingView{
 	if(_loadingView==nil){
-		_loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
+		_loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 44)];
 		_loadingView.backgroundColor = [UIColor clearColor];
 		_loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		
@@ -134,14 +132,14 @@
 	}
 	return _searchBar;
 }
-- (UISearchDisplayController*) searchBarController{
-	if(_searchBarController==nil){
-		_searchBarController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
-		_searchBarController.delegate = self;
-		_searchBarController.searchResultsDataSource = self;
-		_searchBarController.searchResultsDelegate = self;
+- (UISearchDisplayController*) searchBarDisplayController{
+	if(_searchBarDisplayController==nil){
+		_searchBarDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
+		_searchBarDisplayController.delegate = self;
+		_searchBarDisplayController.searchResultsDataSource = self;
+		_searchBarDisplayController.searchResultsDelegate = self;
 	}
-	return _searchBarController;
+	return _searchBarDisplayController;
 }
 // -----------------------------
 

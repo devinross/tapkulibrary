@@ -4,7 +4,7 @@
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || https://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -32,9 +32,9 @@
 #import "EmptyViewController.h"
 
 @implementation EmptyViewController
+@synthesize emptyView;
 
 - (void) loadView{
-	
 	[super loadView];
 	
 	emptyView = [[TKEmptyView alloc] initWithFrame:self.view.bounds 
@@ -46,10 +46,11 @@
 	[self.view addSubview:emptyView];
 
 	
+	self.title = @"EMPTY";
 }
 
 
-- (void)dealloc {
+- (void) dealloc {
 	[emptyView release];
     [super dealloc];
 }

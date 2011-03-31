@@ -145,5 +145,19 @@
 }
 
 
+- (NSString*) stringByRemovingHTML{
+	
+	NSString *html = self;
+    NSScanner *thescanner = [NSScanner scannerWithString:html];
+    NSString *text = nil;
+	
+    while ([thescanner isAtEnd] == NO) {
+		[thescanner scanUpToString:@"<" intoString:NULL];
+		[thescanner scanUpToString:@">" intoString:&text];
+		html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>",text] withString:@" "];
+    }
+	return html;
+}
+
 
 @end

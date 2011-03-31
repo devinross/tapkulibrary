@@ -73,8 +73,8 @@ static float highValue;
 }
 
 - (void) drawRect:(CGRect)rect{
-	
-	[UIView drawRoundRectangleInRect:rect withRadius:4.0 color:[UIColor redColor]];
+	[[UIColor redColor] set];
+	[UIView drawRoundRectangleInRect:rect withRadius:4.0];
 	[[UIColor whiteColor] set];
 	[title drawInRect:CGRectMake(6, 2, 100, 12) withFont:[UIFont boldSystemFontOfSize:11]];
 	

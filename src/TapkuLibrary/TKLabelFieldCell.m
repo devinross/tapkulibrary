@@ -33,62 +33,47 @@
 
 
 @implementation TKLabelFieldCell
-@synthesize field;
+@synthesize field=_field;
 
 
+- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    if(!(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
+	
+	_field = [[UILabel alloc] initWithFrame:CGRectZero];
+    _field.font = [UIFont boldSystemFontOfSize:16.0];
+	[self.contentView addSubview:_field];
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
-    if(!(self=[super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier])) return nil;
-
-    field = [[UILabel alloc] initWithFrame:CGRectZero];
-    [self addSubview:field];
-    field.font = [UIFont boldSystemFontOfSize:16.0];
-    
     return self;
 }
+- (id) initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
+	self=[self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+    return self;
+}
+- (void) dealloc {
+	[_field release];
+    [super dealloc];
+}
 
-
-- (void)layoutSubviews {
+- (void) layoutSubviews {
     [super layoutSubviews];
 	
-	CGRect r = CGRectInset(self.bounds, 16, 8);
-	r.origin.x += 80;
-	r.size.width -= 80;
-	
-	if(self.editing){
-		r.origin.x += 30;
-		r.size.width -= 30;
-	}
-	
-	field.frame = r;
-	
+	CGRect r = CGRectInset(self.contentView.bounds, 8, 8);
+	r.origin.x += self.label.frame.size.width + 6;
+	r.size.width -= self.label.frame.size.width + 6;
+	_field.frame = r;
 	
 }
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-	
+- (void) setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-	
-	if(selected){
-		field.textColor = [UIColor whiteColor];
-	}else{
-		field.textColor = [UIColor blackColor];
-	}
-	
+	_field.textColor = selected ? [UIColor whiteColor] : [UIColor blackColor];
 }
 - (void) setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
 	[super setHighlighted:highlighted animated:animated];
-	if(highlighted){
-		field.textColor = [UIColor whiteColor];
-	}else{
-		field.textColor = [UIColor blackColor];
-	}
+	_field.textColor = highlighted ? [UIColor whiteColor] : [UIColor blackColor];
 }
 
 
-- (void)dealloc {
-	[field release];
-    [super dealloc];
-}
+
 
 
 @end

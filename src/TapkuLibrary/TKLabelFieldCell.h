@@ -33,7 +33,7 @@
 #import "TKLabelCell.h"
 
 @interface TKLabelFieldCell : TKLabelCell {
-	UILabel *field;
+	UILabel *_field;
 }
 @property (retain, nonatomic) UILabel *field;
 @end

@@ -4,7 +4,7 @@
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || https://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -34,61 +34,61 @@
 
 @implementation MoreCellsViewController
 
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-	
-	buttonCell = [[TKButtonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"button"];
-	buttonCell.title.text = @"This is a BUTTON Cell";
-	
-	switchCell = [[TKSwitchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-	switchCell.title.text = @"Switch Cell";
-	
-	textViewCell = [[TKTextViewCell alloc]  initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-	textViewCell.textView.text = @"TextView Cell - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent blandit malesuada turpis quis egestas. Curabitur varius nunc nec leo tincidunt mattis. Cras malesuada euismod lobortis. Praesent ultrices malesuada lorem et convallis. Pellentesque hendrerit lectus eget felis rutrum vel volutpat nisl semper. Suspendisse consectetur sem eu arcu ullamcorper ut cursus est fringilla. Suspendisse blandit rhoncus nisi ac lacinia. Curabitur vestibulum mattis eros a accumsan. Morbi pulvinar consequat hendrerit. In hac habitasse platea dictumst. Mauris euismod convallis faucibus. Morbi faucibus ultricies elit, ac ullamcorper ipsum accumsan et.";
+- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
 }
-
-
-
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-    return 3;
-}
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return 1;
-}
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-   
-	if(indexPath.section==0)
-		return buttonCell;
-	if(indexPath.section==1)
-		return switchCell;
-	if(indexPath.section==2)
-		return textViewCell;
-	
-	return nil;
-	
-}
-
-
-- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-	if(indexPath.section == 2){
-		return 140.0;
-	}
-	return 44.0;
-	
-}
-
-- (void)dealloc {
+- (void) dealloc {
 	[textViewCell release];
 	[switchCell release];
 	[buttonCell release];
 	[super dealloc];
 }
 
+- (void) loadView{
+	[super loadView];
+	
+	buttonCell = [[TKButtonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"button"];
+	buttonCell.textLabel.text = @"This is a BUTTON Cell";
+	
+	switchCell = [[TKSwitchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+	switchCell.textLabel.text = @"Switch Cell";
+	
+	textViewCell = [[TKTextViewCell alloc]  initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+	textViewCell.textView.text = @"TextView Cell - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent blandit malesuada turpis quis egestas. Curabitur varius nunc nec leo tincidunt mattis. Cras malesuada euismod lobortis. Praesent ultrices malesuada lorem et convallis. Pellentesque hendrerit lectus eget felis rutrum vel volutpat nisl semper. Suspendisse consectetur sem eu arcu ullamcorper ut cursus est fringilla. Suspendisse blandit rhoncus nisi ac lacinia. Curabitur vestibulum mattis eros a accumsan. Morbi pulvinar consequat hendrerit. In hac habitasse platea dictumst. Mauris euismod convallis faucibus. Morbi faucibus ultricies elit, ac ullamcorper ipsum accumsan et.";
+	
+}
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 3;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+	UITableViewCell *cell;
+	
+	switch (indexPath.section) {
+		case 0:
+			cell = buttonCell;
+			break;
+		case 1:
+			cell = switchCell;
+			break;
+		default:
+			cell = textViewCell;
+			break;
+	}
+   
+	
+	return cell;
+	
+}
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+	if(indexPath.section == 2) return 140.0;
+	return 44.0;
+}
+
 
 @end
-

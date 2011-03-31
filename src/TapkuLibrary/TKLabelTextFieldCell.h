@@ -33,7 +33,7 @@
 #import "TKLabelCell.h"
 
 @interface TKLabelTextFieldCell : TKLabelCell<UITextFieldDelegate> {
-	UITextField *field;
+	UITextField *_field;
 }
 @property (retain, nonatomic) UITextField *field;
 @end

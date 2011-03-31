@@ -37,5 +37,6 @@
 - (NSString*) URLEncode;
 - (NSString *) escapeHTML;
 - (NSString *) unescapeHTML;
+- (NSString*) stringByRemovingHTML;
 
 @end

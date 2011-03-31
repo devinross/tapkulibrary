@@ -45,7 +45,8 @@
 
 - (void) drawRect:(CGRect)rect{
 	CGRect r = CGRectInset(rect, 6, 0);
-	[UIView drawRoundRectangleInRect:r withRadius:10 color:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8]];
+	[[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8] set];
+	[UIView drawRoundRectangleInRect:r withRadius:10];
 }
 
 

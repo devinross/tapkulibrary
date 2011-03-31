@@ -30,14 +30,10 @@
  */
 
 #import <UIKit/UIKit.h>
-@class TKBarButtonItem;
+@class TKNavigationItem;
 
 @interface TKViewController : UIViewController {
-
-	TKBarButtonItem *_tkBackButton;
-	
+	TKNavigationItem *_customNavigationItem;
 }
-@property (retain,nonatomic) TKBarButtonItem *tkBackButton;
-
-
+@property (retain,nonatomic) TKNavigationItem *customNavigationItem;
 @end

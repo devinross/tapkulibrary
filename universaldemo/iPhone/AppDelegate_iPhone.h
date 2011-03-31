@@ -4,7 +4,7 @@
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || https://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -36,11 +36,11 @@
 
 @interface AppDelegate_iPhone : TKAppDelegate {
 	RootViewController *root;
-	UINavigationController *navigationController;
+	TKNavigationController *navigationController;
 }
 
 @property (nonatomic, retain) RootViewController *root;
-@property (nonatomic, retain) UINavigationController *navigationController;
+@property (nonatomic, retain) TKNavigationController *navigationController;
 
 @end
 

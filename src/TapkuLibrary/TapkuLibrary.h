@@ -31,21 +31,24 @@
 #import "NSString+TKCategory.h"
 #import "NSDate+TKCategory.h"
 #import "NSArray+TKCategory.h"
+#import "NSMutableURLRequest+TKCategory.h"
+#import "NSDictionary+TKCategory.h"
 #import "UIView+TKCategory.h"
 #import "UIImage+TKCategory.h"
 #import "UIImageView+TKCategory.h"
 #import "UIScrollview+TKCategory.h"
-#import "UINavigationController+TKCategory.h"
 #import "UINavigationBar+TKCategory.h"
 #import "UIToolbar+TKCategory.h"
 #import "UIButton+TKCategory.h"
+
+#import "TKNavigationController.h"
+#import "UIBarButtonItem+TKCategory.h"
 
 #import "TKWindow.h"
 #import "TKTableViewController.h"
 #import "TKEmptyView.h"
 #import "TKImageCenter.h"
 #import "TKViewController.h"
-#import "TKBarButtonItem.h"
 #import "TKAppDelegate.h"
 
 // CELLS
@@ -58,6 +61,8 @@
 #import "TKTextViewCell.h"
 #import "TKSwitchCell.h"
 #import "TKIndicatorCell.h"
+#import "TKTableViewCell.h"
+
 
 // HUD
 #import "TKLoadingView.h"
@@ -81,3 +86,8 @@
 #import "TKCoverflowView.h"
 #import "TKCoverflowCoverView.h"
 
+
+
+
+#import "TKMapView.h"
+#import "TKMapPlace.h"

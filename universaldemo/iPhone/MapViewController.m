@@ -4,7 +4,7 @@
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || https://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -42,21 +42,24 @@
 	mapView.delegate = self;
 	[self.view addSubview:mapView];
 	
+	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Add Pin" style:UIBarButtonItemStyleBordered target:self action:@selector(addPinMode:)] autorelease];
 
-	addPin = [[TKBarButtonItem alloc] initWithTitle:@"Add Pin" style:TKBarButtonItemStylePlain target:self action:@selector(addPinMode:)];
-	self.navigationItem.rightBarButtonItem = addPin;
 
 }
 
 
 - (void) addPinMode:(id)sender{
 	
+	
+	
+	
 	if(mapView.pinMode){
 		mapView.mapView.mapType = MKMapTypeStandard;
-		[addPin setButtonStyle:TKBarButtonItemStylePlain];
+		self.navigationItem.rightBarButtonItem.style = UIBarButtonItemStyleBordered;
+		
 	}else{
 		mapView.mapView.mapType = MKMapTypeHybrid;
-		[addPin setButtonStyle:TKBarButtonItemStyleDone];
+		self.navigationItem.rightBarButtonItem.style = UIBarButtonItemStyleDone;
 	}
 		
 	[mapView setPinMode:!mapView.pinMode];
@@ -75,7 +78,6 @@
 
 
 - (void)dealloc {
-	[button release];
 	[mapView release];
     [super dealloc];
 }

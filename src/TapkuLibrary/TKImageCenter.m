@@ -96,6 +96,7 @@
 - (id) init{
 	if(!(self=[super init])) return nil;
 	queue = [[NSOperationQueue alloc] init];
+	[queue setMaxConcurrentOperationCount:3];
 	images = [[NSMutableDictionary alloc] init];
 	return self;
 }
@@ -106,14 +107,33 @@
 	UIImage *img = [images objectForKey:imageURL];
 	if(img != nil) return img;
 	
-	ImageLoadOperation *op = [[ImageLoadOperation alloc] initWithImageURLString:imageURL];
-	op.imageCenter = self;
-	[queue addOperation:op];
-	[op release];
+	
+	BOOL addOperation = addToQueue ? YES : NO;
+	
+	if(addOperation){
+		
+		for(ImageLoadOperation *op in [queue operations]){
+			if([op.imageURL isEqualToString:imageURL]){
+				addOperation = NO;
+				break;
+			}
+		}
+		
+		if(addOperation){
+			ImageLoadOperation *op = [[ImageLoadOperation alloc] initWithImageURLString:imageURL];
+			op.imageCenter = self;
+			[queue addOperation:op];
+			[op release];
+		}
+		
+	}
+	
+	
 	
 	return nil;
 	
 }
+
 
 
 - (UIImage*) adjustImageRecieved:(UIImage*)image{

@@ -115,9 +115,9 @@ CGFloat demoRGInnerRadius(CGRect bounds){
 
 
 
-+ (void) drawRoundRectangleInRect:(CGRect)rect withRadius:(CGFloat)radius color:(UIColor*)color{
++ (void) drawRoundRectangleInRect:(CGRect)rect withRadius:(CGFloat)radius{
 	CGContextRef context = UIGraphicsGetCurrentContext();
-	[color set];
+
 	
 	CGRect rrect = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height );
 

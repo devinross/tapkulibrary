@@ -32,7 +32,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TKTextViewCell : UITableViewCell {
-	UITextView *textView;
+	UITextView *_textView;
 }
 @property (nonatomic,retain) UITextView *textView;
 @end

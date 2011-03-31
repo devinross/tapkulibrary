@@ -39,7 +39,7 @@
 	TKEmptyView *_emptyView;
 	UIView *_loadingView;
 	UISearchBar *_searchBar;
-	UISearchDisplayController *_searchBarController;
+	UISearchDisplayController *_searchBarDisplayController;
 	
 	
 @private
@@ -47,14 +47,12 @@
 	
 }
 
-
-- (id) init;
 - (id) initWithStyle:(UITableViewStyle)style;
 
 @property (retain,nonatomic) UITableView *tableView;
 @property (retain,nonatomic) UIView *loadingView;
 @property (retain,nonatomic) TKEmptyView *emptyView;
 @property (retain,nonatomic) UISearchBar *searchBar;
-@property (retain,nonatomic) UISearchDisplayController *searchBarController;
+@property (retain,nonatomic) UISearchDisplayController *searchBarDisplayController;
 
 @end

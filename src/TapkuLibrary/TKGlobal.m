@@ -30,7 +30,6 @@
  */
 #import "TKGlobal.h"
 
-
 @implementation TKGlobal
 
 

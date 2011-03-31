@@ -32,11 +32,9 @@
 
 
 @interface TKSwitchCell : UITableViewCell {
-	UILabel *title;
-	UISwitch *slider;
+	UISwitch *_slider;
 }
 
-@property (retain,nonatomic) UILabel *title;
 @property (assign, nonatomic) UISwitch *slider;
 
 @end

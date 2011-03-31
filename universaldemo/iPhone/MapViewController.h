@@ -4,7 +4,7 @@
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || https://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -31,7 +31,6 @@
 
 #import <MapKit/MapKit.h>
 #import <TapkuLibrary/TapkuLibrary.h>
-#import <TapkuLibraryExtra/TapkuLibraryExtras.h>
 
 @protocol TKMapViewDelegate;
 @class TKMapView;
@@ -39,8 +38,6 @@
 
 @interface MapViewController : UIViewController <TKMapViewDelegate> {
 	TKMapView *mapView;
-	UIBarButtonItem *button;
-	TKBarButtonItem *addPin;
 }
 
 @end

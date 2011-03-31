@@ -4,7 +4,7 @@
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || https://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -32,49 +32,51 @@
 #import "LabelViewController.h"
 @implementation LabelViewController
 
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-	
+- (id) init{
+	if(!(self=[super init])) return nil;
 	self.title = @"Label Cells";
-	
-	static NSString *CellIdentifier = @"Cell";
-	
+	return self;
+}
+- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
+}
+- (void) dealloc {
+	[cells release];
+    [super dealloc];
+}
+
+
+- (void) loadView{
+	[super loadView];
+	self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
 	cells = [[NSMutableArray alloc] init];
 	
-	TKLabelFieldCell *cell1 = [[TKLabelFieldCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier];
+	TKLabelFieldCell *cell1 = [[TKLabelFieldCell alloc] initWithFrame:CGRectZero reuseIdentifier:nil];
 	cell1.label.text = @"Field";
 	cell1.field.text = @"Non Editable Text";
 	[cells addObject:cell1];
 	[cell1 release];
 	
-	TKLabelTextViewCell *cell2 = [[TKLabelTextViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier];
+	TKLabelTextViewCell *cell2 = [[TKLabelTextViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:nil];
 	cell2.label.text = @"Text View";
 	cell2.textView.text = @"List of cells:\nTKLabelFieldCell\nTKLabelTextViewCell\nTKLabelTextFieldCell\nTKLabelSwitchCell\n";
 	[cells addObject:cell2];
 	[cell2 release];
 	
-	TKLabelTextFieldCell *cell3 = [[TKLabelTextFieldCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier];
+	TKLabelTextFieldCell *cell3 = [[TKLabelTextFieldCell alloc] initWithFrame:CGRectZero reuseIdentifier:nil];
 	cell3.label.text = @"Text Field";
 	cell3.field.text = @"Press to edit";
 	[cells addObject:cell3];
 	[cell3 release];
 	
-	TKLabelSwitchCell *cell4 = [[TKLabelSwitchCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier];
+	TKLabelSwitchCell *cell4 = [[TKLabelSwitchCell alloc] initWithFrame:CGRectZero reuseIdentifier:nil];
 	cell4.label.text = @"Switch";
 	[cells addObject:cell4];
 	[cell4 release];
-	
-	
-	
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 
-
-
-#pragma mark Table view methods
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -85,7 +87,6 @@
     
 	return [cells objectAtIndex:indexPath.row];
 }
-
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 	if(indexPath.row == 1){
 		return 120.0;
@@ -94,16 +95,4 @@
 	
 }
 
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
-}
-
-- (void)dealloc {
-	[cells release];
-    [super dealloc];
-}
-
-
 @end
-

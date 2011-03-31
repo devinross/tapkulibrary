@@ -33,31 +33,23 @@
 
 
 @implementation TKButtonCell
-@synthesize title;
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-	
-	
 	if(!(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
-	
-
-	[self addSubview:self.title];
-		
-
+	self.textLabel.textAlignment = UITextAlignmentCenter;
+	self.textLabel.font = [UIFont boldSystemFontOfSize:14.0];
     return self;
 }
 
 - (id) initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
-	
 	return [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
-	
 }
 
 
-- (void)layoutSubviews {
+- (void) layoutSubviews {
 	[super layoutSubviews];
-	CGRect r = CGRectInset(self.bounds, 16, 8);
-	self.title.frame = r;
+	CGRect r = CGRectInset(self.contentView.bounds , 20, 8);
+	self.textLabel.frame = r;
 }
 
 
@@ -68,9 +60,9 @@
     [super setSelected:selected animated:animated];
 	
 	if(selected)
-		self.title.textColor = [UIColor whiteColor];
+		self.textLabel.textColor = [UIColor whiteColor];
 	else
-		self.title.textColor = [UIColor colorWithRed:74/255.0 green:110/255.0 blue:165/255.0 alpha:1.0];
+		self.textLabel.textColor = [UIColor colorWithRed:74/255.0 green:110/255.0 blue:165/255.0 alpha:1.0];
 
 }
 - (void) setHighlighted:(BOOL)highlight animated:(BOOL)animated {
@@ -78,25 +70,14 @@
     [super setHighlighted:highlight animated:animated];
 	
 	if(highlight)
-		self.title.textColor = [UIColor whiteColor];
+		self.textLabel.textColor = [UIColor whiteColor];
 	else
-		self.title.textColor = [UIColor colorWithRed:74/255.0 green:110/255.0 blue:165/255.0 alpha:1.0];
+		self.textLabel.textColor = [UIColor colorWithRed:74/255.0 green:110/255.0 blue:165/255.0 alpha:1.0];
 	
 }
 
-- (UILabel*) title{
-	if(title == nil){
-		title = [[UILabel alloc] initWithFrame:CGRectZero];
-		title.textAlignment = UITextAlignmentCenter;
-		title.font = [UIFont boldSystemFontOfSize:14.0];
-	}
-	return title;
-}
 
-- (void) dealloc {
-	//[title dealloc];
-	[super dealloc];
-}
+
 
 
 @end

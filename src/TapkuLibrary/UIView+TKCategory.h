@@ -41,7 +41,7 @@
 
 
 // DRAW ROUNDED RECTANGLE
-+ (void) drawRoundRectangleInRect:(CGRect)rect withRadius:(CGFloat)radius color:(UIColor*)color;
++ (void) drawRoundRectangleInRect:(CGRect)rect withRadius:(CGFloat)radius;
 
 // DRAW LINE
 + (void) drawLineInRect:(CGRect)rect red:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;

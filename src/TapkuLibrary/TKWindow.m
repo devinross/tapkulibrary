@@ -33,7 +33,6 @@
 
 @implementation TKWindow
 
-
 - (void) motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
 	[[NSNotificationCenter defaultCenter] postNotificationName:TKWindowShakeBegan object:self];
 }
@@ -43,7 +42,5 @@
 - (void) motionEnded:withEvent:(UIEventSubtype)motion withEvent:(UIEvent *)event {
 	[[NSNotificationCenter defaultCenter] postNotificationName:TKWindowShakeEnded object:self];
 }
-
-
 
 @end

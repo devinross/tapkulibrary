@@ -30,71 +30,36 @@
  */
 #import "TKSwitchCell.h"
 
-
 @implementation TKSwitchCell
-@synthesize slider,title;
+@synthesize slider=_slider;
 
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-	
-	
+- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
 	if(![super initWithStyle:style reuseIdentifier:reuseIdentifier]) return nil;
-	
-	title = [[UILabel alloc] initWithFrame:CGRectZero];
-	title.font = [UIFont boldSystemFontOfSize:16.0];
-	title.adjustsFontSizeToFitWidth = YES;
-	[self addSubview:title];
-		
-	slider = [[UISwitch alloc] initWithFrame:CGRectZero];
-	[self addSubview:slider];
+
+	_slider = [[UISwitch alloc] initWithFrame:CGRectMake(0,0,94,27)];
+	[self addSubview:_slider];
 		
 
     return self;
 }
-
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
-	
+- (id) initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
 	return [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
-
 }
-
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-	CGRect r = CGRectInset(self.bounds, 20, 8);
-	r.size.width -= 100;
-	title.frame = r;
-	
-	r = CGRectInset(self.bounds, 20,8);
-	r.origin.x += 185;
-	r.size.width = 95;
-	
-	slider.frame = r;
-	
-}
-
-
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-}
-- (void)setHighlighted:(BOOL)highlight animated:(BOOL)animated {
-	
-    [super setHighlighted:highlight animated:animated];
-	
-	if(highlight)
-		title.textColor = [UIColor whiteColor];
-	else
-		title.textColor = [UIColor blackColor];
-	
-}
-
-
-- (void)dealloc {
-	[slider release];
-	[title release];
+- (void) dealloc {
+	[_slider release];
 	[super dealloc];
 }
 
+- (void) layoutSubviews {
+    [super layoutSubviews];
+	CGRect r;
+	
+	r = CGRectInset(self.bounds, 20,10);
+	r.origin.x += r.size.width-_slider.bounds.size.width;
+	r.size = _slider.bounds.size;
+	_slider.frame = r;
+	
+}
 
 @end

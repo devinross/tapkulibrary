@@ -91,9 +91,8 @@
 	// DRAW ROUNDED RECTANGLE
 	[[UIColor colorWithRed:0 green:0 blue:0 alpha:0.9] set];
 	CGRect r = CGRectMake(x, 0, rWidth,rHeight);
-	[UIView drawRoundRectangleInRect:r 
-						  withRadius:10.0 
-							   color:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.75]];
+	[[UIColor colorWithRed:0 green:0 blue:0 alpha:0.75] set];
+	[UIView drawRoundRectangleInRect:r withRadius:10.0];
 	
 	
 	// DRAW FIRST TEXT

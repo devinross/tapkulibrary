@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface NSDictionary ( CurlHTTPExtensions )
+@interface NSDictionary ( TKCategory )
 
 - (NSString *) formatForHTTP;
 - (NSString *) formatForHTTPUsingEncoding:(NSStringEncoding)inEncoding;

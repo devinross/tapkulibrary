@@ -30,22 +30,19 @@
  */
 
 #import "TKIndicatorCell.h"
-
-
-
-
-@implementation TKIndicatorCell
-@synthesize text = _text, count = _count;
-
-
+#import "UIView+TKCategory.h"
 
 static UIFont *textFont = nil;
 static UIFont *indicatorFont = nil;
 static UIColor *indicatorColor = nil;
 static UIColor *indicatorBackgroundColor = nil;
 
-+ (void)initialize
-{
+
+@implementation TKIndicatorCell
+@synthesize text = _text, count = _count;
+
+
++ (void) initialize{
 	if(self == [TKIndicatorCell class])
 	{
 		textFont = [[UIFont boldSystemFontOfSize:18] retain];
@@ -55,26 +52,18 @@ static UIColor *indicatorBackgroundColor = nil;
 
 	}
 }
-
-- (void)dealloc
-{
+- (void) dealloc{
 	[_text release];
 	[_countStr release];
-	//[textFont release];
-	//[indicatorFont release];
-	//[indicatorBackgroundColor release];
     [super dealloc];
 }
 
-// the reason I don't synthesize setters for 'firstText' and 'lastText' is because I need to 
-// call -setNeedsDisplay when they change
 
 - (void) setText:(NSString*)s{
 	[_text release];
 	_text = [s copy];
 	[self setNeedsDisplay];
 }
-
 - (void) setCount:(int)s{
 	if(s==_count) return;
 	if(s > 99 && _count < 100){
@@ -90,18 +79,12 @@ static UIColor *indicatorBackgroundColor = nil;
 }
 
 
-- (void)drawContentView:(CGRect)r{
+- (void) drawContentView:(CGRect)r{
 
-	
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
-	UIColor *backgroundColor = [UIColor whiteColor];
-	UIColor *textColor = [UIColor blackColor];
-	
-	if(self.selected || self.highlighted){
-		backgroundColor = [UIColor clearColor];
-		textColor = [UIColor whiteColor];
-	}
+	UIColor *backgroundColor = self.selected || self.highlighted ? [UIColor clearColor] : [UIColor whiteColor];
+	UIColor *textColor = self.selected || self.highlighted ? [UIColor whiteColor] : [UIColor blackColor];
 	
 	[backgroundColor set];
 	CGContextFillRect(context, r);
@@ -123,24 +106,15 @@ static UIColor *indicatorBackgroundColor = nil;
 		
 		
 		[indicatorBackgroundColor set];
-		CGRect rrect = CGRectMake(rect.size.width+ rect.origin.x, 12, 30,20);
-		CGFloat radius = 10.0;
-		CGFloat minx = CGRectGetMinX(rrect), midx = CGRectGetMidX(rrect), maxx = CGRectGetMaxX(rrect);
-		CGFloat miny = CGRectGetMinY(rrect), midy = CGRectGetMidY(rrect), maxy = CGRectGetMaxY(rrect);
-		CGContextMoveToPoint(context, minx, midy);
-		CGContextAddArcToPoint(context, minx, miny, midx, miny, radius);
-		CGContextAddArcToPoint(context, maxx, miny, maxx, midy, radius);
-		CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, radius);
-		CGContextAddArcToPoint(context, minx, maxy, minx, midy, radius);
-		CGContextClosePath(context);
-		CGContextDrawPath(context, kCGPathFill);
+		CGRect rr = CGRectMake(rect.size.width+ rect.origin.x, 12, 30,20);
+		[UIView drawRoundRectangleInRect:rr withRadius:10];
 		
-		if(_count > 99)
-			rrect.origin.y += 2;
+
+		
+		if(_count > 99) rr.origin.y += 2;
 		
 		[indicatorColor set];
-		//[_countStr drawInRect:rrect withFont:indicatorFont];
-		[_countStr drawInRect:rrect withFont:indicatorFont lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentCenter];
+		[_countStr drawInRect:rr withFont:indicatorFont lineBreakMode:UILineBreakModeClip alignment:UITextAlignmentCenter];
 					   
 					   
 	}
@@ -148,7 +122,7 @@ static UIColor *indicatorBackgroundColor = nil;
 	
 }
 
-- (void)willTransitionToState:(UITableViewCellStateMask)state{
+- (void) willTransitionToState:(UITableViewCellStateMask)state{
 	[super willTransitionToState:state];
 	[self setNeedsDisplay];
 }

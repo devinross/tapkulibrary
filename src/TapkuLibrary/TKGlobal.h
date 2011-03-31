@@ -33,12 +33,8 @@
 
 #define TKBUNDLE(_URL) [TKGlobal fullBundlePath:_URL]
 
-@interface TKGlobal : NSObject {
-
-}
-
+@interface TKGlobal : NSObject 
 
 + (NSString*) fullBundlePath:(NSString*)bundlePath;
-
 
 @end

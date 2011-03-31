@@ -33,91 +33,55 @@
 
 
 @implementation TKLabelTextFieldCell
-@synthesize field;
+@synthesize field=_field;
 
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
 	if(!(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
     
-    field = [[UITextField alloc] initWithFrame:CGRectZero];
-    field.autocorrectionType = UITextAutocorrectionTypeYes;
-    field.font = [UIFont boldSystemFontOfSize:16.0];
-    field.delegate = self;
-    [self addSubview:field];
+    _field = [[UITextField alloc] initWithFrame:CGRectZero];
+    _field.autocorrectionType = UITextAutocorrectionTypeYes;
+    _field.font = [UIFont boldSystemFontOfSize:16.0];
+    _field.delegate = self;
+    [self.contentView addSubview:_field];
 		
     
     return self;
 }
-
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
-    if(!(self=[super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier])) return nil;
-
-    // Initialization code
-    field = [[UITextField alloc] initWithFrame:CGRectZero];
-    field.autocorrectionType = UITextAutocorrectionTypeYes;
-    field.delegate = self;
-    [self addSubview:field];
-    //field.backgroundColor = [UIColor redColor];
-    field.font = [UIFont boldSystemFontOfSize:16.0];
-    
-    
-    return self;
+- (id) initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
+	self = [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+	return self;
+}
+- (void) dealloc {
+	[_field release];
+	[super dealloc];
 }
 
-- (void)layoutSubviews {
+
+
+- (void) layoutSubviews {
     [super layoutSubviews];
 	
-	CGRect r = CGRectInset(self.bounds, 16, 8);
-	r.origin.y += 5;
-	r.size.height -= 5;
-	r.origin.x += 80;
-	r.size.width -= 80;
-	
-	if(self.editing){
-		r.origin.x += 30;
-		r.size.width -= 30;
-	}
-	
-	
-	field.frame = r;
+	CGRect r = CGRectInset(self.contentView.bounds, 8, 8);
+	r.origin.x += self.label.frame.size.width + 6;
+	r.size.width -= self.label.frame.size.width + 6;
+	_field.frame = r;
 	
 	
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-	[field resignFirstResponder];
+- (BOOL) textFieldShouldReturn:(UITextField *)textField{
+	[_field resignFirstResponder];
 	return NO;
 }
 
-- (void)willTransitionToState:(UITableViewCellStateMask)state{
-	[super willTransitionToState:state];
-	[self setNeedsDisplay];
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-	
+- (void) setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-	
-	if(selected){
-		field.textColor = [UIColor whiteColor];
-	}else{
-		field.textColor = [UIColor blackColor];
-	}
-	
+	_field.textColor = selected ? [UIColor whiteColor] : [UIColor blackColor];
 }
 - (void) setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
 	[super setHighlighted:highlighted animated:animated];
-	if(highlighted){
-		field.textColor = [UIColor whiteColor];
-	}else{
-		field.textColor = [UIColor blackColor];
-	}
-}
-
-
-- (void)dealloc {
-	[field release];
-	[super dealloc];
+	_field.textColor = highlighted ? [UIColor whiteColor] : [UIColor blackColor];
 }
 
 

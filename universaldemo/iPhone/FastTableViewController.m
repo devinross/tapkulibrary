@@ -4,7 +4,7 @@
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || https://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -34,23 +34,16 @@
 
 @implementation FastTableViewController
 
-
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-	
+- (id) init{
+	if(!(self=[super init])) return nil;
 	self.title = @"Fast Scroll";
-
-	
-
-	self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	//self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	return self;
+}
+- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+	return YES;
 }
 
-
-
-
-
-#pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -71,25 +64,6 @@
 
 	return cell;
 }
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController];
-	// [anotherViewController release];
-}
-
-
-
- - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	 return YES;
- }
-
-
-- (void)dealloc {
-	//[cells release];
-    [super dealloc];
-}
 
 
 @end
-

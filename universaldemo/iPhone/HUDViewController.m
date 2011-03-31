@@ -4,7 +4,7 @@
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || https://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -38,32 +38,39 @@
 	if(!(self=[super init])) return nil;
 	
 	self.title = @"HUD";
-	
+	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Tap Me" style:UIBarButtonItemStyleBordered target:self action:@selector(tapme)] autorelease];
+
 	return self;
 }
+- (void) dealloc {
+	[loading release];
+	[progressBar release];
+	[timer invalidate];
+	[timer release];
+	[alertView release];
+	[progressCircle release];
+	[super dealloc];
+}
 
-
-- (void) viewDidLoad {
-    [super viewDidLoad];
-	
+- (void) loadView{
+	[super loadView];
 	self.view.backgroundColor = [UIColor grayColor];
-
-
+	
 	[self.view addSubview:self.loading];
 	[self.view addSubview:self.progressBar];
 	[self.view addSubview:self.progressCircle];
-
+}
+- (void) viewDidLoad {
+    [super viewDidLoad];
+	
 
 	time = 0; 
 	timer = [[NSTimer timerWithTimeInterval:0.02 target:self selector:@selector(timer) userInfo:nil repeats:YES] retain];
 	[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
-	self.navigationItem.rightBarButtonItem = [[[TKBarButtonItem alloc] initWithTitle:@"Tap Me" style:TKBarButtonItemStylePlain target:self action:@selector(tapme)] autorelease];
 	
 
 	
 }
-
-
 - (void) viewDidAppear:(BOOL)animated{
 	[super viewDidAppear:animated];	
 	[self.progressCircle setProgress:1 animated:YES];
@@ -71,12 +78,7 @@
 
 - (void) timer{
 	
-	////float p = self.progressCircle.progress+0.01;
-	//if(p>=1.0) p = 0;
-	
-	//[self.progressCircle setProgress:p animated:NO];
-	
-	
+
 	
 	
 	
@@ -103,10 +105,7 @@
 	
 }
 - (void) tapme{
-	//[self.progressBar removeFromSuperview];
 
-	//[self.loading removeFromSuperview];
-	//[self.alertView show];
 	time = 0;
 	
 	[self.progressCircle setTwirlMode:!self.progressCircle.isTwirling];
@@ -149,13 +148,5 @@
 	return progressCircle;
 }
 
-
-- (void)dealloc {
-	[loading release];
-	[progressBar release];
-	[timer invalidate];
-	[timer release];
-	[super dealloc];
-}
 
 @end

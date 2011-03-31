@@ -4,7 +4,7 @@
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || https://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -49,23 +49,33 @@
 	if(!(self = [super initWithStyle:s])) return nil;
 	
 	self.title = @"Tapku Library";
-	self.tkBackButton = [[[TKBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back"] style:TKBarButtonItemStyleBack target:nil action:nil] autorelease];
-	data = [[NSMutableArray alloc] init];
 	
 
 	
+	return self;
+}
+- (void) dealloc {
+	[data release];
+    [super dealloc];
+}
+
+- (void) setupCellData{
 	NSArray *rows;
 	NSDictionary *d;
 	
 	
+	[data release];
+	
+	NSMutableArray *tmp = [NSMutableArray array];
+	
 	
 	rows = [NSArray arrayWithObjects:@"Coverflow",@"Graph",@"Month Grid Calendar",nil];
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Views",@"title",nil];
-	[data addObject:d];
+	[tmp addObject:d];
 	
 	rows = [NSArray arrayWithObjects:@"Empty Sign",@"Loading HUD",@"Alerts",@"Place Pins",nil];
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"UI Elements",@"title",nil];
-	[data addObject:d];
+	[tmp addObject:d];
 	
 	//rows = [NSArray arrayWithObjects:@"Month",nil];
 	//d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Calendar",@"title",nil];
@@ -74,18 +84,20 @@
 	
 	rows = [NSArray arrayWithObjects:@"Label Cells",@"More Cells",@"Indicator Cells",nil];
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Table View Cells",@"title",@"",@"footer",nil];
-	[data addObject:d];
+	[tmp addObject:d];
 	
 	rows = [NSArray arrayWithObjects:@"Image Center",nil];
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Network",@"title",@"",@"footer",nil];
-	[data addObject:d];
+	[tmp addObject:d];
 	
-	return self;
+	data = [[NSArray alloc] initWithArray:tmp];
 }
-- (void) dealloc {
-	[data release];
-    [super dealloc];
+- (void) viewDidLoad{
+	[super viewDidLoad];
+	[self setupCellData];
 }
+
+
 
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
     return [data count];
@@ -158,9 +170,9 @@
 	else if(s==2 && r==1)
 		vc = [[MoreCellsViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	else if(s==2 && r==2)
-		vc = [[FastTableViewController alloc] initWithStyle:UITableViewStylePlain];
+		vc = [[FastTableViewController alloc] init];
 	else
-		vc = [[ImageCenterViewController alloc] initWithStyle:UITableViewStylePlain];
+		vc = [[ImageCenterViewController alloc] init];
 	
 	
 	

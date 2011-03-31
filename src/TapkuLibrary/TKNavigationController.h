@@ -1,6 +1,6 @@
 //
-//  UINavigationController+TKCategory.h
-//  Created by Devin Ross on 11/24/10.
+//  TKNavigationController.h
+//  Created by Devin Ross on 3/23/11.
 //
 /*
  
@@ -30,9 +30,27 @@
  */
 
 #import <UIKit/UIKit.h>
+@class TKNavigationBar;
 
-@interface UINavigationController (TKCategory)
 
-- (void) TKpushViewController:(UIViewController *)viewController animated:(BOOL)animated;
-
+@interface TKNavigationController : UINavigationController <UINavigationBarDelegate> {
+	TKNavigationBar *_customNavigationBar;
+}
+@property (nonatomic, retain) TKNavigationBar *customNavigationBar;
 @end
+
+@interface TKNavigationItem : UINavigationItem {
+	UIBarButtonItem *_customBackButtonItem;
+}
+@property (nonatomic, retain) UIBarButtonItem *customBackButtonItem;
+@end
+
+
+@interface TKNavigationBar : UINavigationBar {
+	UIImage *_customBackgroundImage;
+}
+@property (retain,nonatomic) UIImage *customBackgroundImage;
+@end
+
+
+

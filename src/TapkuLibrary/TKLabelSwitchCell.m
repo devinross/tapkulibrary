@@ -33,47 +33,35 @@
 
 
 @implementation TKLabelSwitchCell
-@synthesize switcher;
+@synthesize switcher=_switcher;
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
-    if(!(self=[super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier])) return nil;
 
-    switcher = [[UISwitch alloc] initWithFrame:CGRectZero];
-    [self addSubview:switcher];
-    
+- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    if(!(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
+	
+	_switcher = [[UISwitch alloc] initWithFrame:CGRectZero];
+    [self.contentView addSubview:_switcher];
+	
     return self;
 }
 
+- (id) initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
+	self=[self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+    return self;
+}
+- (void) dealloc {
+	[_switcher release];
+    [super dealloc];
+}
 
-- (void)layoutSubviews {
+- (void) layoutSubviews {
     [super layoutSubviews];
 	
-	CGRect r = CGRectInset(self.bounds, 16, 10);
-	r.origin.x += label.frame.size.width + 10;
+	CGRect r = CGRectInset(self.bounds, 8, 10);
+	r.origin.x += self.label.frame.size.width + 6;
+	r.size.width -= self.label.frame.size.width + 6;
+	_switcher.frame = r;
 	
-	if(self.editing){
-		r.origin.x += 30;
-		r.size.width -= 30;
-	}
-	
-	switcher.frame = r;
-	
-	
-}
-
-
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
-
-- (void)dealloc {
-	[switcher release];
-    [super dealloc];
 }
 
 

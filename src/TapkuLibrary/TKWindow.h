@@ -36,9 +36,5 @@
 #define TKWindowShakeCancelled @"motionCancelled"
 #define TKWindowShakeEnded @"motionEnded"
 
-
-@interface TKWindow : UIWindow {
-
-}
-
+@interface TKWindow : UIWindow 
 @end

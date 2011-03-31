@@ -34,7 +34,7 @@
 #import "TKLabelCell.h"
 
 @interface TKLabelTextViewCell : TKLabelCell {
-	UITextView *textView;
+	UITextView *_textView;
 }
 @property (retain, nonatomic) UITextView *textView;
 @end

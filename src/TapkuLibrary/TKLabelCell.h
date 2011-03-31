@@ -33,9 +33,7 @@
 
 
 @interface TKLabelCell : UITableViewCell {
-	UILabel *label;
+	UILabel *_label;
 }
-
 @property (retain, nonatomic) UILabel *label;
-
 @end

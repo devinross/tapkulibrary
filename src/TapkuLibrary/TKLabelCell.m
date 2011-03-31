@@ -31,78 +31,63 @@
 
 #import "TKLabelCell.h"
 
-
 @implementation TKLabelCell
+@synthesize label=_label;
 
-@synthesize label;
+
+
+
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if(!(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
 
-    // Initialization code
-    label = [[UILabel alloc] initWithFrame:CGRectZero];
-    label.textAlignment = UITextAlignmentRight;
-    label.textColor = [UIColor grayColor];
-    label.font = [UIFont boldSystemFontOfSize:12.0];
-    [self addSubview:label];
-    label.adjustsFontSizeToFitWidth = YES;
-    label.baselineAdjustment = UIBaselineAdjustmentNone;
-    
-    //label.backgroundColor = [UIColor redColor];
-    label.numberOfLines = 20;
+    _label = [[UILabel alloc] initWithFrame:CGRectZero];
+    _label.textAlignment = UITextAlignmentRight;
+    _label.textColor = [UIColor grayColor];
+    _label.font = [UIFont boldSystemFontOfSize:12.0];
+    _label.adjustsFontSizeToFitWidth = YES;
+    _label.baselineAdjustment = UIBaselineAdjustmentNone;
+    _label.numberOfLines = 20;
+	
+	[self.contentView addSubview:_label];
+
     
     return self;
+}
+- (id) initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
+	self = [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+	return self;
+}
+- (void) dealloc {
+	[_label release];
+    [super dealloc];
 }
 
 
 - (void) layoutSubviews {
     [super layoutSubviews];
-	//NSLog(@"Layout subviews %f",[self indentationWidth]);
 	
-	float insetx = 16;
-	if(self.editing) insetx += 30;
-	
-	
-	CGRect r = CGRectInset(self.bounds, insetx, 8);
+	CGRect r = CGRectInset(self.contentView.bounds, 8, 8);
 	r.size.width = 72;
 	r.size.height = 30;
-	label.frame = r;
+	_label.frame = r;
 	
 	
 }
 
-- (void) willTransitionToState:(UITableViewCellStateMask)state{
-	[super willTransitionToState:state];
-	[self setNeedsDisplay];
-}
+
 
 - (void) setSelected:(BOOL)selected animated:(BOOL)animated {
-
     [super setSelected:selected animated:animated];
-	
-	if(selected){
-		label.textColor = [UIColor whiteColor];
-	}else{
-		label.textColor = [UIColor grayColor];
-	}
-
+	_label.textColor = selected ? [UIColor whiteColor] : [UIColor grayColor];
 }
 - (void) setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
 	[super setHighlighted:highlighted animated:animated];
-	if(highlighted){
-		label.textColor = [UIColor whiteColor];
-	}else{
-		label.textColor = [UIColor grayColor];
-	}
+	_label.textColor = highlighted ? [UIColor whiteColor] : [UIColor grayColor];
 }
 
 
 
-
-- (void) dealloc {
-	[label release];
-    [super dealloc];
-}
 
 
 @end

@@ -30,9 +30,9 @@
  */
 
 
-#import "ABTableViewCell.h"
+#import "TKTableViewCell.h"
 
-@interface TKIndicatorCell : ABTableViewCell {
+@interface TKIndicatorCell : TKTableViewCell {
 	NSString *_text;
 	int _count;
 	NSString *_countStr;

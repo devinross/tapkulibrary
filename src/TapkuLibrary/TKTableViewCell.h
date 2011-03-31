@@ -1,3 +1,7 @@
+//
+//  TKTableViewCell.h
+//  Created by Devin Ross on 3/31/11.
+//
 /*
  
  tapku.com || http://github.com/devinross/tapkulibrary
@@ -24,13 +28,11 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
+#import <UIKit/UIKit.h>
 
-// TAPKU LIBRARY EXTRA holds classes that require additional resources (ie. JSON & MapKit)
 
-
-#import "NSMutableURLRequest+TKCategory.h"
-#import "NSDictionary+TKCategory.h"
-
-#import "TKMapView.h"
-#import "TKMapPlace.h"
-
+@interface TKTableViewCell : UITableViewCell {
+	UIView *_mainView;
+}
+- (void) drawContentView:(CGRect)r; // subclass for drawing
+@end

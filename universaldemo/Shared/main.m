@@ -4,7 +4,7 @@
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || https://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -46,17 +46,7 @@ void Swizzle(Class c, SEL orig, SEL new)
 
 int main(int argc, char *argv[]) {
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-	
-	if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-		
-		Swizzle([UIToolbar class], @selector(drawRect:), @selector(TKdrawRect:));
-		Swizzle([UINavigationBar class], @selector(drawRect:), @selector(TKdrawRect:));
-		Swizzle([UINavigationController class], @selector(pushViewController:animated:), @selector(TKpushViewController:animated:));
-		
-	}
-	
 	NSString *del = [[UIDevice currentDevice] userInterfaceIdiom] ==  UIUserInterfaceIdiomPad ? @"AppDelegate_iPad" : @"AppDelegate_iPhone";
-    //NSString *del = @"AppDelegate_iPhone";
 	int retVal = UIApplicationMain(argc, argv, nil, del);
     [pool release];
     return retVal;

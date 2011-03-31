@@ -31,10 +31,5 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TKButtonCell : UITableViewCell {
-	UILabel *title;
-}
-
-@property (retain,nonatomic) UILabel *title;
-
+@interface TKButtonCell : UITableViewCell 
 @end

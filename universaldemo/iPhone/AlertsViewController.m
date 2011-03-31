@@ -1,10 +1,33 @@
-    //
+//
 //  AlertsViewController.m
-//  universaldemo
-//
 //  Created by Devin Ross on 10/6/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
+/*
+ 
+ tapku.com || http://github.com/devinross/tapkulibrary
+ 
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without
+ restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following
+ conditions:
+ 
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+ 
+ */
 
 #import "AlertsViewController.h"
 
@@ -14,26 +37,20 @@
 - (id) init{
 	if(!(self=[super init])) return nil;
 	self.title = NSLocalizedString(@"Alerts",@"Alerts");
-	
-	[TKAlertCenter defaultCenter];
-	
+	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Tap Me" style:UIBarButtonItemStyleBordered target:self action:@selector(beer)] autorelease];
 	return self;
 }
-
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-	self.view.backgroundColor = [UIColor whiteColor];
-	
-	
-
+- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
 }
 
-
+- (void) loadView{
+	[super loadView];
+	self.view.backgroundColor = [UIColor whiteColor];
+}
 - (void) viewDidAppear:(BOOL)animated{
 	[super viewDidAppear:animated];
 	
-	self.navigationItem.rightBarButtonItem = [[[TKBarButtonItem alloc] initWithTitle:@"Tap Me" style:TKBarButtonItemStylePlain target:self action:@selector(beer)] autorelease];
 
 
 	
@@ -44,29 +61,8 @@
 
 }
 
-
-
-
-
-
 - (void) beer{
 	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"Beer!" image:[UIImage imageNamed:@"beer"]];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-- (void)viewDidUnload {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-- (void)dealloc {
-    [super dealloc];
 }
 
 

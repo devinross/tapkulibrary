@@ -4,7 +4,7 @@
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || https://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -31,45 +31,44 @@
 
 #import "ImageCenterViewController.h"
 
-
 @implementation ImageCenterViewController
 
-
-#pragma mark -
-#pragma mark Initialization
-
-
-
-- (void) viewDidLoad {
-    [super viewDidLoad];
-	
-	self.tableView.rowHeight = 120;
-	self.tableView.allowsSelection = NO;
-	
-	urlArray = [[NSArray alloc] initWithObjects:
-				 @"http://farm3.static.flickr.com/2797/4196552800_a5de0f3627_t.jpg",
-				 @"http://farm3.static.flickr.com/2380/2417672368_a41257399f_t.jpg",
-				 @"http://farm3.static.flickr.com/2063/2181373837_b32a7e36fd_t.jpg",
-				 @"http://farm4.static.flickr.com/3018/2458286264_8e5bae7ec3_t.jpg",
-				 @"http://farm4.static.flickr.com/3629/3459136258_885598f06a_t.jpg",
-				 @"http://farm4.static.flickr.com/3619/3308615215_63752b7b27_t.jpg",
-				 @"http://farm1.static.flickr.com/3/2451788_febcdb12f6_t.jpg",
-				 @"http://farm4.static.flickr.com/3559/3681486285_2d92961aec_t.jpg",
-				 @"http://farm4.static.flickr.com/3630/3681486481_8f864b67a5_t.jpg",
-				 @"http://farm3.static.flickr.com/2626/3682301814_1fe5081448_t.jpg",
-				 @"http://farm3.static.flickr.com/2655/3951923344_d2bb111a50_t.jpg",
-				 @"http://farm4.static.flickr.com/3229/2723469734_8eeec4e2e4_t.jpg",
-				 @"http://farm4.static.flickr.com/3664/3660136156_dbf8852267_t.jpg",
-				 @"http://farm4.static.flickr.com/3369/3659337053_180878a026_t.jpg",
-				 nil];
-			  
-	images = [[NSMutableArray alloc] init];
-	for(int i=0;i<[urlArray count] * 3;i++){
-		[images addObject:[NSNull null]];
-	}
-
+- (id) init{
+	if(!(self=[super init])) return nil;
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newImageRetrieved) name:@"newImage" object:nil];
 	
+	urlArray = [[NSArray alloc] initWithObjects:
+				@"http://farm3.static.flickr.com/2797/4196552800_a5de0f3627_t.jpg",
+				@"http://farm3.static.flickr.com/2380/2417672368_a41257399f_t.jpg",
+				@"http://farm3.static.flickr.com/2063/2181373837_b32a7e36fd_t.jpg",
+				@"http://farm4.static.flickr.com/3018/2458286264_8e5bae7ec3_t.jpg",
+				@"http://farm4.static.flickr.com/3629/3459136258_885598f06a_t.jpg",
+				@"http://farm4.static.flickr.com/3619/3308615215_63752b7b27_t.jpg",
+				@"http://farm1.static.flickr.com/3/2451788_febcdb12f6_t.jpg",
+				@"http://farm4.static.flickr.com/3559/3681486285_2d92961aec_t.jpg",
+				@"http://farm4.static.flickr.com/3630/3681486481_8f864b67a5_t.jpg",
+				@"http://farm3.static.flickr.com/2626/3682301814_1fe5081448_t.jpg",
+				@"http://farm3.static.flickr.com/2655/3951923344_d2bb111a50_t.jpg",
+				@"http://farm4.static.flickr.com/3229/2723469734_8eeec4e2e4_t.jpg",
+				@"http://farm4.static.flickr.com/3664/3660136156_dbf8852267_t.jpg",
+				@"http://farm4.static.flickr.com/3369/3659337053_180878a026_t.jpg",
+				nil];
+	
+
+	
+	return self;
+}
+
+- (void) dealloc {
+	[urlArray release];
+    [super dealloc];
+}
+
+
+- (void) loadView{
+	[super loadView];
+	self.tableView.rowHeight = 120;
+	self.tableView.allowsSelection = NO;
 	
 	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,100)];
 	
@@ -79,12 +78,11 @@
 	lab.font = [UIFont boldSystemFontOfSize:13];
 	lab.textColor = [UIColor grayColor];
 	[v addSubview:lab];
-	[lab release];
 	
 	self.tableView.tableHeaderView = v;
 	[v release];
-	
-	
+	[lab release];
+
 }
 
 
@@ -97,7 +95,6 @@
 			UIImage *image = [[TKImageCenter sharedImageCenter] imageAtURL:[urlArray objectAtIndex:i] queueIfNeeded:NO];
 
 			if(image != nil){
-				[images replaceObjectAtIndex:i withObject:image];
 				cell.imageView.image = image;
 				[cell setNeedsLayout];
 			}
@@ -128,31 +125,16 @@
 	cell.textLabel.text = [NSString stringWithFormat:@"Cell %d",indexPath.row];
 	int i = indexPath.row;
 	
-	if([images objectAtIndex:i] != [NSNull null]) cell.imageView.image = [images objectAtIndex:i];
-	else{
-		
-		int index = i % [urlArray count];
-		UIImage *image = [[TKImageCenter sharedImageCenter] imageAtURL:[urlArray objectAtIndex:index] queueIfNeeded:YES];
-		
-		if(image != nil){
-			[images replaceObjectAtIndex:i withObject:image];
-			cell.imageView.image = image;
-		}else{
-			cell.imageView.image = nil;
-		}
-		
-	}
+	int index = i % [urlArray count];
+	UIImage *image = [[TKImageCenter sharedImageCenter] imageAtURL:[urlArray objectAtIndex:index] queueIfNeeded:YES];
+	cell.imageView.image = image;
+
     
     return cell;
 }
 
 
 
-- (void)dealloc {
-	[images release];
-	[urlArray release];
-    [super dealloc];
-}
 
 
 @end

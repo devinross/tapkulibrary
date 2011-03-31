@@ -33,8 +33,7 @@
 #import "TKLabelCell.h"
 
 @interface TKLabelSwitchCell : TKLabelCell {
-	UISwitch *switcher;
+	UISwitch *_switcher;
 }
 @property (retain,nonatomic) UISwitch *switcher;
-
 @end

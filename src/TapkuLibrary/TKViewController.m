@@ -30,16 +30,34 @@
  */
 
 #import "TKViewController.h"
-#import "TKBarButtonItem.h"
+#import "TKNavigationController.h"
 
 @implementation TKViewController
-@synthesize tkBackButton = _tkBackButton;
+@synthesize customNavigationItem = _customNavigationItem;
 
+
+
+- (id) init{
+	if(!(self=[super init])) return nil;
+	_customNavigationItem = [[TKNavigationItem alloc] initWithTitle:[super navigationItem].title];
+	_customNavigationItem.leftBarButtonItem = [super navigationItem].leftBarButtonItem;
+	_customNavigationItem.rightBarButtonItem = [super navigationItem].rightBarButtonItem;
+	return self;
+}
 
 - (void)dealloc {
-	[_tkBackButton release], _tkBackButton = nil;
+	[_customNavigationItem release];
     [super dealloc];
 }
 
 
+- (void) setTitle:(NSString *)t{
+	[super setTitle:t];
+	self.customNavigationItem.title = t;
+}
+
+- (UINavigationItem *) navigationItem{	
+   return (self.customNavigationItem)?(self.customNavigationItem):([super navigationItem]);
+}
+   
 @end

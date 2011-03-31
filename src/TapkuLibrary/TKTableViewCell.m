@@ -1,6 +1,6 @@
 //
-//  TKLabelTextView.m
-//  Created by Devin Ross on 7/1/09.
+//  TKTableViewCell.m
+//  Created by Devin Ross on 3/31/11.
 //
 /*
  
@@ -29,51 +29,57 @@
  
  */
 
-#import "TKLabelTextViewCell.h"
+#import "TKTableViewCell.h"
+
+@interface TKTableViewCellView : UIView
+@end
+
+@implementation TKTableViewCellView
+
+- (void) drawRect:(CGRect)r{
+	[(TKTableViewCell *)[self superview] drawContentView:r];
+}
+
+@end
 
 
-@implementation TKLabelTextViewCell
-@synthesize textView=_textView;
+
+@implementation TKTableViewCell
+
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-	if(!(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
-    
-    _textView = [[UITextView alloc] initWithFrame:CGRectZero];
-    [self.contentView addSubview:_textView];
-	
-    
+    if(!(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
+    _mainView = [[TKTableViewCellView alloc] initWithFrame:CGRectZero];
+    _mainView.opaque = YES;
+    [self addSubview:_mainView];
     return self;
 }
-- (id) initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
-	self = [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+- (id) initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier{
+    self=[self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
 	return self;
 }
-- (void) dealloc {
-	[_textView release];
+- (void) dealloc{
+	[_mainView release];
 	[super dealloc];
 }
 
-- (void) layoutSubviews {
-    [super layoutSubviews];
-	
-	
-	CGRect r = CGRectInset(self.contentView.bounds, 8, 8);
-	r.origin.x += self.label.frame.size.width + 6;
-	r.size.width -= self.label.frame.size.width + 6;
-	_textView.frame = r;
-
+- (void) layoutSubviews{
+	[super layoutSubviews];
+	self.contentView.hidden = YES;
+	[self.contentView removeFromSuperview];
+	[self setNeedsDisplay];
 }
-
-
-- (void) setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-	_textView.textColor = selected ? [UIColor whiteColor] : [UIColor grayColor];
-
+- (void) setFrame:(CGRect)f{
+	[super setFrame:f];
+	_mainView.frame = CGRectMake(0,0,f.size.width,f.size.height-1);
+	[_mainView setNeedsDisplay];
 }
-- (void) setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
-	[super setHighlighted:highlighted animated:animated];
-	_textView.textColor = highlighted ? [UIColor whiteColor] : [UIColor grayColor];
+- (void) setNeedsDisplay{
+	[super setNeedsDisplay];
+	[_mainView setNeedsDisplay];
 }
-
-
+- (void) drawContentView:(CGRect)r { 
+	// for subclassing
+	// default implementation does nothing
+}
 
 @end

@@ -4,7 +4,7 @@
 //
 /*
  
- tapku.com || http://github.com/tapku/tapkulibrary/tree/master
+ tapku.com || https://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -52,7 +52,14 @@
 
     
 	root = [[RootViewController alloc] initWithStyle:UITableViewStyleGrouped];
-	navigationController = [[UINavigationController alloc] initWithRootViewController:root];
+	navigationController = [[TKNavigationController alloc] initWithRootViewController:root];
+	
+
+
+
+	
+	
+	
 	[self.window addSubview:navigationController.view];
 	
 	
