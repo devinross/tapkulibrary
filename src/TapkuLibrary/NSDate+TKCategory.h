@@ -31,8 +31,6 @@
 #import <Foundation/Foundation.h>
 
 
-@interface NSDate (TKCategory)
-
 struct TKDateInformation {
 	int day;
 	int month;
@@ -47,33 +45,34 @@ struct TKDateInformation {
 };
 typedef struct TKDateInformation TKDateInformation;
 
+@interface NSDate (TKCategory)
+
++ (NSDate *) yesterday;
++ (NSDate *) month;
+
+- (NSDate *) monthDate;
+- (NSDate *) lastOfMonthDate;
+
+
+
+- (BOOL) isSameDay:(NSDate*)anotherDate;
+- (int) monthsBetweenDate:(NSDate *)toDate;
+- (NSInteger) daysBetweenDate:(NSDate*)d;
+- (BOOL) isToday;
+
+
+- (NSDate *) dateByAddingDays:(NSUInteger)days;
++ (NSDate *) dateWithDatePart:(NSDate *)aDate andTimePart:(NSDate *)aTime;
+
+- (NSString *) monthString;
+- (NSString *) yearString;
+
+
 - (TKDateInformation) dateInformation;
 - (TKDateInformation) dateInformationWithTimeZone:(NSTimeZone*)tz;
 + (NSDate*) dateFromDateInformation:(TKDateInformation)info;
 + (NSDate*) dateFromDateInformation:(TKDateInformation)info timeZone:(NSTimeZone*)tz;
-
-
-
-
-
-@property (readonly,nonatomic) NSString *month;
-@property (readonly,nonatomic) NSString *year;
-@property (readonly,nonatomic) int weekdayWithMondayFirst;
-@property (readonly,nonatomic) BOOL isToday;
-
-
-- (BOOL) isSameDay:(NSDate*)anotherDate;
-- (int) differenceInDaysTo:(NSDate *)toDate;
-- (int) differenceInMonthsTo:(NSDate *)toDate;
-- (int) daysBetweenDate:(NSDate*)d;
-
-
-- (NSString*) dateDescription;
-- (NSDate *) dateByAddingDays:(NSUInteger)days;
-+ (NSDate *) dateWithDatePart:(NSDate *)aDate andTimePart:(NSDate *)aTime;
 + (NSString*) dateInformationDescriptionWithInformation:(TKDateInformation)info;
 
-
-+ (NSDate*) yesterday;
 
 @end

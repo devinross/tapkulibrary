@@ -62,9 +62,10 @@
 - (void) layoutSubviews {
     [super layoutSubviews];
 	
-	CGRect r = CGRectInset(self.contentView.bounds, 8, 8);
+	CGRect r = CGRectInset(self.contentView.bounds, 8, 12);
 	r.origin.x += self.label.frame.size.width + 6;
 	r.size.width -= self.label.frame.size.width + 6;
+	r.origin.y += 10;
 	_field.frame = r;
 	
 	

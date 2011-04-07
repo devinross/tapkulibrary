@@ -4,18 +4,29 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>TapkuLibraryExtra.xcscheme</key>
+		<key>LogicTests.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>2</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>libTapkuLibrary.a</key>
-		<true/>
-		<key>libTapkuLibraryExtra.a</key>
-		<true/>
+		<key>3B45DDF0134C736600D24C1A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3BFF067E134C60F1004D9190</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D2AAC07D0554694100DB518D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 	</dict>
 </dict>
 </plist>

@@ -31,8 +31,9 @@
 #import "NSString+TKCategory.h"
 #import "NSDate+TKCategory.h"
 #import "NSArray+TKCategory.h"
-#import "NSMutableURLRequest+TKCategory.h"
-#import "NSDictionary+TKCategory.h"
+
+
+
 #import "UIView+TKCategory.h"
 #import "UIImage+TKCategory.h"
 #import "UIImageView+TKCategory.h"

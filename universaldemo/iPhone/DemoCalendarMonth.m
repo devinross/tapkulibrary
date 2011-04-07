@@ -40,13 +40,20 @@
 
 - (void) viewDidLoad{
 	[super viewDidLoad];
-	[self.monthView selectDate:[NSDate date]];
+	[self.monthView selectDate:[NSDate month]];
 
 }
 
 - (void) viewDidAppear:(BOOL)animated{
 	[super viewDidAppear:animated];
 	
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init]; 
+    [dateFormatter setDateFormat:@"dd.MM.yy"]; 
+    NSDate *d = [dateFormatter dateFromString:@"02.05.11"]; 
+    [dateFormatter release];
+    
+    [self.monthView selectDate:d];
 	
 	/*
 	TKDateInformation info = [[NSDate date] dateInformation];

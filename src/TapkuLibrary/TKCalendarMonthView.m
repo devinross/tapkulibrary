@@ -640,7 +640,7 @@
 	[self addSubview:self.tileBox];
 	
 	NSDate *date = [NSDate date];
-	self.monthYear.text = [NSString stringWithFormat:@"%@ %@",[date month],[date year]];
+	self.monthYear.text = [NSString stringWithFormat:@"%@ %@",[date monthString],[date yearString]];
 	[self addSubview:self.monthYear];
 	
 	
@@ -724,6 +724,17 @@
     [super dealloc];
 }
 
+
+- (NSDate*) dateForMonthChange:(UIView*)sender {
+	BOOL isNext = (sender.tag == 1);
+	NSDate *nextMonth = isNext ? [currentTile.monthDate nextMonth] : [currentTile.monthDate previousMonth];
+	
+	TKDateInformation nextInfo = [nextMonth dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+	NSDate *localNextMonth = [NSDate dateFromDateInformation:nextInfo];
+	
+	return localNextMonth;
+}
+
 - (void) changeMonthAnimation:(UIView*)sender{
 	
 	BOOL isNext = (sender.tag == 1);
@@ -803,12 +814,23 @@
 	
 	
 	
-	monthYear.text = [NSString stringWithFormat:@"%@ %@",[localNextMonth month],[localNextMonth year]];
+	monthYear.text = [NSString stringWithFormat:@"%@ %@",[localNextMonth monthString],[localNextMonth yearString]];
 	
 	
 
 }
 - (void) changeMonth:(UIButton *)sender{
+	
+	NSDate *newDate = [self dateForMonthChange:sender];
+	if ([delegate respondsToSelector:@selector(calendarMonthView:monthShouldChange:animated:)] && ![delegate calendarMonthView:self monthShouldChange:newDate animated:YES] ) 
+		return;
+	
+	
+	if ([delegate respondsToSelector:@selector(calendarMonthView:monthWillChange:animated:)] ) 
+		[delegate calendarMonthView:self monthWillChange:newDate animated:YES];
+	
+
+	
 	
 	[self changeMonthAnimation:sender];
 	if([delegate respondsToSelector:@selector(calendarMonthView:monthDidChange:animated:)])
@@ -829,14 +851,21 @@
 	return [currentTile monthDate];
 }
 - (void) selectDate:(NSDate*)date{
-	TKDateInformation info = [date dateInformation];
-	
+	//TKDateInformation info = [date dateInformation];
+	TKDateInformation info = [date dateInformationWithTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
 	NSDate *month = [date firstOfMonth];
 	
 	if([month isEqualToDate:[currentTile monthDate]]){
 		[currentTile selectDay:info.day];
 		return;
 	}else {
+		
+		if ([delegate respondsToSelector:@selector(calendarMonthView:monthShouldChange:animated:)] && ![delegate calendarMonthView:self monthShouldChange:month animated:YES] ) 
+			return;
+		
+		if ([delegate respondsToSelector:@selector(calendarMonthView:monthWillChange:animated:)] )
+			[delegate calendarMonthView:self monthWillChange:month animated:YES];
+		
 		
 		NSArray *dates = [TKCalendarMonthTiles rangeOfDatesInMonthGrid:month startOnSunday:sunday];
 		NSArray *data = [dataSource calendarMonthView:self marksFromDate:[dates objectAtIndex:0] toDate:[dates lastObject]];
@@ -852,7 +881,7 @@
 		self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.bounds.size.width, self.tileBox.frame.size.height+self.tileBox.frame.origin.y);
 
 		self.shadow.frame = CGRectMake(0, self.frame.size.height-self.shadow.frame.size.height+21, self.shadow.frame.size.width, self.shadow.frame.size.height);
-		self.monthYear.text = [NSString stringWithFormat:@"%@ %@",[date month],[date year]];
+		self.monthYear.text = [NSString stringWithFormat:@"%@ %@",[date monthString],[date yearString]];
 		[currentTile selectDay:info.day];
 		
 		if([self.delegate respondsToSelector:@selector(calendarMonthView:monthDidChange:animated:)])
@@ -887,16 +916,25 @@
 		int direction = [[ar lastObject] intValue];
 		UIButton *b = direction > 1 ? self.rightArrow : self.leftArrow;
 		
+		NSDate* newMonth = [self dateForMonthChange:b];
+		if ([delegate respondsToSelector:@selector(calendarMonthView:monthShouldChange:animated:)] && ![delegate calendarMonthView:self monthShouldChange:newMonth animated:YES])
+			return;
+		
+		if ([delegate respondsToSelector:@selector(calendarMonthView:monthWillChange:animated:)])					
+			[delegate calendarMonthView:self monthWillChange:newMonth animated:YES];
+		
+		
 		
 		[self changeMonthAnimation:b];
 		
 		int day = [[ar objectAtIndex:0] intValue];
-		//[currentTile selectDay:day];
+
 	
 		// thanks rafael
-		TKDateInformation info = [[currentTile monthDate] dateInformation];
+		TKDateInformation info = [[currentTile monthDate] dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 		info.day = day;
-		NSDate *dateForMonth = [NSDate  dateFromDateInformation:info]; 
+        
+        NSDate *dateForMonth = [NSDate dateFromDateInformation:info  timeZone:[NSTimeZone timeZoneWithName:@"GMT"]]; 
 		[currentTile selectDay:day];
 		
 		
