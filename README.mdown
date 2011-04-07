@@ -29,7 +29,7 @@ TapkuLibrary is an open source iOS framework built on Cocoa and UIKit intended f
 
 ## Adding Tapku To Your Project / [Documentation](http://wiki.github.com/devinross/tapkulibrary/)
 
-The best place to start is by downloading the source and trying out the demo app. The demo project gives a brief overview of the functionality of the framework. Instructions on [adding the framework in your own project](http://wiki.github.com/devinross/tapkulibrary/how-to-use-this-library) and documentation, can be found on the [wiki](http://wiki.github.com/devinross/tapkulibrary/).
+The best place to start is by downloading the source and trying out the demo app. The demo project gives a brief overview of the functionality of the framework. Instructions on adding the framework in your own project for [XCode 3](https://github.com/devinross/tapkulibrary/wiki/Adding-Tapku-to-Your-Project-in-XCode-3) & [XCode 4](https://github.com/devinross/tapkulibrary/wiki/Adding-Tapku-to-Your-Project-in-XCode-4)  and documentation, can be found on the [wiki](http://wiki.github.com/devinross/tapkulibrary/).
 
 
 ### Links
