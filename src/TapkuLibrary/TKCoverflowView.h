@@ -74,8 +74,9 @@
 - (TKCoverflowCoverView*) dequeueReusableCoverView; // like a tableview
 
 - (TKCoverflowCoverView*) coverAtIndex:(int)index; // returns nil if cover is outside active range
-- (int) indexOfFrontCoverView;
+- (int) indexOfFrontCoverView; // deprecated
 - (void) bringCoverAtIndexToFront:(int)index animated:(BOOL)animated;
+@property (nonatomic, assign) NSInteger currentIndex;
 
 
 @end

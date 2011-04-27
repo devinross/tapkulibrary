@@ -32,22 +32,39 @@
 #import "LeftTableViewController.h"
 
 #import "DetailViewController.h"
-#import "CoverflowViewController_iPad.h"
+#import "CoverflowViewController.h"
+#import "HUDViewController.h"
 
 @implementation LeftTableViewController
 @synthesize data,detailViewController;
 
 
-- (void)viewDidLoad {
+- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    return YES;
+}
+- (void) didReceiveMemoryWarning {
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Relinquish ownership any cached data, images, etc that aren't in use.
+}
+- (void) viewDidUnload {
+    // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
+    // For example: self.myOutlet = nil;
+}
+- (void) dealloc {
+	[detailViewController release];
+	[data release];
+    [super dealloc];
+}
+
+- (void) viewDidLoad {
     [super viewDidLoad];
-	
 	self.title = @"Tapku Library";
 
-	data = [NSMutableArray array];
+	data = [[NSMutableArray alloc] init];
 
-	[data addObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithObjects:@"Coverflow",nil],@"rows",@"",@"title",nil]];
-
-	[data retain];
+	[data addObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSArray arrayWithObjects:@"Coverflow",@"HUD",nil],@"rows",@"",@"title",nil]];
 	
 	self.clearsSelectionOnViewWillAppear = NO;
     self.contentSizeForViewInPopover = CGSizeMake(320.0, 400.0);
@@ -56,13 +73,13 @@
 
 
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
     return [data count];
 }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [[[self.data objectAtIndex:section] objectForKey:@"rows"] count];
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
     
@@ -75,44 +92,31 @@
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
-- (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void) tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tv deselectRowAtIndexPath:indexPath animated:YES];
 	
 	
 	UIViewController *vc;
 	
 	if(indexPath.row == 0){
-		vc = [[CoverflowViewController_iPad alloc] init];
+		vc = [[CoverflowViewController alloc] init];
+	}else if(indexPath.row == 1){
+		vc = [[HUDViewController alloc] init];
 	}
 	
 	[self.detailViewController setupWithMainController:vc];
 	[vc release];
 	
 }
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
 	return [[data objectAtIndex:section] objectForKey:@"title"];
 }
-- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
+- (NSString *) tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
 	return [[data objectAtIndex:section] objectForKey:@"footer"];
 }
 
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
-}
-- (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Relinquish ownership any cached data, images, etc that aren't in use.
-}
-- (void)viewDidUnload {
-    // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
-    // For example: self.myOutlet = nil;
-}
-- (void)dealloc {
-    [super dealloc];
-}
+
 
 
 @end

@@ -39,6 +39,6 @@
 	DetailViewController *detailViewController;
 	
 }
-@property (nonatomic, retain) DetailViewController *detailViewController;
-@property (retain,nonatomic) NSMutableArray *data;
+@property (nonatomic,retain) DetailViewController *detailViewController;
+@property (nonatomic,retain) NSMutableArray *data;
 @end

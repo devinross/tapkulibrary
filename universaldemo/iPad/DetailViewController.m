@@ -56,11 +56,37 @@
 - (void) setupWithMainController:(UIViewController*)controller{
 	[self.mainController.view removeFromSuperview];
 	self.mainController = controller;
+	
 	CGRect r = CGRectMake(0, 44, self.view.frame.size.width, self.view.frame.size.height);
 	self.mainController.view.frame = r;
 	[self.mainController viewWillAppear:NO];
 	[self.view addSubview:self.mainController.view];
 	[self.mainController viewDidAppear:NO];
+	
+
+
+	if(self.popoverController!=nil){
+		NSLog(@"HELLO");
+		
+		UIBarButtonItem *item = [[self.toolbar items] objectAtIndex:0];
+		
+		
+		NSMutableArray *items = [NSMutableArray array];
+		[items addObject:item];
+
+		if(self.mainController.toolbarItems!=nil){
+			[items addObjectsFromArray:self.mainController.toolbarItems];
+		}
+		NSLog(@"%@",items);
+		[self.toolbar setItems:items animated:YES];
+
+		
+	}else{
+		[self.toolbar setItems:self.mainController.toolbarItems];
+
+	}
+	
+	
 	
 }
 
@@ -119,20 +145,20 @@
 
 
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
-- (void)didReceiveMemoryWarning {
+- (void) didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
     
     // Relinquish ownership any cached data, images, etc that aren't in use.
 }
-- (void)viewDidUnload {
+- (void) viewDidUnload {
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
 }
-- (void)dealloc {
+- (void) dealloc {
     [super dealloc];
 }
 

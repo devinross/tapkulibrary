@@ -39,7 +39,6 @@
 #define SIDE_COVER_ZPOSITION -80
 #define COVER_SCROLL_PADDING 4
 
-
 @interface TKCoverflowView (hidden)
 
 - (void) animateToIndex:(int)index  animated:(BOOL)animated;
@@ -48,18 +47,14 @@
 - (void) newrange;
 - (void) setupTransforms;
 - (void) adjustViewHeirarchy;
-
 - (void) deplaceAlbumsFrom:(int)start to:(int)end;
 - (void) deplaceAlbumsAtIndex:(int)cnt;
 - (BOOL) placeAlbumsFrom:(int)start to:(int)end;
 - (void) placeAlbumAtIndex:(int)cnt;
-
-- (void) snapToAlbum;
+- (void) snapToAlbum:(BOOL)animated;
 
 @end
-
 @implementation TKCoverflowView (hidden)
-
 
 - (void) setupTransforms{
 
@@ -69,10 +64,8 @@
 	rightTransform = CATransform3DMakeRotation(-coverAngle, 0, 1, 0);
 	rightTransform = CATransform3DConcat(rightTransform,CATransform3DMakeTranslation(spaceFromCurrent, 0, -300));
 	
-
 }
 - (void) load{
-	
 	self.backgroundColor = [UIColor blackColor];
 	numberOfCovers = 0;
 	coverSpacing = COVER_SPACING;
@@ -84,8 +77,6 @@
 	yard = [[NSMutableArray alloc] init];
 	views = [[NSMutableArray alloc] init];
 	
-	
-	
 	coverSize = CGSizeMake(224, 224);
 	spaceFromCurrent = coverSize.width/2.4;
 	[self setupTransforms];
@@ -96,11 +87,7 @@
 	[self.layer setSublayerTransform:sublayerTransform];
 	
 	currentIndex = -1;
-	
 	currentSize = self.frame.size;
-	
-
-	
 	
 }
 - (void) setup{
@@ -110,10 +97,17 @@
 	[yard removeAllObjects];
 	[views removeAllObjects];
 	[coverViews release];
+	coverViews = nil;
 	
-	if(numberOfCovers < 1) return;
+	if(numberOfCovers < 1){
+		self.contentOffset = CGPointZero;
+		return;
+	} 
 	
 	
+	coverViews = [[NSMutableArray alloc] initWithCapacity:numberOfCovers];
+	for (unsigned i = 0; i < numberOfCovers; i++) [coverViews addObject:[NSNull null]];
+	deck = NSMakeRange(0, 0);
 	
 	currentSize = self.frame.size;
 	margin = (self.frame.size.width / 2);
@@ -121,23 +115,18 @@
 	coverBuffer = (int) ((currentSize.width - coverSize.width) / coverSpacing) + 3;
 	
 
-	coverViews = [[NSMutableArray alloc] initWithCapacity:numberOfCovers];
-	for (unsigned i = 0; i < numberOfCovers; i++) [coverViews addObject:[NSNull null]];
-	deck = NSMakeRange(0, 0);
 	movingRight = YES;
-	
 	currentSize = self.frame.size;
-
 	currentIndex = 0;
+	self.contentOffset = CGPointZero;
+
+
 	[self newrange];
 	[self animateToIndex:currentIndex animated:NO];
 	
 }
 
-
-
 - (void) deplaceAlbumsFrom:(int)start to:(int)end{
-	
 	if(start >= end) return;
 	
 	for(int cnt=start;cnt<end;cnt++)
@@ -147,9 +136,7 @@
 - (void) deplaceAlbumsAtIndex:(int)cnt{
 	if(cnt >= [coverViews count]) return;
 	
-	
-	
-	if([coverViews objectAtIndex:cnt] != [NSNull null]  ){
+	if([coverViews objectAtIndex:cnt] != [NSNull null]){
 		
 		UIView *v = [coverViews objectAtIndex:cnt];
 		[v removeFromSuperview];
@@ -160,19 +147,13 @@
 	}
 }
 - (BOOL) placeAlbumsFrom:(int)start to:(int)end{
-	
 	if(start >= end) return NO;
-	
-	for(int cnt=start;cnt<= end;cnt++) [self placeAlbumAtIndex:cnt];
-	
+	for(int cnt=start;cnt<= end;cnt++) 
+		[self placeAlbumAtIndex:cnt];
 	return YES;
-	
-	
 }
 - (void) placeAlbumAtIndex:(int)cnt{
-	
 	if(cnt >= [coverViews count]) return;
-	
 	
 	if([coverViews objectAtIndex:cnt] == [NSNull null]){
 		
@@ -183,7 +164,6 @@
 		r.origin.y = currentSize.height / 2 - (coverSize.height/2) - (coverSize.height/16);
 		r.origin.x = (currentSize.width/2 - (coverSize.width/ 2)) + (coverSpacing) * cnt;
 		cover.frame = r;
-		
 		
 		[self addSubview:cover];
 		if(cnt > currentIndex){
@@ -204,53 +184,36 @@
 	int newLocation = currentIndex - buff < 0 ? 0 : currentIndex-buff;
 	int newLength = currentIndex + buff > numberOfCovers ? numberOfCovers - newLocation : currentIndex + buff - newLocation;
 	
-	
-	
-	
 	if(loc == newLocation && newLength == len) return;
-		
+	
 	if(movingRight){
 		[self deplaceAlbumsFrom:loc to:MIN(newLocation,loc+len)];
 		[self placeAlbumsFrom:MAX(loc+len,newLocation) to:newLocation+newLength];
 		
 	}else{
 		[self deplaceAlbumsFrom:MAX(newLength+newLocation,loc) to:loc+len];
-		[self placeAlbumsFrom:newLocation to:MIN(loc,newLocation+newLength)];
+		[self placeAlbumsFrom:newLocation to:newLocation+newLength];
 	}
 	
-	deck = NSMakeRange(newLocation, newLength);
+	NSRange spectrum = NSMakeRange(0, numberOfCovers);
+	deck = NSIntersectionRange(spectrum, NSMakeRange(newLocation, newLength));
 	
 	
 }
 
 
 - (void) adjustViewHeirarchy{
-	
-	/*
-	int zpos = 0;
-	
-	for(int i=deck.location;i<deck.location+deck.length;i++){
-		[[coverViews objectAtIndex:i] layer].zPosition = zpos;
-		
-		NSLog(@"%d %d %d",i,zpos,currentIndex);
-		
-		
-		if(i<currentIndex) zpos=zpos+10;
-		else zpos=zpos-10;
-		
-		
-		
-	}
-	*/
-	
-	
-	
-	
-	
+
 	int i = currentIndex-1;
-	if (i >= 0) for(;i > deck.location;i--) [self sendSubviewToBack:[coverViews objectAtIndex:i]];
+	if (i >= 0) 
+		for(;i > deck.location;i--) 
+			[self sendSubviewToBack:[coverViews objectAtIndex:i]];
+	
 	i = currentIndex+1;
-	if(i<numberOfCovers-1) for(;i < deck.location+deck.length;i++) [self sendSubviewToBack:[coverViews objectAtIndex:i]];
+	if(i<numberOfCovers-1) 
+		for(;i < deck.location+deck.length;i++) 
+			[self sendSubviewToBack:[coverViews objectAtIndex:i]];
+	
 	UIView *v = [coverViews objectAtIndex:currentIndex];
 	if((NSObject*)v != [NSNull null])
 		[self bringSubviewToFront:[coverViews objectAtIndex:currentIndex]];
@@ -258,32 +221,24 @@
 	
 }
 
-- (void) snapToAlbum{
+- (void) snapToAlbum:(BOOL)animated{
 	
-
 	UIView *v = [coverViews objectAtIndex:currentIndex];
 	
 	if((NSObject*)v!=[NSNull null]){
-		[self setContentOffset:CGPointMake(v.center.x - (currentSize.width/2), 0) animated:YES];
-		NSLog(@"HERE");
-	}else{
-		NSLog(@"snap %d",currentIndex);
-		
-		[self setContentOffset:CGPointMake(coverSpacing*currentIndex, 0) animated:YES];
+		[self setContentOffset:CGPointMake(v.center.x - (currentSize.width/2), 0) animated:animated];
+	}else{		
+		[self setContentOffset:CGPointMake(coverSpacing*currentIndex, 0) animated:animated];
 	}
-	
 	
 }
 - (void) animateToIndex:(int)index animated:(BOOL)animated{
 	
-	
 	NSString *string = [NSString stringWithFormat:@"%d",currentIndex];
-	if(velocity> 180) animated = NO;
+	if(velocity> 200) animated = NO;
 	
 	if(animated){
-		
 		float speed = 0.2;
-		
 		if(velocity>80)speed=0.05;
 		[UIView beginAnimations:string context:nil];
 		[UIView setAnimationDuration:speed];
@@ -291,8 +246,6 @@
 		[UIView setAnimationBeginsFromCurrentState:YES];
 		[UIView setAnimationDelegate:self];
 		[UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)]; 
-		
-
 	}
 
 	for(UIView *v in views){
@@ -311,11 +264,6 @@
 	if([finished boolValue]) [self adjustViewHeirarchy];
 	
 	if([finished boolValue] && [animationID intValue] == currentIndex) [coverflowDelegate coverflowView:self coverAtIndexWasBroughtToFront:currentIndex];
-
-	
-	
-
-
 	
 }
 
@@ -331,11 +279,13 @@
     return self;
 }
 
-
 - (void) layoutSubviews{
 	
 	if(self.frame.size.width == currentSize.width && self.frame.size.height == currentSize.height) return;
 	currentSize = self.frame.size;
+	
+	
+
 	
 	margin = (self.frame.size.width / 2);
 	self.contentSize = CGSizeMake( (coverSpacing) * (numberOfCovers-1) + (margin*2) , self.frame.size.height);
@@ -352,10 +302,13 @@
 	}
 
 	for(int i= deck.location; i < deck.location + deck.length; i++){
-		UIView *cover = [coverViews objectAtIndex:i];
-		CGRect r = cover.frame;
-		r.origin.x = (currentSize.width/2 - (coverSize.width/ 2)) + (coverSpacing) * i;
-		cover.frame = r;
+		
+		if([coverViews objectAtIndex:i] != [NSNull null]){
+			UIView *cover = [coverViews objectAtIndex:i];
+			CGRect r = cover.frame;
+			r.origin.x = (currentSize.width/2 - (coverSize.width/ 2)) + (coverSpacing) * i;
+			cover.frame = r;
+		}
 	}
 	
 
@@ -393,16 +346,26 @@
 	if([coverViews objectAtIndex:index] != [NSNull null]) return [coverViews objectAtIndex:index];
 	return nil;
 }
-- (int) indexOfFrontCoverView{
+
+- (NSInteger) currentIndex{
 	return currentIndex;
 }
+- (NSInteger) indexOfFrontCoverView{
+	return currentIndex;
+
+}
+- (void) setCurrentIndex:(NSInteger)index{
+	[self bringCoverAtIndexToFront:index animated:NO];
+}
+
+
 - (void) bringCoverAtIndexToFront:(int)index animated:(BOOL)animated{
 	
 	if(index == currentIndex) return;
 	
     currentIndex = index;
-    [self snapToAlbum];
-	
+    [self snapToAlbum:animated];
+	[self newrange];
 	[self animateToIndex:index animated:animated];
 }
 
@@ -483,17 +446,16 @@
 }
 - (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
 	if(!scrollView.tracking && !scrollView.decelerating){
-		[self snapToAlbum];
+		[self snapToAlbum:YES];
 		[self adjustViewHeirarchy];
 	} 
 }
 - (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
 	if(!self.decelerating && !decelerate){
-		[self snapToAlbum];
+		[self snapToAlbum:YES];
 		[self adjustViewHeirarchy];
 	}
 }
-
 
 - (void) dealloc {	
 	
@@ -507,6 +469,5 @@
 	
     [super dealloc];
 }
-
 
 @end

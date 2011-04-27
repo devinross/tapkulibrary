@@ -37,13 +37,13 @@
 @interface CoverflowViewController : UIViewController <TKCoverflowViewDelegate,TKCoverflowViewDataSource,UIScrollViewDelegate> {
 	
 	TKCoverflowView *coverflow; 
-	
-	UIButton *infoButton;
-	
 	NSMutableArray *covers; // album covers images
+	BOOL collapsed;
+	
 }
 
-@property (retain,nonatomic) TKCoverflowView *coverflow;
+@property (retain,nonatomic) TKCoverflowView *coverflow; 
+@property (retain,nonatomic) NSMutableArray *covers;
 
 @end
 

@@ -48,7 +48,6 @@
 		3BF88CB211E54B4800C9FC43 /* cover_9.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 3BF88CA911E54B4800C9FC43 /* cover_9.jpeg */; };
 		3BF88D0511E54F8A00C9FC43 /* LeftTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF88D0411E54F8A00C9FC43 /* LeftTableViewController.m */; };
 		3BF88D0A11E54FB800C9FC43 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF88D0911E54FB800C9FC43 /* DetailViewController.m */; };
-		3BF88EEF11E5795800C9FC43 /* CoverflowViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF88EEE11E5795800C9FC43 /* CoverflowViewController_iPad.m */; };
 		3BF88F9011E57C9000C9FC43 /* ipadcover_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3BF88F8711E57C9000C9FC43 /* ipadcover_1.jpg */; };
 		3BF88F9111E57C9000C9FC43 /* ipadcover_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3BF88F8811E57C9000C9FC43 /* ipadcover_2.jpg */; };
 		3BF88F9211E57C9000C9FC43 /* ipadcover_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3BF88F8911E57C9000C9FC43 /* ipadcover_3.jpg */; };
@@ -144,8 +143,6 @@
 		3BF88D0411E54F8A00C9FC43 /* LeftTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftTableViewController.m; sourceTree = "<group>"; };
 		3BF88D0811E54FB800C9FC43 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		3BF88D0911E54FB800C9FC43 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		3BF88EED11E5795800C9FC43 /* CoverflowViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoverflowViewController_iPad.h; sourceTree = "<group>"; };
-		3BF88EEE11E5795800C9FC43 /* CoverflowViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoverflowViewController_iPad.m; sourceTree = "<group>"; };
 		3BF88F8711E57C9000C9FC43 /* ipadcover_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ipadcover_1.jpg; sourceTree = "<group>"; };
 		3BF88F8811E57C9000C9FC43 /* ipadcover_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ipadcover_2.jpg; sourceTree = "<group>"; };
 		3BF88F8911E57C9000C9FC43 /* ipadcover_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ipadcover_3.jpg; sourceTree = "<group>"; };
@@ -204,7 +201,6 @@
 				3BF88D0411E54F8A00C9FC43 /* LeftTableViewController.m */,
 				3BF88D0811E54FB800C9FC43 /* DetailViewController.h */,
 				3BF88D0911E54FB800C9FC43 /* DetailViewController.m */,
-				3BF88EF011E5795C00C9FC43 /* View Controllers */,
 			);
 			path = iPad;
 			sourceTree = "<group>";
@@ -406,15 +402,6 @@
 			name = Icon;
 			sourceTree = "<group>";
 		};
-		3BF88EF011E5795C00C9FC43 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				3BF88EED11E5795800C9FC43 /* CoverflowViewController_iPad.h */,
-				3BF88EEE11E5795800C9FC43 /* CoverflowViewController_iPad.m */,
-			);
-			name = "View Controllers";
-			sourceTree = "<group>";
-		};
 		3BF88F8611E57C9000C9FC43 /* coverflow_ipad */ = {
 			isa = PBXGroup;
 			children = (
@@ -557,7 +544,6 @@
 				3BF88BA311E5468D00C9FC43 /* ImageCenterViewController.m in Sources */,
 				3BF88D0511E54F8A00C9FC43 /* LeftTableViewController.m in Sources */,
 				3BF88D0A11E54FB800C9FC43 /* DetailViewController.m in Sources */,
-				3BF88EEF11E5795800C9FC43 /* CoverflowViewController_iPad.m in Sources */,
 				3BD32F01125CE77300BE5EAF /* AlertsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
