@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,8 @@
 		3B07B1CA133AA68A001B1C6F /* TKNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B07B1C8133AA68A001B1C6F /* TKNavigationController.m */; };
 		3B07B7CA133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B07B7C8133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.h */; };
 		3B07B7CB133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B07B7C9133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.m */; };
+		3B166A6F137F38D7006298E6 /* UIColor+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B166A6D137F38D7006298E6 /* UIColor+TKCategory.h */; };
+		3B166A70137F38D7006298E6 /* UIColor+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B166A6E137F38D7006298E6 /* UIColor+TKCategory.m */; };
 		3B1DCECA1289B84400884CDF /* NSArray+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B1DCEC81289B84400884CDF /* NSArray+TKCategory.h */; };
 		3B1DCECB1289B84400884CDF /* NSArray+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1DCEC91289B84400884CDF /* NSArray+TKCategory.m */; };
 		3B30B174129EE0F400466666 /* TKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B30B165129EE0D600466666 /* TKViewController.m */; };
@@ -127,6 +129,8 @@
 		3B07B1C8133AA68A001B1C6F /* TKNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKNavigationController.m; sourceTree = "<group>"; };
 		3B07B7C8133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+TKCategory.h"; sourceTree = "<group>"; };
 		3B07B7C9133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+TKCategory.m"; sourceTree = "<group>"; };
+		3B166A6D137F38D7006298E6 /* UIColor+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+TKCategory.h"; sourceTree = "<group>"; };
+		3B166A6E137F38D7006298E6 /* UIColor+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TKCategory.m"; sourceTree = "<group>"; };
 		3B1DCEC81289B84400884CDF /* NSArray+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+TKCategory.h"; sourceTree = "<group>"; };
 		3B1DCEC91289B84400884CDF /* NSArray+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+TKCategory.m"; sourceTree = "<group>"; };
 		3B30B164129EE0D600466666 /* TKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKViewController.h; sourceTree = "<group>"; };
@@ -301,10 +305,10 @@
 			isa = PBXGroup;
 			children = (
 				3BAC98C910953DCC00F235F1 /* TapkuLibrary */,
+				3B859EDF134C753E00661088 /* UnitTests */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
-				3B859EDF134C753E00661088 /* UnitTests */,
 			);
 			name = TapkuLibrary;
 			sourceTree = "<group>";
@@ -476,6 +480,8 @@
 				3BB96F5712B55CD600C38F46 /* UIImageView+TKCategory.m */,
 				3B4346E212DA6A240076579B /* UIButton+TKCategory.h */,
 				3B4346E312DA6A240076579B /* UIButton+TKCategory.m */,
+				3B166A6D137F38D7006298E6 /* UIColor+TKCategory.h */,
+				3B166A6E137F38D7006298E6 /* UIColor+TKCategory.m */,
 				3BE8FF8312945C4400DBF3FC /* UIScrollview+TKCategory.h */,
 				3BE8FF8412945C4400DBF3FC /* UIScrollview+TKCategory.m */,
 				3B30B16A129EE0DF00466666 /* UINavigationBar+TKCategory.h */,
@@ -670,6 +676,7 @@
 				3BE54E7E134548CA00B59702 /* NSDictionary+TKCategory.h in Headers */,
 				3BE54E86134548E600B59702 /* TKMapPlace.h in Headers */,
 				3BE54E88134548E600B59702 /* TKMapView.h in Headers */,
+				3B166A6F137F38D7006298E6 /* UIColor+TKCategory.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -716,8 +723,11 @@
 /* Begin PBXProject section */
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "TapkuLibrary" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -828,6 +838,7 @@
 				3BE54E7F134548CA00B59702 /* NSDictionary+TKCategory.m in Sources */,
 				3BE54E87134548E600B59702 /* TKMapPlace.m in Sources */,
 				3BE54E89134548E600B59702 /* TKMapView.m in Sources */,
+				3B166A70137F38D7006298E6 /* UIColor+TKCategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -842,14 +853,13 @@
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = /tmp/TapkuLibrary.dst;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TapkuLibrary_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = TapkuLibrary;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -868,7 +878,7 @@
 				GCC_PREFIX_HEADER = TapkuLibrary_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = TapkuLibrary;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -883,7 +893,8 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -892,7 +903,6 @@
 					"-all_load",
 					"-ObjC",
 				);
-				PREBINDING = NO;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -903,7 +913,8 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -912,7 +923,6 @@
 					"-all_load",
 					"-ObjC",
 				);
-				PREBINDING = NO;
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -928,7 +938,6 @@
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "LogicTests-Info.plist";
@@ -940,7 +949,6 @@
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = LogicTests;
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = octest;
@@ -958,7 +966,6 @@
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				INFOPLIST_FILE = "LogicTests-Info.plist";
 				OTHER_LDFLAGS = (
@@ -969,7 +976,6 @@
 					"-framework",
 					UIKit,
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = LogicTests;
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = octest;

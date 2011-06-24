@@ -669,8 +669,8 @@ static float highValue;
 	
 	
 	//NSLog(@"GOAL %f",[goalValue floatValue]);
-	highValue = highValue + abs(highValue * 0.08);
-	lowValue = lowValue - abs(lowValue * .08);
+	highValue = highValue + fabs(highValue * 0.08);
+	lowValue = lowValue - fabs(lowValue * .08);
 	
 	
 	

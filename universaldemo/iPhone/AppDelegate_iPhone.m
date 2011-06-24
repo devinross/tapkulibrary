@@ -39,13 +39,6 @@
 #pragma mark -
 #pragma mark Application lifecycle
 
-- (void) applicationDidStartup:(UIApplication *)application{
-	// called by didFinishLaunching.. & willEnterForeground
-}
-- (void) applicationWillShutdown:(UIApplication *)application{
-	// called by willTerminate.. & didEnterBackground
-}
-
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	[super application:application didFinishLaunchingWithOptions:launchOptions];
@@ -53,12 +46,6 @@
     
 	root = [[RootViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	navigationController = [[TKNavigationController alloc] initWithRootViewController:root];
-	
-
-
-
-	
-	
 	
 	[self.window addSubview:navigationController.view];
 	
@@ -69,32 +56,33 @@
 	[super applicationWillEnterForeground:application];
 	
 }
-
+- (void) applicationDidStartup:(UIApplication *)application{
+	// called by didFinishLaunching.. & willEnterForeground
+	
+}
 
 
 - (void) applicationDidEnterBackground:(UIApplication *)application {
-	[super applicationDidEnterBackground:application];
+	
 }
 - (void) applicationWillTerminate:(UIApplication *)application {
-	[super applicationWillTerminate:application];
+	
 }
 
 
-- (void) applicationWillResignActive:(UIApplication *)application {}
-- (void) applicationDidBecomeActive:(UIApplication *)application {}
+- (void) applicationWillResignActive:(UIApplication *)application {
+	
+}
+- (void) applicationDidBecomeActive:(UIApplication *)application {
+	
+}
 
 #pragma mark -
 #pragma mark Memory management
 
 - (void) applicationDidReceiveMemoryWarning:(UIApplication *)application {
-    /*
-     Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
-     */
-	
 	[[TKImageCenter sharedImageCenter] clearImages];
 }
-
-
 - (void) dealloc {
 	[root release];
 	[navigationController release];

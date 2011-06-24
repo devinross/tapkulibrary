@@ -33,14 +33,11 @@
 #import <UIKit/UIKit.h>
 
 @class TKAlertView;
-
 @interface TKAlertCenter : NSObject {
-
-	NSMutableArray *alerts;
-	BOOL active;
-	TKAlertView *alertView;
-	CGRect alertFrame;
-	
+	NSMutableArray *_alerts;
+	BOOL _active;
+	TKAlertView *_alertView;
+	CGRect _alertFrame;
 }
 
 + (TKAlertCenter*) defaultCenter;
@@ -49,8 +46,3 @@
 - (void) postAlertWithMessage:(NSString *)message;
 
 @end
-
-
-
-
-

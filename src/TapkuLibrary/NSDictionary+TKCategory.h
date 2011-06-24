@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface NSDictionary ( TKCategory )
+@interface NSDictionary (TKCategory)
 
 - (NSString *) formatForHTTP;
 - (NSString *) formatForHTTPUsingEncoding:(NSStringEncoding)inEncoding;

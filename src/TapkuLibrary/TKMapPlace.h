@@ -39,7 +39,7 @@
 	MKPinAnnotationColor color;
 	
 }
-@property (copy) NSString *title;
+@property (copy,nonatomic) NSString *title;
 @property (assign,nonatomic) CLLocationCoordinate2D coordinate;
 @property (assign, nonatomic) MKPinAnnotationColor color;
 @end

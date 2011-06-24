@@ -31,6 +31,8 @@
 
 #import "TKNavigationController.h"
 
+#pragma mark -
+
 @implementation TKNavigationItem
 @synthesize customBackButtonItem = _customBackButtonItem;
 
@@ -41,7 +43,7 @@
 
 @end
 
-
+#pragma mark -
 @implementation TKNavigationBar
 @synthesize customBackgroundImage = _customBackgroundImage;
 
@@ -64,7 +66,7 @@
 
 @end
 
-
+#pragma mark -
 @implementation TKNavigationController
 @synthesize customNavigationBar=_customNavigationBar;
 
@@ -116,7 +118,6 @@
 	}
 	return _customNavigationBar;
 }
-
 - (UINavigationBar *) navigationBar{	
 	return (self.customNavigationBar)?(self.customNavigationBar):([super navigationBar]);
 }

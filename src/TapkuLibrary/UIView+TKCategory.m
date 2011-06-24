@@ -34,23 +34,20 @@
 @implementation UIView (TKCategory)
 
 
-// Returns an appropriate starting point for the demonstration of a linear gradient
-/*- (CGPoint) demoLGStart:(CGRect)bounds{
- return CGPointMake(bounds.origin.x, bounds.origin.y + bounds.size.height * 0.25);
- }
- 
- */
 
-
+CGPoint demoLGStart(CGRect bounds);
 CGPoint demoLGStart(CGRect bounds){
 	return CGPointMake(bounds.origin.x, bounds.origin.y + bounds.size.height * 0.25);
-}
+};
+CGPoint demoLGEnd(CGRect bounds);
 CGPoint demoLGEnd(CGRect bounds){
 	return CGPointMake(bounds.origin.x, bounds.origin.y + bounds.size.height * 0.75);
 }
+CGPoint demoRGCenter(CGRect bounds);
 CGPoint demoRGCenter(CGRect bounds){
 	return CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
 }
+CGFloat demoRGInnerRadius(CGRect bounds);
 CGFloat demoRGInnerRadius(CGRect bounds){
 	CGFloat r = bounds.size.width < bounds.size.height ? bounds.size.width : bounds.size.height;
 	return r * 0.125;

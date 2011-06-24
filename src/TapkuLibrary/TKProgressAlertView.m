@@ -42,6 +42,11 @@
 	
 	return self;
 }
+- (void) dealloc {
+	[progressBar release];
+	[label release];
+	[super dealloc];
+}
 
 - (void) drawRect:(CGRect)rect{
 	CGRect r = CGRectInset(rect, 6, 0);
@@ -89,11 +94,7 @@
 	return label;
 }
 
-- (void)dealloc {
-	[progressBar release];
-	[label release];
-	[super dealloc];
-}
+
 
 
 @end

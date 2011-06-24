@@ -39,6 +39,7 @@
 #define SIDE_COVER_ZPOSITION -80
 #define COVER_SCROLL_PADDING 4
 
+#pragma mark -
 @interface TKCoverflowView (hidden)
 
 - (void) animateToIndex:(int)index  animated:(BOOL)animated;
@@ -54,8 +55,12 @@
 - (void) snapToAlbum:(BOOL)animated;
 
 @end
+
+#pragma mark -
+
 @implementation TKCoverflowView (hidden)
 
+#pragma mark Setup
 - (void) setupTransforms{
 
 	leftTransform = CATransform3DMakeRotation(coverAngle, 0, 1, 0);
@@ -126,6 +131,8 @@
 	
 }
 
+
+#pragma mark Manage Visible Covers
 - (void) deplaceAlbumsFrom:(int)start to:(int)end{
 	if(start >= end) return;
 	
@@ -178,6 +185,7 @@
 	}
 }
 
+#pragma mark Manage Range and Animations
 - (void) newrange{
 	
 	int loc = deck.location, len = deck.length, buff = coverBuffer;
@@ -200,8 +208,6 @@
 	
 	
 }
-
-
 - (void) adjustViewHeirarchy{
 
 	int i = currentIndex-1;
@@ -220,7 +226,6 @@
 	
 	
 }
-
 - (void) snapToAlbum:(BOOL)animated{
 	
 	UIView *v = [coverViews objectAtIndex:currentIndex];
@@ -269,6 +274,8 @@
 
 @end
 
+
+#pragma mark -
 @implementation TKCoverflowView
 @synthesize coverflowDelegate, dataSource, coverSize, numberOfCovers, coverSpacing, coverAngle;
 
@@ -277,6 +284,18 @@
 	[self load];
 	currentSize = frame.size;
     return self;
+}
+- (void) dealloc {	
+	
+	[yard release],yard = nil;
+	[views release],views = nil;
+	[coverViews release],coverViews = nil;
+	
+	currentTouch = nil;
+	coverflowDelegate = nil;
+	dataSource = nil;
+	
+    [super dealloc];
 }
 
 - (void) layoutSubviews{
@@ -319,46 +338,16 @@
 
 }
 
-- (void) setNumberOfCovers:(int)cov{
-	numberOfCovers = cov;
-	[self setup];
-}
-- (void) setCoverSpacing:(float)space{
-	coverSpacing = space;
-	[self setupTransforms];
-	[self setup];
-	[self layoutSubviews];
-}
-- (void) setCoverAngle:(float)f{
-	coverAngle = f;
-	[self setupTransforms];
-	[self setup];
-}
-- (void) setCoverSize:(CGSize)s{
-	coverSize = s;
-	spaceFromCurrent = coverSize.width/2.4;
-	[self setupTransforms];
-	[self setup];
-}
 
-
+#pragma mark Public Methods
 - (TKCoverflowCoverView *) coverAtIndex:(int)index{
 	if([coverViews objectAtIndex:index] != [NSNull null]) return [coverViews objectAtIndex:index];
 	return nil;
-}
-
-- (NSInteger) currentIndex{
-	return currentIndex;
 }
 - (NSInteger) indexOfFrontCoverView{
 	return currentIndex;
 
 }
-- (void) setCurrentIndex:(NSInteger)index{
-	[self bringCoverAtIndexToFront:index animated:NO];
-}
-
-
 - (void) bringCoverAtIndexToFront:(int)index animated:(BOOL)animated{
 	
 	if(index == currentIndex) return;
@@ -368,7 +357,6 @@
 	[self newrange];
 	[self animateToIndex:index animated:animated];
 }
-
 - (TKCoverflowCoverView*) dequeueReusableCoverView{
 	
 	if([yard count] < 1)  return nil;
@@ -380,7 +368,7 @@
 	return v;
 }
 
-
+#pragma mark Touch Events
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	UITouch *touch = [touches anyObject];
 	
@@ -415,6 +403,7 @@
 	if(currentTouch!= nil) currentTouch = nil;
 }
 
+#pragma mark UIScrollView Delegate
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView{
     
     
@@ -457,17 +446,34 @@
 	}
 }
 
-- (void) dealloc {	
-	
-	[yard release],yard = nil;
-	[views release],views = nil;
-	[coverViews release],coverViews = nil;
 
-	currentTouch = nil;
-	coverflowDelegate = nil;
-	dataSource = nil;
-	
-    [super dealloc];
+#pragma mark Properties
+- (void) setNumberOfCovers:(int)cov{
+	numberOfCovers = cov;
+	[self setup];
+}
+- (void) setCoverSpacing:(float)space{
+	coverSpacing = space;
+	[self setupTransforms];
+	[self setup];
+	[self layoutSubviews];
+}
+- (void) setCoverAngle:(float)f{
+	coverAngle = f;
+	[self setupTransforms];
+	[self setup];
+}
+- (void) setCoverSize:(CGSize)s{
+	coverSize = s;
+	spaceFromCurrent = coverSize.width/2.4;
+	[self setupTransforms];
+	[self setup];
+}
+- (void) setCurrentIndex:(NSInteger)index{
+	[self bringCoverAtIndexToFront:index animated:NO];
+}
+- (NSInteger) currentIndex{
+	return currentIndex;
 }
 
 @end

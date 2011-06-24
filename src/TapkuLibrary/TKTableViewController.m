@@ -39,7 +39,7 @@
 @synthesize searchBar = _searchBar, searchBarDisplayController = _searchBarDisplayController;
 
 // -----------------------------
-// INIT & FRIENDS
+#pragma mark Init & Friends
 - (id) init{
 	self = [self initWithStyle:UITableViewStylePlain];
 	return self;
@@ -47,12 +47,13 @@
 - (id) initWithStyle:(UITableViewStyle)style{
 	if(!(self = [super init])) return nil;
 	_style = style;
+	_tableViewContentOffset = CGPointZero;
 	return self;
 }
-- (void) didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
 - (void) _unloadSubviews{
+	
+	_tableViewContentOffset = self.tableView.contentOffset;
+	
 	self.tableView = nil;
 	self.emptyView = nil;
 	self.loadingView = nil;
@@ -69,6 +70,8 @@
 }
 // -----------------------------
 
+
+#pragma mark View Load / Events
 - (void) loadView{
 	[super loadView];
 	
@@ -77,6 +80,7 @@
 	_tableView.dataSource = self;
 	_tableView.showsVerticalScrollIndicator = YES;
 	_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	_tableView.contentOffset = _tableViewContentOffset;
 	
 	[self.view addSubview:self.tableView];
 }
@@ -84,7 +88,7 @@
 
 
 // -----------------------------
-// TABLEVIEW 
+#pragma mark TableView Delegate & DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 0;
 }
@@ -99,7 +103,7 @@
 
 
 // -----------------------------
-// PROPERTIES
+#pragma mark Properties
 - (TKEmptyView*) emptyView{
 	if(_emptyView==nil){
 		_emptyView = [[TKEmptyView alloc] initWithFrame:self.view.bounds 

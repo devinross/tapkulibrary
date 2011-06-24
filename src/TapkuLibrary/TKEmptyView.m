@@ -42,7 +42,7 @@
 @end
 
 
-
+#pragma mark -
 @implementation TKEmptyView
 @synthesize imageView,titleLabel,subtitleLabel;
 
@@ -115,6 +115,7 @@
 	subtitleLabel.frame = CGRectMake((int)0, titleLabel.frame.origin.y + titleLabel.frame.size.height , rect.size.width , 16);
 	
 }
+
 
 - (void) setImage:(UIImage*)image{
 	imageView.image = [self maskedImageWithImage:image];

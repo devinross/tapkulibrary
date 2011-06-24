@@ -33,6 +33,7 @@
 
 @implementation TKWindow
 
+#pragma mark Motion Events
 - (void) motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
 	[[NSNotificationCenter defaultCenter] postNotificationName:TKWindowShakeBegan object:self];
 }

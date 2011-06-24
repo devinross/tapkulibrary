@@ -34,7 +34,7 @@
 #import "NSArray+TKCategory.h"
 
 
-
+#pragma mark -
 @interface ImageLoadOperation : NSOperation {
     NSString *imageURL;
 	TKImageCenter *imageCenter;
@@ -46,6 +46,8 @@
 - (id)initWithImageURLString:(NSString*)imageURL;
 
 @end
+
+#pragma mark -
 @implementation ImageLoadOperation
 @synthesize imageURL,imageCenter;
 
@@ -82,7 +84,7 @@
 
 @end
 
-
+#pragma mark -
 @implementation TKImageCenter
 @synthesize queue,images;
 
@@ -133,21 +135,13 @@
 	return nil;
 	
 }
-
-
-
 - (UIImage*) adjustImageRecieved:(UIImage*)image{
 	return image;
 }
-
 - (void) sendNewImageNotification:(NSArray*)ar{
 	[images setObject:[ar firstObject] forKey:[ar lastObject]];
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"newImage" object:self];
 }
-
-
-
-
 
 
 - (void) clearImages{

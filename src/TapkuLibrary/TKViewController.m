@@ -44,7 +44,6 @@
 	_customNavigationItem.rightBarButtonItem = [super navigationItem].rightBarButtonItem;
 	return self;
 }
-
 - (void)dealloc {
 	[_customNavigationItem release];
     [super dealloc];
@@ -55,7 +54,6 @@
 	[super setTitle:t];
 	self.customNavigationItem.title = t;
 }
-
 - (UINavigationItem *) navigationItem{	
    return (self.customNavigationItem)?(self.customNavigationItem):([super navigationItem]);
 }

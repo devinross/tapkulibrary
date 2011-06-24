@@ -32,15 +32,12 @@
 #import "TKAlertCenter.h"
 #import "UIView+TKCategory.h"
 
-@interface TKAlertCenter()
-@property (nonatomic,retain) NSMutableArray *alerts;
-@end
 
-
+#pragma mark -
 @interface TKAlertView : UIView {
-	CGRect messageRect;
-	NSString *text;
-	UIImage *image;
+	CGRect _messageRect;
+	NSString *_text;
+	UIImage *_image;
 }
 
 - (id) init;
@@ -50,10 +47,75 @@
 @end
 
 
+#pragma mark -
+@implementation TKAlertView
 
+- (id) init{
+	if(!(self = [super initWithFrame:CGRectMake(0, 0, 100, 100)])) return nil;
+	_messageRect = CGRectInset(self.bounds, 10, 10);
+	self.backgroundColor = [UIColor clearColor];
+	return self;
+	
+}
+- (void) dealloc{
+	[_text release];
+	[_image release];
+	[super dealloc];
+}
+
+- (void) drawRect:(CGRect)rect{
+	[[UIColor colorWithWhite:0 alpha:0.8] set];
+	[UIView drawRoundRectangleInRect:rect withRadius:10];
+	[[UIColor whiteColor] set];
+	[_text drawInRect:_messageRect withFont:[UIFont boldSystemFontOfSize:14] lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];
+	
+	CGRect r = CGRectZero;
+	r.origin.y = 15;
+	r.origin.x = (rect.size.width-_image.size.width)/2;
+	r.size = _image.size;
+	
+	[_image drawInRect:r];
+}
+
+#pragma mark Setter Methods
+- (void) adjust{
+	
+	CGSize s = [_text sizeWithFont:[UIFont boldSystemFontOfSize:14] constrainedToSize:CGSizeMake(160,200) lineBreakMode:UILineBreakModeWordWrap];
+	
+	float imageAdjustment = 0;
+	if (_image) {
+		imageAdjustment = 7+_image.size.height;
+	}
+	
+	self.bounds = CGRectMake(0, 0, s.width+40, s.height+15+15+imageAdjustment);
+	
+	_messageRect.size = s;
+	_messageRect.size.height += 5;
+	_messageRect.origin.x = 20;
+	_messageRect.origin.y = 15+imageAdjustment;
+	
+	[self setNeedsLayout];
+	[self setNeedsDisplay];
+	
+}
+- (void) setMessageText:(NSString*)str{
+	[_text release];
+	_text = [str retain];
+	[self adjust];
+}
+- (void) setImage:(UIImage*)img{
+	[_image release];
+	_image = [img retain];
+	[self adjust];
+}
+
+@end
+
+
+#pragma mark -
 @implementation TKAlertCenter
-@synthesize alerts;
 
+#pragma mark Init & Friends
 + (TKAlertCenter*) defaultCenter {
 	static TKAlertCenter *defaultCenter = nil;
 	if (!defaultCenter) {
@@ -61,16 +123,15 @@
 	}
 	return defaultCenter;
 }
-
 - (id) init{
 	if(!(self=[super init])) return nil;
 	
-	self.alerts = [NSMutableArray array];
-	alertView = [[TKAlertView alloc] init];
-	active = NO;
+	_alerts = [[NSMutableArray alloc] init];
+	_alertView = [[TKAlertView alloc] init];
+	_active = NO;
 	
 	
-	alertFrame = [UIApplication sharedApplication].keyWindow.bounds;
+	_alertFrame = [UIApplication sharedApplication].keyWindow.bounds;
 
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
@@ -79,47 +140,55 @@
 
 	return self;
 }
+- (void) dealloc{
+	[_alerts release];
+	[_alertView release];
+	[super dealloc];
+}
+
+
+#pragma mark Show Alert Message
 - (void) showAlerts{
 	
-	if([self.alerts count] < 1) {
-		active = NO;
+	if([_alerts count] < 1) {
+		_active = NO;
 		return;
 	}
 	
-	active = YES;
+	_active = YES;
 	
-	alertView.transform = CGAffineTransformIdentity;
-	alertView.alpha = 0;
-	[[UIApplication sharedApplication].keyWindow addSubview:alertView];
+	_alertView.transform = CGAffineTransformIdentity;
+	_alertView.alpha = 0;
+	[[UIApplication sharedApplication].keyWindow addSubview:_alertView];
 
 	
 	
-	NSArray *ar = [self.alerts objectAtIndex:0];
+	NSArray *ar = [_alerts objectAtIndex:0];
 	
 	UIImage *img = nil;
-	if([ar count] > 1) img = [[self.alerts objectAtIndex:0] objectAtIndex:1];
+	if([ar count] > 1) img = [[_alerts objectAtIndex:0] objectAtIndex:1];
 	
-	[alertView setImage:img];
+	[_alertView setImage:img];
 
-	if([ar count] > 0) [alertView setMessageText:[[self.alerts objectAtIndex:0] objectAtIndex:0]];
+	if([ar count] > 0) [_alertView setMessageText:[[_alerts objectAtIndex:0] objectAtIndex:0]];
 	
 	
 	
-	alertView.center = CGPointMake(alertFrame.origin.x+alertFrame.size.width/2, alertFrame.origin.y+alertFrame.size.height/2);
+	_alertView.center = CGPointMake(_alertFrame.origin.x+_alertFrame.size.width/2, _alertFrame.origin.y+_alertFrame.size.height/2);
 		
 	
-	CGRect rr = alertView.frame;
+	CGRect rr = _alertView.frame;
 	rr.origin.x = (int)rr.origin.x;
 	rr.origin.y = (int)rr.origin.y;
-	alertView.frame = rr;
+	_alertView.frame = rr;
 	
 	UIInterfaceOrientation o = [UIApplication sharedApplication].statusBarOrientation;
 	CGFloat degrees = 0;
 	if(o == UIInterfaceOrientationLandscapeLeft ) degrees = -90;
 	else if(o == UIInterfaceOrientationLandscapeRight ) degrees = 90;
 	else if(o == UIInterfaceOrientationPortraitUpsideDown) degrees = 180;
-	alertView.transform = CGAffineTransformMakeRotation(degrees * M_PI / 180);
-	alertView.transform = CGAffineTransformScale(alertView.transform, 2, 2);
+	_alertView.transform = CGAffineTransformMakeRotation(degrees * M_PI / 180);
+	_alertView.transform = CGAffineTransformScale(_alertView.transform, 2, 2);
 	
 	
 	
@@ -128,9 +197,9 @@
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationDidStopSelector:@selector(animationStep2)];
 	
-	alertView.transform = CGAffineTransformMakeRotation(degrees * M_PI / 180);
-	alertView.frame = CGRectMake((int)alertView.frame.origin.x, (int)alertView.frame.origin.y, alertView.frame.size.width, alertView.frame.size.height);
-	alertView.alpha = 1;
+	_alertView.transform = CGAffineTransformMakeRotation(degrees * M_PI / 180);
+	_alertView.frame = CGRectMake((int)_alertView.frame.origin.x, (int)_alertView.frame.origin.y, _alertView.frame.size.width, _alertView.frame.size.height);
+	_alertView.alpha = 1;
 	
 	[UIView commitAnimations];
 	
@@ -142,7 +211,7 @@
 	// depending on how many words are in the text
 	// change the animation duration accordingly
 	// avg person reads 200 words per minute
-	NSArray * words = [[[self.alerts objectAtIndex:0] objectAtIndex:0] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	NSArray * words = [[[_alerts objectAtIndex:0] objectAtIndex:0] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 	double duration = MAX(((double)[words count]*60.0/200.0),1);
 	
 	[UIView setAnimationDelay:duration];
@@ -154,34 +223,30 @@
 	if(o == UIInterfaceOrientationLandscapeLeft ) degrees = -90;
 	else if(o == UIInterfaceOrientationLandscapeRight ) degrees = 90;
 	else if(o == UIInterfaceOrientationPortraitUpsideDown) degrees = 180;
-	alertView.transform = CGAffineTransformMakeRotation(degrees * M_PI / 180);
-	alertView.transform = CGAffineTransformScale(alertView.transform, 0.5, 0.5);
+	_alertView.transform = CGAffineTransformMakeRotation(degrees * M_PI / 180);
+	_alertView.transform = CGAffineTransformScale(_alertView.transform, 0.5, 0.5);
 	
-	alertView.alpha = 0;
+	_alertView.alpha = 0;
 	[UIView commitAnimations];
 }
-
 - (void) animationStep3{
 	
-	[alertView removeFromSuperview];
-	[alerts removeObjectAtIndex:0];
+	[_alertView removeFromSuperview];
+	[_alerts removeObjectAtIndex:0];
 	[self showAlerts];
 	
 }
 - (void) postAlertWithMessage:(NSString*)message image:(UIImage*)image{
-	[self.alerts addObject:[NSArray arrayWithObjects:message,image,nil]];
-	if(!active) [self showAlerts];
+	[_alerts addObject:[NSArray arrayWithObjects:message,image,nil]];
+	if(!_active) [self showAlerts];
 }
 - (void) postAlertWithMessage:(NSString*)message{
 	[self postAlertWithMessage:message image:nil];
 }
-- (void) dealloc{
-	[alerts release];
-	[alertView release];
-	[super dealloc];
-}
 
 
+#pragma mark System Observation Changes
+CGRect subtractRect(CGRect wf,CGRect kf);
 CGRect subtractRect(CGRect wf,CGRect kf){
 	
 	
@@ -215,7 +280,6 @@ CGRect subtractRect(CGRect wf,CGRect kf){
 	
 	
 }
-
 - (void) keyboardWillAppear:(NSNotification *)notification {
 	
 	NSDictionary *userInfo = [notification userInfo];
@@ -224,14 +288,14 @@ CGRect subtractRect(CGRect wf,CGRect kf){
 	CGRect wf = [UIApplication sharedApplication].keyWindow.bounds;
 	
 	[UIView beginAnimations:nil context:nil];
-	alertFrame = subtractRect(wf,kf);
-	alertView.center = CGPointMake(alertFrame.origin.x+alertFrame.size.width/2, alertFrame.origin.y+alertFrame.size.height/2);
+	_alertFrame = subtractRect(wf,kf);
+	_alertView.center = CGPointMake(_alertFrame.origin.x+_alertFrame.size.width/2, _alertFrame.origin.y+_alertFrame.size.height/2);
 
 	[UIView commitAnimations];
 
 }
 - (void) keyboardWillDisappear:(NSNotification *) notification {
-	alertFrame = [UIApplication sharedApplication].keyWindow.bounds;
+	_alertFrame = [UIApplication sharedApplication].keyWindow.bounds;
 
 }
 - (void) orientationWillChange:(NSNotification *) notification {
@@ -249,74 +313,10 @@ CGRect subtractRect(CGRect wf,CGRect kf){
 	else if(o == UIInterfaceOrientationPortraitUpsideDown) degrees = 180;
 	
 	[UIView beginAnimations:nil context:nil];
-	alertView.transform = CGAffineTransformMakeRotation(degrees * M_PI / 180);
-	alertView.frame = CGRectMake((int)alertView.frame.origin.x, (int)alertView.frame.origin.y, (int)alertView.frame.size.width, (int)alertView.frame.size.height);
+	_alertView.transform = CGAffineTransformMakeRotation(degrees * M_PI / 180);
+	_alertView.frame = CGRectMake((int)_alertView.frame.origin.x, (int)_alertView.frame.origin.y, (int)_alertView.frame.size.width, (int)_alertView.frame.size.height);
 	[UIView commitAnimations];
 	
-}
-
-@end
-
-@implementation TKAlertView
-
-- (id) init{
-	
-	if(!(self = [super initWithFrame:CGRectMake(0, 0, 100, 100)])) return nil;
-	
-	messageRect = CGRectInset(self.bounds, 10, 10);
-	self.backgroundColor = [UIColor clearColor];
-	
-	return self;
-	
-}
-- (void) adjust{
-	
-	CGSize s = [text sizeWithFont:[UIFont boldSystemFontOfSize:14] constrainedToSize:CGSizeMake(160,200) lineBreakMode:UILineBreakModeWordWrap];
-	
-	float imageAdjustment = 0;
-	if (image) {
-		imageAdjustment = 7+image.size.height;
-	}
-	
-	self.bounds = CGRectMake(0, 0, s.width+40, s.height+15+15+imageAdjustment);
-	
-	messageRect.size = s;
-	messageRect.size.height += 5;
-	messageRect.origin.x = 20;
-	messageRect.origin.y = 15+imageAdjustment;
-
-	[self setNeedsLayout];
-	[self setNeedsDisplay];
-	
-}
-- (void) setMessageText:(NSString*)str{
-	[text release];
-	text = [str retain];
-	[self adjust];
-}
-- (void) setImage:(UIImage*)img{
-	[image release];
-	image = [img retain];
-	
-	[self adjust];
-}
-- (void) drawRect:(CGRect)rect{
-	[[UIColor colorWithWhite:0 alpha:0.8] set];
-	[UIView drawRoundRectangleInRect:rect withRadius:10];
-	[[UIColor whiteColor] set];
-	[text drawInRect:messageRect withFont:[UIFont boldSystemFontOfSize:14] lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];
-	
-	CGRect r = CGRectZero;
-	r.origin.y = 15;
-	r.origin.x = (rect.size.width-image.size.width)/2;
-	r.size = image.size;
-	
-	[image drawInRect:r];
-}
-- (void) dealloc{
-	[text release];
-	[image release];
-	[super dealloc];
 }
 
 @end

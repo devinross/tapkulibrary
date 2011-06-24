@@ -33,15 +33,14 @@
 #import "TKWindow.h"
 
 @implementation TKAppDelegate
-@synthesize window;
-
+@synthesize window=_window;
 
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	
-	window = [[TKWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-	window.backgroundColor = [UIColor blackColor];
-	[window makeKeyAndVisible];
+	_window = [[TKWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+	_window.backgroundColor = [UIColor blackColor];
+	[_window makeKeyAndVisible];
 	
     [self applicationDidStartup:application];
 	
@@ -51,24 +50,13 @@
 - (void) applicationWillEnterForeground:(UIApplication *)application {
 	[self applicationDidStartup:application];
 }
-- (void) applicationDidStartup:(UIApplication *)application{}
-
-
-
-- (void) applicationDidEnterBackground:(UIApplication *)application {
-	[self applicationWillShutdown:application];
+- (void) applicationDidStartup:(UIApplication *)application{
+	// Default Implmentaion Does Nothing
 }
-- (void) applicationWillTerminate:(UIApplication *)application {
-	[self applicationWillShutdown:application];
-}
-- (void) applicationWillShutdown:(UIApplication *)application{}
-
-
-
 
 
 - (void) dealloc {
-    [window release];
+    [_window release],_window=nil;
     [super dealloc];
 }
 

@@ -44,6 +44,7 @@
 	
 @private
 	UITableViewStyle _style;
+	CGPoint _tableViewContentOffset;
 	
 }
 

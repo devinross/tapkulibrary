@@ -14,9 +14,9 @@
 + (UIBarButtonItem*) barButtonItemWithTitle:(NSString*)t 
 							backgroundImage:(UIImage*)backgroundImage 
 				 highlightedBackgroundImage:(UIImage*)highlighedBackgroundImage 
-									 target:(id)t selector:(SEL)s{
+									 target:(id)target selector:(SEL)s{
 	
-	UIButton *btn = [UIButton buttonWithFrame:CGRectMake(0,0,52,44) title:t];
+	UIButton *btn = [UIButton buttonWithFrame:CGRectMake(0,0,52,44) title:target];
 	[btn addTarget:t action:s forControlEvents:UIControlEventTouchUpInside];
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];
 	item.target = t;

@@ -32,6 +32,7 @@
 
 #import <UIKit/UIKit.h>
 #import <TapkuLibrary/TapkuLibrary.h>
+
 @class RootViewController;
 
 @interface AppDelegate_iPhone : TKAppDelegate {

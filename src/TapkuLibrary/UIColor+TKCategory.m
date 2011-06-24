@@ -1,6 +1,6 @@
 //
-//  TKProgressCircleView.h
-//  Created by Devin Ross on 1/1/11.
+//  UIColor+TKCategory.m
+//  Created by Devin Ross on 5/14/11.
 //
 /*
  
@@ -29,20 +29,20 @@
  
  */
 
-#import <UIKit/UIKit.h>
+#import "UIColor+TKCategory.h"
 
+@implementation UIColor (TKCategory)
 
-@interface TKProgressCircleView : UIView {
-	BOOL _twirlMode;
-	float _progress,_displayProgress;
++ (id) colorWithHex:(unsigned int)hex{
+	return [UIColor colorWithHex:hex alpha:1.0f];
 }
-
-- (id) init;
-
-@property (assign,nonatomic) float progress; // between 0.0 & 1.0
-@property (assign,nonatomic,getter=isTwirling) BOOL twirlMode;
-
-- (void) setProgress:(float)progress animated:(BOOL)animated;
-
++ (id) colorWithHex:(unsigned int)hex alpha:(CGFloat)alpha{
+	
+	CGFloat red = ((float)((hex & 0xFF0000) >> 16))/255.0f;
+	CGFloat green = ((float)((hex & 0xFF00) >> 8))/255.0f;
+	CGFloat blue = ((float)(hex & 0xFF))/255.0f;
+	return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+	
+}
 
 @end

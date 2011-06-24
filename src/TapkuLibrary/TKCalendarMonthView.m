@@ -35,7 +35,7 @@
 #import "UIImage+TKCategory.h"
 
 //#define kCalendImagesPath @"TapkuLibrary.bundle/Images/calendar/"
-
+#pragma mark -
 @interface NSDate (calendarcategory)
 
 - (NSDate*) firstOfMonth;
@@ -43,6 +43,9 @@
 - (NSDate*) previousMonth;
 
 @end
+
+
+#pragma mark -
 
 @implementation NSDate (calendarcategory)
 
@@ -90,7 +93,7 @@
 @end
 
 
-
+#pragma mark -
 
 @interface TKCalendarMonthTiles : UIView {
 	
@@ -123,6 +126,8 @@
 
 @end
 
+#pragma mark -
+
 #define dotFontSize 18.0
 #define dateFontSize 22.0
 
@@ -132,6 +137,8 @@
 @property (readonly) UILabel *currentDay;
 @property (readonly) UILabel *dot;
 @end
+
+#pragma mark -
 
 @implementation TKCalendarMonthTiles
 @synthesize monthDate;
@@ -593,7 +600,7 @@
 
 @end
 
-
+#pragma mark -
 
 @interface TKCalendarMonthView (private)
 
@@ -606,7 +613,7 @@
 
 @end
 
-
+#pragma mark -
 @implementation TKCalendarMonthView
 @synthesize delegate,dataSource;
 
@@ -949,7 +956,7 @@
 	
 }
 
-
+#pragma mark Properties
 - (UIImageView *) topBackground{
 	if(topBackground==nil){
 		topBackground = [[UIImageView alloc] initWithImage:[UIImage imageWithContentsOfFile:TKBUNDLE(@"TapkuLibrary.bundle/Images/calendar/Month Grid Top Bar.png")]];

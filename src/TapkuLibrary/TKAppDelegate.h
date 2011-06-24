@@ -35,7 +35,7 @@
 @class TKWindow;
 
 @interface TKAppDelegate : NSObject <UIApplicationDelegate> {
-	TKWindow *window;
+	TKWindow *_window;
 }
 
 @property (nonatomic,retain) TKWindow *window;
@@ -46,6 +46,5 @@
 // Good for placing instructions needed regardless of multi-tasking
 
 - (void) applicationDidStartup:(UIApplication *)application;
-- (void) applicationWillShutdown:(UIApplication *)application;
 
 @end
