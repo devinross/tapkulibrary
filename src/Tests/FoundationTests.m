@@ -90,7 +90,10 @@
     date = [NSDate date];
     date2 = [NSDate yesterday];
     STAssertEquals([date daysBetweenDate:date2], 1, @"Expected difference between %@ and %@ is zero.",date,date2);
+	
+	
 }
+
 
 
 - (void) testArrayCategory{
