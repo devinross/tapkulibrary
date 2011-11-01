@@ -46,7 +46,6 @@
 }
 - (void) dealloc {
 	self.calendarDayTimelineView = nil;
-    [super dealloc];
 }
 
 

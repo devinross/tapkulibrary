@@ -101,7 +101,6 @@
 	for(UIView *v in views) [v removeFromSuperview];
 	[yard removeAllObjects];
 	[views removeAllObjects];
-	[coverViews release];
 	coverViews = nil;
 	
 	if(numberOfCovers < 1){
@@ -280,22 +279,21 @@
 @synthesize coverflowDelegate, dataSource, coverSize, numberOfCovers, coverSpacing, coverAngle;
 
 - (id) initWithFrame:(CGRect)frame {
-	if(![super initWithFrame:frame]) return nil;
+	if(!(self=[super initWithFrame:frame])) return nil;
 	[self load];
 	currentSize = frame.size;
     return self;
 }
 - (void) dealloc {	
 	
-	[yard release],yard = nil;
-	[views release],views = nil;
-	[coverViews release],coverViews = nil;
+	yard = nil;
+	views = nil;
+	coverViews = nil;
 	
 	currentTouch = nil;
 	coverflowDelegate = nil;
 	dataSource = nil;
 	
-    [super dealloc];
 }
 
 - (void) layoutSubviews{
@@ -361,7 +359,7 @@
 	
 	if([yard count] < 1)  return nil;
 	
-	TKCoverflowCoverView *v = [[[yard lastObject] retain] autorelease];
+	TKCoverflowCoverView *v = [yard lastObject];
 	v.layer.transform = CATransform3DIdentity;
 	[yard removeLastObject];
 

@@ -1,41 +1,52 @@
 //
 //  UIBarButtonItem+TKCategory.m
-//  TapkuLibrary
-//
 //  Created by Devin Ross on 3/23/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
+/*
+ 
+ tapku.com || http://github.com/devinross/tapkulibrary
+ 
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without
+ restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following
+ conditions:
+ 
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+ 
+ */
 
 #import "UIBarButtonItem+TKCategory.h"
 #import "UIButton+TKCategory.h"
 
 @implementation UIBarButtonItem (TKCategory)
 
-+ (UIBarButtonItem*) barButtonItemWithTitle:(NSString*)t 
-							backgroundImage:(UIImage*)backgroundImage 
-				 highlightedBackgroundImage:(UIImage*)highlighedBackgroundImage 
-									 target:(id)target selector:(SEL)s{
-	
-	UIButton *btn = [UIButton buttonWithFrame:CGRectMake(0,0,52,44) title:target];
-	[btn addTarget:t action:s forControlEvents:UIControlEventTouchUpInside];
-	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];
-	item.target = t;
-	item.action = s;
-	return [item autorelease];
-	
-}
 
-+ (UIBarButtonItem*) barButtonItemWithImage:(UIImage*)img 
-							backgroundImage:(UIImage*)backgroundImage 
-				 highlightedBackgroundImage:(UIImage*)highlighedBackgroundImage 
-									 target:(id)t selector:(SEL)s{
++ (UIBarButtonItem*) barButtonItemWithImage:(UIImage*)img highlightedImage:(UIImage*)highlighedImage target:(id)t selector:(SEL)s{
 	
-	UIButton *btn = [UIButton buttonWithFrame:CGRectMake(0,0,52,44) image:img];
+	CGRect r = CGRectZero;
+	r.size = img.size;
+	
+	UIButton *btn = [UIButton buttonWithFrame:r image:img highlightedImage:highlighedImage];
+	
 	[btn addTarget:t action:s forControlEvents:UIControlEventTouchUpInside];
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:btn];
 	item.target = t;
 	item.action = s;
-	return [item autorelease];
+	return item;
 	
 }
 

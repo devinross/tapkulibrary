@@ -35,5 +35,5 @@
 @interface TKLabelSwitchCell : TKLabelCell {
 	UISwitch *_switcher;
 }
-@property (retain,nonatomic) UISwitch *switcher;
+@property (strong,nonatomic) UISwitch *switcher;
 @end

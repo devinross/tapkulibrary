@@ -41,10 +41,10 @@
 	_window = [[TKWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
 	_window.backgroundColor = [UIColor blackColor];
 	[_window makeKeyAndVisible];
+
 	
     [self applicationDidStartup:application];
 	
-
 	return YES;
 }
 - (void) applicationWillEnterForeground:(UIApplication *)application {
@@ -55,10 +55,6 @@
 }
 
 
-- (void) dealloc {
-    [_window release],_window=nil;
-    [super dealloc];
-}
 
 
 

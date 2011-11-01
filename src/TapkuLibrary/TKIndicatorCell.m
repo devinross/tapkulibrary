@@ -45,36 +45,28 @@ static UIColor *indicatorBackgroundColor = nil;
 + (void) initialize{
 	if(self == [TKIndicatorCell class])
 	{
-		textFont = [[UIFont boldSystemFontOfSize:18] retain];
-		indicatorFont = [[UIFont boldSystemFontOfSize:16] retain];
-		indicatorColor = [[UIColor whiteColor] retain];
-		indicatorBackgroundColor = [[UIColor colorWithRed:140/255.0 green:153/255.0 blue:180/255.0 alpha:1.0] retain];
+		textFont = [UIFont boldSystemFontOfSize:18];
+		indicatorFont = [UIFont boldSystemFontOfSize:16];
+		indicatorColor = [UIColor whiteColor];
+		indicatorBackgroundColor = [UIColor colorWithRed:140/255.0 green:153/255.0 blue:180/255.0 alpha:1.0];
 
 	}
-}
-- (void) dealloc{
-	[_text release];
-	[_countStr release];
-    [super dealloc];
 }
 
 
 - (void) setText:(NSString*)s{
-	[_text release];
 	_text = [s copy];
 	[self setNeedsDisplay];
 }
 - (void) setCount:(int)s{
 	if(s==_count) return;
 	if(s > 99 && _count < 100){
-		[indicatorFont release];
-		indicatorFont = [[UIFont boldSystemFontOfSize:12.0] retain];
+		indicatorFont = [UIFont boldSystemFontOfSize:12.0];
 	}else if(s < 100 && _count > 99){
-		[indicatorFont release];
-		indicatorFont = [[UIFont boldSystemFontOfSize:16.0] retain];
+		indicatorFont = [UIFont boldSystemFontOfSize:16.0];
 	}
 	_count = s;
-	_countStr = [[NSString stringWithFormat:@"%d",s] retain];
+	_countStr = [NSString stringWithFormat:@"%d",s];
 	[self setNeedsDisplay];
 }
 

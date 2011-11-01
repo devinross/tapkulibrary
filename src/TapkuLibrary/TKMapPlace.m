@@ -36,13 +36,9 @@
 @synthesize title,coordinate, color;
 
 - (id)init{
-	[super init];
+	self = [super init];
 	return self;
 }
 
-- (void)dealloc {
-	[title release];
-	[super dealloc];
-}
 
 @end

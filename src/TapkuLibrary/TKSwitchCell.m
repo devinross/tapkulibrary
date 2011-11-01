@@ -31,14 +31,16 @@
 #import "TKSwitchCell.h"
 
 @implementation TKSwitchCell
-@synthesize slider=_slider;
+@synthesize switcher=_switcher;
 
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-	if(![super initWithStyle:style reuseIdentifier:reuseIdentifier]) return nil;
+	if(!(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
 
-	_slider = [[UISwitch alloc] initWithFrame:CGRectMake(0,0,94,27)];
-	[self addSubview:_slider];
+	self.textLabel.backgroundColor = [UIColor clearColor];
+	
+	_switcher = [[UISwitch alloc] initWithFrame:CGRectMake(0,0,94,27)];
+	[self.contentView addSubview:_switcher];
 		
 
     return self;
@@ -46,19 +48,15 @@
 - (id) initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
 	return [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
 }
-- (void) dealloc {
-	[_slider release];
-	[super dealloc];
-}
 
 - (void) layoutSubviews {
     [super layoutSubviews];
 	CGRect r;
 	
-	r = CGRectInset(self.bounds, 20,10);
-	r.origin.x += r.size.width-_slider.bounds.size.width;
-	r.size = _slider.bounds.size;
-	_slider.frame = r;
+	r = CGRectInset(self.contentView.bounds, 10,9);
+	r.origin.x += r.size.width-_switcher.bounds.size.width;
+	r.size = _switcher.bounds.size;
+	_switcher.frame = r;
 	
 }
 

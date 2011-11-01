@@ -32,9 +32,9 @@
 
 #import <UIKit/UIKit.h>
 
-#define TKWindowShakeBegan @"motionBegan"
-#define TKWindowShakeCancelled @"motionCancelled"
-#define TKWindowShakeEnded @"motionEnded"
+extern NSString *TKWindowShakeBegan;
+extern NSString *TKWindowShakeCancelled;
+extern NSString *TKWindowShakeEnded;
 
 @interface TKWindow : UIWindow 
 @end

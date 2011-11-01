@@ -40,7 +40,8 @@
 	if(!(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
     
     _field = [[UITextField alloc] initWithFrame:CGRectZero];
-    _field.autocorrectionType = UITextAutocorrectionTypeYes;
+	_field.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+	_field.backgroundColor = [UIColor clearColor];
     _field.font = [UIFont boldSystemFontOfSize:16.0];
     _field.delegate = self;
     [self.contentView addSubview:_field];
@@ -52,10 +53,6 @@
 	self = [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
 	return self;
 }
-- (void) dealloc {
-	[_field release];
-	[super dealloc];
-}
 
 
 
@@ -65,7 +62,6 @@
 	CGRect r = CGRectInset(self.contentView.bounds, 8, 8);
 	r.origin.x += self.label.frame.size.width + 6;
 	r.size.width -= self.label.frame.size.width + 6;
-	r.origin.y += 10;
 	_field.frame = r;
 	
 	

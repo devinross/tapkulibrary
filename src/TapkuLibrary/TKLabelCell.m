@@ -39,6 +39,7 @@
     if(!(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
 
     _label = [[UILabel alloc] initWithFrame:CGRectZero];
+	_label.backgroundColor = [UIColor clearColor];
     _label.textAlignment = UITextAlignmentRight;
     _label.textColor = [UIColor grayColor];
     _label.font = [UIFont boldSystemFontOfSize:12.0];
@@ -55,20 +56,15 @@
 	self = [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
 	return self;
 }
-- (void) dealloc {
-	[_label release];
-    [super dealloc];
-}
 
 
 - (void) layoutSubviews {
     [super layoutSubviews];
 	
 	CGRect r = CGRectInset(self.contentView.bounds, 8, 8);
-	r.size.width = 72;
-	r.size.height = 30;
+	r.size = CGSizeMake(72,27);
 	_label.frame = r;
-	
+		
 	
 }
 

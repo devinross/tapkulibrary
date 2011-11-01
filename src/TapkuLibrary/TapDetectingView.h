@@ -53,7 +53,7 @@
 
 @interface TapDetectingView : UIView {
 	
-    id <TapDetectingViewDelegate> delegate;
+    id <TapDetectingViewDelegate> __unsafe_unretained delegate;
     
     // Touch detection
     CGPoint tapLocation;         // Needed to record location of single tap, which will only be registered after delayed perform.
@@ -61,7 +61,7 @@
     BOOL twoFingerTapIsPossible; // Set to NO when 2-finger tap can be ruled out (e.g. 3rd finger down, fingers touch down too far apart, etc).
 }
 
-@property (nonatomic, assign) id <TapDetectingViewDelegate> delegate;
+@property (nonatomic, unsafe_unretained) id <TapDetectingViewDelegate> delegate;
 
 @end
 

@@ -1,6 +1,6 @@
 //
 //  TKViewController.h
-//  Created by Devin Ross on 11/24/10.
+//  Created by Devin Ross on 11/1/11.
 //
 /*
  
@@ -30,10 +30,19 @@
  */
 
 #import <UIKit/UIKit.h>
-@class TKNavigationItem;
+@class TKHTTPRequest;
 
 @interface TKViewController : UIViewController {
-	TKNavigationItem *_customNavigationItem;
+	NSMutableArray *_activeRequests;
+	UIView *_loadingView;
 }
-@property (retain,nonatomic) TKNavigationItem *customNavigationItem;
+
+@property (strong,nonatomic) UIView *loadingView;
+
+- (void) addActiveRequest:(TKHTTPRequest*)request;
+- (void) removeActiveRequest:(TKHTTPRequest*)request;
+
+- (void) processJSONDataInBackground:(NSData*)data withCallback:(SEL)callback;
+- (void) processJSONDataInBackground:(NSData*)data withCallback:(SEL)callback readingOptions:(NSJSONReadingOptions)options;
+
 @end

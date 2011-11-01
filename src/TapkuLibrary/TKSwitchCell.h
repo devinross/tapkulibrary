@@ -31,10 +31,8 @@
 #import <UIKit/UIKit.h>
 
 
-@interface TKSwitchCell : UITableViewCell {
-	UISwitch *_slider;
-}
+@interface TKSwitchCell : UITableViewCell 
 
-@property (assign, nonatomic) UISwitch *slider;
+@property (strong, nonatomic) UISwitch *switcher;
 
 @end

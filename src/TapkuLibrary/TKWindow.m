@@ -31,7 +31,14 @@
 
 #import "TKWindow.h"
 
+NSString *TKWindowShakeBegan = @"motionBegan";
+NSString *TKWindowShakeCancelled = @"motionCancelled";
+NSString *TKWindowShakeEnded = @"motionEnded";
+
+
 @implementation TKWindow
+
+
 
 #pragma mark Motion Events
 - (void) motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {

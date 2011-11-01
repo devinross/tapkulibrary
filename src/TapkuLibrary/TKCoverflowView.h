@@ -61,11 +61,11 @@
 	int pos;
 	long velocity;
 	
-	id <TKCoverflowViewDelegate> coverflowDelegate;
-	id <TKCoverflowViewDataSource> dataSource;
+	id <TKCoverflowViewDelegate> __unsafe_unretained coverflowDelegate;
+	id <TKCoverflowViewDataSource> __unsafe_unretained dataSource;
 }
-@property (nonatomic, assign) id <TKCoverflowViewDelegate> coverflowDelegate;
-@property (nonatomic, assign) id <TKCoverflowViewDataSource> dataSource;
+@property (nonatomic, unsafe_unretained) id <TKCoverflowViewDelegate> coverflowDelegate;
+@property (nonatomic, unsafe_unretained) id <TKCoverflowViewDataSource> dataSource;
 @property (nonatomic, assign) CGSize coverSize; // default 224 x 224
 @property (nonatomic, assign) int numberOfCovers;
 @property (nonatomic, assign) float coverSpacing;

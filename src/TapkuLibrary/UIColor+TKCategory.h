@@ -32,6 +32,9 @@
 #import <UIKit/UIKit.h>
 
 @interface UIColor (TKCategory)
-+ (id) colorWithHex:(unsigned int)hexValue;
-+ (id) colorWithHex:(unsigned int)hexValue alpha:(CGFloat)alpha;
+
++ (id) colorWithHex:(unsigned int)hex;
++ (id) colorWithHex:(unsigned int)hex alpha:(CGFloat)alpha;
++ (id) randomColor;
+
 @end

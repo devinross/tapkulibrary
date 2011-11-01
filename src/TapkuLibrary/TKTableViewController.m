@@ -35,11 +35,11 @@
 
 
 @implementation TKTableViewController
-@synthesize tableView = _tableView, emptyView = _emptyView, loadingView = _loadingView;
+@synthesize tableView = _tableView, emptyView = _emptyView;
 @synthesize searchBar = _searchBar, searchBarDisplayController = _searchBarDisplayController;
 
 // -----------------------------
-#pragma mark Init & Friends
+#pragma mark - Init & Friends
 - (id) init{
 	self = [self initWithStyle:UITableViewStylePlain];
 	return self;
@@ -56,7 +56,6 @@
 	
 	self.tableView = nil;
 	self.emptyView = nil;
-	self.loadingView = nil;
 	self.searchBar = nil;
 	self.searchBarDisplayController = nil;
 }
@@ -64,14 +63,10 @@
 	[self _unloadSubviews];
 	[super viewDidUnload];
 }
-- (void) dealloc {
-	[self _unloadSubviews];
-    [super dealloc];
-}
 // -----------------------------
 
 
-#pragma mark View Load / Events
+#pragma mark - View Load / Events
 - (void) loadView{
 	[super loadView];
 	
@@ -82,13 +77,13 @@
 	_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	_tableView.contentOffset = _tableViewContentOffset;
 	
-	[self.view addSubview:self.tableView];
+	[self.view addSubview:_tableView];
 }
 
 
 
 // -----------------------------
-#pragma mark TableView Delegate & DataSource
+#pragma mark - TableView Delegate & DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 0;
 }
@@ -103,31 +98,13 @@
 
 
 // -----------------------------
-#pragma mark Properties
+#pragma mark - Properties
 - (TKEmptyView*) emptyView{
 	if(_emptyView==nil){
-		_emptyView = [[TKEmptyView alloc] initWithFrame:self.view.bounds 
-										 emptyViewImage:TKEmptyViewImageSearch title:nil subtitle:nil];
+		_emptyView = [[TKEmptyView alloc] initWithFrame:self.view.bounds emptyViewImage:TKEmptyViewImageSearch title:nil subtitle:nil];
 		_emptyView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
 	}
 	return _emptyView;
-}
-- (UIView*) loadingView{
-	if(_loadingView==nil){
-		_loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, 44)];
-		_loadingView.backgroundColor = [UIColor clearColor];
-		_loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-		
-		UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-		act.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-
-		act.center = _loadingView.center;
-		[act startAnimating];
-		[_loadingView addSubview:act];
-		[act release];
-	}
-	return _loadingView;
 }
 - (UISearchBar*) searchBar{
 	if(_searchBar==nil){

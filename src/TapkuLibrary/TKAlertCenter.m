@@ -57,11 +57,6 @@
 	return self;
 	
 }
-- (void) dealloc{
-	[_text release];
-	[_image release];
-	[super dealloc];
-}
 
 - (void) drawRect:(CGRect)rect{
 	[[UIColor colorWithWhite:0 alpha:0.8] set];
@@ -99,13 +94,11 @@
 	
 }
 - (void) setMessageText:(NSString*)str{
-	[_text release];
-	_text = [str retain];
+	_text = str;
 	[self adjust];
 }
 - (void) setImage:(UIImage*)img{
-	[_image release];
-	_image = [img retain];
+	_image = img;
 	[self adjust];
 }
 
@@ -139,11 +132,6 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationWillChange:) name:UIApplicationWillChangeStatusBarOrientationNotification object:nil];
 
 	return self;
-}
-- (void) dealloc{
-	[_alerts release];
-	[_alertView release];
-	[super dealloc];
 }
 
 

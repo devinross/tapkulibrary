@@ -43,7 +43,7 @@
 - (id) init;
 - (id) initWithSunday:(BOOL)sundayFirst;
 
-@property (retain,nonatomic) TKCalendarMonthView *monthView;
+@property (strong,nonatomic) TKCalendarMonthView *monthView;
 
 
 @end

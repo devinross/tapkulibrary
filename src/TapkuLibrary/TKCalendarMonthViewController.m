@@ -58,8 +58,6 @@
 - (void) dealloc {
 	self.monthView.delegate = nil;
 	self.monthView.dataSource = nil;
-	self.monthView = nil;
-    [super dealloc];
 }
 
 

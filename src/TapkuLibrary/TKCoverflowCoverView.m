@@ -70,8 +70,7 @@
 - (void) setImage:(UIImage *)img{
 	
 	UIImage *image = img;
-	[image release];
-	image = [img retain];
+	image = img;
 	
 	float w = image.size.width;
 	float h = image.size.height;
@@ -100,11 +99,6 @@
 
 
 
-- (void) dealloc {
-	[reflected release];
-	[imageView release];
-    [super dealloc];
-}
 
 
 @end

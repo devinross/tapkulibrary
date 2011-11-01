@@ -34,14 +34,14 @@
 #import "TKProgressBarView.h"
 
 @interface TKProgressAlertView : UIAlertView {
-	TKProgressBarView *progressBar;
-	UILabel *label;
+	TKProgressBarView *_progressBar;
+	UILabel *_label;
 }
 
 - (id) initWithProgressTitle:(NSString*)title;
 
-@property (retain,nonatomic,readonly) TKProgressBarView *progressBar;
-@property (retain,nonatomic,readonly) UILabel *label;
+@property (strong,nonatomic) TKProgressBarView *progressBar;
+@property (strong,nonatomic) UILabel *label;
 
 - (void) show;
 - (void) hide;

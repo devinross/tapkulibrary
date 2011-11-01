@@ -41,6 +41,8 @@
 	
 	_field = [[UILabel alloc] initWithFrame:CGRectZero];
     _field.font = [UIFont boldSystemFontOfSize:16.0];
+	_field.backgroundColor = [UIColor clearColor];
+
 	[self.contentView addSubview:_field];
 
     return self;
@@ -48,10 +50,6 @@
 - (id) initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
 	self=[self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     return self;
-}
-- (void) dealloc {
-	[_field release];
-    [super dealloc];
 }
 
 - (void) layoutSubviews {

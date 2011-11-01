@@ -44,20 +44,15 @@
 	
     return self;
 }
-
 - (id) initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
 	self=[self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
     return self;
-}
-- (void) dealloc {
-	[_switcher release];
-    [super dealloc];
 }
 
 - (void) layoutSubviews {
     [super layoutSubviews];
 	
-	CGRect r = CGRectInset(self.bounds, 8, 10);
+	CGRect r = CGRectInset(self.bounds, 8, 8);
 	r.origin.x += self.label.frame.size.width + 6;
 	r.size.width -= self.label.frame.size.width + 6;
 	_switcher.frame = r;

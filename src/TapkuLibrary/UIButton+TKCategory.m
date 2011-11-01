@@ -49,9 +49,9 @@
 + (id) buttonWithFrame:(CGRect)frame title:(NSString*)title backgroundImage:(UIImage*)backgroundImage highlightedBackgroundImage:(UIImage*)highlightedBackgroundImage{
 	UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
 	btn.frame = frame;
-	if(title!=nil) [btn setTitle:title forState:UIControlStateNormal];
-	if(backgroundImage!=nil) [btn setBackgroundImage:backgroundImage forState:UIControlStateNormal];
-	if(highlightedBackgroundImage!=nil) [btn setBackgroundImage:highlightedBackgroundImage forState:UIControlStateHighlighted];
+	[btn setTitle:title forState:UIControlStateNormal];
+	[btn setBackgroundImage:backgroundImage forState:UIControlStateNormal];
+	[btn setBackgroundImage:highlightedBackgroundImage forState:UIControlStateHighlighted];
 	return btn;
 }
 
@@ -61,8 +61,8 @@
 + (id) buttonWithFrame:(CGRect)frame image:(UIImage*)image highlightedImage:(UIImage*)highlightedImage{
 	UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
 	btn.frame = frame;
-	if(image!=nil) [btn setImage:image forState:UIControlStateNormal];
-	if(highlightedImage!=nil) [btn setImage:image forState:UIControlStateHighlighted];
+	[btn setImage:image forState:UIControlStateNormal];
+	[btn setImage:image forState:UIControlStateHighlighted];
 	return btn;
 }
 

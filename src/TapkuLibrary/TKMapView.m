@@ -66,7 +66,6 @@
 - (void)dealloc {
 	target = nil;
 	action = nil;
-    [super dealloc];
 }
 
 @end
@@ -97,11 +96,6 @@
 	pinMode = NO;
 
     return self;
-}
-- (void)dealloc {
-	[overlay release];
-	[mapView release];
-    [super dealloc];
 }
 
 - (void) didTouch{

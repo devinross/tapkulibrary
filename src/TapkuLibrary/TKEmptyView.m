@@ -32,7 +32,72 @@
 #import "TKEmptyView.h"
 #import "TKGlobal.h"
 #import "UIImage+TKCategory.h"
-#import "UIView+TKCategory.h"
+
+
+//@interface UIView (TKEmptyViewCategory)
+//+ (void) drawGradientInRect:(CGRect)rect withColors:(NSArray*)colors;
+//@end
+
+@implementation UIView (TKEmptyViewCategory)
+
++ (void) drawGradientInRect:(CGRect)rect withColors:(NSArray*)colors{
+	
+	NSMutableArray *ar = [NSMutableArray array];
+	for(UIColor *c in colors) [ar addObject:(id)c.CGColor];
+	
+	
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	CGContextSaveGState(context);
+	
+	
+	
+	CGColorSpaceRef colorSpace = CGColorGetColorSpace([[colors lastObject] CGColor]);
+	CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)ar, NULL);
+	
+	
+	CGContextClipToRect(context, rect);
+	
+	CGPoint start = CGPointMake(0.0, 0.0);
+	CGPoint end = CGPointMake(0.0, rect.size.height);
+	
+	CGContextDrawLinearGradient(context, gradient, start, end, kCGGradientDrawsBeforeStartLocation | kCGGradientDrawsAfterEndLocation);
+	
+	CGGradientRelease(gradient);
+	CGContextRestoreGState(context);
+	
+}
+
+@end
+
+
+//@interface UIImage (TKEmptyViewCategory)
+//- (void) drawMaskedGradientInRect:(CGRect)rect withColors:(NSArray*)colors;
+//@end
+
+@implementation UIImage (TKEmptyViewCategory)
+
+- (void) drawMaskedGradientInRect:(CGRect)rect withColors:(NSArray*)colors{
+	
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	CGContextSaveGState(context);
+	
+	CGContextTranslateCTM(context, 0.0, rect.size.height);
+	CGContextScaleCTM(context, 1.0, -1.0);
+	
+	rect.origin.y = rect.origin.y * -1;
+	
+	CGContextClipToMask(context, rect, self.CGImage);
+	
+	[UIView drawGradientInRect:rect withColors:colors];
+	
+	CGContextRestoreGState(context);
+}
+
+@end
+
+
+
+
 
 @interface TKEmptyView()
 
@@ -44,41 +109,47 @@
 
 #pragma mark -
 @implementation TKEmptyView
-@synthesize imageView,titleLabel,subtitleLabel;
+@synthesize imageView=_imageView,titleLabel=_titleLabel,subtitleLabel=_subtitleLabel;
 
 
 - (id) initWithFrame:(CGRect)frame mask:(UIImage*)image title:(NSString*)titleString subtitle:(NSString*)subtitleString{
     if(!(self=[super initWithFrame:frame])) return nil;
-		
     self.backgroundColor = [UIColor whiteColor];
+	
+	UIColor *top = [UIColor colorWithRed:242/255.0 green:244/255.0 blue:246/255.0 alpha:1];
+	UIColor *bot = [UIColor colorWithRed:225/255.0 green:229/255.0 blue:235/255.0 alpha:1];
+	
+	self.colors = [NSArray arrayWithObjects:top,bot,nil];
+	self.startPoint = CGPointZero;
+	self.endPoint = CGPointMake(0, 1);
     
-    titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.font = [UIFont boldSystemFontOfSize:18];
-    titleLabel.textColor = [UIColor colorWithRed:128/255. green:136/255. blue:149/255. alpha:1];
-    titleLabel.textAlignment = UITextAlignmentCenter;
-    titleLabel.shadowColor = [UIColor whiteColor];
-    titleLabel.shadowOffset = CGSizeMake(0, 1);
+    _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    _titleLabel.backgroundColor = [UIColor clearColor];
+    _titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    _titleLabel.textColor = [UIColor colorWithRed:128/255. green:136/255. blue:149/255. alpha:1];
+    _titleLabel.textAlignment = UITextAlignmentCenter;
+    _titleLabel.shadowColor = [UIColor whiteColor];
+    _titleLabel.shadowOffset = CGSizeMake(0, 1);
     
-    titleLabel.text = titleString;
+    _titleLabel.text = titleString;
     
-    subtitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    subtitleLabel.backgroundColor = [UIColor clearColor];
-    subtitleLabel.font = [UIFont systemFontOfSize:14];
-    subtitleLabel.textColor = [UIColor colorWithRed:128/255. green:136/255. blue:149/255. alpha:1];
-    subtitleLabel.textAlignment = UITextAlignmentCenter;
-    subtitleLabel.shadowColor = [UIColor whiteColor];
-    subtitleLabel.shadowOffset = CGSizeMake(0, 1);
+    _subtitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    _subtitleLabel.backgroundColor = [UIColor clearColor];
+    _subtitleLabel.font = [UIFont systemFontOfSize:14];
+    _subtitleLabel.textColor = [UIColor colorWithRed:128/255. green:136/255. blue:149/255. alpha:1];
+    _subtitleLabel.textAlignment = UITextAlignmentCenter;
+    _subtitleLabel.shadowColor = [UIColor whiteColor];
+    _subtitleLabel.shadowOffset = CGSizeMake(0, 1);
     
-    subtitleLabel.text = subtitleString;
+    _subtitleLabel.text = subtitleString;
     
-    imageView = [[UIImageView alloc] initWithImage:[self maskedImageWithImage:image]];
-    imageView.frame = CGRectMake((int)(frame.size.width/2)-(imageView.frame.size.width/2), (int)(frame.size.height/2)-(imageView.frame.size.height/2), imageView.image.size.width, imageView.image.size.height);
+    _imageView = [[UIImageView alloc] initWithImage:[self maskedImageWithImage:image]];
+    _imageView.frame = CGRectMake((int)(frame.size.width/2)-(_imageView.frame.size.width/2), (int)(frame.size.height/2)-(_imageView.frame.size.height/2), _imageView.image.size.width, _imageView.image.size.height);
 
     
-    [self addSubview:imageView];
-    [self addSubview:subtitleLabel];
-    [self addSubview:titleLabel];
+    [self addSubview:_imageView];
+    [self addSubview:_subtitleLabel];
+    [self addSubview:_titleLabel];
     
 
 		
@@ -92,35 +163,25 @@
 - (id) initWithFrame:(CGRect)frame {
 	return [self initWithFrame:frame emptyViewImage:TKEmptyViewImageStar title:@"" subtitle:@""];
 }
-- (void) dealloc {
-	
-	[subtitleLabel release];
-	[titleLabel release];
-	[imageView release];
-	
-    [super dealloc];
-}
 
 
-- (void) drawRect:(CGRect)rect{
-	UIColor *top = [UIColor colorWithRed:242/255.0 green:244/255.0 blue:246/255.0 alpha:1];
-	UIColor *bot = [UIColor colorWithRed:225/255.0 green:229/255.0 blue:235/255.0 alpha:1];
-	[UIView drawGradientInRect:rect withColors:[NSArray arrayWithObjects:top,bot,nil]];
-}
 - (void) layoutSubviews{	
-	CGRect rect = self.frame;
+	CGSize s = self.bounds.size;
 	
-	imageView.frame = CGRectMake((int)(rect.size.width/2)-(imageView.frame.size.width/2), (int)(rect.size.height/2)-(imageView.frame.size.height/2 + imageView.frame.size.height/8), imageView.image.size.width, imageView.image.size.height);
-	titleLabel.frame = CGRectMake((int)0, (int)MAX( rect.size.height/2 +  rect.size.height/4,(int)imageView.frame.origin.y+imageView.frame.size.height+4) , rect.size.width , 20);
-	subtitleLabel.frame = CGRectMake((int)0, titleLabel.frame.origin.y + titleLabel.frame.size.height , rect.size.width , 16);
+	CGRect ir = _imageView.bounds;
+	ir.origin = CGPointMake( (int)(s.width/2)-(ir.size.width/2), (int)(s.height/2)-(ir.size.height/2 + ir.size.height/8));
+	
+	_imageView.frame = ir;
+	
+	_titleLabel.frame = CGRectMake(0,(int) MAX( s.height/2+s.height/4,(int)ir.origin.y+ir.size.height+4) , s.width , 20);
+	_subtitleLabel.frame = CGRectMake((int)0, _titleLabel.frame.origin.y + _titleLabel.frame.size.height , s.width , 16);
 	
 }
 
 
 - (void) setImage:(UIImage*)image{
-	imageView.image = [self maskedImageWithImage:image];
-	CGRect rect = self.frame;
-	imageView.frame = CGRectMake((int)(rect.size.width/2)-(imageView.frame.size.width/2), (int)(rect.size.height/2)-(imageView.frame.size.height/2 + imageView.frame.size.height/8), imageView.image.size.width, imageView.image.size.height);
+	_imageView.image = [self maskedImageWithImage:image];
+	[self setNeedsLayout];
 }
 - (void) setEmptyImage:(TKEmptyViewImage)image{
 	[self setImage:[self predefinedImage:image]];

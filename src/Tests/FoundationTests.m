@@ -31,7 +31,6 @@
 
 #import "FoundationTests.h"
 
-
 @implementation FoundationTests
 
 - (void) testStringCategory{
@@ -43,8 +42,8 @@
     STAssertTrue([string isEmail], @"Expected '%@' to be a valid email", string);
     
     
-    string = @"aosda.bOb@sANDdsadrs.c";
-    STAssertTrue([string isEmail], @"Expected '%@' to be a invalid email", string);
+    string = @"ao123sda.b2132Ob@sAND123123dsadrs.c";
+    STAssertTrue([string isEmail], @"Expected '%@' to be a valid email", string);
     
     
     string = @"ao,sda.bOb@sANDdsadrs.c";
@@ -54,7 +53,7 @@
     STAssertFalse([string isEmail], @"Expected '%@' to be an invalid email", string);
     
 	
-	string = @"b.d";
+	string = @"@b.d";
     STAssertFalse([string isEmail], @"Expected '%@' to be an invalid email", string);
     
 	
@@ -70,11 +69,11 @@
 	date = [NSDate yesterday];
     STAssertFalse([date isToday],@"Expected %@ is not today.",date);
     
-	date = [NSDate dateWithTimeIntervalSinceNow:-60 * 60 * 40];
+    date = [NSDate dateWithTimeIntervalSinceNow:-60 * 60 * 40];
     STAssertFalse([date isToday],@"Expected %@ is not today.",date);
     
 	
-	date = [NSDate yesterday];
+    date = [NSDate yesterday];
     date2 = [NSDate date];
     STAssertFalse([date isSameDay:date2],@"Expected %@ is not same day as %@.",date,date2);
     
@@ -93,16 +92,13 @@
 	
 	
 }
-
-
-
 - (void) testArrayCategory{
 	
 	
-	STAssertThrows([[NSArray array] firstObject],@"THROWS");
+	STAssertThrows([[NSArray array] firstObject],@"Throws exception because empty arrays don't have objects");
 	
 	NSArray *ar = [NSArray arrayWithObjects:@"BOB",nil];
-	STAssertNoThrow([ar firstObject],@"THROWS");
+	STAssertNoThrow([ar firstObject],@"Doesn't throw exception.");
 
 	
 }

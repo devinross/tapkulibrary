@@ -38,7 +38,12 @@
 @synthesize  progress=_progress,twirlMode=_twirlMode;
 
 - (id) init{
-	if(!(self=[super initWithFrame:CGRectMake(0, 0, 40, 40)])) return nil;
+	self = [self initWithFrame:CGRectZero];	
+	return self;
+}
+- (id) initWithFrame:(CGRect)frame {
+	frame.size = CGSizeMake(40,40);
+	if(!(self = [super initWithFrame:frame])) return nil;
 	
 	self.backgroundColor = [UIColor clearColor];
 	self.userInteractionEnabled = NO;
@@ -47,10 +52,6 @@
 	_displayProgress = 0;
 	_twirlMode = NO;
 	
-	return self;
-}
-- (id) initWithFrame:(CGRect)frame {
-	self = [self init];
 	return self;
 }
 - (void) drawRect:(CGRect)rect {
@@ -64,8 +65,6 @@
     CGContextAddEllipseInRect(context, r);
 	CGContextStrokePath(context);
 	
-	// CGContextSetRGBFillColor(context, 1.0, 0.0, 1.0, 1.0);
-	// CGContextFillEllipseInRect(context, rr);
 	
 	CGContextSetRGBFillColor(context,1,1,1,1);
 	
@@ -127,16 +126,12 @@
 	p = MIN(MAX(0.0,p),1.0);
 	
 	if(animated){
-		
 		_progress = p;
 		[self updateProgress];
-		//_displayProgress += AnimationIncrement;
-		//[self performSelector:@selector(updateProgress) withObject:nil afterDelay:AnimationTimer];
 	}else{
 		_progress = p;
 		_displayProgress = _progress;
 		[self setNeedsDisplay];
-
 	}
 
 	
@@ -146,13 +141,13 @@
 }
 - (void) setTwirlMode:(BOOL)t{
 	if(t==_twirlMode) return;
+	
 	_twirlMode = t;
 	
 	if(!_twirlMode){
 		[self setProgress:_progress animated:NO];
 		return;
 	}
-	
 	
 	_displayProgress = 0;
 	

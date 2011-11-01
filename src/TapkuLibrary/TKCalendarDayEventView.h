@@ -51,8 +51,8 @@
 @property (nonatomic, copy) NSDate *endDate;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *location;
-@property (nonatomic, retain) UIColor *balloonColorTop;
-@property (nonatomic, retain) UIColor *balloonColorBottom;
+@property (nonatomic, strong) UIColor *balloonColorTop;
+@property (nonatomic, strong) UIColor *balloonColorBottom;
 @property (nonatomic, copy) UIColor *textColor;
 
 - (void)setupCustomInitialisation;

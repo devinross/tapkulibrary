@@ -41,14 +41,14 @@
 	
 	MKMapView *mapView;
 	BOOL pinMode;
-	id <TKMapViewDelegate> delegate;
+	id <TKMapViewDelegate> __unsafe_unretained delegate;
 	
 	@private 
 	TKOverlayView *overlay;
 }
 @property (assign,nonatomic) BOOL pinMode;
-@property (retain,nonatomic) MKMapView *mapView;
-@property (assign,nonatomic) id <TKMapViewDelegate> delegate;
+@property (strong,nonatomic) MKMapView *mapView;
+@property (unsafe_unretained,nonatomic) id <TKMapViewDelegate> delegate;
 @end
 
 

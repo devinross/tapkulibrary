@@ -35,10 +35,8 @@
 @class TKWindow;
 
 @interface TKAppDelegate : NSObject <UIApplicationDelegate> {
-	TKWindow *_window;
+	UIWindow *_window;
 }
-
-@property (nonatomic,retain) TKWindow *window;
 
 
 // For subclassing, default implentation does nothing.

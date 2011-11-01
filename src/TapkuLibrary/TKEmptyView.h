@@ -31,6 +31,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "TKGradientView.h"
 
 typedef enum {
 	TKEmptyViewImageChatBubble,
@@ -53,14 +54,14 @@ typedef enum {
 
 
 
-@interface TKEmptyView : UIView {	
-	UILabel *titleLabel, *subtitleLabel;
-	UIImageView *imageView;
+@interface TKEmptyView : TKGradientView {	
+	UILabel *_titleLabel, *_subtitleLabel;
+	UIImageView *_imageView;
 }
 
-@property (retain,nonatomic) UIImageView *imageView;
-@property (retain,nonatomic) UILabel *titleLabel;
-@property (retain,nonatomic) UILabel *subtitleLabel;
+@property (strong,nonatomic) UIImageView *imageView;
+@property (strong,nonatomic) UILabel *titleLabel;
+@property (strong,nonatomic) UILabel *subtitleLabel;
 
 - (id) initWithFrame:(CGRect)frame 
 				mask:(UIImage*)image 

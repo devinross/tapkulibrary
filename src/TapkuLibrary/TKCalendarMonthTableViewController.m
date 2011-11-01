@@ -39,10 +39,6 @@
 	self.tableView.dataSource = nil;
 	self.tableView = nil;
 }
-- (void) dealloc {
-	self.tableView = nil;
-    [super dealloc];
-}
 
 - (void) loadView{
 	[super loadView];
@@ -75,7 +71,7 @@
     
     UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
 
 	

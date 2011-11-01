@@ -32,8 +32,8 @@
 #import <UIKit/UIKit.h>
 
 
-@interface TKLabelCell : UITableViewCell {
-	UILabel *_label;
-}
-@property (retain, nonatomic) UILabel *label;
+@interface TKLabelCell : UITableViewCell 
+
+@property (strong, nonatomic) UILabel *label;
+
 @end

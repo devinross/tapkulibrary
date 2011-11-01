@@ -32,9 +32,9 @@
 
 #import "TKLabelCell.h"
 
-@interface TKLabelFieldCell : TKLabelCell {
-	UILabel *_field;
-}
-@property (retain, nonatomic) UILabel *field;
+@interface TKLabelFieldCell : TKLabelCell 
+
+@property (strong, nonatomic) UILabel *field;
+
 @end
 

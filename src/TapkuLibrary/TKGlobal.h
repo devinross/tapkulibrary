@@ -29,9 +29,21 @@
  
 */
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 #define TKBUNDLE(_URL) [TKGlobal fullBundlePath:_URL]
+
+#define CAScale(_X,_Y,_Z) CATransform3DMakeScale(_X,_Y,_Z)
+#define CARotate(_ANGLE,_X,_Y,_Z) CATransform3DMakeRotation(_ANGLE,_X,_Y,_Z)
+#define CATranslate(_X,_Y,_Z) CATransform3DMakeTranslation(_X,_Y,_Z)
+#define CAConcat(_ONE,_TWO) CATransform3DConcat(_ONE,_TWO)
+
+#define CGScale(_X,_Y) CGAffineTransformMakeScale(_X,_Y)
+#define CGRotate(_ANGLE) CGAffineTransformMakeRotation(_ANGLE)
+#define CGTranslate(_X,_Y) CGAffineTransformMakeTranslation(_X,_Y)
+#define CGConcat(_ONE,_TWO) CGAffineTransformConcat(_ONE,_TWO)
 
 @interface TKGlobal : NSObject 
 

@@ -1,6 +1,6 @@
 //
 //  TKViewController.m
-//  Created by Devin Ross on 11/24/10.
+//  Created by Devin Ross on 11/1/11.
 //
 /*
  
@@ -30,32 +30,76 @@
  */
 
 #import "TKViewController.h"
-#import "TKNavigationController.h"
+#import "TKHTTPRequest.h"
+#import "NSArray+TKCategory.h"
 
 @implementation TKViewController
-@synthesize customNavigationItem = _customNavigationItem;
+@synthesize loadingView = _loadingView;
 
-
-
-- (id) init{
-	if(!(self=[super init])) return nil;
-	_customNavigationItem = [[TKNavigationItem alloc] initWithTitle:[super navigationItem].title];
-	_customNavigationItem.leftBarButtonItem = [super navigationItem].leftBarButtonItem;
-	_customNavigationItem.rightBarButtonItem = [super navigationItem].rightBarButtonItem;
-	return self;
+- (void) viewDidUnload{
+	self.loadingView = nil;
+	[super viewDidUnload];
 }
-- (void)dealloc {
-	[_customNavigationItem release];
-    [super dealloc];
+- (void) dealloc{
+	
+	if(_activeRequests){
+		for(TKHTTPRequest *request in _activeRequests)
+			[request cancel];
+	}
+	
+}
+
+#pragma mark - EASILY MANAGE ACTIVE REQUESTS
+- (void) addActiveRequest:(TKHTTPRequest*)request{
+	
+	if(_activeRequests==nil){
+		_activeRequests = [[NSMutableArray alloc] init];
+	}
+	[_activeRequests addObject:request];
+	
+}
+- (void) removeActiveRequest:(TKHTTPRequest*)request{
+	
+	if([_activeRequests containsObject:request])
+		[_activeRequests removeObject:request];
 }
 
 
-- (void) setTitle:(NSString *)t{
-	[super setTitle:t];
-	self.customNavigationItem.title = t;
+#pragma mark - PROCESS JSON IN THE BACKGROUND
+- (void) processJSONDataInBackground:(NSData*)data withCallback:(SEL)callback{
+	[self processJSONDataInBackground:data withCallback:callback readingOptions:NSJSONReadingMutableContainers];
 }
-- (UINavigationItem *) navigationItem{	
-   return (self.customNavigationItem)?(self.customNavigationItem):([super navigationItem]);
+- (void) processJSONDataInBackground:(NSData*)data withCallback:(SEL)callback readingOptions:(NSJSONReadingOptions)options{
+	NSArray *object = [NSArray arrayWithObjects:data,NSStringFromSelector(callback),[NSNumber numberWithUnsignedInt:options], nil];
+	[self performSelectorInBackground:@selector(_processJSONData:) withObject:object];
 }
-   
+- (void) _processJSONData:(NSArray*)array{
+	@autoreleasepool {
+		NSError *error = nil;
+		id object = [NSJSONSerialization JSONObjectWithData:[array firstObject] options:[[array lastObject] unsignedIntValue] error:&error];
+		[self performSelectorOnMainThread:NSSelectorFromString([array objectAtIndex:1]) withObject:object waitUntilDone:NO];
+	}
+}
+
+
+
+
+#pragma mark - PROPERTIES
+- (UIView*) loadingView{
+	if(_loadingView==nil){
+		_loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
+		_loadingView.backgroundColor = [UIColor clearColor];
+		_loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+		
+		UIActivityIndicatorView *act = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+		act.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+		
+		act.center = _loadingView.center;
+		[act startAnimating];
+		[_loadingView addSubview:act];
+	}
+	return _loadingView;
+}
+
+
 @end

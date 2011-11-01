@@ -42,7 +42,6 @@
 
 @interface FoundationTests : SenTestCase 
 
-
 - (void) testStringCategory;
 - (void) testDateCategory;
 - (void) testArrayCategory;

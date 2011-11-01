@@ -36,11 +36,12 @@
 
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-	if(![super initWithStyle:style reuseIdentifier:reuseIdentifier]) return nil;
+	if(!(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
 	
 	_textView = [[UITextView alloc] initWithFrame:CGRectZero];
 	_textView.font = [UIFont boldSystemFontOfSize:14.0];
-	[self addSubview:_textView];
+	_textView.backgroundColor = [UIColor clearColor];
+	[self.contentView addSubview:_textView];
 	
 	return self;
 }
@@ -51,7 +52,7 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-	CGRect r = CGRectInset(self.bounds, 16, 8);
+	CGRect r = CGRectInset(self.contentView.bounds, 4, 8);
 	_textView.frame = r;
 }
 
@@ -70,10 +71,6 @@
 	
 }
 
-- (void) dealloc {
-	[_textView release];
-	[super dealloc];
-}
 
 
 @end

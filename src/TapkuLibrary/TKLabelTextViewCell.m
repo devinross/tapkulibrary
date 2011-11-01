@@ -31,13 +31,16 @@
 
 #import "TKLabelTextViewCell.h"
 
-
 @implementation TKLabelTextViewCell
 @synthesize textView=_textView;
+
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
 	if(!(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
     
     _textView = [[UITextView alloc] initWithFrame:CGRectZero];
+	_textView.contentInset = UIEdgeInsetsZero;
+	_textView.backgroundColor = [UIColor clearColor];
+
     [self.contentView addSubview:_textView];
 	
     
@@ -47,18 +50,14 @@
 	self = [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
 	return self;
 }
-- (void) dealloc {
-	[_textView release];
-	[super dealloc];
-}
 
 - (void) layoutSubviews {
     [super layoutSubviews];
 	
 	
 	CGRect r = CGRectInset(self.contentView.bounds, 8, 8);
-	r.origin.x += self.label.frame.size.width + 6;
-	r.size.width -= self.label.frame.size.width + 6;
+	r.origin.x += self.label.frame.size.width + 0;
+	r.size.width -= self.label.frame.size.width + 0;
 	_textView.frame = r;
 
 }

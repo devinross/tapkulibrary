@@ -52,16 +52,16 @@
 	UILabel *monthYear;	
 }
 
-@property (nonatomic, readonly) UIScrollView *scrollView;
-@property (nonatomic, readonly) TKTimelineView *timelineView;
+@property (unsafe_unretained, nonatomic, readonly) UIScrollView *scrollView;
+@property (unsafe_unretained, nonatomic, readonly) TKTimelineView *timelineView;
 
-@property (nonatomic, retain) NSArray *events;
+@property (nonatomic, strong) NSArray *events;
 @property (nonatomic, copy) NSDate *currentDay;
 
-@property (nonatomic, retain) id <TKCalendarDayTimelineViewDelegate> delegate;
+@property (nonatomic, strong) id <TKCalendarDayTimelineViewDelegate> delegate;
 
-@property (nonatomic, retain) UIColor *timelineColor;
-@property (nonatomic, retain) UIColor *hourColor;
+@property (nonatomic, strong) UIColor *timelineColor;
+@property (nonatomic, strong) UIColor *hourColor;
 @property (nonatomic) BOOL is24hClock;
 
 // Initialisation
@@ -92,7 +92,7 @@
 
 @property (nonatomic, readonly) NSArray *times;
 @property (nonatomic, readonly) NSArray *periods;
-@property (nonatomic, retain) UIColor *hourColor;
+@property (nonatomic, strong) UIColor *hourColor;
 @property (nonatomic) BOOL is24hClock;
 
 // Initialisation

@@ -34,7 +34,7 @@
 @implementation NSString (TKCategory)
 
 
--(BOOL) isEmail{
+- (BOOL) isEmail{
 	
     NSString *emailRegEx =  
 	@"(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"  
@@ -49,10 +49,8 @@
     return [regExPredicate evaluateWithObject:[self lowercaseString]];  
 }
 
-
 - (NSString*) URLEncode{
-	NSString* encodedString = (NSString*)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)self, NULL,(CFStringRef)@":/=,!$&'()*+;[]@#?",  kCFStringEncodingUTF8);
-	return [NSMakeCollectable(encodedString) autorelease];
+	return [self stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
 }
 
 
@@ -99,10 +97,9 @@
 	return s;
 }
 
-
 - (NSString *) unescapeHTML{
 	NSMutableString *s = [NSMutableString string];
-	NSMutableString *target = [[self mutableCopy] autorelease];
+	NSMutableString *target = [self mutableCopy];
 	NSCharacterSet *chs = [NSCharacterSet characterSetWithCharactersInString:@"&"];
 	
 	while ([target length] > 0) {
@@ -143,7 +140,6 @@
 	
 	return s;
 }
-
 
 - (NSString*) stringByRemovingHTML{
 	

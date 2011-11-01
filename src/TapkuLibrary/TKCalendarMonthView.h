@@ -46,14 +46,14 @@
 	UIScrollView *tileBox;
 	BOOL sunday;
 
-	id <TKCalendarMonthViewDelegate> delegate;
-	id <TKCalendarMonthViewDataSource> dataSource;
+	id <TKCalendarMonthViewDelegate> __unsafe_unretained delegate;
+	id <TKCalendarMonthViewDataSource> __unsafe_unretained dataSource;
 
 }
 - (id) initWithSundayAsFirst:(BOOL)sunday; // or Monday
 
-@property (nonatomic,assign) id <TKCalendarMonthViewDelegate> delegate;
-@property (nonatomic,assign) id <TKCalendarMonthViewDataSource> dataSource;
+@property (nonatomic,unsafe_unretained) id <TKCalendarMonthViewDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id <TKCalendarMonthViewDataSource> dataSource;
 
 - (NSDate*) dateSelected;
 - (NSDate*) monthDate;

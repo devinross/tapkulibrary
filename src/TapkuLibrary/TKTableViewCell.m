@@ -57,10 +57,6 @@
     self=[self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
 	return self;
 }
-- (void) dealloc{
-	[_mainView release];
-	[super dealloc];
-}
 
 - (void) layoutSubviews{
 	[super layoutSubviews];

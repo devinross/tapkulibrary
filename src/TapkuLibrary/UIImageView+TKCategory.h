@@ -34,5 +34,6 @@
 @interface UIImageView (TKCategory)
 
 + (id) imageViewWithImageNamed:(NSString*)imageName;
++ (id) imageViewWithFrame:(CGRect)frame;
 
 @end

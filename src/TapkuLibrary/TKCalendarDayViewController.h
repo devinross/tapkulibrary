@@ -37,6 +37,6 @@
 	TKCalendarDayTimelineView *_calendarDayTimelineView;
 }
 
-@property (nonatomic, assign) TKCalendarDayTimelineView *calendarDayTimelineView;
+@property (nonatomic, unsafe_unretained) TKCalendarDayTimelineView *calendarDayTimelineView;
 
 @end

@@ -85,7 +85,7 @@
 
 + (id)eventViewWithFrame:(CGRect)frame id:(NSNumber *)id startDate:(NSDate *)startDate endDate:(NSDate *)endDate title:(NSString *)title location:(NSString *)location;
 {
-	TKCalendarDayEventView *event = [[[TKCalendarDayEventView alloc]initWithFrame:frame]autorelease];
+	TKCalendarDayEventView *event = [[TKCalendarDayEventView alloc]initWithFrame:frame];
 	event.id = id;
 	event.startDate = startDate;
 	event.endDate = endDate;
@@ -118,7 +118,7 @@
 			lowerColor = balloonColorBottom;
 		}
 		//create a colorspace and linear gradient from the colors
-		CFArrayRef colors = (CFArrayRef)[NSArray arrayWithObjects:(id)[balloonColorTop CGColor], (id)[lowerColor CGColor], nil];		
+		CFArrayRef colors = (__bridge CFArrayRef)[NSArray arrayWithObjects:(id)[balloonColorTop CGColor], (id)[lowerColor CGColor], nil];		
 		CGColorSpaceRef myColorspace = CGColorSpaceCreateDeviceRGB();
 		CGGradientRef myGradient = CGGradientCreateWithColors(myColorspace, colors, NULL);
 		//draw the gradient
@@ -170,18 +170,6 @@
 	CGContextRestoreGState(context);
 }
 
-- (void)dealloc {
-	[_id release];
-	[_startDate release];
-	[_endDate release];
-	[_title release];
-	[_location release];
-	[balloonColorTop release];
-	[balloonColorBottom release];	
-	[textColor release];
-	
-    [super dealloc];
-}
 
 
 
