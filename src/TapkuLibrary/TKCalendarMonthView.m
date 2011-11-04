@@ -660,7 +660,6 @@
 	currentTile = [[TKCalendarMonthTiles alloc] initWithMonth:[[NSDate date] firstOfMonth] marks:nil startDayOnSunday:sunday];
 	[currentTile setTarget:self action:@selector(tile:)];
 	
-	[currentTile setTarget:self action:@selector(tile:)];
 	CGRect r = CGRectMake(0, 0, self.tileBox.bounds.size.width, self.tileBox.bounds.size.height + self.tileBox.frame.origin.y);
 
 	
