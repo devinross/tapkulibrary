@@ -70,7 +70,6 @@
 - (void) setImage:(UIImage *)img{
 	
 	UIImage *image = img;
-	image = img;
 	
 	float w = image.size.width;
 	float h = image.size.height;
