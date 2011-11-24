@@ -66,18 +66,93 @@
 
 
 #pragma mark - PROCESS JSON IN THE BACKGROUND
-- (void) processJSONDataInBackground:(NSData*)data withCallback:(SEL)callback{
-	[self processJSONDataInBackground:data withCallback:callback readingOptions:NSJSONReadingMutableContainers];
+
+- (void) processJSONDataInBackground:(NSData *)data withCallbackSelector:(SEL)callback{
+	
+	[self processJSONDataInBackground:data 
+				 withCallbackSelector:callback 
+				   backgroundSelector:nil 
+						errorSelector:nil 
+					   readingOptions:0];
+	
 }
-- (void) processJSONDataInBackground:(NSData*)data withCallback:(SEL)callback readingOptions:(NSJSONReadingOptions)options{
-	NSArray *object = [NSArray arrayWithObjects:data,NSStringFromSelector(callback),[NSNumber numberWithUnsignedInt:options], nil];
-	[self performSelectorInBackground:@selector(_processJSONData:) withObject:object];
+
+- (void) processJSONDataInBackground:(NSData *)data withCallbackSelector:(SEL)callback readingOptions:(NSJSONReadingOptions)options{
+	
+	[self processJSONDataInBackground:data 
+				 withCallbackSelector:callback 
+				   backgroundSelector:nil 
+						errorSelector:nil 
+					   readingOptions:options];
+
 }
+
+- (void) processJSONDataInBackground:(NSData *)data withCallbackSelector:(SEL)callback backgroundSelector:(SEL)backgroundProcessor readingOptions:(NSJSONReadingOptions)options{
+	
+	[self processJSONDataInBackground:data 
+				 withCallbackSelector:callback 
+				   backgroundSelector:backgroundProcessor 
+						errorSelector:nil 
+					   readingOptions:options];
+
+}
+
+- (void) processJSONDataInBackground:(NSData *)data withCallbackSelector:(SEL)callback backgroundSelector:(SEL)backgroundProcessor errorSelector:(SEL)errroSelector{
+	
+	[self processJSONDataInBackground:data 
+				 withCallbackSelector:callback 
+				   backgroundSelector:backgroundProcessor 
+						errorSelector:errroSelector 
+					   readingOptions:0];
+
+}
+
+
+- (void) processJSONDataInBackground:(NSData *)data 
+				withCallbackSelector:(SEL)callback 
+				  backgroundSelector:(SEL)backgroundProcessor 
+					   errorSelector:(SEL)errroSelector 
+					  readingOptions:(NSJSONReadingOptions)options{
+	
+	
+	NSMutableArray *ar = [NSMutableArray arrayWithObjects:data,[NSNumber numberWithUnsignedInt:options],nil];
+	
+	
+	if(callback) [ar addObject:NSStringFromSelector(callback)];
+	if(backgroundProcessor) [ar addObject:NSStringFromSelector(backgroundProcessor)];
+	if(errroSelector) [ar addObject:NSStringFromSelector(errroSelector)];
+	
+	[self performSelectorInBackground:@selector(_processJSONData:) withObject:ar];
+
+	
+}
+
+
 - (void) _processJSONData:(NSArray*)array{
 	@autoreleasepool {
 		NSError *error = nil;
-		id object = [NSJSONSerialization JSONObjectWithData:[array firstObject] options:[[array lastObject] unsignedIntValue] error:&error];
-		[self performSelectorOnMainThread:NSSelectorFromString([array objectAtIndex:1]) withObject:object waitUntilDone:NO];
+		
+		NSData *data = [array objectAtIndex:0];
+		NSUInteger options = [[array objectAtIndex:1] unsignedIntValue];
+		
+		NSString *callback = array.count > 2 ? [array objectAtIndex:2] : nil;
+		NSString *background = array.count > 3 ? [array objectAtIndex:3] : nil;
+		NSString *eSelector = array.count > 4 ? [array objectAtIndex:4] : nil;
+
+		
+		id object = [NSJSONSerialization JSONObjectWithData:data options:options error:&error];
+		
+
+		
+		if(error){
+			if(eSelector) [self performSelector:NSSelectorFromString(eSelector) withObject:error];
+		}else{
+			if(background) 
+				object = [self performSelector:NSSelectorFromString(background) withObject:object];
+			[self performSelectorOnMainThread:NSSelectorFromString(callback) withObject:object waitUntilDone:NO];
+		}
+		
+		
 	}
 }
 

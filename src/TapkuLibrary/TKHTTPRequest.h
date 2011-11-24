@@ -38,7 +38,6 @@ typedef void (^TKBasicBlock)(void);
 #endif
 
 
-
 typedef enum _TKNetworkErrorType {
     TKConnectionFailureErrorType = 1,
     TKRequestTimedOutErrorType = 2,
@@ -50,15 +49,8 @@ typedef enum _TKNetworkErrorType {
 	TKFileManagementError = 8,
 	TKTooMuchRedirectionErrorType = 9,
 	TKUnhandledExceptionError = 10,
-	
 } TKNetworkErrorType;
 
-
-typedef enum TKOperationState {
-    TKOperationStateInited, 
-    TKOperationStateExecuting, 
-    TKOperationStateFinished
-} TKOperationState;
 
 
 
@@ -66,37 +58,14 @@ typedef enum TKOperationState {
 
 @protocol TKHTTPRequestProgressDelegate <NSObject>
 @optional
-- (void) request:(TKHTTPRequest*)request didProgressToPercentage:(double)percentage;
+- (void) request:(TKHTTPRequest*)request didReceiveTotalBytes:(NSInteger)received ofExpectedBytes:(NSInteger)total;
 @end
 
 
 @interface TKHTTPRequest : NSOperation {
 
-	NSURL *_URL;
-	NSURLConnection *_connection;
-	NSMutableData *_data;
-	
-	
-	NSError *_error;
-	TKOperationState _state;
-	
-	BOOL _showNetworkActivity;
-	
 
-	
-	double _totalExpectedImageSize,_receivedDataBytes;
-	
-	
-	// Used for writing data to a file when downloadDestinationPath is set
-	NSFileHandle *_fileHandler;
-	NSString *_downloadDestinationPath;
-	NSString *_temporaryFileDownloadPath;
-
-	
-	SEL didStartSelector;
-	SEL didFinishSelector;
-	SEL didFailSelector;
-	
+	NSInteger _totalExpectedImageSize,_receivedDataBytes;
 	
 	
 	#if NS_BLOCKS_AVAILABLE
@@ -105,36 +74,31 @@ typedef enum TKOperationState {
 	TKBasicBlock failureBlock;
 	#endif
 	
-	id __unsafe_unretained delegate;
-	id <TKHTTPRequestProgressDelegate> __unsafe_unretained progressDelegate;
-	NSInteger _statusCode;
-	NSDictionary *__unsafe_unretained _responseHeaders;
-	
-	NSUInteger _tag;
 	
 }
 
 + (TKHTTPRequest*) requestWithURL:(NSURL*)URL;
 - (id) initWithURL:(NSURL*)URL;
 
-@property (assign) BOOL showNetworkActivity; // for indiviual requests, default: TRUE
+@property (strong,nonatomic) NSURL *URL;
 @property (assign,nonatomic) NSUInteger tag;
-@property (strong,setter=setURL:) NSURL *URL;
+@property (assign,nonatomic) BOOL showNetworkActivity; // for indiviual requests, default: TRUE
 
-@property (unsafe_unretained) id <TKHTTPRequestProgressDelegate> progressDelegate;
+@property (unsafe_unretained,nonatomic) id <TKHTTPRequestProgressDelegate> progressDelegate;
 
 @property (unsafe_unretained,nonatomic) id delegate;
-@property (assign) SEL didStartSelector;
-@property (assign) SEL didFinishSelector;
-@property (assign) SEL didFailSelector;
+@property (assign,nonatomic) SEL didStartSelector;
+@property (assign,nonatomic) SEL didFinishSelector;
+@property (assign,nonatomic) SEL didFailSelector;
 
-@property (strong,nonatomic) NSString *downloadDestinationPath;
+@property (copy,nonatomic) NSString *downloadDestinationPath;
+@property (copy,nonatomic) NSString *temporaryFileDownloadPath;
 
 
-@property (copy,readonly) NSError *error;
-@property (readonly) NSInteger statusCode;
-@property (readonly) NSDictionary *responseHeaders;
-@property (strong,readonly) NSData *responseData;
+@property (copy,nonatomic) NSError *error;
+@property (assign,nonatomic) NSInteger statusCode;
+@property (strong,nonatomic) NSDictionary *responseHeaders;
+@property (readonly,nonatomic) NSData *responseData;
 
 - (void) startAsynchronous;
 
@@ -154,10 +118,9 @@ typedef enum TKOperationState {
 #pragma mark network activity
 + (BOOL) isNetworkInUse;
 + (void) setShouldUpdateNetworkActivityIndicator:(BOOL)shouldUpdate;
-// Shows the network activity spinner thing on iOS. You may wish to override this to do something else in Mac projects
-+ (void) showNetworkActivityIndicator;
-// Hides the network activity spinner thing on iOS
-+ (void) hideNetworkActivityIndicator;
++ (void) showNetworkActivityIndicator; // Shows the network activity spinner thing on iOS. You may wish to override this to do something else in Mac projects
++ (void) hideNetworkActivityIndicator; // Hides the network activity spinner thing on iOS
+
 
 
 

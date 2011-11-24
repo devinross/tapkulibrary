@@ -42,7 +42,15 @@
 - (void) addActiveRequest:(TKHTTPRequest*)request;
 - (void) removeActiveRequest:(TKHTTPRequest*)request;
 
-- (void) processJSONDataInBackground:(NSData*)data withCallback:(SEL)callback;
-- (void) processJSONDataInBackground:(NSData*)data withCallback:(SEL)callback readingOptions:(NSJSONReadingOptions)options;
+- (void) processJSONDataInBackground:(NSData *)data withCallbackSelector:(SEL)callback;
+
+- (void) processJSONDataInBackground:(NSData *)data withCallbackSelector:(SEL)callback readingOptions:(NSJSONReadingOptions)options;
+
+- (void) processJSONDataInBackground:(NSData *)data withCallbackSelector:(SEL)callback backgroundSelector:(SEL)backgroundProcessor readingOptions:(NSJSONReadingOptions)options;
+
+- (void) processJSONDataInBackground:(NSData *)data withCallbackSelector:(SEL)callback backgroundSelector:(SEL)backgroundProcessor errorSelector:(SEL)errroSelector;
+
+- (void) processJSONDataInBackground:(NSData *)data withCallbackSelector:(SEL)callback backgroundSelector:(SEL)backgroundProcessor errorSelector:(SEL)errroSelector readingOptions:(NSJSONReadingOptions)options;
+
 
 @end

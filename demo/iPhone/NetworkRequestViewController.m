@@ -38,28 +38,10 @@
 	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Start" style:UIBarButtonItemStyleBordered target:self action:@selector(start)] autorelease];
 	return self;
 }
-
-- (void) didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-- (void) viewDidUnload {
-    [super viewDidUnload];
-}
 - (void) dealloc {
 	[_circle release];
     [super dealloc];
 }
-
-
-- (void) request:(TKHTTPRequest*)request didProgressToPercentage:(double)percentage{
-	
-	[_circle setProgress:percentage animated:YES];
-	if(percentage<1.0) return;
-	
-
-}
-
-
 
 - (void) loadView{
 	[super loadView];
@@ -85,55 +67,49 @@
 	
 	TKHTTPRequest *req = [TKHTTPRequest requestWithURL:[NSURL URLWithString:@"http://api.dribbble.com/shots/everyone?per_page=30"]];
 	req.delegate = self;
-	req.didStartSelector = @selector(networkRequestDidStart:);
-	req.didFailSelector = @selector(networkRequestDidFail:);
 	req.didFinishSelector = @selector(networkRequestDidFinish:);
 	req.progressDelegate = self;
+	
+	
+	
+	[req setStartedBlock:^{ NSLog(@"Started... %@",req); }];
+	[req setFailedBlock:^{ NSLog(@"Failed... %@ %@",req,req.error); }];
+	
 	[req startAsynchronous];
 	
-	
-	
-
-	
-	
 }
 
-- (void) networkRequestDidStart:(TKHTTPRequest*)request{
-	NSLog(@"Started... %@",request);
-}
-- (void) networkRequestDidFail:(TKHTTPRequest*)request{
-	NSLog(@"Failed... %@ %@",request,request.error);
+- (void) request:(TKHTTPRequest*)request didReceiveTotalBytes:(NSInteger)received ofExpectedBytes:(NSInteger)total{
+	[_circle setProgress:received/total animated:YES];
 }
 - (void) networkRequestDidFinish:(TKHTTPRequest*)request{
 	
 	NSLog(@"Finished... %@",request);
 	NSData *data = [request responseData];
+	
 	if(data)
-		[self performSelectorInBackground:@selector(_processData:) withObject:data];
+		[self processJSONDataInBackground:data 
+					 withCallbackSelector:@selector(processedData:) 
+					   backgroundSelector:@selector(putJsonIntoObjects:) 
+							errorSelector:@selector(parseError:) 
+						   readingOptions:NSJSONReadingMutableContainers];
+	
 	
 	
 }
 
-- (void) _processData:(NSData*)data{
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	
-	NSError *error = nil;
-	NSDictionary *d = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-	if(error){
-		NSLog(@"ERROR %@",error);
-		return;
-	} 
-	
-	[self performSelectorOnMainThread:@selector(nowWhat:) withObject:d waitUntilDone:NO];
-	
-	[pool release];
+- (void) parseError:(NSError*)error{	
+	NSLog(@"ERROR: %@",error);
 }
-
-- (void) nowWhat:(NSDictionary*)dict{
+- (void) processedData:(NSDictionary*)dict{
+	
 	
 	if(_textView.text==nil || _textView.text.length < 1)
 		[_textView setText:[dict description]];
 	
+}
+- (id) putJsonIntoObjects:(NSDictionary*)dictionary{
+	return dictionary;	// we'll just pass back the json dictionary for now
 }
 
 @end

@@ -32,7 +32,7 @@
 #import <UIKit/UIKit.h>
 #import <TapkuLibrary/TapkuLibrary.h>
 
-@interface NetworkRequestViewController : UIViewController <TKHTTPRequestProgressDelegate> {
+@interface NetworkRequestViewController : TKViewController <TKHTTPRequestProgressDelegate> {
 	
 	UITextView *_textView;
 	TKProgressCircleView *_circle;

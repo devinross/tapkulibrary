@@ -31,7 +31,6 @@
 
 #import "TKImageCache.h"
 #import <TapkuLibrary/TapkuLibrary.h>
-//#import "ASIHTTPRequest.h"
 
 
 #pragma mark -
@@ -193,7 +192,7 @@
 		if([_requestKeys objectForKey:key])
 			[_requestKeys removeObjectForKey:key];
 	});
-	NSLog(@"request fail %@ %@",request.error,request.URL);
+	//NSLog(@"request fail %@ %@",request.error,request.URL);
 }
 
 
@@ -209,12 +208,12 @@
 
 - (void) cancelOperations{
 	[_imagesQueue cancelAllOperations];
+	[_requestKeys removeAllObjects];
 }
 - (void) clearCachedImages{
 	
 	[self removeAllObjects];
 	[_diskKeys removeAllObjects];
-	// dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 	dispatch_async(cache_queue,^{
 		
 		NSError* error = nil;
@@ -223,10 +222,6 @@
 		
 		for( NSString *file in files ) {
 			if( file != @"." && file != @".." ) {
-				
-				//if(_diskKeys) [_diskKeys removeObjectForKey:file];
-
-				
 				NSString *path = [[self cacheDirectoryPath] stringByAppendingPathComponent:file];
 				[[NSFileManager defaultManager] removeItemAtPath:path error:&error];
 				

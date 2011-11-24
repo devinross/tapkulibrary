@@ -33,252 +33,112 @@
 #import "TKNetworkQueue.h"
 
 
+typedef enum TKOperationState {
+    TKOperationStateInited = 1, 
+    TKOperationStateExecuting = 2, 
+    TKOperationStateFinished = 3
+} TKOperationState;
 
-static NSThread *networkThread = nil;
+
 static BOOL shouldUpdateNetworkActivityIndicator = YES;
 static unsigned int runningRequestCount = 0;
 NSString* const TKNetworkRequestErrorDomain = @"TKHTTPRequestErrorDomain";
-
-
-@interface TKHTTPRequest ()
-- (void) releaseBlocksOnMainThread;
-+ (void) releaseBlocks:(NSArray *)blocks;
-- (void) _requestComplete;
-- (void) _requestFinished;
-+ (NSThread *) threadForRequest:(TKHTTPRequest *)request;
-
-
-@property (assign, readwrite) TKOperationState state;
-
-@property (copy, readwrite) NSError *error;
-
-@end
-
-@interface TKHTTPRequest (private)
-+ (BOOL) removeFileAtPath:(NSString *)path error:(NSError **)err;
-@end
-
-
-@implementation TKHTTPRequest (private)
-- (BOOL) removeTemporaryFile{
-	NSError *err = nil;
-	if (_temporaryFileDownloadPath) {
-		if (![[self class] removeFileAtPath:_temporaryFileDownloadPath error:&err]) {
-			//[self failWithError:err];
-		}
-	}
-	return (!err);
+static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
+    switch (state) {
+        case TKOperationStateInited:
+            return @"isReady";
+        case TKOperationStateExecuting:
+            return @"isExecuting";
+        case TKOperationStateFinished:
+            return @"isFinished";
+        default:
+            return @"state";
+    }
 }
-- (BOOL) removeDesitinationFile{
-	NSError *err = nil;
-	if (_downloadDestinationPath) {
-		if (![[self class] removeFileAtPath:_downloadDestinationPath error:&err]) {
-			//[self failWithError:err];
-		}
-	}
-	return (!err);
-}
-+ (BOOL) removeFileAtPath:(NSString *)path error:(NSError **)err{
-	NSFileManager *fileManager = [[NSFileManager alloc] init];
-	
-	if ([fileManager fileExistsAtPath:path]) {
-		NSError *removeError = nil;
-		[fileManager removeItemAtPath:path error:&removeError];
-		if (removeError) {
-			if (err) {
-				*err = [NSError errorWithDomain:TKNetworkRequestErrorDomain code:TKFileManagementError userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"Failed to delete file at path '%@'",path],NSLocalizedDescriptionKey,removeError,NSUnderlyingErrorKey,nil]];
-			}
-			return NO;
-		}
-	}
-	return YES;
-}
-@end
-
-
-
-@implementation TKHTTPRequest
-@synthesize didStartSelector, didFinishSelector, didFailSelector,delegate,progressDelegate;
-@synthesize state = _state, error=_error;
-
-@synthesize showNetworkActivity=_showNetworkActivity;
-@synthesize downloadDestinationPath=_downloadDestinationPath;
-@synthesize statusCode=_statusCode,responseHeaders=_responseHeaders;
-@synthesize URL=_URL,tag=_tag;
 
 #pragma mark -
+@interface TKHTTPRequest ()
 
+- (void) _completeRequest;
+- (void) _requestFinished;
+
+- (BOOL) removeTemporaryFile;
+- (BOOL) removeDesitinationFile;
++ (BOOL) removeFileAtPath:(NSString *)path error:(NSError **)err;
+
+- (void) _decreaseNetworkActivity;
+- (void) _increaseNetworkActivity;
+
+
+
+@property (assign, nonatomic) TKOperationState state;
+@property (readwrite, nonatomic, assign, getter = isCancelled) BOOL cancelled;
+
+
+
+@property (nonatomic,strong) NSURLConnection *connection;
+@property (nonatomic,strong) NSMutableData *data;
+@property (nonatomic,strong) NSFileHandle *fileHandler; 	// Used for writing data to a file when downloadDestinationPath is set
+
+
+
+@end
+
+
+#pragma mark - 
+
+@implementation TKHTTPRequest
+
+@synthesize URL,tag,showNetworkActivity;
+@synthesize temporaryFileDownloadPath,downloadDestinationPath;
+@synthesize didStartSelector,didFinishSelector,didFailSelector,delegate;
+@synthesize progressDelegate;
+
+@synthesize statusCode,responseHeaders,error;
+@synthesize cancelled=_cancelled,state = _state;
+
+@synthesize connection,data,fileHandler;
+
+
+
+#pragma mark - Threading
++ (void) networkRequestThreadEntryPoint:(id)__unused object {
+    do {
+		@autoreleasepool{
+			[[NSRunLoop currentRunLoop] run];
+		}
+    } while (YES);
+}
++ (NSThread *) networkRequestThread {
+    static NSThread *_networkRequestThread = nil;
+    static dispatch_once_t oncePredicate;
+    
+    dispatch_once(&oncePredicate, ^{
+        _networkRequestThread = [[NSThread alloc] initWithTarget:self selector:@selector(networkRequestThreadEntryPoint:) object:nil];
+        [_networkRequestThread start];
+    });
+    
+    return _networkRequestThread;
+}
+
+
+#pragma mark - Init & Dealloc
 + (TKHTTPRequest*) requestWithURL:(NSURL*)URL{
 	return [[self alloc] initWithURL:URL];
 }
-- (id) initWithURL:(NSURL*)URL{
+- (id) initWithURL:(NSURL*)url{
 	if(!(self=[super init])) return nil;
 	
-	_URL = URL;
-	_showNetworkActivity = YES;
+	
+	self.URL = url;
+	self.showNetworkActivity = YES;
+	self.state = TKOperationStateInited;
+
 	
 	return self;
 }
 - (void) dealloc{
-	
-	if(_connection){
-		[_connection cancel];
-	}	
-	
-	
-	
-#if NS_BLOCKS_AVAILABLE
-	[self releaseBlocksOnMainThread];
-#endif
-	
-}
-
-
-
-#pragma mark -
-- (void) start{
-	[self performSelector:@selector(_startOnNetworkThread) onThread:[[self class] threadForRequest:self] withObject:nil waitUntilDone:NO];
-}
-- (void) _startOnNetworkThread{
-	
-	if( [self isFinished] || [self isCancelled] ) { 
-		[self _requestComplete]; 
-		return; 
-	}
-	
-	self.state = TKOperationStateExecuting;
-	
-	
-	_connection = [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:_URL] delegate:self];
-	[_connection start];
-	
-	_receivedDataBytes = 0;
-	_totalExpectedImageSize = 0;
-	
-	
-	if(_showNetworkActivity){
-		runningRequestCount++;
-		[[self class] showNetworkActivityIndicator];
-	}
-	
-	[self performSelectorOnMainThread:@selector(_requestStarted) withObject:nil waitUntilDone:[NSThread isMainThread]];
-}
-- (void) _requestStarted{
-	if(delegate && [delegate respondsToSelector:didStartSelector]) [delegate performSelector:didStartSelector withObject:self];
-	
-#if NS_BLOCKS_AVAILABLE
-	if(startedBlock) startedBlock();
-#endif
-}
-
-- (void) failWithError:(NSError *)theError{
-	
-	self.state = TKOperationStateFinished;
-	self.error = theError;
-	
-}
-
-- (void) cancel{
-	[self performSelector:@selector(_cancelOnRequestThread) onThread:[[self class] threadForRequest:self] withObject:nil waitUntilDone:NO];    
-}
-- (void) _cancelOnRequestThread{
-	
-	
-	
-	self.state = TKOperationStateFinished;
-	
-	if(_connection){
-		[_connection cancel];
-		_connection=nil;
-		
-		
-		if(_showNetworkActivity){
-			runningRequestCount--;
-			if (shouldUpdateNetworkActivityIndicator && runningRequestCount == 0) 
-				[[self class] performSelectorOnMainThread:@selector(hideNetworkActivityIndicatorAfterDelay) withObject:nil waitUntilDone:[NSThread isMainThread]];
-			
-		}
-		
-	}
-}
-
-- (void) _requestProgressedTo:(NSNumber*)percentage{
-	
-	if([self.progressDelegate respondsToSelector:@selector(request:didProgressToPercentage:)])
-		[self.progressDelegate request:self didProgressToPercentage:[percentage doubleValue]];
-}
-- (void) _requestComplete{
-
-	
-	if(_connection){
-		[_connection cancel];
-		_connection = nil;
-	}
-	
-	
-	self.state = TKOperationStateFinished;
-	
-
-	if(_showNetworkActivity){
-		runningRequestCount--;
-		if (shouldUpdateNetworkActivityIndicator && runningRequestCount == 0) 
-			[[self class] performSelectorOnMainThread:@selector(hideNetworkActivityIndicatorAfterDelay) withObject:nil waitUntilDone:[NSThread isMainThread]];
-	}
-	
-
-	
-	if(!_error && _temporaryFileDownloadPath){
-		
-		
-		NSError *moveError = nil;
-
-		[_fileHandler closeFile];
-		
-		
-		if (![[self class] removeFileAtPath:_downloadDestinationPath error:&moveError]) 
-			_error = moveError;
-
-		if (!moveError) {
-			
-			[[NSFileManager defaultManager] moveItemAtPath:_temporaryFileDownloadPath toPath:_downloadDestinationPath error:&moveError];
-			
-			if (moveError){
-				
-				NSDictionary *str = [NSString stringWithFormat:@"Failed to move file from '%@' to '%@'",_temporaryFileDownloadPath,_downloadDestinationPath];
-				
-				_error = [NSError errorWithDomain:TKNetworkRequestErrorDomain 
-											 code:TKFileManagementError 
-										 userInfo:[NSDictionary dictionaryWithObjectsAndKeys:str,NSLocalizedDescriptionKey,moveError,NSUnderlyingErrorKey,nil]];
-
-			}
-				
-				
-				
-
-		}
-		
-	}
-	
-	
-	[self performSelectorOnMainThread:@selector(_requestFinished) withObject:nil waitUntilDone:[NSThread isMainThread]];
-
-
-	
-}
-- (void) _requestFinished{
-
-	if(self.delegate && [self.delegate respondsToSelector:didFinishSelector]) [self.delegate performSelector:didFinishSelector withObject:self];
-
-#if NS_BLOCKS_AVAILABLE
-	if(completionBlock) completionBlock();
-#endif
-	
-}
-- (void) _requestFailed{
-	if(self.delegate && [self.delegate respondsToSelector:didFailSelector]) [self.delegate performSelector:didFailSelector withObject:self];
-#if NS_BLOCKS_AVAILABLE
-	if(failureBlock) failureBlock();
-#endif
+	if(self.connection) [self.connection cancel];
 }
 
 
@@ -288,25 +148,130 @@ NSString* const TKNetworkRequestErrorDomain = @"TKHTTPRequestErrorDomain";
 
 
 #pragma mark -
-#pragma mark Delegate Methods for NSURLConnection
+- (void) start{
+	
+	if(![self isReady]) return;
+	
+	self.state = TKOperationStateExecuting;
+	[self performSelector:@selector(_startOnNetworkThread) onThread:[[self class] networkRequestThread] withObject:nil waitUntilDone:NO];
+}
+- (void) _startOnNetworkThread{
+	
+	if([self isCancelled]) { 
+		[self _completeRequest]; 
+		return; 
+	}
+	
+	_receivedDataBytes = 0;
+	_totalExpectedImageSize = 0;
+	
+	self.connection = [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:self.URL] delegate:self];
+	[self.connection start];
+	
+	
+	[self performSelectorOnMainThread:@selector(_requestStarted) withObject:nil waitUntilDone:[NSThread isMainThread]];
+}
+- (void) _requestStarted{
+	if(self.delegate && [self.delegate respondsToSelector:didStartSelector]) 
+		[self.delegate performSelector:self.didStartSelector withObject:self];
+	
+#if NS_BLOCKS_AVAILABLE
+	if(startedBlock) startedBlock();
+#endif
+}
+
+
+
+
+
+
+
+
+- (void) _completeRequest{
+
+	if(self.connection){
+		[self.connection cancel];
+		self.connection = nil;
+	}
+	
+	
+	self.state = TKOperationStateFinished;
+	
+
+	
+
+	
+	if(!self.error && self.temporaryFileDownloadPath){
+		
+		
+		NSError *moveError = nil;
+
+		[self.fileHandler closeFile];
+		
+		
+		if (![[self class] removeFileAtPath:self.downloadDestinationPath error:&moveError])  self.error = moveError;
+
+		if (!moveError) {
+			
+			[[NSFileManager defaultManager] moveItemAtPath:self.temporaryFileDownloadPath toPath:self.downloadDestinationPath error:&moveError];
+			
+			if (moveError){
+				NSDictionary *str = [NSString stringWithFormat:@"Failed to move file from '%@' to '%@'",self.temporaryFileDownloadPath,self.downloadDestinationPath];
+				NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:str,NSLocalizedDescriptionKey,moveError,NSUnderlyingErrorKey,nil];
+				self.error = [NSError errorWithDomain:TKNetworkRequestErrorDomain code:TKFileManagementError userInfo:userInfo];
+			}
+		}
+		
+	}
+	
+	if(self.error)
+		[self performSelectorOnMainThread:@selector(_requestFailed) withObject:nil waitUntilDone:[NSThread isMainThread]];
+	else
+		[self performSelectorOnMainThread:@selector(_requestFinished) withObject:nil waitUntilDone:[NSThread isMainThread]];
+
+
+	
+}
+
+- (void) _requestFinished{
+
+	if(self.delegate && [self.delegate respondsToSelector:self.didFinishSelector]) 
+		[self.delegate performSelector:self.didFinishSelector withObject:self];
+
+#if NS_BLOCKS_AVAILABLE
+	if(completionBlock) completionBlock();
+#endif
+	
+}
+
+- (void) _requestFailed{
+	if(self.delegate && [self.delegate respondsToSelector:didFailSelector]) [self.delegate performSelector:didFailSelector withObject:self];
+#if NS_BLOCKS_AVAILABLE
+	if(failureBlock) failureBlock();
+#endif
+}
+- (void) failWithError:(NSError *)theError{
+	
+	self.state = TKOperationStateFinished;
+	self.error = theError;
+	
+}
+
+
+
+#pragma mark - Delegate Methods for NSURLConnection
 - (void) connection:(NSURLConnection*)connection didFailWithError:(NSError*)e{
 	
-	
-	
-	if(_connection){
-		[_connection cancel];
-		_connection = nil;
-	}
-	
-	if(_showNetworkActivity){
-		runningRequestCount--;
-		if (shouldUpdateNetworkActivityIndicator && runningRequestCount == 0) 
-			[[self class] performSelectorOnMainThread:@selector(hideNetworkActivityIndicatorAfterDelay) withObject:nil waitUntilDone:[NSThread isMainThread]];
-	}
-	
-	if(_temporaryFileDownloadPath) [self removeTemporaryFile];
 
-	_data=nil;
+	if(self.connection){
+		[self.connection cancel];
+		self.connection = nil;
+	}
+	
+
+	if(self.temporaryFileDownloadPath) [self removeTemporaryFile];
+
+	self.data=nil;
 	[self failWithError:e];
 	
 	[self performSelectorOnMainThread:@selector(_requestFailed) withObject:nil waitUntilDone:[NSThread isMainThread]];
@@ -316,87 +281,81 @@ NSString* const TKNetworkRequestErrorDomain = @"TKHTTPRequestErrorDomain";
 - (void) connection:(NSURLConnection *)connection didReceiveData:(NSData *)d{
 	
 	
-	_receivedDataBytes += (double) [d length];
+	_receivedDataBytes += (NSInteger) [d length];
 
 	
-	if(_downloadDestinationPath){
+	if(self.downloadDestinationPath){
 		
-		
-		if(!_fileHandler){
+		if(!self.fileHandler){
 			
-			if(!_temporaryFileDownloadPath){
+			if(!self.temporaryFileDownloadPath){
 				NSString *tmp = [NSTemporaryDirectory() stringByAppendingPathComponent:[[NSProcessInfo processInfo] globallyUniqueString]];
-				_temporaryFileDownloadPath = [tmp copy];
+				self.temporaryFileDownloadPath = tmp;
 			}
 			
 			
 			[self removeTemporaryFile];
-			[[NSFileManager defaultManager] createFileAtPath:_temporaryFileDownloadPath contents:nil attributes:nil];
-			_fileHandler = [NSFileHandle fileHandleForWritingAtPath:_temporaryFileDownloadPath];
+			[[NSFileManager defaultManager] createFileAtPath:self.temporaryFileDownloadPath contents:nil attributes:nil];
+			self.fileHandler = [NSFileHandle fileHandleForWritingAtPath:self.temporaryFileDownloadPath];
 			
-			if(_fileHandler==nil) {
-				
-				NSDictionary *str = [NSString stringWithFormat:@"Failed to create file from '%@'",_temporaryFileDownloadPath];
-				
-				_error = [NSError errorWithDomain:TKNetworkRequestErrorDomain 
-											  code:TKFileManagementError 
-										  userInfo:[NSDictionary dictionaryWithObjectsAndKeys:str,NSLocalizedDescriptionKey,nil]];
-				
-				
-				[self _requestComplete];
-				
-				
+			if(self.fileHandler==nil) {
+				NSDictionary *str = [NSString stringWithFormat:@"Failed to create file from '%@'",self.temporaryFileDownloadPath];
+				NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:str,NSLocalizedDescriptionKey,nil];
+				self.error = [NSError errorWithDomain:TKNetworkRequestErrorDomain code:TKFileManagementError userInfo:userInfo];
+				[self _completeRequest];
 			}
 				
 		}
 		
 		
-		[_fileHandler writeData:d];
+		[self.fileHandler writeData:d];
 
 		
-	}else{
-		[_data appendData:d];
+	}else
+		[self.data appendData:d];
+	
+	
+	
+	
+	
+	if(self.progressDelegate){
+		dispatch_async(dispatch_get_main_queue(), ^{
+			if([self.progressDelegate respondsToSelector:@selector(request:didReceiveTotalBytes:ofExpectedBytes:)])
+				[self.progressDelegate request:self didReceiveTotalBytes:_receivedDataBytes ofExpectedBytes:_totalExpectedImageSize];
+		});
 	}
 	
-	
-	
-	if(self.progressDelegate)
-		[self performSelectorOnMainThread:@selector(_requestProgressedTo:) withObject:[NSNumber numberWithDouble:_receivedDataBytes/_totalExpectedImageSize] waitUntilDone:[NSThread isMainThread]];
-
 	
 }
 - (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
 
 	
 	NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
-	_statusCode = [httpResponse statusCode];
-	_responseHeaders = [httpResponse allHeaderFields];
+	self.statusCode = [httpResponse statusCode];
+	self.responseHeaders = [httpResponse allHeaderFields];
 	
 	
-
-	
-	if( _statusCode == 200 ) {
+	if(self.statusCode == 200) {
 		_totalExpectedImageSize = (double)response.expectedContentLength;
 		NSUInteger contentSize = [httpResponse expectedContentLength] > 0 ? [httpResponse expectedContentLength] : 0;
-		_data = [[NSMutableData alloc] initWithCapacity:contentSize];
+		self.data = [[NSMutableData alloc] initWithCapacity:contentSize];
 	} else {
-		NSString* statusError  = [NSString stringWithFormat:NSLocalizedString(@"HTTP Error: %ld", nil), _statusCode];
+		NSString* statusError  = [NSString stringWithFormat:NSLocalizedString(@"HTTP Error: %ld", nil), self.statusCode];
 		NSDictionary* userInfo = [NSDictionary dictionaryWithObject:statusError forKey:NSLocalizedDescriptionKey];
-		_error = [[NSError alloc] initWithDomain:TKNetworkRequestErrorDomain code:_statusCode userInfo:userInfo];
-		[self _requestComplete];
+		self.error = [[NSError alloc] initWithDomain:TKNetworkRequestErrorDomain code:self.statusCode userInfo:userInfo];
+		[self _completeRequest];
 	}
 	
 }
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection{
-	[self _requestComplete];
+	[self _completeRequest];
 }
 
 
 
 
 
-#pragma mark -
-#pragma mark Blocks
+#pragma mark - Blocks
 #if NS_BLOCKS_AVAILABLE
 - (void) setStartedBlock:(TKBasicBlock)aStartedBlock{
 	startedBlock = [aStartedBlock copy];
@@ -407,28 +366,6 @@ NSString* const TKNetworkRequestErrorDomain = @"TKHTTPRequestErrorDomain";
 - (void) setFailedBlock:(TKBasicBlock)aFailedBlock{
 	failureBlock = [aFailedBlock copy];
 }
-- (void) releaseBlocksOnMainThread{
-	NSMutableArray *blocks = [NSMutableArray array];
-	if (completionBlock) {
-		[blocks addObject:completionBlock];
-		completionBlock = nil;
-	}
-	if (failureBlock) {
-		[blocks addObject:failureBlock];
-		failureBlock = nil;
-	}
-	if (startedBlock) {
-		[blocks addObject:startedBlock];
-		startedBlock = nil;
-	}
-	
-	[[self class] performSelectorOnMainThread:@selector(releaseBlocks:) withObject:blocks waitUntilDone:[NSThread isMainThread]];
-}
-+ (void) releaseBlocks:(NSArray *)blocks{
-	// Always called on main thread
-	
-	// Blocks will be released when this method exits
-}
 #endif
 
 
@@ -438,6 +375,9 @@ NSString* const TKNetworkRequestErrorDomain = @"TKHTTPRequestErrorDomain";
 - (BOOL) isConcurrent{
 	return YES;
 }
+- (BOOL) isReady{
+	return self.state == TKOperationStateInited;
+}
 - (BOOL) isExecuting{
 	return self.state == TKOperationStateExecuting;
 }
@@ -445,9 +385,78 @@ NSString* const TKNetworkRequestErrorDomain = @"TKHTTPRequestErrorDomain";
 	return self.state == TKOperationStateFinished;
 }
 - (NSData *) responseData{	
-	return _data;
+	return [NSData dataWithData:self.data];
 }
 
+
+- (BOOL) shouldTransitionToState:(TKOperationState)state {    
+    switch (self.state) {
+        case TKOperationStateInited:
+            switch (state) {
+                case TKOperationStateExecuting:
+                    return YES;
+                default:
+                    return NO;
+            }
+        case TKOperationStateExecuting:
+            switch (state) {
+                case TKOperationStateFinished:
+                    return YES;
+                default:
+                    return NO;
+            }
+        case TKOperationStateFinished:
+            return NO;
+        default:
+            return YES;
+    }
+}
+- (void) setState:(TKOperationState)state {
+	
+    if (![self shouldTransitionToState:state]) return;
+	
+	
+	if(state == TKOperationStateExecuting)
+		[self _increaseNetworkActivity];
+	else if(state == TKOperationStateFinished && self.state == TKOperationStateExecuting)
+		[self _decreaseNetworkActivity];
+    
+    
+    NSString *oldStateKey = TKKeyPathFromOperationState(self.state);
+    NSString *newStateKey = TKKeyPathFromOperationState(state);
+	
+    [self willChangeValueForKey:newStateKey];
+    [self willChangeValueForKey:oldStateKey];
+    _state = state;
+    [self didChangeValueForKey:oldStateKey];
+    [self didChangeValueForKey:newStateKey];
+    
+	
+}
+
+
+- (void) setCancelled:(BOOL)cancelled {
+    [self willChangeValueForKey:@"isCancelled"];
+    _cancelled = cancelled;
+    [self didChangeValueForKey:@"isCancelled"];
+    
+    if ([self isCancelled]) self.state = TKOperationStateFinished;
+}
+- (void) cancel {
+    if([self isFinished]) return;
+        
+    [super cancel];
+    self.cancelled = YES;
+	
+	[self performSelector:@selector(_cancelOnRequestThread) onThread:[[self class] networkRequestThread] withObject:nil waitUntilDone:NO];    
+	
+}
+- (void) _cancelOnRequestThread{
+	if(self.connection){
+		[self.connection cancel];
+		self.connection=nil;
+	}
+}
 
 
 
@@ -478,32 +487,56 @@ NSString* const TKNetworkRequestErrorDomain = @"TKHTTPRequestErrorDomain";
 		[self hideNetworkActivityIndicator];
 	}
 }
+- (void) _decreaseNetworkActivity{
+	if(self.showNetworkActivity){
+		runningRequestCount--;
+		if (shouldUpdateNetworkActivityIndicator && runningRequestCount == 0) 
+			[[self class] performSelectorOnMainThread:@selector(hideNetworkActivityIndicatorAfterDelay) withObject:nil waitUntilDone:[NSThread isMainThread]];
+		
 
-#pragma mark -
-#pragma mark Threading
-+ (NSThread *) threadForRequest:(TKHTTPRequest *)request{
-	if (!networkThread) {
-		networkThread = [[NSThread alloc] initWithTarget:self selector:@selector(runRequests) object:nil];
-		[networkThread start];
 	}
-	return networkThread;
 }
-+ (void) runRequests{
-	// Should keep the runloop from exiting
-	CFRunLoopSourceContext context = {0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL};
-	CFRunLoopSourceRef source = CFRunLoopSourceCreate(kCFAllocatorDefault, 0, &context);
-	CFRunLoopAddSource(CFRunLoopGetCurrent(), source, kCFRunLoopDefaultMode);
+- (void) _increaseNetworkActivity{
 	
-    BOOL runAlways = YES; // Introduced to cheat Static Analyzer
-	while (runAlways) {
-		@autoreleasepool {
-			CFRunLoopRun();
+	
+	
+	if(self.showNetworkActivity){
+		runningRequestCount++;
+		if (shouldUpdateNetworkActivityIndicator) 
+			[[self class] performSelectorOnMainThread:@selector(showNetworkActivityIndicator) withObject:nil waitUntilDone:[NSThread isMainThread]];
+	}
+}
+
+
++ (BOOL) removeFileAtPath:(NSString *)path error:(NSError **)err{
+	NSFileManager *fileManager = [[NSFileManager alloc] init];
+	
+	if ([fileManager fileExistsAtPath:path]) {
+		NSError *removeError = nil;
+		[fileManager removeItemAtPath:path error:&removeError];
+		if (removeError) {
+			if (err) {
+				*err = [NSError errorWithDomain:TKNetworkRequestErrorDomain code:TKFileManagementError userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"Failed to delete file at path '%@'",path],NSLocalizedDescriptionKey,removeError,NSUnderlyingErrorKey,nil]];
+			}
+			return NO;
 		}
 	}
-	
-	// Should never be called, but anyway
-	CFRunLoopRemoveSource(CFRunLoopGetCurrent(), source, kCFRunLoopDefaultMode);
-	CFRelease(source);
+	return YES;
 }
+- (BOOL) removeTemporaryFile{
+	if(!self.temporaryFileDownloadPath) return YES;
+	NSError *err = nil;
+	[[self class] removeFileAtPath:self.temporaryFileDownloadPath error:&err];
+	return (!err);
+}
+- (BOOL) removeDesitinationFile{
+	if(!self.downloadDestinationPath) return YES;
+
+	NSError *err = nil;
+	[[self class] removeFileAtPath:self.downloadDestinationPath error:&err];
+	
+	return (!err);
+}
+
 
 @end

@@ -52,10 +52,7 @@
 
 - (void) reset{
 	
-	for(TKHTTPRequest *op in [self operations]){
-		[op cancel];
-	}
-	
+	for(TKHTTPRequest *op in [self operations]) [op cancel];
 	[self cancelAllOperations];
 	
 }
