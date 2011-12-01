@@ -34,14 +34,12 @@
 #import "TKGlobal.h"
 #import "UIImage+TKCategory.h"
 
-//#define kCalendImagesPath @"TapkuLibrary.bundle/Images/calendar/"
 #pragma mark -
 @interface NSDate (calendarcategory)
 
 - (NSDate*) firstOfMonth;
 - (NSDate*) nextMonth;
 - (NSDate*) previousMonth;
-
 
 - (NSDate*) lastOfMonthDate;
 + (NSDate*) lastofMonthDate;
@@ -148,9 +146,8 @@
 	UILabel *currentDay;
 	UIImageView *selectedImageView;
 	BOOL startOnSunday;
-	NSDate *__unsafe_unretained monthDate;
 }
-@property (readonly) NSDate *monthDate;
+@property (strong,nonatomic) NSDate *monthDate;
 
 - (id) initWithMonth:(NSDate*)date marks:(NSArray*)marks startDayOnSunday:(BOOL)sunday;
 - (void) setTarget:(id)target action:(SEL)action;
@@ -169,9 +166,9 @@
 
 @interface TKCalendarMonthTiles (private)
 
-@property (readonly) UIImageView *selectedImageView;
-@property (readonly) UILabel *currentDay;
-@property (readonly) UILabel *dot;
+@property (strong,nonatomic) UIImageView *selectedImageView;
+@property (strong,nonatomic) UILabel *currentDay;
+@property (strong,nonatomic) UILabel *dot;
 @end
 
 #pragma mark -
@@ -631,12 +628,12 @@
 
 @interface TKCalendarMonthView (private)
 
-@property (readonly) UIScrollView *tileBox;
-@property (readonly) UIImageView *topBackground;
-@property (readonly) UILabel *monthYear;
-@property (readonly) UIButton *leftArrow;
-@property (readonly) UIButton *rightArrow;
-@property (readonly) UIImageView *shadow;
+@property (strong,nonatomic) UIScrollView *tileBox;
+@property (strong,nonatomic) UIImageView *topBackground;
+@property (strong,nonatomic) UILabel *monthYear;
+@property (strong,nonatomic) UIButton *leftArrow;
+@property (strong,nonatomic) UIButton *rightArrow;
+@property (strong,nonatomic) UIImageView *shadow;
 
 @end
 

@@ -799,6 +799,7 @@
 					"-ObjC",
 				);
 				SDKROOT = iphoneos;
+				WARNING_CFLAGS = "-Wno-arc-performSelector-leaks";
 			};
 			name = Debug;
 		};
@@ -819,6 +820,7 @@
 					"-ObjC",
 				);
 				SDKROOT = iphoneos;
+				WARNING_CFLAGS = "-Wno-arc-performSelector-leaks";
 			};
 			name = Release;
 		};

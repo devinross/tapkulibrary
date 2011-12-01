@@ -115,30 +115,32 @@
 					  readingOptions:(NSJSONReadingOptions)options{
 	
 	
-	NSMutableArray *ar = [NSMutableArray arrayWithObjects:data,[NSNumber numberWithUnsignedInt:options],nil];
+	NSMutableDictionary *dict = [NSMutableDictionary dictionary];
 	
+	[dict setObject:data forKey:@"data"];
+	[dict setObject:[NSNumber numberWithUnsignedInt:options] forKey:@"flags"];
 	
-	if(callback) [ar addObject:NSStringFromSelector(callback)];
-	if(backgroundProcessor) [ar addObject:NSStringFromSelector(backgroundProcessor)];
-	if(errroSelector) [ar addObject:NSStringFromSelector(errroSelector)];
+	if(callback) [dict setObject:NSStringFromSelector(callback) forKey:@"callback"];
+	if(backgroundProcessor) [dict setObject:NSStringFromSelector(backgroundProcessor) forKey:@"backgroundProcessor"];
+	if(errroSelector) [dict setObject:NSStringFromSelector(errroSelector) forKey:@"errroSelector"];
+
 	
-	[self performSelectorInBackground:@selector(_processJSONData:) withObject:ar];
+	[self performSelectorInBackground:@selector(_processJSONData:) withObject:dict];
 
 	
 }
 
 
-- (void) _processJSONData:(NSArray*)array{
+- (void) _processJSONData:(NSDictionary*)dict{
 	@autoreleasepool {
 		NSError *error = nil;
 		
-		NSData *data = [array objectAtIndex:0];
-		NSUInteger options = [[array objectAtIndex:1] unsignedIntValue];
+		NSData *data = [dict objectForKey:@"data"];
+		NSUInteger options = [[dict objectForKey:@"flags"] unsignedIntValue];
 		
-		NSString *callback = array.count > 2 ? [array objectAtIndex:2] : nil;
-		NSString *background = array.count > 3 ? [array objectAtIndex:3] : nil;
-		NSString *eSelector = array.count > 4 ? [array objectAtIndex:4] : nil;
-
+		NSString *callback = [dict objectForKey:@"callback"];
+		NSString *background = [dict objectForKey:@"backgroundProcessor"];
+		NSString *eSelector = [dict objectForKey:@"errroSelector"];
 		
 		id object = [NSJSONSerialization JSONObjectWithData:data options:options error:&error];
 		
@@ -147,8 +149,7 @@
 		if(error){
 			if(eSelector) [self performSelector:NSSelectorFromString(eSelector) withObject:error];
 		}else{
-			if(background) 
-				object = [self performSelector:NSSelectorFromString(background) withObject:object];
+			if(background) object = [self performSelector:NSSelectorFromString(background) withObject:object];
 			[self performSelectorOnMainThread:NSSelectorFromString(callback) withObject:object waitUntilDone:NO];
 		}
 		
