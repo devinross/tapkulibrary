@@ -38,9 +38,13 @@
 
 - (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	
-	_window = [[TKWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-	_window.backgroundColor = [UIColor blackColor];
-	[_window makeKeyAndVisible];
+	if(self.window==nil){
+		self.window = [[TKWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+		self.window.backgroundColor = [UIColor blackColor];
+		[self.window makeKeyAndVisible];
+	}
+	
+
 
 	
     [self applicationDidStartup:application];

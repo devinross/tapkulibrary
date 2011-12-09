@@ -5,10 +5,10 @@ TapkuLibrary is an open source iOS framework built on Cocoa and UIKit intended f
 
 ### Classes
 
+* [TKHTTPRequest](https://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKHTTPRequest.h)
 * [TKCoverflowView](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKCoverflowView.h)
 * [TKCalendarMonthView](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKCalendarMonthView.h)
 * [TKImageCenter](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKImageCenter.h)
-* [TKGraphView](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKGraphView.h)
 * [TKAlertCenter](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKAlertCenter.h)
 * [TKProgressAlertView](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKProgressAlertView.h)
 * [TKLoadingView](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKLoadingView.h)

@@ -34,6 +34,7 @@
 
 @interface UIView (TKCategory)
 
+- (void) addSubviewToBack:(UIView*)view;
 
 - (void) roundOffFrame;
 

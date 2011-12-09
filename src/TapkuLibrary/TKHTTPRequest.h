@@ -80,7 +80,11 @@ typedef enum _TKNetworkErrorType {
 + (TKHTTPRequest*) requestWithURL:(NSURL*)URL;
 - (id) initWithURL:(NSURL*)URL;
 
++ (TKHTTPRequest*) requestWithURLRequest:(NSURLRequest*)request;
+- (id) initWithURLRequest:(NSURLRequest*)request;
+
 @property (strong,nonatomic) NSURL *URL;
+@property (strong,nonatomic) NSURLRequest *URLRequest;
 @property (assign,nonatomic) NSUInteger tag;
 @property (assign,nonatomic) BOOL showNetworkActivity; // for indiviual requests, default: TRUE
 

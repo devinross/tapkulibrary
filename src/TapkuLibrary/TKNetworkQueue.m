@@ -39,6 +39,10 @@
 	static TKNetworkQueue *sharedInstance = nil;
 	if (!sharedInstance) {
 		sharedInstance = [[TKNetworkQueue alloc] init];
+		
+		[sharedInstance setMaxConcurrentOperationCount:4];
+
+		
 	}
 	return sharedInstance;
 }
@@ -47,6 +51,9 @@
 }
 - (id) init{
 	if(!(self=[super init])) return nil;
+	
+	
+	
 	return self;
 }
 

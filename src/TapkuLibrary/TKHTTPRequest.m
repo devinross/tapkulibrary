@@ -69,18 +69,12 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 - (void) _decreaseNetworkActivity;
 - (void) _increaseNetworkActivity;
 
-
-
 @property (assign, nonatomic) TKOperationState state;
 @property (readwrite, nonatomic, assign, getter = isCancelled) BOOL cancelled;
-
-
 
 @property (nonatomic,strong) NSURLConnection *connection;
 @property (nonatomic,strong) NSMutableData *data;
 @property (nonatomic,strong) NSFileHandle *fileHandler; 	// Used for writing data to a file when downloadDestinationPath is set
-
-
 
 @end
 
@@ -93,10 +87,9 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 @synthesize temporaryFileDownloadPath,downloadDestinationPath;
 @synthesize didStartSelector,didFinishSelector,didFailSelector,delegate;
 @synthesize progressDelegate;
-
 @synthesize statusCode,responseHeaders,error;
 @synthesize cancelled=_cancelled,state = _state;
-
+@synthesize URLRequest;
 @synthesize connection,data,fileHandler;
 
 
@@ -137,6 +130,21 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 	
 	return self;
 }
+
++ (TKHTTPRequest*) requestWithURLRequest:(NSURLRequest*)request{
+	return [[self alloc] initWithURLRequest:request];
+}
+- (id) initWithURLRequest:(NSURLRequest*)request{
+	if(!(self=[super init])) return nil;
+	
+	self.URLRequest = request;
+	self.showNetworkActivity = YES;
+	self.state = TKOperationStateInited;
+	
+	
+	return self;
+}
+
 - (void) dealloc{
 	if(self.connection) [self.connection cancel];
 }
@@ -165,7 +173,12 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 	_receivedDataBytes = 0;
 	_totalExpectedImageSize = 0;
 	
-	self.connection = [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:self.URL] delegate:self];
+	if(self.URLRequest)
+		self.connection = [[NSURLConnection alloc] initWithRequest:self.URLRequest delegate:self];
+	else
+		self.connection = [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:self.URL] delegate:self];
+	
+	
 	[self.connection start];
 	
 	
@@ -224,11 +237,14 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 		
 	}
 	
+	SEL mainThreadRoute;
+	
 	if(self.error)
-		[self performSelectorOnMainThread:@selector(_requestFailed) withObject:nil waitUntilDone:[NSThread isMainThread]];
+		mainThreadRoute = @selector(_requestFailed);
 	else
-		[self performSelectorOnMainThread:@selector(_requestFinished) withObject:nil waitUntilDone:[NSThread isMainThread]];
+		mainThreadRoute = @selector(_requestFinished);
 
+	[self performSelectorOnMainThread:mainThreadRoute withObject:nil waitUntilDone:[NSThread isMainThread]];
 
 	
 }
@@ -353,8 +369,6 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 
 
 
-
-
 #pragma mark - Blocks
 #if NS_BLOCKS_AVAILABLE
 - (void) setStartedBlock:(TKBasicBlock)aStartedBlock{
@@ -459,7 +473,6 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 }
 
 
-
 #pragma mark -
 #pragma mark Network Activity
 + (BOOL) isNetworkInUse{
@@ -537,6 +550,5 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 	
 	return (!err);
 }
-
 
 @end
