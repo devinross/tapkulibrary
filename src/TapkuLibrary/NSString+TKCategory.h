@@ -38,5 +38,10 @@
 - (NSString *) escapeHTML;
 - (NSString *) unescapeHTML;
 - (NSString*) stringByRemovingHTML;
+- (NSString *) md5sum;
+
+
+- (BOOL) hasString:(NSString*)substring;
+
 
 @end

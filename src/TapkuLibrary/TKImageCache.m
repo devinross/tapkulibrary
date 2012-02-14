@@ -80,8 +80,12 @@
 	cache_queue = dispatch_queue_create("com.tapku",NULL);
 	
 	
+	
+	
+	
 	self.notificationName = @"NewCachedImageFile";
-	self.timeTillRefreshCache = 60 * 60 * 24 * 7.0f;
+	self.timeTillRefreshCache = -1;
+	//self.timeTillRefreshCache = 60 * 60 * 24 * 7.0f;
 	
 	return self;
 }
@@ -98,21 +102,27 @@
 	return [self imageForKey:key url:url queueIfNeeded:queueIfNeeded tag:0];
 }
 - (UIImage*) imageForKey:(NSString*)key url:(NSURL*)url queueIfNeeded:(BOOL)queueIfNeeded tag:(NSUInteger)tag{
+
+	if(key==nil) return nil;
 	if([self objectForKey:key]!=nil) return [self objectForKey:key];
 	
 	if([self _imageExistsOnDiskWithKey:key]){
 		
 		[self _readImageFromDiskWithKey:key tag:tag];
 		
-		NSString *path = [[self cacheDirectoryPath] stringByAppendingPathComponent:key];
-		NSDate *created = [[[NSFileManager defaultManager] attributesOfItemAtPath:path error:NULL] fileCreationDate];
-		NSTimeInterval timeSince = fabs([created timeIntervalSinceNow]);
+		if(self.timeTillRefreshCache > 0){
+			NSString *path = [[self cacheDirectoryPath] stringByAppendingPathComponent:key];
+			NSDate *created = [[[NSFileManager defaultManager] attributesOfItemAtPath:path error:NULL] fileCreationDate];
+			NSTimeInterval timeSince = fabs([created timeIntervalSinceNow]);
+			
+			if(_timeTillRefreshCache > timeSince) queueIfNeeded = NO;
+
+		}else
+			queueIfNeeded = NO;
 		
-		if(_timeTillRefreshCache > timeSince) return nil; // if the disk cache image file is old, get network image anyway
 	}
 		
-	if(queueIfNeeded && url)
-		[self _sendRequestForURL:url key:key tag:tag];
+	if(queueIfNeeded && url) [self _sendRequestForURL:url key:key tag:tag];
 
 	return nil;
 }
@@ -123,7 +133,7 @@
 	
 
 	
-	if([_requestKeys objectForKey:key]!=nil) return;
+	if(key == nil || [_requestKeys objectForKey:key]!=nil) return;
 	
 
 	[_requestKeys setObject:[NSNull null] forKey:key];
@@ -305,6 +315,8 @@
 				NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:key,@"key",cacheImage,@"image",[NSNumber numberWithUnsignedInt:tag],@"tag",nil];
 				[[NSNotificationCenter defaultCenter] postNotificationName:self.notificationName object:dict];
 			});
+			usleep(10000);
+
 			
 		}
 	});

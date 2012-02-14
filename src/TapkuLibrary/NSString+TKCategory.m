@@ -30,6 +30,7 @@
  */
 
 #import "NSString+TKCategory.h"
+#import <CommonCrypto/CommonDigest.h>
 
 @implementation NSString (TKCategory)
 
@@ -50,9 +51,18 @@
 }
 
 - (NSString*) URLEncode{
-	return [self stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+	
+	NSString *encodedString = (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(
+																						   NULL,
+																						   (__bridge CFStringRef)self,
+																						   NULL,
+																						   (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+																						   kCFStringEncodingUTF8 );
+	
+	return encodedString;
+	
+	//return [self stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
 }
-
 
 
 - (NSString *) escapeHTML{
@@ -153,6 +163,22 @@
 		html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>",text] withString:@" "];
     }
 	return html;
+}
+
+- (NSString *) md5sum{
+	unsigned char digest[CC_MD5_DIGEST_LENGTH], i;
+	CC_MD5([self UTF8String], [self lengthOfBytesUsingEncoding:NSUTF8StringEncoding], digest);
+	NSMutableString *ms = [NSMutableString string];
+	for (i=0;i<CC_MD5_DIGEST_LENGTH;i++) {
+		[ms appendFormat: @"%02x", (int)(digest[i])];
+	}
+	return [ms copy];
+}
+
+- (BOOL) hasString:(NSString*)substring{
+	
+	return !([self rangeOfString:substring].location == NSNotFound);
+	
 }
 
 

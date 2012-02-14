@@ -65,7 +65,9 @@
 	}
 }
 
-
+- (NSInteger) activeRequestCount{
+	return _activeRequests.count;
+}
 
 
 #pragma mark - PROPERTIES

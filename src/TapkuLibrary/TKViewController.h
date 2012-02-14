@@ -40,6 +40,7 @@
 @property (strong,nonatomic) UIView *loadingView;
 
 - (void) addActiveRequest:(TKHTTPRequest*)request;
+- (NSInteger) activeRequestCount;
 - (void) removeActiveRequest:(TKHTTPRequest*)request;
 - (void) cancelActiveRequests;
 

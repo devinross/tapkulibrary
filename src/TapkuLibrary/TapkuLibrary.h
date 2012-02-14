@@ -33,9 +33,11 @@
 #import "NSArray+TKCategory.h"
 #import "UIView+TKCategory.h"
 #import "UIImage+TKCategory.h"
+#import "UIColor+TKCategory.h"
 #import "UIImageView+TKCategory.h"
 #import "UIScrollview+TKCategory.h"
 #import "UIButton+TKCategory.h"
+#import "UIViewController+TKCategory.h"
 
 
 #import "TKWindow.h"

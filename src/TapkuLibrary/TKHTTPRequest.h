@@ -122,9 +122,6 @@ typedef enum _TKNetworkErrorType {
 #pragma mark network activity
 + (BOOL) isNetworkInUse;
 + (void) setShouldUpdateNetworkActivityIndicator:(BOOL)shouldUpdate;
-+ (void) showNetworkActivityIndicator; // Shows the network activity spinner thing on iOS. You may wish to override this to do something else in Mac projects
-+ (void) hideNetworkActivityIndicator; // Hides the network activity spinner thing on iOS
-
 
 
 
