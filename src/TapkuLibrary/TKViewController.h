@@ -33,9 +33,7 @@
 
 @class TKHTTPRequest;
 
-/** 
- This class provides basic lazy loading views and easy network request management for a `UIViewController`. 
- */
+/** This class provides basic lazy loading views and easy network request management for a `UIViewController`. */
 @interface TKViewController : UIViewController {
 	NSMutableArray *_activeRequests;
 	UIView *_loadingView;
@@ -46,7 +44,7 @@
 /// @name Properties
 ///----------------------------
 
-/* Returns a loading view with an `UIActivityIndicatorView` center on the view */
+/** Returns a loading view with an `UIActivityIndicatorView` center on the view */
 @property (strong,nonatomic) UIView *loadingView;
 
 

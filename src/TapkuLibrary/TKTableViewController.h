@@ -58,7 +58,6 @@
 
 
 /** Initializes a table-view controller to manage a table view of a given style.
- 
  @param style A constant that specifies the style of table view that the controller object is to manage (`UITableViewStylePlain` or `UITableViewStyleGrouped`).
  @return An initialized `TKTableViewController` object or nil if the object couldn’t be created.
  */
@@ -70,16 +69,16 @@
 /// @name Properties
 ///----------------------------
 
-/* Returns the table view managed by the controller object. */
+/** Returns the table view managed by the controller object. */
 @property (strong,nonatomic) UITableView *tableView;
 
-/* Returns the empty view. Good for displaying when the content of the table view is empty. */
+/** Returns the empty view. Good for displaying when the content of the table view is empty. */
 @property (strong,nonatomic) TKEmptyView *emptyView;
 
-/* Returns a `UISearchBar` view. */
+/** Returns a `UISearchBar` view. */
 @property (strong,nonatomic) UISearchBar *searchBar;
 
-/* Returns a `UISearchDisplayController` for the search bar and table view. */
+/** Returns a `UISearchDisplayController` for the search bar and table view. */
 @property (strong,nonatomic) UISearchDisplayController *searchBarDisplayController;
 
 @end

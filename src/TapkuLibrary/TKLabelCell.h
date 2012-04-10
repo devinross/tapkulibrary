@@ -32,7 +32,8 @@
 #import <UIKit/UIKit.h>
 
 
-/** This class is the base class for displaying a `UITableViewCell` with a label to the left of a main view element. Good for forms and entering lots of data. 
+/** 
+ This class is the base class for displaying a `UITableViewCell` with a label to the left of a main view element. Good for forms and entering lots of data. 
 */
 @interface TKLabelCell : UITableViewCell
 

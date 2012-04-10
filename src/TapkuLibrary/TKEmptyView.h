@@ -57,9 +57,7 @@ typedef enum {
 } TKEmptyViewImage;
 
 
-/**
- A simple view for showing no content available.
- */
+/** A simple view for showing no content available. */
 @interface TKEmptyView : TKGradientView 
 
 
@@ -114,9 +112,8 @@ typedef enum {
 /// @name Set the Empty View Image
 ///-------------------------
 
-/** The image that be used to mask the glyph that will be displayed 
-	above the title message. This image needs to be a transparent png image. 
- 
+/** 
+ The image that be used to mask the glyph that will be displayed  above the title message. This image needs to be a transparent png image. 
  @param image Set the image as the empty image.
  */
 - (void) setImage:(UIImage*)image;

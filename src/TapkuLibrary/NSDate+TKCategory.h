@@ -48,7 +48,7 @@ struct TKDateInformation {
 };
 typedef struct TKDateInformation TKDateInformation;
 
-/** Additional functionality for `NSDate`.  */
+/** Additional functionality for `NSDate`. */
 @interface NSDate (TKCategory)
 
 + (NSDate *) yesterday;
@@ -70,7 +70,7 @@ typedef struct TKDateInformation TKDateInformation;
 - (int) monthsBetweenDate:(NSDate *)toDate;
 - (NSInteger) daysBetweenDate:(NSDate*)date;
 
-/* Returns a Boolean value that indicates whether the date object is that same date information as the current day. 
+/** Returns a Boolean value that indicates whether the date object is that same date information as the current day. 
  @return YES if the date object represents the current date, otherwise NO.
  */
 - (BOOL) isToday;

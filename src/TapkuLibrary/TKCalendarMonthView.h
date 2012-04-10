@@ -36,9 +36,7 @@
 @class TKCalendarMonthTiles;
 @protocol TKCalendarMonthViewDelegate, TKCalendarMonthViewDataSource;
 
-/**
- `TKCalendarMonthView` imitates the month grid in the Calendar app on iPhone.
- */
+/** `TKCalendarMonthView` imitates the month grid in the Calendar app on iPhone. */
 @interface TKCalendarMonthView : UIView {
 
 	TKCalendarMonthTiles *currentTile,*oldTile;

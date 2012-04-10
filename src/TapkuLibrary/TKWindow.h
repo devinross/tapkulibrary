@@ -43,9 +43,7 @@ extern NSString *TKWindowShakeEnded;
 
 
 
-/** 
- A subclass of `UIWindow` that posts notifications of any motion (ie. shake) events for the device.
- */
+/** A subclass of `UIWindow` that posts notifications of any motion (ie. shake) events for the device. */
 @interface TKWindow : UIWindow 
 
 @end

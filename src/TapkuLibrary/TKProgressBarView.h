@@ -37,9 +37,7 @@ typedef enum {
 } TKProgressBarViewStyle;
 
 
-/**
- A progress bar view.
- */
+/** A progress bar view. */
 @interface TKProgressBarView : UIView {
 	TKProgressBarViewStyle _style;
 	float _progress,_displayProgress;

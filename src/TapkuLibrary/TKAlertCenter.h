@@ -48,13 +48,13 @@
 + (TKAlertCenter*) defaultCenter;
 
 
-/* Posts a given alert message to the user.
+/** Posts a given alert message to the user.
  @param message The message shown under an image.
  @param image The image displayed to the user. If image is nil, the message will only be shown.
  */
 - (void) postAlertWithMessage:(NSString*)message image:(UIImage*)image;
 
-/* Posts a given alert message to the user.
+/** Posts a given alert message to the user.
  @param message The message shown under an image.
  */
 - (void) postAlertWithMessage:(NSString *)message;

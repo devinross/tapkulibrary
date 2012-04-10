@@ -41,33 +41,24 @@
 /// @name Gradient Style Properties
 ///----------------------------
 
-/** 
- An array of `UIColor` objects defining the color of each gradient stop. 
- */
+/** An array of `UIColor` objects defining the color of each gradient stop. */
 @property (strong,nonatomic) NSArray *colors;
 
-/**
- An optional array of NSNumber objects defining the location of each gradient stop.
- */
+/** An optional array of NSNumber objects defining the location of each gradient stop. */
 @property (strong,nonatomic) NSArray *locations;
 
 
 /**
  The start point corresponds to the first stop of the gradient. The point is defined in the unit coordinate space and is then mapped to the layer’s bounds rectangle when drawn.
- 
  Default value is (0.5,0.0).
 */
 @property (assign,nonatomic) CGPoint startPoint;
 
 
-/**
- The end point of the gradient when drawn in the layer’s coordinate space. 
- */
+/** The end point of the gradient when drawn in the layer’s coordinate space. */
 @property (assign,nonatomic) CGPoint endPoint;
 
-/**
- Style of gradient drawn by the layer.
- */
+/** Style of gradient drawn by the layer. */
 @property (copy,nonatomic) NSString *type;
 
 @end

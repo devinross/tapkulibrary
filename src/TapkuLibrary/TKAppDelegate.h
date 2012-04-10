@@ -34,9 +34,7 @@
 
 @class TKWindow;
 
-/** 
- This class allocates a TKWindow instance and provides a convience method for application launching.
- */
+/** This class allocates a TKWindow instance and provides a convience method for application launching. */
 @interface TKAppDelegate : NSObject <UIApplicationDelegate> 
 
 // For subclassing, default implentation does nothing.

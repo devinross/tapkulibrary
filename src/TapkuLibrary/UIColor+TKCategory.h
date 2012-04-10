@@ -29,11 +29,10 @@
  
  */
 
-/** Additional functionality for `UIColor`.  */
-
 
 #import <UIKit/UIKit.h>
 
+/** Additional functionality for `UIColor`.  */
 @interface UIColor (TKCategory)
 
 /** Creates and returns a color object using the specific hex value. 

@@ -71,7 +71,6 @@
  @param backgroundProcessor The selector that will be performed in the background upon the parsing of the json data. The process data will be included as an object with the selector. This selector must return some type of object to be passed to the callback selector.
  @param errroSelector The selector that will be called upon if there is an error parsing the data.
  @param options An json parsing options to be included will parsing the JSON data.
-
  */
 - (void) processJSONDataInBackground:(NSData *)data withCallbackSelector:(SEL)callback backgroundSelector:(SEL)backgroundProcessor errorSelector:(SEL)errroSelector readingOptions:(NSJSONReadingOptions)options;
 

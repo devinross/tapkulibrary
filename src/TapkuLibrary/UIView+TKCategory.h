@@ -32,6 +32,7 @@
 
 #import <UIKit/UIKit.h>
 
+/** Additional functionality for `UIView`.  */
 @interface UIView (TKCategory)
 
 
@@ -40,8 +41,7 @@
  */
 - (void) addSubviewToBack:(UIView*)view;
 
-/** Rounds of views frame coordinates to the nearest integer.
- */
+/** Rounds of views frame coordinates to the nearest integer. */
 - (void) roundOffFrame;
 
 
