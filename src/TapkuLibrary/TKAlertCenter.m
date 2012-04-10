@@ -66,7 +66,7 @@
 	
 	CGRect r = CGRectZero;
 	r.origin.y = 15;
-	r.origin.x = (rect.size.width-_image.size.width)/2;
+	r.origin.x = (NSInteger)((rect.size.width-_image.size.width)/2);
 	r.size = _image.size;
 	
 	[_image drawInRect:r];

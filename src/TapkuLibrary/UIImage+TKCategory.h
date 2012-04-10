@@ -29,10 +29,11 @@
  
  */
 
+
 #import <UIKit/UIKit.h>
 
+/** Additional functionality for `UIImage`.  */
 @interface UIImage (TKCategory)
-
 
 
 - (UIImage *) imageCroppedToRect:(CGRect)rect;

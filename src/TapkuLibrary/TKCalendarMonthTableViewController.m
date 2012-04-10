@@ -46,19 +46,20 @@
 	
 	float y,height;
 	y = self.monthView.frame.origin.y + self.monthView.frame.size.height;
-	height = self.view.frame.size.height - self.navigationController.navigationBar.frame.size.height - y;
+	height = self.view.frame.size.height - y;
 	
 	
-	_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, y, 320, height) style:UITableViewStylePlain];
+	_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, y, self.view.bounds.size.width, height) style:UITableViewStylePlain];
 	_tableView.delegate = self;
 	_tableView.dataSource = self;
+	_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin;
 	[self.view addSubview:_tableView];
 	[self.view sendSubviewToBack:_tableView];
 }
 
 
 
-
+#pragma mark - TableView Delegate & Data Source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	return 0;	
 }
@@ -76,10 +77,9 @@
 
 	
     return cell;
-	
 }
 
-
+#pragma mark - Month View Delegate & Data Source
 - (void) calendarMonthView:(TKCalendarMonthView*)monthView didSelectDate:(NSDate*)d{
 }
 - (void) calendarMonthView:(TKCalendarMonthView*)monthView monthDidChange:(NSDate*)month animated:(BOOL)animated{

@@ -32,41 +32,114 @@
 #import <Foundation/Foundation.h>
 #import <TapkuLibrary/TapkuLibrary.h>
 
-
+/** An `TKImageCache` object provides a way to manage images between the network, disk and `NSCache`. */
 @interface TKImageCache : NSCache {
-	NSString *_cacheDirectoryName;
 	NSString *_cacheDirectoryPath;
 	NSMutableDictionary *_diskKeys;
 	NSMutableDictionary *_requestKeys;
-	TKNetworkQueue *_imagesQueue;
 	dispatch_queue_t cache_queue;
-	NSString *_notificationName;
-	NSTimeInterval _timeTillRefreshCache;
 }
 
+///-------------------------
+/// @name Initializing An Image Cache Object
+///-------------------------
 
+/** Initialize a new image cache object.
+ @return A new created `TKImageCache` object.
+ */
 - (id) init;
+
+/** Initialize a new image cache object.
+ @param cacheDirectoryName The name of the folder to place cached images to disk.
+ @return A new created `TKImageCache` object.
+ */
 - (id) initWithCacheDirectoryName:(NSString*)cacheDirectoryName;
 
+
+///-------------------------
+/// @name Properties
+///-------------------------
+
+/** The queue that manages all network requests for images */
 @property (strong,nonatomic) TKNetworkQueue *imagesQueue;
+
+/** The directory where images are stored on disk */
 @property (copy,nonatomic) NSString *cacheDirectoryName;
+
+/** The notification name posted to `NSNotificationCenter` */
 @property (copy,nonatomic) NSString *notificationName;
+
+/** The threshold of time images on disk need to be created before to be read from disk. Otherwise the images will be requested from the network again. The time needs to be greater than zero to for the creation date to be check. Default is -1. */
 @property (assign,nonatomic) NSTimeInterval timeTillRefreshCache;
 
+
+///-------------------------
+/// @name Getting an image
+///-------------------------
+
+/** Returns an image if cached or properly routes requests to grab the image from disk or network.
+ @param key The key corresponding to a specific image.
+ @param url The URL to grab the image data from the network.
+ @param queueIfNeeded If the image is not on disk or in cache, a network request will be create to grab the image data.
+ @return Returns an `UIImage` object if the image is in `NSCache`.
+ */
 - (UIImage*) imageForKey:(NSString*)key url:(NSURL*)url queueIfNeeded:(BOOL)queueIfNeeded;
+
+
+/** Returns an image if cached or properly routes requests to grab the image from disk or network.
+ @param key The key corresponding to a specific image.
+ @param url The URL to grab the image data from the network.
+ @param queueIfNeeded If the image is not on disk or in cache, a network request will be create to grab the image data.
+ @param tag A tag to associate the image with the rest of your application.
+ @return Returns an `UIImage` object if the image is in `NSCache`.
+ */
 - (UIImage*) imageForKey:(NSString*)key url:(NSURL*)url queueIfNeeded:(BOOL)queueIfNeeded tag:(NSUInteger)tag;
 
+
+/** Grabs an image object directly from disk.
+ @param key The key corresponding to a specific image..
+ @return Returns an unadjusted `UIImage` object direct from disk.
+ */
 - (UIImage*) cachedImageForKey:(NSString*)key;
+
+/** Checks to see if an image exists in cache or on disk for the given key.
+ @param key The key corresponding to a specific image.
+ @return Returns YES is the image corresponding to the key exists on disk or in NSCache, otherwise NO. 
+ */
 - (BOOL) imageExistsWithKey:(NSString *)key;
 
+
+
+///-------------------------
+/// @name Managing images and requests.
+///-------------------------
+
+/** Cancel all image requests */
 - (void) cancelOperations;
+
+/** Clears local cache and remove all images from disk */
 - (void) clearCachedImages;
+
+/** Remove all images from disk that we're create earlier than a certain time 
+ @param time The time for which all images files must be created before to remain on disk.
+ */
 - (void) removeCachedImagesFromDiskOlderThanTime:(NSTimeInterval)time;
 	
 
+///-------------------------
+/// @name For subclassing
+///-------------------------
+/** The directory where images are stored on disk.
+ @return A `NSString` with the location to store images.
+ */
+- (NSString *) cacheDirectoryPath; // for subclassing
 
-// for subclassing
-- (NSString *) cacheDirectoryPath;
+
+/** Perform image adjustments before storing it in local cache. 
+ 
+ @param image The image received from disk or the network.
+ @return The adjusted image.
+ */
 - (UIImage*) adjustImageRecieved:(UIImage*)image;
 
 @end

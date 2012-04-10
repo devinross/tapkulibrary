@@ -31,5 +31,7 @@
 
 #import <UIKit/UIKit.h>
 
+/** A `UITableViewCell` with a centered text label. */
 @interface TKButtonCell : UITableViewCell 
+
 @end

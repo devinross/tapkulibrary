@@ -30,18 +30,48 @@
  */
 
 #import <UIKit/UIKit.h>
+
 @class TKHTTPRequest;
 
+/** 
+ This class provides basic lazy loading views and easy network request management for a `UIViewController`. 
+ */
 @interface TKViewController : UIViewController {
 	NSMutableArray *_activeRequests;
 	UIView *_loadingView;
 }
 
+
+///----------------------------
+/// @name Properties
+///----------------------------
+
+/* Returns a loading view with an `UIActivityIndicatorView` center on the view */
 @property (strong,nonatomic) UIView *loadingView;
 
+
+///----------------------------
+/// @name Network Request Management
+///----------------------------
+/** Associate active network requests with a specific view controller for easy management.
+ @param request The network request which you want to have the view controller manage.
+*/
 - (void) addActiveRequest:(TKHTTPRequest*)request;
+
+/** Returns the current number of request managed by the view controller.
+ @see addActiveRequest:
+*/
 - (NSInteger) activeRequestCount;
+
+/** Remove an active request.
+ @param request The request that will be removed.
+ @see addActiveRequest:
+*/
 - (void) removeActiveRequest:(TKHTTPRequest*)request;
+
+/** Cancel all active network requests managed by the view controller.
+ @see addActiveRequest:
+*/
 - (void) cancelActiveRequests;
 
 

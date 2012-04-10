@@ -32,8 +32,16 @@
 #import <UIKit/UIKit.h>
 
 
-@interface TKLabelCell : UITableViewCell 
+/** This class is the base class for displaying a `UITableViewCell` with a label to the left of a main view element. Good for forms and entering lots of data. 
+*/
+@interface TKLabelCell : UITableViewCell
 
-@property (strong, nonatomic) UILabel *label;
+
+///----------------------------
+/// @name Properties
+///----------------------------
+
+/** A `UILabel` that will be a title for the core view. */
+@property (strong,nonatomic) UILabel *label;
 
 @end

@@ -34,10 +34,6 @@
 #import "UIImage+TKCategory.h"
 
 
-//@interface UIView (TKEmptyViewCategory)
-//+ (void) drawGradientInRect:(CGRect)rect withColors:(NSArray*)colors;
-//@end
-
 @implementation UIView (TKEmptyViewCategory)
 
 + (void) drawGradientInRect:(CGRect)rect withColors:(NSArray*)colors{
@@ -70,9 +66,7 @@
 @end
 
 
-//@interface UIImage (TKEmptyViewCategory)
-//- (void) drawMaskedGradientInRect:(CGRect)rect withColors:(NSArray*)colors;
-//@end
+
 
 @implementation UIImage (TKEmptyViewCategory)
 

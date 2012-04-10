@@ -35,14 +35,25 @@
 @class TKCalendarMonthView;
 @protocol TKCalendarMonthViewDelegate,TKCalendarMonthViewDataSource;
 
+
+/** The `TKCalendarMonthViewController` class creates a controller object that manages a calendar month grid. */ 
 @interface TKCalendarMonthViewController : UIViewController <TKCalendarMonthViewDelegate,TKCalendarMonthViewDataSource> {
-	TKCalendarMonthView *_monthView;
 	BOOL _sundayFirst;
 }
 
+/** Initializes a month view controller to manage a month grid. Sunday will be the left-most day.
+ @return A newly create month view controller.
+ */
 - (id) init;
+
+/** Initializes a month view controller to manage a month grid.
+ @param sundayFirst If YES, Sunday will be the left most day in the month grid, otherwise Monday.
+ @return A newly create month view controller.
+ */
 - (id) initWithSunday:(BOOL)sundayFirst;
 
+ 
+/** Returns the month view managed by the controller object. */
 @property (strong,nonatomic) TKCalendarMonthView *monthView;
 
 

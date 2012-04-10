@@ -32,9 +32,20 @@
 
 #import <UIKit/UIKit.h>
 
+/** Posted when the a motion event begins. */
 extern NSString *TKWindowShakeBegan;
+
+/** Posted when the a motion event cancels. */
 extern NSString *TKWindowShakeCancelled;
+
+/** Posted when the a motion event ends. */
 extern NSString *TKWindowShakeEnded;
 
+
+
+/** 
+ A subclass of `UIWindow` that posts notifications of any motion (ie. shake) events for the device.
+ */
 @interface TKWindow : UIWindow 
+
 @end

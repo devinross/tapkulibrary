@@ -36,15 +36,31 @@ typedef enum {
 	TKProgressBarViewStyleShort
 } TKProgressBarViewStyle;
 
+
+/**
+ A progress bar view.
+ */
 @interface TKProgressBarView : UIView {
 	TKProgressBarViewStyle _style;
 	float _progress,_displayProgress;
 }
 
+/**
+ Initialize a progress bar.
+ @param style The style of the progress bar.
+ @return A progress bar or nil.
+ */
 - (id) initWithStyle:(TKProgressBarViewStyle)style;
 
+/** The progress. */
 @property (assign,nonatomic) float progress; // a value between 0.0 and 1.0
 
+
+/**
+ Sets the progress. Allows for animation of the progress meter. 
+ @param progress The progress.
+ @param animated Flag for animating the increase of the progress.
+ */
 - (void) setProgress:(float)progress animated:(BOOL)animated;
 
 @end

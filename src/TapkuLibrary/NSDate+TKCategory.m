@@ -89,12 +89,12 @@
     NSInteger months = [components month];
     return abs(months);
 }
-- (NSInteger) daysBetweenDate:(NSDate*)d{
-	
-	NSTimeInterval time = [self timeIntervalSinceDate:d];
-	return abs(time / 60 / 60/ 24);
-	
+
+- (NSInteger) daysBetweenDate:(NSDate*)date {
+    NSTimeInterval time = [self timeIntervalSinceDate:date];
+    return ((abs(time) / (60.0 * 60.0 * 24.0)) + 0.5);
 }
+
 - (BOOL) isToday{
 	return [self isSameDay:[NSDate date]];
 } 

@@ -1,0 +1,1691 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>TKHTTPRequest Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">tapku </a></h1>
+				<a id="developerHome" href="../index.html">Tapku Library</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">TKHTTPRequest Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/URL">&nbsp;&nbsp;&nbsp;&nbsp;URL</option>
+	
+	<option value="//api/name/URLRequest">&nbsp;&nbsp;&nbsp;&nbsp;URLRequest</option>
+	
+	<option value="//api/name/delegate">&nbsp;&nbsp;&nbsp;&nbsp;delegate</option>
+	
+	<option value="//api/name/didFailSelector">&nbsp;&nbsp;&nbsp;&nbsp;didFailSelector</option>
+	
+	<option value="//api/name/didFinishSelector">&nbsp;&nbsp;&nbsp;&nbsp;didFinishSelector</option>
+	
+	<option value="//api/name/didStartSelector">&nbsp;&nbsp;&nbsp;&nbsp;didStartSelector</option>
+	
+	<option value="//api/name/downloadDestinationPath">&nbsp;&nbsp;&nbsp;&nbsp;downloadDestinationPath</option>
+	
+	<option value="//api/name/error">&nbsp;&nbsp;&nbsp;&nbsp;error</option>
+	
+	<option value="//api/name/progressDelegate">&nbsp;&nbsp;&nbsp;&nbsp;progressDelegate</option>
+	
+	<option value="//api/name/responseData">&nbsp;&nbsp;&nbsp;&nbsp;responseData</option>
+	
+	<option value="//api/name/responseHeaders">&nbsp;&nbsp;&nbsp;&nbsp;responseHeaders</option>
+	
+	<option value="//api/name/showNetworkActivity">&nbsp;&nbsp;&nbsp;&nbsp;showNetworkActivity</option>
+	
+	<option value="//api/name/statusCode">&nbsp;&nbsp;&nbsp;&nbsp;statusCode</option>
+	
+	<option value="//api/name/tag">&nbsp;&nbsp;&nbsp;&nbsp;tag</option>
+	
+	<option value="//api/name/temporaryFileDownloadPath">&nbsp;&nbsp;&nbsp;&nbsp;temporaryFileDownloadPath</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/isNetworkInUse">&nbsp;&nbsp;&nbsp;&nbsp;+ isNetworkInUse</option>
+	
+	<option value="//api/name/requestWithURL:">&nbsp;&nbsp;&nbsp;&nbsp;+ requestWithURL:</option>
+	
+	<option value="//api/name/requestWithURLRequest:">&nbsp;&nbsp;&nbsp;&nbsp;+ requestWithURLRequest:</option>
+	
+	<option value="//api/name/setShouldUpdateNetworkActivityIndicator:">&nbsp;&nbsp;&nbsp;&nbsp;+ setShouldUpdateNetworkActivityIndicator:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/initWithURL:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithURL:</option>
+	
+	<option value="//api/name/initWithURLRequest:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithURLRequest:</option>
+	
+	<option value="//api/name/setCompletionBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- setCompletionBlock:</option>
+	
+	<option value="//api/name/setFailedBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- setFailedBlock:</option>
+	
+	<option value="//api/name/setStartedBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- setStartedBlock:</option>
+	
+	<option value="//api/name/startAsynchronous">&nbsp;&nbsp;&nbsp;&nbsp;- startAsynchronous</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Create a request object">Create a request object</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Properties">Properties</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Callback Delegate">Callback Delegate</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_File Download Path">File Download Path</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Response Properties">Response Properties</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Start request">Start request</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/URL">URL</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/URLRequest">URLRequest</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/delegate">delegate</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didFailSelector">didFailSelector</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didFinishSelector">didFinishSelector</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/didStartSelector">didStartSelector</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/downloadDestinationPath">downloadDestinationPath</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/error">error</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/progressDelegate">progressDelegate</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/responseData">responseData</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/responseHeaders">responseHeaders</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/showNetworkActivity">showNetworkActivity</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/statusCode">statusCode</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tag">tag</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/temporaryFileDownloadPath">temporaryFileDownloadPath</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isNetworkInUse">isNetworkInUse</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/requestWithURL:">requestWithURL:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/requestWithURLRequest:">requestWithURLRequest:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setShouldUpdateNetworkActivityIndicator:">setShouldUpdateNetworkActivityIndicator:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithURL:">initWithURL:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithURLRequest:">initWithURLRequest:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setCompletionBlock:">setCompletionBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setFailedBlock:">setFailedBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setStartedBlock:">setStartedBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/startAsynchronous">startAsynchronous</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="TKHTTPRequest Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">TKHTTPRequest Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSOperation</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">TKHTTPRequest.h<br />TKHTTPRequest.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>An <code>TKHTTPRequest</code> object provides support to perform the loading of a <a href="#//api/name/URL">URL</a> request.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Create a request object" name="task_Create a request object"></a>
+						<h3 class="subsubtitle task-title">Create a request object</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/requestWithURL:">+&nbsp;requestWithURL:</a></code>
+		<span class="tooltip"><p>Returns a newly created request with a <a href="#//api/name/URL">URL</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithURL:">&ndash;&nbsp;initWithURL:</a></code>
+		<span class="tooltip"><p>Returns a newly initialized request with a <a href="#//api/name/URL">URL</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/requestWithURLRequest:">+&nbsp;requestWithURLRequest:</a></code>
+		<span class="tooltip"><p>Returns a newly created request with a <code>NS</code>URLRequest<code></code> object.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithURLRequest:">&ndash;&nbsp;initWithURLRequest:</a></code>
+		<span class="tooltip"><p>Returns a newly initialized request with a <code>NS</code>URLRequest<code></code> object.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Properties" name="task_Properties"></a>
+						<h3 class="subsubtitle task-title">Properties</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/URL">&nbsp;&nbsp;URL</a></code>
+		<span class="tooltip"><p>The request&rsquo;s URL.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/URLRequest">&nbsp;&nbsp;URLRequest</a></code>
+		<span class="tooltip"><p>The request&rsquo;s <a href="#//api/name/URL">URL</a> Request object.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/tag">&nbsp;&nbsp;tag</a></code>
+		<span class="tooltip"><p>An integer that you can use to identify request objects in your application.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/showNetworkActivity">&nbsp;&nbsp;showNetworkActivity</a></code>
+		<span class="tooltip"><p>The request will show the network indicator in the status bar when set to YES. Default is YES.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/progressDelegate">&nbsp;&nbsp;progressDelegate</a></code>
+		<span class="tooltip"><p>The progress <a href="#//api/name/delegate">delegate</a> must adopt the <a href="../Protocols/TKHTTPRequestProgressDelegate.html"><code>TKHTTPRequestProgressDelegate</code></a> protocol. The <a href="#//api/name/data">data</a> source is not retained.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Callback Delegate" name="task_Callback Delegate"></a>
+						<h3 class="subsubtitle task-title">Callback Delegate</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/delegate">&nbsp;&nbsp;delegate</a></code>
+		<span class="tooltip"><p>The delegate to receive <a href="#//api/name/start">start</a>, finish and fail callback selectors.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didStartSelector">&nbsp;&nbsp;didStartSelector</a></code>
+		<span class="tooltip"><p>The selector called upon the <a href="#//api/name/start">start</a> of the request.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didFinishSelector">&nbsp;&nbsp;didFinishSelector</a></code>
+		<span class="tooltip"><p>The selector called upon the finishing of the request.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/didFailSelector">&nbsp;&nbsp;didFailSelector</a></code>
+		<span class="tooltip"><p>The selector called upon the failure of the request.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="File Download Path" name="task_File Download Path"></a>
+						<h3 class="subsubtitle task-title">File Download Path</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/downloadDestinationPath">&nbsp;&nbsp;downloadDestinationPath</a></code>
+		<span class="tooltip"><p>The final destination for the response <a href="#//api/name/data">data</a> file. Default is nil.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/temporaryFileDownloadPath">&nbsp;&nbsp;temporaryFileDownloadPath</a></code>
+		<span class="tooltip"><p>The destination for the response <a href="#//api/name/data">data</a> to be written to during the request <a href="#//api/name/connection">connection</a>. Default is nil.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Response Properties" name="task_Response Properties"></a>
+						<h3 class="subsubtitle task-title">Response Properties</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/error">&nbsp;&nbsp;error</a></code>
+		<span class="tooltip"><p>The error object if the requests ends in failure.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/statusCode">&nbsp;&nbsp;statusCode</a></code>
+		<span class="tooltip"><p>The status code of the request.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/responseHeaders">&nbsp;&nbsp;responseHeaders</a></code>
+		<span class="tooltip"><p>The response headers of the request.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/responseData">&nbsp;&nbsp;responseData</a></code>
+		<span class="tooltip"><p>The response <a href="#//api/name/data">data</a> of the request.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setStartedBlock:">&ndash;&nbsp;setStartedBlock:</a></code>
+		<span class="tooltip"><p>The block called upon the <a href="#//api/name/start">start</a> of the request.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setCompletionBlock:">&ndash;&nbsp;setCompletionBlock:</a></code>
+		<span class="tooltip"><p>The block called up the finishing of the request.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setFailedBlock:">&ndash;&nbsp;setFailedBlock:</a></code>
+		<span class="tooltip"><p>The block called up the failure of the request.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Start request" name="task_Start request"></a>
+						<h3 class="subsubtitle task-title">Start request</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/startAsynchronous">&ndash;&nbsp;startAsynchronous</a></code>
+		<span class="tooltip"><p>Causes the request to begin loading <a href="#//api/name/data">data</a>, if it has not already.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/isNetworkInUse">+&nbsp;isNetworkInUse</a></code>
+		<span class="tooltip"><p>Returns YES if there are any active requests, otherwise NO.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setShouldUpdateNetworkActivityIndicator:">+&nbsp;setShouldUpdateNetworkActivityIndicator:</a></code>
+		<span class="tooltip"><p>Sets the rule that future requests will change the Network Indicator in the status bar</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/URL" title="URL"></a>
+	<h3 class="subsubtitle method-title">URL</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The request&rsquo;s URL.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSURL *URL</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The request&rsquo;s URL.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/URLRequest" title="URLRequest"></a>
+	<h3 class="subsubtitle method-title">URLRequest</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The request&rsquo;s <a href="#//api/name/URL">URL</a> Request object.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSURLRequest *URLRequest</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The request&rsquo;s <a href="#//api/name/URL">URL</a> Request object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/delegate" title="delegate"></a>
+	<h3 class="subsubtitle method-title">delegate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The delegate to receive <a href="#//api/name/start">start</a>, finish and fail callback selectors.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) id delegate</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The delegate to receive <a href="#//api/name/start">start</a>, finish and fail callback selectors.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/didFailSelector" title="didFailSelector"></a>
+	<h3 class="subsubtitle method-title">didFailSelector</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The selector called upon the failure of the request.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) SEL didFailSelector</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The selector called upon the failure of the request.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/didFinishSelector" title="didFinishSelector"></a>
+	<h3 class="subsubtitle method-title">didFinishSelector</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The selector called upon the finishing of the request.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) SEL didFinishSelector</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The selector called upon the finishing of the request.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/didStartSelector" title="didStartSelector"></a>
+	<h3 class="subsubtitle method-title">didStartSelector</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The selector called upon the <a href="#//api/name/start">start</a> of the request.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) SEL didStartSelector</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The selector called upon the <a href="#//api/name/start">start</a> of the request.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/downloadDestinationPath" title="downloadDestinationPath"></a>
+	<h3 class="subsubtitle method-title">downloadDestinationPath</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The final destination for the response <a href="#//api/name/data">data</a> file. Default is nil.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *downloadDestinationPath</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The final destination for the response <a href="#//api/name/data">data</a> file. Default is nil.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/error" title="error"></a>
+	<h3 class="subsubtitle method-title">error</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The error object if the requests ends in failure.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSError *error</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The error object if the requests ends in failure.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/progressDelegate" title="progressDelegate"></a>
+	<h3 class="subsubtitle method-title">progressDelegate</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The progress <a href="#//api/name/delegate">delegate</a> must adopt the <a href="../Protocols/TKHTTPRequestProgressDelegate.html"><code>TKHTTPRequestProgressDelegate</code></a> protocol. The <a href="#//api/name/data">data</a> source is not retained.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) id&lt;&gt; progressDelegate</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The progress <a href="#//api/name/delegate">delegate</a> must adopt the <a href="../Protocols/TKHTTPRequestProgressDelegate.html"><code>TKHTTPRequestProgressDelegate</code></a> protocol. The <a href="#//api/name/data">data</a> source is not retained.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/responseData" title="responseData"></a>
+	<h3 class="subsubtitle method-title">responseData</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The response <a href="#//api/name/data">data</a> of the request.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic) NSData *responseData</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The response <a href="#//api/name/data">data</a> of the request.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/responseHeaders" title="responseHeaders"></a>
+	<h3 class="subsubtitle method-title">responseHeaders</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The response headers of the request.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSDictionary *responseHeaders</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The response headers of the request.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/showNetworkActivity" title="showNetworkActivity"></a>
+	<h3 class="subsubtitle method-title">showNetworkActivity</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The request will show the network indicator in the status bar when set to YES. Default is YES.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) BOOL showNetworkActivity</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The request will show the network indicator in the status bar when set to YES. Default is YES.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/statusCode" title="statusCode"></a>
+	<h3 class="subsubtitle method-title">statusCode</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The status code of the request.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) NSInteger statusCode</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The status code of the request.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/tag" title="tag"></a>
+	<h3 class="subsubtitle method-title">tag</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>An integer that you can use to identify request objects in your application.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) NSUInteger tag</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>An integer that you can use to identify request objects in your application.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/temporaryFileDownloadPath" title="temporaryFileDownloadPath"></a>
+	<h3 class="subsubtitle method-title">temporaryFileDownloadPath</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The destination for the response <a href="#//api/name/data">data</a> to be written to during the request <a href="#//api/name/connection">connection</a>. Default is nil.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *temporaryFileDownloadPath</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The destination for the response <a href="#//api/name/data">data</a> to be written to during the request <a href="#//api/name/connection">connection</a>. Default is nil.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/isNetworkInUse" title="isNetworkInUse"></a>
+	<h3 class="subsubtitle method-title">isNetworkInUse</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns YES if there are any active requests, otherwise NO.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (BOOL)isNetworkInUse</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>YES if there are any active requests, otherwise NO.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns YES if there are any active requests, otherwise NO.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/requestWithURL:" title="requestWithURL:"></a>
+	<h3 class="subsubtitle method-title">requestWithURL:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns a newly created request with a <a href="#//api/name/URL">URL</a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (TKHTTPRequest *)requestWithURL:(NSURL *)<em>URL</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>URL</em></dt>
+			<dd><p>The <a href="#//api/name/URL">URL</a> for the new request.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The newly created request object.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns a newly created request with a <a href="#//api/name/URL">URL</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/requestWithURLRequest:" title="requestWithURLRequest:"></a>
+	<h3 class="subsubtitle method-title">requestWithURLRequest:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns a newly created request with a <code>NS</code>URLRequest<code></code> object.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (TKHTTPRequest *)requestWithURLRequest:(NSURLRequest *)<em>request</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>request</em></dt>
+			<dd><p>The <code>NS</code>URLRequest<code></code> for the new request.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The newly created request object.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns a newly created request with a <code>NS</code>URLRequest<code></code> object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setShouldUpdateNetworkActivityIndicator:" title="setShouldUpdateNetworkActivityIndicator:"></a>
+	<h3 class="subsubtitle method-title">setShouldUpdateNetworkActivityIndicator:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Sets the rule that future requests will change the Network Indicator in the status bar</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)setShouldUpdateNetworkActivityIndicator:(BOOL)<em>shouldUpdate</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>shouldUpdate</em></dt>
+			<dd><p>YES if the network indicator should change upon new requests, otherwise NO.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Sets the rule that future requests will change the Network Indicator in the status bar</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithURL:" title="initWithURL:"></a>
+	<h3 class="subsubtitle method-title">initWithURL:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns a newly initialized request with a <a href="#//api/name/URL">URL</a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithURL:(NSURL *)<em>URL</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>URL</em></dt>
+			<dd><p>The <a href="#//api/name/URL">URL</a> for the new request.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The newly created request object.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns a newly initialized request with a <a href="#//api/name/URL">URL</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithURLRequest:" title="initWithURLRequest:"></a>
+	<h3 class="subsubtitle method-title">initWithURLRequest:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns a newly initialized request with a <code>NS</code>URLRequest<code></code> object.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithURLRequest:(NSURLRequest *)<em>request</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>request</em></dt>
+			<dd><p>The <code>NS</code>URLRequest<code></code> for the new request.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The newly created request object.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns a newly initialized request with a <code>NS</code>URLRequest<code></code> object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setCompletionBlock:" title="setCompletionBlock:"></a>
+	<h3 class="subsubtitle method-title">setCompletionBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The block called up the finishing of the request.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)setCompletionBlock:(TKBasicBlock)<em>aCompletionBlock</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aCompletionBlock</em></dt>
+			<dd><p>The block that will be executed upon completion of the request.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The block called up the finishing of the request.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setFailedBlock:" title="setFailedBlock:"></a>
+	<h3 class="subsubtitle method-title">setFailedBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The block called up the failure of the request.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)setFailedBlock:(TKBasicBlock)<em>aFailedBlock</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aFailedBlock</em></dt>
+			<dd><p>The block that will be executed upon failure of the request.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The block called up the failure of the request.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setStartedBlock:" title="setStartedBlock:"></a>
+	<h3 class="subsubtitle method-title">setStartedBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The block called upon the <a href="#//api/name/start">start</a> of the request.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)setStartedBlock:(TKBasicBlock)<em>aStartedBlock</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>aStartedBlock</em></dt>
+			<dd><p>The block that will be executed upon the <a href="#//api/name/start">start</a> of the request.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The block called upon the <a href="#//api/name/start">start</a> of the request.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/startAsynchronous" title="startAsynchronous"></a>
+	<h3 class="subsubtitle method-title">startAsynchronous</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Causes the request to begin loading <a href="#//api/name/data">data</a>, if it has not already.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)startAsynchronous</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Causes the request to begin loading <a href="#//api/name/data">data</a>, if it has not already.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKHTTPRequest.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2012 Tapku Library. All rights reserved. (Last updated: 2012-04-10)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

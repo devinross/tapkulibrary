@@ -31,14 +31,8 @@
 
 #import "TKMapPlace.h"
 
-
 @implementation TKMapPlace
 @synthesize title,coordinate, color;
-
-- (id)init{
-	self = [super init];
-	return self;
-}
 
 
 @end

@@ -173,11 +173,10 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 	_receivedDataBytes = 0;
 	_totalExpectedImageSize = 0;
 	
-	if(self.URLRequest)
+	if(self.URLRequest) 
 		self.connection = [[NSURLConnection alloc] initWithRequest:self.URLRequest delegate:self];
 	else
-		self.connection = [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:self.URL] delegate:self];
-	
+		self.connection = [[NSURLConnection alloc] initWithRequest:[NSURLRequest requestWithURL:self.URL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30] delegate:self];
 	
 	[self.connection start];
 	

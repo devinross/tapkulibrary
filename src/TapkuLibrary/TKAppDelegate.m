@@ -44,9 +44,6 @@
 		[self.window makeKeyAndVisible];
 	}
 	
-
-
-	
     [self applicationDidStartup:application];
 	
 	return YES;

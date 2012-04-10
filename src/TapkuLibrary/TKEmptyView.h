@@ -33,6 +33,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import "TKGradientView.h"
 
+
+/**
+ The glyph that appears with the empty view.
+ */
 typedef enum {
 	TKEmptyViewImageChatBubble,
 	TKEmptyViewImageClock,
@@ -53,29 +57,73 @@ typedef enum {
 } TKEmptyViewImage;
 
 
+/**
+ A simple view for showing no content available.
+ */
+@interface TKEmptyView : TKGradientView 
 
-@interface TKEmptyView : TKGradientView {	
-	UILabel *_titleLabel, *_subtitleLabel;
-	UIImageView *_imageView;
-}
 
-@property (strong,nonatomic) UIImageView *imageView;
-@property (strong,nonatomic) UILabel *titleLabel;
-@property (strong,nonatomic) UILabel *subtitleLabel;
+///-------------------------
+/// @name Initializing a TKEmptyView Object
+///-------------------------
 
+/** Initializes an empty view with an image that will be stylized.
+ 
+ @param frame The frame of the `UIView`.
+ @param image The image that will appear central in the view.
+ @param titleString The title of the empty view.
+ @param subtitleString The subtitle of the empty view.
+ @return An initialized `TKEmptyView` object or nil if the object couldn’t be created.
+ */
 - (id) initWithFrame:(CGRect)frame 
 				mask:(UIImage*)image 
 			   title:(NSString*)titleString 
 			subtitle:(NSString*)subtitleString;
 
-
+/** Initializes an empty view with the given `TKEmptyViewImage`.
+ 
+ @warning Make sure to include the bundle included with the framework in your own project.
+ 
+ @param frame The frame of the `UIView`.
+ @param image The bundled image that will be the central image.
+ @param titleString The title of the empty view.
+ @param subtitleString The subtitle of the empty view.
+ @return An initialized `TKEmptyView` object or nil if the object couldn’t be created.
+ */
 - (id) initWithFrame:(CGRect)frame 
 	  emptyViewImage:(TKEmptyViewImage)image 
 			   title:(NSString*)titleString 
 			subtitle:(NSString*)subtitleString;
 
+///-------------------------
+/// @name Properties
+///-------------------------
 
+/** The image view for the empty content. */
+@property (strong,nonatomic) UIImageView *imageView;
+
+/** The title message. */
+@property (strong,nonatomic) UILabel *titleLabel;
+
+/** The secondary message. */
+@property (strong,nonatomic) UILabel *subtitleLabel;
+
+
+
+///-------------------------
+/// @name Set the Empty View Image
+///-------------------------
+
+/** The image that be used to mask the glyph that will be displayed 
+	above the title message. This image needs to be a transparent png image. 
+ 
+ @param image Set the image as the empty image.
+ */
 - (void) setImage:(UIImage*)image;
+
+/** Set the empty view to a bundled image. 
+ @param image Set the image to a preset image.
+*/
 - (void) setEmptyImage:(TKEmptyViewImage)image;
 
 

@@ -30,16 +30,13 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface TKMapPlace : NSObject <MKAnnotation> {
-	NSString *title;
-	CLLocationCoordinate2D coordinate;
-	MKPinAnnotationColor color;
-	
-}
+
+@interface TKMapPlace : NSObject <MKAnnotation> 
+
 @property (copy,nonatomic) NSString *title;
 @property (assign,nonatomic) CLLocationCoordinate2D coordinate;
 @property (assign, nonatomic) MKPinAnnotationColor color;
+
 @end

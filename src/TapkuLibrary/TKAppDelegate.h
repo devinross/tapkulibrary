@@ -34,15 +34,19 @@
 
 @class TKWindow;
 
-@interface TKAppDelegate : NSObject <UIApplicationDelegate> {
-	UIWindow *_window;
-}
-
+/** 
+ This class allocates a TKWindow instance and provides a convience method for application launching.
+ */
+@interface TKAppDelegate : NSObject <UIApplicationDelegate> 
 
 // For subclassing, default implentation does nothing.
 // These methods are called upon open & closing respectively regardless.
 // Good for placing instructions needed regardless of multi-tasking
 
+
+/** This is a convience method for placing any functionality that might be called upon initial launch of the application and any subsequent relaunch from a background state. Default implementation does nothing.
+ @param application The application instance.
+ */
 - (void) applicationDidStartup:(UIApplication *)application;
 
 @end

@@ -1,39 +1,15 @@
 TapkuLibrary
 ============
-TapkuLibrary is an open source iOS framework built on Cocoa and UIKit intended for broad use in applications. If you really like the framework, [drop me a line](http://devinsheaven.com/about#contact), I'd love to hear about it. Many thanks to those who have contributed to the project.
+TapkuLibrary is an open source iOS library built on Cocoa and UIKit intended for broad use in applications. If you're looking to see what the library can do, check out the demo project included. Some major components include coverflow, calendar grid, network requests and progress indicators.
 
 
-### Classes
 
-* [TKHTTPRequest](https://github.com/devinross/tapkulibrary/blob/master/src/TapkuLibrary/TKHTTPRequest.h)
-* [TKCoverflowView](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKCoverflowView.h)
-* [TKCalendarMonthView](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKCalendarMonthView.h)
-* [TKImageCenter](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKImageCenter.h)
-* [TKAlertCenter](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKAlertCenter.h)
-* [TKProgressAlertView](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKProgressAlertView.h)
-* [TKLoadingView](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKLoadingView.h)
-* [TKButtonCell](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKButtonCell.h)
-* [TKLabelCell](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKLabelCell.h)
-* [TKEmptyView](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKEmptyView.h)
-* [TKWindow](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/TKWindow.h)
-* [(and more)](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary)
+## Documentation
+Included in the repository is a .docset bundle with all documentation for the library. Place the bundle in the ~/Library/Developer/Shared/Documentation/DocSets directory
 
-### Categories
+## Adding Tapku To Your Project 
 
-* [NSString](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/NSString+TKCategory.h)
-* [NSDate](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/NSDate+TKCategory.h)
-* [NSArray](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/NSArray+TKCategory.h)
-* [UIView](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/UIView+TKCategory.h)
-* [UIImage](https://github.com/devinross/tapkulibrary/tree/master/src/TapkuLibrary/UIImage+TKCategory.h)
+Instructions on adding tapku library can be [found here](https://github.com/devinross/tapkulibrary/wiki/Adding-Tapku-to-Your-Project-in-XCode-4). For additional help, check out the demo project.
 
 
-## Adding Tapku To Your Project / [Documentation](http://wiki.github.com/devinross/tapkulibrary/)
-
-The best place to start is by downloading the source and trying out the demo app. The demo project gives a brief overview of the functionality of the framework. Instructions on adding the framework in your own project for [XCode 3](https://github.com/devinross/tapkulibrary/wiki/Adding-Tapku-to-Your-Project-in-XCode-3) & [XCode 4](https://github.com/devinross/tapkulibrary/wiki/Adding-Tapku-to-Your-Project-in-XCode-4)  and documentation, can be found on the [wiki](http://wiki.github.com/devinross/tapkulibrary/).
-
-
-### Links
-
-* [Creator's Homepage](http://devinsheaven.com)
-* [Framework Landing Page](http://tapku.com)
-* [Documentation](http://wiki.github.com/devinross/tapkulibrary/)
+Follow me on twitter, [@devin_ross](http://twitter.com/devin_ross).

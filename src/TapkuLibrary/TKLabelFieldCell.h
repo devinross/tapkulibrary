@@ -29,11 +29,12 @@
  
  */
 
-
 #import "TKLabelCell.h"
 
+/** A `TKLabelCell` with a `UILabel` field. */
 @interface TKLabelFieldCell : TKLabelCell 
 
+/** A `UILabel` field. */
 @property (strong, nonatomic) UILabel *field;
 
 @end

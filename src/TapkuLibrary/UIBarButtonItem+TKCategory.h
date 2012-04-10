@@ -29,11 +29,22 @@
  
  */
 
+
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+/** Additional functionality for `UIBarButtonItem`.  */
 @interface UIBarButtonItem (TKCategory)
 
-+ (UIBarButtonItem*) barButtonItemWithImage:(UIImage*)img highlightedImage:(UIImage*)highlighedImage target:(id)target selector:(SEL)selector;
+
+
+/** Creates and returns a bar button item object using witha button with the specified properties. 
+ @param image The normal state image.
+ @param highlighedImage The highlighted state image.
+ @param target The object that receives the action message.
+ @param selector The action to send to target when this item is selected.
+ @return The `UIBarButtonItem` object.
+ */
++ (UIBarButtonItem*) barButtonItemWithImage:(UIImage*)image highlightedImage:(UIImage*)highlighedImage target:(id)target selector:(SEL)selector;
 
 @end

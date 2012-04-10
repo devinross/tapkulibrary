@@ -31,9 +31,9 @@
 
 #import "TKWindow.h"
 
-NSString *TKWindowShakeBegan = @"motionBegan";
-NSString *TKWindowShakeCancelled = @"motionCancelled";
-NSString *TKWindowShakeEnded = @"motionEnded";
+NSString *TKWindowShakeBegan = @"TKWindowShakeBegan";
+NSString *TKWindowShakeCancelled = @"TKWindowShakeCancelled";
+NSString *TKWindowShakeEnded = @"TKWindowShakeEnded";
 
 
 @implementation TKWindow

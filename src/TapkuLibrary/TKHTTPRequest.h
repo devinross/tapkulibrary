@@ -31,8 +31,6 @@
 
 #import <Foundation/Foundation.h>
 
-
-
 #if NS_BLOCKS_AVAILABLE
 typedef void (^TKBasicBlock)(void);
 #endif
@@ -52,21 +50,24 @@ typedef enum _TKNetworkErrorType {
 } TKNetworkErrorType;
 
 
-
-
 @class TKHTTPRequest;
 
+/** The progress delegate can adopt the `TKHTTPRequestProgressDelegate` protocol. The progress delegate is not retained. */
 @protocol TKHTTPRequestProgressDelegate <NSObject>
 @optional
+/** The progress of received bytes for the response of the `TKHTTPRequest`.
+ @param request The URL request.
+ @param received The total bytes received from the request.
+ @param total The total expected btyes that will be received from the request.
+ */
 - (void) request:(TKHTTPRequest*)request didReceiveTotalBytes:(NSInteger)received ofExpectedBytes:(NSInteger)total;
 @end
 
 
+/** An `TKHTTPRequest` object provides support to perform the loading of a URL request. */
 @interface TKHTTPRequest : NSOperation {
-
-
-	NSInteger _totalExpectedImageSize,_receivedDataBytes;
 	
+	NSInteger _totalExpectedImageSize,_receivedDataBytes;
 	
 	#if NS_BLOCKS_AVAILABLE
 	TKBasicBlock startedBlock;
@@ -74,53 +75,141 @@ typedef enum _TKNetworkErrorType {
 	TKBasicBlock failureBlock;
 	#endif
 	
-	
 }
 
+///-------------------------
+/// @name Create a request object
+///-------------------------
+ 
+/** Returns a newly created request with a URL. 
+ @param URL The URL for the new request.
+ @return The newly created request object.
+ */
 + (TKHTTPRequest*) requestWithURL:(NSURL*)URL;
+
+/** Returns a newly initialized request with a URL. 
+ @param URL The URL for the new request.
+ @return The newly created request object.
+ */
 - (id) initWithURL:(NSURL*)URL;
 
+/** Returns a newly created request with a `NSURLRequest` object. 
+ @param request The `NSURLRequest` for the new request.
+ @return The newly created request object.
+ */
 + (TKHTTPRequest*) requestWithURLRequest:(NSURLRequest*)request;
+
+/** Returns a newly initialized request with a `NSURLRequest` object. 
+ @param request The `NSURLRequest` for the new request.
+ @return The newly created request object.
+ */
 - (id) initWithURLRequest:(NSURLRequest*)request;
 
+///-------------------------
+/// @name Properties
+///-------------------------
+/** The request's URL. */
 @property (strong,nonatomic) NSURL *URL;
+
+/** The request's URL Request object. */
 @property (strong,nonatomic) NSURLRequest *URLRequest;
+
+/** An integer that you can use to identify request objects in your application. */
 @property (assign,nonatomic) NSUInteger tag;
-@property (assign,nonatomic) BOOL showNetworkActivity; // for indiviual requests, default: TRUE
 
-@property (unsafe_unretained,nonatomic) id <TKHTTPRequestProgressDelegate> progressDelegate;
+/** The request will show the network indicator in the status bar when set to YES. Default is YES. */
+@property (assign,nonatomic) BOOL showNetworkActivity; 
 
-@property (unsafe_unretained,nonatomic) id delegate;
+/** The progress delegate must adopt the `TKHTTPRequestProgressDelegate` protocol. The data source is not retained. */
+@property (assign,nonatomic) id <TKHTTPRequestProgressDelegate> progressDelegate;
+
+
+///-------------------------
+/// @name Callback Delegate
+///-------------------------
+/** The delegate to receive start, finish and fail callback selectors. */
+@property (assign,nonatomic) id delegate;
+
+/** The selector called upon the start of the request. */
 @property (assign,nonatomic) SEL didStartSelector;
+
+/** The selector called upon the finishing of the request. */
 @property (assign,nonatomic) SEL didFinishSelector;
+
+/** The selector called upon the failure of the request. */
 @property (assign,nonatomic) SEL didFailSelector;
 
+
+///-------------------------
+/// @name File Download Path
+///-------------------------
+/** The final destination for the response data file. Default is nil. */
 @property (copy,nonatomic) NSString *downloadDestinationPath;
+/** The destination for the response data to be written to during the request connection. Default is nil. */
 @property (copy,nonatomic) NSString *temporaryFileDownloadPath;
 
 
+///-------------------------
+/// @name Response Properties
+///-------------------------
+
+/** The error object if the requests ends in failure. */
 @property (copy,nonatomic) NSError *error;
+
+/** The status code of the request. */
 @property (assign,nonatomic) NSInteger statusCode;
+
+/** The response headers of the request. */
 @property (strong,nonatomic) NSDictionary *responseHeaders;
+
+/** The response data of the request. */
 @property (readonly,nonatomic) NSData *responseData;
 
-- (void) startAsynchronous;
 
 
+
+///-------------------------
+/// @name Callback Blocks
+///-------------------------
 #if NS_BLOCKS_AVAILABLE
+/** The block called upon the start of the request.
+ @param aStartedBlock The block that will be executed upon the start of the request.
+*/
 - (void) setStartedBlock:(TKBasicBlock)aStartedBlock;
+
+/** The block called up the finishing of the request. 
+ @param aCompletionBlock The block that will be executed upon completion of the request.
+ */
 - (void) setCompletionBlock:(TKBasicBlock)aCompletionBlock;
+
+/** The block called up the failure of the request. 
+ @param aFailedBlock The block that will be executed upon failure of the request.
+ */
 - (void) setFailedBlock:(TKBasicBlock)aFailedBlock;
 #endif
 
 
+///-------------------------
+/// @name Start request
+///-------------------------
+/** Causes the request to begin loading data, if it has not already. */
+- (void) startAsynchronous;
 
 
 
-
+///-------------------------
+/// @name Network indicator
+///-------------------------
 
 #pragma mark network activity
+/** Returns YES if there are any active requests, otherwise NO. 
+ @return YES if there are any active requests, otherwise NO.
+*/
 + (BOOL) isNetworkInUse;
+
+/** Sets the rule that future requests will change the Network Indicator in the status bar
+ @param shouldUpdate YES if the network indicator should change upon new requests, otherwise NO.
+ */
 + (void) setShouldUpdateNetworkActivityIndicator:(BOOL)shouldUpdate;
 
 

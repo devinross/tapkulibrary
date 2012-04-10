@@ -28,10 +28,13 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
+
 #import <UIKit/UIKit.h>
 
+/** Additional functionality for `UIScrollView`.  */
 @interface UIScrollView (TKCategory)
 
+/** Sets the content offset of the scrollview to zero (0,0). */
 - (void) scrollToTop;
 
 @end

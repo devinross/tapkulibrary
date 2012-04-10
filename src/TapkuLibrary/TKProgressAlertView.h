@@ -33,17 +33,28 @@
 #import <UIKit/UIKit.h>
 #import "TKProgressBarView.h"
 
-@interface TKProgressAlertView : UIAlertView {
-	TKProgressBarView *_progressBar;
-	UILabel *_label;
-}
+@interface TKProgressAlertView : UIAlertView 
 
 - (id) initWithProgressTitle:(NSString*)title;
 
+///----------------------------
+/// @name Properties
+///----------------------------
+
+/** The progress bar view */
 @property (strong,nonatomic) TKProgressBarView *progressBar;
+
+/** The title label for the alert. */
 @property (strong,nonatomic) UILabel *label;
 
+///----------------------------
+/// @name Displaying and hiding alert
+///----------------------------
+
+/** Show the alert */
 - (void) show;
+
+/** Hide the alert */
 - (void) hide;
 
 @end

@@ -1,0 +1,1198 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>TKImageCache Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">tapku </a></h1>
+				<a id="developerHome" href="../index.html">Tapku Library</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">TKImageCache Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/cacheDirectoryName">&nbsp;&nbsp;&nbsp;&nbsp;cacheDirectoryName</option>
+	
+	<option value="//api/name/imagesQueue">&nbsp;&nbsp;&nbsp;&nbsp;imagesQueue</option>
+	
+	<option value="//api/name/notificationName">&nbsp;&nbsp;&nbsp;&nbsp;notificationName</option>
+	
+	<option value="//api/name/timeTillRefreshCache">&nbsp;&nbsp;&nbsp;&nbsp;timeTillRefreshCache</option>
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/adjustImageRecieved:">&nbsp;&nbsp;&nbsp;&nbsp;- adjustImageRecieved:</option>
+	
+	<option value="//api/name/cacheDirectoryPath">&nbsp;&nbsp;&nbsp;&nbsp;- cacheDirectoryPath</option>
+	
+	<option value="//api/name/cachedImageForKey:">&nbsp;&nbsp;&nbsp;&nbsp;- cachedImageForKey:</option>
+	
+	<option value="//api/name/cancelOperations">&nbsp;&nbsp;&nbsp;&nbsp;- cancelOperations</option>
+	
+	<option value="//api/name/clearCachedImages">&nbsp;&nbsp;&nbsp;&nbsp;- clearCachedImages</option>
+	
+	<option value="//api/name/imageExistsWithKey:">&nbsp;&nbsp;&nbsp;&nbsp;- imageExistsWithKey:</option>
+	
+	<option value="//api/name/imageForKey:url:queueIfNeeded:">&nbsp;&nbsp;&nbsp;&nbsp;- imageForKey:url:queueIfNeeded:</option>
+	
+	<option value="//api/name/imageForKey:url:queueIfNeeded:tag:">&nbsp;&nbsp;&nbsp;&nbsp;- imageForKey:url:queueIfNeeded:tag:</option>
+	
+	<option value="//api/name/init">&nbsp;&nbsp;&nbsp;&nbsp;- init</option>
+	
+	<option value="//api/name/initWithCacheDirectoryName:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithCacheDirectoryName:</option>
+	
+	<option value="//api/name/removeCachedImagesFromDiskOlderThanTime:">&nbsp;&nbsp;&nbsp;&nbsp;- removeCachedImagesFromDiskOlderThanTime:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Initializing An Image Cache Object">Initializing An Image Cache Object</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Properties">Properties</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Getting an image">Getting an image</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Managing images and requests.">Managing images and requests.</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_For subclassing">For subclassing</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cacheDirectoryName">cacheDirectoryName</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/imagesQueue">imagesQueue</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/notificationName">notificationName</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/timeTillRefreshCache">timeTillRefreshCache</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/adjustImageRecieved:">adjustImageRecieved:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cacheDirectoryPath">cacheDirectoryPath</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cachedImageForKey:">cachedImageForKey:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancelOperations">cancelOperations</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/clearCachedImages">clearCachedImages</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/imageExistsWithKey:">imageExistsWithKey:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/imageForKey:url:queueIfNeeded:">imageForKey:url:queueIfNeeded:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/imageForKey:url:queueIfNeeded:tag:">imageForKey:url:queueIfNeeded:tag:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/init">init</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithCacheDirectoryName:">initWithCacheDirectoryName:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeCachedImagesFromDiskOlderThanTime:">removeCachedImagesFromDiskOlderThanTime:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="TKImageCache Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">TKImageCache Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSCache</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">TKImageCache.h<br />TKImageCache.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>An <code>TKImageCache</code> object provides a way to manage images between the network, disk and <code>NSCache</code>.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Initializing An Image Cache Object" name="task_Initializing An Image Cache Object"></a>
+						<h3 class="subsubtitle task-title">Initializing An Image Cache Object</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/init">&ndash;&nbsp;init</a></code>
+		<span class="tooltip"><p>Initialize a new image cache object.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithCacheDirectoryName:">&ndash;&nbsp;initWithCacheDirectoryName:</a></code>
+		<span class="tooltip"><p>Initialize a new image cache object.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Properties" name="task_Properties"></a>
+						<h3 class="subsubtitle task-title">Properties</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/imagesQueue">&nbsp;&nbsp;imagesQueue</a></code>
+		<span class="tooltip"><p>The queue that manages all network requests for images</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cacheDirectoryName">&nbsp;&nbsp;cacheDirectoryName</a></code>
+		<span class="tooltip"><p>The directory where images are stored on disk</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/notificationName">&nbsp;&nbsp;notificationName</a></code>
+		<span class="tooltip"><p>The notification name posted to <code>NSNotificationCenter</code></p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/timeTillRefreshCache">&nbsp;&nbsp;timeTillRefreshCache</a></code>
+		<span class="tooltip"><p>The threshold of time images on disk need to be created before to be read from disk. Otherwise the images will be requested from the network again. The time needs to be greater than zero to for the creation date to be check. Default is -1.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Getting an image" name="task_Getting an image"></a>
+						<h3 class="subsubtitle task-title">Getting an image</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/imageForKey:url:queueIfNeeded:">&ndash;&nbsp;imageForKey:url:queueIfNeeded:</a></code>
+		<span class="tooltip"><p>Returns an image if cached or properly routes requests to grab the image from disk or network.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/imageForKey:url:queueIfNeeded:tag:">&ndash;&nbsp;imageForKey:url:queueIfNeeded:tag:</a></code>
+		<span class="tooltip"><p>Returns an image if cached or properly routes requests to grab the image from disk or network.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cachedImageForKey:">&ndash;&nbsp;cachedImageForKey:</a></code>
+		<span class="tooltip"><p>Grabs an image object directly from disk.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/imageExistsWithKey:">&ndash;&nbsp;imageExistsWithKey:</a></code>
+		<span class="tooltip"><p>Checks to see if an image exists in cache or on disk for the given key.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Managing images and requests." name="task_Managing images and requests."></a>
+						<h3 class="subsubtitle task-title">Managing images and requests.</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cancelOperations">&ndash;&nbsp;cancelOperations</a></code>
+		<span class="tooltip"><p>Cancel all image requests</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/clearCachedImages">&ndash;&nbsp;clearCachedImages</a></code>
+		<span class="tooltip"><p>Clears local cache and remove all images from disk</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeCachedImagesFromDiskOlderThanTime:">&ndash;&nbsp;removeCachedImagesFromDiskOlderThanTime:</a></code>
+		<span class="tooltip"><p>Remove all images from disk that we&rsquo;re create earlier than a certain time</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="For subclassing" name="task_For subclassing"></a>
+						<h3 class="subsubtitle task-title">For subclassing</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cacheDirectoryPath">&ndash;&nbsp;cacheDirectoryPath</a></code>
+		<span class="tooltip"><p>The directory where images are stored on disk.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/adjustImageRecieved:">&ndash;&nbsp;adjustImageRecieved:</a></code>
+		<span class="tooltip"><p>Perform image adjustments before storing it in local cache.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/cacheDirectoryName" title="cacheDirectoryName"></a>
+	<h3 class="subsubtitle method-title">cacheDirectoryName</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The directory where images are stored on disk</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *cacheDirectoryName</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The directory where images are stored on disk</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKImageCache.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/imagesQueue" title="imagesQueue"></a>
+	<h3 class="subsubtitle method-title">imagesQueue</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The queue that manages all network requests for images</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) TKNetworkQueue *imagesQueue</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The queue that manages all network requests for images</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKImageCache.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/notificationName" title="notificationName"></a>
+	<h3 class="subsubtitle method-title">notificationName</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The notification name posted to <code>NSNotificationCenter</code></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (copy, nonatomic) NSString *notificationName</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The notification name posted to <code>NSNotificationCenter</code></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKImageCache.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/timeTillRefreshCache" title="timeTillRefreshCache"></a>
+	<h3 class="subsubtitle method-title">timeTillRefreshCache</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The threshold of time images on disk need to be created before to be read from disk. Otherwise the images will be requested from the network again. The time needs to be greater than zero to for the creation date to be check. Default is -1.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic) NSTimeInterval timeTillRefreshCache</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The threshold of time images on disk need to be created before to be read from disk. Otherwise the images will be requested from the network again. The time needs to be greater than zero to for the creation date to be check. Default is -1.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKImageCache.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/adjustImageRecieved:" title="adjustImageRecieved:"></a>
+	<h3 class="subsubtitle method-title">adjustImageRecieved:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Perform image adjustments before storing it in local cache.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (UIImage *)adjustImageRecieved:(UIImage *)<em>image</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>image</em></dt>
+			<dd><p>The image received from disk or the network.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The adjusted image.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Perform image adjustments before storing it in local cache.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKImageCache.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cacheDirectoryPath" title="cacheDirectoryPath"></a>
+	<h3 class="subsubtitle method-title">cacheDirectoryPath</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The directory where images are stored on disk.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)cacheDirectoryPath</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A <code>NSString</code> with the location to store images.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The directory where images are stored on disk.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKImageCache.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cachedImageForKey:" title="cachedImageForKey:"></a>
+	<h3 class="subsubtitle method-title">cachedImageForKey:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Grabs an image object directly from disk.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (UIImage *)cachedImageForKey:(NSString *)<em>key</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>The key corresponding to a specific image..</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns an unadjusted <code>UIImage</code> object direct from disk.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Grabs an image object directly from disk.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKImageCache.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cancelOperations" title="cancelOperations"></a>
+	<h3 class="subsubtitle method-title">cancelOperations</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Cancel all image requests</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)cancelOperations</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Cancel all image requests</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKImageCache.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/clearCachedImages" title="clearCachedImages"></a>
+	<h3 class="subsubtitle method-title">clearCachedImages</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Clears local cache and remove all images from disk</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)clearCachedImages</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Clears local cache and remove all images from disk</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKImageCache.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/imageExistsWithKey:" title="imageExistsWithKey:"></a>
+	<h3 class="subsubtitle method-title">imageExistsWithKey:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Checks to see if an image exists in cache or on disk for the given key.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)imageExistsWithKey:(NSString *)<em>key</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>The key corresponding to a specific image.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns YES is the image corresponding to the key exists on disk or in NSCache, otherwise NO.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Checks to see if an image exists in cache or on disk for the given key.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKImageCache.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/imageForKey:url:queueIfNeeded:" title="imageForKey:url:queueIfNeeded:"></a>
+	<h3 class="subsubtitle method-title">imageForKey:url:queueIfNeeded:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns an image if cached or properly routes requests to grab the image from disk or network.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (UIImage *)imageForKey:(NSString *)<em>key</em> url:(NSURL *)<em>url</em> queueIfNeeded:(BOOL)<em>queueIfNeeded</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>The key corresponding to a specific image.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>url</em></dt>
+			<dd><p>The URL to grab the image data from the network.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>queueIfNeeded</em></dt>
+			<dd><p>If the image is not on disk or in cache, a network request will be create to grab the image data.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns an <code>UIImage</code> object if the image is in <code>NSCache</code>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns an image if cached or properly routes requests to grab the image from disk or network.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKImageCache.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/imageForKey:url:queueIfNeeded:tag:" title="imageForKey:url:queueIfNeeded:tag:"></a>
+	<h3 class="subsubtitle method-title">imageForKey:url:queueIfNeeded:tag:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Returns an image if cached or properly routes requests to grab the image from disk or network.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (UIImage *)imageForKey:(NSString *)<em>key</em> url:(NSURL *)<em>url</em> queueIfNeeded:(BOOL)<em>queueIfNeeded</em> tag:(NSUInteger)<em>tag</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>The key corresponding to a specific image.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>url</em></dt>
+			<dd><p>The URL to grab the image data from the network.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>queueIfNeeded</em></dt>
+			<dd><p>If the image is not on disk or in cache, a network request will be create to grab the image data.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>tag</em></dt>
+			<dd><p>A tag to associate the image with the rest of your application.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Returns an <code>UIImage</code> object if the image is in <code>NSCache</code>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Returns an image if cached or properly routes requests to grab the image from disk or network.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKImageCache.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/init" title="init"></a>
+	<h3 class="subsubtitle method-title">init</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initialize a new image cache object.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)init</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new created <code>TKImageCache</code> object.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Initialize a new image cache object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKImageCache.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithCacheDirectoryName:" title="initWithCacheDirectoryName:"></a>
+	<h3 class="subsubtitle method-title">initWithCacheDirectoryName:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initialize a new image cache object.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithCacheDirectoryName:(NSString *)<em>cacheDirectoryName</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>cacheDirectoryName</em></dt>
+			<dd><p>The name of the folder to place cached images to disk.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new created <code>TKImageCache</code> object.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Initialize a new image cache object.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKImageCache.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeCachedImagesFromDiskOlderThanTime:" title="removeCachedImagesFromDiskOlderThanTime:"></a>
+	<h3 class="subsubtitle method-title">removeCachedImagesFromDiskOlderThanTime:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Remove all images from disk that we&rsquo;re create earlier than a certain time</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)removeCachedImagesFromDiskOlderThanTime:(NSTimeInterval)<em>time</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>time</em></dt>
+			<dd><p>The time for which all images files must be created before to remain on disk.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Remove all images from disk that we&rsquo;re create earlier than a certain time</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">TKImageCache.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2012 Tapku Library. All rights reserved. (Last updated: 2012-04-10)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

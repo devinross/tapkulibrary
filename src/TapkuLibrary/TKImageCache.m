@@ -36,9 +36,7 @@
 #pragma mark -
 @interface TKImageRequest : TKHTTPRequest 
 @property (strong,nonatomic) NSString *key;
-
 @end 
-
 
 @implementation TKImageRequest
 @synthesize key;
@@ -74,26 +72,16 @@
 	self.cacheDirectoryName = dirName;
 	
 	_requestKeys = [[NSMutableDictionary alloc] init];
-	
 	_imagesQueue = [[TKNetworkQueue alloc] init];
-	
 	cache_queue = dispatch_queue_create("com.tapku",NULL);
-	
-	
-	
-	
 	
 	self.notificationName = @"NewCachedImageFile";
 	self.timeTillRefreshCache = -1;
-	//self.timeTillRefreshCache = 60 * 60 * 24 * 7.0f;
 	
 	return self;
 }
 - (void) dealloc{
-	
-	dispatch_release(cache_queue);
-
-	
+	dispatch_release(cache_queue);	
 }
 
 
@@ -104,7 +92,7 @@
 - (UIImage*) imageForKey:(NSString*)key url:(NSURL*)url queueIfNeeded:(BOOL)queueIfNeeded tag:(NSUInteger)tag{
 
 	if(key==nil) return nil;
-	if([self objectForKey:key]!=nil) return [self objectForKey:key];
+	if([self objectForKey:key]) return [self objectForKey:key];
 	
 	if([self _imageExistsOnDiskWithKey:key]){
 		
@@ -130,9 +118,6 @@
 
 - (void) _sendRequestForURL:(NSURL*)url key:(NSString*)key tag:(NSUInteger)tag{
 	
-	
-
-	
 	if(key == nil || [_requestKeys objectForKey:key]!=nil) return;
 	
 
@@ -155,8 +140,6 @@
 	
 	NSString *key = request.key;
 	
-
-	
 	dispatch_async(dispatch_get_main_queue(), ^{
 		if([_requestKeys objectForKey:key])
 			[_requestKeys removeObjectForKey:key];
@@ -175,15 +158,25 @@
 		
 		dispatch_async(cache_queue,^{
 			UIImage *cacheImage = [self adjustImageRecieved:[self _imageFromDiskWithKey:key]];
-			if(cacheImage!=nil){
+			
+			
+			if(cacheImage){
+				
+				
+				NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:request.key,@"key",cacheImage,@"image",[NSNumber numberWithUnsignedInt:request.tag],@"tag",nil];
+
+				
 				dispatch_async(dispatch_get_main_queue(), ^{
 					
 					if(_diskKeys) [_diskKeys setObject:[NSNull null] forKey:request.key];
 					
 					
 					[self setObject:cacheImage forKey:request.key];
-					NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:request.key,@"key",cacheImage,@"image",[NSNumber numberWithUnsignedInt:request.tag],@"tag",nil];
-					[[NSNotificationCenter defaultCenter] postNotificationName:self.notificationName object:dict];
+					//[[NSNotificationCenter defaultCenter] postNotificationName:self.notificationName object:dict];
+					
+					[[NSNotificationCenter defaultCenter] postNotificationName:self.notificationName object:self userInfo:dict];
+					
+					
 				});
 			}
 		});
@@ -197,12 +190,10 @@
 	
 	NSString *key = request.key;
 
-	
 	dispatch_async(dispatch_get_main_queue(), ^{
 		if([_requestKeys objectForKey:key])
 			[_requestKeys removeObjectForKey:key];
 	});
-	//NSLog(@"request fail %@ %@",request.error,request.URL);
 }
 
 
@@ -248,6 +239,9 @@
 - (void) removeCachedImagesFromDiskOlderThanTime:(NSTimeInterval)time{
 	
 	
+	UIBackgroundTaskIdentifier bgTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];
+
+	
 	NSError* error = nil;
 	NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[self cacheDirectoryPath] error:&error];
 	
@@ -272,7 +266,8 @@
 	}
 	
 	
-	
+	[[UIApplication sharedApplication] endBackgroundTask:bgTask];
+
 	
 }
 - (void) printAllCaching{
@@ -313,7 +308,10 @@
 			dispatch_async(dispatch_get_main_queue(), ^{
 				[self setObject:cacheImage forKey:key];
 				NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:key,@"key",cacheImage,@"image",[NSNumber numberWithUnsignedInt:tag],@"tag",nil];
-				[[NSNotificationCenter defaultCenter] postNotificationName:self.notificationName object:dict];
+				//[[NSNotificationCenter defaultCenter] postNotificationName:self.notificationName object:dict];
+				
+				[[NSNotificationCenter defaultCenter] postNotificationName:self.notificationName object:self userInfo:dict];
+
 			});
 			usleep(10000);
 

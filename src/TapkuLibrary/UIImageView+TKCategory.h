@@ -29,11 +29,24 @@
  
  */
 
+
 #import <UIKit/UIKit.h>
 
+/** Additional functionality for `UIImageView`.  */
 @interface UIImageView (TKCategory)
 
-+ (id) imageViewWithImageNamed:(NSString*)imageName;
-+ (id) imageViewWithFrame:(CGRect)frame;
+/** Returns a image view with an image of the given image name.
+ 
+ @param imageName The name of the image to create the imagename with.
+ @return Returns `UIImageView` object.
+ */
++ (UIImageView*) imageViewWithImageNamed:(NSString*)imageName;
+
+/** Returns a image view with the given frame.
+  
+ @param frame The frame of the view.
+ @return Returns `UIImageView` object.
+ */
++ (UIImageView*) imageViewWithFrame:(CGRect)frame;
 
 @end

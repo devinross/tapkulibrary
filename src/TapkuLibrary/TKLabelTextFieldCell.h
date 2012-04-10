@@ -32,8 +32,10 @@
 
 #import "TKLabelCell.h"
 
-@interface TKLabelTextFieldCell : TKLabelCell<UITextFieldDelegate> {
-	UITextField *_field;
-}
+/** A `TKLabelCell` with a `UITextField` field. */
+@interface TKLabelTextFieldCell : TKLabelCell<UITextFieldDelegate>
+
+/** A `UITextField` field. */
 @property (strong, nonatomic) UITextField *field;
+
 @end

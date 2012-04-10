@@ -29,18 +29,31 @@
  
  */
 
+/** Additional functionality for `NSString`.  */
+
 #import <Foundation/Foundation.h>
 
 @interface NSString (TKCategory)
 
+
+/* Returns `YES` if a string is a valid email address, otherwise `NO`. */
 - (BOOL) isEmail;
+
+/* Returns a `NSString` that is URL friendly. */
 - (NSString*) URLEncode;
+
+/* Returns a `NSString` that properly replaces HTML specific character sequences. */
 - (NSString *) escapeHTML;
+
+/* Returns a `NSString` that properly formats text for HTML. */
 - (NSString *) unescapeHTML;
+
 - (NSString*) stringByRemovingHTML;
+
+/* Returns an MD5 string of from the given `NSString`. */
 - (NSString *) md5sum;
 
-
+/* Returns `YES` is a string has the substring, otherwise `NO`. */
 - (BOOL) hasString:(NSString*)substring;
 
 

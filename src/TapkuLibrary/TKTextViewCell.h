@@ -31,8 +31,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TKTextViewCell : UITableViewCell {
-	UITextView *_textView;
-}
+@interface TKTextViewCell : UITableViewCell
+
 @property (nonatomic,strong) UITextView *textView;
+
 @end

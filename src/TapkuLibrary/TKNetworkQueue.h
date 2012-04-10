@@ -33,11 +33,23 @@
 
 @class TKHTTPRequest;
 
+
+/** A network queue to manage `TKHTTPReuest` objects. */
 @interface TKNetworkQueue : NSOperationQueue 
 
+/** A shared network queue object.
+ @return The shared `TKNetworkQueue` object.
+ */
 + (TKNetworkQueue*) sharedNetworkQueue;
+
+
+/** Initialize a network queue.
+ @return A freshly initialized `TKNetworkQueue` object.
+ */
 + (TKNetworkQueue*) networkQueue;
 
+
+/** Cancels all network requests */
 - (void) reset;
 
 @end

@@ -30,9 +30,10 @@
  */
 #import <UIKit/UIKit.h>
 
-
+/** A `UITableViewCell` with a `UISwitch` */
 @interface TKSwitchCell : UITableViewCell 
 
+/** A `UISwitch`. */
 @property (strong, nonatomic) UISwitch *switcher;
 
 @end

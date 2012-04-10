@@ -33,8 +33,11 @@
 
 #import "TKLabelCell.h"
 
-@interface TKLabelTextViewCell : TKLabelCell {
-	UITextView *_textView;
-}
+/** A `TKLabelCell` with a `UITextView` field. */
+@interface TKLabelTextViewCell : TKLabelCell
+
+
+/** A `UITextView` field. */
 @property (strong, nonatomic) UITextView *textView;
+
 @end

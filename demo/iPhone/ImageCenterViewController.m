@@ -94,7 +94,7 @@
 - (void) newImageRetrieved:(NSNotification*)sender{
 	
 	
-	NSDictionary *dict = [sender object];
+	NSDictionary *dict = [sender userInfo];
 	NSInteger tag = [[dict objectForKey:@"tag"] intValue];
 	NSArray *paths = [self.tableView indexPathsForVisibleRows];
 	
