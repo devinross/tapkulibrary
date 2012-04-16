@@ -4,7 +4,7 @@ TapkuLibrary is an iOS library built on Cocoa and UIKit intended for broad use i
 
 
 ## Documentation
-Included in the repository is a .docset bundle with all documentation for the library. Place the bundle in the ~/Library/Developer/Shared/Documentation/DocSets directory.
+Included in the repository is a .docset bundle with all documentation for the library. Place the bundle in the ~/Library/Developer/Shared/Documentation/DocSets directory. When you relaunch XCode, it will appear in the documentation section of the Organizer.
 
 ## Adding Tapku To Your Project 
 Instructions on adding tapku library can be [found here](https://github.com/devinross/tapkulibrary/wiki/Adding-Tapku-to-Your-Project-in-XCode-4). For additional help, check out the demo project.
