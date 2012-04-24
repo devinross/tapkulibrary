@@ -60,6 +60,10 @@
 
 @implementation TKCoverflowView (hidden)
 
+- (void) awakeFromNib{
+    [self load];
+}
+
 #pragma mark Setup
 - (void) setupTransforms{
 
