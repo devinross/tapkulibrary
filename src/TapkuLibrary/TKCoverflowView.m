@@ -208,16 +208,25 @@
 	
 }
 - (void) adjustViewHeirarchy{
-
+	
 	int i = currentIndex-1;
-	if (i >= 0) 
-		for(;i > deck.location;i--) 
-			[self sendSubviewToBack:[coverViews objectAtIndex:i]];
+	if (i >= 0) {
+		for(;i > deck.location;i--) {
+			if([coverViews objectAtIndex:i] != [NSNull null])
+				[self sendSubviewToBack:[coverViews objectAtIndex:i]];
+		}
+	}
+
 	
 	i = currentIndex+1;
-	if(i<numberOfCovers-1) 
-		for(;i < deck.location+deck.length;i++) 
-			[self sendSubviewToBack:[coverViews objectAtIndex:i]];
+	if(i<numberOfCovers-1){
+		for(;i < deck.location+deck.length;i++){
+			if([coverViews objectAtIndex:i] != [NSNull null])
+				[self sendSubviewToBack:[coverViews objectAtIndex:i]];
+		}
+	}
+	
+			
 	
 	UIView *v = [coverViews objectAtIndex:currentIndex];
 	if((NSObject*)v != [NSNull null])
