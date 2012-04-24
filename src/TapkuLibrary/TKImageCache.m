@@ -232,8 +232,6 @@
 		
 	});
 
-
-	[self performSelectorInBackground:@selector(_removeAllCachedImagesFromDiskInBackground) withObject:nil];
 	
 }
 - (void) removeCachedImagesFromDiskOlderThanTime:(NSTimeInterval)time{
