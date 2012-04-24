@@ -140,7 +140,7 @@
 	}
 	
 	if(s==0&&r==1)
-		vc = [[DemoCalendarMonth alloc] initWithSunday:NO];
+		vc = [[DemoCalendarMonth alloc] initWithSunday:YES];
 
 	
 	
@@ -156,13 +156,7 @@
 		vc = [[MapViewController alloc] init];
 	
 	
-	/*
-	else if(s==2 && r==0)
-		vc = [[DemoCalendarMonth alloc] initWithSunday:YES];
-	else if(s==2 && r==1)
-		vc = [[TKCalendarDayViewController alloc] init];
-	*/
-	
+
 	else if(s==2 && r==0)
 		vc = [[LabelViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	else if(s==2 && r==1)

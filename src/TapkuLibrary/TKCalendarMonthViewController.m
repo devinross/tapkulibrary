@@ -32,6 +32,12 @@
 #import "TKCalendarMonthView.h"
 
 
+@interface TKCalendarMonthViewController () {
+	BOOL _sundayFirst;
+}
+
+@end
+
 @implementation TKCalendarMonthViewController
 @synthesize monthView = _monthView;
 

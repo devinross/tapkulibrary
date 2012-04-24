@@ -36,14 +36,11 @@
 @synthesize dataArray, dataDictionary;
 
 
-
-
 - (void) viewDidLoad{
 	[super viewDidLoad];
 	[self.monthView selectDate:[NSDate month]];
 
 }
-
 - (void) viewDidAppear:(BOOL)animated{
 	[super viewDidAppear:animated];
 	
@@ -78,16 +75,16 @@
 }
 
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
 	return 1;
 	
 }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {	
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {	
 	NSArray *ar = [dataDictionary objectForKey:[self.monthView dateSelected]];
 	if(ar == nil) return 0;
 	return [ar count];
 }
-- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *) tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:CellIdentifier];
