@@ -104,8 +104,10 @@
 	_displayProgress += AnimationIncrement;
 	[self setNeedsDisplay];
 
-	if(_displayProgress < _progress)
+	if(_displayProgress < _progress){
+		[[NSRunLoop currentRunLoop] cancelPerformSelector:@selector(updateProgress) target:self argument:nil];
 		[self performSelector:@selector(updateProgress) withObject:nil afterDelay:AnimationTimer];
+	}
 
 }
 - (void) updateTwirl{
@@ -114,6 +116,7 @@
 	_displayProgress += AnimationIncrement;
 	[self setNeedsDisplay];
 	
+	[[NSRunLoop currentRunLoop] cancelPerformSelector:@selector(updateTwirl) target:self argument:nil];
 	[self performSelector:@selector(updateTwirl) withObject:nil afterDelay:AnimationTimer];
 	
 }

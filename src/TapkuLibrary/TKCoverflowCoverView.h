@@ -43,6 +43,8 @@
 	CAGradientLayer *gradientLayer;
 }
 
+- (id) initWithFrame:(CGRect)frame showReflection:(BOOL)reflection;
+
 /** The coverflow image. */
 @property (strong,nonatomic) UIImage *image;
 

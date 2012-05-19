@@ -350,7 +350,7 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 	self.responseHeaders = [httpResponse allHeaderFields];
 	
 	
-	if(self.statusCode == 200) {
+	if(self.statusCode > 199 && self.statusCode < 300)  {
 		_totalExpectedImageSize = (double)response.expectedContentLength;
 		NSUInteger contentSize = [httpResponse expectedContentLength] > 0 ? [httpResponse expectedContentLength] : 0;
 		self.data = [[NSMutableData alloc] initWithCapacity:contentSize];
