@@ -31,7 +31,6 @@
 
 #import "NSMutableURLRequest+TKCategory.h"
 #import "NSDictionary+TKCategory.h"
-#import "CJSONSerializer.h"
 
 @implementation NSMutableURLRequest ( TKAdditions )
 
@@ -54,15 +53,18 @@
 	[request setHTTPBody:postData];
 	
 	
-	return [request autorelease];
+	return request;
 }
 
 + (NSMutableURLRequest*) JSONrequestWithURL:(NSURL*)url dictionary:(NSDictionary*)dict{
-	
-	NSString *json = [[CJSONSerializer serializer] serializeDictionary:dict];
+		
 
-	NSData *requestData = [json dataUsingEncoding:NSUTF8StringEncoding];
-	NSString *postLength = [NSString stringWithFormat:@"%d", [json length]];
+	
+
+	NSData *requestData = [NSJSONSerialization dataWithJSONObject:dict options:0 error:nil];
+	
+
+	NSString *postLength = [NSString stringWithFormat:@"%d", [requestData length]];
 	
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
 	[request setHTTPMethod:@"POST"];
@@ -72,7 +74,7 @@
 
 	
 	
-	return [request autorelease];
+	return request;
 }
 
 

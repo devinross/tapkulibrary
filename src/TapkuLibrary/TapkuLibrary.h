@@ -38,6 +38,7 @@
 #import "UIScrollview+TKCategory.h"
 #import "UIButton+TKCategory.h"
 #import "UIViewController+TKCategory.h"
+#import "NSMutableURLRequest+TKCategory.h"
 
 
 #import "TKWindow.h"

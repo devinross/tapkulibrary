@@ -45,6 +45,11 @@
 #define CGTranslate(_X,_Y) CGAffineTransformMakeTranslation(_X,_Y)
 #define CGConcat(_ONE,_TWO) CGAffineTransformConcat(_ONE,_TWO)
 
+
+#define TKLog(s, ...) NSLog( @"[%@ %@] %@",NSStringFromClass([self class]), NSStringFromSelector(_cmd),[NSString stringWithFormat:(s), ##__VA_ARGS__] )
+
+
+
 @interface TKGlobal : NSObject 
 
 + (NSString*) fullBundlePath:(NSString*)bundlePath;
