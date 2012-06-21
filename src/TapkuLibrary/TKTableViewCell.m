@@ -73,6 +73,11 @@
 	[super setNeedsDisplay];
 	[_mainView setNeedsDisplay];
 }
+- (void) setNeedsDisplayInRect:(CGRect)rect{
+	[super setNeedsDisplayInRect:rect];
+	[_mainView setNeedsDisplayInRect:rect];
+}
+
 - (void) drawContentView:(CGRect)r { 
 	// for subclassing
 	// default implementation does nothing

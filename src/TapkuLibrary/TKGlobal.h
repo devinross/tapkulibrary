@@ -33,6 +33,10 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
+
+#define TKLog(s, ...) NSLog( @"[%@ %@] %@",NSStringFromClass([self class]), NSStringFromSelector(_cmd),[NSString stringWithFormat:(s), ##__VA_ARGS__] )
+
+
 #define TKBUNDLE(_URL) [TKGlobal fullBundlePath:_URL]
 
 #define CAScale(_X,_Y,_Z) CATransform3DMakeScale(_X,_Y,_Z)
@@ -46,7 +50,12 @@
 #define CGConcat(_ONE,_TWO) CGAffineTransformConcat(_ONE,_TWO)
 
 
-#define TKLog(s, ...) NSLog( @"[%@ %@] %@",NSStringFromClass([self class]), NSStringFromSelector(_cmd),[NSString stringWithFormat:(s), ##__VA_ARGS__] )
+
+inline CGRect CGRectMakeWithSize(CGFloat x, CGFloat y, CGSize s);
+
+inline CGRect CGRectMakeWithSize(CGFloat x, CGFloat y, CGSize s){
+	CGRect r; r.origin.x = x; r.origin.y = y; r.size = s; return r;
+}
 
 
 
