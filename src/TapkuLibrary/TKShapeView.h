@@ -1,6 +1,7 @@
 //
-//  TKIndicatorCell.h
-//  Created by Devin Ross on 7/4/09.
+//  TKShapeView.h
+//  Created by Devin Ross on 6/24/12.
+//
 //
 /*
  
@@ -27,18 +28,15 @@
  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  OTHER DEALINGS IN THE SOFTWARE.
  
- */
+*/
 
+#import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
-#import "TKTableViewCell.h"
+/** This class implements `UIView` backed by a `CAShapeLayer`. */
+@interface TKShapeView : UIView
 
-@interface TKIndicatorCell : TKTableViewCell {
-	NSString *_text;
-	int _count;
-	NSString *_countStr;
-}
-
-@property (copy,nonatomic) NSString *text;
-@property (assign, nonatomic) int count;
+/** The path defining the shape of the view. */
+@property CGPathRef path;
 
 @end

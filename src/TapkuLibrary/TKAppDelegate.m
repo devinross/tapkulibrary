@@ -52,7 +52,7 @@
 	[self applicationDidStartup:application];
 }
 - (void) applicationDidStartup:(UIApplication *)application{
-	// Default Implmentaion Does Nothing
+	// Default Implementaion Does Nothing
 }
 
 

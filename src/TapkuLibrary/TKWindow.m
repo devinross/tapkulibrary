@@ -34,9 +34,14 @@
 NSString *TKWindowShakeBegan = @"TKWindowShakeBegan";
 NSString *TKWindowShakeCancelled = @"TKWindowShakeCancelled";
 NSString *TKWindowShakeEnded = @"TKWindowShakeEnded";
+NSString *TKWindowRemoteControlEvent = @"TKWindowRemoteControlEvent";
 
 
 @implementation TKWindow
+
+- (void) remoteControlReceivedWithEvent:(UIEvent *)event{
+	[[NSNotificationCenter defaultCenter] postNotificationName:TKWindowRemoteControlEvent object:event];
+}
 
 
 

@@ -34,5 +34,4 @@
 @implementation TKMapPlace
 @synthesize title,coordinate, color;
 
-
 @end

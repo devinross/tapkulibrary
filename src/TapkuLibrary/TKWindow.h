@@ -41,6 +41,9 @@ extern NSString *TKWindowShakeCancelled;
 /** Posted when the a motion event ends. */
 extern NSString *TKWindowShakeEnded;
 
+/** Posted when the a remote control event is received. */
+extern NSString *TKWindowRemoteControlEvent;
+
 
 
 /** A subclass of `UIWindow` that posts notifications of any motion (ie. shake) events for the device. */

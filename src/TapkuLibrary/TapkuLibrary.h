@@ -38,7 +38,6 @@
 #import "UIScrollview+TKCategory.h"
 #import "UIButton+TKCategory.h"
 #import "UIViewController+TKCategory.h"
-#import "NSMutableURLRequest+TKCategory.h"
 
 
 #import "TKWindow.h"
@@ -49,6 +48,8 @@
 
 #import "TKAppDelegate.h"
 #import "TKGradientView.h"
+#import "TKShapeView.h"
+
 
 #import "TKNetworkQueue.h"
 #import "TKHTTPRequest.h"
@@ -63,7 +64,6 @@
 #import "TKButtonCell.h"
 #import "TKTextViewCell.h"
 #import "TKSwitchCell.h"
-#import "TKIndicatorCell.h"
 #import "TKTableViewCell.h"
 
 

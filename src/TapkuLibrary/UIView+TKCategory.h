@@ -45,11 +45,4 @@
 - (void) roundOffFrame;
 
 
-// DRAW ROUNDED RECTANGLE
-+ (void) drawRoundRectangleInRect:(CGRect)rect withRadius:(CGFloat)radius;
-
-
 @end
-
-
-

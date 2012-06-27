@@ -1,6 +1,6 @@
 //
-//  NSMutableURLRequestAdditions.h
-//  Created by Devin Ross on 2/23/10.
+//  TKShapeView.m
+//  Created by Devin on 6/24/12.
 //
 /*
  
@@ -27,14 +27,27 @@
  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  OTHER DEALINGS IN THE SOFTWARE.
  
- */
+*/
 
-#import <Foundation/Foundation.h>
+#import "TKShapeView.h"
+
+@implementation TKShapeView
 
 
-@interface NSMutableURLRequest ( TKAdditions )
++ (Class)layerClass {
+    return [CAShapeLayer class];
+}
+- (CAShapeLayer *) _shapeLayer{
+    return (CAShapeLayer *)self.layer;
+}
 
-+ (NSMutableURLRequest*) POSTrequestWithURL:(NSURL*)url dictionary:(NSDictionary*)dict;
-+ (NSMutableURLRequest*) JSONrequestWithURL:(NSURL*)url dictionary:(NSDictionary*)dict;
+
+
+- (CGPathRef) path{
+	return [self _shapeLayer].path;
+}
+- (void) setPath:(CGPathRef)path{
+	[self _shapeLayer].path = path;
+}
 
 @end
