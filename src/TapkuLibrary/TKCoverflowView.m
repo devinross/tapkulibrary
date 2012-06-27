@@ -38,6 +38,8 @@
 #define SIDE_COVER_ANGLE 1.4
 #define SIDE_COVER_ZPOSITION -80
 #define COVER_SCROLL_PADDING 4
+#define COVER_SCROLL_PADDING 4
+#define FRONT_SPACE 300.0
 
 #pragma mark -
 @interface TKCoverflowView (hidden)
@@ -68,10 +70,10 @@
 - (void) setupTransforms{
 
 	leftTransform = CATransform3DMakeRotation(coverAngle, 0, 1, 0);
-	leftTransform = CATransform3DConcat(leftTransform,CATransform3DMakeTranslation(-spaceFromCurrent, 0, -300));
+	leftTransform = CATransform3DConcat(leftTransform,CATransform3DMakeTranslation(-spaceFromCurrent, 0, -self.spaceInFront));
 	
 	rightTransform = CATransform3DMakeRotation(-coverAngle, 0, 1, 0);
-	rightTransform = CATransform3DConcat(rightTransform,CATransform3DMakeTranslation(spaceFromCurrent, 0, -300));
+	rightTransform = CATransform3DConcat(rightTransform,CATransform3DMakeTranslation(spaceFromCurrent, 0, -self.spaceInFront));
 	
 }
 - (void) load{
@@ -79,6 +81,7 @@
 	numberOfCovers = 0;
 	coverSpacing = COVER_SPACING;
 	coverAngle = SIDE_COVER_ANGLE;
+	self.spaceInFront = FRONT_SPACE;
 	self.showsHorizontalScrollIndicator = NO;
 	super.delegate = self;
 	origin = self.contentOffset.x;
@@ -97,7 +100,6 @@
 	
 	currentIndex = -1;
 	currentSize = self.frame.size;
-	
 }
 - (void) setup{
 
@@ -214,23 +216,14 @@
 - (void) adjustViewHeirarchy{
 	
 	int i = currentIndex-1;
-	if (i >= 0) {
-		for(;i > deck.location;i--) {
-			if([coverViews objectAtIndex:i] != [NSNull null])
-				[self sendSubviewToBack:[coverViews objectAtIndex:i]];
-		}
-	}
-
+	if (i >= 0) 
+		for(;i > deck.location;i--) 
+			[self sendSubviewToBack:[coverViews objectAtIndex:i]];
 	
 	i = currentIndex+1;
-	if(i<numberOfCovers-1){
-		for(;i < deck.location+deck.length;i++){
-			if([coverViews objectAtIndex:i] != [NSNull null])
-				[self sendSubviewToBack:[coverViews objectAtIndex:i]];
-		}
-	}
-	
-			
+	if(i<numberOfCovers-1) 
+		for(;i < deck.location+deck.length;i++) 
+			[self sendSubviewToBack:[coverViews objectAtIndex:i]];
 	
 	UIView *v = [coverViews objectAtIndex:currentIndex];
 	if((NSObject*)v != [NSNull null])
@@ -238,6 +231,7 @@
 	
 	
 }
+
 - (void) snapToAlbum:(BOOL)animated{
 	
 	UIView *v = [coverViews objectAtIndex:currentIndex];
@@ -289,7 +283,7 @@
 
 #pragma mark -
 @implementation TKCoverflowView
-@synthesize coverflowDelegate, dataSource, coverSize, numberOfCovers, coverSpacing, coverAngle;
+@synthesize coverflowDelegate, dataSource, coverSize, numberOfCovers, coverSpacing, coverAngle, spaceInFront;
 
 - (id) initWithFrame:(CGRect)frame {
 	if(!(self=[super initWithFrame:frame])) return nil;
@@ -342,7 +336,10 @@
 
 #pragma mark Public Methods
 - (TKCoverflowCoverView *) coverAtIndex:(int)index{
-	if([coverViews objectAtIndex:index] != [NSNull null]) return [coverViews objectAtIndex:index];
+	if(index<0 || index >= coverViews.count) return nil;
+	
+	if([coverViews objectAtIndex:index] != [NSNull null]) 
+		return [coverViews objectAtIndex:index];
 	return nil;
 }
 - (NSInteger) indexOfFrontCoverView{
@@ -379,24 +376,20 @@
 
 }
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-
+	
 	UITouch *touch = [touches anyObject];
 	
 	if(touch.view == currentTouch){
-		if(touch.tapCount > 1 && currentIndex == [coverViews indexOfObject:currentTouch]){
-
-			if([self.coverflowDelegate respondsToSelector:@selector(coverflowView:coverAtIndexWasDoubleTapped:)])
-				[self.coverflowDelegate coverflowView:self coverAtIndexWasDoubleTapped:currentIndex];
+		if(touch.tapCount > 0 && currentIndex == [coverViews indexOfObject:currentTouch]){
+			
+			if([coverflowDelegate respondsToSelector:@selector(coverflowView:coverAtIndexWasTappedInFront:tapCount:)])
+				[coverflowDelegate coverflowView:self coverAtIndexWasTappedInFront:currentIndex tapCount:touch.tapCount];
 			
 		}else{
 			int index = [coverViews indexOfObject:currentTouch];
 			[self setContentOffset:CGPointMake(coverSpacing*index, 0) animated:YES];
 		}
-		
-
 	}
-	
-
 	
 	currentTouch = nil;
 }
@@ -455,6 +448,12 @@
 }
 - (void) setCoverSpacing:(float)space{
 	coverSpacing = space;
+	[self setupTransforms];
+	[self setup];
+	[self layoutSubviews];
+}
+- (void) setSpaceInFront:(float)front{
+	spaceInFront = front;
 	[self setupTransforms];
 	[self setup];
 	[self layoutSubviews];

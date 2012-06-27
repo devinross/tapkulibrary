@@ -81,6 +81,10 @@
 /** The angle which covers will be display at when they are not on the center. */
 @property (nonatomic, assign) float coverAngle;
 
+/** The amount of space the center cover is infront of the rest of the other covers. Default is 300. */
+@property (nonatomic, assign) float spaceInFront;
+
+
 
 /** Returns an usued coverflow view. If there are no reusable views, it will return nil. */
 - (TKCoverflowCoverView*) dequeueReusableCoverView; // like a tableview
@@ -115,11 +119,12 @@
  */
 - (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasBroughtToFront:(int)index;
 @optional
-/** Tells the delegate that a specified cover was double tapped.
+/** Tells the delegate that a specified cover was tapped.
  @param coverflowView The coverflow view.
  @param index The index of the double tapped cover.
+ @param tapCount The number of times the front cover was tapped.
  */
-- (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasDoubleTapped:(int)index;
+- (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasTappedInFront:(int)index tapCount:(NSInteger)tapCount;
 @end
 
 /** The data source of a `TKCoverflowView` object must adopt the `TKCoverflowViewDataSource` protocol. */ 
