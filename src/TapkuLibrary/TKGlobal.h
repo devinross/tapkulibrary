@@ -51,10 +51,21 @@
 
 
 
-inline CGRect CGRectMakeWithSize(CGFloat x, CGFloat y, CGSize s);
 
-inline CGRect CGRectMakeWithSize(CGFloat x, CGFloat y, CGSize s){
-	CGRect r; r.origin.x = x; r.origin.y = y; r.size = s; return r;
+
+inline CGRect CGRectMakeWithSize(CGFloat x, CGFloat y, CGSize size);
+inline CGRect CGRectMakeWithSize(CGFloat x, CGFloat y, CGSize size){
+	CGRect r; r.origin.x = x; r.origin.y = y; r.size = size; return r;
+}
+
+inline CGRect CGRectMakeWithPoint(CGPoint origin, CGFloat width, CGFloat height);
+inline CGRect CGRectMakeWithPoint(CGPoint origin, CGFloat width, CGFloat height){
+	CGRect r; r.origin = origin; r.size.width = width; r.size.height = height; return r;
+}
+
+inline CGRect CGRectCompose(CGPoint origin, CGSize size);
+inline CGRect CGRectCompose(CGPoint origin, CGSize size){
+	CGRect r; r.origin = origin; r.size = size; return r;
 }
 
 
