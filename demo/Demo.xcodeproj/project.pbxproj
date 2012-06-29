@@ -32,7 +32,6 @@
 		3BF88B9D11E5468D00C9FC43 /* DemoCalendarMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF88B8711E5468D00C9FC43 /* DemoCalendarMonth.m */; };
 		3BF88B9E11E5468D00C9FC43 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF88B8A11E5468D00C9FC43 /* MapViewController.m */; };
 		3BF88B9F11E5468D00C9FC43 /* LabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF88B8D11E5468D00C9FC43 /* LabelViewController.m */; };
-		3BF88BA011E5468D00C9FC43 /* FastTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF88B8F11E5468D00C9FC43 /* FastTableViewController.m */; };
 		3BF88BA211E5468D00C9FC43 /* MoreCellsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF88B9311E5468D00C9FC43 /* MoreCellsViewController.m */; };
 		3BF88BA311E5468D00C9FC43 /* ImageCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF88B9611E5468D00C9FC43 /* ImageCenterViewController.m */; };
 		3BF88C0111E547A800C9FC43 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF88C0011E547A800C9FC43 /* MapKit.framework */; };
@@ -122,8 +121,6 @@
 		3BF88B8A11E5468D00C9FC43 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		3BF88B8C11E5468D00C9FC43 /* LabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelViewController.h; sourceTree = "<group>"; };
 		3BF88B8D11E5468D00C9FC43 /* LabelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelViewController.m; sourceTree = "<group>"; };
-		3BF88B8E11E5468D00C9FC43 /* FastTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastTableViewController.h; sourceTree = "<group>"; };
-		3BF88B8F11E5468D00C9FC43 /* FastTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastTableViewController.m; sourceTree = "<group>"; };
 		3BF88B9211E5468D00C9FC43 /* MoreCellsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreCellsViewController.h; sourceTree = "<group>"; };
 		3BF88B9311E5468D00C9FC43 /* MoreCellsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreCellsViewController.m; sourceTree = "<group>"; };
 		3BF88B9511E5468D00C9FC43 /* ImageCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCenterViewController.h; sourceTree = "<group>"; };
@@ -359,8 +356,6 @@
 			children = (
 				3BF88B8C11E5468D00C9FC43 /* LabelViewController.h */,
 				3BF88B8D11E5468D00C9FC43 /* LabelViewController.m */,
-				3BF88B8E11E5468D00C9FC43 /* FastTableViewController.h */,
-				3BF88B8F11E5468D00C9FC43 /* FastTableViewController.m */,
 				3BF88B9211E5468D00C9FC43 /* MoreCellsViewController.h */,
 				3BF88B9311E5468D00C9FC43 /* MoreCellsViewController.m */,
 			);
@@ -541,7 +536,6 @@
 				3BF88B9D11E5468D00C9FC43 /* DemoCalendarMonth.m in Sources */,
 				3BF88B9E11E5468D00C9FC43 /* MapViewController.m in Sources */,
 				3BF88B9F11E5468D00C9FC43 /* LabelViewController.m in Sources */,
-				3BF88BA011E5468D00C9FC43 /* FastTableViewController.m in Sources */,
 				3BF88BA211E5468D00C9FC43 /* MoreCellsViewController.m in Sources */,
 				3BF88BA311E5468D00C9FC43 /* ImageCenterViewController.m in Sources */,
 				3BF88D0511E54F8A00C9FC43 /* LeftTableViewController.m in Sources */,

@@ -32,7 +32,6 @@
 #import "RootViewController.h"
 
 #import "LabelViewController.h"
-#import "FastTableViewController.h"
 #import "HUDViewController.h"
 #import "MapViewController.h"
 #import "EmptyViewController.h"
@@ -82,7 +81,7 @@
 	//[data addObject:d];
 	
 	
-	rows = [NSArray arrayWithObjects:@"Label Cells",@"More Cells",@"Indicator Cells",nil];
+	rows = [NSArray arrayWithObjects:@"Label Cells",@"More Cells",nil];
 	d = [NSDictionary dictionaryWithObjectsAndKeys:rows,@"rows",@"Table View Cells",@"title",@"",@"footer",nil];
 	[tmp addObject:d];
 	
@@ -161,8 +160,6 @@
 		vc = [[LabelViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	else if(s==2 && r==1)
 		vc = [[MoreCellsViewController alloc] initWithStyle:UITableViewStyleGrouped];
-	else if(s==2 && r==2)
-		vc = [[FastTableViewController alloc] init];
 	else if(s==3 && r==0)
 		vc = [[ImageCenterViewController alloc] init];
 	else
