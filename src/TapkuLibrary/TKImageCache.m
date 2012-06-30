@@ -32,7 +32,7 @@
 #import "TKImageCache.h"
 #import "TKNetworkQueue.h"
 #import "TKHTTPRequest.h"
-
+#import "TKGlobal.h"
 
 #pragma mark -
 @interface TKImageRequest : TKHTTPRequest
