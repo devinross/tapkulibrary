@@ -490,12 +490,11 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 
 
 + (void) hideNetworkActivityIndicatorIfNeeeded{
-	
-	if (runningRequestCount == 0) {
 #if TARGET_OS_IPHONE
+	if (runningRequestCount == 0) 
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];	
 #endif
-	}
+
 }
 
 + (void) increaseNetworkMain{
@@ -512,6 +511,7 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 + (void) decreaseNetworkMain{
 	runningRequestCount--;
 #if TARGET_OS_IPHONE
+	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hideNetworkActivityIndicatorIfNeeeded) object:nil];
 	[self performSelector:@selector(hideNetworkActivityIndicatorIfNeeeded) withObject:nil afterDelay:0.5];
 #endif
 
