@@ -35,15 +35,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import "NSString+TKCategory.h"
 #import "NSDate+TKCategory.h"
-#import "NSArray+TKCategory.h"
 
 
 @interface FoundationTests : SenTestCase 
 
-- (void) testStringCategory;
 - (void) testDateCategory;
-- (void) testArrayCategory;
 
 @end

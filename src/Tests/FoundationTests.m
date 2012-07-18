@@ -33,32 +33,7 @@
 
 @implementation FoundationTests
 
-- (void) testStringCategory{
-    
-    NSString *string;
-    
-    
-    string = @"bob@sanders.com";
-    STAssertTrue([string isEmail], @"Expected '%@' to be a valid email", string);
-    
-    
-    string = @"ao123sda.b2132Ob@sAND123123dsadrs.c";
-    STAssertTrue([string isEmail], @"Expected '%@' to be a valid email", string);
-    
-    
-    string = @"ao,sda.bOb@sANDdsadrs.c";
-    STAssertFalse([string isEmail], @"Expected '%@' to be an invalid email", string);
-    
-	string = @"";
-    STAssertFalse([string isEmail], @"Expected '%@' to be an invalid email", string);
-    
-	
-	string = @"@b.d";
-    STAssertFalse([string isEmail], @"Expected '%@' to be an invalid email", string);
-    
-	
-    
-}
+
 - (void) testDateCategory{
 	
     NSDate *date,*date2;
@@ -90,16 +65,6 @@
     date2 = [NSDate yesterday];
     STAssertEquals([date daysBetweenDate:date2], 1, @"Expected difference between %@ and %@ is zero.",date,date2);
 	
-	
-}
-- (void) testArrayCategory{
-	
-	
-	STAssertThrows([[NSArray array] firstObject],@"Throws exception because empty arrays don't have objects");
-	
-	NSArray *ar = [NSArray arrayWithObjects:@"BOB",nil];
-	STAssertNoThrow([ar firstObject],@"Doesn't throw exception.");
-
 	
 }
 

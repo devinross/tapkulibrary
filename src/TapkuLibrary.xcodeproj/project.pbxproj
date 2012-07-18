@@ -19,6 +19,10 @@
 		3B1DCECB1289B84400884CDF /* NSArray+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1DCEC91289B84400884CDF /* NSArray+TKCategory.m */; };
 		3B4346E412DA6A240076579B /* UIButton+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B4346E212DA6A240076579B /* UIButton+TKCategory.h */; };
 		3B4346E512DA6A240076579B /* UIButton+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4346E312DA6A240076579B /* UIButton+TKCategory.m */; };
+		3B4438A815B73C690069AAA3 /* NSStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4438A715B73C690069AAA3 /* NSStringTests.m */; };
+		3B4438BA15B74A990069AAA3 /* UIViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4438B915B74A990069AAA3 /* UIViewTests.m */; };
+		3B4438C115B74C920069AAA3 /* UIView+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A2210953E5200F235F1 /* UIView+TKCategory.m */; };
+		3B4438C415B74E180069AAA3 /* NSArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4438C315B74E180069AAA3 /* NSArrayTests.m */; };
 		3B560B7214574E30005FBDBF /* TKImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B560B7014574E30005FBDBF /* TKImageCache.h */; };
 		3B560B7314574E30005FBDBF /* TKImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B560B7114574E30005FBDBF /* TKImageCache.m */; };
 		3B6EDDD311547BEB00E454DA /* TapkuLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A1B10953E5200F235F1 /* TapkuLibrary.h */; };
@@ -129,6 +133,12 @@
 		3B1DCEC91289B84400884CDF /* NSArray+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+TKCategory.m"; sourceTree = "<group>"; };
 		3B4346E212DA6A240076579B /* UIButton+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+TKCategory.h"; sourceTree = "<group>"; };
 		3B4346E312DA6A240076579B /* UIButton+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+TKCategory.m"; sourceTree = "<group>"; };
+		3B4438A615B73C690069AAA3 /* NSStringTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSStringTests.h; path = Tests/NSStringTests.h; sourceTree = SOURCE_ROOT; };
+		3B4438A715B73C690069AAA3 /* NSStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSStringTests.m; path = Tests/NSStringTests.m; sourceTree = SOURCE_ROOT; };
+		3B4438B815B74A990069AAA3 /* UIViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewTests.h; path = Tests/UIViewTests.h; sourceTree = "<group>"; };
+		3B4438B915B74A990069AAA3 /* UIViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewTests.m; path = Tests/UIViewTests.m; sourceTree = "<group>"; };
+		3B4438C215B74E180069AAA3 /* NSArrayTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArrayTests.h; sourceTree = "<group>"; };
+		3B4438C315B74E180069AAA3 /* NSArrayTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArrayTests.m; sourceTree = "<group>"; };
 		3B45DDF1134C736600D24C1A /* LogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B45DDF2134C736600D24C1A /* LogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LogicTests-Info.plist"; sourceTree = "<group>"; };
 		3B560B7014574E30005FBDBF /* TKImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKImageCache.h; sourceTree = "<group>"; };
@@ -313,6 +323,12 @@
 				3B45DDF2134C736600D24C1A /* LogicTests-Info.plist */,
 				3B891629134D93D000BD2B31 /* FoundationTests.h */,
 				3B89162A134D93D000BD2B31 /* FoundationTests.m */,
+				3B4438A615B73C690069AAA3 /* NSStringTests.h */,
+				3B4438A715B73C690069AAA3 /* NSStringTests.m */,
+				3B4438B815B74A990069AAA3 /* UIViewTests.h */,
+				3B4438B915B74A990069AAA3 /* UIViewTests.m */,
+				3B4438C215B74E180069AAA3 /* NSArrayTests.h */,
+				3B4438C315B74E180069AAA3 /* NSArrayTests.m */,
 			);
 			name = UnitTests;
 			sourceTree = "<group>";
@@ -663,10 +679,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B4438C115B74C920069AAA3 /* UIView+TKCategory.m in Sources */,
 				3B859F02134C76C600661088 /* NSArray+TKCategory.m in Sources */,
 				3B859F03134C76C700661088 /* NSDate+TKCategory.m in Sources */,
 				3B859F08134C76D500661088 /* NSString+TKCategory.m in Sources */,
 				3B89162B134D93D000BD2B31 /* FoundationTests.m in Sources */,
+				3B4438A815B73C690069AAA3 /* NSStringTests.m in Sources */,
+				3B4438BA15B74A990069AAA3 /* UIViewTests.m in Sources */,
+				3B4438C415B74E180069AAA3 /* NSArrayTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

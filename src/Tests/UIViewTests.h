@@ -1,10 +1,10 @@
 //
-//  UIViewAdditions.m
-//  Created by Devin Ross on 7/25/09.
+//  UIViewTests.h
+//  Created by Devin on 7/18/12.
 //
 /*
  
- tapku.com || http://github.com/devinross/tapkulibrary
+ tapku.com || https://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -28,26 +28,13 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
+
+#import <SenTestingKit/SenTestingKit.h>
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "UIView+TKCategory.h"
 
-
-@implementation UIView (TKCategory)
-
-
-- (void) addSubviewToBack:(UIView*)view{
-	[self insertSubview:view atIndex:0];
-}
-
-
-- (void) roundOffFrame{
-	self.frame = CGRectMake((NSInteger)self.frame.origin.x, (NSInteger)self.frame.origin.y, (NSInteger)self.frame.size.width, (NSInteger)self.frame.size.height);
-}
-
-
-
-
-
-
-
+@interface UIViewTests : SenTestCase
 
 @end
