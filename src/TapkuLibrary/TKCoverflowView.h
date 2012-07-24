@@ -44,22 +44,27 @@
 	NSMutableArray *views;		// only covers view (no nulls)
 	NSMutableArray *yard;	   // covers ready for reuse (ie. graveyard)
 	
-	float origin;
 	BOOL movingRight;
 
 	UIView *currentTouch;
 	NSRange deck;
 	
 	
-	int margin, coverBuffer, currentIndex, numberOfCovers;
-	CGSize coverSize,currentSize;
-	float coverSpacing,coverAngle,spaceFromCurrent;
+	NSInteger margin, coverBuffer, currentIndex, numberOfCovers;
+	CGSize coverSize;
+	CGFloat coverSpacing,coverAngle,spaceFromCurrent;
 	CATransform3D leftTransform, rightTransform;
 	
-	// SPEED
-	int pos;
-	long velocity;
+	CGSize boundSize;
 	
+	// SPEED
+	NSInteger pos;
+	CGFloat velocity;
+	
+	
+	BOOL isDragging;
+	BOOL gliding;
+	NSInteger movingIndex;
 }
 
 
@@ -95,7 +100,15 @@
  */
 - (TKCoverflowCoverView*) coverAtIndex:(int)index; // returns nil if cover is outside active range
 
-- (int) indexOfFrontCoverView; // deprecated
+/** Returns the visible covers on screen.
+ @return An array of visible covers.
+ */
+- (NSArray*) visibleCovers;
+
+/** Returns the range covers on screen.
+ @return A range of visible covers.
+ */
+- (NSRange) visibleRange;
 
 /** Sets the foremost cover.
  @param index The index of the cover that will become the foremost cover.
