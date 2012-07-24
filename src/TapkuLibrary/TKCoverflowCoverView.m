@@ -80,6 +80,13 @@
 
 - (void) setImage:(UIImage *)img{
 	
+	if(img==nil){
+		imageView.frame = CGRectZero;
+		reflected.frame = CGRectZero;
+		reflected.image = imageView.image = nil;
+		return;
+	}
+	
 	UIImage *image = img;
 	
 	float w = image.size.width;
@@ -108,7 +115,6 @@
 }
 - (void) setBaseline:(float)f{
 	baseline = f;
-	[self setNeedsDisplay];
 }
 
 
