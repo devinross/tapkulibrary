@@ -292,31 +292,23 @@
     return self;
 }
 
-
-- (void) layoutSubviews{
+- (void) _adjustToBounds{
 	
-	if(self.frame.size.width == currentSize.width && self.frame.size.height == currentSize.height) return;
 	currentSize = self.frame.size;
-	
-	
-
 	
 	margin = (self.frame.size.width / 2);
 	self.contentSize = CGSizeMake( (coverSpacing) * (numberOfCovers-1) + (margin*2) , self.frame.size.height);
 	coverBuffer = (int)((currentSize.width - coverSize.width) / coverSpacing) + 3;
 	
 	
-
 	for(UIView *v in views){
 		v.layer.transform = CATransform3DIdentity;
 		CGRect r = v.frame;
 		r.origin.y = currentSize.height / 2 - (coverSize.height/2) - (coverSize.height/16);
 		v.frame = r;
-
 	}
-
+	
 	for(int i= deck.location; i < deck.location + deck.length; i++){
-		
 		if([coverViews objectAtIndex:i] != [NSNull null]){
 			UIView *cover = [coverViews objectAtIndex:i];
 			CGRect r = cover.frame;
@@ -325,11 +317,57 @@
 		}
 	}
 	
-
-
 	[self newrange];
 	[self animateToIndex:currentIndex animated:NO];
+}
+- (void) setFrame:(CGRect)frame{
+	[super setFrame:frame];
+	[self _adjustToBounds];
+}
+- (void) setBounds:(CGRect)bounds{
+	[super setBounds:bounds];
+	[self _adjustToBounds];
+}
+
+
+- (NSInteger) calculatedIndexWithContentOffset:(CGPoint)point{
+	CGFloat num = numberOfCovers;
+	CGFloat per = point.x / (self.contentSize.width - currentSize.width);
+	CGFloat ind = num * per;
+	CGFloat mi = ind / (numberOfCovers/2);
+	mi = 1 - mi;
+	mi = mi / 2;
+	int index = (int)(ind+mi);
+	index = MIN(MAX(0,index),numberOfCovers-1);
 	
+	return index;
+}
+
+- (void) layoutSubviews{
+	
+	velocity = abs(pos - self.contentOffset.x);
+	pos = self.contentOffset.x;
+	movingRight = self.contentOffset.x - origin > 0 ? YES : NO;
+	origin = self.contentOffset.x;
+	
+	CGFloat num = numberOfCovers;
+	CGFloat per = self.contentOffset.x / (self.contentSize.width - currentSize.width);
+	CGFloat ind = num * per;
+	CGFloat mi = ind / (numberOfCovers/2);
+	mi = 1 - mi;
+	mi = mi / 2;
+	int index = (int)(ind+mi);
+	index = MIN(MAX(0,index),numberOfCovers-1);
+	
+	
+	if(index == currentIndex) return;
+	
+	currentIndex = index;
+	[self newrange];
+	
+	
+	if(velocity < 180 || currentIndex < 15 || currentIndex > (numberOfCovers - 16))
+		[self animateToIndex:index animated:YES];
 
 }
 
@@ -398,46 +436,8 @@
 }
 
 #pragma mark UIScrollView Delegate
-- (void) scrollViewDidScroll:(UIScrollView *)scrollView{
-    
-    
-	
-	velocity = abs(pos - scrollView.contentOffset.x);
-	pos = scrollView.contentOffset.x;
-	movingRight = self.contentOffset.x - origin > 0 ? YES : NO;
-	origin = self.contentOffset.x;
-
-	CGFloat num = numberOfCovers;
-	CGFloat per = scrollView.contentOffset.x / (self.contentSize.width - currentSize.width);
-	CGFloat ind = num * per;
-	CGFloat mi = ind / (numberOfCovers/2);
-	mi = 1 - mi;
-	mi = mi / 2;
-	int index = (int)(ind+mi);
-	index = MIN(MAX(0,index),numberOfCovers-1);
-	
-
-	if(index == currentIndex) return;
-	
-	currentIndex = index;
-	[self newrange];
-	
-	
-	if(velocity < 180 || currentIndex < 15 || currentIndex > (numberOfCovers - 16))
-		[self animateToIndex:index animated:YES];
-	
-}
-- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-	if(!scrollView.tracking && !scrollView.decelerating){
-		[self snapToAlbum:YES];
-		[self adjustViewHeirarchy];
-	} 
-}
-- (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-	if(!self.decelerating && !decelerate){
-		[self snapToAlbum:YES];
-		[self adjustViewHeirarchy];
-	}
+- (void) scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
+	*targetContentOffset = CGPointMake(coverSpacing * [self calculatedIndexWithContentOffset:*targetContentOffset], 0);
 }
 
 

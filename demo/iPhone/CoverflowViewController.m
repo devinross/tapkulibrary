@@ -197,13 +197,10 @@
 	
 	TKCoverflowCoverView *cover = [coverflowView dequeueReusableCoverView];
 	
-	
-	
 	if(cover == nil){
 		BOOL phone = [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone;
 		CGRect rect = phone ? CGRectMake(0, 0, 224, 300) : CGRectMake(0, 0, 300, 600);
 
-		
 		cover = [[[TKCoverflowCoverView alloc] initWithFrame:rect] autorelease]; // 224
 		cover.baseline = 224;
 		
@@ -213,9 +210,13 @@
 	return cover;
 	
 }
-- (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasDoubleTapped:(int)index{
+
+- (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasTappedInFront:(int)index tapCount:(NSInteger)tapCount{
 	
+	TKLog(@"Index: %d",index);
 	
+	if(tapCount<2) return;
+
 	TKCoverflowCoverView *cover = [coverflowView coverAtIndex:index];
 	if(cover == nil) return;
 	[UIView beginAnimations:nil context:nil];
@@ -223,10 +224,7 @@
 	[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:cover cache:YES];
 	[UIView commitAnimations];
 	
-	NSLog(@"Index: %d",index);
-	
-
-	
 }
+
 
 @end
