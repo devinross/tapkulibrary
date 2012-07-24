@@ -22,7 +22,6 @@
 		3B4438A815B73C690069AAA3 /* NSStringTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4438A715B73C690069AAA3 /* NSStringTests.m */; };
 		3B4438BA15B74A990069AAA3 /* UIViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4438B915B74A990069AAA3 /* UIViewTests.m */; };
 		3B4438C115B74C920069AAA3 /* UIView+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A2210953E5200F235F1 /* UIView+TKCategory.m */; };
-		3B4438C415B74E180069AAA3 /* NSArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B4438C315B74E180069AAA3 /* NSArrayTests.m */; };
 		3B560B7214574E30005FBDBF /* TKImageCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B560B7014574E30005FBDBF /* TKImageCache.h */; };
 		3B560B7314574E30005FBDBF /* TKImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B560B7114574E30005FBDBF /* TKImageCache.m */; };
 		3B6EDDD311547BEB00E454DA /* TapkuLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A1B10953E5200F235F1 /* TapkuLibrary.h */; };
@@ -104,6 +103,7 @@
 		3BBF874C1296E976008AB2B1 /* TKTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBF874A1296E976008AB2B1 /* TKTableViewController.m */; };
 		3BD32972125B753900BE5EAF /* TKAlertCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BD32970125B753900BE5EAF /* TKAlertCenter.h */; };
 		3BD32973125B753900BE5EAF /* TKAlertCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD32971125B753900BE5EAF /* TKAlertCenter.m */; };
+		3BDE805E15BE3B210010738D /* NSArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE805D15BE3B210010738D /* NSArrayTests.m */; };
 		3BE2036A149184CA003FFBEB /* UIViewController+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BE20368149184CA003FFBEB /* UIViewController+TKCategory.h */; };
 		3BE2036B149184CA003FFBEB /* UIViewController+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE20369149184CA003FFBEB /* UIViewController+TKCategory.m */; };
 		3BE54E61134548A100B59702 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995910953DF400F235F1 /* MapKit.framework */; };
@@ -137,8 +137,6 @@
 		3B4438A715B73C690069AAA3 /* NSStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSStringTests.m; path = Tests/NSStringTests.m; sourceTree = SOURCE_ROOT; };
 		3B4438B815B74A990069AAA3 /* UIViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewTests.h; path = Tests/UIViewTests.h; sourceTree = "<group>"; };
 		3B4438B915B74A990069AAA3 /* UIViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewTests.m; path = Tests/UIViewTests.m; sourceTree = "<group>"; };
-		3B4438C215B74E180069AAA3 /* NSArrayTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSArrayTests.h; sourceTree = "<group>"; };
-		3B4438C315B74E180069AAA3 /* NSArrayTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSArrayTests.m; sourceTree = "<group>"; };
 		3B45DDF1134C736600D24C1A /* LogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B45DDF2134C736600D24C1A /* LogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LogicTests-Info.plist"; sourceTree = "<group>"; };
 		3B560B7014574E30005FBDBF /* TKImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKImageCache.h; sourceTree = "<group>"; };
@@ -213,6 +211,8 @@
 		3BBF874A1296E976008AB2B1 /* TKTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKTableViewController.m; sourceTree = "<group>"; };
 		3BD32970125B753900BE5EAF /* TKAlertCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAlertCenter.h; sourceTree = "<group>"; };
 		3BD32971125B753900BE5EAF /* TKAlertCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAlertCenter.m; sourceTree = "<group>"; };
+		3BDE805C15BE3B210010738D /* NSArrayTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSArrayTests.h; path = Tests/NSArrayTests.h; sourceTree = "<group>"; };
+		3BDE805D15BE3B210010738D /* NSArrayTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSArrayTests.m; path = Tests/NSArrayTests.m; sourceTree = "<group>"; };
 		3BE20368149184CA003FFBEB /* UIViewController+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TKCategory.h"; sourceTree = "<group>"; };
 		3BE20369149184CA003FFBEB /* UIViewController+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TKCategory.m"; sourceTree = "<group>"; };
 		3BE54E82134548E600B59702 /* TKMapPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKMapPlace.h; sourceTree = "<group>"; };
@@ -327,8 +327,8 @@
 				3B4438A715B73C690069AAA3 /* NSStringTests.m */,
 				3B4438B815B74A990069AAA3 /* UIViewTests.h */,
 				3B4438B915B74A990069AAA3 /* UIViewTests.m */,
-				3B4438C215B74E180069AAA3 /* NSArrayTests.h */,
-				3B4438C315B74E180069AAA3 /* NSArrayTests.m */,
+				3BDE805C15BE3B210010738D /* NSArrayTests.h */,
+				3BDE805D15BE3B210010738D /* NSArrayTests.m */,
 			);
 			name = UnitTests;
 			sourceTree = "<group>";
@@ -686,7 +686,7 @@
 				3B89162B134D93D000BD2B31 /* FoundationTests.m in Sources */,
 				3B4438A815B73C690069AAA3 /* NSStringTests.m in Sources */,
 				3B4438BA15B74A990069AAA3 /* UIViewTests.m in Sources */,
-				3B4438C415B74E180069AAA3 /* NSArrayTests.m in Sources */,
+				3BDE805E15BE3B210010738D /* NSArrayTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
