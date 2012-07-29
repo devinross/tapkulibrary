@@ -487,6 +487,14 @@
 - (void) reactToTouch:(UITouch*)touch down:(BOOL)down{
 	
 	CGPoint p = [touch locationInView:self];
+	/*
+	 When a UIViewController allocated and pushViewController it in delegate.- (void)calendarMonthView:(TKCalendarMonthView *)monthView didSelectDate:(NSDate *)date.
+	 p.x is over self.bounds.size.width(a cause -- unknown).
+	 And column becomes 7 or more.
+	 It is if it is the 4th [ or more ] row, App will crash (e.g. select 2012/07/29).
+	 So I added check range of p.x.
+	 */
+	if(p.x > self.bounds.size.width || p.x < 0) return;
 	if(p.y > self.bounds.size.height || p.y < 0) return;
 	
 	int column = p.x / 46, row = p.y / 44;
