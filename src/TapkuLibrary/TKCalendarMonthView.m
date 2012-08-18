@@ -166,6 +166,11 @@
 @implementation TKCalendarMonthTiles
 @synthesize monthDate;
 
+//The container itself is not accessible
+- (BOOL)isAccessibilityElement
+{
+    return NO;
+}
 
 + (NSArray*) rangeOfDatesInMonthGrid:(NSDate*)date startOnSunday:(BOOL)sunday{
 	
@@ -303,7 +308,12 @@
 	[self.selectedImageView addSubview:self.currentDay];
 	[self.selectedImageView addSubview:self.dot];
 	self.multipleTouchEnabled = NO;
-	
+
+	//Set Accessibility
+    self.selectedImageView.isAccessibilityElement = YES;
+    self.selectedImageView.accessibilityTraits = UIAccessibilityTraitButton;
+    self.selectedImageView.accessibilityLabel = [NSString stringWithFormat:@"Day %@, %@", self.currentDay.text, self.dot ? @"Activities" : @"No Activities"];
+
 	return self;
 }
 
@@ -717,6 +727,24 @@
 	for(NSString *s in ar){
 		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(46 * i, 29, 46, 15)];
 		[self addSubview:label];
+        
+        //Added Accessibility Labels
+        if ([s isEqualToString:@"Sun"]) {
+            label.accessibilityLabel = @"Sunday";
+        } else if ([s isEqualToString:@"Mon"]) {
+            label.accessibilityLabel = @"Monday";
+        } else if ([s isEqualToString:@"Tue"]) {
+            label.accessibilityLabel = @"Tuesday";
+        } else if ([s isEqualToString:@"Wed"]) {
+            label.accessibilityLabel = @"Wednesday";
+        } else if ([s isEqualToString:@"Thu"]) {
+            label.accessibilityLabel = @"Thursday";
+        } else if ([s isEqualToString:@"Fri"]) {
+            label.accessibilityLabel = @"Friday";
+        } else if ([s isEqualToString:@"Sat"]) {
+            label.accessibilityLabel = @"Saturday";
+        }
+        
 		label.text = s;
 		label.textAlignment = UITextAlignmentCenter;
 		label.shadowColor = [UIColor whiteColor];
@@ -973,6 +1001,7 @@
 	if(leftArrow==nil){
 		leftArrow = [UIButton buttonWithType:UIButtonTypeCustom];
 		leftArrow.tag = 0;
+        leftArrow.accessibilityLabel = @"Previous Month";
 		[leftArrow addTarget:self action:@selector(changeMonth:) forControlEvents:UIControlEventTouchUpInside];
 		[leftArrow setImage:[UIImage imageNamedTK:@"TapkuLibrary.bundle/Images/calendar/Month Calendar Left Arrow"] forState:0];
 		leftArrow.frame = CGRectMake(0, 0, 48, 38);
@@ -983,6 +1012,7 @@
 	if(rightArrow==nil){
 		rightArrow = [UIButton buttonWithType:UIButtonTypeCustom];
 		rightArrow.tag = 1;
+        rightArrow.accessibilityLabel = @"Next Month";
 		[rightArrow addTarget:self action:@selector(changeMonth:) forControlEvents:UIControlEventTouchUpInside];
 		rightArrow.frame = CGRectMake(320-45, 0, 48, 38);
 		[rightArrow setImage:[UIImage imageNamedTK:@"TapkuLibrary.bundle/Images/calendar/Month Calendar Right Arrow"] forState:0];
