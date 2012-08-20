@@ -43,7 +43,6 @@
 	UIButton *leftArrow, *rightArrow;
 	UIImageView *topBackground, *shadow;
 	UILabel *monthYear;
-	UIScrollView *tileBox;
 	BOOL sunday;
 
 }

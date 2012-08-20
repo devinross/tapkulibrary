@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		207DFF9215E1E3BE00A0BC2A /* NSDate+CalendarGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = 207DFF9015E1E3BE00A0BC2A /* NSDate+CalendarGrid.h */; };
+		207DFF9315E1E3BE00A0BC2A /* NSDate+CalendarGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 207DFF9115E1E3BE00A0BC2A /* NSDate+CalendarGrid.m */; };
 		3B07B7CA133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B07B7C8133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.h */; };
 		3B07B7CB133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B07B7C9133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.m */; };
 		3B166A6F137F38D7006298E6 /* UIColor+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3B166A6D137F38D7006298E6 /* UIColor+TKCategory.h */; };
@@ -121,6 +123,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		207DFF9015E1E3BE00A0BC2A /* NSDate+CalendarGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CalendarGrid.h"; sourceTree = "<group>"; };
+		207DFF9115E1E3BE00A0BC2A /* NSDate+CalendarGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CalendarGrid.m"; sourceTree = "<group>"; };
 		3B07B7C8133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+TKCategory.h"; sourceTree = "<group>"; };
 		3B07B7C9133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+TKCategory.m"; sourceTree = "<group>"; };
 		3B166A6D137F38D7006298E6 /* UIColor+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+TKCategory.h"; sourceTree = "<group>"; };
@@ -520,6 +524,8 @@
 				3B879FC5109BFC07002012FD /* TKCalendarMonthTableViewController.m */,
 				3B9724B911C54C5C0027A97F /* TKCalendarMonthView.h */,
 				3B9724BA11C54C5C0027A97F /* TKCalendarMonthView.m */,
+				207DFF9015E1E3BE00A0BC2A /* NSDate+CalendarGrid.h */,
+				207DFF9115E1E3BE00A0BC2A /* NSDate+CalendarGrid.m */,
 			);
 			name = Month;
 			sourceTree = "<group>";
@@ -578,6 +584,7 @@
 				3B819B5414601DC500EC0097 /* TKViewController.h in Headers */,
 				3BE2036A149184CA003FFBEB /* UIViewController+TKCategory.h in Headers */,
 				3BF9A833159791EA002A7F9E /* TKShapeView.h in Headers */,
+				207DFF9215E1E3BE00A0BC2A /* NSDate+CalendarGrid.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -740,6 +747,7 @@
 				3B819B5514601DC500EC0097 /* TKViewController.m in Sources */,
 				3BE2036B149184CA003FFBEB /* UIViewController+TKCategory.m in Sources */,
 				3BF9A834159791EA002A7F9E /* TKShapeView.m in Sources */,
+				207DFF9315E1E3BE00A0BC2A /* NSDate+CalendarGrid.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

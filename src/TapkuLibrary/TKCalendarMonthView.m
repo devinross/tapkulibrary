@@ -33,93 +33,7 @@
 #import "NSDate+TKCategory.h"
 #import "TKGlobal.h"
 #import "UIImage+TKCategory.h"
-
-#pragma mark -
-@interface NSDate (calendarcategory)
-
-- (NSDate*) firstOfMonth;
-- (NSDate*) nextMonth;
-- (NSDate*) previousMonth;
-
-- (NSDate*) lastOfMonthDate;
-+ (NSDate*) lastofMonthDate;
-+ (NSDate*) lastOfCurrentMonth;
-
-@end
-
-
-#pragma mark -
-
-@implementation NSDate (calendarcategory)
-
-- (NSDate*) firstOfMonth{
-	TKDateInformation info = [self dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-	info.day = 1;
-	info.minute = 0;
-	info.second = 0;
-	info.hour = 0;
-	return [NSDate dateFromDateInformation:info timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-}
-- (NSDate*) nextMonth{
-	
-	
-	TKDateInformation info = [self dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-	info.month++;
-	if(info.month>12){
-		info.month = 1;
-		info.year++;
-	}
-	info.minute = 0;
-	info.second = 0;
-	info.hour = 0;
-	
-	return [NSDate dateFromDateInformation:info timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-	
-}
-- (NSDate*) previousMonth{
-	
-	
-	TKDateInformation info = [self dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-	info.month--;
-	if(info.month<1){
-		info.month = 12;
-		info.year--;
-	}
-	
-	info.minute = 0;
-	info.second = 0;
-	info.hour = 0;
-	return [NSDate dateFromDateInformation:info timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-	
-}
-
-- (NSDate*) lastOfMonthDate {
-	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-	NSDateComponents *comp = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit) fromDate:self];
-	[comp setDay:0];
-	[comp setMonth:comp.month+1];
-	NSDate *date = [gregorian dateFromComponents:comp];
-    return date;
-}
-
-+ (NSDate*) lastofMonthDate{
-    NSDate *day = [NSDate date];
-	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-	NSDateComponents *comp = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit) fromDate:day];
-	[comp setDay:0];
-	[comp setMonth:comp.month+1];
-	return [gregorian dateFromComponents:comp];
-}
-+ (NSDate*) lastOfCurrentMonth{
-	NSDate *day = [NSDate date];
-	NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-	NSDateComponents *comp = [gregorian components:(NSYearCalendarUnit | NSMonthCalendarUnit) fromDate:day];
-	[comp setDay:0];
-	[comp setMonth:comp.month+1];
-	return [gregorian dateFromComponents:comp];
-}
-
-@end
+#import "NSDate+CalendarGrid.h"
 
 
 #pragma mark -
@@ -141,6 +55,7 @@
 	UIImageView *selectedImageView;
 	BOOL startOnSunday;
 }
+
 @property (strong,nonatomic) NSDate *monthDate;
 @property (nonatomic, strong) NSMutableArray *accessibleElements;
 
@@ -152,58 +67,73 @@
 
 + (NSArray*) rangeOfDatesInMonthGrid:(NSDate*)date startOnSunday:(BOOL)sunday;
 
-@end
 
-#pragma mark -
-#define dotFontSize 18.0
-#define dateFontSize 22.0
-@interface TKCalendarMonthTiles (private)
 @property (strong,nonatomic) UIImageView *selectedImageView;
 @property (strong,nonatomic) UILabel *currentDay;
 @property (strong,nonatomic) UILabel *dot;
+@property (nonatomic,strong) NSArray *datesArray;
+
 @end
+
 
 #pragma mark -
 @implementation TKCalendarMonthTiles
-@synthesize monthDate;
+@synthesize monthDate,datesArray;
 
-#pragma mark - Accessibility Container methods
+#define dotFontSize 18.0
+#define dateFontSize 22.0
 
-- (NSArray *)accessibleElements
-{
-    if (_accessibleElements != nil)
-    {
-        return _accessibleElements;
-    }
-    
-    _accessibleElements = [[NSMutableArray alloc] init];
-    
-    return _accessibleElements;
-}
-
-//The container itself is not accessible
-- (BOOL)isAccessibilityElement
-{
+#pragma mark Accessibility Container methods
+- (BOOL) isAccessibilityElement{
     return NO;
 }
+- (NSArray *) accessibleElements{
+    if (_accessibleElements!=nil) return _accessibleElements;
 
-- (NSInteger)accessibilityElementCount
-{
+    _accessibleElements = [[NSMutableArray alloc] init];
+	
+	
+	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+	[formatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+	[formatter setDateStyle:NSDateFormatterFullStyle];
+	[formatter setTimeStyle:NSDateFormatterNoStyle];
+	[formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+	
+	NSDate *firstDate = [self.datesArray objectAtIndex:0];
+	
+	for(int i=0;i<marks.count;i++){
+		UIAccessibilityElement *element = [[UIAccessibilityElement alloc] initWithAccessibilityContainer:self];
+		
+		NSDate *day = [NSDate dateWithTimeIntervalSinceReferenceDate:[firstDate timeIntervalSinceReferenceDate]+(24*60*60*i)+5];
+		element.accessibilityLabel = [formatter stringForObjectValue:day];
+		
+		CGRect r = [self convertRect:[self rectForCellAtIndex:i] toView:self.window];
+		r.origin.y -= 6;
+		
+		element.accessibilityFrame = r;
+		element.accessibilityTraits = UIAccessibilityTraitButton;
+		element.accessibilityValue = [[marks objectAtIndex:i] boolValue] ? @"Has Events" : @"No Events";
+		[_accessibleElements addObject:element];
+		
+	}
+	
+	
+	
+    return _accessibleElements;
+}
+- (NSInteger) accessibilityElementCount{
     return [[self accessibleElements] count];
 }
-
-- (id)accessibilityElementAtIndex:(NSInteger)index
-{
+- (id) accessibilityElementAtIndex:(NSInteger)index{
     return [[self accessibleElements] objectAtIndex:index];
 }
-
-- (NSInteger)indexOfAccessibilityElement:(id)element
-{
+- (NSInteger) indexOfAccessibilityElement:(id)element{
     return [[self accessibleElements] indexOfObject:element];
 }
 
-#pragma mark - Init Methods
 
+
+#pragma mark Init Methods
 + (NSArray*) rangeOfDatesInMonthGrid:(NSDate*)date startOnSunday:(BOOL)sunday{
 	
 	NSDate *firstDate, *lastDate;
@@ -285,7 +215,6 @@
 	
 	return [NSArray arrayWithObjects:firstDate,lastDate,nil];
 }
-
 - (id) initWithMonth:(NSDate*)date marks:(NSArray*)markArray startDayOnSunday:(BOOL)sunday{
 	if(!(self=[super initWithFrame:CGRectZero])) return nil;
 
@@ -301,17 +230,9 @@
 	NSDate *prev = [monthDate previousMonth];	
 	daysInMonth = [[monthDate nextMonth] daysBetweenDate:monthDate];
 	
-	/*
-	int row = (daysInMonth + dateInfo.weekday - 1);
-	if(dateInfo.weekday==1&&!sunday) row = daysInMonth + 6;
-	if(!sunday) row--;
-	
-
-	row = (row / 7) + ((row % 7 == 0) ? 0:1);
-	float h = 44 * row;
-	*/
 	
 	NSArray *dates = [TKCalendarMonthTiles rangeOfDatesInMonthGrid:date startOnSunday:sunday];
+	self.datesArray = dates;
 	NSUInteger numberOfDaysBetween = [[dates objectAtIndex:0] daysBetweenDate:[dates lastObject]];
 	NSUInteger scale = (numberOfDaysBetween / 7) + 1;
 	CGFloat h = 44.0f * scale;
@@ -341,14 +262,9 @@
 	[self.selectedImageView addSubview:self.dot];
 	self.multipleTouchEnabled = NO;
 
-	//Set Accessibility
-    self.selectedImageView.isAccessibilityElement = YES;
-    self.selectedImageView.accessibilityTraits = UIAccessibilityTraitButton;
-    self.selectedImageView.accessibilityLabel = [NSString stringWithFormat:@"Day %@, %@", self.currentDay.text, self.dot ? @"Activities" : @"No Activities"];
 
 	return self;
 }
-
 - (void) setTarget:(id)t action:(SEL)a{
 	target = t;
 	action = a;
@@ -383,14 +299,7 @@
 			   alignment: UITextAlignmentCenter];
 	}
 	
-    //Set Accessibility
-    UIAccessibilityElement *tileElement = [[UIAccessibilityElement alloc] initWithAccessibilityContainer:self];
-    tileElement.accessibilityFrame = [self convertRect:r toView:nil];
-    tileElement.accessibilityLabel = str;
-    tileElement.accessibilityValue = mark ? @"Activities" : @"No Activities";
-    tileElement.accessibilityTraits = UIAccessibilityTraitUpdatesFrequently;
-    
-    [_accessibleElements addObject:tileElement];
+
 
 }
 - (void) drawRect:(CGRect)rect {
@@ -678,8 +587,8 @@
 
 
 #pragma mark -
-@interface TKCalendarMonthView (private)
-@property (strong,nonatomic) UIScrollView *tileBox;
+@interface TKCalendarMonthView ()
+@property (strong,nonatomic) UIView *tileBox;
 @property (strong,nonatomic) UIImageView *topBackground;
 @property (strong,nonatomic) UILabel *monthYear;
 @property (strong,nonatomic) UIButton *leftArrow;
@@ -690,7 +599,7 @@
 #pragma mark -
 @implementation TKCalendarMonthView
 @synthesize delegate,dataSource;
-
+@synthesize tileBox=_tileBox;
 
 - (id) init{
 	self = [self initWithSundayAsFirst:YES];
@@ -1028,8 +937,7 @@
 }
 - (UILabel *) monthYear{
 	if(monthYear==nil){
-		monthYear = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.tileBox.frame.size.width, 38)];
-		
+		monthYear = [[UILabel alloc] initWithFrame:CGRectInset(CGRectMake(0, 0, self.tileBox.frame.size.width, 38), 40, 6)];
 		monthYear.textAlignment = UITextAlignmentCenter;
 		monthYear.backgroundColor = [UIColor clearColor];
 		monthYear.font = [UIFont boldSystemFontOfSize:22];
@@ -1059,11 +967,12 @@
 	}
 	return rightArrow;
 }
-- (UIScrollView *) tileBox{
-	if(tileBox==nil){
-		tileBox = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 44, 320, currentTile.frame.size.height)];
+- (UIView *) tileBox{
+	if(_tileBox==nil){
+		_tileBox = [[UIView alloc] initWithFrame:CGRectMake(0, 44, 320, currentTile.frame.size.height)];
+		_tileBox.clipsToBounds = YES;
 	}
-	return tileBox;
+	return _tileBox;
 }
 - (UIImageView *) shadow{
 	if(shadow==nil){
