@@ -142,6 +142,7 @@
 	BOOL startOnSunday;
 }
 @property (strong,nonatomic) NSDate *monthDate;
+@property (nonatomic, strong) NSMutableArray *accessibleElements;
 
 - (id) initWithMonth:(NSDate*)date marks:(NSArray*)marks startDayOnSunday:(BOOL)sunday;
 - (void) setTarget:(id)target action:(SEL)action;
@@ -166,11 +167,42 @@
 @implementation TKCalendarMonthTiles
 @synthesize monthDate;
 
+#pragma mark - Accessibility Container methods
+
+- (NSArray *)accessibleElements
+{
+    if (_accessibleElements != nil)
+    {
+        return _accessibleElements;
+    }
+    
+    _accessibleElements = [[NSMutableArray alloc] init];
+    
+    return _accessibleElements;
+}
+
 //The container itself is not accessible
 - (BOOL)isAccessibilityElement
 {
     return NO;
 }
+
+- (NSInteger)accessibilityElementCount
+{
+    return [[self accessibleElements] count];
+}
+
+- (id)accessibilityElementAtIndex:(NSInteger)index
+{
+    return [[self accessibleElements] objectAtIndex:index];
+}
+
+- (NSInteger)indexOfAccessibilityElement:(id)element
+{
+    return [[self accessibleElements] indexOfObject:element];
+}
+
+#pragma mark - Init Methods
 
 + (NSArray*) rangeOfDatesInMonthGrid:(NSDate*)date startOnSunday:(BOOL)sunday{
 	
@@ -351,7 +383,15 @@
 			   alignment: UITextAlignmentCenter];
 	}
 	
-	
+    //Set Accessibility
+    UIAccessibilityElement *tileElement = [[UIAccessibilityElement alloc] initWithAccessibilityContainer:self];
+    tileElement.accessibilityFrame = [self convertRect:r toView:nil];
+    tileElement.accessibilityLabel = str;
+    tileElement.accessibilityValue = mark ? @"Activities" : @"No Activities";
+    tileElement.accessibilityTraits = UIAccessibilityTraitUpdatesFrequently;
+    
+    [_accessibleElements addObject:tileElement];
+
 }
 - (void) drawRect:(CGRect)rect {
 	
