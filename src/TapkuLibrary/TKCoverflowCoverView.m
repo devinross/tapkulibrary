@@ -33,12 +33,7 @@
 #import "UIImage+TKCategory.h"
 #import "TKGlobal.h"
 
-
-
-
 @implementation TKCoverflowCoverView
-@synthesize baseline;
-
 
 - (id) initWithFrame:(CGRect)frame showReflection:(BOOL)reflection{
 	if(!(self=[super initWithFrame:frame])) return nil;
@@ -67,21 +62,13 @@
 		[self.layer addSublayer:self.gradientLayer];
 	}
     
-	
-    
-	
-	
 	return self;
 }
-
-
 - (id) initWithFrame:(CGRect)frame {
 	return [self initWithFrame:frame showReflection:YES];
 }
 
-
 - (void) setImage:(UIImage *)img{
-	
 	
 	if(img==nil){
 		[CATransaction begin];
@@ -98,7 +85,6 @@
 	}
 	
 	
-	
 	[CATransaction begin];
 	[CATransaction setAnimationDuration:0.0f];
 	
@@ -108,7 +94,7 @@
 	CGFloat factor = self.bounds.size.width / (h>w?h:w);
 	h = factor * h;
 	w = factor * w;
-	CGFloat y = baseline - h > 0 ? baseline - h : 0;
+	CGFloat y = _baseline - h > 0 ? _baseline - h : 0;
 	
 	self.imageView.frame = CGRectMake(0, y, w, h);
 	self.imageView.image = image;
@@ -125,12 +111,6 @@
 - (UIImage*) image{
 	return self.imageView.image;
 }
-- (void) setBaseline:(float)f{
-	baseline = f;
-}
-
-
-
 
 
 @end

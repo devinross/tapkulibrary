@@ -40,9 +40,9 @@
 @interface TKCalendarMonthView : UIView {
 
 	TKCalendarMonthTiles *currentTile,*oldTile;
-	UIButton *leftArrow, *rightArrow;
-	UIImageView *topBackground, *shadow;
-	UILabel *monthYear;
+	//UIButton *leftArrow, *rightArrow;
+	//UIImageView *topBackground, *shadow;
+	//UILabel *monthYear;
 	BOOL sunday;
 
 }

@@ -60,7 +60,6 @@
 
 #pragma mark -
 @implementation TKCoverflowView
-@synthesize coverflowDelegate, dataSource, coverSize, numberOfCovers, coverSpacing, coverAngle, spaceInFront;
 
 #pragma mark Initialize
 - (id) initWithFrame:(CGRect)frame {
@@ -75,18 +74,18 @@
 #pragma mark Setup
 - (void) _setupTransforms{
 
-	leftTransform = CATransform3DMakeRotation(coverAngle, 0, 1, 0);
+	leftTransform = CATransform3DMakeRotation(_coverAngle, 0, 1, 0);
 	leftTransform = CATransform3DConcat(leftTransform,CATransform3DMakeTranslation(-spaceFromCurrent, 0, -self.spaceInFront));
 	
-	rightTransform = CATransform3DMakeRotation(-coverAngle, 0, 1, 0);
+	rightTransform = CATransform3DMakeRotation(-_coverAngle, 0, 1, 0);
 	rightTransform = CATransform3DConcat(rightTransform,CATransform3DMakeTranslation(spaceFromCurrent, 0, -self.spaceInFront));
 	
 }
 - (void) _load{
 	self.backgroundColor = [UIColor blackColor];
-	numberOfCovers = 0;
-	coverSpacing = COVER_SPACING;
-	coverAngle = SIDE_COVER_ANGLE;
+	_numberOfCovers = 0;
+	_coverSpacing = COVER_SPACING;
+	_coverAngle = SIDE_COVER_ANGLE;
 	self.spaceInFront = FRONT_SPACE;
 	self.showsHorizontalScrollIndicator = NO;
 	super.delegate = self;
@@ -94,8 +93,8 @@
 	yard = [[NSMutableArray alloc] init];
 	views = [[NSMutableArray alloc] init];
 	
-	coverSize = CGSizeMake(224, 224);
-	spaceFromCurrent = coverSize.width/2.4;
+	_coverSize = CGSizeMake(224, 224);
+	spaceFromCurrent = _coverSize.width/2.4;
 	[self _setupTransforms];
 
 
@@ -115,20 +114,20 @@
 	[views removeAllObjects];
 	coverViews = nil;
 	
-	if(numberOfCovers < 1){
+	if(_numberOfCovers < 1){
 		self.contentOffset = CGPointZero;
 		return;
 	} 
 	
 	
-	coverViews = [[NSMutableArray alloc] initWithCapacity:numberOfCovers];
-	for (unsigned i = 0; i < numberOfCovers; i++) [coverViews addObject:[NSNull null]];
+	coverViews = [[NSMutableArray alloc] initWithCapacity:_numberOfCovers];
+	for (unsigned i = 0; i < _numberOfCovers; i++) [coverViews addObject:[NSNull null]];
 	deck = NSMakeRange(0, 0);
 	
 	CGSize size = self.frame.size;
 	margin = (self.frame.size.width / 2);
-	self.contentSize = CGSizeMake( (coverSpacing) * (numberOfCovers-1) + (margin*2) , size.height);
-	coverBuffer = (int) ((size.width - coverSize.width) / coverSpacing) + 3;
+	self.contentSize = CGSizeMake( (_coverSpacing) * (_numberOfCovers-1) + (margin*2) , size.height);
+	coverBuffer = (int) ((size.width - _coverSize.width) / _coverSpacing) + 3;
 	
 
 	movingRight = YES;
@@ -191,8 +190,8 @@
 
 		
 		CGRect r = cover.frame;
-		r.origin.y = size.height/2 - (coverSize.height/2) - (coverSize.height/16);
-		r.origin.x = (size.width/2 - (coverSize.width/ 2)) + (coverSpacing) * index;
+		r.origin.y = size.height/2 - (_coverSize.height/2) - (_coverSize.height/16);
+		r.origin.x = (size.width/2 - (_coverSize.width/ 2)) + (_coverSpacing) * index;
 		cover.frame = r;
 
 
@@ -222,7 +221,7 @@
 	
 	int loc = deck.location, len = deck.length, buff = coverBuffer;
 	int newLocation = currentIndex - buff < 0 ? 0 : currentIndex-buff;
-	int newLength = currentIndex + buff > numberOfCovers ? numberOfCovers - newLocation : currentIndex + buff - newLocation;
+	int newLength = currentIndex + buff > _numberOfCovers ? _numberOfCovers - newLocation : currentIndex + buff - newLocation;
 	
 	if(loc == newLocation && newLength == len) return;
 	
@@ -234,7 +233,7 @@
 		[self placeAlbumsFrom:newLocation to:newLocation+newLength];
 	}
 	
-	NSRange spectrum = NSMakeRange(0, numberOfCovers);
+	NSRange spectrum = NSMakeRange(0, _numberOfCovers);
 	deck = NSIntersectionRange(spectrum, NSMakeRange(newLocation, newLength));
 	
 		
@@ -247,7 +246,7 @@
 			[self sendSubviewToBack:[coverViews objectAtIndex:i]];
 	
 	i = currentIndex+1;
-	if(i<numberOfCovers-1) 
+	if(i<_numberOfCovers-1)
 		for(;i < deck.location+deck.length;i++) 
 			[self sendSubviewToBack:[coverViews objectAtIndex:i]];
 	
@@ -266,7 +265,7 @@
 		CGSize size = self.frame.size;
 		[self setContentOffset:CGPointMake(v.center.x - (size.width/2), 0) animated:animated];
 	}else{		
-		[self setContentOffset:CGPointMake(coverSpacing*currentIndex, 0) animated:animated];
+		[self setContentOffset:CGPointMake(_coverSpacing*currentIndex, 0) animated:animated];
 	}
 	
 }
@@ -321,14 +320,14 @@
 	CGSize size = self.frame.size;
 
 	margin = (self.frame.size.width / 2);
-	self.contentSize = CGSizeMake( (coverSpacing) * (numberOfCovers-1) + (margin*2) , self.frame.size.height);
-	coverBuffer = (int)((size.width - coverSize.width) / coverSpacing) + 3;
+	self.contentSize = CGSizeMake( (_coverSpacing) * (_numberOfCovers-1) + (margin*2) , self.frame.size.height);
+	coverBuffer = (int)((size.width - _coverSize.width) / _coverSpacing) + 3;
 	
 	
 	for(UIView *v in views){
 		v.layer.transform = CATransform3DIdentity;
 		CGRect r = v.frame;
-		r.origin.y = size.height / 2 - (coverSize.height/2) - (coverSize.height/16);
+		r.origin.y = size.height / 2 - (_coverSize.height/2) - (_coverSize.height/16);
 		v.frame = r;
 	}
 	
@@ -336,7 +335,7 @@
 		if([coverViews objectAtIndex:i] != [NSNull null]){
 			UIView *cover = [coverViews objectAtIndex:i];
 			CGRect r = cover.frame;
-			r.origin.x = (size.width/2 - (coverSize.width/ 2)) + (coverSpacing) * i;
+			r.origin.x = (size.width/2 - (_coverSize.width/ 2)) + (_coverSpacing) * i;
 			cover.frame = r;
 		}
 	}
@@ -358,12 +357,12 @@
 - (NSInteger) calculatedIndexWithContentOffset:(CGPoint)point{
 	CGSize size = self.frame.size;
 	CGFloat per = point.x / (self.contentSize.width - size.width);
-	CGFloat ind = numberOfCovers * per;
-	CGFloat mi = ind / (numberOfCovers/2);
+	CGFloat ind = _numberOfCovers * per;
+	CGFloat mi = ind / (_numberOfCovers/2);
 	mi = 1 - mi;
 	mi = mi / 2;
 	int index = (int)(ind+mi);
-	index = MIN(MAX(0,index),numberOfCovers-1);
+	index = MIN(MAX(0,index),_numberOfCovers-1);
 	return index;
 }
 
@@ -439,7 +438,7 @@
 	UITouch *touch = [touches anyObject];
 
 	
-	if(touch.view != self &&  [touch locationInView:touch.view].y < coverSize.height){
+	if(touch.view != self &&  [touch locationInView:touch.view].y < _coverSize.height){
 		currentTouch = touch.view;
 	}
 
@@ -451,12 +450,12 @@
 	if(touch.view == currentTouch){
 		if(touch.tapCount > 0 && currentIndex == [coverViews indexOfObject:currentTouch]){
 			
-			if([coverflowDelegate respondsToSelector:@selector(coverflowView:coverAtIndexWasTappedInFront:tapCount:)])
-				[coverflowDelegate coverflowView:self coverAtIndexWasTappedInFront:currentIndex tapCount:touch.tapCount];
+			if([self.coverflowDelegate respondsToSelector:@selector(coverflowView:coverAtIndexWasTappedInFront:tapCount:)])
+				[self.coverflowDelegate coverflowView:self coverAtIndexWasTappedInFront:currentIndex tapCount:touch.tapCount];
 			
 		}else{
 			int index = [coverViews indexOfObject:currentTouch];
-			[self setContentOffset:CGPointMake(coverSpacing*index, 0) animated:YES];
+			[self setContentOffset:CGPointMake(_coverSpacing*index, 0) animated:YES];
 		}
 	}
 	
@@ -479,7 +478,7 @@
 	
 	
 	NSInteger i = [self calculatedIndexWithContentOffset:*targetContentOffset];
-	*targetContentOffset = CGPointMake(coverSpacing * i, 0);
+	*targetContentOffset = CGPointMake(_coverSpacing * i, 0);
 	
 	if(fabs(velocityTangent.x)<2.0f) return;
 	
@@ -492,29 +491,29 @@
 
 #pragma mark Properties
 - (void) setNumberOfCovers:(int)cov{
-	numberOfCovers = cov;
+	_numberOfCovers = cov;
 	[self _setup];
 }
 - (void) setCoverSpacing:(float)space{
-	coverSpacing = space;
+	_coverSpacing = space;
 	[self _setupTransforms];
 	[self _setup];
 	[self layoutSubviews];
 }
 - (void) setSpaceInFront:(float)front{
-	spaceInFront = front;
+	_spaceInFront = front;
 	[self _setupTransforms];
 	[self _setup];
 	[self layoutSubviews];
 }
 - (void) setCoverAngle:(float)f{
-	coverAngle = f;
+	_coverAngle = f;
 	[self _setupTransforms];
 	[self _setup];
 }
 - (void) setCoverSize:(CGSize)s{
-	coverSize = s;
-	spaceFromCurrent = coverSize.width/2.4;
+	_coverSize = s;
+	spaceFromCurrent = _coverSize.width/2.4;
 	[self _setupTransforms];
 	[self _setup];
 }
