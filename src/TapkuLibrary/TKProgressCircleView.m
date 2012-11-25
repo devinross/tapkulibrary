@@ -35,7 +35,6 @@
 #define AnimationIncrement 0.02
 
 @implementation TKProgressCircleView
-@synthesize  progress=_progress,twirlMode=_twirlMode;
 
 - (id) init{
 	self = [self initWithFrame:CGRectZero];	

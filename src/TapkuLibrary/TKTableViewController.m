@@ -35,8 +35,7 @@
 
 
 @implementation TKTableViewController
-@synthesize tableView = _tableView, emptyView = _emptyView;
-@synthesize searchBar = _searchBar, searchBarDisplayController = _searchBarDisplayController;
+
 
 // -----------------------------
 #pragma mark - Init & Friends

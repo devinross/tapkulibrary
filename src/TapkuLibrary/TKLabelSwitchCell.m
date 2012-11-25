@@ -33,7 +33,6 @@
 
 
 @implementation TKLabelSwitchCell
-@synthesize switcher=_switcher;
 
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {

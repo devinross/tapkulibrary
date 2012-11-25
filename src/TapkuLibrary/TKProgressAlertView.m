@@ -33,7 +33,6 @@
 #import "UIView+TKCategory.h"
 
 @implementation TKProgressAlertView
-@synthesize progressBar=_progressBar,label=_label;
 
 
 - (id) initWithProgressTitle:(NSString*)txt{

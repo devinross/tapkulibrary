@@ -34,7 +34,6 @@
 #import "NSArray+TKCategory.h"
 
 @implementation TKViewController
-@synthesize loadingView = _loadingView;
 
 - (void) viewDidUnload{
 	self.loadingView = nil;

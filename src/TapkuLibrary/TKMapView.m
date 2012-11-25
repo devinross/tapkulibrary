@@ -36,17 +36,13 @@
 @interface TKOverlayView : UIView {
 	id target;
 	SEL action;
-	CGPoint point;
-
 }
 - (id) initWithFrame:(CGRect)frame target:(id)target action:(SEL)action;
 @property (readonly,nonatomic) CGPoint point;
 @end
 @implementation TKOverlayView
-@synthesize point;
 
 - (id) initWithFrame:(CGRect)frame target:(id)t action:(SEL)a{
-	
 	if(!(self = [super initWithFrame:frame])) return nil;
 
 	target = t;
@@ -60,7 +56,7 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
 	UITouch *touch = [touches anyObject];
-	point = [touch locationInView:self];
+	_point = [touch locationInView:self];
 	[target performSelector:action];
 }
 - (void)dealloc {
@@ -76,8 +72,6 @@
 // TKMAPVIEW IMPLEMENTATION
 @implementation TKMapView
 
-@synthesize mapView,delegate,pinMode;
-
 - (id)init{
 	return [self initWithFrame:CGRectMake(0, 0, 100, 100)];
 }
@@ -88,25 +82,25 @@
 	CGRect b = frame;
 	b.origin = CGPointZero;
 	
-	mapView = [[MKMapView alloc] initWithFrame:b];
-	[self addSubview:mapView];
+	self.mapView = [[MKMapView alloc] initWithFrame:b];
+	[self addSubview:self.mapView];
 	
 	overlay = [[TKOverlayView alloc] initWithFrame:b target:self action:@selector(didTouch)];
 	overlay.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
-	pinMode = NO;
+	self.pinMode = NO;
 
     return self;
 }
 
 - (void) didTouch{
 	
-	CGRect r = mapView.bounds;
+	CGRect r = self.mapView.bounds;
 	
 	float longitudePercent = overlay.point.x / r.size.width;
 	float latitudePercent = overlay.point.y / r.size.height;
 
-	CLLocationCoordinate2D coord = mapView.centerCoordinate;
-	MKCoordinateSpan span = mapView.region.span;
+	CLLocationCoordinate2D coord = self.mapView.centerCoordinate;
+	MKCoordinateSpan span = self.mapView.region.span;
 	
 	float lat = coord.latitude + (span.latitudeDelta/2);
 	float lon = coord.longitude - (span.longitudeDelta/2);
@@ -116,11 +110,11 @@
 	corner.latitude = lat - span.latitudeDelta * latitudePercent; // up and down
 	corner.longitude = lon + span.longitudeDelta * longitudePercent; // left right
 	
-	[delegate didPlacePinAtCoordinate:corner];
+	[self.delegate didPlacePinAtCoordinate:corner];
 }
 - (void) setPinMode:(BOOL)pinIsMode{
-	pinMode = pinIsMode;
-	if(pinMode){
+	self.pinMode = pinIsMode;
+	if(self.pinMode){
 		[self addSubview:overlay];
 	}else{
 		[overlay removeFromSuperview];

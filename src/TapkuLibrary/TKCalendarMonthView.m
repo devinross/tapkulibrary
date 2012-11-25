@@ -595,8 +595,7 @@
 
 #pragma mark -
 @implementation TKCalendarMonthView
-@synthesize delegate,dataSource;
-@synthesize tileBox=_tileBox;
+
 
 - (id) init{
 	self = [self initWithSundayAsFirst:YES];
@@ -838,7 +837,7 @@
 		return;
 	}else {
 		
-		if ([delegate respondsToSelector:@selector(calendarMonthView:monthShouldChange:animated:)] && ![self.delegate calendarMonthView:self monthShouldChange:month animated:YES] ) 
+		if ([self.delegate respondsToSelector:@selector(calendarMonthView:monthShouldChange:animated:)] && ![self.delegate calendarMonthView:self monthShouldChange:month animated:YES] )
 			return;
 		
 		if ([self.delegate respondsToSelector:@selector(calendarMonthView:monthWillChange:animated:)] )
@@ -893,7 +892,7 @@
 		UIButton *b = direction > 1 ? self.rightArrow : self.leftArrow;
 		
 		NSDate* newMonth = [self dateForMonthChange:b];
-		if ([self.delegate respondsToSelector:@selector(calendarMonthView:monthShouldChange:animated:)] && ![delegate calendarMonthView:self monthShouldChange:newMonth animated:YES])
+		if ([self.delegate respondsToSelector:@selector(calendarMonthView:monthShouldChange:animated:)] && ![self.delegate calendarMonthView:self monthShouldChange:newMonth animated:YES])
 			return;
 		
 		if ([self.delegate respondsToSelector:@selector(calendarMonthView:monthWillChange:animated:)])					

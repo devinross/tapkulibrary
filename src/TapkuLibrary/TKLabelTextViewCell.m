@@ -32,7 +32,6 @@
 #import "TKLabelTextViewCell.h"
 
 @implementation TKLabelTextViewCell
-@synthesize textView=_textView;
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
 	if(!(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;

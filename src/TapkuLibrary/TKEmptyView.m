@@ -103,7 +103,6 @@
 
 #pragma mark -
 @implementation TKEmptyView
-@synthesize imageView=_imageView,titleLabel=_titleLabel,subtitleLabel=_subtitleLabel;
 
 
 - (id) initWithFrame:(CGRect)frame mask:(UIImage*)image title:(NSString*)titleString subtitle:(NSString*)subtitleString{

@@ -32,7 +32,6 @@
 
 
 @implementation TKTextViewCell
-@synthesize textView=_textView;
 
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -61,7 +60,6 @@
 }
 
 - (void)setHighlighted:(BOOL)highlight animated:(BOOL)animated {
-	
     [super setHighlighted:highlight animated:animated];
 	
 	if(highlight)

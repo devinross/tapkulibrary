@@ -35,7 +35,6 @@
 #define AnimationIncrement 0.02
 
 @implementation TKProgressBarView
-@synthesize progress=_progress;
 
 - (id) initWithStyle:(TKProgressBarViewStyle)s{
 	CGRect r = s==TKProgressBarViewStyleLong ? CGRectMake(0, 0, 210, 20) : CGRectMake(0, 0, 180, 42);

@@ -32,7 +32,6 @@
 #import "TKLabelCell.h"
 
 @implementation TKLabelCell
-@synthesize label=_label;
 
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {

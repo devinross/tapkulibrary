@@ -56,7 +56,6 @@
 
 
 - (void) setSelected:(BOOL)selected animated:(BOOL)animated {
-
     [super setSelected:selected animated:animated];
 	
 	if(selected)
@@ -66,7 +65,6 @@
 
 }
 - (void) setHighlighted:(BOOL)highlight animated:(BOOL)animated {
-	
     [super setHighlighted:highlight animated:animated];
 	
 	if(highlight)

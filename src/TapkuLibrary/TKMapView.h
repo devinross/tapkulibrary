@@ -32,23 +32,18 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@class TKMapPlace,TKOverlayView,MKMapView;
+@class TKMapPlace,TKOverlayView;
 @protocol TKMapViewDelegate;
 
 
 
 @interface TKMapView : UIView {
-	
-	MKMapView *mapView;
-	BOOL pinMode;
-	id <TKMapViewDelegate> __unsafe_unretained delegate;
-	
 	@private 
 	TKOverlayView *overlay;
 }
 @property (assign,nonatomic) BOOL pinMode;
 @property (strong,nonatomic) MKMapView *mapView;
-@property (unsafe_unretained,nonatomic) id <TKMapViewDelegate> delegate;
+@property (assign,nonatomic) id <TKMapViewDelegate> delegate;
 @end
 
 

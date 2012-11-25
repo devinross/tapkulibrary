@@ -33,8 +33,6 @@
 
 
 @implementation TKLabelFieldCell
-@synthesize field=_field;
-
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if(!(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;

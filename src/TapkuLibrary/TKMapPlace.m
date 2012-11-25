@@ -32,6 +32,5 @@
 #import "TKMapPlace.h"
 
 @implementation TKMapPlace
-@synthesize title,coordinate, color;
 
 @end
