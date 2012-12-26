@@ -1,6 +1,6 @@
 //
-//  TKAppDelegate.h
-//  Created by Devin Ross on 1/31/11.
+//  CoverflowViewController.h
+//  Created by Devin Ross on 1/3/10.
 //
 /*
  
@@ -28,31 +28,18 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
-
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
-@class TKWindow;
-
-/** This class allocates a TKWindow instance and provides a convience method for application launching. */
-@interface TKAppDelegate : NSObject <UIApplicationDelegate> 
-
-// For subclassing, default implentation does nothing.
-// These methods are called upon open & closing respectively regardless.
-// Good for placing instructions needed regardless of multi-tasking
+#import <TapkuLibrary/TapkuLibrary.h>
 
 
-/** This is a convience method for placing any functionality that might be called upon initial launch of the application and any subsequent relaunch from a background state. Default implementation does nothing.
- @param application The application instance.
- */
-- (void) applicationDidStartup:(UIApplication *)application;
 
 
-///----------------------------
-/// @name Properties
-///----------------------------
+@interface CoverflowViewController : UIViewController <TKCoverflowViewDelegate,TKCoverflowViewDataSource,UIScrollViewDelegate> {
+	BOOL collapsed;
+}
 
-/** Returns the application main window. */
-@property (nonatomic,strong) UIWindow *window;
+@property (strong,nonatomic) TKCoverflowView *coverflow; 
+@property (strong,nonatomic) NSMutableArray *covers;
 
 @end
+

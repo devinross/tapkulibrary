@@ -1,10 +1,10 @@
 //
-//  TKAppDelegate.h
-//  Created by Devin Ross on 1/31/11.
+//  DemoCalendarMonth.h
+//  Created by Devin Ross on 10/31/09.
 //
 /*
  
- tapku.com || http://github.com/devinross/tapkulibrary
+ tapku.com || https://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -29,30 +29,15 @@
  
  */
 
-#import <Foundation/Foundation.h>
+#import <TapkuLibrary/TapkuLibrary.h>
 #import <UIKit/UIKit.h>
 
-@class TKWindow;
 
-/** This class allocates a TKWindow instance and provides a convience method for application launching. */
-@interface TKAppDelegate : NSObject <UIApplicationDelegate> 
+@interface CalendarMonthViewController : TKCalendarMonthTableViewController
 
-// For subclassing, default implentation does nothing.
-// These methods are called upon open & closing respectively regardless.
-// Good for placing instructions needed regardless of multi-tasking
+@property (strong,nonatomic) NSMutableArray *dataArray;
+@property (strong,nonatomic) NSMutableDictionary *dataDictionary;
 
-
-/** This is a convience method for placing any functionality that might be called upon initial launch of the application and any subsequent relaunch from a background state. Default implementation does nothing.
- @param application The application instance.
- */
-- (void) applicationDidStartup:(UIApplication *)application;
-
-
-///----------------------------
-/// @name Properties
-///----------------------------
-
-/** Returns the application main window. */
-@property (nonatomic,strong) UIWindow *window;
+- (void) generateRandomDataForStartDate:(NSDate*)start endDate:(NSDate*)end;
 
 @end

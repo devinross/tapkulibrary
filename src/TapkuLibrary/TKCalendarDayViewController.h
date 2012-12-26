@@ -33,10 +33,8 @@
 #import "TKCalendarDayTimelineView.h"
 
 
-@interface TKCalendarDayViewController : UIViewController <TKCalendarDayTimelineViewDelegate>{
-	TKCalendarDayTimelineView *_calendarDayTimelineView;
-}
+@interface TKCalendarDayViewController : UIViewController <TKCalendarDayTimelineViewDelegate>
 
-@property (nonatomic, unsafe_unretained) TKCalendarDayTimelineView *calendarDayTimelineView;
+@property (nonatomic, strong) TKCalendarDayTimelineView *calendarDayTimelineView;
 
 @end

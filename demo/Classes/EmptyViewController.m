@@ -1,10 +1,10 @@
 //
-//  TKAppDelegate.h
-//  Created by Devin Ross on 1/31/11.
+//  EmptyViewController.m
+//  Created by Devin Ross on 7/24/09.
 //
 /*
  
- tapku.com || http://github.com/devinross/tapkulibrary
+ tapku.com || https://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -29,30 +29,25 @@
  
  */
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#import "EmptyViewController.h"
 
-@class TKWindow;
+@implementation EmptyViewController
 
-/** This class allocates a TKWindow instance and provides a convience method for application launching. */
-@interface TKAppDelegate : NSObject <UIApplicationDelegate> 
+#pragma mark - View Lifecycle
+- (void) loadView{
+	[super loadView];
+	self.title = @"Empty";
 
-// For subclassing, default implentation does nothing.
-// These methods are called upon open & closing respectively regardless.
-// Good for placing instructions needed regardless of multi-tasking
+	self.emptyView = [[TKEmptyView alloc] initWithFrame:self.view.bounds 
+									emptyViewImage:TKEmptyViewImageMale
+											 title:@"Empty Page"
+										  subtitle:@"All you need is a transparent image"];
+	
+	self.emptyView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+	[self.view addSubview:self.emptyView];
 
+	
+}
 
-/** This is a convience method for placing any functionality that might be called upon initial launch of the application and any subsequent relaunch from a background state. Default implementation does nothing.
- @param application The application instance.
- */
-- (void) applicationDidStartup:(UIApplication *)application;
-
-
-///----------------------------
-/// @name Properties
-///----------------------------
-
-/** Returns the application main window. */
-@property (nonatomic,strong) UIWindow *window;
 
 @end

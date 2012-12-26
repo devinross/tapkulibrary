@@ -1,10 +1,10 @@
 //
-//  TKAppDelegate.h
-//  Created by Devin Ross on 1/31/11.
+//  main.m
+//  Created by Devin Ross on 7/7/10.
 //
 /*
  
- tapku.com || http://github.com/devinross/tapkulibrary
+ tapku.com || https://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -29,30 +29,25 @@
  
  */
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
-@class TKWindow;
-
-/** This class allocates a TKWindow instance and provides a convience method for application launching. */
-@interface TKAppDelegate : NSObject <UIApplicationDelegate> 
-
-// For subclassing, default implentation does nothing.
-// These methods are called upon open & closing respectively regardless.
-// Good for placing instructions needed regardless of multi-tasking
+#import <objc/runtime.h> 
+#import <objc/message.h>
 
 
-/** This is a convience method for placing any functionality that might be called upon initial launch of the application and any subsequent relaunch from a background state. Default implementation does nothing.
- @param application The application instance.
- */
-- (void) applicationDidStartup:(UIApplication *)application;
+// FOR SWIZZLING METHODS.. HACKERS ONLY PLEASE
+void Swizzle(Class c, SEL orig, SEL new){
+    Method origMethod = class_getInstanceMethod(c, orig);
+    Method newMethod = class_getInstanceMethod(c, new);
+    if(class_addMethod(c, orig, method_getImplementation(newMethod), method_getTypeEncoding(newMethod)))
+        class_replaceMethod(c, new, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));
+    else
+		method_exchangeImplementations(origMethod, newMethod);
+	
+}
 
-
-///----------------------------
-/// @name Properties
-///----------------------------
-
-/** Returns the application main window. */
-@property (nonatomic,strong) UIWindow *window;
-
-@end
+int main(int argc, char *argv[]) {
+    @autoreleasepool {
+		int retVal = UIApplicationMain(argc, argv, nil, @"AppDelegate");
+		return retVal;
+    }
+}

@@ -79,7 +79,6 @@
 		3B819B5514601DC500EC0097 /* TKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B819B5314601DC500EC0097 /* TKViewController.m */; };
 		3B859EAD134C73D600661088 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995710953DF400F235F1 /* UIKit.framework */; };
 		3B859EAE134C73DE00661088 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
-		3B859EAF134C73E500661088 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995910953DF400F235F1 /* MapKit.framework */; };
 		3B859EB0134C73EF00661088 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995810953DF400F235F1 /* QuartzCore.framework */; };
 		3B859EC6134C74D800661088 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B859EC5134C74D800661088 /* SenTestingKit.framework */; };
 		3B859F02134C76C600661088 /* NSArray+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1DCEC91289B84400884CDF /* NSArray+TKCategory.m */; };
@@ -108,11 +107,6 @@
 		3BDE805E15BE3B210010738D /* NSArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE805D15BE3B210010738D /* NSArrayTests.m */; };
 		3BE2036A149184CA003FFBEB /* UIViewController+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BE20368149184CA003FFBEB /* UIViewController+TKCategory.h */; };
 		3BE2036B149184CA003FFBEB /* UIViewController+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE20369149184CA003FFBEB /* UIViewController+TKCategory.m */; };
-		3BE54E61134548A100B59702 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995910953DF400F235F1 /* MapKit.framework */; };
-		3BE54E86134548E600B59702 /* TKMapPlace.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BE54E82134548E600B59702 /* TKMapPlace.h */; };
-		3BE54E87134548E600B59702 /* TKMapPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE54E83134548E600B59702 /* TKMapPlace.m */; };
-		3BE54E88134548E600B59702 /* TKMapView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BE54E84134548E600B59702 /* TKMapView.h */; };
-		3BE54E89134548E600B59702 /* TKMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE54E85134548E600B59702 /* TKMapView.m */; };
 		3BE8FF8512945C4400DBF3FC /* UIScrollview+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BE8FF8312945C4400DBF3FC /* UIScrollview+TKCategory.h */; };
 		3BE8FF8612945C4400DBF3FC /* UIScrollview+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE8FF8412945C4400DBF3FC /* UIScrollview+TKCategory.m */; };
 		3BEE1CBB12CFB78300FECF6D /* TKProgressCircleView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BEE1CB912CFB78300FECF6D /* TKProgressCircleView.h */; };
@@ -167,7 +161,6 @@
 		3BAC995610953DF400F235F1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3BAC995710953DF400F235F1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3BAC995810953DF400F235F1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		3BAC995910953DF400F235F1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3BAC99FE10953E2400F235F1 /* TKCalendarMonthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCalendarMonthViewController.h; sourceTree = "<group>"; };
 		3BAC99FF10953E2400F235F1 /* TKCalendarMonthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCalendarMonthViewController.m; sourceTree = "<group>"; };
 		3BAC9A0110953E2400F235F1 /* TKCalendarDayEventView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCalendarDayEventView.h; sourceTree = "<group>"; };
@@ -219,10 +212,6 @@
 		3BDE805D15BE3B210010738D /* NSArrayTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSArrayTests.m; path = Tests/NSArrayTests.m; sourceTree = "<group>"; };
 		3BE20368149184CA003FFBEB /* UIViewController+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TKCategory.h"; sourceTree = "<group>"; };
 		3BE20369149184CA003FFBEB /* UIViewController+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TKCategory.m"; sourceTree = "<group>"; };
-		3BE54E82134548E600B59702 /* TKMapPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKMapPlace.h; sourceTree = "<group>"; };
-		3BE54E83134548E600B59702 /* TKMapPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKMapPlace.m; sourceTree = "<group>"; };
-		3BE54E84134548E600B59702 /* TKMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKMapView.h; sourceTree = "<group>"; };
-		3BE54E85134548E600B59702 /* TKMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKMapView.m; sourceTree = "<group>"; };
 		3BE8FF8312945C4400DBF3FC /* UIScrollview+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollview+TKCategory.h"; sourceTree = "<group>"; };
 		3BE8FF8412945C4400DBF3FC /* UIScrollview+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollview+TKCategory.m"; sourceTree = "<group>"; };
 		3BEAE08E1096C61A00A0A372 /* TKWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKWindow.h; sourceTree = "<group>"; };
@@ -245,7 +234,6 @@
 			files = (
 				3B859EAD134C73D600661088 /* UIKit.framework in Frameworks */,
 				3B859EAE134C73DE00661088 /* Foundation.framework in Frameworks */,
-				3B859EAF134C73E500661088 /* MapKit.framework in Frameworks */,
 				3B859EB0134C73EF00661088 /* QuartzCore.framework in Frameworks */,
 				3B859EC6134C74D800661088 /* SenTestingKit.framework in Frameworks */,
 			);
@@ -255,7 +243,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BE54E61134548A100B59702 /* MapKit.framework in Frameworks */,
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 				3BAC995B10953DF400F235F1 /* CoreGraphics.framework in Frameworks */,
 				3BAC995C10953DF400F235F1 /* UIKit.framework in Frameworks */,
@@ -294,7 +281,6 @@
 				3BAC995710953DF400F235F1 /* UIKit.framework */,
 				3BAC995610953DF400F235F1 /* CoreGraphics.framework */,
 				3BAC995810953DF400F235F1 /* QuartzCore.framework */,
-				3BAC995910953DF400F235F1 /* MapKit.framework */,
 				3B859EC5134C74D800661088 /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
@@ -498,21 +484,9 @@
 				3B8B591810F0816300EABA45 /* Coverflow */,
 				3BAC9A4D10953E5200F235F1 /* Empty View */,
 				3BAC9A3E10953E5200F235F1 /* HUD */,
-				3BE54E8A134548E800B59702 /* Map */,
 				3BAC9A2510953E5200F235F1 /* Cells */,
 			);
 			name = UI;
-			sourceTree = "<group>";
-		};
-		3BE54E8A134548E800B59702 /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				3BE54E82134548E600B59702 /* TKMapPlace.h */,
-				3BE54E83134548E600B59702 /* TKMapPlace.m */,
-				3BE54E84134548E600B59702 /* TKMapView.h */,
-				3BE54E85134548E600B59702 /* TKMapView.m */,
-			);
-			name = Map;
 			sourceTree = "<group>";
 		};
 		3BF002FE109662E30062DA49 /* Month */ = {
@@ -574,8 +548,6 @@
 				3B4346E412DA6A240076579B /* UIButton+TKCategory.h in Headers */,
 				3B9D93DA12F74F8F007D839C /* TKAppDelegate.h in Headers */,
 				3B07B7CA133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.h in Headers */,
-				3BE54E86134548E600B59702 /* TKMapPlace.h in Headers */,
-				3BE54E88134548E600B59702 /* TKMapView.h in Headers */,
 				3B166A6F137F38D7006298E6 /* UIColor+TKCategory.h in Headers */,
 				3B8F0DF6142AE52B00E3AADE /* TKGradientView.h in Headers */,
 				3B17D26C142E31C40090616F /* TKHTTPRequest.h in Headers */,
@@ -737,8 +709,6 @@
 				3B4346E512DA6A240076579B /* UIButton+TKCategory.m in Sources */,
 				3B9D93DB12F74F8F007D839C /* TKAppDelegate.m in Sources */,
 				3B07B7CB133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.m in Sources */,
-				3BE54E87134548E600B59702 /* TKMapPlace.m in Sources */,
-				3BE54E89134548E600B59702 /* TKMapView.m in Sources */,
 				3B166A70137F38D7006298E6 /* UIColor+TKCategory.m in Sources */,
 				3B8F0DF7142AE52B00E3AADE /* TKGradientView.m in Sources */,
 				3B17D26D142E31C40090616F /* TKHTTPRequest.m in Sources */,
@@ -770,7 +740,7 @@
 				GCC_PREFIX_HEADER = TapkuLibrary_Prefix.pch;
 				GCC_VERSION = "";
 				INSTALL_PATH = /usr/local/lib;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = TapkuLibrary;
 				SDKROOT = iphoneos;
@@ -792,7 +762,7 @@
 				GCC_PREFIX_HEADER = TapkuLibrary_Prefix.pch;
 				GCC_VERSION = "";
 				INSTALL_PATH = /usr/local/lib;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = TapkuLibrary;
 				SDKROOT = iphoneos;

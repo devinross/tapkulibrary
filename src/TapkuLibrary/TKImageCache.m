@@ -80,9 +80,7 @@
 	
 	return self;
 }
-- (void) dealloc{
-	dispatch_release(cache_queue);
-}
+
 
 
 

@@ -4,9 +4,9 @@ TapkuLibrary is an iOS library built on Cocoa and UIKit intended for broad use i
 
 
 ## Documentation
-Browse the documentation at [tapku.com/documentation](http://tapku.com/documentation/) or download it directly in Xcode. Open up the Xcode preferences, navigate to the Downloads tab and Documentation tab. Add the following URL:
+Browse the documentation at [devinsheaven.com/tapku/documentation](http://devinsheaven.com/tapku/documentation/) or download it directly in Xcode. Open up the Xcode preferences, navigate to the Downloads tab and Documentation tab. Add the following URL:
 
-	http://tapku.com/documentation/com.devinross.tapku.atom
+	http://devinsheaven.com/tapku/documentation/com.devinross.tapku.atom
 
 
 ## Adding Tapku To Your Project 

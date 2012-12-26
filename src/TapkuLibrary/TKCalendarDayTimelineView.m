@@ -353,7 +353,7 @@
 - (UILabel *) monthYear{
 	if(monthYear==nil){
 		monthYear = [[UILabel alloc] initWithFrame:CGRectMake(0, 3, 320, 38)];
-		monthYear.textAlignment = UITextAlignmentCenter;
+		monthYear.textAlignment = NSTextAlignmentCenter;
 		monthYear.backgroundColor = [UIColor clearColor];
 		monthYear.font = [UIFont boldSystemFontOfSize:19.0f];
 		monthYear.textColor = [UIColor colorWithRed:59/255. green:73/255. blue:88/255. alpha:1];
@@ -602,8 +602,8 @@
 		
 		[time drawInRect:CGRectIntegral(timeRect)
 			   withFont:timeFont 
-		  lineBreakMode:UILineBreakModeWordWrap 
-			  alignment:UITextAlignmentRight];
+		  lineBreakMode:NSLineBreakByWordWrapping
+			  alignment:NSTextAlignmentRight];
 		
 		// Draw period
 		// Only if it is not noon
@@ -612,10 +612,10 @@
 			
 			NSString *period = [self.periods objectAtIndex:i];
 			
-			[period drawInRect: CGRectIntegral(CGRectMake(HORIZONTAL_OFFSET + TIME_WIDTH, VERTICAL_OFFSET + i * VERTICAL_DIFF, PERIOD_WIDTH, FONT_SIZE + 4.0)) 
-					  withFont: periodFont 
-				 lineBreakMode: UILineBreakModeWordWrap 
-					 alignment: UITextAlignmentRight];
+			[period drawInRect:CGRectIntegral(CGRectMake(HORIZONTAL_OFFSET + TIME_WIDTH, VERTICAL_OFFSET + i * VERTICAL_DIFF, PERIOD_WIDTH, FONT_SIZE + 4.0)) 
+					  withFont:periodFont 
+				 lineBreakMode:NSLineBreakByWordWrapping
+					 alignment:NSTextAlignmentRight];
 		}
 		
 		// Draw straight line

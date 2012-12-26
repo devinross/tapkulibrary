@@ -120,7 +120,7 @@
     _titleLabel.backgroundColor = [UIColor clearColor];
     _titleLabel.font = [UIFont boldSystemFontOfSize:18];
     _titleLabel.textColor = [UIColor colorWithRed:128/255. green:136/255. blue:149/255. alpha:1];
-    _titleLabel.textAlignment = UITextAlignmentCenter;
+    _titleLabel.textAlignment = NSTextAlignmentCenter;
     _titleLabel.shadowColor = [UIColor whiteColor];
     _titleLabel.shadowOffset = CGSizeMake(0, 1);
     
@@ -130,7 +130,7 @@
     _subtitleLabel.backgroundColor = [UIColor clearColor];
     _subtitleLabel.font = [UIFont systemFontOfSize:14];
     _subtitleLabel.textColor = [UIColor colorWithRed:128/255. green:136/255. blue:149/255. alpha:1];
-    _subtitleLabel.textAlignment = UITextAlignmentCenter;
+    _subtitleLabel.textAlignment = NSTextAlignmentCenter;
     _subtitleLabel.shadowColor = [UIColor whiteColor];
     _subtitleLabel.shadowOffset = CGSizeMake(0, 1);
     
@@ -139,14 +139,12 @@
     _imageView = [[UIImageView alloc] initWithImage:[self maskedImageWithImage:image]];
     _imageView.frame = CGRectMake((int)(frame.size.width/2)-(_imageView.frame.size.width/2), (int)(frame.size.height/2)-(_imageView.frame.size.height/2), _imageView.image.size.width, _imageView.image.size.height);
 
-    
+	    
     [self addSubview:_imageView];
     [self addSubview:_subtitleLabel];
     [self addSubview:_titleLabel];
     
 
-		
-	
 	return self;
 	
 }
@@ -159,16 +157,21 @@
 
 
 - (void) layoutSubviews{	
-	CGSize s = self.bounds.size;
-	
+	CGSize s = self.frame.size;
 	CGRect ir = _imageView.bounds;
-	ir.origin = CGPointMake( (int)(s.width/2)-(ir.size.width/2), (int)(s.height/2)-(ir.size.height/2 + ir.size.height/8));
+	
+	NSInteger sh = s.height/2;
+	NSInteger ih = ir.size.height / 2;
+	
+	
+	
+	ir.origin = CGPointMake( (int)(s.width/2)-(ir.size.width/2), (int)(sh-ih - ih / 3));
 	
 	_imageView.frame = ir;
 	
 	_titleLabel.frame = CGRectMake(0,(int) MAX( s.height/2+s.height/4,(int)ir.origin.y+ir.size.height+4) , s.width , 20);
 	_subtitleLabel.frame = CGRectMake((int)0, _titleLabel.frame.origin.y + _titleLabel.frame.size.height , s.width , 16);
-	
+
 }
 
 
@@ -180,15 +183,12 @@
 	[self setImage:[self predefinedImage:image]];
 }
 - (UIImage*) maskedImageWithImage:(UIImage*)m{
-	
 	if(m==nil) return nil;
 
 	UIGraphicsBeginImageContext(CGSizeMake((m.size.width)*m.scale , (m.size.height+2)*m.scale));
 	CGContextRef context = UIGraphicsGetCurrentContext();
 
-	NSArray *colors = [NSArray arrayWithObjects:
-				   [UIColor colorWithRed:174/255.0 green:182/255.0 blue:195/255.0 alpha:1],
-				   [UIColor colorWithRed:197/255.0 green:202/255.0 blue:211/255.0 alpha:1],nil];
+	NSArray *colors = @[[UIColor colorWithRed:174/255.0 green:182/255.0 blue:195/255.0 alpha:1],[UIColor colorWithRed:197/255.0 green:202/255.0 blue:211/255.0 alpha:1]];
 	
 
 	CGContextSetShadowWithColor(context, CGSizeMake(1, 4),4, [UIColor colorWithWhite:0 alpha:0.1].CGColor);

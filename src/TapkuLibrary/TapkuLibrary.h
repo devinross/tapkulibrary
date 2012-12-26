@@ -85,7 +85,3 @@
 // Coverflow
 #import "TKCoverflowView.h"
 #import "TKCoverflowCoverView.h"
-
-
-#import "TKMapView.h"
-#import "TKMapPlace.h"

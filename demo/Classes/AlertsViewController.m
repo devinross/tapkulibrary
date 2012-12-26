@@ -1,6 +1,6 @@
 //
-//  DaterViewController.m
-//  Created by Devin Ross on 7/28/09.
+//  AlertsViewController.m
+//  Created by Devin Ross on 10/6/10.
 //
 /*
  
@@ -27,51 +27,48 @@
  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  OTHER DEALINGS IN THE SOFTWARE.
  
-*/
-#import "TKCalendarMonthViewController.h"
-#import "TKCalendarMonthView.h"
+ */
+
+#import "AlertsViewController.h"
 
 
-@interface TKCalendarMonthViewController () {
-	BOOL _sundayFirst;
-}
-
-@end
-
-@implementation TKCalendarMonthViewController
+@implementation AlertsViewController
 
 - (id) init{
-	return [self initWithSunday:YES];
-}
-- (id) initWithSunday:(BOOL)sundayFirst{
-	if(!(self = [super init])) return nil;
-	_sundayFirst = sundayFirst;
+	if(!(self=[super init])) return nil;
+	self.title = NSLocalizedString(@"Alerts",@"Alerts");
 	return self;
 }
-
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	return NO;
+    return YES;
 }
 
-- (void) viewDidUnload {
-	self.monthView = nil;
-}
-
-
+#pragma mark - View Lifecycle
 - (void) loadView{
 	[super loadView];
+	self.view.backgroundColor = [UIColor whiteColor];
 	
-	_monthView = [[TKCalendarMonthView alloc] initWithSundayAsFirst:_sundayFirst];
-	_monthView.delegate = self;
-	_monthView.dataSource = self;
-	[self.view addSubview:_monthView];
-	[_monthView reload];
+	
+	
+	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Tap Me" style:UIBarButtonItemStyleBordered target:self action:@selector(beer)];
+	if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
+		self.navigationItem.rightBarButtonItem = item;
+	}else{
+		self.toolbarItems = @[item];
+	}
 	
 }
+- (void) viewDidAppear:(BOOL)animated{
+	[super viewDidAppear:animated];
+	
+	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"Hi!"];
+	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"This is the alert system"];
+	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"Use images too!" image:[UIImage imageNamed:@"beer"]];
 
+}
 
-- (NSArray*) calendarMonthView:(TKCalendarMonthView*)monthView marksFromDate:(NSDate*)startDate toDate:(NSDate*)lastDate{
-	return nil;
+- (void) beer{
+	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"Beer!" image:[UIImage imageNamed:@"beer"]];
 }
 
 

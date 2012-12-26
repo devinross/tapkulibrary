@@ -95,7 +95,7 @@
 - (UILabel*) label{
 	if(_label==nil){
 		_label = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 245, 25)];
-		_label.textAlignment = UITextAlignmentCenter;
+		_label.textAlignment = NSTextAlignmentCenter;
 		_label.backgroundColor = [UIColor clearColor];
 		_label.textColor = [UIColor whiteColor];
 		_label.font = [UIFont boldSystemFontOfSize:16];		

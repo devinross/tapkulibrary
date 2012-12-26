@@ -36,7 +36,7 @@
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
 	if(!(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
-	self.textLabel.textAlignment = UITextAlignmentCenter;
+	self.textLabel.textAlignment = NSTextAlignmentCenter;
 	self.textLabel.font = [UIFont boldSystemFontOfSize:14.0];
     return self;
 }

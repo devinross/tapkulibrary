@@ -60,7 +60,6 @@ CGPoint midpointBetweenPoints(CGPoint a, CGPoint b);
 @end
 
 @implementation TapDetectingView
-@synthesize delegate;
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -159,18 +158,18 @@ CGPoint midpointBetweenPoints(CGPoint a, CGPoint b);
 #pragma mark Private
 
 - (void)handleSingleTap {
-    if ([delegate respondsToSelector:@selector(tapDetectingView:gotSingleTapAtPoint:)])
-        [delegate tapDetectingView:self gotSingleTapAtPoint:tapLocation];
+    if ([self.delegate respondsToSelector:@selector(tapDetectingView:gotSingleTapAtPoint:)])
+        [self.delegate tapDetectingView:self gotSingleTapAtPoint:tapLocation];
 }
 
 - (void)handleDoubleTap {
-    if ([delegate respondsToSelector:@selector(tapDetectingView:gotDoubleTapAtPoint:)])
-        [delegate tapDetectingView:self gotDoubleTapAtPoint:tapLocation];
+    if ([self.delegate respondsToSelector:@selector(tapDetectingView:gotDoubleTapAtPoint:)])
+        [self.delegate tapDetectingView:self gotDoubleTapAtPoint:tapLocation];
 }
     
 - (void)handleTwoFingerTap {
-    if ([delegate respondsToSelector:@selector(tapDetectingView:gotTwoFingerTapAtPoint:)])
-        [delegate tapDetectingView:self gotTwoFingerTapAtPoint:tapLocation];
+    if ([self.delegate respondsToSelector:@selector(tapDetectingView:gotTwoFingerTapAtPoint:)])
+        [self.delegate tapDetectingView:self gotTwoFingerTapAtPoint:tapLocation];
 }
     
 @end

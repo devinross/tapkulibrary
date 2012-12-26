@@ -84,7 +84,10 @@
 	[[UIColor colorWithWhite:0 alpha:0.8] set];
 	[self _drawRoundRectangleInRect:rect withRadius:10];
 	[[UIColor whiteColor] set];
-	[_text drawInRect:_messageRect withFont:[UIFont boldSystemFontOfSize:14] lineBreakMode:UILineBreakModeWordWrap alignment:UITextAlignmentCenter];
+	[_text drawInRect:_messageRect
+			 withFont:[UIFont boldSystemFontOfSize:14]
+		lineBreakMode:NSLineBreakByWordWrapping
+			alignment:NSTextAlignmentCenter];
 	
 	CGRect r = CGRectZero;
 	r.origin.y = 15;
@@ -97,7 +100,9 @@
 #pragma mark Setter Methods
 - (void) adjust{
 	
-	CGSize s = [_text sizeWithFont:[UIFont boldSystemFontOfSize:14] constrainedToSize:CGSizeMake(160,200) lineBreakMode:UILineBreakModeWordWrap];
+	CGSize s = [_text sizeWithFont:[UIFont boldSystemFontOfSize:14]
+				 constrainedToSize:CGSizeMake(160,200)
+					 lineBreakMode:NSLineBreakByWordWrapping];
 	
 	float imageAdjustment = 0;
 	if (_image) {
@@ -166,7 +171,6 @@
 	}
 	
 	_active = YES;
-	
 	_alertView.transform = CGAffineTransformIdentity;
 	_alertView.alpha = 0;
 	[[UIApplication sharedApplication].keyWindow addSubview:_alertView];
@@ -206,11 +210,9 @@
 	[UIView setAnimationDuration:0.15];
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationDidStopSelector:@selector(animationStep2)];
-	
 	_alertView.transform = CGAffineTransformMakeRotation(degrees * M_PI / 180);
 	_alertView.frame = CGRectMake((int)_alertView.frame.origin.x, (int)_alertView.frame.origin.y, _alertView.frame.size.width, _alertView.frame.size.height);
 	_alertView.alpha = 1;
-	
 	[UIView commitAnimations];
 	
 	
