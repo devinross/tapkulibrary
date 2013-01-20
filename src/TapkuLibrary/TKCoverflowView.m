@@ -1,6 +1,6 @@
 //
 //  TKCoverflowView.m
-//  Created by Devin Ross on 1/3/10.
+//  Created by Devin Ross on 11/15/12.
 //
 /*
  
@@ -27,509 +27,505 @@
  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
  OTHER DEALINGS IN THE SOFTWARE.
  
-*/
+ */
 
 #import "TKCoverflowView.h"
-#import "TKCoverflowCoverView.h"
+#import "UIImageView+TKCategory.h"
+#import "TKGradientView.h"
 #import "TKGlobal.h"
 
-#define COVER_SPACING 70.0
-#define CENTER_COVER_OFFSET 70
-#define SIDE_COVER_ANGLE 1.4
-#define SIDE_COVER_ZPOSITION -80
-#define COVER_SCROLL_PADDING 4
-#define COVER_SCROLL_PADDING 4
-#define FRONT_SPACE 300.0
-
-#pragma mark -
-@interface TKCoverflowView (hidden)
-
-- (void) animateToIndex:(int)index animated:(BOOL)animated;
-- (void) _load;
-- (void) _setup;
-- (void) newrange;
-- (void) _setupTransforms;
-- (void) adjustViewHeirarchy;
-- (void) deplaceAlbumsFrom:(int)start to:(int)end;
-- (void) deplaceAlbumsAtIndex:(int)cnt;
-- (BOOL) placeAlbumsFrom:(int)start to:(int)end;
-- (void) placeAlbumAtIndex:(NSInteger)cnt;
-- (void) snapToAlbum:(BOOL)animated;
+@interface TKCoverflowView (){
+	
+	NSMutableArray *_covers,*_grayard;
+	NSRange _range;
+	NSUInteger _numberOfCovers,_currentIndex;
+	UIView *currentTouch;
+	BOOL isDragging, gliding, animate;
+	CGSize _originalBoundsSize;
+	
+}
 
 @end
+
+#define DEFAULT_COVER_SIZE 224.0f
 
 #pragma mark -
 @implementation TKCoverflowView
 
-#pragma mark Initialize
-- (id) initWithFrame:(CGRect)frame {
+#pragma mark Init
+- (id) initWithFrame:(CGRect)frame{
+	self = [self initWithFrame:frame deleclerationRate:UIScrollViewDecelerationRateFast];
+	return self;
+}
+- (id) initWithFrame:(CGRect)frame deleclerationRate:(CGFloat)decelerationRate{
 	if(!(self=[super initWithFrame:frame])) return nil;
-	[self _load];
-    return self;
-}
-- (void) awakeFromNib{
-    [self _load];
-}
-
-#pragma mark Setup
-- (void) _setupTransforms{
-
-	leftTransform = CATransform3DMakeRotation(_coverAngle, 0, 1, 0);
-	leftTransform = CATransform3DConcat(leftTransform,CATransform3DMakeTranslation(-spaceFromCurrent, 0, -self.spaceInFront));
 	
-	rightTransform = CATransform3DMakeRotation(-_coverAngle, 0, 1, 0);
-	rightTransform = CATransform3DConcat(rightTransform,CATransform3DMakeTranslation(spaceFromCurrent, 0, -self.spaceInFront));
+	@try {
+		[self setValue:[NSValue valueWithCGSize:CGSizeMake(decelerationRate,decelerationRate)] forKey:@"_decelerationFactor"];
+	}@catch (NSException *exception) {
+		// if they modify the way it works under us.
+	}
 	
-}
-- (void) _load{
 	self.backgroundColor = [UIColor blackColor];
+	_range = NSMakeRange(0,0);
 	_numberOfCovers = 0;
-	_coverSpacing = COVER_SPACING;
-	_coverAngle = SIDE_COVER_ANGLE;
-	self.spaceInFront = FRONT_SPACE;
+	_covers = [NSMutableArray array];
+	self.delegate = self;
+	self.multipleTouchEnabled = NO;
+	self.contentInset = UIEdgeInsetsMake(0,self.bounds.size.width/2.0,0,self.bounds.size.width/2.0);
+	self.contentOffset = CGPointMake(-self.contentInset.left, 0);
+	
+	self.rightIncrementalDistanceFromCenter = self.leftIncrementalDistanceFromCenter = 80;
+
 	self.showsHorizontalScrollIndicator = NO;
-	super.delegate = self;
+	//self.indicatorStyle = UIScrollViewIndicatorStyleWhite;
 	
-	yard = [[NSMutableArray alloc] init];
-	views = [[NSMutableArray alloc] init];
+	CGFloat x = DEFAULT_COVER_SIZE / 2;
 	
-	_coverSize = CGSizeMake(224, 224);
-	spaceFromCurrent = _coverSize.width/2.4;
-	[self _setupTransforms];
+	self.leftTransform = CATransform3DMakeRotation(80 * M_PI / 180.0, 0, 1, 0);
+	self.leftTransform = CATransform3DConcat(self.leftTransform, CATransform3DMakeTranslation(-x, 0, -200));
+	
+	self.rightTransform = CATransform3DMakeRotation(-80 * M_PI / 180.0, 0, 1, 0);
+	self.rightTransform = CATransform3DConcat(self.rightTransform, CATransform3DMakeTranslation(x, 0, -200));
 
-
+	self.coverSize = CGSizeMake(DEFAULT_COVER_SIZE, DEFAULT_COVER_SIZE);
+	self.spacing = DEFAULT_COVER_SIZE - 50;
+	
 	CATransform3D sublayerTransform = CATransform3DIdentity;
 	sublayerTransform.m34 = -0.001;
 	[self.layer setSublayerTransform:sublayerTransform];
-	
-	currentIndex = -1;
-	
-	
-}
-- (void) _setup{
 
-	currentIndex = -1;
-	for(UIView *v in views) [v removeFromSuperview];
-	[yard removeAllObjects];
-	[views removeAllObjects];
-	coverViews = nil;
-	
-	if(_numberOfCovers < 1){
-		self.contentOffset = CGPointZero;
-		return;
-	} 
-	
-	
-	coverViews = [[NSMutableArray alloc] initWithCapacity:_numberOfCovers];
-	for (unsigned i = 0; i < _numberOfCovers; i++) [coverViews addObject:[NSNull null]];
-	deck = NSMakeRange(0, 0);
-	
-	CGSize size = self.frame.size;
-	margin = (self.frame.size.width / 2);
-	self.contentSize = CGSizeMake( (_coverSpacing) * (_numberOfCovers-1) + (margin*2) , size.height);
-	coverBuffer = (int) ((size.width - _coverSize.width) / _coverSpacing) + 3;
-	
-
-	movingRight = YES;
-	currentIndex = 0;
-	movingIndex = 0;
-	self.contentOffset = CGPointZero;
-
-
-	[self newrange];
-	[self animateToIndex:currentIndex animated:NO];
-	
-	
-	boundSize = self.frame.size;
+	return self;
 }
 
 
-#pragma mark Manage Visible Covers
-- (void) deplaceAlbumsFrom:(int)start to:(int)end{
-	if(start >= end) return;
+#pragma mark Layout Subviews
+- (void) layoutSubviews{
 	
-	for(int cnt=start;cnt<end;cnt++)
-		[self deplaceAlbumsAtIndex:cnt];
-
-}
-- (void) deplaceAlbumsAtIndex:(int)cnt{
-	if(cnt >= [coverViews count]) return;
-	
-	if([coverViews objectAtIndex:cnt] != [NSNull null]){
+	if(self.contentInset.left != self.bounds.size.width/2.0){
+		self.contentInset = UIEdgeInsetsMake(0,self.bounds.size.width/2.0,0,self.bounds.size.width/2.0);
 		
-		UIView *v = [coverViews objectAtIndex:cnt];
-		[v removeFromSuperview];
-		[views removeObject:v];
-		[yard addObject:v];
-		[coverViews replaceObjectAtIndex:cnt withObject:[NSNull null]];
+		[UIView beginAnimations:nil context:nil];
+		
+		for(UIView *active in self.visibleCovers)
+			active.center = CGPointMake(active.center.x, self.frame.size.height/2.0f);
+		
+		[UIView commitAnimations];
 		
 	}
+	
+	/*
+	if(_originalBoundsSize.width != self.frame.size.width){
+	
+		_originalBoundsSize.width = self.frame.size.width;
+		BOOL ani = _range.length > 0 ? YES : NO;
+		NSInteger c = _currentIndex;
+		self.userInteractionEnabled = NO;
+		
+		[UIView animateWithDuration:ani ? 0.1 : 0.0 animations:^{
+			for(UIView *v in self.subviews)
+				v.alpha = 0;
+		} completion:^(BOOL finished){
+			[self reloadData];
+			[self setCurrentCoverAtIndex:c animated:NO];
+			[UIView animateWithDuration:ani ? 0.3 : 0.0 animations:^{
+				for(UIView *v in self.subviews)
+					v.alpha = 1;
+			} completion:^(BOOL finished){
+				self.userInteractionEnabled = YES;				
+			}];
+		}];
+	}
+	*/
+	
+	[self _setupTiles];
+	[self _realignCovers:animate];
+	animate = YES;
 }
-- (BOOL) placeAlbumsFrom:(int)start to:(int)end{
-	if(start >= end) return NO;
-	
-	
-	for(int cnt=start;cnt<= end;cnt++) 
-		[self placeAlbumAtIndex:cnt];
-	
-	return YES;
-}
-- (void) placeAlbumAtIndex:(NSInteger)index{
-	if(index >= [coverViews count]) return;
-	
-	if([coverViews objectAtIndex:index] == [NSNull null]){
-		
-		TKCoverflowCoverView *cover = [self.dataSource coverflowView:self coverAtIndex:index];
-		cover.transform = CGAffineTransformIdentity;
-		[coverViews replaceObjectAtIndex:index withObject:cover];
-		
-		[cover.layer removeAllAnimations];
-
-		
-		CGSize size = self.frame.size;
-
-		
-		CGRect r = cover.frame;
-		r.origin.y = size.height/2 - (_coverSize.height/2) - (_coverSize.height/16);
-		r.origin.x = (size.width/2 - (_coverSize.width/ 2)) + (_coverSpacing) * index;
-		cover.frame = r;
 
 
-		
-		CATransform3D tr = CATransform3DIdentity;
+- (void) _setupTiles{
 	
-		if(index < movingIndex)
-			tr = leftTransform;
-		
-		else if(index > movingIndex){
-			tr = rightTransform;
-			[self sendSubviewToBack:cover];
-			
+	NSRange newRange = [self _currentRange];
+	if(NSEqualRanges(newRange, _range)) return;
+	
+	if(_range.location < newRange.location){
+		for(int i=_range.location;i<newRange.location;i++){
+			UIView *v = [_covers objectAtIndex:i];
+			if((NSObject*) v == [NSNull null]) continue;
+			[_grayard addObject:v];
+			[_covers replaceObjectAtIndex:i withObject:[NSNull null]];
+			[v removeFromSuperview];
 		}
+	}
+	
+	NSInteger cnt = _covers.count;
+	if(_range.location+_range.length > newRange.location+newRange.length){
+		for(int i=newRange.location+newRange.length;i<_range.location+_range.length;i++){
+			if(i >= cnt || [_covers objectAtIndex:i] == [NSNull null]) continue;
+			UIView *v = [_covers objectAtIndex:i];
+			[v removeFromSuperview];
+			[_grayard addObject:v];
+			[_covers replaceObjectAtIndex:i withObject:[NSNull null]];
+		}
+	}
+	
+	
+	CGFloat y = rintf((self.bounds.size.height - self.coverSize.height) / 2.0);
+	for(int i=newRange.location;i<newRange.location+newRange.length;i++){
+		if([_covers objectAtIndex:i] != [NSNull null]) continue;
+			
+		TKCoverflowCoverView *cover = [self.coverflowDataSource coverflowView:self coverForIndex:i];
 		
+		//cover.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
 		
-		cover.layer.transform = tr;
-		
+		cover.frame = CGRectMakeWithSize(rintf([self _centerXPositionForCoverAtIndex:i]-self.coverSize.width/2.0), y, cover.frame.size);
+		cover.layer.transform = [self _transformForViewAtIndex:i];
+		cover.userInteractionEnabled = YES;
+		cover.tag = i;
 		[self addSubview:cover];
-		[views addObject:cover];
+		[self sendSubviewToBack:cover];
+		[_covers replaceObjectAtIndex:i withObject:cover];
+	}
+	
+	
+	_range = newRange;
+	
+	
+}
+- (void) _realignCovers:(BOOL)animated{
+	
+	NSInteger newIndex = [self _calculatedIndexWithContentOffset:self.contentOffset];
+	newIndex = MAX(0,MIN(_numberOfCovers-1,newIndex));
+	if(_currentIndex == newIndex) return;
+	_currentIndex = newIndex;
+	
+
+	
+	if(_range.length<1) return;
+	NSString *ID = [NSString stringWithFormat:@"%d",_currentIndex];
+	
+	
+	
+	[UIView beginAnimations:ID context:nil];
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+	[UIView setAnimationDuration:animated ? 0.25f : 0.0f];
+	[UIView setAnimationBeginsFromCurrentState:YES];
+	[UIView setAnimationDelegate:self];
+	[UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
+	
+	NSInteger start = _range.location;
+	NSInteger end = _range.location + _range.length;
+	
+	for(int x=start;x<end;x++ ){
+		UIView *v = [_covers objectAtIndex:x];
+		v.layer.transform = [self _transformForViewAtIndex:x];
+	}
+	
+	[UIView commitAnimations];
+
+	
+}
+- (void) _adjustViewHeirarchy{
+	if(_range.length<1) return;
+	
+	
+	NSInteger start = _range.location;
+	NSInteger end = _range.location +_range.length;
+	
+	for(int x=_currentIndex-1;x>=start;x-- ){
+		UIView *v = [_covers objectAtIndex:x];
+		if((NSObject*)v == [NSNull null]) continue;
+		[self sendSubviewToBack:v];
+	}
+	
+	for(int x=_currentIndex+1;x<end;x++ ){
+		UIView *v = [_covers objectAtIndex:x];
+		if((NSObject*)v == [NSNull null]) continue;
+		[self sendSubviewToBack:v];
+	}
+	
+}
+- (void) _clearCoversFromView{
+	
+	for(int i=_range.location;i<_range.length+_range.location;i++){
+		if([_covers objectAtIndex:i] == [NSNull null]) continue;
 		
-	}
-}
-
-#pragma mark Manage Range and Animations
-- (void) newrange{
-	
-	int loc = deck.location, len = deck.length, buff = coverBuffer;
-	int newLocation = currentIndex - buff < 0 ? 0 : currentIndex-buff;
-	int newLength = currentIndex + buff > _numberOfCovers ? _numberOfCovers - newLocation : currentIndex + buff - newLocation;
-	
-	if(loc == newLocation && newLength == len) return;
-	
-	if(movingRight){
-		[self deplaceAlbumsFrom:loc to:MIN(newLocation,loc+len)];
-		[self placeAlbumsFrom:MAX(loc+len,newLocation) to:newLocation+newLength];
-	}else{
-		[self deplaceAlbumsFrom:MAX(newLength+newLocation,loc) to:loc+len];
-		[self placeAlbumsFrom:newLocation to:newLocation+newLength];
+		UIView *v = [_covers objectAtIndex:i];
+		[_grayard addObject:v];
+		[_covers replaceObjectAtIndex:i withObject:[NSNull null]];
+		[v removeFromSuperview];
 	}
 	
-	NSRange spectrum = NSMakeRange(0, _numberOfCovers);
-	deck = NSIntersectionRange(spectrum, NSMakeRange(newLocation, newLength));
-	
-		
-}
-- (void) adjustViewHeirarchy{
-	
-	int i = currentIndex-1;
-	if (i >= 0) 
-		for(;i > deck.location;i--) 
-			[self sendSubviewToBack:[coverViews objectAtIndex:i]];
-	
-	i = currentIndex+1;
-	if(i<_numberOfCovers-1)
-		for(;i < deck.location+deck.length;i++) 
-			[self sendSubviewToBack:[coverViews objectAtIndex:i]];
-	
-	UIView *v = [coverViews objectAtIndex:currentIndex];
-	if((NSObject*)v != [NSNull null])
-		[self bringSubviewToFront:[coverViews objectAtIndex:currentIndex]];
-	
-	
-}
-
-- (void) snapToAlbum:(BOOL)animated{
-	
-	UIView *v = [coverViews objectAtIndex:currentIndex];
-	
-	if((NSObject*)v!=[NSNull null]){
-		CGSize size = self.frame.size;
-		[self setContentOffset:CGPointMake(v.center.x - (size.width/2), 0) animated:animated];
-	}else{		
-		[self setContentOffset:CGPointMake(_coverSpacing*currentIndex, 0) animated:animated];
-	}
-	
-}
-- (void) animateToIndex:(int)index animated:(BOOL)animated{
-	NSString *ID = [NSString stringWithFormat:@"%d",index];
-	//if(velocity>200) animated = NO;
-	
-		
-	if(animated){
-		//float speed = 0.2;
-		//if(velocity>80)speed=0.05;
-		[UIView beginAnimations:ID context:nil];
-		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-		[UIView setAnimationDuration:0.3f];
-		[UIView setAnimationBeginsFromCurrentState:YES];
-		[UIView setAnimationDelegate:self];
-		[UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)]; 
-	}
-
-	for(UIView *v in views){
-		int i = [coverViews indexOfObject:v];
-		if(i < index) v.layer.transform = leftTransform;
-		else if(i > index) v.layer.transform = rightTransform;
-		else v.layer.transform = CATransform3DIdentity;
-	}
-	
-	if(animated) [UIView commitAnimations];
-	else [self.coverflowDelegate coverflowView:self coverAtIndexWasBroughtToFront:currentIndex];
-
 }
 - (void) animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context{
-
 	
-	if(![finished boolValue]) return;
-	
-
-	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(adjustViewHeirarchy) object:nil];
-	[self performSelector:@selector(adjustViewHeirarchy) withObject:nil afterDelay:0.3f];
-	
-	if([animationID intValue] == movingIndex)
-		[self.coverflowDelegate coverflowView:self coverAtIndexWasBroughtToFront:movingIndex];
+	if([finished boolValue] && [animationID intValue] == _currentIndex && [self.coverflowDelegate respondsToSelector:@selector(coverflowView:coverAtIndexWasBroughtToFront:)])
+		[self.coverflowDelegate coverflowView:self coverAtIndexWasBroughtToFront:_currentIndex];
 	
 }
 
 
 
 
-#pragma mark View Bounds
-- (void) _adjustToBounds{
-	
-	
-	CGSize size = self.frame.size;
 
-	margin = (self.frame.size.width / 2);
-	self.contentSize = CGSizeMake( (_coverSpacing) * (_numberOfCovers-1) + (margin*2) , self.frame.size.height);
-	coverBuffer = (int)((size.width - _coverSize.width) / _coverSpacing) + 3;
+#pragma mark Private Property Methods
+- (CATransform3D) _transformForViewAtIndex:(NSInteger)i{
+	
+	CATransform3D trans = CATransform3DIdentity;
+	NSInteger ii = abs(i-_currentIndex);
+	
+	if(i<_currentIndex)
+		trans = CATransform3DConcat(self.leftTransform, CATransform3DMakeTranslation(0, 0, -self.leftIncrementalDistanceFromCenter * ii));
+	else if(i>_currentIndex)
+		trans = CATransform3DConcat(self.rightTransform, CATransform3DMakeTranslation(0, 0, -self.rightIncrementalDistanceFromCenter * ii));
 	
 	
-	for(UIView *v in views){
-		v.layer.transform = CATransform3DIdentity;
-		CGRect r = v.frame;
-		r.origin.y = size.height / 2 - (_coverSize.height/2) - (_coverSize.height/16);
-		v.frame = r;
-	}
+	//trans = CATransform3DIdentity;
+	return trans;
 	
-	for(int i= deck.location; i < deck.location + deck.length; i++){
-		if([coverViews objectAtIndex:i] != [NSNull null]){
-			UIView *cover = [coverViews objectAtIndex:i];
-			CGRect r = cover.frame;
-			r.origin.x = (size.width/2 - (_coverSize.width/ 2)) + (_coverSpacing) * i;
-			cover.frame = r;
-		}
-	}
-	
-	[self newrange];
-	[self animateToIndex:currentIndex animated:NO];
 }
-- (void) setFrame:(CGRect)frame{
-	[super setFrame:frame];
-	[self _adjustToBounds];
-}
-- (void) setBounds:(CGRect)bounds{
-	[super setBounds:bounds];
-	if(boundSize.width == bounds.size.width && boundSize.height == bounds.size.height) return;
-	[self _adjustToBounds];
-}
-
-
-- (NSInteger) calculatedIndexWithContentOffset:(CGPoint)point{
-	CGSize size = self.frame.size;
-	CGFloat per = point.x / (self.contentSize.width - size.width);
+- (NSInteger) _calculatedIndexWithContentOffset:(CGPoint)point{
+	
+	point.x += self.contentInset.left;
+	
+	CGFloat per = point.x / self.contentSize.width;
 	CGFloat ind = _numberOfCovers * per;
 	CGFloat mi = ind / (_numberOfCovers/2);
 	mi = 1 - mi;
 	mi = mi / 2;
 	int index = (int)(ind+mi);
+	
 	index = MIN(MAX(0,index),_numberOfCovers-1);
 	return index;
 }
-
-- (void) layoutSubviews{
-	
-	velocity = abs(pos-self.contentOffset.x);
-	movingRight = self.contentOffset.x - pos > 0 ? YES : NO;
-	pos = self.contentOffset.x;
-
-	
-	
-	
-
-	
-	NSInteger index = [self calculatedIndexWithContentOffset:self.contentOffset];
-	NSInteger oldIndex = movingIndex;
-	currentIndex=index;
-
-	
-	[CATransaction begin];
-	[CATransaction setAnimationDuration:0];
-	[self newrange];
-	[CATransaction commit];
-
-	
-	
-	if(!gliding || isDragging){
-		movingIndex = index;
+- (CGFloat) _centerXPositionForCoverAtIndex:(NSInteger)index{
+	CGFloat x = self.contentInset.left;
+	x = 0;
+	return (self.coverSize.width-self.spacing)*index + x;
+}
+- (NSRange) _currentRange{
 		
-		if(oldIndex!=movingIndex)
-			[self animateToIndex:movingIndex animated:YES];
-
-	}else{
-		[self animateToIndex:movingIndex animated:YES];
-	}
+	CGPoint p = self.contentOffset;
+	p.x -= self.contentInset.left;
+	
+	NSInteger s = [self _calculatedIndexWithContentOffset:p]-3;
+	NSInteger start = MAX(0,s);
+	p.x += self.bounds.size.width;
 	
 	
-
+	NSInteger max = _numberOfCovers;
+	NSInteger e = [self _calculatedIndexWithContentOffset:p]+3;
+	NSInteger end = MAX(0,MIN(max,e));
+	return NSMakeRange(start, MAX(0,end - start));
 }
 
 
-#pragma mark Public Methods
-- (TKCoverflowCoverView *) coverAtIndex:(int)index{
-	if(index<0 || index >= coverViews.count) return nil;
-	
-	if([coverViews objectAtIndex:index] != [NSNull null]) 
-		return [coverViews objectAtIndex:index];
-	return nil;
-}
 
-- (void) bringCoverAtIndexToFront:(int)index animated:(BOOL)animated{
-	if(index == currentIndex) return;
-	
-    currentIndex = index;
-    [self snapToAlbum:animated];
-	[self newrange];
-	[self animateToIndex:index animated:animated];
-}
-- (TKCoverflowCoverView*) dequeueReusableCoverView{
-	
-	if([yard count] < 1)  return nil;
-	
-	TKCoverflowCoverView *v = [yard lastObject];
-	v.layer.transform = CATransform3DIdentity;
-	[v.layer removeAllAnimations];
-	[yard removeLastObject];
-	
-	return v;
-}
+
 
 #pragma mark Touch Events
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	UITouch *touch = [touches anyObject];
-
 	
-	if(touch.view != self &&  [touch locationInView:touch.view].y < _coverSize.height){
+	
+	if(touch.view != self &&  [touch locationInView:touch.view].y < self.coverSize.height){
 		currentTouch = touch.view;
 	}
-
+	
 }
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	
 	UITouch *touch = [touches anyObject];
 	
+	
+	
 	if(touch.view == currentTouch){
-		if(touch.tapCount > 0 && currentIndex == [coverViews indexOfObject:currentTouch]){
+		if(touch.tapCount > 0 && _currentIndex == [_covers indexOfObject:currentTouch]){
 			
 			if([self.coverflowDelegate respondsToSelector:@selector(coverflowView:coverAtIndexWasTappedInFront:tapCount:)])
-				[self.coverflowDelegate coverflowView:self coverAtIndexWasTappedInFront:currentIndex tapCount:touch.tapCount];
+				[self.coverflowDelegate coverflowView:self coverAtIndexWasTappedInFront:_currentIndex tapCount:touch.tapCount];
 			
 		}else{
-			int index = [coverViews indexOfObject:currentTouch];
-			[self setContentOffset:CGPointMake(_coverSpacing*index, 0) animated:YES];
+			int index = [_covers indexOfObject:currentTouch];
+			CGFloat x = [self _centerXPositionForCoverAtIndex:index] - (self.bounds.size.width / 2.0f);
+			[self setContentOffset:CGPointMake(x, 0) animated:YES];
 		}
+		
+		
 	}
-	
 	currentTouch = nil;
 }
 - (void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
 	if(currentTouch!= nil) currentTouch = nil;
 }
 
-#pragma mark UIScrollView Delegate
+
+
+
+
+
+#pragma mark UIScrollViewDelegate methods
 - (void) scrollViewWillBeginDragging:(UIScrollView *)scrollView{
 	isDragging = YES;
 	gliding = NO;
 	[self setNeedsLayout];
 }
-- (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-	isDragging = NO;
-}
 - (void) scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocityTangent targetContentOffset:(inout CGPoint *)targetContentOffset{
 	
-	
-	NSInteger i = [self calculatedIndexWithContentOffset:*targetContentOffset];
-	*targetContentOffset = CGPointMake(_coverSpacing * i, 0);
-	
-	if(fabs(velocityTangent.x)<2.0f) return;
+	NSInteger i = [self _calculatedIndexWithContentOffset:*targetContentOffset];
+	*targetContentOffset = CGPointMake([self _centerXPositionForCoverAtIndex:i] - self.contentInset.left, 0);
 	
 	isDragging = NO;
 	gliding = YES;
-	movingIndex = i;
+}
+- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
 	
+	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_adjustViewHeirarchy) object:nil];
+	
+	[self performSelector:@selector(_adjustViewHeirarchy) withObject:nil afterDelay:0.3];
+}
+- (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+	if(!decelerate){
+		[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_adjustViewHeirarchy) object:nil];
+		[self performSelector:@selector(_adjustViewHeirarchy) withObject:nil afterDelay:0.3];
+	}
+	
+	isDragging = NO;
+
+}
+- (void) scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_adjustViewHeirarchy) object:nil];
+
+	[self performSelector:@selector(_adjustViewHeirarchy) withObject:nil afterDelay:0.3];
 }
 
 
-#pragma mark Properties
-- (void) setNumberOfCovers:(int)cov{
-	_numberOfCovers = cov;
-	[self _setup];
+
+
+
+#pragma mark Properties & Public Methods
+- (void) setCoverSize:(CGSize)coverSize{
+	_coverSize = coverSize;
+	if(self.coverflowDataSource) [self reloadData];
 }
-- (void) setCoverSpacing:(float)space{
-	_coverSpacing = space;
-	[self _setupTransforms];
-	[self _setup];
-	[self layoutSubviews];
+- (NSArray*) visibleCovers{
+	return [_covers subarrayWithRange:_range];
 }
-- (void) setSpaceInFront:(float)front{
-	_spaceInFront = front;
-	[self _setupTransforms];
-	[self _setup];
-	[self layoutSubviews];
-}
-- (void) setCoverAngle:(float)f{
-	_coverAngle = f;
-	[self _setupTransforms];
-	[self _setup];
-}
-- (void) setCoverSize:(CGSize)s{
-	_coverSize = s;
-	spaceFromCurrent = _coverSize.width/2.4;
-	[self _setupTransforms];
-	[self _setup];
-}
-- (void) setCurrentIndex:(NSInteger)index{
-	[self bringCoverAtIndexToFront:index animated:NO];
+- (TKCoverflowCoverView*) coverAtIndex:(NSInteger)index{
+	id ret = [_covers objectAtIndex:index];
+	return ret != [NSNull null] ? ret : nil;
 }
 - (NSInteger) currentIndex{
-	return movingIndex;
-}
-
-
-- (NSArray*) visibleCovers{
-	return [coverViews subarrayWithRange:deck];
+	return _currentIndex;
 }
 - (NSRange) visibleRange{
-	return deck;
+	return _range;
+}
+- (void) setCoverflowDataSource:(id<TKCoverflowViewDataSource>)coverflowDataSource{
+	_coverflowDataSource = coverflowDataSource;
+	[self reloadData];
+}
+- (TKCoverflowCoverView*) dequeueReusableCoverView{
+	
+	if([_grayard count] < 1)  return nil;
+	
+	TKCoverflowCoverView *v = [_grayard lastObject];
+	v.layer.transform = CATransform3DIdentity;
+	[v.layer removeAllAnimations];
+	[_grayard removeLastObject];
+	
+	return v;
+	
+}
+- (void) reloadData{
+	_originalBoundsSize = self.bounds.size;
+
+	if(_range.length>0) [self _clearCoversFromView];
+	[_covers removeAllObjects];
+	_range = NSMakeRange(0,0);
+	
+	self.contentSize = CGSizeZero;
+	self.contentOffset = CGPointZero;
+	
+	if(self.coverflowDataSource==nil){
+		_numberOfCovers = 0;
+		return;
+	}
+	
+	_numberOfCovers = [self.coverflowDataSource numberOfCoversInCoverflowView:self];
+	
+	for(int i=0;i<_numberOfCovers;i++)
+		[_covers addObject:[NSNull null]];
+	
+
+	CGFloat xx =  [self _centerXPositionForCoverAtIndex:_numberOfCovers-1];
+	self.contentInset = UIEdgeInsetsMake(0,self.bounds.size.width/2.0,0,self.bounds.size.width/2.0);
+	self.contentSize = CGSizeMake(xx,0);
+	
+	
+	animate = NO;
+	[self setNeedsLayout];
+	[self _adjustViewHeirarchy];
+	
+
+}
+- (void) setCurrentCoverAtIndex:(NSInteger)index animated:(BOOL)animated{
+	CGFloat x = [self _centerXPositionForCoverAtIndex:index] - (self.bounds.size.width / 2.0f);
+	animate = animated;
+	[self setContentOffset:CGPointMake(x, 0) animated:animated];
+	[self _realignCovers:animated];
+	[self setNeedsLayout];
+	if([self.coverflowDelegate respondsToSelector:@selector(coverflowView:coverAtIndexWasBroughtToFront:)])
+		[self.coverflowDelegate coverflowView:self coverAtIndexWasBroughtToFront:_currentIndex];
+	
+}
+- (void) setCurrentCoverAtIndex:(NSInteger)index{
+	[self setCurrentCoverAtIndex:index animated:NO];
+}
+- (NSInteger) currentCoverIndex{
+	return _currentIndex;
+}
+
+@end
+
+
+#pragma mark -
+@implementation TKCoverflowCoverView
+
+- (id) initWithFrame:(CGRect)frame reflection:(BOOL)reflection{
+	if(!(self=[super initWithFrame:frame])) return nil;
+	self.imageView = [UIImageView imageViewWithFrame:self.bounds];
+	[self addSubview:self.imageView];
+	
+	if(reflection){
+		CGRect r = self.bounds;
+		r.origin.y = r.size.height;
+		self.reflectedImageView = [UIImageView imageViewWithFrame:r];
+		self.reflectedImageView.transform = CGAffineTransformMakeScale(1, -1);
+		[self addSubview:self.reflectedImageView];
+		
+		
+		self.reflectionGradientView = [[TKGradientView alloc] initWithFrame:r];
+		
+		self.reflectionGradientView.colors = @[[UIColor colorWithWhite:0 alpha:0.7],[UIColor colorWithWhite:0 alpha:1]];
+		self.reflectionGradientView.locations = @[@0.0f,@0.4f];
+		[self addSubview:self.reflectionGradientView];
+
+	}
+	
+    return self;
+}
+- (id) initWithFrame:(CGRect)frame {
+	self = [self initWithFrame:frame reflection:YES];
+	return self;
+}
+- (BOOL) hasRelection{
+	return self.reflectedImageView != nil;
+}
+- (void) setImage:(UIImage*)image{
+	self.imageView.image = image;
+	self.reflectedImageView.image = image;
 }
 
 @end

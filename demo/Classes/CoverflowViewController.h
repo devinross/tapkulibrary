@@ -34,12 +34,12 @@
 
 
 
-@interface CoverflowViewController : UIViewController <TKCoverflowViewDelegate,TKCoverflowViewDataSource,UIScrollViewDelegate> {
+@interface CoverflowViewController : UIViewController <TKCoverflowViewDataSource,TKCoverflowViewDelegate> {
 	BOOL collapsed;
 }
 
-@property (strong,nonatomic) TKCoverflowView *coverflow; 
-@property (strong,nonatomic) NSMutableArray *covers;
+@property (strong,nonatomic) TKCoverflowView *coverflow;
+@property (strong,nonatomic) NSArray *covers;
 
 @end
 

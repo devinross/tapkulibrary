@@ -1,6 +1,6 @@
 //
-//  NSArrayTests.m
-//  Created by Devin on 7/18/12.
+//  DataTests.h
+//  Created by Devin Ross on 12/29/12.
 //
 /*
  
@@ -29,22 +29,10 @@
  
  */
 
+#import <SenTestingKit/SenTestingKit.h>
+#import <Foundation/Foundation.h>
+#import "NSObject+TKCategory.h"
 
-#import "NSArrayTests.h"
-
-@implementation NSArrayTests
-
-
-- (void) testFirstObject{
-	
-	
-	STAssertNil([[NSArray array] firstObject],nil);
-	
-	NSArray *ar = [NSArray arrayWithObjects:@"BOB",nil];
-	STAssertEqualObjects([ar firstObject], @"BOB", nil);
-	
-	
-}
-
+@interface DataTests : SenTestCase
 
 @end

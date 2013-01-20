@@ -1,6 +1,6 @@
 //
 //  TKCoverflowView.h
-//  Created by Devin Ross on 1/3/10.
+//  Created by Devin Ross on 11/15/12.
 //
 /*
  
@@ -28,123 +28,133 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
-#import <Foundation/Foundation.h>
+
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@protocol TKCoverflowViewDelegate,TKCoverflowViewDataSource;
-@class TKCoverflowCoverView;
+@class TKCoverflowCoverView,TKCoverflowView,TKGradientView;
 
-/**
-`TKCoverflowView` imitates the coverflow you’d find in the iPod/Music app on the iPhone OS. Coverflow displays `TKCoverflowView` objects. This view functions similar to the `UITableView` where covers that are off screen aren’t loaded until need. Thus, similar to the tableview, you can dequeue a cover view and hand it back to Coverflow View using the data source.
+#pragma mark -
+/** The data source of a `TKCoverflowView` object must adopt the `TKCoverflowViewDataSource` protocol. */
+@protocol TKCoverflowViewDataSource <NSObject>
+
+/** Returns the number of covers to display in the view.
+ @param coverflowView The coverflow view.
+ @return The number of covers displayed in the coverflow view.
  */
-@interface TKCoverflowView : UIScrollView <UIScrollViewDelegate> {
-	
-	NSMutableArray *coverViews;  // sequential covers
-	NSMutableArray *views;		// only covers view (no nulls)
-	NSMutableArray *yard;	   // covers ready for reuse (ie. graveyard)
-	
-	BOOL movingRight;
+- (NSInteger) numberOfCoversInCoverflowView:(TKCoverflowView *)coverflowView;
 
-	UIView *currentTouch;
-	NSRange deck;
-	
-	
-	NSInteger margin, coverBuffer, currentIndex;
-	CGFloat spaceFromCurrent;
-	CATransform3D leftTransform, rightTransform;
-	CGSize boundSize;
-	
-	// SPEED
-	NSInteger pos;
-	CGFloat velocity;
-	
-	
-	BOOL isDragging;
-	BOOL gliding;
-	NSInteger movingIndex;
-}
+/** Returns a coverflow cover view to place at the cover index.
+ @param coverflowView The coverflow view.
+ @param index The index for the coverflow cover.
+ @return A `TKCoverflowCoverView` view that is either newly created or from the coverflow's reusable queue.
+ */
+- (TKCoverflowCoverView *) coverflowView:(TKCoverflowView *)coverflowView coverForIndex:(NSInteger)index;
+
+@end
+
+#pragma mark -
+/** The delegate of a `TKCoverflowView` object must adopt the `TKCoverflowViewDelegate` protocol. */
+@protocol TKCoverflowViewDelegate <NSObject>
+@optional
+
+/** Tells the delegate that a specified cover is now the foremost cover.
+ @param coverflowView The coverflow view.
+ @param index The index of the foremost cover.
+ */
+- (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasBroughtToFront:(NSInteger)index;
+
+/** Tells the delegate that a specified cover was tapped.
+ @param coverflowView The coverflow view.
+ @param index The index of the double tapped cover.
+ @param tapCount The number of times the front cover was tapped.
+ */
+- (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasTappedInFront:(NSInteger)index tapCount:(NSInteger)tapCount;
+
+@end
 
 
-/** The delegate must adopt the `TKCoverflowViewDelegate` protocol. The delegate is not retained. */
-@property (nonatomic, assign) id <TKCoverflowViewDelegate> coverflowDelegate;
 
-/** The data source must adopt the `TKCoverflowViewDataSource` protocol. The data source is not retained. */
-@property (nonatomic, assign) id <TKCoverflowViewDataSource> dataSource;
+#pragma mark -
+/**
+ `TKCoverflowView` imitates the coverflow you’d find in the iPod/Music app on the iPhone OS. Coverflow displays `TKCoverflowCoverView` objects. This view functions similar to the `UITableView` where covers that are off screen aren’t loaded until need. Thus, similar to the tableview, you can dequeue a cover view and hand it back to Coverflow View using the data source.
+ */
+@interface TKCoverflowView : UIScrollView <UIScrollViewDelegate>
 
-/** Coversize is used to center the cover view in the view. This doesn’t have to be the exact size of the `TKCoverflowView` objects hand through the data source. The default is (224,224).*/
-@property (nonatomic, assign) CGSize coverSize;
 
-/** The total number cover views in the coverflow view. Changing this property will cause the coverflow to reload data. */
-@property (nonatomic, assign) int numberOfCovers;
+- (id) initWithFrame:(CGRect)frame deleclerationRate:(CGFloat)decelerationRate;
+
+/** The transform applied to covers left of the center cover. */
+@property (nonatomic,assign) CATransform3D leftTransform;
+
+/** The transform applied to covers right of the center cover. */
+@property (nonatomic,assign) CATransform3D rightTransform;
 
 /** The spacing between cover views */
-@property (nonatomic, assign) float coverSpacing;
+@property (nonatomic,assign) CGFloat leftIncrementalDistanceFromCenter;
 
-/** The angle which covers will be display at when they are not on the center. */
-@property (nonatomic, assign) float coverAngle;
-
-/** The amount of space the center cover is infront of the rest of the other covers. Default is 300. */
-@property (nonatomic, assign) float spaceInFront;
+/** The spacing between cover views */
+@property (nonatomic,assign) CGFloat rightIncrementalDistanceFromCenter;
 
 
+/** The spacing between cover views */
+@property (nonatomic,assign) CGFloat spacing;
+
+
+/** Coversize is used to center the cover view in the view. This doesn’t have to be the exact size of the `TKCoverflowView` objects hand through the data source. The default is (224,224).*/
+@property (nonatomic,assign) CGSize coverSize;
+
+/** The data source must adopt the `TKCoverflowViewDataSource` protocol. The data source is not retained. */
+@property (nonatomic,assign) id <TKCoverflowViewDataSource> coverflowDataSource;
+
+/** The delegate must adopt the `TKCoverflowViewDelegate` protocol. The delegate is not retained. */
+@property (nonatomic,assign) id <TKCoverflowViewDelegate> coverflowDelegate;
+
+/** The currently centered cover. */
+@property (nonatomic,assign) NSInteger currentCoverIndex;
+
+- (void) setCurrentCoverAtIndex:(NSInteger)index animated:(BOOL)animated;
 
 /** Returns an usued coverflow view. If there are no reusable views, it will return nil. */
-- (TKCoverflowCoverView*) dequeueReusableCoverView; // like a tableview
+- (TKCoverflowCoverView*) dequeueReusableCoverView;
 
 /** Returns the cover object corresponding to that index.
  @param index Index of the cover object.
  @return The cover object at the index. If the cover is outside the visible range, it will return nil.
  */
-- (TKCoverflowCoverView*) coverAtIndex:(int)index; // returns nil if cover is outside active range
+- (TKCoverflowCoverView*) coverAtIndex:(NSInteger)index;
 
-/** Returns the visible covers on screen.
- @return An array of visible covers.
- */
-- (NSArray*) visibleCovers;
+
 
 /** Returns the range covers on screen.
  @return A range of visible covers.
  */
 - (NSRange) visibleRange;
 
-/** Sets the foremost cover.
- @param index The index of the cover that will become the foremost cover.
- @param animated Boolean flag to animate the change.
+/** Reloads the cover views of the receiver. */
+- (void) reloadData;
+
+/** Returns the visible covers on screen.
+ @return An array of visible covers.
  */
-- (void) bringCoverAtIndexToFront:(int)index animated:(BOOL)animated;
-
-/** The index of the foremost cover */
-@property (nonatomic, assign) NSInteger currentIndex;
-
+- (NSArray*) visibleCovers;
 
 @end
 
-/** The delegate of a `TKCoverflowView` object must adopt the `TKCoverflowViewDelegate` protocol. */ 
-@protocol TKCoverflowViewDelegate <NSObject>
-@required
 
-/** Tells the delegate that a specified cover is now the foremost cover.
- @param coverflowView The coverflow view.
- @param index The index of the foremost cover.
+#pragma mark -
+/**
+ `TKCoverflowCoverView` objects are the main views for displaying covers in `TKCoverflowView`.
  */
-- (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasBroughtToFront:(int)index;
-@optional
-/** Tells the delegate that a specified cover was tapped.
- @param coverflowView The coverflow view.
- @param index The index of the double tapped cover.
- @param tapCount The number of times the front cover was tapped.
- */
-- (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasTappedInFront:(int)index tapCount:(NSInteger)tapCount;
-@end
+@interface TKCoverflowCoverView : UIView
 
-/** The data source of a `TKCoverflowView` object must adopt the `TKCoverflowViewDataSource` protocol. */ 
-@protocol TKCoverflowViewDataSource <NSObject>
-@required
-/** Returns a coverflow cover view to place at the cover index.
- @param coverflowView The coverflow view.
- @param index The index for the coverflow cover.
- @return A `TKCoverflowCoverView` view that is either newly created or from the coverflow's reusable queue.
- */
-- (TKCoverflowCoverView*) coverflowView:(TKCoverflowView*)coverflowView coverAtIndex:(int)index;
+- (id) initWithFrame:(CGRect)frame reflection:(BOOL)reflection;
+
+@property (nonatomic,strong) UIImageView *imageView;
+@property (nonatomic,strong) UIImageView *reflectedImageView;
+@property (nonatomic,strong) TKGradientView *reflectionGradientView;
+@property (nonatomic,readonly) BOOL hasRelection;
+
+- (void) setImage:(UIImage*)image;
+
 @end

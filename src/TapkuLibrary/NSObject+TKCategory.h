@@ -1,6 +1,6 @@
 //
-//  TKCoverView.h
-//  Created by Devin Ross on 1/3/10.
+//  NSObject+TKCategory.h
+//  Created by Devin Ross on 12/29/12.
 //
 /*
  
@@ -29,30 +29,35 @@
  
  */
 
+#import <Foundation/Foundation.h>
 
-#import <UIKit/UIKit.h>
-#import <QuartzCore/QuartzCore.h>
-/** 
- `TKCoverflowCoverView` objects are the main views for displaying covers in `TKCoverflowView`. 
+@interface NSObject (TKCategory)
+
+/** For subclassing, this method should return the item's properties mapped to the data dictionary keys.
+ See the DataTests.m for an example implementation.
+ 
+	
+	 @{
+	 @"identifier" : @"id",
+	 @"name" : @"name",
+	 @"createdAt" : @[@"created_at",@"yyyy-MM-dd'T'HH:mm:ss"], // For NSDate
+	 @"updatedAt" : @[@"updated_at",@"yyyy-MM-dd"]
+	 };
+ 
+ 
+ @returns The dictionary used to fill up data from the data dictionary.
  */
-@interface TKCoverflowCoverView : UIView 
++ (NSDictionary*) dataKeys;
 
-- (id) initWithFrame:(CGRect)frame showReflection:(BOOL)reflection;
-
-/** The coverflow image. */
-@property (strong,nonatomic) UIImage *image;
-
-/** The gradient layer the will create the reflection below the coverflow image */
-@property (strong,nonatomic) CAGradientLayer *gradientLayer;
-
-/** The height of the image. This property will help coverflow adjust views to display images with different heights. */
-@property (assign,nonatomic) CGFloat baseline; // set this property for displaying images w/ different heights
++ (id) createObject:(NSDictionary*)data;
 
 
 
-@property (nonatomic,strong) UIImageView *imageView;
 
-@property (nonatomic,strong) UIImageView *reflected;
-
+/** Imports data from an `NSDictionary` objects using the map provided by the dataKeys dictionary.
+ 
+ @param dictionary The data that will be imported.
+ */
+- (void) importDataWithDictionary:(NSDictionary*)dictionary;
 
 @end
