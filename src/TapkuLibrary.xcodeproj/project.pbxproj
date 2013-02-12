@@ -107,8 +107,6 @@
 		3BD32972125B753900BE5EAF /* TKAlertCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BD32970125B753900BE5EAF /* TKAlertCenter.h */; };
 		3BD32973125B753900BE5EAF /* TKAlertCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD32971125B753900BE5EAF /* TKAlertCenter.m */; };
 		3BDE805E15BE3B210010738D /* NSArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE805D15BE3B210010738D /* NSArrayTests.m */; };
-		3BE2036A149184CA003FFBEB /* UIViewController+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BE20368149184CA003FFBEB /* UIViewController+TKCategory.h */; };
-		3BE2036B149184CA003FFBEB /* UIViewController+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE20369149184CA003FFBEB /* UIViewController+TKCategory.m */; };
 		3BE8FF8512945C4400DBF3FC /* UIScrollview+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BE8FF8312945C4400DBF3FC /* UIScrollview+TKCategory.h */; };
 		3BE8FF8612945C4400DBF3FC /* UIScrollview+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE8FF8412945C4400DBF3FC /* UIScrollview+TKCategory.m */; };
 		3BEE1CBB12CFB78300FECF6D /* TKProgressCircleView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BEE1CB912CFB78300FECF6D /* TKProgressCircleView.h */; };
@@ -214,8 +212,6 @@
 		3BD32971125B753900BE5EAF /* TKAlertCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAlertCenter.m; sourceTree = "<group>"; };
 		3BDE805C15BE3B210010738D /* NSArrayTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSArrayTests.h; path = Tests/NSArrayTests.h; sourceTree = "<group>"; };
 		3BDE805D15BE3B210010738D /* NSArrayTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSArrayTests.m; path = Tests/NSArrayTests.m; sourceTree = "<group>"; };
-		3BE20368149184CA003FFBEB /* UIViewController+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TKCategory.h"; sourceTree = "<group>"; };
-		3BE20369149184CA003FFBEB /* UIViewController+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TKCategory.m"; sourceTree = "<group>"; };
 		3BE8FF8312945C4400DBF3FC /* UIScrollview+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollview+TKCategory.h"; sourceTree = "<group>"; };
 		3BE8FF8412945C4400DBF3FC /* UIScrollview+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollview+TKCategory.m"; sourceTree = "<group>"; };
 		3BEAE08E1096C61A00A0A372 /* TKWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKWindow.h; sourceTree = "<group>"; };
@@ -444,8 +440,6 @@
 				3BAC9A2010953E5200F235F1 /* UIImage+TKCategory.m */,
 				3BB96F5612B55CD600C38F46 /* UIImageView+TKCategory.h */,
 				3BB96F5712B55CD600C38F46 /* UIImageView+TKCategory.m */,
-				3BE20368149184CA003FFBEB /* UIViewController+TKCategory.h */,
-				3BE20369149184CA003FFBEB /* UIViewController+TKCategory.m */,
 				3B4346E212DA6A240076579B /* UIButton+TKCategory.h */,
 				3B4346E312DA6A240076579B /* UIButton+TKCategory.m */,
 				3B166A6D137F38D7006298E6 /* UIColor+TKCategory.h */,
@@ -558,7 +552,6 @@
 				3B17D289142E3CD40090616F /* TKNetworkQueue.h in Headers */,
 				3B560B7214574E30005FBDBF /* TKImageCache.h in Headers */,
 				3B819B5414601DC500EC0097 /* TKViewController.h in Headers */,
-				3BE2036A149184CA003FFBEB /* UIViewController+TKCategory.h in Headers */,
 				3BF9A833159791EA002A7F9E /* TKShapeView.h in Headers */,
 				207DFF9215E1E3BE00A0BC2A /* NSDate+CalendarGrid.h in Headers */,
 				20DE9F4A168FA1EF00655BF8 /* NSObject+TKCategory.h in Headers */,
@@ -721,7 +714,6 @@
 				3B17D28A142E3CD40090616F /* TKNetworkQueue.m in Sources */,
 				3B560B7314574E30005FBDBF /* TKImageCache.m in Sources */,
 				3B819B5514601DC500EC0097 /* TKViewController.m in Sources */,
-				3BE2036B149184CA003FFBEB /* UIViewController+TKCategory.m in Sources */,
 				3BF9A834159791EA002A7F9E /* TKShapeView.m in Sources */,
 				207DFF9315E1E3BE00A0BC2A /* NSDate+CalendarGrid.m in Sources */,
 				20DE9F4B168FA1EF00655BF8 /* NSObject+TKCategory.m in Sources */,

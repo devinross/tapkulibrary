@@ -38,7 +38,6 @@
 #import "UIImageView+TKCategory.h"
 #import "UIScrollview+TKCategory.h"
 #import "UIButton+TKCategory.h"
-#import "UIViewController+TKCategory.h"
 
 
 
