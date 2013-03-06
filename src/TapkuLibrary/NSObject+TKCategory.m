@@ -138,11 +138,12 @@
 	
 	NSMutableDictionary *dict = [NSMutableDictionary dictionary];
 	
-	[dict setObject:data forKey:@"data"];
-	[dict setObject:[NSNumber numberWithUnsignedInt:options] forKey:@"flags"];
+	dict[@"data"] = data;
+	dict[@"flags"] = @(options);
 	
-	if(callback) [dict setObject:NSStringFromSelector(callback) forKey:@"callback"];
-	if(backgroundProcessor) [dict setObject:NSStringFromSelector(backgroundProcessor) forKey:@"backgroundProcessor"];
+
+	if(callback) dict[@"callback"] = NSStringFromSelector(callback);
+	if(backgroundProcessor) dict[@"backgroundProcessor"] = NSStringFromSelector(backgroundProcessor);
 	if(errroSelector) [dict setObject:NSStringFromSelector(errroSelector) forKey:@"errroSelector"];
 	
 	
@@ -156,20 +157,20 @@
 	@autoreleasepool {
 		NSError *error = nil;
 		
-		NSData *data = [dict objectForKey:@"data"];
-		NSUInteger options = [[dict objectForKey:@"flags"] unsignedIntValue];
+		NSData *data = dict[@"data"];
+		NSUInteger options = [dict[@"flags"] unsignedIntValue];
 		
-		NSString *callback = [dict objectForKey:@"callback"];
-		NSString *background = [dict objectForKey:@"backgroundProcessor"];
-		NSString *eSelector = [dict objectForKey:@"errroSelector"];
+		NSString *callback = dict[@"callback"];
+		NSString *background = dict[@"backgroundProcessor"];
+		NSString *eSelector = dict[@"errroSelector"];
 		
 		id object = [NSJSONSerialization JSONObjectWithData:data options:options error:&error];
 		
 		
 		
-		if(error){
-			if(eSelector) [self performSelector:NSSelectorFromString(eSelector) withObject:error];
-		}else{
+		if(error && eSelector){
+			[self performSelector:NSSelectorFromString(eSelector) withObject:error];
+		}else if(!error){
 			if(background) object = [self performSelector:NSSelectorFromString(background) withObject:object];
 			[self performSelectorOnMainThread:NSSelectorFromString(callback) withObject:object waitUntilDone:NO];
 		}

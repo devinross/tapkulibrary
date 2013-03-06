@@ -31,6 +31,7 @@
 
 #import <Foundation/Foundation.h>
 
+/** Additional functionality for `NSObject`.  */
 @interface NSObject (TKCategory)
 
 /** For subclassing, this method should return the item's properties mapped to the data dictionary keys.
@@ -49,7 +50,14 @@
  */
 + (NSDictionary*) dataKeys;
 
-+ (id) createObject:(NSDictionary*)data;
+
+/** Creates object and imports data from an `NSDictionary` objects using the map provided by the dataKeys dictionary.
+ 
+ @param dictionary The data that will be imported.
+ @returns The newly allocated object.
+
+ */
++ (id) createObject:(NSDictionary*)dictionary;
 
 
 /** Imports data from an `NSDictionary` objects using the map provided by the dataKeys dictionary.

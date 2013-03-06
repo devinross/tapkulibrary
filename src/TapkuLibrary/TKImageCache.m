@@ -224,7 +224,7 @@
 		
 		
 		for( NSString *file in files ) {
-			if( file != @"." && file != @".." ) {
+			if( ![file isEqual:@"."] && ![file isEqual:@".."] ) {
 				NSString *path = [[self cacheDirectoryPath] stringByAppendingPathComponent:file];
 				[[NSFileManager defaultManager] removeItemAtPath:path error:&error];
 				
@@ -248,7 +248,7 @@
 		NSArray *files = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:&error];
 		
 		for( NSString *file in files ) {
-			if( file != @"." && file != @".." ) {
+			if( ![file isEqual:@"."] && ![file isEqual:@".."] ) {
 				
 				NSString *path = [path stringByAppendingPathComponent:file];
 				NSDate *created = [[[NSFileManager defaultManager] attributesOfItemAtPath:path error:NULL] fileCreationDate];

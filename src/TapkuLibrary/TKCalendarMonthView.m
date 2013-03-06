@@ -285,8 +285,8 @@
 	r.size.height -= 2;
 	[str drawInRect: r
 		   withFont: f1
-	  lineBreakMode: UILineBreakModeWordWrap 
-		  alignment: UITextAlignmentCenter];
+	  lineBreakMode: NSLineBreakByWordWrapping
+		  alignment: NSTextAlignmentCenter];
 	
 	if(mark){
 		r.size.height = 10;
@@ -294,8 +294,8 @@
 		
 		[@"•" drawInRect: r
 				withFont: f2
-		   lineBreakMode: UILineBreakModeWordWrap 
-			   alignment: UITextAlignmentCenter];
+		   lineBreakMode: NSLineBreakByWordWrapping 
+			   alignment: NSTextAlignmentCenter];
 	}
 	
 
@@ -547,7 +547,7 @@
 		_currentDay.textColor = [UIColor whiteColor];
 		_currentDay.backgroundColor = [UIColor clearColor];
 		_currentDay.font = [UIFont boldSystemFontOfSize:dateFontSize];
-		_currentDay.textAlignment = UITextAlignmentCenter;
+		_currentDay.textAlignment = NSTextAlignmentCenter;
 		_currentDay.shadowColor = [UIColor darkGrayColor];
 		_currentDay.shadowOffset = CGSizeMake(0, -1);
 	}
@@ -563,7 +563,7 @@
 		_dot.textColor = [UIColor whiteColor];
 		_dot.backgroundColor = [UIColor clearColor];
 		_dot.font = [UIFont boldSystemFontOfSize:dotFontSize];
-		_dot.textAlignment = UITextAlignmentCenter;
+		_dot.textAlignment = NSTextAlignmentCenter;
 		_dot.shadowColor = [UIColor darkGrayColor];
 		_dot.shadowOffset = CGSizeMake(0, -1);
 	}
@@ -691,7 +691,7 @@
         }
         
 		label.text = s;
-		label.textAlignment = UITextAlignmentCenter;
+		label.textAlignment = NSTextAlignmentCenter;
 		label.shadowColor = [UIColor whiteColor];
 		label.shadowOffset = CGSizeMake(0, 1);
 		label.font = [UIFont systemFontOfSize:11];
@@ -934,7 +934,7 @@
 - (UILabel *) monthYear{
 	if(_monthYear==nil){
 		_monthYear = [[UILabel alloc] initWithFrame:CGRectInset(CGRectMake(0, 0, self.tileBox.frame.size.width, 38), 40, 6)];
-		_monthYear.textAlignment = UITextAlignmentCenter;
+		_monthYear.textAlignment = NSTextAlignmentCenter;
 		_monthYear.backgroundColor = [UIColor clearColor];
 		_monthYear.font = [UIFont boldSystemFontOfSize:22];
 		_monthYear.textColor = [UIColor colorWithRed:59/255. green:73/255. blue:88/255. alpha:1];
