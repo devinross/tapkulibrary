@@ -39,7 +39,7 @@
 
 #pragma mark Application lifecycle
 - (void) application:(UIApplication *)application commonInitializationLaunching:(NSDictionary *)launchOptions{
-	[super application:application didFinishLaunchingWithOptions:launchOptions];
+	[super application:application commonInitializationLaunching:launchOptions];
 
 	self.root = [[RootViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.root];
