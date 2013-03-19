@@ -32,11 +32,11 @@
 #import <TapkuLibrary/TapkuLibrary.h>
 #import <UIKit/UIKit.h>
 
-
+#pragma mark - CalendarMonthViewController
 @interface CalendarMonthViewController : TKCalendarMonthTableViewController
 
-@property (strong,nonatomic) NSMutableArray *dataArray;
-@property (strong,nonatomic) NSMutableDictionary *dataDictionary;
+@property (nonatomic,strong) NSMutableArray *dataArray;
+@property (nonatomic,strong) NSMutableDictionary *dataDictionary;
 
 - (void) generateRandomDataForStartDate:(NSDate*)start endDate:(NSDate*)end;
 

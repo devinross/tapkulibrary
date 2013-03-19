@@ -32,11 +32,12 @@
 #import <UIKit/UIKit.h>
 #import <TapkuLibrary/TapkuLibrary.h>
 
+#pragma mark - MoreCellsViewController
+@interface MoreCellsViewController : UITableViewController 
 
-@interface MoreCellsViewController : UITableViewController {
-	TKButtonCell *buttonCell;
-	TKSwitchCell *switchCell;
-	TKTextViewCell *textViewCell;
-}
+@property (nonatomic,strong) TKButtonCell *buttonCell;
+@property (nonatomic,strong) TKSwitchCell *switchCell;
+@property (nonatomic,strong) TKTextViewCell *textViewCell;
+
 
 @end

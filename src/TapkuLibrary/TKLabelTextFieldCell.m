@@ -71,6 +71,7 @@
 	return NO;
 }
 
+
 - (void) setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 	_field.textColor = selected ? [UIColor whiteColor] : [UIColor blackColor];

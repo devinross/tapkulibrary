@@ -40,7 +40,7 @@
 
 
 - (void) roundOffFrame{
-	self.frame = CGRectMake((NSInteger)self.frame.origin.x, (NSInteger)self.frame.origin.y, (NSInteger)self.frame.size.width, (NSInteger)self.frame.size.height);
+	self.frame = CGRectMake(roundf(self.frame.origin.x), roundf(self.frame.origin.y), roundf(self.frame.size.width), roundf(self.frame.size.height));
 }
 
 

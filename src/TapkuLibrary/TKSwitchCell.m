@@ -41,7 +41,6 @@
 	self.switcher = [[UISwitch alloc] initWithFrame:CGRectMake(0,0,94,27)];
 	[self.contentView addSubview:self.switcher];
 		
-
     return self;
 }
 - (id) initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {

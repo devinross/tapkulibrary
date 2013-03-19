@@ -34,9 +34,9 @@
 
 @interface HUDViewController : UIViewController 
 
-@property (strong,nonatomic) TKProgressBarView *progressBar;
-@property (strong,nonatomic) TKProgressBarView *progressBarAlternative;
-@property (strong,nonatomic) TKProgressAlertView *alertView;
-@property (strong,nonatomic) TKProgressCircleView *progressCircle;
+@property (nonatomic,strong) TKProgressBarView *progressBar;
+@property (nonatomic,strong) TKProgressBarView *progressBarAlternative;
+@property (nonatomic,strong) TKProgressAlertView *alertView;
+@property (nonatomic,strong) TKProgressCircleView *progressCircle;
 
 @end

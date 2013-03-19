@@ -33,11 +33,9 @@
 #import <TapkuLibrary/TapkuLibrary.h>
 @class DetailViewController;
 
-
 @interface RootViewController : TKTableViewController
 
 @property (nonatomic,strong) NSArray *data;
 @property (nonatomic,strong) DetailViewController *detailViewController;
-
 
 @end

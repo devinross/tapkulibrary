@@ -31,7 +31,7 @@
 
 #import "AlertsViewController.h"
 
-
+#pragma mark - AlertsViewController
 @implementation AlertsViewController
 
 - (id) init{
@@ -43,7 +43,7 @@
     return YES;
 }
 
-#pragma mark - View Lifecycle
+#pragma mark View Lifecycle
 - (void) loadView{
 	[super loadView];
 	self.view.backgroundColor = [UIColor whiteColor];

@@ -30,6 +30,7 @@
 */
 #import "CoverflowViewController.h"
 
+#pragma mark - CoverflowViewController
 @implementation CoverflowViewController
 
 - (NSUInteger) supportedInterfaceOrientations{
@@ -42,7 +43,7 @@
 }
 
 
-#pragma mark - View Lifecycle
+#pragma mark View Lifecycle
 - (void) loadView{
 	
 	CGRect rect = [UIScreen mainScreen].bounds;
@@ -86,10 +87,7 @@
 	
 	
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Tap Me" style:UIBarButtonItemStyleBordered target:self action:@selector(info)];
-	
-	
-
-		self.toolbarItems = @[item];
+	self.toolbarItems = @[item];
 
 	
 
@@ -185,44 +183,6 @@
 
 }
 
-
-/*
-
-- (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasBroughtToFront:(int)index{
-	NSLog(@"Front %d",index);
-}
-- (TKCoverflowCoverView*) coverflowView:(TKCoverflowView*)coverflowView coverAtIndex:(int)index{
-	
-	TKCoverflowCoverView *cover = [coverflowView dequeueReusableCoverView];
-	
-	if(cover == nil){
-		BOOL phone = [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone;
-		CGRect rect = phone ? CGRectMake(0, 0, 224, 300) : CGRectMake(0, 0, 300, 600);
-		cover = [[TKCoverflowCoverView alloc] initWithFrame:rect]; // 224
-		cover.baseline = 224;
-	}
-	cover.image = [self.covers objectAtIndex:index%[self.covers count]];
-
-	return cover;
-}
-
-- (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasTappedInFront:(int)index tapCount:(NSInteger)tapCount{
-	
-	TKLog(@"Index: %d",index);
-	
-	if(tapCount<2) return;
-
-	TKCoverflowCoverView *cover = [coverflowView coverAtIndex:index];
-	if(cover == nil) return;
-	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDuration:1];
-	[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:cover cache:YES];
-	[UIView commitAnimations];
-	
-}
-
- */
-
 - (NSInteger) numberOfCoversInCoverflowView:(TKCoverflowView *)coverflowView{
 	return 20;
 }
@@ -235,7 +195,7 @@
 		
 		cover = [[TKCoverflowCoverView alloc] initWithFrame:rect reflection:YES]; // 224
 	}
-	cover.image = [self.covers objectAtIndex:index%[self.covers count]];
+	cover.image = self.covers[index%[self.covers count]];
 	return cover;
 	
 }

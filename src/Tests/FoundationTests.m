@@ -54,12 +54,12 @@
     
     
     date = [NSDate date];
-    TKDateInformation info = [date dateInformation];
-    info.day = 1;
-    info.hour = info.minute = info.second = 0;
-    date2 = [NSDate dateFromDateInformation:info];
+	NSDateComponents *comp = [date dateComponentsWithTimeZone:[NSTimeZone defaultTimeZone]];
+    comp.day = 1;
+    comp.hour = comp.minute = comp.second = 0;
+    date2 = [NSDate dateWithDateComponents:comp];
 	
-    STAssertTrue([date2 isSameDay:[date monthDate]], @"Expected %@ is same day as %@.",date2,date);
+    STAssertTrue([date2 isSameDay:[date monthDate] timeZone:[NSTimeZone defaultTimeZone]], @"Expected %@ is same day as %@.",date2,date);
     
     date = [NSDate date];
     date2 = [NSDate yesterday];

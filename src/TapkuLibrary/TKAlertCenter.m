@@ -33,7 +33,7 @@
 #import "UIView+TKCategory.h"
 
 
-#pragma mark -
+#pragma mark - TKAlertView
 @interface TKAlertView : UIView {
 	CGRect _messageRect;
 	NSString *_text;
@@ -47,7 +47,6 @@
 @end
 
 
-#pragma mark -
 @implementation TKAlertView
 
 - (id) init{
@@ -57,8 +56,6 @@
 	return self;
 	
 }
-
-
 
 - (void) _drawRoundRectangleInRect:(CGRect)rect withRadius:(CGFloat)radius{
 	CGContextRef context = UIGraphicsGetCurrentContext();
@@ -76,10 +73,6 @@
 	CGContextClosePath(context);
 	CGContextDrawPath(context, kCGPathFill);
 }
-
-
-
-
 - (void) drawRect:(CGRect)rect{
 	[[UIColor colorWithWhite:0 alpha:0.8] set];
 	[self _drawRoundRectangleInRect:rect withRadius:10];
@@ -131,8 +124,7 @@
 
 @end
 
-
-#pragma mark -
+#pragma mark - TKAlertCenter
 @implementation TKAlertCenter
 
 #pragma mark Init & Friends
@@ -177,14 +169,14 @@
 
 	
 	
-	NSArray *ar = [_alerts objectAtIndex:0];
+	NSArray *ar = _alerts[0];
 	
 	UIImage *img = nil;
-	if([ar count] > 1) img = [[_alerts objectAtIndex:0] objectAtIndex:1];
+	if([ar count] > 1) img = _alerts[0][1];
 	
 	[_alertView setImage:img];
 
-	if([ar count] > 0) [_alertView setMessageText:[[_alerts objectAtIndex:0] objectAtIndex:0]];
+	if([ar count] > 0) [_alertView setMessageText:_alerts[0][0]];
 	
 	
 	
@@ -223,7 +215,7 @@
 	// depending on how many words are in the text
 	// change the animation duration accordingly
 	// avg person reads 200 words per minute
-	NSArray * words = [[[_alerts objectAtIndex:0] objectAtIndex:0] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	NSArray * words = [_alerts[0][0] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 	double duration = MAX(((double)[words count]*60.0/200.0),1);
 	
 	[UIView setAnimationDelay:duration];
@@ -249,7 +241,12 @@
 	
 }
 - (void) postAlertWithMessage:(NSString*)message image:(UIImage*)image{
-	[_alerts addObject:[NSArray arrayWithObjects:message,image,nil]];
+	if(message && image)
+		[_alerts addObject:@[message,image]];
+	else if(message)
+		[_alerts addObject:@[message]];
+	else
+		[_alerts addObject:@[image]];
 	if(!_active) [self showAlerts];
 }
 - (void) postAlertWithMessage:(NSString*)message{
@@ -295,7 +292,7 @@ CGRect subtractRect(CGRect wf,CGRect kf){
 - (void) keyboardWillAppear:(NSNotification *)notification {
 	
 	NSDictionary *userInfo = [notification userInfo];
-	NSValue* aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+	NSValue* aValue = userInfo[UIKeyboardFrameEndUserInfoKey];
 	CGRect kf = [aValue CGRectValue];
 	CGRect wf = [UIApplication sharedApplication].keyWindow.bounds;
 	
@@ -313,7 +310,7 @@ CGRect subtractRect(CGRect wf,CGRect kf){
 - (void) orientationWillChange:(NSNotification *) notification {
 	
 	NSDictionary *userInfo = [notification userInfo];
-	NSNumber *v = [userInfo objectForKey:UIApplicationStatusBarOrientationUserInfoKey];
+	NSNumber *v = userInfo[UIApplicationStatusBarOrientationUserInfoKey];
 	UIInterfaceOrientation o = [v intValue];
 	
 	

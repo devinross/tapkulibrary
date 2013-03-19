@@ -56,7 +56,7 @@ typedef enum {
 	TKEmptyViewImageTelevision
 } TKEmptyViewImage;
 
-
+#pragma mark - TKEmptyView
 /** A simple view for showing no content available. */
 @interface TKEmptyView : TKGradientView 
 
@@ -98,13 +98,13 @@ typedef enum {
 ///-------------------------
 
 /** The image view for the empty content. */
-@property (strong,nonatomic) UIImageView *imageView;
+@property (nonatomic,strong) UIImageView *imageView;
 
 /** The title message. */
-@property (strong,nonatomic) UILabel *titleLabel;
+@property (nonatomic,strong) UILabel *titleLabel;
 
 /** The secondary message. */
-@property (strong,nonatomic) UILabel *subtitleLabel;
+@property (nonatomic,strong) UILabel *subtitleLabel;
 
 
 

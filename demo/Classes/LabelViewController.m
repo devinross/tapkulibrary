@@ -38,7 +38,7 @@
 	return self;
 }
 
-#pragma mark - View Lifecycle
+#pragma mark View Lifecycle
 - (void) loadView{
 	[super loadView];
 	self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -64,7 +64,7 @@
 
 }
 
-#pragma mark - UITableView Delegate & DataSource
+#pragma mark UITableView Delegate & DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -72,7 +72,7 @@
     return [self.cells count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return [self.cells objectAtIndex:indexPath.row];
+	return self.cells[indexPath.row];
 }
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 	return indexPath.row == 1 ? 120 : 44;

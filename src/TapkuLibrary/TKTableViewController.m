@@ -33,12 +33,12 @@
 #import "TKEmptyView.h"
 #import "UIScrollview+TKCategory.h"
 
-
+#pragma mark - TKTableViewController
 @implementation TKTableViewController
 
 
 // -----------------------------
-#pragma mark - Init & Friends
+#pragma mark Init & Friends
 - (id) init{
 	self = [self initWithStyle:UITableViewStylePlain];
 	return self;
@@ -65,7 +65,7 @@
 // -----------------------------
 
 
-#pragma mark - View Load / Events
+#pragma mark View Load / Events
 - (void) loadView{
 	[super loadView];
 	
@@ -75,14 +75,13 @@
 	_tableView.showsVerticalScrollIndicator = YES;
 	_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	_tableView.contentOffset = _tableViewContentOffset;
-	
 	[self.view addSubview:_tableView];
 }
 
 
 
 // -----------------------------
-#pragma mark - TableView Delegate & DataSource
+#pragma mark TableView Delegate & DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 0;
 }
@@ -97,28 +96,28 @@
 
 
 // -----------------------------
-#pragma mark - Properties
+#pragma mark Properties
 - (TKEmptyView*) emptyView{
-	if(_emptyView==nil){
-		_emptyView = [[TKEmptyView alloc] initWithFrame:self.view.bounds emptyViewImage:TKEmptyViewImageSearch title:nil subtitle:nil];
-		_emptyView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	}
+	if(_emptyView) return _emptyView;
+
+	_emptyView = [[TKEmptyView alloc] initWithFrame:self.view.bounds emptyViewImage:TKEmptyViewImageSearch title:nil subtitle:nil];
+	_emptyView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	return _emptyView;
 }
 - (UISearchBar*) searchBar{
-	if(_searchBar==nil){
-		_searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
-		_searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	}
+	if(_searchBar) return _searchBar;
+	
+	_searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+	_searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	return _searchBar;
 }
 - (UISearchDisplayController*) searchBarDisplayController{
-	if(_searchBarDisplayController==nil){
-		_searchBarDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
-		_searchBarDisplayController.delegate = self;
-		_searchBarDisplayController.searchResultsDataSource = self;
-		_searchBarDisplayController.searchResultsDelegate = self;
-	}
+	if(_searchBarDisplayController) return _searchBarDisplayController;
+		
+	_searchBarDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
+	_searchBarDisplayController.delegate = self;
+	_searchBarDisplayController.searchResultsDataSource = self;
+	_searchBarDisplayController.searchResultsDelegate = self;
 	return _searchBarDisplayController;
 }
 // -----------------------------

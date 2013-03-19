@@ -31,6 +31,7 @@
 
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 /** Additional functionality for `UIView`.  */
 @interface UIView (TKCategory)

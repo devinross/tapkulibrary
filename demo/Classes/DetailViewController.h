@@ -31,11 +31,11 @@
 
 
 #import <UIKit/UIKit.h>
-
+#import <TapkuLibrary/TapkuLibrary.h>
 
 @interface DetailViewController : UIViewController <UISplitViewControllerDelegate>
 
-@property (strong,nonatomic) UIToolbar *toolbar;
+@property (nonatomic,strong) UIToolbar *toolbar;
 @property (nonatomic,strong) UIViewController *mainController;
 @property (nonatomic,strong) UIPopoverController *currentPopoverController;
 

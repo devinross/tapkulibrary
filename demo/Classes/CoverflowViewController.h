@@ -31,15 +31,11 @@
 #import <UIKit/UIKit.h>
 #import <TapkuLibrary/TapkuLibrary.h>
 
+#pragma mark - CoverflowViewController
+@interface CoverflowViewController : UIViewController <TKCoverflowViewDataSource,TKCoverflowViewDelegate>
 
-
-
-@interface CoverflowViewController : UIViewController <TKCoverflowViewDataSource,TKCoverflowViewDelegate> {
-	BOOL collapsed;
-}
-
-@property (strong,nonatomic) TKCoverflowView *coverflow;
-@property (strong,nonatomic) NSArray *covers;
+@property (nonatomic,strong) TKCoverflowView *coverflow;
+@property (nonatomic,strong) NSArray *covers;
 
 @end
 

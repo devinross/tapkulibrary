@@ -36,13 +36,10 @@
 
 
 - (void) testFirstObject{
-	
-	
+		
 	STAssertNil([[NSArray array] firstObject],nil);
-	
-	NSArray *ar = [NSArray arrayWithObjects:@"BOB",nil];
+	NSArray *ar = @[@"BOB"];
 	STAssertEqualObjects([ar firstObject], @"BOB", nil);
-	
 	
 }
 

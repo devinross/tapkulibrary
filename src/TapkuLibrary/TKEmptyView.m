@@ -33,7 +33,7 @@
 #import "TKGlobal.h"
 #import "UIImage+TKCategory.h"
 
-
+#pragma mark - UIView+TKEmptyViewCategory
 @implementation UIView (TKEmptyViewCategory)
 
 + (void) drawGradientInRect:(CGRect)rect withColors:(NSArray*)colors{
@@ -65,9 +65,7 @@
 
 @end
 
-
-
-
+#pragma mark - UIImage+TKEmptyViewCategory
 @implementation UIImage (TKEmptyViewCategory)
 
 - (void) drawMaskedGradientInRect:(CGRect)rect withColors:(NSArray*)colors{
@@ -90,21 +88,10 @@
 @end
 
 
-
-
-
-@interface TKEmptyView()
-
-- (UIImage*) maskedImageWithImage:(UIImage*)m;
-- (UIImage*) predefinedImage:(TKEmptyViewImage)img;
-
-@end
-
-
-#pragma mark -
+#pragma mark - TKEmptyView
 @implementation TKEmptyView
 
-
+#pragma mark Init & Friends
 - (id) initWithFrame:(CGRect)frame mask:(UIImage*)image title:(NSString*)titleString subtitle:(NSString*)subtitleString{
     if(!(self=[super initWithFrame:frame])) return nil;
     self.backgroundColor = [UIColor whiteColor];
@@ -112,7 +99,7 @@
 	UIColor *top = [UIColor colorWithRed:242/255.0 green:244/255.0 blue:246/255.0 alpha:1];
 	UIColor *bot = [UIColor colorWithRed:225/255.0 green:229/255.0 blue:235/255.0 alpha:1];
 	
-	self.colors = [NSArray arrayWithObjects:top,bot,nil];
+	self.colors = @[top,bot];
 	self.startPoint = CGPointZero;
 	self.endPoint = CGPointMake(0, 1);
     
@@ -175,6 +162,7 @@
 }
 
 
+#pragma mark Properties
 - (void) setImage:(UIImage*)image{
 	_imageView.image = [self maskedImageWithImage:image];
 	[self setNeedsLayout];
@@ -263,18 +251,9 @@
 			break;
 	}
 	
-	NSString *scale = @"";
-	if([[UIScreen mainScreen] respondsToSelector:@selector(scale)]){
-		NSInteger s = [[UIScreen mainScreen] scale];
-		if(s > 1) scale = @"@2x";
-	}
+	return [UIImage imageNamedTK:[NSString stringWithFormat:@"empty/%@",str]];
 	
-	NSString *path = [NSString stringWithFormat:@"TapkuLibrary.bundle/Images/empty/%@%@.png",str,scale];
-	
-	
-	return [UIImage imageWithContentsOfFile:TKBUNDLE(path)];
 }
-
 
 
 @end

@@ -66,7 +66,7 @@
 	
 	
 	NSDictionary *dict = [sender userInfo];
-	NSInteger tag = [[dict objectForKey:@"tag"] intValue];
+	NSInteger tag = [dict[@"tag"] intValue];
 	NSArray *paths = [self.tableView indexPathsForVisibleRows];
 	
 	
@@ -78,10 +78,8 @@
 		
 		UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:path];
 		if(cell.imageView.image == nil && tag == index){
-			
-			cell.imageView.image = [dict objectForKey:@"image"];
+			cell.imageView.image = dict[@"image"];
 			[cell setNeedsLayout];
-			
 		}
 		
 		
@@ -91,13 +89,13 @@
 }
 
 
-#pragma mark - View Lifecycle
+#pragma mark View Lifecycle
 - (void) loadView{
 	[super loadView];
 	self.tableView.rowHeight = 120;
 	self.tableView.allowsSelection = NO;
 	
-	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,100)];
+	UIView *v = [[UIView alloc] initWithFrame:CGRectMakeWithPoint(CGPointZero,320,100)];
 	
 	UILabel *lab = [[UILabel alloc] initWithFrame:CGRectInset(v.bounds, 20, 20)];
 	lab.text = @"The image cache handles large amounts of network image requests. Good for things like twitter avatars.";
@@ -112,7 +110,7 @@
 }
 
 
-#pragma mark - TableView Delegate & DataSource
+#pragma mark TableView Delegate & DataSource
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -132,7 +130,7 @@
 	int i = indexPath.row;
 	int index = i % [self.urlArray count];
 	
-	NSURL *url = [NSURL URLWithString:[self.urlArray objectAtIndex:index]];
+	NSURL *url = [NSURL URLWithString:self.urlArray[index]];
 	
 	
 	UIImage *img = [self.imageCache imageForKey:[NSString stringWithFormat:@"%d",index] url:url queueIfNeeded:YES tag:index];

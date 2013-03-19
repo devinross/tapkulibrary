@@ -50,9 +50,22 @@
  */
 - (id) initWithSunday:(BOOL)sundayFirst;
 
- 
+/** Initializes a month view controller to manage a month grid. Sunday will be the left-most day.
+ @param timeZone The time zone for the calendar grid.
+ @param sundayFirst If YES, Sunday will be the left most day in the month grid, otherwise Monday.
+ @return A newly create month view controller.
+ */
+- (id) initWithSunday:(BOOL)sundayFirst timeZone:(NSTimeZone*)timeZone;
+
+/** Initializes a month view controller to manage a month grid. Sunday will be the left-most day.
+ @param timeZone The time zone for the calendar grid.
+ @return A newly create month view controller.
+ */
+- (id) initWithTimeZone:(NSTimeZone *)timeZone;
+
+
 /** Returns the month view managed by the controller object. */
-@property (strong,nonatomic) TKCalendarMonthView *monthView;
+@property (nonatomic,strong) TKCalendarMonthView *monthView;
 
 
 @end

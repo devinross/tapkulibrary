@@ -35,7 +35,8 @@
 
 
 - (void) testEmail{
-        
+    
+	STAssertFalse(nil, @"POCKET");
     STAssertTrue([@"bob@sanders.com" isEmail], @"Expected to be a valid email");
     STAssertTrue([@"ao123sda.b2132Ob@sAND123123dsadrs.c" isEmail], @"Expected to be a valid email");
     

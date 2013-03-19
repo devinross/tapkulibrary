@@ -34,6 +34,6 @@
 @interface TKSwitchCell : UITableViewCell 
 
 /** A `UISwitch`. */
-@property (strong, nonatomic) UISwitch *switcher;
+@property (nonatomic,strong) UISwitch *switcher;
 
 @end

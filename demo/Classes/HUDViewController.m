@@ -77,7 +77,7 @@
 }
 
 
-#pragma mark - View Lifecycle
+#pragma mark View Lifecycle
 - (void) loadView{
 	[super loadView];
 	self.view.backgroundColor = [UIColor colorWithWhite:0.7 alpha:1];
@@ -105,32 +105,32 @@
 
 
 
-#pragma mark - Properties
+#pragma mark Properties
 - (TKProgressBarView *) progressBar{
-	if(_progressBar==nil){
-		_progressBar = [[TKProgressBarView alloc] initWithStyle:TKProgressBarViewStyleShort];
-		_progressBar.center = CGPointMake(self.view.bounds.size.width/2, 220);
-	}
+	if(_progressBar) return _progressBar;
+	
+	_progressBar = [[TKProgressBarView alloc] initWithStyle:TKProgressBarViewStyleShort];
+	_progressBar.center = CGPointMake(self.view.bounds.size.width/2, 220);
 	return _progressBar;
 }
 - (TKProgressBarView *) progressBarAlternative{
-	if(_progressBarAlternative==nil){
-		_progressBarAlternative = [[TKProgressBarView alloc] initWithStyle:TKProgressBarViewStyleLong];
-		_progressBarAlternative.center = CGPointMake(self.view.bounds.size.width/2, 320);
-	}
+	if(_progressBarAlternative) return _progressBarAlternative;
+	
+	_progressBarAlternative = [[TKProgressBarView alloc] initWithStyle:TKProgressBarViewStyleLong];
+	_progressBarAlternative.center = CGPointMake(self.view.bounds.size.width/2, 320);
 	return _progressBarAlternative;
 }
 - (TKProgressAlertView *) alertView{
-	if(_alertView==nil){
-		_alertView = [[TKProgressAlertView alloc] initWithProgressTitle:@"Loading important stuff!"];
-	}
+	if(_alertView) return _alertView;
+	
+	_alertView = [[TKProgressAlertView alloc] initWithProgressTitle:@"Loading important stuff!"];
 	return _alertView;
 }
 - (TKProgressCircleView *) progressCircle{
-	if(_progressCircle==nil){
-		_progressCircle = [[TKProgressCircleView alloc] init];
-		_progressCircle.center = CGPointMake(self.view.bounds.size.width/2, 120);
-	}
+	if(_progressCircle) return _progressCircle;
+
+	_progressCircle = [[TKProgressCircleView alloc] init];
+	_progressCircle.center = CGPointMake(self.view.bounds.size.width/2, 120);
 	return _progressCircle;
 }
 

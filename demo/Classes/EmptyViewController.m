@@ -33,7 +33,7 @@
 
 @implementation EmptyViewController
 
-#pragma mark - View Lifecycle
+#pragma mark View Lifecycle
 - (void) loadView{
 	[super loadView];
 	self.title = @"Empty";

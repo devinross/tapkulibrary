@@ -59,11 +59,11 @@
 	
 	for(NSString *dataKey in [dataKeys allKeys]){
 		
-		id value = [dataKeys objectForKey:dataKey];
+		id value = dataKeys[dataKey];
 		
 		if([value isKindOfClass:[NSString class]]){
 			
-			id obj = [dictionary objectForKey:[dataKeys objectForKey:dataKey]];
+			id obj = dictionary[dataKeys[dataKey]];
 			if(VALID_OBJECT(obj)) [self setValue:obj forKey:dataKey];
 			
 		}else if([value isKindOfClass:[NSArray class]]){
@@ -74,7 +74,7 @@
 			if(VALID_OBJECT(format) && VALID_OBJECT(key)){
 				if(!formatter) formatter = [[NSDateFormatter alloc] init];
 				[formatter setDateFormat:format];
-				NSDate *date = [formatter dateFromString:[dictionary objectForKey:key]];
+				NSDate *date = [formatter dateFromString:dictionary[key]];
 				[self setValue:date forKey:dataKey];
 			}
 			
@@ -86,7 +86,7 @@
 
 
 
-#pragma mark - PROCESS JSON IN THE BACKGROUND
+#pragma mark Process JSON in Background
 
 - (void) processJSONDataInBackground:(NSData *)data withCallbackSelector:(SEL)callback{
 	

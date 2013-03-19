@@ -41,7 +41,26 @@
 #import "MoreCellsViewController.h"
 #import "AlertsViewController.h"
 #import "ImageCenterViewController.h"
-#import "NetworkRequestViewController.h"
+#import "NetworkRequestProgressViewController.h"
+#import "CalendarDayViewController.h"
+
+
+@interface UINavigationController (Rotation_IOS6)
+@end
+
+@implementation UINavigationController (Rotation_IOS6)
+
+- (BOOL) shouldAutorotate{
+    return [[self.viewControllers lastObject] shouldAutorotate];
+}
+- (NSUInteger) supportedInterfaceOrientations{
+    return [[self.viewControllers lastObject] supportedInterfaceOrientations];
+}
+- (UIInterfaceOrientation) preferredInterfaceOrientationForPresentation{
+    return [[self.viewControllers lastObject] preferredInterfaceOrientationForPresentation];
+}
+
+@end
 
 @implementation RootViewController
 
@@ -50,37 +69,32 @@
 	self.title = @"Tapku Library";
 	return self;
 }
-
-
-#pragma mark - View Lifecycle
-- (void) viewDidLoad{
-	[super viewDidLoad];
-
-	NSArray *rows;
-	NSMutableArray *tmp = [NSMutableArray array];
-	
-	rows = @[@"Coverflow",@"Month Grid Calendar"];
-	[tmp addObject:@{@"rows" : rows, @"title" : @"Views"}];
-	
-	rows = @[@"Empty Sign",@"Loading HUD",@"Alerts"];
-	[tmp addObject:@{@"rows" : rows, @"title" : @"UI Elements"}];
-	
-	rows = @[@"Label Cells",@"More Cells"];
-	[tmp addObject:@{@"rows" : rows, @"title" : @"Table View Cells"}];
-	
-	rows = @[@"Image Cache",@"HTTP Request"];
-	[tmp addObject:@{@"rows" : rows, @"title" : @"Network"}];
-	
-	self.data = tmp;
+- (NSUInteger) supportedInterfaceOrientations{
+	return [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad ? UIInterfaceOrientationMaskAll : UIInterfaceOrientationMaskPortrait;
+}
+- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+	return [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad ? YES : UIInterfaceOrientationIsPortrait(interfaceOrientation) ;
 }
 
 
-#pragma mark - UITableView Delegate & DataSource
+#pragma mark View Lifecycle
+- (void) viewDidLoad{
+	[super viewDidLoad];
+
+	self.data = @[
+  @{@"rows" : @[@"Coverflow",@"Month Grid Calendar",@"Day Calendar"], @"title" : @"Views"},
+  @{@"rows" : @[@"Empty Sign",@"Loading HUD",@"Alerts"], @"title" : @"UI Elements"},
+  @{@"rows" : @[@"Label Cells",@"More Cells"], @"title" : @"Table View Cells"},
+  @{@"rows" : @[@"Image Cache",@"HTTP Request Progress"], @"title" : @"Network"}];
+}
+
+
+#pragma mark UITableView Delegate & DataSource
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
     return [self.data count];
 }
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[[self.data objectAtIndex:section] objectForKey:@"rows"] count];
+	return [self.data[section][@"rows"] count];
 }
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
@@ -90,7 +104,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-	cell.textLabel.text = [[[self.data objectAtIndex:indexPath.section] objectForKey:@"rows"] objectAtIndex:indexPath.row];
+	cell.textLabel.text = self.data[indexPath.section][@"rows"][indexPath.row];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
     return cell;
@@ -101,7 +115,7 @@
 	UIViewController *vc;
 	int s = indexPath.section, r = indexPath.row;
 	
-	if(s==0 && r < 1){
+	if(s==0 && r == 0){
 		vc = [[CoverflowViewController alloc] init];
 		
 		if(self.detailViewController)
@@ -114,6 +128,9 @@
 		return;
 	}else if(s==0 && r==1)
 		vc = [[CalendarMonthViewController alloc] initWithSunday:YES];
+	
+	else if(s==0 && r==2)
+		vc = [[CalendarDayViewController alloc] init];
 	
 	else if(s==1 && r==0)
 		vc = [[EmptyViewController alloc] init];
@@ -130,20 +147,20 @@
 	else if(s==3 && r==0)
 		vc = [[ImageCenterViewController alloc] init];
 	else
-		vc = [[NetworkRequestViewController alloc] init];
+		vc = [[NetworkRequestProgressViewController alloc] init];
 	
 	
-	if(self.detailViewController && !(s==0 && r==1))
+	if(self.detailViewController && !(s==0))
 		[self.detailViewController setupWithMainController:vc];
 	else
 		[self.navigationController pushViewController:vc animated:YES];
 	
 }
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-	return [[self.data objectAtIndex:section] objectForKey:@"title"];
+	return self.data[section][@"title"];
 }
 - (NSString *) tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section{
-	return [[self.data objectAtIndex:section] objectForKey:@"footer"];
+	return self.data[section][@"footer"];
 }
 
 @end

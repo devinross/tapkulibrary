@@ -34,28 +34,24 @@
 #import "TKHTTPRequest.h"
 #import "TKGlobal.h"
 
-#pragma mark -
+#pragma mark - TKImageRequest
 @interface TKImageRequest : TKHTTPRequest
-@property (strong,nonatomic) NSString *key;
+@property (nonatomic,strong) NSString *key;
 @end
 
 @implementation TKImageRequest
 @end
 
 
-
-@interface TKImageCache (private)
-
-- (NSString *) _filePathWithKey:(NSString *)key;
-- (BOOL) _imageExistsOnDiskWithKey:(NSString *)key;
-- (UIImage*) _imageFromDiskWithKey:(NSString*)key;
-- (void) _readImageFromDiskWithKey:(NSString*)key tag:(NSUInteger)tag;
-- (void) _sendRequestForURL:(NSURL*)url key:(NSString*)key tag:(NSUInteger)tag;
-
+#pragma mark - TKImageCache
+@interface TKImageCache (){
+	NSString *_cacheDirectoryPath;
+	NSMutableDictionary *_diskKeys;
+	NSMutableDictionary *_requestKeys;
+	dispatch_queue_t cache_queue;
+}
 @end
 
-
-#pragma mark -
 @implementation TKImageCache
 
 - (id) init{
@@ -374,13 +370,12 @@
 	
 }
 - (NSString *) cacheDirectoryPath{
-	
-	if(_cacheDirectoryPath==nil){
-		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-		NSString *documentsDirectory = [paths objectAtIndex:0];
-		NSString *str = [documentsDirectory stringByAppendingPathComponent:_cacheDirectoryName];
-		_cacheDirectoryPath = [str copy];
-	}
+	if(_cacheDirectoryPath) return _cacheDirectoryPath;
+
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = paths[0];
+	NSString *str = [documentsDirectory stringByAppendingPathComponent:_cacheDirectoryName];
+	_cacheDirectoryPath = [str copy];
 	return _cacheDirectoryPath;
 }
 

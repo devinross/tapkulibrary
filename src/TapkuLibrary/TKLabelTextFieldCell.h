@@ -36,6 +36,6 @@
 @interface TKLabelTextFieldCell : TKLabelCell<UITextFieldDelegate>
 
 /** A `UITextField` field. */
-@property (strong, nonatomic) UITextField *field;
+@property (nonatomic,strong) UITextField *field;
 
 @end

@@ -33,11 +33,12 @@
 #import "RootViewController.h"
 #import "DetailViewController.h"
 
+#pragma mark - AppDelegate
 @implementation AppDelegate
 
 
-#pragma mark - Application lifecycle
-- (BOOL) application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+#pragma mark Application lifecycle
+- (void) application:(UIApplication *)application commonInitializationLaunching:(NSDictionary *)launchOptions{
 	[super application:application didFinishLaunchingWithOptions:launchOptions];
 
 	self.root = [[RootViewController alloc] initWithStyle:UITableViewStyleGrouped];
@@ -59,43 +60,17 @@
 		self.window.rootViewController = self.navigationController;
 	}
 	
-	
-	
 
-	
-	
-	
-	
-	
-	
-	return YES;
 }
 - (void) applicationWillEnterForeground:(UIApplication *)application {
 	[super applicationWillEnterForeground:application];
-	
+	// don't forget to call the super to call applicationDidStartup:
 }
 - (void) applicationDidStartup:(UIApplication *)application{
 	// called by didFinishLaunching.. & willEnterForeground
 	
 }
 
-- (void) applicationDidEnterBackground:(UIApplication *)application {
-	
-}
-- (void) applicationWillTerminate:(UIApplication *)application {
-	
-}
-
-- (void) applicationWillResignActive:(UIApplication *)application {
-	
-}
-- (void) applicationDidBecomeActive:(UIApplication *)application {
-	
-}
-
-#pragma mark - Memory management
-- (void) applicationDidReceiveMemoryWarning:(UIApplication *)application {
-}
 
 
 @end

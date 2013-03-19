@@ -1,5 +1,5 @@
 //
-//  ODCalendarDayEventView.m
+//  TKCalendarDayEventView.m
 //  Created by Devin Ross on 7/28/09.
 //
 /*
@@ -28,155 +28,115 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
+
 #import "TKCalendarDayEventView.h"
-
-
-#define HORIZONTAL_OFFSET 4.0
-#define VERTICAL_OFFSET 5.0
+#import "UIColor+TKCategory.h"
 
 #define FONT_SIZE 12.0
 
+#pragma mark - TKCalendarDayEventView
 @implementation TKCalendarDayEventView
 
-@synthesize id=_id;
-@synthesize startDate=_startDate;
-@synthesize endDate=_endDate;
-@synthesize title=_title;
-@synthesize location=_location;
-@synthesize balloonColorTop, balloonColorBottom, textColor; 
-
-// The designated initializer. Override to perform setup that is required before the view is loaded.
-// Only when xibless (interface buildder)
-- (id)initWithFrame:(CGRect)frame {
-    if(!(self=[super initWithFrame:frame])) return nil;
-    [self setupCustomInitialisation];
-    return self;
-}
-
-// The designated initializer. Override to perform setup that is required before the view is loaded.
-// Only when using xib (interface buildder)
-- (id)initWithCoder:(NSCoder *)decoder {
-    if(!(self=[super initWithCoder:decoder])) return nil;
-    [self setupCustomInitialisation];
-	return self;
-}
-
-- (void)setupCustomInitialisation
-{
-	// Initialization code
-	self.id = nil;
-	self.startDate = nil;
-	self.endDate = nil;
-	self.title = nil;
-	self.location = nil;
-	
-	twoFingerTapIsPossible = FALSE;
-	self.balloonColorTop = [UIColor purpleColor];
-	self.balloonColorBottom = nil;
-	self.textColor = [UIColor whiteColor];
-	self.alpha = 0.8;
-	CALayer *layer = [self layer];
-	layer.masksToBounds = YES;
-	[layer setCornerRadius:5.0];
-	// You can even add a border
-	[layer setBorderWidth:0.5];
-	[layer setBorderColor:[[UIColor lightGrayColor] CGColor]];
-}
-
-+ (id)eventViewWithFrame:(CGRect)frame id:(NSNumber *)id startDate:(NSDate *)startDate endDate:(NSDate *)endDate title:(NSString *)title location:(NSString *)location;
-{
-	TKCalendarDayEventView *event = [[TKCalendarDayEventView alloc]initWithFrame:frame];
-	event.id = id;
-	event.startDate = startDate;
-	event.endDate = endDate;
-	event.title = title;
-	event.location = location;
-	
+#pragma mark Init & Friends
++ (TKCalendarDayEventView*) eventView{
+	TKCalendarDayEventView *event = [[TKCalendarDayEventView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
 	return event;
 }
 
-- (void)drawRect:(CGRect)rect {
-	// Retrieve the graphics context 
-	CGContextRef context = UIGraphicsGetCurrentContext();
++ (TKCalendarDayEventView*) eventViewWithIdentifier:(NSNumber *)identifier startDate:(NSDate *)startDate endDate:(NSDate *)endDate title:(NSString *)title location:(NSString *)location{
 	
-	// Save the context state 
-	CGContextSaveGState(context);	
+	TKCalendarDayEventView *event = [[TKCalendarDayEventView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+	event.identifier = identifier;
+	event.startDate = startDate;
+	event.endDate = endDate;
+	event.titleLabel.text = title;
+	event.locationLabel.text = location;
+	return event;
+}
+- (id) initWithFrame:(CGRect)frame {
+    if(!(self=[super initWithFrame:frame])) return nil;
+    [self _setupView];
+    return self;
+}
+- (id) initWithCoder:(NSCoder *)decoder {
+    if(!(self=[super initWithCoder:decoder])) return nil;
+    [self _setupView];
+	return self;
+}
+- (void) _setupView{
 	
-	//if the developer really want a standard fill color
-	if (balloonColorTop == balloonColorBottom) {
-		self.backgroundColor = balloonColorTop;
-	}
-	//if we have 2 different colors, we draw a gradient
-	else {		
-		UIColor *lowerColor = nil;
-		//if there is no bottom color set, we get a darker version of the top one
-		if (!balloonColorBottom) {
-			const CGFloat *components = CGColorGetComponents([balloonColorTop CGColor]);
-			lowerColor = [UIColor colorWithRed:components[0]-0.25f green:components[1]-0.25f blue:components[2]-0.25f alpha:components[3]];
-		}
-		else {
-			lowerColor = balloonColorBottom;
-		}
-		//create a colorspace and linear gradient from the colors
-		CFArrayRef colors = (__bridge CFArrayRef)[NSArray arrayWithObjects:(id)[balloonColorTop CGColor], (id)[lowerColor CGColor], nil];		
-		CGColorSpaceRef myColorspace = CGColorSpaceCreateDeviceRGB();
-		CGGradientRef myGradient = CGGradientCreateWithColors(myColorspace, colors, NULL);
-		//draw the gradient
-		CGContextDrawLinearGradient(context, myGradient, CGPointMake(0.0f,0.0f), CGPointMake(0.0f,self.bounds.size.height), 0);
-		CFRelease(myGradient);
-		CFRelease(myColorspace);		
-	}
+	self.alpha = 1;
+
 	
-	// Set shadow
-	CGContextSetShadowWithColor(context,  CGSizeMake(0.0, 1.0), 0.7, [[UIColor blackColor]CGColor]);
+	CGRect r = CGRectInset(self.bounds, 5, 22);
+	r.size.height = 14;
+	r.origin.y = 5;
 	
-	// Set text color
-	[textColor set];
+	self.titleLabel = [[UILabel alloc] initWithFrame:r];
+	self.titleLabel.numberOfLines = 2;
+	self.titleLabel.backgroundColor = [UIColor clearColor];
+	self.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	self.titleLabel.textColor = [UIColor colorWithHex:0x194fa5];
+	self.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+	self.titleLabel.shadowColor = [UIColor colorWithWhite:1 alpha:0.6];
+	self.titleLabel.shadowOffset = CGSizeMake(0, 1);
+	[self addSubview:self.titleLabel];
+
 	
-	CGFloat availableHeight = self.bounds.size.height - VERTICAL_OFFSET - VERTICAL_OFFSET;
+	r.origin.y = 20;
+	r.size.height = 14*2;
 	
-	CGRect titleRect = CGRectMake(self.bounds.origin.x + HORIZONTAL_OFFSET, 
-								  self.bounds.origin.y + VERTICAL_OFFSET, 
-								  self.bounds.size.width - 2 * HORIZONTAL_OFFSET, 
-								  availableHeight);
-	CGSize titleSize = CGSizeZero;
+	self.locationLabel = [[UILabel alloc] initWithFrame:r];
+	self.locationLabel.numberOfLines = 2;
+	self.locationLabel.backgroundColor = [UIColor clearColor];
+	self.locationLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	self.locationLabel.textColor = [UIColor colorWithHex:0x194fa5];
+	self.locationLabel.font = [UIFont systemFontOfSize:12];
+	self.locationLabel.shadowColor = [UIColor colorWithWhite:1 alpha:0.6];
+	self.locationLabel.shadowOffset = CGSizeMake(0, 1);
+	[self addSubview:self.locationLabel];
 	
-	CGRect locationRect = CGRectMake(self.bounds.origin.x + HORIZONTAL_OFFSET, 
-								  self.bounds.origin.y + VERTICAL_OFFSET, 
-								  self.bounds.size.width - 2 * HORIZONTAL_OFFSET, 
-								  availableHeight);
+	self.backgroundColor = [UIColor colorWithHex:0x7ca6ec alpha:0.8];
 	
-    // Drawing code
-	// Draw both title and location
-	if (self.title) {
-		
-		titleSize = [self.title drawInRect:CGRectIntegral(titleRect) 
-								  withFont:[UIFont boldSystemFontOfSize:FONT_SIZE] 
-							 lineBreakMode:(availableHeight < VERTICAL_DIFF ? NSLineBreakByTruncatingTail : NSLineBreakByWordWrapping)
-								 alignment:NSTextAlignmentLeft];
-	}
-	if (titleSize.height + FONT_SIZE < availableHeight) {
-		if (self.location) {
-			locationRect.origin.y += titleSize.height;
-			locationRect.size.height -= titleSize.height;
-			UILineBreakMode breaking = (locationRect.size.height < FONT_SIZE + VERTICAL_OFFSET ? NSLineBreakByTruncatingTail : NSLineBreakByWordWrapping);
-			[self.location drawInRect:CGRectIntegral(locationRect) 
-						  withFont:[UIFont systemFontOfSize:FONT_SIZE] 
-					 lineBreakMode:breaking
-						 alignment:NSTextAlignmentLeft];
-			
-		}
-	}		
-	// Restore the context state
-	CGContextRestoreGState(context);
+	self.layer.cornerRadius = 5.0;
+	self.layer.borderColor = [UIColor colorWithHex:0x6591db alpha:0.8].CGColor;
+	self.layer.borderWidth = 1;
 }
 
+- (void) layoutSubviews{
+	[super layoutSubviews];
+	
+	
+	CGFloat h = self.frame.size.height;
+	
+	if(h < 75){
+		self.titleLabel.frame = CGRectInset(self.bounds, 5, 5);
+		self.locationLabel.hidden = YES;
+		return;
+	}
+		
+	
+	CGFloat hh = h > 200 ? 14 * 2 : 14;
+	CGRect r = CGRectInset(self.bounds, 5, 5);
+	r.size.height = hh;
+	
+	r = CGRectIntersection(r, self.bounds);
+	
+	
+	self.titleLabel.frame = r;
+	[self.titleLabel sizeToFit];
+	
+	hh = h > 200 ? (FONT_SIZE+2.0) * 2 : FONT_SIZE+2;
+	r = CGRectInset(self.bounds, 5, 5);
+	r.size.height = hh;
+	r.origin.y += self.titleLabel.frame.size.height;
+	r = CGRectIntersection(r, self.bounds);
 
+	self.locationLabel.frame = r;
+	self.locationLabel.hidden = NO;
+	[self.locationLabel sizeToFit];
 
-
-
-
-
+}
 
 
 @end

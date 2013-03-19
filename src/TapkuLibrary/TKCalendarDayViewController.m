@@ -1,5 +1,5 @@
 //
-//  ODCalendarDayViewController.m
+//  TKCalendarDayViewController.m
 //  Created by Devin Ross on 7/28/09.
 /*
  
@@ -30,63 +30,36 @@
 
 #import "TKCalendarDayViewController.h"
 #import "TKCalendarDayEventView.h"
+#import "TKCalendarDayView.h"
 
-
+#pragma mark - TKCalendarDayViewController
 @implementation TKCalendarDayViewController
 
-- (void) didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+#pragma mark View Lifecycle
+- (void) loadView{
+	[super loadView];
 	
-	// Release any cached data, images, etc that aren't in use.
+	self.dayView = [[TKCalendarDayView alloc] initWithFrame:self.view.bounds];
+	self.dayView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	self.dayView.delegate = self;
+	self.dayView.dataSource = self;
+	[self.view addSubview:self.dayView];
 }
 - (void) viewDidUnload {
-	self.calendarDayTimelineView = nil;
-}
-- (void) dealloc {
-	self.calendarDayTimelineView = nil;
+	self.dayView = nil;
 }
 
+#pragma mark TKCalendarDayViewDelegate
+- (NSArray *) calendarDayTimelineView:(TKCalendarDayView*)calendarDayTimeline eventsForDate:(NSDate *)eventDate{
+	return [NSArray array];
+}
+- (void) calendarDayTimelineView:(TKCalendarDayView*)calendarDayTimeline eventViewWasSelected:(TKCalendarDayEventView *)eventView{
 
+}
 
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void) calendarDayTimelineView:(TKCalendarDayView*)calendarDayTimeline didMoveToDate:(NSDate*)eventDate{
 	
-	[self.view addSubview:self.calendarDayTimelineView];
 }
-
-
-- (NSArray *)calendarDayTimelineView:(TKCalendarDayTimelineView*)calendarDayTimeline eventsForDate:(NSDate *)eventDate{
-	TKCalendarDayEventView *eventViewFirst = [TKCalendarDayEventView eventViewWithFrame:CGRectZero
-																		 id:nil 
-																  startDate:[[NSDate date]addTimeInterval:60 * 60 * 2] 
-																	endDate:[[NSDate date]addTimeInterval:60 * 60 * 24]
-																	  title:@"First"
-																   location:@"Test Location"];
-	
-	TKCalendarDayEventView *eventViewSecond = [TKCalendarDayEventView eventViewWithFrame:CGRectZero
-																				  id:nil
-															 			   startDate:[NSDate date] 
-																			 endDate:[NSDate date]
-																			   title:@"Second ultra mega hypra long text to test again with more"
-																		    location:nil];
-	
-	return [NSArray arrayWithObjects:eventViewFirst, eventViewSecond, nil];
-}
-- (void)calendarDayTimelineView:(TKCalendarDayTimelineView*)calendarDayTimeline eventViewWasSelected:(TKCalendarDayEventView *)eventView{
-	NSLog(@"CalendarDayTimelineView: EventViewWasSelected");
-}
-
-
-- (TKCalendarDayTimelineView *) calendarDayTimelineView{
-	if (!_calendarDayTimelineView) {
-		_calendarDayTimelineView = [[TKCalendarDayTimelineView alloc]initWithFrame:self.view.bounds];
-		_calendarDayTimelineView.delegate = self;
-	}
-	return _calendarDayTimelineView;
-}
-
 
 
 @end

@@ -10,12 +10,12 @@
 
 @interface NSDate (CalendarGrid)
 
-- (NSDate*) firstOfMonth;
-- (NSDate*) nextMonth;
-- (NSDate*) previousMonth;
+- (NSDate*) firstOfMonthWithTimeZone:(NSTimeZone*)timeZone;
+- (NSDate*) nextMonthWithTimeZone:(NSTimeZone*)timeZone;
+- (NSDate*) previousMonthWithTimeZone:(NSTimeZone*)timeZone;
 
-- (NSDate*) lastOfMonthDate;
-+ (NSDate*) lastofMonthDate;
-+ (NSDate*) lastOfCurrentMonth;
+- (NSDate*) lastOfMonthDateWithTimeZone:(NSTimeZone*)timeZone;
++ (NSDate*) lastofMonthDateWithTimeZone:(NSTimeZone*)timeZone;
++ (NSDate*) lastOfCurrentMonthWithTimeZone:(NSTimeZone*)timeZone;
 
 @end

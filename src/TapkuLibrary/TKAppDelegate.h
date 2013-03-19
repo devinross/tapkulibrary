@@ -37,9 +37,19 @@
 /** This class allocates a TKWindow instance and provides a convience method for application launching. */
 @interface TKAppDelegate : NSObject <UIApplicationDelegate> 
 
-// For subclassing, default implentation does nothing.
-// These methods are called upon open & closing respectively regardless.
-// Good for placing instructions needed regardless of multi-tasking
+
+/** This is a convience method for setup of the initial app state. 
+ Apple recommends placing initialization of 
+ application:willFinishLaunchingWithOptions (instead of didFinish) 
+ for iOS 6 despite its absence in previous versions of iOS.
+ Subclassing the method will take care of that recommendation. The 
+ UIWindow for the application is allocated and setup just before 
+ this method is called. The default implementation does nothing.
+ @param application The application instance.
+ @param launchOption The launch options.
+ */
+- (void) application:(UIApplication *)application commonInitializationLaunching:(NSDictionary *)launchOptions;
+
 
 
 /** This is a convience method for placing any functionality that might be called upon initial launch of the application and any subsequent relaunch from a background state. Default implementation does nothing.

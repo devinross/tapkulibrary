@@ -43,6 +43,6 @@
 ///----------------------------
 
 /** A `UILabel` that will be a title for the core view. */
-@property (strong,nonatomic) UILabel *label;
+@property (nonatomic,strong) UILabel *label;
 
 @end

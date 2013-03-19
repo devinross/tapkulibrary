@@ -56,21 +56,21 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
     }
 }
 
-#pragma mark -
-@interface TKHTTPRequest ()
+#pragma mark - TKHTTPRequest
+@interface TKHTTPRequest () {
+	
+	NSInteger _totalExpectedImageSize,_receivedDataBytes;
+	
+#if NS_BLOCKS_AVAILABLE
+	TKBasicBlock startedBlock;
+	TKBasicBlock completionBlock;
+	TKBasicBlock failureBlock;
+#endif
+	
+}
 
-- (void) _completeRequest;
-- (void) _requestFinished;
-
-- (BOOL) removeTemporaryFile;
-- (BOOL) removeDesitinationFile;
-+ (BOOL) removeFileAtPath:(NSString *)path error:(NSError **)err;
-
-- (void) _decreaseNetworkActivity;
-- (void) _increaseNetworkActivity;
-
-@property (assign, nonatomic) TKOperationState state;
-@property (readwrite, nonatomic, assign, getter = isCancelled) BOOL cancelled;
+@property (nonatomic,assign) TKOperationState state;
+@property (nonatomic,readwrite,assign,getter=isCancelled) BOOL cancelled;
 
 @property (nonatomic,strong) NSURLConnection *connection;
 @property (nonatomic,strong) NSMutableData *data;
@@ -79,22 +79,10 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 @end
 
 
-#pragma mark - 
-
 @implementation TKHTTPRequest
 
-@synthesize URL,tag,showNetworkActivity;
-@synthesize temporaryFileDownloadPath,downloadDestinationPath;
-@synthesize didStartSelector,didFinishSelector,didFailSelector,delegate;
-@synthesize progressDelegate;
-@synthesize statusCode,responseHeaders,error;
-@synthesize cancelled=_cancelled,state = _state;
-@synthesize URLRequest;
-@synthesize connection,data,fileHandler;
 
-
-
-#pragma mark - Threading
+#pragma mark Threading
 + (void) networkRequestThreadEntryPoint:(id)__unused object {
     do {
 		@autoreleasepool{
@@ -115,7 +103,7 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 }
 
 
-#pragma mark - Init & Dealloc
+#pragma mark Init & Dealloc
 + (TKHTTPRequest*) requestWithURL:(NSURL*)URL{
 	return [[self alloc] initWithURL:URL];
 }
@@ -130,7 +118,6 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 	
 	return self;
 }
-
 + (TKHTTPRequest*) requestWithURLRequest:(NSURLRequest*)request{
 	return [[self alloc] initWithURLRequest:request];
 }
@@ -144,18 +131,16 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 	
 	return self;
 }
-
 - (void) dealloc{
 	if(self.connection) [self.connection cancel];
 }
-
 
 - (void) startAsynchronous{
 	[[TKNetworkQueue sharedNetworkQueue] addOperation:self];
 }
 
 
-#pragma mark -
+#pragma mark Start
 - (void) start{
 	
 	if(![self isReady]) return;
@@ -184,19 +169,13 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 	[self performSelectorOnMainThread:@selector(_requestStarted) withObject:nil waitUntilDone:[NSThread isMainThread]];
 }
 - (void) _requestStarted{
-	if(self.delegate && [self.delegate respondsToSelector:didStartSelector]) 
+	if(self.delegate && [self.delegate respondsToSelector:self.didStartSelector])
 		[self.delegate performSelector:self.didStartSelector withObject:self];
 	
 #if NS_BLOCKS_AVAILABLE
 	if(startedBlock) startedBlock();
 #endif
 }
-
-
-
-
-
-
 
 
 - (void) _completeRequest{
@@ -247,7 +226,6 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 
 	
 }
-
 - (void) _requestFinished{
 
 	if(self.delegate && [self.delegate respondsToSelector:self.didFinishSelector]) 
@@ -258,9 +236,8 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 #endif
 	
 }
-
 - (void) _requestFailed{
-	if(self.delegate && [self.delegate respondsToSelector:didFailSelector]) [self.delegate performSelector:didFailSelector withObject:self];
+	if(self.delegate && [self.delegate respondsToSelector:self.didFailSelector]) [self.delegate performSelector:self.didFailSelector withObject:self];
 #if NS_BLOCKS_AVAILABLE
 	if(failureBlock) failureBlock();
 #endif
@@ -274,7 +251,7 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 
 
 
-#pragma mark - Delegate Methods for NSURLConnection
+#pragma mark Delegate Methods for NSURLConnection
 - (void) connection:(NSURLConnection*)connection didFailWithError:(NSError*)e{
 	
 
@@ -368,7 +345,7 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 
 
 
-#pragma mark - Blocks
+#pragma mark Blocks
 #if NS_BLOCKS_AVAILABLE
 - (void) setStartedBlock:(TKBasicBlock)aStartedBlock{
 	startedBlock = [aStartedBlock copy];
@@ -383,7 +360,7 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 
 
 
-#pragma mark -
+
 #pragma mark Properties
 - (BOOL) isConcurrent{
 	return YES;
@@ -472,7 +449,6 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 }
 
 
-#pragma mark -
 #pragma mark Network Activity
 + (BOOL) isNetworkInUse{
 	return runningRequestCount > 0;
@@ -486,8 +462,6 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 #endif
 }
-
-
 
 + (void) hideNetworkActivityIndicatorIfNeeeded{
 #if TARGET_OS_IPHONE
@@ -531,6 +505,7 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 }
 
 
+#pragma mark File Removal
 + (BOOL) removeFileAtPath:(NSString *)path error:(NSError **)err{
 	NSFileManager *fileManager = [[NSFileManager alloc] init];
 	

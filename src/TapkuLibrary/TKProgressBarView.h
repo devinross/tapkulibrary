@@ -51,7 +51,7 @@ typedef enum {
 - (id) initWithStyle:(TKProgressBarViewStyle)style;
 
 /** The progress. */
-@property (assign,nonatomic) float progress; // a value between 0.0 and 1.0
+@property (nonatomic,assign) float progress; // a value between 0.0 and 1.0
 
 
 /**

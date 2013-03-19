@@ -31,22 +31,19 @@
 
 #import "DetailViewController.h"
 
-
-
+#pragma mark - DetailViewController
 @implementation DetailViewController
-
 
 - (void) viewDidLoad {
     [super viewDidLoad];
 
 	self.view.backgroundColor = [UIColor whiteColor];
 	
-    self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
+    self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMakeWithPoint(CGPointZero, self.view.bounds.size.width, 44)];
 	self.toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	self.toolbar.items = [NSArray array];
 	[self.view addSubview:self.toolbar];
 }
-
 
 - (void) setupWithMainController:(UIViewController*)controller{
 	[self.mainController.view removeFromSuperview];
@@ -64,7 +61,7 @@
 
 	if(self.currentPopoverController!=nil){
 		
-		UIBarButtonItem *item = [[self.toolbar items] objectAtIndex:0];
+		UIBarButtonItem *item = [self.toolbar items][0];
 		
 		
 		NSMutableArray *items = [NSMutableArray array];
@@ -80,8 +77,6 @@
 		[self.toolbar setItems:self.mainController.toolbarItems];
 	}
 	
-	
-	
 }
 - (void) splitViewController: (UISplitViewController*)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem*)barButtonItem forPopoverController: (UIPopoverController*)pc {
     
@@ -94,8 +89,6 @@
 }
 - (void) splitViewController: (UISplitViewController*)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem {
 	
-	
-
 	NSMutableArray *items = [[self.toolbar items] mutableCopy];
     [items removeObjectAtIndex:0];
     [self.toolbar setItems:items animated:YES];
@@ -103,7 +96,7 @@
 
 }
 
-
+#pragma mark TableView Delegate & Data Source
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
     return 0;
 }
@@ -134,12 +127,8 @@
 	 */
 }
 
-
-
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
 
-
 @end
-

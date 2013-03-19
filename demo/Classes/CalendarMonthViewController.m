@@ -31,19 +31,27 @@
 
 #import "CalendarMonthViewController.h"
 
-
+#pragma mark - CalendarMonthViewController
 @implementation CalendarMonthViewController
 
-#pragma mark - View Lifecycle
+- (NSUInteger) supportedInterfaceOrientations{
+	return  UIInterfaceOrientationMaskPortrait;
+}
+- (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+	return UIInterfaceOrientationIsPortrait(interfaceOrientation);
+}
+
+
+#pragma mark View Lifecycle
 - (void) viewDidLoad{
 	[super viewDidLoad];
-	[self.monthView selectDate:[NSDate month]];
-
+	[self.monthView selectDate:[NSDate date]];
+	//[self.monthView selectDate:[NSDate month]];
 }
 
 
 
-#pragma mark - MonthView Delegate & DataSource
+#pragma mark MonthView Delegate & DataSource
 - (NSArray*) calendarMonthView:(TKCalendarMonthView*)monthView marksFromDate:(NSDate*)startDate toDate:(NSDate*)lastDate{
 	[self generateRandomDataForStartDate:startDate endDate:lastDate];
 	return self.dataArray;
@@ -51,8 +59,8 @@
 - (void) calendarMonthView:(TKCalendarMonthView*)monthView didSelectDate:(NSDate*)date{
 	
 	// CHANGE THE DATE TO YOUR TIMEZONE
-	TKDateInformation info = [date dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-	NSDate *myTimeZoneDay = [NSDate dateFromDateInformation:info timeZone:[NSTimeZone systemTimeZone]];
+	NSDateComponents *info = [date dateComponentsWithTimeZone:monthView.timeZone];
+	NSDate *myTimeZoneDay = [NSDate dateWithDateComponents:info];
 	
 	NSLog(@"Date Selected: %@",myTimeZoneDay);
 	
@@ -64,13 +72,12 @@
 }
 
 
-#pragma mark - UITableView Delegate & DataSource
+#pragma mark UITableView Delegate & DataSource
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
 	return 1;
-	
 }
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {	
-	NSArray *ar = [self.dataDictionary objectForKey:[self.monthView dateSelected]];
+	NSArray *ar = self.dataDictionary[[self.monthView dateSelected]];
 	if(ar == nil) return 0;
 	return [ar count];
 }
@@ -82,8 +89,8 @@
     
 	
     
-	NSArray *ar = [self.dataDictionary objectForKey:[self.monthView dateSelected]];
-	cell.textLabel.text = [ar objectAtIndex:indexPath.row];
+	NSArray *ar = self.dataDictionary[[self.monthView dateSelected]];
+	cell.textLabel.text = ar[indexPath.row];
 	
     return cell;
 	
@@ -106,20 +113,20 @@
 		
 		int r = arc4random();
 		if(r % 3==1){
-			[self.dataDictionary setObject:[NSArray arrayWithObjects:@"Item one",@"Item two",nil] forKey:d];
-			[self.dataArray addObject:[NSNumber numberWithBool:YES]];
+			[self.dataDictionary setObject:@[@"Item one",@"Item two"] forKey:d];
+			[self.dataArray addObject:@YES];
 			
 		}else if(r%4==1){
-			[self.dataDictionary setObject:[NSArray arrayWithObjects:@"Item one",nil] forKey:d];
-			[self.dataArray addObject:[NSNumber numberWithBool:YES]];
+			[self.dataDictionary setObject:@[@"Item one"] forKey:d];
+			[self.dataArray addObject:@YES];
 			
 		}else
-			[self.dataArray addObject:[NSNumber numberWithBool:NO]];
+			[self.dataArray addObject:@NO];
 		
 		
-		TKDateInformation info = [d dateInformationWithTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+		NSDateComponents *info = [d dateComponentsWithTimeZone:self.monthView.timeZone];
 		info.day++;
-		d = [NSDate dateFromDateInformation:info timeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+		d = [NSDate dateWithDateComponents:info];
 		if([d compare:end]==NSOrderedDescending) break;
 	}
 	

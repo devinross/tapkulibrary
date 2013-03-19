@@ -34,7 +34,7 @@
 
 @class TKCoverflowCoverView,TKCoverflowView,TKGradientView;
 
-#pragma mark -
+#pragma mark - TKCoverflowViewDataSource
 /** The data source of a `TKCoverflowView` object must adopt the `TKCoverflowViewDataSource` protocol. */
 @protocol TKCoverflowViewDataSource <NSObject>
 
@@ -53,7 +53,7 @@
 
 @end
 
-#pragma mark -
+#pragma mark - TKCoverflowViewDelegate
 /** The delegate of a `TKCoverflowView` object must adopt the `TKCoverflowViewDelegate` protocol. */
 @protocol TKCoverflowViewDelegate <NSObject>
 @optional
@@ -75,7 +75,7 @@
 
 
 
-#pragma mark -
+#pragma mark - TKCoverflowView
 /**
  `TKCoverflowView` imitates the coverflow you’d find in the iPod/Music app on the iPhone OS. Coverflow displays `TKCoverflowCoverView` objects. This view functions similar to the `UITableView` where covers that are off screen aren’t loaded until need. Thus, similar to the tableview, you can dequeue a cover view and hand it back to Coverflow View using the data source.
  */
@@ -142,7 +142,7 @@
 @end
 
 
-#pragma mark -
+#pragma mark - TKCoverflowCoverView
 /**
  `TKCoverflowCoverView` objects are the main views for displaying covers in `TKCoverflowView`.
  */

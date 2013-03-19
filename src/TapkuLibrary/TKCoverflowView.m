@@ -49,7 +49,7 @@
 
 #define DEFAULT_COVER_SIZE 224.0f
 
-#pragma mark -
+#pragma mark - TKCoverflowView
 @implementation TKCoverflowView
 
 #pragma mark Init
@@ -143,7 +143,6 @@
 	animate = YES;
 }
 
-
 - (void) _setupTiles{
 	
 	NSRange newRange = [self _currentRange];
@@ -151,7 +150,7 @@
 	
 	if(_range.location < newRange.location){
 		for(int i=_range.location;i<newRange.location;i++){
-			UIView *v = [_covers objectAtIndex:i];
+			UIView *v = _covers[i];
 			if((NSObject*) v == [NSNull null]) continue;
 			[_grayard addObject:v];
 			[_covers replaceObjectAtIndex:i withObject:[NSNull null]];
@@ -162,8 +161,8 @@
 	NSInteger cnt = _covers.count;
 	if(_range.location+_range.length > newRange.location+newRange.length){
 		for(int i=newRange.location+newRange.length;i<_range.location+_range.length;i++){
-			if(i >= cnt || [_covers objectAtIndex:i] == [NSNull null]) continue;
-			UIView *v = [_covers objectAtIndex:i];
+			if(i >= cnt || _covers[i] == [NSNull null]) continue;
+			UIView *v = _covers[i];
 			[v removeFromSuperview];
 			[_grayard addObject:v];
 			[_covers replaceObjectAtIndex:i withObject:[NSNull null]];
@@ -173,7 +172,7 @@
 	
 	CGFloat y = rintf((self.bounds.size.height - self.coverSize.height) / 2.0);
 	for(int i=newRange.location;i<newRange.location+newRange.length;i++){
-		if([_covers objectAtIndex:i] != [NSNull null]) continue;
+		if(_covers[i] != [NSNull null]) continue;
 			
 		TKCoverflowCoverView *cover = [self.coverflowDataSource coverflowView:self coverForIndex:i];
 		
@@ -218,7 +217,7 @@
 	NSInteger end = _range.location + _range.length;
 	
 	for(int x=start;x<end;x++ ){
-		UIView *v = [_covers objectAtIndex:x];
+		UIView *v = _covers[x];
 		v.layer.transform = [self _transformForViewAtIndex:x];
 	}
 	
@@ -234,13 +233,13 @@
 	NSInteger end = _range.location +_range.length;
 	
 	for(int x=_currentIndex-1;x>=start;x-- ){
-		UIView *v = [_covers objectAtIndex:x];
+		UIView *v = _covers[x];
 		if((NSObject*)v == [NSNull null]) continue;
 		[self sendSubviewToBack:v];
 	}
 	
 	for(int x=_currentIndex+1;x<end;x++ ){
-		UIView *v = [_covers objectAtIndex:x];
+		UIView *v = _covers[x];
 		if((NSObject*)v == [NSNull null]) continue;
 		[self sendSubviewToBack:v];
 	}
@@ -249,9 +248,9 @@
 - (void) _clearCoversFromView{
 	
 	for(int i=_range.location;i<_range.length+_range.location;i++){
-		if([_covers objectAtIndex:i] == [NSNull null]) continue;
+		if(_covers[i] == [NSNull null]) continue;
 		
-		UIView *v = [_covers objectAtIndex:i];
+		UIView *v = _covers[i];
 		[_grayard addObject:v];
 		[_covers replaceObjectAtIndex:i withObject:[NSNull null]];
 		[v removeFromSuperview];
@@ -264,9 +263,6 @@
 		[self.coverflowDelegate coverflowView:self coverAtIndexWasBroughtToFront:_currentIndex];
 	
 }
-
-
-
 
 
 #pragma mark Private Property Methods
@@ -300,9 +296,7 @@
 	return index;
 }
 - (CGFloat) _centerXPositionForCoverAtIndex:(NSInteger)index{
-	CGFloat x = self.contentInset.left;
-	x = 0;
-	return (self.coverSize.width-self.spacing)*index + x;
+	return (self.coverSize.width-self.spacing)*index;
 }
 - (NSRange) _currentRange{
 		
@@ -319,9 +313,6 @@
 	NSInteger end = MAX(0,MIN(max,e));
 	return NSMakeRange(start, MAX(0,end - start));
 }
-
-
-
 
 
 #pragma mark Touch Events
@@ -361,10 +352,6 @@
 }
 
 
-
-
-
-
 #pragma mark UIScrollViewDelegate methods
 - (void) scrollViewWillBeginDragging:(UIScrollView *)scrollView{
 	isDragging = YES;
@@ -401,9 +388,6 @@
 }
 
 
-
-
-
 #pragma mark Properties & Public Methods
 - (void) setCoverSize:(CGSize)coverSize{
 	_coverSize = coverSize;
@@ -413,7 +397,7 @@
 	return [_covers subarrayWithRange:_range];
 }
 - (TKCoverflowCoverView*) coverAtIndex:(NSInteger)index{
-	id ret = [_covers objectAtIndex:index];
+	id ret = _covers[index];
 	return ret != [NSNull null] ? ret : nil;
 }
 - (NSInteger) currentIndex{
@@ -490,7 +474,7 @@
 @end
 
 
-#pragma mark -
+#pragma mark - TKCoverflowCoverView
 @implementation TKCoverflowCoverView
 
 - (id) initWithFrame:(CGRect)frame reflection:(BOOL)reflection{

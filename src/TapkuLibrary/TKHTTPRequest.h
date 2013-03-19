@@ -65,17 +65,7 @@ typedef enum _TKNetworkErrorType {
 
 
 /** An `TKHTTPRequest` object provides support to perform the loading of a URL request. */
-@interface TKHTTPRequest : NSOperation {
-	
-	NSInteger _totalExpectedImageSize,_receivedDataBytes;
-	
-	#if NS_BLOCKS_AVAILABLE
-	TKBasicBlock startedBlock;
-	TKBasicBlock completionBlock;
-	TKBasicBlock failureBlock;
-	#endif
-	
-}
+@interface TKHTTPRequest : NSOperation
 
 ///-------------------------
 /// @name Create a request object
@@ -109,44 +99,44 @@ typedef enum _TKNetworkErrorType {
 /// @name Properties
 ///-------------------------
 /** The request's URL. */
-@property (strong,nonatomic) NSURL *URL;
+@property (nonatomic,strong) NSURL *URL;
 
 /** The request's URL Request object. */
-@property (strong,nonatomic) NSURLRequest *URLRequest;
+@property (nonatomic,strong) NSURLRequest *URLRequest;
 
 /** An integer that you can use to identify request objects in your application. */
-@property (assign,nonatomic) NSUInteger tag;
+@property (nonatomic,assign) NSUInteger tag;
 
 /** The request will show the network indicator in the status bar when set to YES. Default is YES. */
-@property (assign,nonatomic) BOOL showNetworkActivity; 
+@property (nonatomic,assign) BOOL showNetworkActivity; 
 
 /** The progress delegate must adopt the `TKHTTPRequestProgressDelegate` protocol. The data source is not retained. */
-@property (assign,nonatomic) id <TKHTTPRequestProgressDelegate> progressDelegate;
+@property (nonatomic,assign) id <TKHTTPRequestProgressDelegate> progressDelegate;
 
 
 ///-------------------------
 /// @name Callback Delegate
 ///-------------------------
 /** The delegate to receive start, finish and fail callback selectors. */
-@property (assign,nonatomic) id delegate;
+@property (nonatomic,assign) id delegate;
 
 /** The selector called upon the start of the request. */
-@property (assign,nonatomic) SEL didStartSelector;
+@property (nonatomic,assign) SEL didStartSelector;
 
 /** The selector called upon the finishing of the request. */
-@property (assign,nonatomic) SEL didFinishSelector;
+@property (nonatomic,assign) SEL didFinishSelector;
 
 /** The selector called upon the failure of the request. */
-@property (assign,nonatomic) SEL didFailSelector;
+@property (nonatomic,assign) SEL didFailSelector;
 
 
 ///-------------------------
 /// @name File Download Path
 ///-------------------------
 /** The final destination for the response data file. Default is nil. */
-@property (copy,nonatomic) NSString *downloadDestinationPath;
+@property (nonatomic,copy) NSString *downloadDestinationPath;
 /** The destination for the response data to be written to during the request connection. Default is nil. */
-@property (copy,nonatomic) NSString *temporaryFileDownloadPath;
+@property (nonatomic,copy) NSString *temporaryFileDownloadPath;
 
 
 ///-------------------------
@@ -154,13 +144,13 @@ typedef enum _TKNetworkErrorType {
 ///-------------------------
 
 /** The error object if the requests ends in failure. */
-@property (copy,nonatomic) NSError *error;
+@property (nonatomic,copy) NSError *error;
 
 /** The status code of the request. */
-@property (assign,nonatomic) NSInteger statusCode;
+@property (nonatomic,assign) NSInteger statusCode;
 
 /** The response headers of the request. */
-@property (strong,nonatomic) NSDictionary *responseHeaders;
+@property (nonatomic,strong) NSDictionary *responseHeaders;
 
 /** The response data of the request. */
 @property (readonly,nonatomic) NSData *responseData;

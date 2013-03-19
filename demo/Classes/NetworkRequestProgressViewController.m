@@ -29,9 +29,9 @@
  
  */
 
-#import "NetworkRequestViewController.h"
+#import "NetworkRequestProgressViewController.h"
 
-@implementation NetworkRequestViewController
+@implementation NetworkRequestProgressViewController
 
 - (id) init{
 	if(!(self=[super init])) return nil;
@@ -40,21 +40,15 @@
 
 - (void) loadView{
 	[super loadView];
-	self.view.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
+	self.view.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1];
 
-	CGRect r = CGRectInset(self.view.bounds, 10, 10);
-	r.size.height -= 80;
-	self.textView = [[UITextView alloc] initWithFrame:r];
-	self.textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	self.textView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.1];
-	self.textView.editable = NO;
-	[self.view addSubview:self.textView];
+
 	
-	CGFloat y = r.size.height + r.origin.y;
-	CGFloat h = self.view.bounds.size.height - y;
+	CGFloat y = self.view.bounds.size.height/2.0;
+	CGFloat x = self.view.bounds.size.width/2.0;
 	
 	self.circle = [[TKProgressCircleView alloc] init];
-	self.circle.center = CGPointMake(self.view.bounds.size.width/2, y + h / 2 );
+	self.circle.center = CGPointMake(x,y);
 	self.circle.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 	[self.circle roundOffFrame];
 	[self.view addSubview:self.circle];
@@ -73,7 +67,7 @@
 
 - (void) start{
 	
-	__weak TKHTTPRequest *req = [TKHTTPRequest requestWithURL:[NSURL URLWithString:@"http://api.dribbble.com/shots/everyone?per_page=30"]];
+	__weak TKHTTPRequest *req = [TKHTTPRequest requestWithURL:[NSURL URLWithString:@"http://devinsheaven.com/tapkulibrary.zip"]];
 	req.delegate = self;
 	req.didFinishSelector = @selector(networkRequestDidFinish:);
 	req.progressDelegate = self;
@@ -85,35 +79,18 @@
 }
 
 - (void) request:(TKHTTPRequest*)request didReceiveTotalBytes:(NSInteger)received ofExpectedBytes:(NSInteger)total{
-	[self.circle setProgress:received/total animated:YES];
+	
+	CGFloat percentage = (CGFloat)received / (CGFloat)total;
+	NSLog(@"Received... %d of %d (%d%%)",received,total,(NSInteger)(percentage*100));
+	[self.circle setProgress:percentage animated:YES];
 }
 - (void) networkRequestDidFinish:(TKHTTPRequest*)request{
-	
-	NSLog(@"Finished... %@",request);
 	NSData *data = [request responseData];
-	
-	if(data)
-		[self processJSONDataInBackground:data 
-					 withCallbackSelector:@selector(processedData:) 
-					   backgroundSelector:@selector(putJsonIntoObjects:) 
-							errorSelector:@selector(parseError:) 
-						   readingOptions:0];
-	
-	
-	
+
+	NSLog(@"Finished... %@ (length %d)",request,data.length);
+
 }
 
-- (void) parseError:(NSError*)error{	
-	NSLog(@"ERROR: %@",error);
-}
-- (void) processedData:(NSDictionary*)dict{
-	
-	if(self.textView.text==nil || self.textView.text.length < 1)
-		[self.textView setText:[dict description]];
-	
-}
-- (id) putJsonIntoObjects:(NSDictionary*)dictionary{
-	return dictionary;	// we'll just pass back the json dictionary for now
-}
+
 
 @end

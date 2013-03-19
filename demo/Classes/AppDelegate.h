@@ -36,14 +36,15 @@
 
 @class RootViewController;
 
+#pragma mark - AppDelegate
 @interface AppDelegate : TKAppDelegate 
 
-@property (nonatomic, strong) RootViewController *root;
-@property (nonatomic, strong) UINavigationController *navigationController;
+@property (nonatomic,strong) RootViewController *root;
+@property (nonatomic,strong) UINavigationController *navigationController;
 
-#pragma mark - iPad
-@property (nonatomic, strong) UISplitViewController *splitViewController;
-@property (nonatomic, strong) DetailViewController *detail;
+#pragma mark iPad
+@property (nonatomic,strong) UISplitViewController *splitViewController;
+@property (nonatomic,strong) DetailViewController *detail;
 
 @end
 

@@ -31,6 +31,7 @@
 
 #import "TKProgressAlertView.h"
 #import "UIView+TKCategory.h"
+#import "TKGlobal.h"
 
 @implementation TKProgressAlertView
 
@@ -55,10 +56,6 @@
 	CGContextClosePath(context);
 	CGContextDrawPath(context, kCGPathFill);
 }
-
-
-
-
 - (void) drawRect:(CGRect)rect{
 	CGRect r = CGRectInset(rect, 6, 0);
 	[[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8] set];
@@ -83,27 +80,21 @@
 
 
 - (TKProgressBarView *) progressBar{
-	if(_progressBar==nil){
-		_progressBar = [[TKProgressBarView alloc] initWithStyle:TKProgressBarViewStyleLong];
-		CGRect r = _progressBar.frame;
-		r.origin.x = 37;
-		r.origin.y = 42;
-		_progressBar.frame = r;
-	}
+	if(_progressBar) return _progressBar;
+
+	_progressBar = [[TKProgressBarView alloc] initWithStyle:TKProgressBarViewStyleLong];
+	_progressBar.frame = CGRectMakeWithSize(37, 42, _progressBar.frame.size);
 	return _progressBar;
 }
 - (UILabel*) label{
-	if(_label==nil){
-		_label = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 245, 25)];
-		_label.textAlignment = NSTextAlignmentCenter;
-		_label.backgroundColor = [UIColor clearColor];
-		_label.textColor = [UIColor whiteColor];
-		_label.font = [UIFont boldSystemFontOfSize:16];		
-	}
+	if(_label) return _label;
+	
+	_label = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 245, 25)];
+	_label.textAlignment = NSTextAlignmentCenter;
+	_label.backgroundColor = [UIColor clearColor];
+	_label.textColor = [UIColor whiteColor];
+	_label.font = [UIFont boldSystemFontOfSize:16];		
 	return _label;
 }
-
-
-
 
 @end
