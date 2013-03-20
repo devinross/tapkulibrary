@@ -439,6 +439,8 @@
 	CGFloat startMarker = -100.0f;	// starting point to check if they match
 	CGFloat endMarker = -100.0f;
 	
+	CGFloat startMarkerHeight = 0;
+	
 	CGFloat topOrigin = -1;
 	
 	for (TKCalendarDayEventView *event in timeline.events) {
@@ -481,7 +483,9 @@
 		// split control - adjusts balloon widths so their times/titles don't overlap
 		// offset control - adjusts starting balloon position so you can see all starts/ends
 		
-		if ((hourStartPosition + minuteStartPosition) - startMarker <= VERTICAL_DIFF/1.5) {
+		NSLog(@"%f - %f - %f %@",(hourStartPosition + minuteStartPosition),startMarker,startMarkerHeight,event.titleLabel.text);
+		
+		if ((hourStartPosition + minuteStartPosition) - startMarker - startMarkerHeight < 0) {
 			repeatNumber++;
 		} else {
 			repeatNumber = 0;
@@ -496,14 +500,7 @@
 			}
 		}
 		
-		startMarker = hourStartPosition + minuteStartPosition;
-		endMarker = MAX(endMarker,hourEndPosition + minuteEndPosition);
-		
-		if(topOrigin<0)
-			topOrigin = startMarker;
-		
-		topOrigin = MIN(topOrigin,startMarker);
-			
+
 		
 		
 		
@@ -523,15 +520,27 @@
 			[sameTimeEvent setNeedsLayout];
 		}
 		[sameTimeEvents addObject:event];
+		
+		[event setNeedsLayout];
+		
+		
+		startMarker = hourStartPosition + minuteStartPosition;
+		endMarker = MAX(endMarker,hourEndPosition + minuteEndPosition);
+		
+		if(topOrigin<0)
+			topOrigin = startMarker;
+		
+		topOrigin = MIN(topOrigin,startMarker);
+		
+		startMarkerHeight = [event contentHeight];
+		
 	}
+	
 	if(topOrigin>0)
 		timeline.startY = topOrigin;
-	
-
-	
-	if(sv == self.nowLineView.superview){
+	if(sv == self.nowLineView.superview)
 		[sv bringSubviewToFront:self.nowLineView];
-	}
+	
 		
 }
 

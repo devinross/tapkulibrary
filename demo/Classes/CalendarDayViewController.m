@@ -24,7 +24,7 @@
 	
 	self.data = @[
   @[@"Meeting with five random dudes", @"Five Guys", @5, @0, @10, @0],
-  @[@"Second ultra mega hypra long text to test again with more", @"", @7, @0, @12, @0],
+  @[@"Unlimited bread rolls got me sprung", @"Olive Garden", @7, @0, @12, @0],
   @[@"Appointment", @"Dennys", @15, @0, @18, @0],
   @[@"Hamburger Bliss", @"Wendys", @15, @0, @18, @0],
   @[@"Fishy Fishy Fishfelayyyyyyyy", @"McDonalds", @5, @30, @6, @0],

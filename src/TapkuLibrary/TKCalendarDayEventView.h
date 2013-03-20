@@ -58,5 +58,7 @@
 /** The location label for the event. */
 @property (nonatomic,strong) UILabel *locationLabel;
 
+- (CGFloat) contentHeight;
+
 
 @end

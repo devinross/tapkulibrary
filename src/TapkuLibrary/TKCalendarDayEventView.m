@@ -111,6 +111,8 @@
 	
 	if(h < 75){
 		self.titleLabel.frame = CGRectInset(self.bounds, 5, 5);
+		CGFloat y = self.titleLabel.frame.size.height + self.titleLabel.frame.origin.y;
+		self.locationLabel.frame = CGRectMake(self.titleLabel.frame.origin.x, y, 0, 0);
 		self.locationLabel.hidden = YES;
 		return;
 	}
@@ -133,10 +135,27 @@
 	r = CGRectIntersection(r, self.bounds);
 
 	self.locationLabel.frame = r;
-	self.locationLabel.hidden = NO;
+	self.locationLabel.hidden = self.locationLabel.text.length > 0 ? NO : YES;
 	[self.locationLabel sizeToFit];
 
 }
+
+- (CGFloat) contentHeight{
+	
+	if(!self.locationLabel.hidden && self.locationLabel.text.length > 0)
+		return self.locationLabel.frame.size.height + self.locationLabel.frame.origin.y - 4;
+	
+	
+	
+	if(!self.titleLabel.hidden && self.titleLabel.text.length > 0)
+		return self.titleLabel.frame.size.height + self.titleLabel.frame.origin.y - 4;
+	
+	
+	
+	return 0;
+	
+}
+
 
 
 @end
