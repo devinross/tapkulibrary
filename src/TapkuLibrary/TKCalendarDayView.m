@@ -201,7 +201,7 @@
 
 #pragma mark UIView Subclasses
 - (void) didMoveToWindow{
-	if (self.window)
+	if (self.window && ![self _timelineAtIndex:1].events)
 		[self _reloadData];
 }
 - (void) layoutSubviews{
@@ -741,6 +741,7 @@
 		
 		
 		CGContextRef context = UIGraphicsGetCurrentContext();
+		CGContextSetInterpolationQuality(context, kCGInterpolationNone);
 		CGContextSaveGState(context);
 		CGContextSetStrokeColorWithColor(context, [[UIColor lightGrayColor] CGColor]);
 		CGContextSetLineWidth(context, 0.5);

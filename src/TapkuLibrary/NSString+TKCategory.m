@@ -61,7 +61,6 @@
 	
 	return encodedString;
 	
-	//return [self stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
 }
 
 
