@@ -343,7 +343,8 @@ static UIImage *tileImage;
     CGColorRef darkColor = CGColorCreate(myColorSpace, darkColorValues);
 	
 
-	int index = 0;
+	NSInteger index = 0, mc = self.marks.count;
+	
 	
 	UIFont *font = [UIFont boldSystemFontOfSize:DATE_FONT_SIZE];
 	UIFont *font2 =[UIFont boldSystemFontOfSize:DOT_FONT_SIZE];
@@ -353,10 +354,10 @@ static UIImage *tileImage;
 		[color set];
 		for(int i = firstOfPrev;i<= lastOfPrev;i++){
 			r = [self rectForCellAtIndex:index];
-			if ([self.marks count] > 0)
-				[self drawTileInRect:r day:i mark:[self.marks[index] boolValue] font:font font2:font2 context:context];
-			else
-				[self drawTileInRect:r day:i mark:NO font:font font2:font2 context:context];
+			
+			BOOL mark = mc > 0 && index < mc ? [self.marks[index] boolValue] : NO;
+			[self drawTileInRect:r day:i mark:mark font:font font2:font2 context:context];
+
 			index++;
 		}
 	}
@@ -372,17 +373,14 @@ static UIImage *tileImage;
 		
 		r = [self rectForCellAtIndex:index];
 		if(today == i){
-			
 			CGContextSetShadowWithColor(context, CGSizeMake(0,-1), 0, darkColor);
 			[[UIColor whiteColor] set];
 			r.origin.y += 1;
-			
 		}
 		
-		if ([self.marks count] > 0) 
-			[self drawTileInRect:r day:i mark:[self.marks[index] boolValue] font:font font2:font2 context:context];
-		else
-			[self drawTileInRect:r day:i mark:NO font:font font2:font2 context:context];
+		BOOL mark = mc > 0 && index < mc ? [self.marks[index] boolValue] : NO;
+		[self drawTileInRect:r day:i mark:mark font:font font2:font2 context:context];
+		
 		if(today == i){
 			CGContextSetShadowWithColor(context, CGSizeMake(0,1), 0, whiteColor);
 			[color set];
@@ -396,10 +394,8 @@ static UIImage *tileImage;
 	int i = 1;
 	while(index % 7 != 0){
 		r = [self rectForCellAtIndex:index];
-		if ([self.marks count] > 0 && index < self.marks.count)
-			[self drawTileInRect:r day:i mark:[self.marks[index] boolValue] font:font font2:font2 context:context];
-		else
-			[self drawTileInRect:r day:i mark:NO font:font font2:font2 context:context];
+		BOOL mark = mc > 0 && index < mc ? [self.marks[index] boolValue] : NO;
+		[self drawTileInRect:r day:i mark:mark font:font font2:font2 context:context];
 		i++;
 		index++;
 	}
