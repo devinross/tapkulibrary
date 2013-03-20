@@ -74,10 +74,11 @@
 
 - (void) loadView{
 	[super loadView];
+	self.view.backgroundColor = [UIColor whiteColor];
 	
 	self.monthView = [[TKCalendarMonthView alloc] initWithSundayAsFirst:self.sundayFirst timeZone:self.timeZone];
-	self.monthView.delegate = self;
 	self.monthView.dataSource = self;
+	self.monthView.delegate = self;
 	[self.view addSubview:self.monthView];
 }
 

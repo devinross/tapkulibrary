@@ -36,6 +36,7 @@
 @class TKCalendarMonthTiles;
 @protocol TKCalendarMonthViewDelegate, TKCalendarMonthViewDataSource;
 
+#pragma mark - TKCalendarMonthView
 /** `TKCalendarMonthView` imitates the month grid in the Calendar app on iPhone. */
 @interface TKCalendarMonthView : UIView
 
@@ -90,6 +91,7 @@
 
 @end
 
+#pragma mark - TKCalendarMonthViewDelegate
 /** The delegate of a `TKCalendarMonthView` object must adopt the `TKCalendarMonthViewDelegate` protocol. */ 
 @protocol TKCalendarMonthViewDelegate <NSObject>
 @optional
@@ -124,7 +126,7 @@
 - (void) calendarMonthView:(TKCalendarMonthView*)monthView monthDidChange:(NSDate*)month animated:(BOOL)animated;
 @end
 
-
+#pragma mark - TKCalendarMonthViewDataSource
 /** The data source of a `TKCalendarMonthView` object must adopt the `TKCalendarMonthViewDataSource` protocol. */ 
 @protocol TKCalendarMonthViewDataSource <NSObject>
 
