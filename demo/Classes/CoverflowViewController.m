@@ -200,5 +200,9 @@
 	
 }
 
+- (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasBroughtToFront:(NSInteger)index{
+	NSLog(@"Cover at index %d was brought to front",index);
+}
+
 
 @end

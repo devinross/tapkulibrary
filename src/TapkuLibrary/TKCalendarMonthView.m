@@ -807,6 +807,10 @@ static UIImage *tileImage;
 	
 }
 
+- (void) animateToNextOrPreviousMonth:(BOOL)next{
+	[self changeMonth:next ? self.rightArrow : self.leftArrow];
+}
+
 #pragma mark Moving the tiles up and down
 - (void) _tileSelectedWithData:(NSArray*)ar{
 	
@@ -872,7 +876,6 @@ static UIImage *tileImage;
 	NSArray *ar = [self.dataSource calendarMonthView:self marksFromDate:dates[0] toDate:[dates lastObject]];
 	TKCalendarMonthTiles *newTile = [[TKCalendarMonthTiles alloc] initWithMonth:nextMonth marks:ar startDayOnSunday:self.sunday timeZone:self.timeZone];
 	[newTile setTarget:self action:@selector(_tileSelectedWithData:)];
-	
 	
 	
 	NSInteger overlap =  0;

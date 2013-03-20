@@ -89,6 +89,11 @@
 /** Reloads the current month grid. */
 - (void) reloadData;
 
+/** Animates the calendar to the next or previous month.
+ @param isNext YES for next month, NO for previous month.
+ */
+- (void) animateToNextOrPreviousMonth:(BOOL)next;
+
 @end
 
 #pragma mark - TKCalendarMonthViewDelegate
