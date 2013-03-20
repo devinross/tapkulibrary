@@ -58,12 +58,7 @@
 }
 - (void) calendarMonthView:(TKCalendarMonthView*)monthView didSelectDate:(NSDate*)date{
 	
-	// CHANGE THE DATE TO YOUR TIMEZONE
-	NSDateComponents *info = [date dateComponentsWithTimeZone:monthView.timeZone];
-	NSDate *myTimeZoneDay = [NSDate dateWithDateComponents:info];
-	
-	NSLog(@"Date Selected: %@",myTimeZoneDay);
-	
+	NSLog(@"Date Selected: %@",date);
 	[self.tableView reloadData];
 }
 - (void) calendarMonthView:(TKCalendarMonthView*)mv monthDidChange:(NSDate*)d animated:(BOOL)animated{

@@ -67,7 +67,7 @@ static NSNumberFormatter *numberFormatter = nil;
 - (id) initWithMonth:(NSDate*)date marks:(NSArray*)marks startDayOnSunday:(BOOL)sunday timeZone:(NSTimeZone*)timeZone;
 - (void) setTarget:(id)target action:(SEL)action;
 
-- (void) selectDay:(int)day;
+- (void) selectDay:(NSInteger)day;
 - (NSDate*) dateSelected;
 
 + (NSArray*) rangeOfDatesInMonthGrid:(NSDate*)date startOnSunday:(BOOL)sunday timeZone:(NSTimeZone*)timeZone;
@@ -412,7 +412,6 @@ static UIImage *tileImage;
 }
 
 - (void) selectDay:(NSInteger)day{
-	
 	int pre = firstOfPrev < 0 ?  0 : lastOfPrev - firstOfPrev + 1;
 	
 	int tot = day + pre;
@@ -421,9 +420,11 @@ static UIImage *tileImage;
 	
 	selectedDay = day;
 	selectedPortion = 1;
-	
 	self.currentDay.font = [UIFont boldSystemFontOfSize:dateFontSize];
 
+	
+	
+	
 	if(day == today){
 		self.currentDay.shadowOffset = CGSizeMake(0, -1);
 		self.dot.shadowOffset = CGSizeMake(0, -1);
@@ -439,33 +440,24 @@ static UIImage *tileImage;
 	}
 	
 		
-	[self addSubview:self.selectedImageView];
 	self.currentDay.text = [numberFormatter stringFromNumber:@(day)];
 	
 	if ([marks count] > 0) {
 		
-		if([marks[row * 7 + column] boolValue]){
+		if([marks[row * 7 + column] boolValue])
 			[self.selectedImageView addSubview:self.dot];
-		}else{
+		else
 			[self.dot removeFromSuperview];
-		}
 		
-		
-	}else{
-		[self.dot removeFromSuperview];
-	}
+	}else [self.dot removeFromSuperview];
 	
 	if(column < 0){
 		column = 6;
 		row--;
 	}
-	
-	CGRect r = self.selectedImageView.frame;
-	r.origin.x = (column*46) - 1;
-	r.origin.y = (row*44)-1;
-	self.selectedImageView.frame = r;
-	
-	
+
+	self.selectedImageView.frame = CGRectMakeWithSize((column*46)-1, (row*44)-1, self.selectedImageView.frame.size);
+	[self addSubview:self.selectedImageView];
 	
 	
 }
@@ -554,10 +546,7 @@ static UIImage *tileImage;
 
 	
 	
-	CGRect r = self.selectedImageView.frame;
-	r.origin.x = (column*46)-1;
-	r.origin.y = (row*44)-1;
-	self.selectedImageView.frame = r;
+	self.selectedImageView.frame = CGRectMakeWithSize((column*46)-1, (row*44)-1, self.selectedImageView.frame.size);
 	
 	if(day == selectedDay && selectedPortion == portion) return;
 	
@@ -667,9 +656,14 @@ static UIImage *tileImage;
 - (CGRect) _calculatedFrame{
 	return CGRectMake(0, 0, self.tileBox.bounds.size.width, self.tileBox.bounds.size.height + self.tileBox.frame.origin.y);
 }
-
 - (CGRect) _calculatedDropShadowFrame{
 	return CGRectMake(0, self.tileBox.bounds.size.height + self.tileBox.frame.origin.y, self.bounds.size.width, 6);
+}
+- (void) _updateSubviewFramesWithTile:(UIView*)tile{
+	self.tileBox.frame = CGRectMakeWithSize(0, TOP_BAR_HEIGHT-1, tile.frame.size);
+	self.frame = CGRectMakeWithPoint(self.frame.origin, self.bounds.size.width, self.tileBox.frame.size.height+self.tileBox.frame.origin.y);
+	self.shadow.frame = self.tileBox.frame;
+	self.dropshadow.frame = [self _calculatedDropShadowFrame];
 }
 
 - (id) initWithSundayAsFirst:(BOOL)s timeZone:(NSTimeZone*)timeZone{
@@ -788,7 +782,7 @@ static UIImage *tileImage;
 }
 
 - (void) didMoveToWindow{
-	if (self.window)
+	if (self.window && currentTile == nil)
 		[self reloadData];
 }
 
@@ -853,23 +847,15 @@ static UIImage *tileImage;
 	
 	
 	if(isNext){
-		
 		currentTile.frame = CGRectMake(0, -1 * currentTile.bounds.size.height + overlap + 2, currentTile.frame.size.width, currentTile.frame.size.height);
 		newTile.frame = CGRectMake(0, 1, newTile.frame.size.width, newTile.frame.size.height);
-		self.tileBox.frame = CGRectMakeWithPoint(self.tileBox.frame.origin, self.tileBox.frame.size.width, newTile.frame.size.height);
-		
-
 	}else{
-		
 		newTile.frame = CGRectMake(0, 1, newTile.frame.size.width, newTile.frame.size.height);
-		self.tileBox.frame = CGRectMakeWithPoint(self.tileBox.frame.origin, self.tileBox.frame.size.width, newTile.frame.size.height);
 		currentTile.frame = CGRectMake(0,  newTile.frame.size.height - overlap, currentTile.frame.size.width, currentTile.frame.size.height);
-
 	}
 	
-	self.frame = [self _calculatedFrame];
-	self.shadow.frame = self.tileBox.frame;
-	self.dropshadow.frame = [self _calculatedDropShadowFrame];
+	[self _updateSubviewFramesWithTile:newTile];
+
 
 	
 	[UIView commitAnimations];
@@ -929,31 +915,31 @@ static UIImage *tileImage;
 		
 		NSArray *dates = [TKCalendarMonthTiles rangeOfDatesInMonthGrid:month startOnSunday:sunday timeZone:self.timeZone];
 		NSArray *data = [self.dataSource calendarMonthView:self marksFromDate:dates[0] toDate:[dates lastObject]];
-		TKCalendarMonthTiles *newTile = [[TKCalendarMonthTiles alloc] initWithMonth:month 
-																			  marks:data 
-																   startDayOnSunday:sunday timeZone:self.timeZone];
+		TKCalendarMonthTiles *newTile = [[TKCalendarMonthTiles alloc] initWithMonth:month marks:data startDayOnSunday:sunday timeZone:self.timeZone];
 		[newTile setTarget:self action:@selector(tile:)];
+		
 		[currentTile removeFromSuperview];
 		currentTile = newTile;
 		[self.tileBox addSubview:currentTile];
-		self.tileBox.frame = CGRectMakeWithSize(0, TOP_BAR_HEIGHT-1, newTile.frame.size);
-		self.frame = CGRectMakeWithPoint(self.frame.origin, self.bounds.size.width, self.tileBox.frame.size.height+self.tileBox.frame.origin.y + 1);
-
-		self.shadow.frame = self.tileBox.frame;
-
-		self.dropshadow.frame = [self _calculatedDropShadowFrame];
-
 		
+		[self _updateSubviewFramesWithTile:newTile];
 		self.monthYear.text = [date monthYearStringWithTimeZone:self.timeZone];
-		[currentTile selectDay:info.day];
-		
+
 		if([self.delegate respondsToSelector:@selector(calendarMonthView:monthDidChange:animated:)])
 			[self.delegate calendarMonthView:self monthDidChange:date animated:NO];
 		
+		[newTile selectDay:info.day];
+
 		
+
+
 	}
 }
 - (void) reloadData{
+	
+	NSDate *d = currentTile.dateSelected;
+	[currentTile removeFromSuperview];
+	
 	NSArray *dates = [TKCalendarMonthTiles rangeOfDatesInMonthGrid:[currentTile monthDate] startOnSunday:sunday timeZone:self.timeZone];
 	NSArray *ar = [self.dataSource calendarMonthView:self marksFromDate:dates[0] toDate:[dates lastObject]];
 	
@@ -964,8 +950,12 @@ static UIImage *tileImage;
 	[currentTile removeFromSuperview];
 	currentTile = refresh;
 	
+	if(d){
+		NSDateComponents *c = [d dateComponentsWithTimeZone:self.timeZone];
+		[currentTile selectDay:c.day];
+	}
+	
 }
-
 - (void) tile:(NSArray*)ar{
 	
 	if([ar count] < 2){
@@ -997,6 +987,7 @@ static UIImage *tileImage;
         
         NSDate *dateForMonth = [NSDate dateWithDateComponents:info];
 		[currentTile selectDay:day];
+		
 		
 		
 		if([self.delegate respondsToSelector:@selector(calendarMonthView:didSelectDate:)])
