@@ -56,7 +56,6 @@
 
 
 - (BOOL) application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
-	NSLog(@"==");
 	[self _application:application commonInitializationLaunching:launchOptions];
     return YES;
 }

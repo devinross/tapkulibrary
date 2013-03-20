@@ -46,7 +46,6 @@
 - (void) viewDidLoad{
 	[super viewDidLoad];
 	[self.monthView selectDate:[NSDate date]];
-	//[self.monthView selectDate:[NSDate month]];
 }
 
 
@@ -57,7 +56,6 @@
 	return self.dataArray;
 }
 - (void) calendarMonthView:(TKCalendarMonthView*)monthView didSelectDate:(NSDate*)date{
-	
 	NSLog(@"Date Selected: %@",date);
 	[self.tableView reloadData];
 }

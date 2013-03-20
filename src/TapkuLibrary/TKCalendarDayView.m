@@ -553,10 +553,7 @@
 	_leftArrowButton.tag = 0;
 	_leftArrowButton.frame = CGRectMake(0, 3, 48, 38);
 	[_leftArrowButton addTarget:self action:@selector(previousDay:) forControlEvents:UIControlEventTouchUpInside];
-	
-
-	
-	[_leftArrowButton setImage:[UIImage imageNamedTK:@"calendar/Month Calendar Left Arrow"] forState:0];
+	[_leftArrowButton setImage:[UIImage imageNamedTK:@"calendar/calendar_left_arrow"] forState:0];
 	return _leftArrowButton;
 }
 - (UIButton *) rightArrowButton{
@@ -567,7 +564,7 @@
 	_rightArrowButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
 	_rightArrowButton.frame = CGRectMake(self.frame.size.width-48, 3, 48, 38);
 	[_rightArrowButton addTarget:self action:@selector(nextDay:) forControlEvents:UIControlEventTouchUpInside];
-	[_rightArrowButton setImage:[UIImage imageNamedTK:@"calendar/Month Calendar Right Arrow"] forState:0];
+	[_rightArrowButton setImage:[UIImage imageNamedTK:@"calendar/calendar_right_arrow"] forState:0];
 	return _rightArrowButton;
 }
 - (UILabel *) monthYearLabel{
