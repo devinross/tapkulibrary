@@ -84,7 +84,7 @@
 /** Selects a specific date in the month grid. 
  @param date The date that will be highlighed.
  */
-- (void) selectDate:(NSDate*)date;
+- (BOOL) selectDate:(NSDate*)date;
 
 /** Reloads the current month grid. */
 - (void) reloadData;
@@ -93,6 +93,7 @@
  @param isNext YES for next month, NO for previous month.
  */
 - (void) animateToNextOrPreviousMonth:(BOOL)next;
+
 
 @end
 

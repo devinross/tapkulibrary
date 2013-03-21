@@ -64,14 +64,6 @@ static UIImage *tileImage;
 @property (nonatomic,strong) NSDate *monthDate;
 @property (nonatomic,strong) NSMutableArray *accessibleElements;
 
-- (id) initWithMonth:(NSDate*)date marks:(NSArray*)marks startDayOnSunday:(BOOL)sunday timeZone:(NSTimeZone*)timeZone;
-- (void) setTarget:(id)target action:(SEL)action;
-
-- (void) selectDay:(NSInteger)day;
-- (NSDate*) dateSelected;
-
-+ (NSArray*) rangeOfDatesInMonthGrid:(NSDate*)date startOnSunday:(BOOL)sunday timeZone:(NSTimeZone*)timeZone;
-
 @property (nonatomic,strong) UIImageView *selectedImageView;
 @property (nonatomic,strong) UILabel *currentDay;
 @property (nonatomic,strong) UILabel *dot;
@@ -403,7 +395,7 @@ static UIImage *tileImage;
 	
 }
 
-- (void) selectDay:(NSInteger)day{
+- (BOOL) selectDay:(NSInteger)day{
 	int pre = firstOfPrev < 0 ?  0 : lastOfPrev - firstOfPrev + 1;
 	
 	int tot = day + pre;
@@ -415,7 +407,7 @@ static UIImage *tileImage;
 	self.currentDay.font = [UIFont boldSystemFontOfSize:DATE_FONT_SIZE];
 
 	
-	
+	BOOL hasDot = NO;
 	
 	if(day == today){
 		self.currentDay.shadowOffset = CGSizeMake(0, -1);
@@ -436,9 +428,10 @@ static UIImage *tileImage;
 	
 	if (self.marks.count > 0) {
 		
-		if([self.marks[row * 7 + column] boolValue])
+		if([self.marks[row * 7 + column] boolValue]){
+			hasDot = YES;
 			[self.selectedImageView addSubview:self.dot];
-		else
+		}else
 			[self.dot removeFromSuperview];
 		
 	}else [self.dot removeFromSuperview];
@@ -451,6 +444,8 @@ static UIImage *tileImage;
 	self.selectedImageView.frame = CGRectMakeWithSize((column*46)-1, (row*44)-1, self.selectedImageView.frame.size);
 	[self addSubview:self.selectedImageView];
 	
+	
+	return hasDot;
 	
 }
 - (NSDate*) dateSelected{
@@ -1020,17 +1015,17 @@ static UIImage *tileImage;
 		return [[NSDate date] monthDateWithTimeZone:self.timeZone];
 	return [self.currentTile monthDate];
 }
-- (void) selectDate:(NSDate*)date{
+- (BOOL) selectDate:(NSDate*)date{
 	NSDateComponents *info = [date dateComponentsWithTimeZone:self.timeZone];
 	NSDate *month = [date firstOfMonthWithTimeZone:self.timeZone];
 	
+	BOOL ret = NO;
 	if([month isEqualToDate:[self.currentTile monthDate]]){
-		[self.currentTile selectDay:info.day];
-		return;
+		ret = [self.currentTile selectDay:info.day];
 	}else {
 		
 		if ([self.delegate respondsToSelector:@selector(calendarMonthView:monthShouldChange:animated:)] && ![self.delegate calendarMonthView:self monthShouldChange:month animated:YES])
-			return;
+			return NO;
 		
 		if ([self.delegate respondsToSelector:@selector(calendarMonthView:monthWillChange:animated:)] )
 			[self.delegate calendarMonthView:self monthWillChange:month animated:YES];
@@ -1046,13 +1041,14 @@ static UIImage *tileImage;
 		if([self.delegate respondsToSelector:@selector(calendarMonthView:monthDidChange:animated:)])
 			[self.delegate calendarMonthView:self monthDidChange:date animated:NO];
 		
-		[self.currentTile selectDay:info.day];
+		ret = [self.currentTile selectDay:info.day];
 		
 	}
 	
 	if([self.delegate respondsToSelector:@selector(calendarMonthView:didSelectDate:)])
 		[self.delegate calendarMonthView:self didSelectDate:[self dateSelected]];
 	
+	return ret;
 }
 - (void) reloadData{
 	
@@ -1075,5 +1071,6 @@ static UIImage *tileImage;
 	}
 	
 }
+
 
 @end
