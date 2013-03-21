@@ -243,21 +243,14 @@
 		CGRect r = CGRectInset(self.horizontalScrollView.bounds, HORIZONTAL_PAD, 0);
 		r.origin.x = self.horizontalScrollView.frame.size.width * i + HORIZONTAL_PAD;
 		
-		
-		
 		if(r.size.width != w){
 			sv.frame = r;
 			[self _realignEventsAtIndex:i];
 		}else
 			sv.frame = r;
 		
-		
 		i++;
-		
-
 		sv.layer.shadowPath = [UIBezierPath bezierPathWithRect:sv.bounds].CGPath;
-
-
 		
 	}
 	

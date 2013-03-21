@@ -33,4 +33,8 @@
 #import <TapkuLibrary/TapkuLibrary.h>
 
 @interface AlertsViewController : UIViewController
+
+@property (nonatomic,strong) UIBarButtonItem *tapMeItem;
+@property (nonatomic,strong) UITextField *hiddenTextField;
+
 @end

@@ -31,7 +31,7 @@
 
 #import "TKAlertCenter.h"
 #import "UIView+TKCategory.h"
-
+#import "TKGlobal.h"
 
 #pragma mark - TKAlertView
 @interface TKAlertView : UIView {
@@ -143,7 +143,7 @@
 	_active = NO;
 	
 	
-	_alertFrame = [UIApplication sharedApplication].keyWindow.bounds;
+	_alertFrame = [UIScreen mainScreen].applicationFrame;
 
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
@@ -197,13 +197,12 @@
 	_alertView.transform = CGAffineTransformScale(_alertView.transform, 2, 2);
 	
 	
-	
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationDuration:0.15];
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationDidStopSelector:@selector(animationStep2)];
 	_alertView.transform = CGAffineTransformMakeRotation(degrees * M_PI / 180);
-	_alertView.frame = CGRectMake((int)_alertView.frame.origin.x, (int)_alertView.frame.origin.y, _alertView.frame.size.width, _alertView.frame.size.height);
+	_alertView.frame = CGRectIntegral(_alertView.frame);
 	_alertView.alpha = 1;
 	[UIView commitAnimations];
 	
@@ -294,7 +293,7 @@ CGRect subtractRect(CGRect wf,CGRect kf){
 	NSDictionary *userInfo = [notification userInfo];
 	NSValue* aValue = userInfo[UIKeyboardFrameEndUserInfoKey];
 	CGRect kf = [aValue CGRectValue];
-	CGRect wf = [UIApplication sharedApplication].keyWindow.bounds;
+	CGRect wf = [UIScreen mainScreen].applicationFrame;
 	
 	[UIView beginAnimations:nil context:nil];
 	_alertFrame = subtractRect(wf,kf);
@@ -304,7 +303,7 @@ CGRect subtractRect(CGRect wf,CGRect kf){
 
 }
 - (void) keyboardWillDisappear:(NSNotification *) notification {
-	_alertFrame = [UIApplication sharedApplication].keyWindow.bounds;
+	_alertFrame = [UIScreen mainScreen].applicationFrame;
 
 }
 - (void) orientationWillChange:(NSNotification *) notification {
