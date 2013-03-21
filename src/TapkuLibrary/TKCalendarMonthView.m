@@ -294,7 +294,7 @@ static UIImage *tileImage;
     NSString *str = [numberFormatter stringFromNumber:@(day)];
 	r.size.height -= 2;
 	
-	CGContextSetPatternPhase(context, CGSizeMake(r.origin.x, r.origin.y - 8));
+	CGContextSetPatternPhase(context, CGSizeMake(r.origin.x, r.origin.y - 2));
 
 	
 	[str drawInRect: r

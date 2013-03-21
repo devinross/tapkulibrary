@@ -482,9 +482,6 @@
 		// nobre additions - split control and offset control				
 		// split control - adjusts balloon widths so their times/titles don't overlap
 		// offset control - adjusts starting balloon position so you can see all starts/ends
-		
-		NSLog(@"%f - %f - %f %@",(hourStartPosition + minuteStartPosition),startMarker,startMarkerHeight,event.titleLabel.text);
-		
 		if ((hourStartPosition + minuteStartPosition) - startMarker - startMarkerHeight < 0) {
 			repeatNumber++;
 		} else {
