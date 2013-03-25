@@ -165,6 +165,11 @@
 		
 		CGRect r = CGRectInset(self.horizontalScrollView.bounds, HORIZONTAL_PAD, 0);
 		r.origin.x = self.horizontalScrollView.frame.size.width * i + HORIZONTAL_PAD;
+		r.origin.y = 0;
+		
+		
+		CGRect rr = r;
+		rr.origin.x = 0;
 		
 		UIScrollView *sv = [[UIScrollView alloc] initWithFrame:r];
 		sv.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -172,15 +177,16 @@
 		sv.contentSize = CGSizeMake(0, TIMELINE_HEIGHT);
 		sv.alwaysBounceVertical = TRUE;
 		sv.backgroundColor = [UIColor whiteColor];
-		sv.layer.shadowPath = [UIBezierPath bezierPathWithRect:sv.bounds].CGPath;
+		[self.horizontalScrollView addSubview:sv];
+		
+		sv.layer.shadowPath = [UIBezierPath bezierPathWithRect:rr].CGPath;
 		sv.layer.shadowOpacity = 0.4;
 		sv.layer.shadowOffset = CGSizeZero;
 		sv.layer.shadowRadius = 2;
 		sv.layer.shadowColor = [UIColor blackColor].CGColor;
-
-		
 		sv.tag = i;
-		[self.horizontalScrollView addSubview:sv];
+		
+
 		
 		TKTimelineView *timelineView = [[TKTimelineView alloc] initWithFrame:sv.bounds];
 		timelineView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -211,18 +217,13 @@
 	[self _realignPages];
 	[CATransaction commit];
 
-	
 }
 
 
 - (void) scrollViewWasTapped:(UITapGestureRecognizer*)gesture{
 	
-	
-	
 	if(self.delegate && [self.delegate respondsToSelector:@selector(calendarDayTimelineView:eventViewWasSelected:)])
 		[self.delegate calendarDayTimelineView:self eventViewWasSelected:(TKCalendarDayEventView*)gesture.view];
-	
-	
 	
 }
 
@@ -230,37 +231,33 @@
 #pragma mark Private Methods
 - (void) _realignPages{
 	
-	
 	CGFloat w = [self.pages[1] frame].size.width;
 	
 	self.horizontalScrollView.frame = CGRectInset(CGRectMake(0, TOP_BAR_HEIGHT, self.frame.size.width, self.frame.size.height - TOP_BAR_HEIGHT), -HORIZONTAL_PAD, 0);
 	self.horizontalScrollView.contentSize = CGSizeMake(self.horizontalScrollView.frame.size.width*3.0, 0);
 	self.horizontalScrollView.contentOffset = CGPointMake(self.horizontalScrollView.frame.size.width, 0);
 	
-	
 	int i = 0;
 	for(UIScrollView *sv in self.pages){
 		CGRect r = CGRectInset(self.horizontalScrollView.bounds, HORIZONTAL_PAD, 0);
 		r.origin.x = self.horizontalScrollView.frame.size.width * i + HORIZONTAL_PAD;
-		
+		r.origin.y = 0;
 		if(r.size.width != w){
 			sv.frame = r;
 			[self _realignEventsAtIndex:i];
 		}else
 			sv.frame = r;
-		
+		sv.bounds = CGRectMakeWithSize(0, 0, r.size);
 		i++;
-		sv.layer.shadowPath = [UIBezierPath bezierPathWithRect:sv.bounds].CGPath;
-		
 	}
-	
+	[self _scrollToTopEvent:NO];
 	
 }
 - (void) _movePagesToIndex:(NSInteger)nowPage animated:(BOOL)animated{
 	
 
 	UIScrollView *needsUpdating = nil;
-	NSInteger updateIndex = 0;
+	NSInteger updateIndex = 1;
 
 	if(nowPage<1){
 		UIScrollView *sv = [self.pages lastObject];
@@ -268,7 +265,7 @@
 		[self.pages removeLastObject];
 		needsUpdating = sv;
 		updateIndex = 0;
-	}else{
+	}else if(nowPage>1){
 		UIScrollView *sv = self.pages[0];
 		[self.pages addObject:sv];
 		[self.pages removeObjectAtIndex:0];
@@ -297,7 +294,7 @@
 	
 	needsUpdating.contentOffset = CGPointZero;
 	[self _refreshDataWithPageAtIndex:updateIndex];
-	
+		
 	
 	if(self.delegate && [self.delegate respondsToSelector:@selector(calendarDayTimelineView:didMoveToDate:)])
 		[self.delegate calendarDayTimelineView:self didMoveToDate:self.currentDay];
@@ -315,6 +312,7 @@
 	y = MIN(sv.contentSize.height - sv.bounds.size.height, y);
 	y = MAX(0,y);
 	
+	NSLog(@"SCROLL %f",y);
 	[sv setContentOffset:CGPointMake(0, y) animated:animated];
 }
 
