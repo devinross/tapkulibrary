@@ -731,7 +731,7 @@ static UIImage *tileImage;
 	return self;
 }
 - (id) initWithTimeZone:(NSTimeZone*)timeZone{
-	self = [self initWithSundayAsFirst:YES timeZone:[NSTimeZone defaultTimeZone]];
+	self = [self initWithSundayAsFirst:YES timeZone:timeZone];
 	return self;
 }
 - (id) initWithSundayAsFirst:(BOOL)s{
