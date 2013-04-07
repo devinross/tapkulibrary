@@ -312,7 +312,6 @@
 	y = MIN(sv.contentSize.height - sv.bounds.size.height, y);
 	y = MAX(0,y);
 	
-	NSLog(@"SCROLL %f",y);
 	[sv setContentOffset:CGPointMake(0, y) animated:animated];
 }
 
@@ -667,12 +666,12 @@
 	self.backgroundColor = [UIColor whiteColor];
 	
 	
-	UIView *gray = [[UIView alloc] initWithFrame:CGRectMake(LEFT_INSET, -300, self.frame.size.width - LEFT_INSET, 300 + VERTICAL_INSET)];
+	UIView *gray = [[UIView alloc] initWithFrame:CGRectMake(LEFT_INSET, -800, self.frame.size.width - LEFT_INSET, 800 + VERTICAL_INSET)];
 	gray.backgroundColor = [UIColor colorWithWhite:242/255.0 alpha:1];
 	gray.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	[self addSubview:gray];
 	
-	gray = [[UIView alloc] initWithFrame:CGRectMake(LEFT_INSET, TIMELINE_HEIGHT - VERTICAL_INSET + 1, self.frame.size.width - LEFT_INSET, 300 + VERTICAL_INSET)];
+	gray = [[UIView alloc] initWithFrame:CGRectMake(LEFT_INSET, TIMELINE_HEIGHT - VERTICAL_INSET + 1, self.frame.size.width - LEFT_INSET, 800 + VERTICAL_INSET)];
 	gray.backgroundColor = [UIColor colorWithWhite:242/255.0 alpha:1];
 	gray.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	[self addSubview:gray];
