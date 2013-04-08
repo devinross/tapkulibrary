@@ -768,7 +768,7 @@ static UIImage *tileImage;
 	
 }
 - (CGRect) _calculatedFrame{
-	return CGRectMake(0, 0, self.tileBox.bounds.size.width, self.tileBox.bounds.size.height + self.tileBox.frame.origin.y);
+	return CGRectMakeWithPoint(self.frame.origin, self.tileBox.bounds.size.width, self.tileBox.bounds.size.height + self.tileBox.frame.origin.y);
 }
 - (CGRect) _calculatedDropShadowFrame{
 	return CGRectMake(0, self.tileBox.bounds.size.height + self.tileBox.frame.origin.y, self.bounds.size.width, 6);
