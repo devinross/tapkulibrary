@@ -381,6 +381,8 @@ static UIImage *tileImage;
 	}
 	
 	CGColorRelease(darkColor);
+	CGColorRelease(whiteColor);
+	CGColorSpaceRelease(myColorSpace);
 	
 	[grayGradientColor set];
 	int i = 1;
