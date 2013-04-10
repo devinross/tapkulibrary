@@ -104,7 +104,7 @@
 	NSDate *d = start;
 	while(YES){
 		
-		int r = arc4random();
+		NSInteger r = arc4random();
 		if(r % 3==1){
 			[self.dataDictionary setObject:@[@"Item one",@"Item two"] forKey:d];
 			[self.dataArray addObject:@YES];

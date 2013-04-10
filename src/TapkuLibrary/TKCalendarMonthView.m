@@ -102,7 +102,7 @@ static UIImage *tileImage;
 	
 	NSDate *firstDate = [self.datesArray objectAtIndex:0];
 	
-	for(int i=0;i<self.marks.count;i++){
+	for(NSInteger i=0;i<self.marks.count;i++){
 		UIAccessibilityElement *element = [[UIAccessibilityElement alloc] initWithAccessibilityContainer:self];
 		
 		NSDate *day = [NSDate dateWithTimeIntervalSinceReferenceDate:[firstDate timeIntervalSinceReferenceDate]+(24*60*60*i)+5];
@@ -153,7 +153,7 @@ static UIImage *tileImage;
 		
 		NSDateComponents *info2 = [previousMonth dateComponentsWithTimeZone:timeZone];
 		
-		int preDayCnt = [previousMonth daysBetweenDate:currentMonth];		
+		NSInteger preDayCnt = [previousMonth daysBetweenDate:currentMonth];		
 		info2.day = preDayCnt - info.weekday + 2;
 		firstDate = [NSDate dateWithDateComponents:info2];
 		
@@ -161,7 +161,7 @@ static UIImage *tileImage;
 	}else if(!sunday && info.weekday != 2){
 		
 		NSDateComponents *info2 = [previousMonth dateComponentsWithTimeZone:timeZone];
-		int preDayCnt = [previousMonth daysBetweenDate:currentMonth];
+		NSInteger preDayCnt = [previousMonth daysBetweenDate:currentMonth];
 		if(info.weekday==1){
 			info2.day = preDayCnt - 5;
 		}else{
@@ -177,7 +177,7 @@ static UIImage *tileImage;
 	
 	
 	
-	int daysInMonth = [currentMonth daysBetweenDate:nextMonth];		
+	NSInteger daysInMonth = [currentMonth daysBetweenDate:nextMonth];		
 	info.day = daysInMonth;
 	NSDate *lastInMonth = [NSDate dateWithDateComponents:info];
 	NSDateComponents *lastDateInfo = [lastInMonth dateComponentsWithTimeZone:timeZone];
@@ -244,7 +244,7 @@ static UIImage *tileImage;
 	NSDateComponents *todayInfo = [[NSDate date] dateComponentsWithTimeZone:self.timeZone];
 	today = dateInfo.month == todayInfo.month && dateInfo.year == todayInfo.year ? todayInfo.day : -5;
 	
-	int preDayCnt = [prev daysBetweenDate:_monthDate];
+	NSInteger preDayCnt = [prev daysBetweenDate:_monthDate];
 	if(firstWeekday>1 && sunday){
 		firstOfPrev = preDayCnt - firstWeekday+2;
 		lastOfPrev = preDayCnt;
@@ -276,8 +276,8 @@ static UIImage *tileImage;
 
 - (CGRect) rectForCellAtIndex:(NSInteger)index{
 	
-	int row = index / 7;
-	int col = index % 7;
+	NSInteger row = index / 7;
+	NSInteger col = index % 7;
 	
 	return CGRectMake(col*46-1, row*44+6, 46, 44);
 }
@@ -344,7 +344,7 @@ static UIImage *tileImage;
 	
 	if(firstOfPrev>0){
 		[color set];
-		for(int i = firstOfPrev;i<= lastOfPrev;i++){
+		for(NSInteger i = firstOfPrev;i<= lastOfPrev;i++){
 			r = [self rectForCellAtIndex:index];
 			
 			BOOL mark = mc > 0 && index < mc ? [self.marks[index] boolValue] : NO;
@@ -361,7 +361,7 @@ static UIImage *tileImage;
 
 	
 	
-	for(int i=1; i <= daysInMonth; i++){
+	for(NSInteger i=1; i <= daysInMonth; i++){
 		
 		r = [self rectForCellAtIndex:index];
 		if(today == i){
@@ -385,7 +385,7 @@ static UIImage *tileImage;
 	CGColorSpaceRelease(myColorSpace);
 	
 	[grayGradientColor set];
-	int i = 1;
+	NSInteger i = 1;
 	while(index % 7 != 0){
 		r = [self rectForCellAtIndex:index];
 		BOOL mark = mc > 0 && index < mc ? [self.marks[index] boolValue] : NO;
@@ -398,11 +398,11 @@ static UIImage *tileImage;
 }
 
 - (BOOL) selectDay:(NSInteger)day{
-	int pre = firstOfPrev < 0 ?  0 : lastOfPrev - firstOfPrev + 1;
+	NSInteger pre = firstOfPrev < 0 ?  0 : lastOfPrev - firstOfPrev + 1;
 	
-	int tot = day + pre;
-	int row = tot / 7;
-	int column = (tot % 7)-1;
+	NSInteger tot = day + pre;
+	NSInteger row = tot / 7;
+	NSInteger column = (tot % 7)-1;
 	
 	selectedDay = day;
 	selectedPortion = 1;
@@ -485,7 +485,7 @@ static UIImage *tileImage;
 	
 	if(row == (int) (self.bounds.size.height / 44)) row --;
 	
-	int fir = firstWeekday - 1;
+	NSInteger fir = firstWeekday - 1;
 	if(!startOnSunday && fir == 0) fir = 7;
 	if(!startOnSunday) fir--;
 	
@@ -695,7 +695,7 @@ static UIImage *tileImage;
 	if(self.sunday) ar = @[sun,mon,tue,wed,thu,fri,sat];
 	else ar = @[mon,tue,wed,thu,fri,sat,sun];
 	
-	int i = 0;
+	NSInteger i = 0;
 	for(NSString *s in ar){
 		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(46*i + (i==0?0:-1), 30, 45, 15)];
 		[self addSubview:label];
@@ -809,7 +809,7 @@ static UIImage *tileImage;
 		
 	}else{
 		
-		int direction = [[ar lastObject] intValue];
+		NSInteger direction = [[ar lastObject] intValue];
 		UIButton *b = direction > 1 ? self.rightArrow : self.leftArrow;
 		
 		NSDate* newMonth = [self _dateForMonthChange:b];
@@ -820,7 +820,7 @@ static UIImage *tileImage;
 			[self.delegate calendarMonthView:self monthWillChange:newMonth animated:YES];
 		
 		[self changeMonthAnimation:b];
-		int day = [ar[0] intValue];
+		NSInteger day = [ar[0] intValue];
 		
 		NSDateComponents *info = [[self.currentTile monthDate] dateComponentsWithTimeZone:self.timeZone];
 		info.day = day;

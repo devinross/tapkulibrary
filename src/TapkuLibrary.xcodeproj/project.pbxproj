@@ -732,7 +732,7 @@
 				GCC_PREFIX_HEADER = TapkuLibrary_Prefix.pch;
 				GCC_VERSION = "";
 				INSTALL_PATH = /usr/local/lib;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = TapkuLibrary;
 				SDKROOT = iphoneos;
@@ -754,7 +754,7 @@
 				GCC_PREFIX_HEADER = TapkuLibrary_Prefix.pch;
 				GCC_VERSION = "";
 				INSTALL_PATH = /usr/local/lib;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = TapkuLibrary;
 				SDKROOT = iphoneos;

@@ -149,7 +149,7 @@
 	if(NSEqualRanges(newRange, _range)) return;
 	
 	if(_range.location < newRange.location){
-		for(int i=_range.location;i<newRange.location;i++){
+		for(NSInteger i=_range.location;i<newRange.location;i++){
 			UIView *v = _covers[i];
 			if((NSObject*) v == [NSNull null]) continue;
 			[_grayard addObject:v];
@@ -160,7 +160,7 @@
 	
 	NSInteger cnt = _covers.count;
 	if(_range.location+_range.length > newRange.location+newRange.length){
-		for(int i=newRange.location+newRange.length;i<_range.location+_range.length;i++){
+		for(NSInteger i=newRange.location+newRange.length;i<_range.location+_range.length;i++){
 			if(i >= cnt || _covers[i] == [NSNull null]) continue;
 			UIView *v = _covers[i];
 			[v removeFromSuperview];
@@ -171,7 +171,7 @@
 	
 	
 	CGFloat y = rintf((self.bounds.size.height - self.coverSize.height) / 2.0);
-	for(int i=newRange.location;i<newRange.location+newRange.length;i++){
+	for(NSInteger i=newRange.location;i<newRange.location+newRange.length;i++){
 		if(_covers[i] != [NSNull null]) continue;
 			
 		TKCoverflowCoverView *cover = [self.coverflowDataSource coverflowView:self coverForIndex:i];
@@ -216,7 +216,7 @@
 	NSInteger start = _range.location;
 	NSInteger end = _range.location + _range.length;
 	
-	for(int x=start;x<end;x++ ){
+	for(NSInteger x=start;x<end;x++ ){
 		UIView *v = _covers[x];
 		v.layer.transform = [self _transformForViewAtIndex:x];
 	}
@@ -232,13 +232,13 @@
 	NSInteger start = _range.location;
 	NSInteger end = _range.location +_range.length;
 	
-	for(int x=_currentIndex-1;x>=start;x-- ){
+	for(NSInteger x=_currentIndex-1;x>=start;x-- ){
 		UIView *v = _covers[x];
 		if((NSObject*)v == [NSNull null]) continue;
 		[self sendSubviewToBack:v];
 	}
 	
-	for(int x=_currentIndex+1;x<end;x++ ){
+	for(NSInteger x=_currentIndex+1;x<end;x++ ){
 		UIView *v = _covers[x];
 		if((NSObject*)v == [NSNull null]) continue;
 		[self sendSubviewToBack:v];
@@ -247,7 +247,7 @@
 }
 - (void) _clearCoversFromView{
 	
-	for(int i=_range.location;i<_range.length+_range.location;i++){
+	for(NSInteger i=_range.location;i<_range.length+_range.location;i++){
 		if(_covers[i] == [NSNull null]) continue;
 		
 		UIView *v = _covers[i];
@@ -290,7 +290,7 @@
 	CGFloat mi = ind / (_numberOfCovers/2);
 	mi = 1 - mi;
 	mi = mi / 2;
-	int index = (int)(ind+mi);
+	NSInteger index = (int)(ind+mi);
 	
 	index = MIN(MAX(0,index),_numberOfCovers-1);
 	return index;
@@ -338,7 +338,7 @@
 				[self.coverflowDelegate coverflowView:self coverAtIndexWasTappedInFront:_currentIndex tapCount:touch.tapCount];
 			
 		}else{
-			int index = [_covers indexOfObject:currentTouch];
+			NSInteger index = [_covers indexOfObject:currentTouch];
 			CGFloat x = [self _centerXPositionForCoverAtIndex:index] - (self.bounds.size.width / 2.0f);
 			[self setContentOffset:CGPointMake(x, 0) animated:YES];
 		}
@@ -439,7 +439,7 @@
 	
 	_numberOfCovers = [self.coverflowDataSource numberOfCoversInCoverflowView:self];
 	
-	for(int i=0;i<_numberOfCovers;i++)
+	for(NSInteger i=0;i<_numberOfCovers;i++)
 		[_covers addObject:[NSNull null]];
 	
 

@@ -127,8 +127,8 @@
     
 
 	cell.textLabel.text = [NSString stringWithFormat:@"Cell %d",indexPath.row];
-	int i = indexPath.row;
-	int index = i % [self.urlArray count];
+	NSInteger i = indexPath.row;
+	NSInteger index = i % [self.urlArray count];
 	
 	NSURL *url = [NSURL URLWithString:self.urlArray[index]];
 	

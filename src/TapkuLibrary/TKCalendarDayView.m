@@ -159,7 +159,7 @@
 	
 	info.day -= 1;
 	
-	for(int i=0;i<3;i++){
+	for(NSInteger i=0;i<3;i++){
 		
 		NSDate *date = [NSDate dateWithDateComponents:info];
 		
@@ -237,7 +237,7 @@
 	self.horizontalScrollView.contentSize = CGSizeMake(self.horizontalScrollView.frame.size.width*3.0, 0);
 	self.horizontalScrollView.contentOffset = CGPointMake(self.horizontalScrollView.frame.size.width, 0);
 	
-	int i = 0;
+	NSInteger i = 0;
 	for(UIScrollView *sv in self.pages){
 		CGRect r = CGRectInset(self.horizontalScrollView.bounds, HORIZONTAL_PAD, 0);
 		r.origin.x = self.horizontalScrollView.frame.size.width * i + HORIZONTAL_PAD;
@@ -281,7 +281,7 @@
 	[self _updateDateLabel];
 
 	
-	int i = 0;
+	NSInteger i = 0;
 	for(UIScrollView *sv in self.pages){
 		CGRect r = sv.frame;
 		r.origin.x = HORIZONTAL_PAD + self.horizontalScrollView.frame.size.width * i;
@@ -498,7 +498,7 @@
 		[event setNeedsLayout];
 		[sv addSubview:event];
 		
-		for (int i = [sameTimeEvents count]-1; i >= 0; i--) {
+		for (NSInteger i = [sameTimeEvents count]-1; i >= 0; i--) {
 			TKCalendarDayEventView *sameTimeEvent = sameTimeEvents[i];
 			CGRect newFrame = sameTimeEvent.frame;
 			newFrame.size.width = eventWidth;

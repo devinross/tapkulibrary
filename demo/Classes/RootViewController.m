@@ -113,7 +113,7 @@
 	[tv deselectRowAtIndexPath:indexPath animated:YES];
 	
 	UIViewController *vc;
-	int s = indexPath.section, r = indexPath.row;
+	NSInteger s = indexPath.section, r = indexPath.row;
 	
 	if(s==0 && r == 0){
 		vc = [[CoverflowViewController alloc] init];
