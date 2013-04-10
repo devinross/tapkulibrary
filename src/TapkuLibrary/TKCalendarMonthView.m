@@ -48,18 +48,18 @@ static UIImage *tileImage;
 #define TOP_BAR_HEIGHT 45.0f
 #define DOT_FONT_SIZE 18.0f
 #define DATE_FONT_SIZE 24.0f
+#define VIEW_WIDTH 320.0f
 
 #pragma mark - TKCalendarMonthTiles
 @interface TKCalendarMonthTiles : UIView {
-	
-	id target;
-	SEL action;
-	
 	NSInteger firstOfPrev,lastOfPrev, today;
 	NSInteger selectedDay,selectedPortion;
 	NSInteger firstWeekday, daysInMonth;
 	BOOL markWasOnToday,startOnSunday;
 }
+
+@property (nonatomic,assign) id target;
+@property (nonatomic,assign) SEL action;
 
 @property (nonatomic,strong) NSDate *monthDate;
 @property (nonatomic,strong) NSMutableArray *accessibleElements;
@@ -259,7 +259,7 @@ static UIImage *tileImage;
 	}
 	
 	
-	self.frame = CGRectMake(0, 1.0, 320.0f, h+1);
+	self.frame = CGRectMake(0, 1.0, VIEW_WIDTH, h+1);
 	
 	[self.selectedImageView addSubview:self.currentDay];
 	[self.selectedImageView addSubview:self.dot];
@@ -269,8 +269,8 @@ static UIImage *tileImage;
 	return self;
 }
 - (void) setTarget:(id)t action:(SEL)a{
-	target = t;
-	action = a;
+	self.target = t;
+	self.action = a;
 }
 
 
@@ -550,10 +550,10 @@ static UIImage *tileImage;
 	if(portion == 1){
 		selectedDay = day;
 		selectedPortion = portion;
-		[target performSelector:action withObject:@[@(day)]];
+		[self.target performSelector:self.action withObject:@[@(day)]];
 		
 	}else if(down){
-		[target performSelector:action withObject:@[@(day),@(portion)]];
+		[self.target performSelector:self.action withObject:@[@(day),@(portion)]];
 		selectedDay = day;
 		selectedPortion = portion;
 	}
@@ -644,7 +644,7 @@ static UIImage *tileImage;
     }
 }
 - (id) initWithSundayAsFirst:(BOOL)s timeZone:(NSTimeZone*)timeZone{
-	if (!(self = [super initWithFrame:CGRectZero])) return nil;
+	if (!(self = [super initWithFrame:CGRectMake(0, 0, VIEW_WIDTH, VIEW_WIDTH)])) return nil;
 	self.backgroundColor = [UIColor colorWithHex:0xaaaeb6];
 	self.timeZone = timeZone;
 	self.sunday = s;
@@ -657,12 +657,9 @@ static UIImage *tileImage;
 	[self addSubview:self.monthYear];
 	[self addSubview:self.shadow];
 
-
-
 	NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
 	dateFormat.dateFormat = @"eee";
 	dateFormat.timeZone = self.timeZone;
-	
 	
 	NSDateComponents *sund = [[NSDateComponents alloc] init];
 	sund.day = 5;
@@ -673,7 +670,7 @@ static UIImage *tileImage;
 	
 	
 	NSString * sun = [dateFormat stringFromDate:[NSDate dateWithDateComponents:sund]];
-	
+
 	sund.day = 6;
 	NSString *mon = [dateFormat stringFromDate:[NSDate dateWithDateComponents:sund]];
 	
@@ -759,23 +756,21 @@ static UIImage *tileImage;
 	self.currentTile = [[TKCalendarMonthTiles alloc] initWithMonth:month marks:data startDayOnSunday:self.sunday timeZone:self.timeZone];
 	[self.currentTile setTarget:self action:@selector(_tileSelectedWithData:)];
 	
-	self.frame = [self _calculatedFrame];
 	[self.tileBox addSubview:self.currentTile];
 	
-	self.monthYear.frame = CGRectInset(CGRectMake(0, 0, self.frame.size.width, 36), 40, 6);
 	self.monthYear.text = [date monthYearStringWithTimeZone:self.timeZone];
 	[self _updateSubviewFramesWithTile:self.currentTile];
 	
 }
 - (CGRect) _calculatedFrame{
-	return CGRectMakeWithPoint(self.frame.origin, self.tileBox.bounds.size.width, self.tileBox.bounds.size.height + self.tileBox.frame.origin.y);
+	return CGRectMakeWithPoint(self.frame.origin, VIEW_WIDTH, self.tileBox.bounds.size.height + self.tileBox.frame.origin.y);
 }
 - (CGRect) _calculatedDropShadowFrame{
 	return CGRectMake(0, self.tileBox.bounds.size.height + self.tileBox.frame.origin.y, self.bounds.size.width, 6);
 }
 - (void) _updateSubviewFramesWithTile:(UIView*)tile{
-	self.tileBox.frame = CGRectMakeWithSize(0, TOP_BAR_HEIGHT-1, tile.frame.size);
-	self.frame = CGRectMakeWithPoint(self.frame.origin, self.bounds.size.width, self.tileBox.frame.size.height+self.tileBox.frame.origin.y);
+	self.tileBox.frame = CGRectMake(0, TOP_BAR_HEIGHT-1,VIEW_WIDTH, tile.frame.size.height);
+	self.frame = CGRectMakeWithPoint(self.frame.origin, VIEW_WIDTH, self.tileBox.frame.size.height+self.tileBox.frame.origin.y);
 	self.shadow.frame = self.tileBox.frame;
 	self.dropshadow.frame = [self _calculatedDropShadowFrame];
 }
@@ -822,11 +817,8 @@ static UIImage *tileImage;
 		if ([self.delegate respondsToSelector:@selector(calendarMonthView:monthWillChange:animated:)])
 			[self.delegate calendarMonthView:self monthWillChange:newMonth animated:YES];
 		
-		
-		
 		[self changeMonthAnimation:b];
 		int day = [ar[0] intValue];
-		
 		
 		NSDateComponents *info = [[self.currentTile monthDate] dateComponentsWithTimeZone:self.timeZone];
 		info.day = day;
@@ -947,8 +939,7 @@ static UIImage *tileImage;
 - (UILabel *) monthYear{
 	if(_monthYear) return _monthYear;
 
-	_monthYear = [[UILabel alloc] initWithFrame:CGRectInset(CGRectMake(0, 0, self.frame.size.width, 36), 40, 6)];
-	_monthYear.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	_monthYear = [[UILabel alloc] initWithFrame:CGRectInset(CGRectMake(0, 0, VIEW_WIDTH, 36), 40, 6)];
 	_monthYear.textAlignment = NSTextAlignmentCenter;
 	_monthYear.backgroundColor = [UIColor clearColor];
 	_monthYear.font = [UIFont boldSystemFontOfSize:22];
@@ -973,7 +964,7 @@ static UIImage *tileImage;
 
 	_rightArrow = [UIButton buttonWithType:UIButtonTypeCustom];
 	_rightArrow.tag = 1;
-	_rightArrow.frame = CGRectMake(320-52, 0, 52, 36);
+	_rightArrow.frame = CGRectMake(VIEW_WIDTH-52, 0, 52, 36);
 	_rightArrow.accessibilityLabel = @"Next Month";
 	[_rightArrow addTarget:self action:@selector(changeMonth:) forControlEvents:UIControlEventTouchUpInside];
 	[_rightArrow setImage:[UIImage imageNamedTK:@"calendar/calendar_right_arrow"] forState:0];
@@ -982,7 +973,9 @@ static UIImage *tileImage;
 - (UIView *) tileBox{
 	if(_tileBox) return _tileBox;
 	
-	_tileBox = [[UIView alloc] initWithFrame:CGRectMake(0, TOP_BAR_HEIGHT-1, 320, self.currentTile.frame.size.height)];
+	CGFloat h = self.currentTile ? self.currentTile.frame.size.height : 100;
+	
+	_tileBox = [[UIView alloc] initWithFrame:CGRectMake(0, TOP_BAR_HEIGHT-1, VIEW_WIDTH, h)];
 	_tileBox.clipsToBounds = YES;
 	return _tileBox;
 }
