@@ -32,6 +32,7 @@
 #import "NSString+TKCategory.h"
 #import "NSDate+TKCategory.h"
 #import "NSArray+TKCategory.h"
+#import "NSMutableArray+TKCategory.h"
 #import "UIView+TKCategory.h"
 #import "UIImage+TKCategory.h"
 #import "UIColor+TKCategory.h"
@@ -75,7 +76,7 @@
 #import "TKProgressBarView.h"
 #import "TKProgressAlertView.h"
 #import "TKProgressCircleView.h"
-
+#import "TKLoadingView.h"
 
 
 

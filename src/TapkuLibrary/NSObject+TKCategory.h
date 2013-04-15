@@ -60,6 +60,9 @@
 + (id) createObject:(NSDictionary*)dictionary;
 
 
+- (id) initWithDataDictionary:(NSDictionary*)dictionary;
+
+
 /** Imports data from an `NSDictionary` objects using the map provided by the dataKeys dictionary.
  
  @param dictionary The data that will be imported.
