@@ -3,6 +3,12 @@ TapkuLibrary
 TapkuLibrary is an iOS library built on Cocoa and UIKit intended for broad use in applications. If you're looking to see what the library can do, check out the demo project included. Some major components include coverflow, calendar grid, network requests and progress indicators.
 
 
+<!-- MacBuildServer Install Button -->
+<div class="macbuildserver-block">
+    <a class="macbuildserver-button" href="http://macbuildserver.com/project/github/build/?xcode_project=demo%2FDemo.xcodeproj&amp;target=Demo&amp;repo_url=git%3A%2F%2Fgithub.com%2Fdevinross%2Ftapkulibrary.git&amp;build_conf=Release" target="_blank"><img src="http://com.macbuildserver.github.s3-website-us-east-1.amazonaws.com/button_up.png"/></a><br/><sup><a href="http://macbuildserver.com/" target="_blank">by MacBuildServer</a></sup>
+</div>
+<!-- MacBuildServer Install Button -->
+
 ## Documentation
 Browse the documentation at [devinsheaven.com/tapku/documentation](http://devinsheaven.com/tapku/documentation/) or download it directly in Xcode. Open up the Xcode preferences, navigate to the Downloads tab and Documentation tab. Add the following URL:
 
