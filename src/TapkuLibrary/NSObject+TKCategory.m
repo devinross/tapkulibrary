@@ -85,6 +85,32 @@
 }
 
 
+- (NSDictionary*) dataDictionary{
+	
+	NSDateFormatter *formatter = nil;
+	NSMutableDictionary *ret = [NSMutableDictionary dictionary];
+	NSDictionary *dataKeys = [[self class] dataKeys];
+	
+	for(id key in [dataKeys allKeys]){
+		
+		id value = [self valueForKey:key];
+		
+		if(value && [value isKindOfClass:[NSDate date]]){
+			NSArray *array = dataKeys[key];
+			
+			if(!formatter) formatter = [[NSDateFormatter alloc] init];
+			formatter.dateFormat = array.lastObject;
+			
+			NSString *date = [formatter stringFromDate:value];
+			[ret setObject:date forKey:array[0]];
+		}else if(value)
+			[ret setObject:value forKey:dataKeys[key]];
+		
+	}
+	return ret;
+	
+}
+
 
 #pragma mark Process JSON in Background
 

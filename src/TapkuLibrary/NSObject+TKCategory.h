@@ -70,6 +70,9 @@
 - (void) importDataWithDictionary:(NSDictionary*)dictionary;
 
 
+- (NSDictionary*) dataDictionary;
+
+
 
 /** Process JSON data in the background with a callback selector.
  @param data The JSON data.

@@ -432,6 +432,8 @@
 		3BB3A1D1117814BC00553093 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				20DE9F48168FA1EF00655BF8 /* NSObject+TKCategory.h */,
+				20DE9F49168FA1EF00655BF8 /* NSObject+TKCategory.m */,
 				3BF000FC10957EE50062DA49 /* NSString+TKCategory.h */,
 				3BF000FD10957EE50062DA49 /* NSString+TKCategory.m */,
 				3B1DCEC81289B84400884CDF /* NSArray+TKCategory.h */,
@@ -454,8 +456,6 @@
 				3BE8FF8412945C4400DBF3FC /* UIScrollview+TKCategory.m */,
 				3B07B7C8133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.h */,
 				3B07B7C9133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.m */,
-				20DE9F48168FA1EF00655BF8 /* NSObject+TKCategory.h */,
-				20DE9F49168FA1EF00655BF8 /* NSObject+TKCategory.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
