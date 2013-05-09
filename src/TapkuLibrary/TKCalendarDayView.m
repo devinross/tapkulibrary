@@ -468,11 +468,10 @@
 		
 		
 		
-		
 		// nobre additions - split control and offset control				
 		// split control - adjusts balloon widths so their times/titles don't overlap
 		// offset control - adjusts starting balloon position so you can see all starts/ends
-		if ((hourStartPosition + minuteStartPosition) - startMarker - startMarkerHeight < 0) {
+		if ((hourStartPosition + minuteStartPosition) - startMarker < 1) {
 			repeatNumber++;
 		} else {
 			repeatNumber = 0;
@@ -518,7 +517,6 @@
 			topOrigin = startMarker;
 		
 		topOrigin = MIN(topOrigin,startMarker);
-		
 		startMarkerHeight = [event contentHeight];
 		
 	}
