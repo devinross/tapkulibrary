@@ -39,7 +39,7 @@
 #import "UIImageView+TKCategory.h"
 #import "UIScrollview+TKCategory.h"
 #import "UIButton+TKCategory.h"
-
+#import "UIImagePickerController+TKCategory.h"
 
 
 #import "TKWindow.h"
@@ -66,6 +66,7 @@
 #import "TKLabelFieldCell.h"
 #import "TKLabelSwitchCell.h"
 #import "TKButtonCell.h"
+#import "TKTextFieldCell.h"
 #import "TKTextViewCell.h"
 #import "TKSwitchCell.h"
 #import "TKTableViewCell.h"

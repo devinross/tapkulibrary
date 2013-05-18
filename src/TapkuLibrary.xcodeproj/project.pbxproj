@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2026B5391746F4D000447F22 /* UIImagePickerController+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2026B5371746F4D000447F22 /* UIImagePickerController+TKCategory.h */; };
+		2026B53A1746F4D000447F22 /* UIImagePickerController+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2026B5381746F4D000447F22 /* UIImagePickerController+TKCategory.m */; };
+		2026B552174810B900447F22 /* TKTextFieldCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 2026B550174810B900447F22 /* TKTextFieldCell.h */; };
+		2026B553174810B900447F22 /* TKTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2026B551174810B900447F22 /* TKTextFieldCell.m */; };
 		2057363416A330E700F8CDE6 /* TKCoverflowView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2057363216A330E700F8CDE6 /* TKCoverflowView.h */; };
 		2057363516A330E700F8CDE6 /* TKCoverflowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2057363316A330E700F8CDE6 /* TKCoverflowView.m */; };
 		207DFF9215E1E3BE00A0BC2A /* NSDate+CalendarGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = 207DFF9015E1E3BE00A0BC2A /* NSDate+CalendarGrid.h */; };
@@ -119,6 +123,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2026B5371746F4D000447F22 /* UIImagePickerController+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImagePickerController+TKCategory.h"; sourceTree = "<group>"; };
+		2026B5381746F4D000447F22 /* UIImagePickerController+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImagePickerController+TKCategory.m"; sourceTree = "<group>"; };
+		2026B550174810B900447F22 /* TKTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKTextFieldCell.h; sourceTree = "<group>"; };
+		2026B551174810B900447F22 /* TKTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKTextFieldCell.m; sourceTree = "<group>"; };
 		2057363216A330E700F8CDE6 /* TKCoverflowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCoverflowView.h; sourceTree = "<group>"; };
 		2057363316A330E700F8CDE6 /* TKCoverflowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoverflowView.m; sourceTree = "<group>"; };
 		207DFF9015E1E3BE00A0BC2A /* NSDate+CalendarGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CalendarGrid.h"; sourceTree = "<group>"; };
@@ -378,6 +386,8 @@
 				3BAC9A3210953E5200F235F1 /* TKButtonCell.m */,
 				3BAC9A3310953E5200F235F1 /* TKSwitchCell.h */,
 				3BAC9A3410953E5200F235F1 /* TKSwitchCell.m */,
+				2026B550174810B900447F22 /* TKTextFieldCell.h */,
+				2026B551174810B900447F22 /* TKTextFieldCell.m */,
 				3BAC9A3510953E5200F235F1 /* TKTextViewCell.h */,
 				3BAC9A3610953E5200F235F1 /* TKTextViewCell.m */,
 				3BAC9A3C10953E5200F235F1 /* TKTableViewCell.h */,
@@ -456,6 +466,8 @@
 				3BE8FF8412945C4400DBF3FC /* UIScrollview+TKCategory.m */,
 				3B07B7C8133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.h */,
 				3B07B7C9133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.m */,
+				2026B5371746F4D000447F22 /* UIImagePickerController+TKCategory.h */,
+				2026B5381746F4D000447F22 /* UIImagePickerController+TKCategory.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -563,6 +575,8 @@
 				2057363416A330E700F8CDE6 /* TKCoverflowView.h in Headers */,
 				20FC7CA71719007300C3A7E1 /* NSMutableArray+TKCategory.h in Headers */,
 				20FC7CBC1719313A00C3A7E1 /* TKLoadingView.h in Headers */,
+				2026B5391746F4D000447F22 /* UIImagePickerController+TKCategory.h in Headers */,
+				2026B552174810B900447F22 /* TKTextFieldCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -726,6 +740,8 @@
 				2057363516A330E700F8CDE6 /* TKCoverflowView.m in Sources */,
 				20FC7CA81719007300C3A7E1 /* NSMutableArray+TKCategory.m in Sources */,
 				20FC7CBD1719313A00C3A7E1 /* TKLoadingView.m in Sources */,
+				2026B53A1746F4D000447F22 /* UIImagePickerController+TKCategory.m in Sources */,
+				2026B553174810B900447F22 /* TKTextFieldCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
