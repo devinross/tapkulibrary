@@ -38,6 +38,7 @@
 @property (nonatomic,strong) TKButtonCell *buttonCell;
 @property (nonatomic,strong) TKSwitchCell *switchCell;
 @property (nonatomic,strong) TKTextViewCell *textViewCell;
+@property (nonatomic,strong) TKTextFieldCell *textFieldCell;
 
 
 @end

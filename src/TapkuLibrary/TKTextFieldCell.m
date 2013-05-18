@@ -48,8 +48,7 @@
 
 - (void) layoutSubviews {
     [super layoutSubviews];
-	CGRect r = CGRectInset(self.contentView.bounds, 4, 8);
-	_textField.frame = r;
+	_textField.frame = CGRectInset(self.contentView.bounds, 10, 10);;
 }
 
 
