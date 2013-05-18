@@ -37,6 +37,7 @@
 	if(!(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
 	
 	_textField = [[UITextField alloc] initWithFrame:CGRectZero];
+	_textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
 	[self.contentView addSubview:_textField];
 	
 	return self;
@@ -48,7 +49,7 @@
 
 - (void) layoutSubviews {
     [super layoutSubviews];
-	_textField.frame = CGRectInset(self.contentView.bounds, 10, 10);;
+	_textField.frame = CGRectInset(self.contentView.bounds, 10, 4);
 }
 
 
