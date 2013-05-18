@@ -51,6 +51,7 @@
 #import "TKAppDelegate.h"
 #import "TKGradientView.h"
 #import "TKShapeView.h"
+#import "TKTextView.h"
 
 
 #import "TKNetworkQueue.h"

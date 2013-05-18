@@ -1,6 +1,6 @@
 //
-//  TKTextViewCell.h
-//  Created by Devin Ross on 8/3/09.
+//  TKTextView.h
+//  Created by Devin Ross on 5/18/13.
 //
 /*
  
@@ -30,12 +30,13 @@
  */
 
 #import <UIKit/UIKit.h>
-@class TKTextView;
 
-/** A table view cell with a text view. */
-@interface TKTextViewCell : UITableViewCell
+@interface TKTextView : UITextView
 
-/** The text view. */
-@property (nonatomic,strong) TKTextView *textView;
+@property (nonatomic,strong) UILabel *placeHolderLabel;
+@property (nonatomic,strong) NSString *placeholder;
+@property (nonatomic,strong) UIColor *placeholderColor;
+
+
 
 @end

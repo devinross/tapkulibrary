@@ -146,7 +146,6 @@
 			[target deleteCharactersInRange:NSMakeRange(0, 1)];
 		}
 	}
-	
 	return s;
 }
 
@@ -155,7 +154,6 @@
 	NSString *html = self;
     NSScanner *thescanner = [NSScanner scannerWithString:html];
     NSString *text = nil;
-	
     while ([thescanner isAtEnd] == NO) {
 		[thescanner scanUpToString:@"<" intoString:NULL];
 		[thescanner scanUpToString:@">" intoString:&text];
@@ -175,9 +173,68 @@
 }
 
 - (BOOL) hasString:(NSString*)substring{
-	
 	return !([self rangeOfString:substring].location == NSNotFound);
+}
+
+
+
+
+
+- (NSString*) formattedPhoneNumberWithLastCharacterRemoved:(BOOL)deleteLastChar{
+	if(self.length<1) return @"";
 	
+	// use regex to remove non-digits(including spaces) so we are left with just the numbers
+	NSError *error = NULL;
+	NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[\\s-\\(\\)]" options:NSRegularExpressionCaseInsensitive error:&error];
+	NSString *ret = [regex stringByReplacingMatchesInString:self options:0 range:NSMakeRange(0, [self length]) withTemplate:@""];
+	
+	if(ret.length>11) 	// check if the number is to long
+		ret = [ret substringToIndex:11]; // remove last extra chars.
+
+	
+	
+	if(ret.length>10 && ![[ret substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"1"])
+		ret = [ret substringToIndex:10]; // remove last extra chars.
+
+	
+	
+	
+	if(deleteLastChar) 
+		ret = [ret substringToIndex:[ret length] - 1]; 	// should we delete the last digit?
+
+	
+	
+	// 123 456 7890
+	// format the number.. if it's less then 7 digits.. then use this regex.
+	
+	if(ret.length<8 && ret.length > 0 && [[ret substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"1"]){
+		ret = [ret stringByReplacingOccurrencesOfString:@"(\\d{1})(\\d{3})(\\d+)"
+											 withString:@"$1 ($2) $3"
+												options:NSRegularExpressionSearch
+												  range:NSMakeRange(0, [ret length])];
+	}
+	
+	
+	else if(ret.length<7)
+		ret = [ret stringByReplacingOccurrencesOfString:@"(\\d{3})(\\d+)"
+											 withString:@"($1) $2"
+												options:NSRegularExpressionSearch
+												  range:NSMakeRange(0, [ret length])];
+	
+	else if(ret.length > 6 && [[ret substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"1"]){
+		ret = [ret stringByReplacingOccurrencesOfString:@"(\\d{1})(\\d{3})(\\d{3})(\\d+)"
+											 withString:@"$1 ($2) $3-$4"
+												options:NSRegularExpressionSearch
+												  range:NSMakeRange(0, [ret length])];
+		
+	}
+	
+	else   // else do this one..
+		ret = [ret stringByReplacingOccurrencesOfString:@"(\\d{3})(\\d{3})(\\d+)"
+											 withString:@"($1) $2-$3"
+												options:NSRegularExpressionSearch
+												  range:NSMakeRange(0, [ret length])];
+	return ret;
 }
 
 

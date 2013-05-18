@@ -72,4 +72,8 @@
 - (BOOL) hasString:(NSString*)substring;
 
 
+
+- (NSString*) formattedPhoneNumberWithLastCharacterRemoved:(BOOL)deleteLastChar;
+
+
 @end

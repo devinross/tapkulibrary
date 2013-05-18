@@ -29,7 +29,7 @@
  
  */
 #import "TKTextViewCell.h"
-
+#import "TKTextView.h"
 
 @implementation TKTextViewCell
 
@@ -37,7 +37,7 @@
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
 	if(!(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
 	
-	_textView = [[UITextView alloc] initWithFrame:CGRectZero];
+	_textView = [[TKTextView alloc] initWithFrame:CGRectZero];
 	_textView.font = [UIFont boldSystemFontOfSize:14.0];
 	_textView.backgroundColor = [UIColor clearColor];
 	[self.contentView addSubview:_textView];
