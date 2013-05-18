@@ -59,23 +59,28 @@
 - (void) drawRect:(CGRect)rect{
 	[super drawRect:rect];
 	
-	if(_placeHolderLabel && _placeHolderLabel.superview == nil){
+	
+	if(_placeHolderLabel){
 		if(self.placeHolderLabel.superview==nil){
 			[self addSubview:self.placeHolderLabel];
 			[self sendSubviewToBack:self.placeHolderLabel];
+			
+
 		}
+		
+		self.placeHolderLabel.frame = CGRectMake(8,8,self.bounds.size.width - 16,0);
 		[self.placeHolderLabel sizeToFit];
 
 	}
     
-	_placeHolderLabel.alpha = self.text.length > 0 ? 1 : 0;
+	_placeHolderLabel.alpha = self.text.length < 1 ? 1 : 0;
 	
 }
 
 
 - (void) _textChanged:(NSNotification *)notification{
     if(self.placeholder.length == 0) return;
-	self.placeHolderLabel.alpha = self.text.length == 0 ? 1 : 0;
+	_placeHolderLabel.alpha = self.text.length < 1 ? 1 : 0;
 }
 
 
@@ -85,6 +90,7 @@
     [self _textChanged:nil];
 }
 - (void) setPlaceholder:(NSString *)placeholder{
+	
 	if(placeholder.length < 1){
 		_placeHolderLabel.text = placeholder;
 		[self setNeedsDisplay];

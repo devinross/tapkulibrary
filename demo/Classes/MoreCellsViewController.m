@@ -50,8 +50,8 @@
 	self.switchCell.textLabel.text = @"Switch Cell";
 	
 	self.textViewCell = [[TKTextViewCell alloc]  initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-	self.textViewCell.textView.text = @"TextView Cell - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent blandit malesuada turpis quis egestas. Curabitur varius nunc nec leo tincidunt mattis. Cras malesuada euismod lobortis. Praesent ultrices malesuada lorem et convallis. Pellentesque hendrerit lectus eget felis rutrum vel volutpat nisl semper. Suspendisse consectetur sem eu arcu ullamcorper ut cursus est fringilla. Suspendisse blandit rhoncus nisi ac lacinia. Curabitur vestibulum mattis eros a accumsan. Morbi pulvinar consequat hendrerit. In hac habitasse platea dictumst. Mauris euismod convallis faucibus. Morbi faucibus ultricies elit, ac ullamcorper ipsum accumsan et.";
-	
+	//self.textViewCell.textView.text = @"TextView Cell - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent blandit malesuada turpis quis egestas. Curabitur varius nunc nec leo tincidunt mattis. Cras malesuada euismod lobortis. Praesent ultrices malesuada lorem et convallis. Pellentesque hendrerit lectus eget felis rutrum vel volutpat nisl semper. Suspendisse consectetur sem eu arcu ullamcorper ut cursus est fringilla. Suspendisse blandit rhoncus nisi ac lacinia. Curabitur vestibulum mattis eros a accumsan. Morbi pulvinar consequat hendrerit. In hac habitasse platea dictumst. Mauris euismod convallis faucibus. Morbi faucibus ultricies elit, ac ullamcorper ipsum accumsan et.";
+	self.textViewCell.textView.placeholder = @"Placeholder";
 }
 
 #pragma mark UITableView Delegate & DataSource
