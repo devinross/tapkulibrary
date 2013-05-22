@@ -21,6 +21,8 @@
 
 - (void) viewDidLoad{
 	[super viewDidLoad];
+	self.title = NSLocalizedString(@"Day View", @"");
+
 	
 	self.data = @[
   @[@"Meeting with five random dudes", @"Five Guys", @5, @0, @5, @30],

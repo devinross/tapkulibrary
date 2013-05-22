@@ -52,6 +52,7 @@
 #import "TKGradientView.h"
 #import "TKShapeView.h"
 #import "TKTextView.h"
+#import "TKSlideToUnlockView.h"
 
 
 #import "TKNetworkQueue.h"

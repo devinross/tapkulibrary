@@ -43,6 +43,7 @@
 #import "ImageCenterViewController.h"
 #import "NetworkRequestProgressViewController.h"
 #import "CalendarDayViewController.h"
+#import "SlideToUnlockViewController.h"
 
 
 @interface UINavigationController (Rotation_IOS6)
@@ -67,6 +68,7 @@
 - (id) initWithStyle:(UITableViewStyle)s{
 	if(!(self = [super initWithStyle:s])) return nil;
 	self.title = @"Tapku Library";
+	self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back"] style:UIBarButtonItemStylePlain target:nil action:nil];
 	return self;
 }
 - (NSUInteger) supportedInterfaceOrientations{
@@ -83,7 +85,7 @@
 
 	self.data = @[
   @{@"rows" : @[@"Coverflow",@"Month Grid Calendar",@"Day Calendar"], @"title" : @"Views"},
-  @{@"rows" : @[@"Empty Sign",@"Loading HUD",@"Alerts"], @"title" : @"UI Elements"},
+  @{@"rows" : @[@"Empty Sign",@"Loading HUD",@"Alerts",@"Slide to Unlock"], @"title" : @"UI Elements"},
   @{@"rows" : @[@"Label Cells",@"More Cells"], @"title" : @"Table View Cells"},
   @{@"rows" : @[@"Image Cache",@"HTTP Request Progress"], @"title" : @"Network"}];
 }
@@ -138,6 +140,8 @@
 		vc = [[HUDViewController alloc] init];
 	else if(s==1 && r==2)
 		vc = [[AlertsViewController alloc] init];
+	else if(s==1 && r==3)
+		vc = [[SlideToUnlockViewController alloc] init];
 	
 	else if(s==2 && r==0)
 		vc = [[LabelViewController alloc] init];

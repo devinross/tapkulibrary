@@ -45,6 +45,7 @@
 #pragma mark View Lifecycle
 - (void) viewDidLoad{
 	[super viewDidLoad];
+	self.title = NSLocalizedString(@"Month Grid", @"");
 	[self.monthView selectDate:[NSDate date]];
 }
 

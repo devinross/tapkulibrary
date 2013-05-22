@@ -17,6 +17,8 @@
 		2057363516A330E700F8CDE6 /* TKCoverflowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2057363316A330E700F8CDE6 /* TKCoverflowView.m */; };
 		207DFF9215E1E3BE00A0BC2A /* NSDate+CalendarGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = 207DFF9015E1E3BE00A0BC2A /* NSDate+CalendarGrid.h */; };
 		207DFF9315E1E3BE00A0BC2A /* NSDate+CalendarGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 207DFF9115E1E3BE00A0BC2A /* NSDate+CalendarGrid.m */; };
+		20A2A520174C37870058571F /* TKSlideToUnlockView.h in Headers */ = {isa = PBXBuildFile; fileRef = 20A2A51E174C37870058571F /* TKSlideToUnlockView.h */; };
+		20A2A521174C37870058571F /* TKSlideToUnlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A2A51F174C37870058571F /* TKSlideToUnlockView.m */; };
 		20DE9F45168F93E400655BF8 /* DataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DE9F44168F93E400655BF8 /* DataTests.m */; };
 		20DE9F4A168FA1EF00655BF8 /* NSObject+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 20DE9F48168FA1EF00655BF8 /* NSObject+TKCategory.h */; };
 		20DE9F4B168FA1EF00655BF8 /* NSObject+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DE9F49168FA1EF00655BF8 /* NSObject+TKCategory.m */; };
@@ -135,6 +137,8 @@
 		2057363316A330E700F8CDE6 /* TKCoverflowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoverflowView.m; sourceTree = "<group>"; };
 		207DFF9015E1E3BE00A0BC2A /* NSDate+CalendarGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CalendarGrid.h"; sourceTree = "<group>"; };
 		207DFF9115E1E3BE00A0BC2A /* NSDate+CalendarGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CalendarGrid.m"; sourceTree = "<group>"; };
+		20A2A51E174C37870058571F /* TKSlideToUnlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKSlideToUnlockView.h; sourceTree = "<group>"; };
+		20A2A51F174C37870058571F /* TKSlideToUnlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKSlideToUnlockView.m; sourceTree = "<group>"; };
 		20DE9F43168F93E400655BF8 /* DataTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataTests.h; sourceTree = "<group>"; };
 		20DE9F44168F93E400655BF8 /* DataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataTests.m; sourceTree = "<group>"; };
 		20DE9F48168FA1EF00655BF8 /* NSObject+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TKCategory.h"; sourceTree = "<group>"; };
@@ -509,6 +513,8 @@
 				3BAC9A4D10953E5200F235F1 /* Empty View */,
 				3BAC9A3E10953E5200F235F1 /* HUD */,
 				3BAC9A2510953E5200F235F1 /* Cells */,
+				20A2A51E174C37870058571F /* TKSlideToUnlockView.h */,
+				20A2A51F174C37870058571F /* TKSlideToUnlockView.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -584,6 +590,7 @@
 				2026B5391746F4D000447F22 /* UIImagePickerController+TKCategory.h in Headers */,
 				2026B552174810B900447F22 /* TKTextFieldCell.h in Headers */,
 				2026B55B1748257B00447F22 /* TKTextView.h in Headers */,
+				20A2A520174C37870058571F /* TKSlideToUnlockView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,6 +757,7 @@
 				2026B53A1746F4D000447F22 /* UIImagePickerController+TKCategory.m in Sources */,
 				2026B553174810B900447F22 /* TKTextFieldCell.m in Sources */,
 				2026B55C1748257B00447F22 /* TKTextView.m in Sources */,
+				20A2A521174C37870058571F /* TKSlideToUnlockView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -50,8 +50,9 @@
 		2052AFCC168B840B00A49526 /* icon_74.png in Resources */ = {isa = PBXBuildFile; fileRef = 2052AFB1168B840B00A49526 /* icon_74.png */; };
 		2052AFCD168B840B00A49526 /* launch_iphone-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2052AFB2168B840B00A49526 /* launch_iphone-568h@2x.png */; };
 		2052AFCE168B840B00A49526 /* launch_iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 2052AFB3168B840B00A49526 /* launch_iphone.png */; };
+		20A2A524174C37CF0058571F /* SlideToUnlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A2A523174C37CF0058571F /* SlideToUnlockViewController.m */; };
+		20A2A529174C6F3A0058571F /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 20A2A528174C6F3A0058571F /* TapkuLibrary.bundle */; };
 		20CAEA9216F4EE6400D347E1 /* CalendarDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CAEA9116F4EE6400D347E1 /* CalendarDayViewController.m */; };
-		20D9062716FAB09200AE75F0 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 20D9062616FAB09200AE75F0 /* TapkuLibrary.bundle */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		3B111E5414593FA200C72A38 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B111E4F14593F8800C72A38 /* libTapkuLibrary.a */; };
 		3BF88C1B11E547BE00C9FC43 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF88BEB11E547A000C9FC43 /* QuartzCore.framework */; };
@@ -138,9 +139,11 @@
 		2052AFB1168B840B00A49526 /* icon_74.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_74.png; sourceTree = "<group>"; };
 		2052AFB2168B840B00A49526 /* launch_iphone-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch_iphone-568h@2x.png"; sourceTree = "<group>"; };
 		2052AFB3168B840B00A49526 /* launch_iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_iphone.png; sourceTree = "<group>"; };
+		20A2A522174C37CF0058571F /* SlideToUnlockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideToUnlockViewController.h; sourceTree = "<group>"; };
+		20A2A523174C37CF0058571F /* SlideToUnlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideToUnlockViewController.m; sourceTree = "<group>"; };
+		20A2A528174C6F3A0058571F /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = ../../src/TapkuLibrary.bundle; sourceTree = "<group>"; };
 		20CAEA9016F4EE6400D347E1 /* CalendarDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarDayViewController.h; sourceTree = "<group>"; };
 		20CAEA9116F4EE6400D347E1 /* CalendarDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarDayViewController.m; sourceTree = "<group>"; };
-		20D9062616FAB09200AE75F0 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = ../../src/TapkuLibrary.bundle; sourceTree = "<group>"; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* Demo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demo_Prefix.pch; sourceTree = "<group>"; };
 		3B111E4614593F8800C72A38 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = ../src/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
@@ -192,7 +195,7 @@
 		2052AF95168B840B00A49526 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				20D9062616FAB09200AE75F0 /* TapkuLibrary.bundle */,
+				20A2A528174C6F3A0058571F /* TapkuLibrary.bundle */,
 				2052AF96168B840B00A49526 /* Images */,
 			);
 			path = Assets;
@@ -280,6 +283,8 @@
 				2052AF7B168B83E900A49526 /* HUDViewController.m */,
 				2052AF6E168B83E900A49526 /* AlertsViewController.h */,
 				2052AF6F168B83E900A49526 /* AlertsViewController.m */,
+				20A2A522174C37CF0058571F /* SlideToUnlockViewController.h */,
+				20A2A523174C37CF0058571F /* SlideToUnlockViewController.m */,
 			);
 			name = Elements;
 			sourceTree = "<group>";
@@ -444,7 +449,7 @@
 				2052AFCD168B840B00A49526 /* launch_iphone-568h@2x.png in Resources */,
 				2052AFCE168B840B00A49526 /* launch_iphone.png in Resources */,
 				200908B616F627F60012DC4F /* launch_iphone@2x.png in Resources */,
-				20D9062716FAB09200AE75F0 /* TapkuLibrary.bundle in Resources */,
+				20A2A529174C6F3A0058571F /* TapkuLibrary.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +474,7 @@
 				2052AF93168B83E900A49526 /* NetworkRequestProgressViewController.m in Sources */,
 				2052AF94168B83E900A49526 /* RootViewController.m in Sources */,
 				20CAEA9216F4EE6400D347E1 /* CalendarDayViewController.m in Sources */,
+				20A2A524174C37CF0058571F /* SlideToUnlockViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
