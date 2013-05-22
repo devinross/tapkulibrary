@@ -100,7 +100,7 @@
 
 }
 
-- (void) didMoveToSuperview{
+- (void) didMoveToWindow{
 	[self _startLabelAnimation];
 }
 - (void) layoutSubviews{
