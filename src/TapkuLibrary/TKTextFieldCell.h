@@ -33,6 +33,7 @@
 
 @interface TKTextFieldCell : UITableViewCell
 
+/** The text field. */
 @property (nonatomic,strong) UITextField *textField;
 
 @end

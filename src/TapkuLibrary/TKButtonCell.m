@@ -39,6 +39,12 @@
 	
 	self.textLabel.textAlignment = NSTextAlignmentCenter;
 	self.textLabel.font = [UIFont boldSystemFontOfSize:14.0];
+	
+	self.textLabel.textColor = [UIColor colorWithRed:74/255.0 green:110/255.0 blue:165/255.0 alpha:1.0];
+	self.textLabel.highlightedTextColor = [UIColor whiteColor];
+	
+	
+	
     return self;
 }
 
@@ -54,17 +60,6 @@
 }
 
 
-- (void) _colorText:(BOOL)active{
-	self.textLabel.textColor = active ? [UIColor whiteColor] : [UIColor colorWithRed:74/255.0 green:110/255.0 blue:165/255.0 alpha:1.0];
-}
-- (void) setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-	[self _colorText:selected];
-}
-- (void) setHighlighted:(BOOL)highlight animated:(BOOL)animated {
-    [super setHighlighted:highlight animated:animated];
-	[self _colorText:highlight];
-}
 
 
 

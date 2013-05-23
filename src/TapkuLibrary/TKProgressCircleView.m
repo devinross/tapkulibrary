@@ -103,6 +103,11 @@
 	
 }
 
+- (void) didMoveToWindow{
+	[self updateTwirl];
+	[self updateProgress];
+}
+
 
 #pragma mark Setter Methods
 - (void) setProgress:(float)p animated:(BOOL)animated{

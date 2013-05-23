@@ -74,11 +74,20 @@
 
 - (void) setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+	if(animated)
+		[UIView beginAnimations:nil context:nil];
 	_field.textColor = selected ? [UIColor whiteColor] : [UIColor blackColor];
+	if(animated)
+		[UIView commitAnimations];
 }
 - (void) setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
 	[super setHighlighted:highlighted animated:animated];
+	
+	if(animated)
+		[UIView beginAnimations:nil context:nil];
 	_field.textColor = highlighted ? [UIColor whiteColor] : [UIColor blackColor];
+	if(animated)
+		[UIView commitAnimations];
 }
 
 

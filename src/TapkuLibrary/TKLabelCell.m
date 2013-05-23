@@ -41,6 +41,7 @@
 	_label.backgroundColor = [UIColor clearColor];
     _label.textAlignment = NSTextAlignmentRight;
     _label.textColor = [UIColor grayColor];
+	_label.highlightedTextColor = [UIColor whiteColor];
     _label.font = [UIFont boldSystemFontOfSize:12.0];
     _label.adjustsFontSizeToFitWidth = YES;
     _label.baselineAdjustment = UIBaselineAdjustmentNone;
@@ -66,19 +67,6 @@
 		
 	
 }
-
-
-
-- (void) setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-	_label.textColor = selected ? [UIColor whiteColor] : [UIColor grayColor];
-}
-- (void) setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
-	[super setHighlighted:highlighted animated:animated];
-	_label.textColor = highlighted ? [UIColor whiteColor] : [UIColor grayColor];
-}
-
-
 
 
 
