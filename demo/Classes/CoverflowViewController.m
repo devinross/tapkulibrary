@@ -56,7 +56,7 @@
 	self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	
 	
-	self.coverflow = [[TKCoverflowView alloc] initWithFrame:self.view.bounds deleclerationRate:UIScrollViewDecelerationRateFast];
+	self.coverflow = [[TKCoverflowView alloc] initWithFrame:self.view.bounds];
 	self.coverflow.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	self.coverflow.coverflowDelegate = self;
 	self.coverflow.coverflowDataSource = self;

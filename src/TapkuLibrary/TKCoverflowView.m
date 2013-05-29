@@ -55,6 +55,7 @@
 #pragma mark Init
 - (id) initWithFrame:(CGRect)frame{
 	self = [self initWithFrame:frame deleclerationRate:UIScrollViewDecelerationRateFast];
+	self.decelerationRate = UIScrollViewDecelerationRateFast;
 	return self;
 }
 - (id) initWithFrame:(CGRect)frame deleclerationRate:(CGFloat)decelerationRate{
@@ -208,7 +209,7 @@
 	
 	[UIView beginAnimations:ID context:nil];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-	[UIView setAnimationDuration:animated ? 0.25f : 0.0f];
+	[UIView setAnimationDuration:animated ? 0.22f : 0.0f];
 	[UIView setAnimationBeginsFromCurrentState:YES];
 	[UIView setAnimationDelegate:self];
 	[UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
@@ -303,13 +304,13 @@
 	CGPoint p = self.contentOffset;
 	p.x -= self.contentInset.left;
 	
-	NSInteger s = [self _calculatedIndexWithContentOffset:p]-3;
+	NSInteger s = [self _calculatedIndexWithContentOffset:p]-5;
 	NSInteger start = MAX(0,s);
 	p.x += self.bounds.size.width;
 	
 	
 	NSInteger max = _numberOfCovers;
-	NSInteger e = [self _calculatedIndexWithContentOffset:p]+3;
+	NSInteger e = [self _calculatedIndexWithContentOffset:p]+5;
 	NSInteger end = MAX(0,MIN(max,e));
 	return NSMakeRange(start, MAX(0,end - start));
 }

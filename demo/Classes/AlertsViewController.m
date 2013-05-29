@@ -64,10 +64,10 @@
 	[super viewDidAppear:animated];
 	
 	
-	[self performSelector:@selector(showKeyboardAlerts) withObject:nil afterDelay:5.0];
-	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"Hi!"];
-	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"This is the alert system"];
-	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"Use images too!" image:[UIImage imageNamed:@"beer"]];
+	[self performSelector:@selector(showKeyboardAlerts) withObject:nil afterDelay:4.3];
+	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"Hi! This is the alert system."];
+	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"Text alerts..."];
+	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"with images!" image:[UIImage imageNamed:@"beer"]];
 
 }
 
@@ -78,10 +78,8 @@
 	
 	[self.hiddenTextField becomeFirstResponder];
 	
-	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"Hi!"];
-	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"This is the alert system"];
-	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"Use images too!" image:[UIImage imageNamed:@"beer"]];
-	[self performSelector:@selector(completedKeyboard) withObject:nil afterDelay:5.0];
+	[[TKAlertCenter defaultCenter] postAlertWithMessage:@"and it will avoid keyboards too"];
+	[self performSelector:@selector(completedKeyboard) withObject:nil afterDelay:3.0];
 
 }
 

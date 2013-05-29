@@ -13,6 +13,8 @@
 		2026B553174810B900447F22 /* TKTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2026B551174810B900447F22 /* TKTextFieldCell.m */; };
 		2026B55B1748257B00447F22 /* TKTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2026B5591748257B00447F22 /* TKTextView.h */; };
 		2026B55C1748257B00447F22 /* TKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2026B55A1748257B00447F22 /* TKTextView.m */; };
+		2052E87F174F532500F06B66 /* TKWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2052E87D174F532500F06B66 /* TKWebViewController.h */; };
+		2052E880174F532500F06B66 /* TKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052E87E174F532500F06B66 /* TKWebViewController.m */; };
 		2057363416A330E700F8CDE6 /* TKCoverflowView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2057363216A330E700F8CDE6 /* TKCoverflowView.h */; };
 		2057363516A330E700F8CDE6 /* TKCoverflowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2057363316A330E700F8CDE6 /* TKCoverflowView.m */; };
 		207DFF9215E1E3BE00A0BC2A /* NSDate+CalendarGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = 207DFF9015E1E3BE00A0BC2A /* NSDate+CalendarGrid.h */; };
@@ -133,6 +135,8 @@
 		2026B551174810B900447F22 /* TKTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKTextFieldCell.m; sourceTree = "<group>"; };
 		2026B5591748257B00447F22 /* TKTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKTextView.h; sourceTree = "<group>"; };
 		2026B55A1748257B00447F22 /* TKTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKTextView.m; sourceTree = "<group>"; };
+		2052E87D174F532500F06B66 /* TKWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKWebViewController.h; sourceTree = "<group>"; };
+		2052E87E174F532500F06B66 /* TKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKWebViewController.m; sourceTree = "<group>"; };
 		2057363216A330E700F8CDE6 /* TKCoverflowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCoverflowView.h; sourceTree = "<group>"; };
 		2057363316A330E700F8CDE6 /* TKCoverflowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoverflowView.m; sourceTree = "<group>"; };
 		207DFF9015E1E3BE00A0BC2A /* NSDate+CalendarGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CalendarGrid.h"; sourceTree = "<group>"; };
@@ -494,6 +498,8 @@
 				3B819B5314601DC500EC0097 /* TKViewController.m */,
 				3BBF87491296E976008AB2B1 /* TKTableViewController.h */,
 				3BBF874A1296E976008AB2B1 /* TKTableViewController.m */,
+				2052E87D174F532500F06B66 /* TKWebViewController.h */,
+				2052E87E174F532500F06B66 /* TKWebViewController.m */,
 				3B8F0DF4142AE52B00E3AADE /* TKGradientView.h */,
 				3B8F0DF5142AE52B00E3AADE /* TKGradientView.m */,
 				3BF9A831159791EA002A7F9E /* TKShapeView.h */,
@@ -591,6 +597,7 @@
 				2026B552174810B900447F22 /* TKTextFieldCell.h in Headers */,
 				2026B55B1748257B00447F22 /* TKTextView.h in Headers */,
 				20A2A520174C37870058571F /* TKSlideToUnlockView.h in Headers */,
+				2052E87F174F532500F06B66 /* TKWebViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -758,6 +765,7 @@
 				2026B553174810B900447F22 /* TKTextFieldCell.m in Sources */,
 				2026B55C1748257B00447F22 /* TKTextView.m in Sources */,
 				20A2A521174C37870058571F /* TKSlideToUnlockView.m in Sources */,
+				2052E880174F532500F06B66 /* TKWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
