@@ -107,6 +107,11 @@ FOUNDATION_STATIC_INLINE CGFloat CGPointDistance(CGPoint p1,CGPoint p2){
 }
 
 
+FOUNDATION_STATIC_INLINE CGPoint CGRectMidpoint(CGRect rect);
+FOUNDATION_STATIC_INLINE CGPoint CGRectMidpoint(CGRect rect){
+	return CGPointMake(rect.origin.x + rect.size.width / 2.0f, rect.origin.y + rect.size.height / 2.0f);
+}
+
 
 @interface TKGlobal : NSObject 
 

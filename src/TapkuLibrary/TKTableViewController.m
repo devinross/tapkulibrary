@@ -33,6 +33,17 @@
 #import "TKEmptyView.h"
 #import "UIScrollview+TKCategory.h"
 
+
+@interface TKTableViewController () {
+@private
+	UITableViewStyle _style;
+	CGPoint _tableViewContentOffset;
+	
+}
+
+@end
+
+
 #pragma mark - TKTableViewController
 @implementation TKTableViewController
 
@@ -47,6 +58,7 @@
 	if(!(self = [super init])) return nil;
 	_style = style;
 	_tableViewContentOffset = CGPointZero;
+	_clearsSelectionOnViewWillAppear = YES;
 	return self;
 }
 - (void) _unloadSubviews{
@@ -69,15 +81,20 @@
 - (void) loadView{
 	[super loadView];
 	
-	_tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:_style];
-	_tableView.delegate = self;
-	_tableView.dataSource = self;
-	_tableView.showsVerticalScrollIndicator = YES;
-	_tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	_tableView.contentOffset = _tableViewContentOffset;
-	[self.view addSubview:_tableView];
+	self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:_style];
+	self.tableView.delegate = self;
+	self.tableView.dataSource = self;
+	self.tableView.showsVerticalScrollIndicator = YES;
+	self.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	self.tableView.contentOffset = _tableViewContentOffset;
+	[self.view addSubview:self.tableView];
 }
-
+- (void) viewWillAppear:(BOOL)animated{
+	[super viewWillAppear:animated];
+	
+	if(self.clearsSelectionOnViewWillAppear)
+		[self.tableView deselectRowAtIndexPath:self.tableView.indexPathForSelectedRow animated:animated];
+}
 
 
 // -----------------------------

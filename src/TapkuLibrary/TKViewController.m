@@ -33,6 +33,12 @@
 #import "TKHTTPRequest.h"
 #import "NSArray+TKCategory.h"
 
+@interface TKViewController () {
+	NSMutableArray *_activeRequests;
+}
+
+@end
+
 @implementation TKViewController
 
 - (void) viewDidUnload{
