@@ -215,7 +215,7 @@
 	// change the animation duration accordingly
 	// avg person reads 200 words per minute
 	NSArray * words = [_alerts[0][0] componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-	double duration = MAX(((double)[words count]*60.0/200.0),1);
+	double duration = MAX(((double)[words count]*60.0/200.0),1.4f);
 	
 	[UIView setAnimationDelay:duration];
 	[UIView setAnimationDelegate:self];
