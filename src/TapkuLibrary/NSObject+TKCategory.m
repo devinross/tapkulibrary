@@ -95,7 +95,7 @@
 		
 		id value = [self valueForKey:key];
 		
-		if(value && [value isKindOfClass:[NSDate date]]){
+		if(value && [value isKindOfClass:[NSDate class]]){
 			NSArray *array = dataKeys[key];
 			
 			if(!formatter) formatter = [[NSDateFormatter alloc] init];

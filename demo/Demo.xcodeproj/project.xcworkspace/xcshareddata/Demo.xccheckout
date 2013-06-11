@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C05574E8-1547-4725-A759-47E40F05D38B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Demo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E6E84476-7E08-4ADE-968E-0995FCC6B413</key>
+		<string>ssh://github.com/devinross/tapkulibrary.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>demo/Demo.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E6E84476-7E08-4ADE-968E-0995FCC6B413</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/devinross/tapkulibrary.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E6E84476-7E08-4ADE-968E-0995FCC6B413</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E6E84476-7E08-4ADE-968E-0995FCC6B413</string>
+			<key>IDESourceControlWCCName</key>
+			<string>tapkulibrary</string>
+		</dict>
+	</array>
+</dict>
+</plist>

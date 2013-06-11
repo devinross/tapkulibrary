@@ -207,7 +207,7 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 			[[NSFileManager defaultManager] moveItemAtPath:self.temporaryFileDownloadPath toPath:self.downloadDestinationPath error:&moveError];
 			
 			if (moveError){
-				NSDictionary *str = [NSString stringWithFormat:@"Failed to move file from '%@' to '%@'",self.temporaryFileDownloadPath,self.downloadDestinationPath];
+				NSString *str = [NSString stringWithFormat:@"Failed to move file from '%@' to '%@'",self.temporaryFileDownloadPath,self.downloadDestinationPath];
 				NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:str,NSLocalizedDescriptionKey,moveError,NSUnderlyingErrorKey,nil];
 				self.error = [NSError errorWithDomain:TKNetworkRequestErrorDomain code:TKFileManagementError userInfo:userInfo];
 			}
@@ -291,7 +291,7 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 			self.fileHandler = [NSFileHandle fileHandleForWritingAtPath:self.temporaryFileDownloadPath];
 			
 			if(self.fileHandler==nil) {
-				NSDictionary *str = [NSString stringWithFormat:@"Failed to create file from '%@'",self.temporaryFileDownloadPath];
+				NSString *str = [NSString stringWithFormat:@"Failed to create file from '%@'",self.temporaryFileDownloadPath];
 				NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:str,NSLocalizedDescriptionKey,nil];
 				self.error = [NSError errorWithDomain:TKNetworkRequestErrorDomain code:TKFileManagementError userInfo:userInfo];
 				[self _completeRequest];
