@@ -39,7 +39,7 @@
 
 
 + (NSDictionary*) dataKeys{
-	return [NSDictionary dictionary];
+	return @{};
 }
 
 
@@ -102,9 +102,9 @@
 			formatter.dateFormat = array.lastObject;
 			
 			NSString *date = [formatter stringFromDate:value];
-			[ret setObject:date forKey:array[0]];
+			ret[array[0]] = date;
 		}else if(value)
-			[ret setObject:value forKey:dataKeys[key]];
+			ret[dataKeys[key]] = value;
 		
 	}
 	return ret;
@@ -170,7 +170,7 @@
 
 	if(callback) dict[@"callback"] = NSStringFromSelector(callback);
 	if(backgroundProcessor) dict[@"backgroundProcessor"] = NSStringFromSelector(backgroundProcessor);
-	if(errroSelector) [dict setObject:NSStringFromSelector(errroSelector) forKey:@"errroSelector"];
+	if(errroSelector) dict[@"errroSelector"] = NSStringFromSelector(errroSelector);
 	
 	
 	[self performSelectorInBackground:@selector(_processJSONData:) withObject:dict];

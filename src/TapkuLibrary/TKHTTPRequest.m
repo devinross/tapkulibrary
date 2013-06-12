@@ -208,7 +208,7 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 			
 			if (moveError){
 				NSString *str = [NSString stringWithFormat:@"Failed to move file from '%@' to '%@'",self.temporaryFileDownloadPath,self.downloadDestinationPath];
-				NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:str,NSLocalizedDescriptionKey,moveError,NSUnderlyingErrorKey,nil];
+				NSDictionary *userInfo = @{NSLocalizedDescriptionKey: str,NSUnderlyingErrorKey: moveError};
 				self.error = [NSError errorWithDomain:TKNetworkRequestErrorDomain code:TKFileManagementError userInfo:userInfo];
 			}
 		}
@@ -292,7 +292,7 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 			
 			if(self.fileHandler==nil) {
 				NSString *str = [NSString stringWithFormat:@"Failed to create file from '%@'",self.temporaryFileDownloadPath];
-				NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:str,NSLocalizedDescriptionKey,nil];
+				NSDictionary *userInfo = @{NSLocalizedDescriptionKey: str};
 				self.error = [NSError errorWithDomain:TKNetworkRequestErrorDomain code:TKFileManagementError userInfo:userInfo];
 				[self _completeRequest];
 			}
@@ -333,7 +333,7 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 		self.data = [[NSMutableData alloc] initWithCapacity:contentSize];
 	} else {
 		NSString* statusError  = [NSString stringWithFormat:NSLocalizedString(@"HTTP Error: %ld", nil), self.statusCode];
-		NSDictionary* userInfo = [NSDictionary dictionaryWithObject:statusError forKey:NSLocalizedDescriptionKey];
+		NSDictionary* userInfo = @{NSLocalizedDescriptionKey: statusError};
 		self.error = [[NSError alloc] initWithDomain:TKNetworkRequestErrorDomain code:self.statusCode userInfo:userInfo];
 		[self _completeRequest];
 	}
@@ -514,7 +514,7 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 		[fileManager removeItemAtPath:path error:&removeError];
 		if (removeError) {
 			if (err) {
-				*err = [NSError errorWithDomain:TKNetworkRequestErrorDomain code:TKFileManagementError userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"Failed to delete file at path '%@'",path],NSLocalizedDescriptionKey,removeError,NSUnderlyingErrorKey,nil]];
+				*err = [NSError errorWithDomain:TKNetworkRequestErrorDomain code:TKFileManagementError userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Failed to delete file at path '%@'",path],NSUnderlyingErrorKey: removeError}];
 			}
 			return NO;
 		}

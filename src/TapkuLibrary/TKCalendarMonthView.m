@@ -100,7 +100,7 @@ static UIImage *tileImage;
 	[formatter setTimeStyle:NSDateFormatterNoStyle];
 	[formatter setTimeZone:self.timeZone];
 	
-	NSDate *firstDate = [self.datesArray objectAtIndex:0];
+	NSDate *firstDate = (self.datesArray)[0];
 	
 	for(NSInteger i=0;i<self.marks.count;i++){
 		UIAccessibilityElement *element = [[UIAccessibilityElement alloc] initWithAccessibilityContainer:self];
@@ -113,7 +113,7 @@ static UIImage *tileImage;
 		
 		element.accessibilityFrame = r;
 		element.accessibilityTraits = UIAccessibilityTraitButton;
-		element.accessibilityValue = [[self.marks objectAtIndex:i] boolValue] ? @"Has Events" : @"No Events";
+		element.accessibilityValue = [(self.marks)[i] boolValue] ? @"Has Events" : @"No Events";
 		[_accessibleElements addObject:element];
 		
 	}

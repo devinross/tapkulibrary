@@ -35,13 +35,13 @@
 
 - (id) firstObject{
 	if(self.count<1) return nil;
-	return [self objectAtIndex:0];
+	return self[0];
 }
 
 - (id) randomObject{
 	if(self.count<1) return nil;
 
-	return [self objectAtIndex:arc4random() % [self count]];
+	return self[arc4random() % [self count]];
 }
 
 @end

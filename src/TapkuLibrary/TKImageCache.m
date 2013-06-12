@@ -119,9 +119,9 @@
 	
 	dispatch_async(cache_queue,^{
 		
-		if([_requestKeys objectForKey:key]!=nil) return;
+		if(_requestKeys[key]!=nil) return;
 		
-		[_requestKeys setObject:[NSNull null] forKey:key];
+		_requestKeys[key] = [NSNull null];
 		NSString *filePath = [self _filePathWithKey:key];
 		
 		
@@ -147,7 +147,7 @@
 	if(request.statusCode != 200){
 		dispatch_async(cache_queue,^{
 			
-			if([_requestKeys objectForKey:key])
+			if(_requestKeys[key])
 				[_requestKeys removeObjectForKey:key];
 			
 			[[NSFileManager defaultManager] removeItemAtPath:request.downloadDestinationPath error:nil];
@@ -158,7 +158,7 @@
 	
 	dispatch_async(cache_queue,^{
 		
-		if([_requestKeys objectForKey:key])
+		if(_requestKeys[key])
 			[_requestKeys removeObjectForKey:key];
 		
 		
@@ -166,10 +166,10 @@
 		if(cacheImage==nil) return;
 		
 		[self setObject:cacheImage forKey:request.key];
-		NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:key,@"key",cacheImage,@"image",[NSNumber numberWithUnsignedInt:request.tag],@"tag",nil];
+		NSDictionary *dict = @{@"key": key,@"image": cacheImage,@"tag": @(request.tag)};
 		
 		dispatch_async(dispatch_get_main_queue(), ^{
-			[_diskKeys setObject:[NSNull null] forKey:request.key];
+			_diskKeys[request.key] = [NSNull null];
 			[[NSNotificationCenter defaultCenter] postNotificationName:self.notificationName object:self userInfo:dict];
 		});
 		
@@ -183,7 +183,7 @@
 	dispatch_async(cache_queue,^{
 		NSString *key = request.key;
 		
-		if([_requestKeys objectForKey:key])
+		if(_requestKeys[key])
 			[_requestKeys removeObjectForKey:key];
 	});
 }
@@ -286,7 +286,7 @@
 - (BOOL) _imageExistsOnDiskWithKey:(NSString *)key{
 	
 	
-	if(_diskKeys) return [_diskKeys objectForKey:key]==nil ? NO : YES;
+	if(_diskKeys) return _diskKeys[key]==nil ? NO : YES;
 	
 	
 	
@@ -305,7 +305,7 @@
 		
 		if(cacheImage==nil) return;
 		[self setObject:cacheImage forKey:key];
-		NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys:key,@"key",cacheImage,@"image",[NSNumber numberWithUnsignedInt:tag],@"tag",nil];
+		NSDictionary *dict = @{@"key": key,@"image": cacheImage,@"tag": @(tag)};
 		
 		
 		dispatch_async(dispatch_get_main_queue(), ^{

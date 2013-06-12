@@ -41,7 +41,7 @@
 	
     self.toolbar = [[UIToolbar alloc] initWithFrame:CGRectMakeWithPoint(CGPointZero, self.view.bounds.size.width, 44)];
 	self.toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	self.toolbar.items = [NSArray array];
+	self.toolbar.items = @[];
 	[self.view addSubview:self.toolbar];
 }
 

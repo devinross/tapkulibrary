@@ -107,11 +107,11 @@
 		
 		NSInteger r = arc4random();
 		if(r % 3==1){
-			[self.dataDictionary setObject:@[@"Item one",@"Item two"] forKey:d];
+			(self.dataDictionary)[d] = @[@"Item one",@"Item two"];
 			[self.dataArray addObject:@YES];
 			
 		}else if(r%4==1){
-			[self.dataDictionary setObject:@[@"Item one"] forKey:d];
+			(self.dataDictionary)[d] = @[@"Item one"];
 			[self.dataArray addObject:@YES];
 			
 		}else

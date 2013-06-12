@@ -154,7 +154,7 @@
 			UIView *v = _covers[i];
 			if((NSObject*) v == [NSNull null]) continue;
 			[_grayard addObject:v];
-			[_covers replaceObjectAtIndex:i withObject:[NSNull null]];
+			_covers[i] = [NSNull null];
 			[v removeFromSuperview];
 		}
 	}
@@ -166,7 +166,7 @@
 			UIView *v = _covers[i];
 			[v removeFromSuperview];
 			[_grayard addObject:v];
-			[_covers replaceObjectAtIndex:i withObject:[NSNull null]];
+			_covers[i] = [NSNull null];
 		}
 	}
 	
@@ -185,7 +185,7 @@
 		cover.tag = i;
 		[self addSubview:cover];
 		[self sendSubviewToBack:cover];
-		[_covers replaceObjectAtIndex:i withObject:cover];
+		_covers[i] = cover;
 	}
 	
 	
@@ -253,7 +253,7 @@
 		
 		UIView *v = _covers[i];
 		[_grayard addObject:v];
-		[_covers replaceObjectAtIndex:i withObject:[NSNull null]];
+		_covers[i] = [NSNull null];
 		[v removeFromSuperview];
 	}
 	
