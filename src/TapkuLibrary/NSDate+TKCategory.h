@@ -40,16 +40,30 @@
 
 #pragma mark Yesterday
 /** Creates and returns a new date set to the previous day and current time.
- @return A `NSDate` object set to the current month.
+ @return A `NSDate` object set to yesterday.
  */
 + (NSDate *) yesterday;
 
 /** Creates and returns a new date set to the previous day and current time.
  @param timeZone The time zone to repect. 
  @note Things get tricky with respect to day light saving. Simple subtraction of 24 hours (using @code[NSDate dateWithTimeIntervalSinceNow:]@endcode) might not yield the expected results.
- @return A `NSDate` object set to the current month.
+ @return A `NSDate` object set to yesterday.
  */
 + (NSDate*) yesterdayWithTimeZone:(NSTimeZone*)timeZone;
+
+
+
+/** Creates and returns a new date set to tomorrow's day and current time.
+ @return A `NSDate` object set to tomorrow.
+ */
++ (NSDate*) tomorrow;
+
+/** Creates and returns a new date set to the tomorrow's day and current time.
+ @param timeZone The time zone to repect.
+ @note Things get tricky with respect to day light saving. Simple subtraction of 24 hours (using @code[NSDate dateWithTimeIntervalSinceNow:]@endcode) might not yield the expected results.
+ @return A `NSDate` object set to tomorrow.
+ */
++ (NSDate*) tomorrowWithTimeZone:(NSTimeZone*)timeZone;
 
 
 #pragma mark Month
