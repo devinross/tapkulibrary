@@ -425,7 +425,7 @@
 			name = Label;
 			sourceTree = "<group>";
 		};
-		3BAC9A3E10953E5200F235F1 /* HUD */ = {
+		3BAC9A3E10953E5200F235F1 /* Indicators */ = {
 			isa = PBXGroup;
 			children = (
 				20FC7CBA1719313A00C3A7E1 /* TKLoadingView.h */,
@@ -439,7 +439,7 @@
 				3BEE1CB912CFB78300FECF6D /* TKProgressCircleView.h */,
 				3BEE1CBA12CFB78300FECF6D /* TKProgressCircleView.m */,
 			);
-			name = HUD;
+			name = Indicators;
 			sourceTree = "<group>";
 		};
 		3BAC9A4D10953E5200F235F1 /* Empty View */ = {
@@ -517,7 +517,7 @@
 				3BAC99F910953E2400F235F1 /* Calendar */,
 				3B8B591810F0816300EABA45 /* Coverflow */,
 				3BAC9A4D10953E5200F235F1 /* Empty View */,
-				3BAC9A3E10953E5200F235F1 /* HUD */,
+				3BAC9A3E10953E5200F235F1 /* Indicators */,
 				3BAC9A2510953E5200F235F1 /* Cells */,
 				20A2A51E174C37870058571F /* TKSlideToUnlockView.h */,
 				20A2A51F174C37870058571F /* TKSlideToUnlockView.m */,
@@ -776,6 +776,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -789,7 +790,7 @@
 				GCC_VERSION = "";
 				INSTALL_PATH = /usr/local/lib;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = TapkuLibrary;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -801,6 +802,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DOXYGEN_PATH = /Applications/Doxygen.app/Contents/Resources/doxygen;

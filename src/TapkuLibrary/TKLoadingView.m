@@ -32,6 +32,7 @@
 #import "TKLoadingView.h"
 
 
+
 @implementation TKLoadingView
 
 
@@ -56,14 +57,21 @@
 
 
 - (void) startAnimating{
-	if(!self.superview) return;
 	self.loadingLabel.hidden = NO;
+	if(!self.window) return;
 	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_next) object:nil];
 	[self performSelector:@selector(_next) withObject:nil afterDelay:0.3f];
 }
 - (void) stopAnimating{
 	self.loadingLabel.hidden = YES;
 	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(nextStep) object:nil];
+}
+
+- (void) didMoveToWindow{
+	if(self.loadingLabel.hidden) return;
+	
+	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_next) object:nil];
+	[self performSelector:@selector(_next) withObject:nil afterDelay:0.3f];
 }
 
 
