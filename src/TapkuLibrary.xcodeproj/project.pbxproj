@@ -17,6 +17,8 @@
 		2052E880174F532500F06B66 /* TKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052E87E174F532500F06B66 /* TKWebViewController.m */; };
 		2057363416A330E700F8CDE6 /* TKCoverflowView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2057363216A330E700F8CDE6 /* TKCoverflowView.h */; };
 		2057363516A330E700F8CDE6 /* TKCoverflowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2057363316A330E700F8CDE6 /* TKCoverflowView.m */; };
+		207DF656178761210091E898 /* UITextField+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 207DF654178761210091E898 /* UITextField+TKCategory.h */; };
+		207DF657178761210091E898 /* UITextField+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 207DF655178761210091E898 /* UITextField+TKCategory.m */; };
 		207DFF9215E1E3BE00A0BC2A /* NSDate+CalendarGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = 207DFF9015E1E3BE00A0BC2A /* NSDate+CalendarGrid.h */; };
 		207DFF9315E1E3BE00A0BC2A /* NSDate+CalendarGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 207DFF9115E1E3BE00A0BC2A /* NSDate+CalendarGrid.m */; };
 		20A2A520174C37870058571F /* TKSlideToUnlockView.h in Headers */ = {isa = PBXBuildFile; fileRef = 20A2A51E174C37870058571F /* TKSlideToUnlockView.h */; };
@@ -139,6 +141,8 @@
 		2052E87E174F532500F06B66 /* TKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKWebViewController.m; sourceTree = "<group>"; };
 		2057363216A330E700F8CDE6 /* TKCoverflowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCoverflowView.h; sourceTree = "<group>"; };
 		2057363316A330E700F8CDE6 /* TKCoverflowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoverflowView.m; sourceTree = "<group>"; };
+		207DF654178761210091E898 /* UITextField+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+TKCategory.h"; sourceTree = "<group>"; };
+		207DF655178761210091E898 /* UITextField+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+TKCategory.m"; sourceTree = "<group>"; };
 		207DFF9015E1E3BE00A0BC2A /* NSDate+CalendarGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CalendarGrid.h"; sourceTree = "<group>"; };
 		207DFF9115E1E3BE00A0BC2A /* NSDate+CalendarGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CalendarGrid.m"; sourceTree = "<group>"; };
 		20A2A51E174C37870058571F /* TKSlideToUnlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKSlideToUnlockView.h; sourceTree = "<group>"; };
@@ -468,6 +472,8 @@
 				3BAC9A2210953E5200F235F1 /* UIView+TKCategory.m */,
 				3BAC9A1F10953E5200F235F1 /* UIImage+TKCategory.h */,
 				3BAC9A2010953E5200F235F1 /* UIImage+TKCategory.m */,
+				207DF654178761210091E898 /* UITextField+TKCategory.h */,
+				207DF655178761210091E898 /* UITextField+TKCategory.m */,
 				3BB96F5612B55CD600C38F46 /* UIImageView+TKCategory.h */,
 				3BB96F5712B55CD600C38F46 /* UIImageView+TKCategory.m */,
 				3B4346E212DA6A240076579B /* UIButton+TKCategory.h */,
@@ -588,6 +594,7 @@
 				3B560B7214574E30005FBDBF /* TKImageCache.h in Headers */,
 				3B819B5414601DC500EC0097 /* TKViewController.h in Headers */,
 				3BF9A833159791EA002A7F9E /* TKShapeView.h in Headers */,
+				207DF656178761210091E898 /* UITextField+TKCategory.h in Headers */,
 				207DFF9215E1E3BE00A0BC2A /* NSDate+CalendarGrid.h in Headers */,
 				20DE9F4A168FA1EF00655BF8 /* NSObject+TKCategory.h in Headers */,
 				2057363416A330E700F8CDE6 /* TKCoverflowView.h in Headers */,
@@ -730,6 +737,7 @@
 				3B6EDDFC11547C3800E454DA /* TKEmptyView.m in Sources */,
 				3B6EDE0B11547C4600E454DA /* TKTextViewCell.m in Sources */,
 				3B6EDE0D11547C4700E454DA /* TKSwitchCell.m in Sources */,
+				207DF657178761210091E898 /* UITextField+TKCategory.m in Sources */,
 				3B6EDE0F11547C4800E454DA /* TKLabelTextViewCell.m in Sources */,
 				3B6EDE1111547C4900E454DA /* TKLabelTextFieldCell.m in Sources */,
 				3B6EDE1311547C4A00E454DA /* TKLabelSwitchCell.m in Sources */,
