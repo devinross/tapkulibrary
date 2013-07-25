@@ -92,3 +92,6 @@
 
 // Coverflow
 #import "TKCoverflowView.h"
+
+
+#import "TKReorderTableView.h"
