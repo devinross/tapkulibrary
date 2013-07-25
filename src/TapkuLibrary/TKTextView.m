@@ -4,7 +4,7 @@
 //
 /*
  
- tapku.com || http://github.com/devinross/tapkulibrary
+ tapku || http://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -65,12 +65,19 @@
 			[self addSubview:self.placeHolderLabel];
 			[self sendSubviewToBack:self.placeHolderLabel];
 			
-
+			
 		}
 		
-		self.placeHolderLabel.frame = CGRectMake(8,8,self.bounds.size.width - 16,0);
+		if([self respondsToSelector:@selector(textContainer)])
+			self.placeHolderLabel.frame = CGRectMake(4, 8, self.bounds.size.width - 8, 0);
+		else
+			self.placeHolderLabel.frame = CGRectMake(8,8,self.bounds.size.width - 16,0);
+		
+		
+		
+		
 		[self.placeHolderLabel sizeToFit];
-
+		
 	}
     
 	_placeHolderLabel.alpha = self.text.length < 1 ? 1 : 0;
@@ -119,9 +126,20 @@
 	_placeHolderLabel.font = self.font;
 	_placeHolderLabel.backgroundColor = [UIColor clearColor];
 	_placeHolderLabel.textColor = [UIColor lightGrayColor];
+	
+	
+	if([self respondsToSelector:@selector(textContainer)]){
+		
+		_placeHolderLabel.textColor = [UIColor colorWithWhite:0.80 alpha:1];
+		_placeHolderLabel.frame = CGRectMake(2, 8, self.bounds.size.width - 8, 0);
+		
+	}
+	
+	
+	
+	
 	_placeHolderLabel.alpha = 0;
 	return _placeHolderLabel;
 }
-
 
 @end

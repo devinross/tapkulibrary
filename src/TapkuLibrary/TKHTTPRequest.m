@@ -4,7 +4,7 @@
 //
 /*
  
- tapku.com || https://github.com/devinross/tapkulibrary
+ tapku || https://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -68,6 +68,8 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 #endif
 	
 }
+
+@property (nonatomic,strong) TKHTTPRequest *selfRetained;
 
 @property (nonatomic,assign) TKOperationState state;
 @property (nonatomic,readwrite,assign,getter=isCancelled) BOOL cancelled;
@@ -134,6 +136,8 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 - (void) dealloc{
 	if(self.connection) [self.connection cancel];
 }
+
+
 
 - (void) startAsynchronous{
 	[[TKNetworkQueue sharedNetworkQueue] addOperation:self];
