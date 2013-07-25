@@ -1,15 +1,39 @@
 //
 //  TKSlideToUnlockView.m
-//  TapkuLibrary
-//
 //  Created by Devin Ross on 5/21/13.
 //
-//
+/*
+ 
+ tapku || http://github.com/devinross/tapkulibrary
+ 
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without
+ restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following
+ conditions:
+ 
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+ 
+ */
 
 #import "TKSlideToUnlockView.h"
 #import "UIImageView+TKCategory.h"
 #import "UIImage+TKCategory.h"
 #import "TKGlobal.h"
+#import "UIGestureRecognizer+TKCategory.h"
 
 @interface TKSlideToUnlockView (){
 	CGFloat _initialOffset;
@@ -128,10 +152,10 @@
 	CGFloat half = panView.frame.size.width/2.0f;
 	CGFloat maximum = self.trackView.frame.size.width + self.trackView.frame.origin.x - half - TRACK_PADDING;
 
-	if(pan.state == UIGestureRecognizerStateBegan){
+	if([pan began]){
 		_initialOffset = [pan locationInView:self].x;
 		
-	}else if(pan.state == UIGestureRecognizerStateChanged){
+	}else if([pan changed]){
 		
 		CGFloat x = MAX(half,half + p.x - _initialOffset);
 		x = MIN(maximum,x);
@@ -140,7 +164,7 @@
 		CGFloat diff = FADE_TEXT_OVER_LENGTH - (p.x - _initialOffset);
 		self.textLabel.alpha = diff / FADE_TEXT_OVER_LENGTH;
 
-	}else if(pan.state == UIGestureRecognizerStateCancelled || pan.state == UIGestureRecognizerStateEnded){
+	}else if([pan cancelled] || [pan ended]){
 		
 		CGFloat x = MAX(half,half + p.x - _initialOffset);
 		x = MIN(maximum,x);

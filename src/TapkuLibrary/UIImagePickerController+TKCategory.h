@@ -31,10 +31,16 @@
 
 #import <UIKit/UIKit.h>
 
+/** Additional functionality for `UIImagePickerController`.  */
 @interface UIImagePickerController (TKCategory)
 
+/** The device has a camera.  */
 + (BOOL) hasCamera;
+
+/** The device has a front facing camera.  */
 + (BOOL) hasFrontCamera;
+
+/** The device has a rear facing camera.  */
 + (BOOL) hasRearCamera;
 
 @end

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2014592817A1077D00629488 /* TKReorderTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2014592617A1077D00629488 /* TKReorderTableView.h */; };
+		2014592917A1077D00629488 /* TKReorderTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2014592717A1077D00629488 /* TKReorderTableView.m */; };
+		2014592C17A107FF00629488 /* UIGestureRecognizer+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2014592A17A107FF00629488 /* UIGestureRecognizer+TKCategory.h */; };
+		2014592D17A107FF00629488 /* UIGestureRecognizer+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2014592B17A107FF00629488 /* UIGestureRecognizer+TKCategory.m */; };
 		2026B5391746F4D000447F22 /* UIImagePickerController+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2026B5371746F4D000447F22 /* UIImagePickerController+TKCategory.h */; };
 		2026B53A1746F4D000447F22 /* UIImagePickerController+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2026B5381746F4D000447F22 /* UIImagePickerController+TKCategory.m */; };
 		2026B552174810B900447F22 /* TKTextFieldCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 2026B550174810B900447F22 /* TKTextFieldCell.h */; };
@@ -131,6 +135,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2014592617A1077D00629488 /* TKReorderTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKReorderTableView.h; sourceTree = "<group>"; };
+		2014592717A1077D00629488 /* TKReorderTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKReorderTableView.m; sourceTree = "<group>"; };
+		2014592A17A107FF00629488 /* UIGestureRecognizer+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+TKCategory.h"; sourceTree = "<group>"; };
+		2014592B17A107FF00629488 /* UIGestureRecognizer+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+TKCategory.m"; sourceTree = "<group>"; };
 		2026B5371746F4D000447F22 /* UIImagePickerController+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImagePickerController+TKCategory.h"; sourceTree = "<group>"; };
 		2026B5381746F4D000447F22 /* UIImagePickerController+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImagePickerController+TKCategory.m"; sourceTree = "<group>"; };
 		2026B550174810B900447F22 /* TKTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKTextFieldCell.h; sourceTree = "<group>"; };
@@ -353,15 +361,6 @@
 			name = UnitTests;
 			sourceTree = "<group>";
 		};
-		3B8B591810F0816300EABA45 /* Coverflow */ = {
-			isa = PBXGroup;
-			children = (
-				2057363216A330E700F8CDE6 /* TKCoverflowView.h */,
-				2057363316A330E700F8CDE6 /* TKCoverflowView.m */,
-			);
-			name = Coverflow;
-			sourceTree = "<group>";
-		};
 		3BAC98C910953DCC00F235F1 /* TapkuLibrary */ = {
 			isa = PBXGroup;
 			children = (
@@ -446,15 +445,6 @@
 			name = Indicators;
 			sourceTree = "<group>";
 		};
-		3BAC9A4D10953E5200F235F1 /* Empty View */ = {
-			isa = PBXGroup;
-			children = (
-				3BAC9A4E10953E5200F235F1 /* TKEmptyView.h */,
-				3BAC9A4F10953E5200F235F1 /* TKEmptyView.m */,
-			);
-			name = "Empty View";
-			sourceTree = "<group>";
-		};
 		3BB3A1D1117814BC00553093 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
@@ -486,6 +476,8 @@
 				3B07B7C9133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.m */,
 				2026B5371746F4D000447F22 /* UIImagePickerController+TKCategory.h */,
 				2026B5381746F4D000447F22 /* UIImagePickerController+TKCategory.m */,
+				2014592A17A107FF00629488 /* UIGestureRecognizer+TKCategory.h */,
+				2014592B17A107FF00629488 /* UIGestureRecognizer+TKCategory.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -521,10 +513,14 @@
 			isa = PBXGroup;
 			children = (
 				3BAC99F910953E2400F235F1 /* Calendar */,
-				3B8B591810F0816300EABA45 /* Coverflow */,
-				3BAC9A4D10953E5200F235F1 /* Empty View */,
 				3BAC9A3E10953E5200F235F1 /* Indicators */,
 				3BAC9A2510953E5200F235F1 /* Cells */,
+				2057363216A330E700F8CDE6 /* TKCoverflowView.h */,
+				2057363316A330E700F8CDE6 /* TKCoverflowView.m */,
+				3BAC9A4E10953E5200F235F1 /* TKEmptyView.h */,
+				3BAC9A4F10953E5200F235F1 /* TKEmptyView.m */,
+				2014592617A1077D00629488 /* TKReorderTableView.h */,
+				2014592717A1077D00629488 /* TKReorderTableView.m */,
 				20A2A51E174C37870058571F /* TKSlideToUnlockView.h */,
 				20A2A51F174C37870058571F /* TKSlideToUnlockView.m */,
 			);
@@ -559,6 +555,7 @@
 				3B6EDDDF11547C1400E454DA /* TKWindow.h in Headers */,
 				3B6EDDE011547C1600E454DA /* TKGlobal.h in Headers */,
 				3B6EDDE211547C1800E454DA /* NSString+TKCategory.h in Headers */,
+				2014592C17A107FF00629488 /* UIGestureRecognizer+TKCategory.h in Headers */,
 				3B6EDDE511547C1E00E454DA /* NSDate+TKCategory.h in Headers */,
 				3B6EDDEB11547C2800E454DA /* TKCalendarMonthViewController.h in Headers */,
 				3B6EDDEF11547C2900E454DA /* TKCalendarMonthTableViewController.h in Headers */,
@@ -567,6 +564,7 @@
 				3B6EDDF711547C3100E454DA /* TKCalendarDayEventView.h in Headers */,
 				3B6EDDFD11547C3800E454DA /* TKEmptyView.h in Headers */,
 				3B6EDE0C11547C4700E454DA /* TKTextViewCell.h in Headers */,
+				2014592817A1077D00629488 /* TKReorderTableView.h in Headers */,
 				3B6EDE0E11547C4800E454DA /* TKSwitchCell.h in Headers */,
 				3B6EDE1011547C4900E454DA /* TKLabelTextViewCell.h in Headers */,
 				3B6EDE1211547C4A00E454DA /* TKLabelTextFieldCell.h in Headers */,
@@ -753,8 +751,10 @@
 				3BE8FF8612945C4400DBF3FC /* UIScrollview+TKCategory.m in Sources */,
 				3BBF874C1296E976008AB2B1 /* TKTableViewController.m in Sources */,
 				3BB96F5912B55CD600C38F46 /* UIImageView+TKCategory.m in Sources */,
+				2014592D17A107FF00629488 /* UIGestureRecognizer+TKCategory.m in Sources */,
 				3BEE1CBC12CFB78300FECF6D /* TKProgressCircleView.m in Sources */,
 				3B4346E512DA6A240076579B /* UIButton+TKCategory.m in Sources */,
+				2014592917A1077D00629488 /* TKReorderTableView.m in Sources */,
 				3B9D93DB12F74F8F007D839C /* TKAppDelegate.m in Sources */,
 				3B07B7CB133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.m in Sources */,
 				3B166A70137F38D7006298E6 /* UIColor+TKCategory.m in Sources */,

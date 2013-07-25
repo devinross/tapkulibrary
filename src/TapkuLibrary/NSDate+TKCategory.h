@@ -45,7 +45,7 @@
 + (NSDate *) yesterday;
 
 /** Creates and returns a new date set to the previous day and current time.
- @param timeZone The time zone to repect. 
+ @param timeZone The time zone to repect.
  @note Things get tricky with respect to day light saving. Simple subtraction of 24 hours (using @code[NSDate dateWithTimeIntervalSinceNow:]@endcode) might not yield the expected results.
  @return A `NSDate` object set to yesterday.
  */
@@ -94,11 +94,13 @@
 
 #pragma mark Same Day
 /** Returns whether the compared date shares the date with respect to the default time zone.
+ @param anotherDate The data to compare.
  @return YES if the two dates share the same year, month day. Otherwise NO.
  */
 - (BOOL) isSameDay:(NSDate*)anotherDate;
 
 /** Returns whether the compared date shares the date with respect to the given time zone.
+ @param anotherDate The data to compare.
  @param timeZone The time zone used to determine the current day.
  @return YES if the two dates share the same year, month day. Otherwise NO.
  */
@@ -115,7 +117,7 @@
 
 
 /** Returns number of months between two dates.
- @param date The other date to compare.
+ @param toDate The other date to compare.
  @param timeZone The time zone to respect.
  @return Returns number of months between two dates.
  */

@@ -31,8 +31,10 @@
 
 #import <Foundation/Foundation.h>
 
+/** Additional functionality for `NSMutableArray`.  */
 @interface NSMutableArray (TKCategory)
 
+/** Shuffles the order of the objects. */
 - (void) shuffle;
 
 @end

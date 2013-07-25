@@ -1,10 +1,13 @@
 //
-//  UITextField+TKCategory.h
-//  Created by Devin Ross on 7/5/13.
+//  UIGestureRecognizer+TKCategory.m
+//  Created by Devin Ross on 7/25/13.
 //
 /*
  
  tapku || http://github.com/devinross/tapkulibrary
+ 
+ Portions Copyright (c) 2013 Ben Vogelzang.
+ https://github.com/bvogelzang/BVReorderTableView
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -29,16 +32,33 @@
  
  */
 
-#import <UIKit/UIKit.h>
+#import "UIGestureRecognizer+TKCategory.h"
 
-/** Additional functionality for `UITextField`.  */
+@implementation UIGestureRecognizer (TKCategory)
 
-@interface UITextField (TKCategory)
+- (BOOL) began{
+	return self.state == UIGestureRecognizerStateBegan;
+}
 
+- (BOOL) changed{
+	return self.state == UIGestureRecognizerStateChanged;
+}
 
-/** Changes the cursor position. A range length of zero will move the cursor and not select text.
- @param range The range of the selection.
- */
-- (void) selectTextAtRange:(NSRange)range;
+- (BOOL) ended{
+	return self.state == UIGestureRecognizerStateEnded;
+}
+
+- (BOOL) cancelled{
+	return self.state == UIGestureRecognizerStateCancelled;
+}
+
+- (BOOL) failed{
+	return self.state == UIGestureRecognizerStateFailed;
+}
+
+- (BOOL) possible{
+	return self.state == UIGestureRecognizerStatePossible;
+}
+
 
 @end

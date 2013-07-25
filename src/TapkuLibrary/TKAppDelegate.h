@@ -46,7 +46,7 @@
  UIWindow for the application is allocated and setup just before 
  this method is called. The default implementation does nothing.
  @param application The application instance.
- @param launchOption The launch options.
+ @param launchOptions The launch options.
  */
 - (void) application:(UIApplication *)application commonInitializationLaunching:(NSDictionary *)launchOptions;
 

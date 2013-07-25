@@ -1,10 +1,13 @@
 //
-//  UITextField+TKCategory.h
-//  Created by Devin Ross on 7/5/13.
+//  UIGestureRecognizer+TKCategory.h
+//  Created by Devin Ross on 7/25/13.
 //
 /*
  
  tapku || http://github.com/devinross/tapkulibrary
+ 
+ Portions Copyright (c) 2013 Ben Vogelzang.
+ https://github.com/bvogelzang/BVReorderTableView
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -31,14 +34,25 @@
 
 #import <UIKit/UIKit.h>
 
-/** Additional functionality for `UITextField`.  */
+/** Additional functionality for `UIGestureRecognizer`.  */
+@interface UIGestureRecognizer (TKCategory)
 
-@interface UITextField (TKCategory)
+/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateBegan`, otherwise NO. */
+- (BOOL) began;
 
+/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateChanged`, otherwise NO. */
+- (BOOL) changed;
 
-/** Changes the cursor position. A range length of zero will move the cursor and not select text.
- @param range The range of the selection.
- */
-- (void) selectTextAtRange:(NSRange)range;
+/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateEnded`, otherwise NO. */
+- (BOOL) ended;
+
+/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateCancelled`, otherwise NO. */
+- (BOOL) cancelled;
+
+/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateFailed`, otherwise NO. */
+- (BOOL) failed;
+
+/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStatePossible`, otherwise NO. */
+- (BOOL) possible;
 
 @end
