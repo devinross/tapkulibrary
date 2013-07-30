@@ -71,7 +71,7 @@
 			NSString *format = [value lastObject];
 			NSString *key = [value firstObject];
 			
-			if(VALID_OBJECT(format) && VALID_OBJECT(key)){
+			if(VALID_OBJECT(format) && VALID_OBJECT(key) && VALID_OBJECT(dictionary[key])){
 				if(!formatter) formatter = [[NSDateFormatter alloc] init];
 				[formatter setDateFormat:format];
 				NSDate *date = [formatter dateFromString:dictionary[key]];
