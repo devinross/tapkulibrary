@@ -141,7 +141,7 @@
 
 
 - (BOOL) isYesterday{
-	return [self isTomorrowWithTimeZone:[NSTimeZone defaultTimeZone]];
+	return [self isYesterdayWithTimeZone:[NSTimeZone defaultTimeZone]];
 }
 - (BOOL) isYesterdayWithTimeZone:(NSTimeZone*)timeZone{
 	NSDateComponents *comp = [[NSDate date] dateComponentsWithTimeZone:timeZone];
