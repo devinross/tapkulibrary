@@ -139,6 +139,29 @@
 - (BOOL) isTodayWithTimeZone:(NSTimeZone*)timeZone;
 
 
+/** Returns a Boolean value that indicates whether the date object is that same date information as tomorrow.
+ @return YES if the date object represents tomorrow's date, otherwise NO.
+ */
+- (BOOL) isTomorrow;
+
+/** Returns a Boolean value that indicates whether the date object is that same date information as tomorrow.
+ @param timeZone The time zone to respect.
+ @return YES if the date object represents tomorrow's date, otherwise NO.
+ */
+- (BOOL) isTomorrowWithTimeZone:(NSTimeZone*)timeZone;
+
+
+/** Returns a Boolean value that indicates whether the date object is that same date information as yesterday.
+ @return YES if the date object represents yesterday's date, otherwise NO.
+ */
+- (BOOL) isYesterday;
+/** Returns a Boolean value that indicates whether the date object is that same date information as yesterday.
+ @param timeZone The time zone to respect.
+ @return YES if the date object represents yesterday's date, otherwise NO.
+ */
+- (BOOL) isYesterdayWithTimeZone:(NSTimeZone*)timeZone;
+
+
 #pragma mark Month & Year String
 /** Returns a NSString with the localized month and year string for the NSDate object.
  @return An NSString object.
