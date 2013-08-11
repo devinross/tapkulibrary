@@ -103,7 +103,7 @@
 	
 	
     // get out of here if the long press was not on a valid row or our table is empty
-    if ([self isEmpty] || ([gesture began] && indexPath == nil) || ([gesture ended] && self.currentLocationIndexPath == nil)) {
+    if([self isEmpty] || indexPath == nil || ([gesture ended] && self.currentLocationIndexPath == nil)) {
         [self cancelGesture];
         return;
     }

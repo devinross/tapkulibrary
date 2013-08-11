@@ -244,7 +244,7 @@
 		[_alerts addObject:@[message,image]];
 	else if(message)
 		[_alerts addObject:@[message]];
-	else
+	else if(image)
 		[_alerts addObject:@[image]];
 	if(!_active) [self showAlerts];
 }
