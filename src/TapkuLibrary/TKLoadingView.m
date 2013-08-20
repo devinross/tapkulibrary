@@ -55,23 +55,26 @@
 }
 
 
+#define DELAY 0.25
+
 
 - (void) startAnimating{
 	self.loadingLabel.hidden = NO;
+	self.loadingLabel.text = [NSString stringWithFormat:@"%@...",NSLocalizedString(@"Loading", @"Loading")];
 	if(!self.window) return;
 	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_next) object:nil];
-	[self performSelector:@selector(_next) withObject:nil afterDelay:0.3f];
+	[self performSelector:@selector(_next) withObject:nil afterDelay:DELAY];
 }
 - (void) stopAnimating{
 	self.loadingLabel.hidden = YES;
-	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(nextStep) object:nil];
+	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_next) object:nil];
 }
 
 - (void) didMoveToWindow{
 	if(self.loadingLabel.hidden) return;
 	
 	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_next) object:nil];
-	[self performSelector:@selector(_next) withObject:nil afterDelay:0.3f];
+	[self performSelector:@selector(_next) withObject:nil afterDelay:DELAY];
 }
 
 
@@ -88,7 +91,7 @@
 		
 	self.loadingLabel.text = str;
 	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_next) object:nil];
-	[self performSelector:@selector(_next) withObject:nil afterDelay:0.3f];
+	[self performSelector:@selector(_next) withObject:nil afterDelay:DELAY];
 	
 	
 }
