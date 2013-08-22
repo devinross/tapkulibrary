@@ -17,6 +17,8 @@
 		2026B553174810B900447F22 /* TKTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2026B551174810B900447F22 /* TKTextFieldCell.m */; };
 		2026B55B1748257B00447F22 /* TKTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2026B5591748257B00447F22 /* TKTextView.h */; };
 		2026B55C1748257B00447F22 /* TKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2026B55A1748257B00447F22 /* TKTextView.m */; };
+		2047DAFC17C6692200C62E32 /* UIDevice+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2047DAFA17C6692200C62E32 /* UIDevice+TKCategory.h */; };
+		2047DAFD17C6692200C62E32 /* UIDevice+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2047DAFB17C6692200C62E32 /* UIDevice+TKCategory.m */; };
 		2052E87F174F532500F06B66 /* TKWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2052E87D174F532500F06B66 /* TKWebViewController.h */; };
 		2052E880174F532500F06B66 /* TKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052E87E174F532500F06B66 /* TKWebViewController.m */; };
 		2057363416A330E700F8CDE6 /* TKCoverflowView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2057363216A330E700F8CDE6 /* TKCoverflowView.h */; };
@@ -145,6 +147,8 @@
 		2026B551174810B900447F22 /* TKTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKTextFieldCell.m; sourceTree = "<group>"; };
 		2026B5591748257B00447F22 /* TKTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKTextView.h; sourceTree = "<group>"; };
 		2026B55A1748257B00447F22 /* TKTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKTextView.m; sourceTree = "<group>"; };
+		2047DAFA17C6692200C62E32 /* UIDevice+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+TKCategory.h"; sourceTree = "<group>"; };
+		2047DAFB17C6692200C62E32 /* UIDevice+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+TKCategory.m"; sourceTree = "<group>"; };
 		2052E87D174F532500F06B66 /* TKWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKWebViewController.h; sourceTree = "<group>"; };
 		2052E87E174F532500F06B66 /* TKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKWebViewController.m; sourceTree = "<group>"; };
 		2057363216A330E700F8CDE6 /* TKCoverflowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCoverflowView.h; sourceTree = "<group>"; };
@@ -458,6 +462,8 @@
 				20FC7CA61719007300C3A7E1 /* NSMutableArray+TKCategory.m */,
 				3BAC9A2310953E5200F235F1 /* NSDate+TKCategory.h */,
 				3BAC9A2410953E5200F235F1 /* NSDate+TKCategory.m */,
+				2047DAFA17C6692200C62E32 /* UIDevice+TKCategory.h */,
+				2047DAFB17C6692200C62E32 /* UIDevice+TKCategory.m */,
 				3BAC9A2110953E5200F235F1 /* UIView+TKCategory.h */,
 				3BAC9A2210953E5200F235F1 /* UIView+TKCategory.m */,
 				3BAC9A1F10953E5200F235F1 /* UIImage+TKCategory.h */,
@@ -557,6 +563,7 @@
 				3B6EDDE211547C1800E454DA /* NSString+TKCategory.h in Headers */,
 				2014592C17A107FF00629488 /* UIGestureRecognizer+TKCategory.h in Headers */,
 				3B6EDDE511547C1E00E454DA /* NSDate+TKCategory.h in Headers */,
+				2047DAFC17C6692200C62E32 /* UIDevice+TKCategory.h in Headers */,
 				3B6EDDEB11547C2800E454DA /* TKCalendarMonthViewController.h in Headers */,
 				3B6EDDEF11547C2900E454DA /* TKCalendarMonthTableViewController.h in Headers */,
 				3B6EDDF311547C2C00E454DA /* TKCalendarDayViewController.h in Headers */,
@@ -737,6 +744,7 @@
 				3B6EDE0D11547C4700E454DA /* TKSwitchCell.m in Sources */,
 				207DF657178761210091E898 /* UITextField+TKCategory.m in Sources */,
 				3B6EDE0F11547C4800E454DA /* TKLabelTextViewCell.m in Sources */,
+				2047DAFD17C6692200C62E32 /* UIDevice+TKCategory.m in Sources */,
 				3B6EDE1111547C4900E454DA /* TKLabelTextFieldCell.m in Sources */,
 				3B6EDE1311547C4A00E454DA /* TKLabelSwitchCell.m in Sources */,
 				3B6EDE1511547C5000E454DA /* TKLabelFieldCell.m in Sources */,

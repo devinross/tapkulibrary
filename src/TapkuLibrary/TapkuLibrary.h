@@ -33,6 +33,7 @@
 #import "NSDate+TKCategory.h"
 #import "NSArray+TKCategory.h"
 #import "NSMutableArray+TKCategory.h"
+#import "UIDevice+TKCategory.h"
 #import "UIView+TKCategory.h"
 #import "UIImage+TKCategory.h"
 #import "UIColor+TKCategory.h"
@@ -41,6 +42,7 @@
 #import "UIButton+TKCategory.h"
 #import "UITextField+TKCategory.h"
 #import "UIImagePickerController+TKCategory.h"
+
 
 
 #import "TKWindow.h"

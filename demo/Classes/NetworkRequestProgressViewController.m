@@ -68,9 +68,11 @@
 - (void) start{
 	
 	__weak TKHTTPRequest *req = [TKHTTPRequest requestWithURL:[NSURL URLWithString:@"http://devinsheaven.com/tapkulibrary.zip"]];
+	
 	req.delegate = self;
 	req.didFinishSelector = @selector(networkRequestDidFinish:);
 	req.progressDelegate = self;
+
 	
 	[req setStartedBlock:^{ NSLog(@"Started... %@",req); }];
 	[req setFailedBlock:^{ NSLog(@"Failed... %@ %@",req,req.error); }];
