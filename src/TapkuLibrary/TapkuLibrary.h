@@ -42,7 +42,7 @@
 #import "UIButton+TKCategory.h"
 #import "UITextField+TKCategory.h"
 #import "UIImagePickerController+TKCategory.h"
-
+#import "UIViewController+TKCategory.h"
 
 
 #import "TKWindow.h"
