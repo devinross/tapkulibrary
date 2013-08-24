@@ -34,6 +34,10 @@
 
 @interface TKWebViewController : UIViewController
 
+- (id) initWithURL:(NSURL*)URL;
+
+@property (nonatomic,strong) NSURL *URL;
+
 @property (nonatomic,strong) UIWebView *webView;
 
 @end

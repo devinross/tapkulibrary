@@ -34,11 +34,21 @@
 
 @implementation TKWebViewController
 
+- (id) initWithURL:(NSURL*)URL{
+	if(!(self=[super init])) return nil;
+	self.URL = URL;
+	return self;
+}
+
 - (void) loadView{
 	[super loadView];
 	self.webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
 	self.webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	[self.view addSubview:self.webView];
+}
+- (void) viewDidLoad{
+	[super viewDidLoad];
+	[self.webView loadRequest:[NSURLRequest requestWithURL:self.URL]];
 }
 
 @end
