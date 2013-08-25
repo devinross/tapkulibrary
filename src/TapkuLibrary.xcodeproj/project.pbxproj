@@ -31,6 +31,8 @@
 		207DFF9315E1E3BE00A0BC2A /* NSDate+CalendarGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 207DFF9115E1E3BE00A0BC2A /* NSDate+CalendarGrid.m */; };
 		20A2A520174C37870058571F /* TKSlideToUnlockView.h in Headers */ = {isa = PBXBuildFile; fileRef = 20A2A51E174C37870058571F /* TKSlideToUnlockView.h */; };
 		20A2A521174C37870058571F /* TKSlideToUnlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A2A51F174C37870058571F /* TKSlideToUnlockView.m */; };
+		20C0354F17C9A5DD009EBB33 /* TKGlowButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 20C0354D17C9A5DD009EBB33 /* TKGlowButton.h */; };
+		20C0355017C9A5DD009EBB33 /* TKGlowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C0354E17C9A5DD009EBB33 /* TKGlowButton.m */; };
 		20DE9F45168F93E400655BF8 /* DataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DE9F44168F93E400655BF8 /* DataTests.m */; };
 		20DE9F4A168FA1EF00655BF8 /* NSObject+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 20DE9F48168FA1EF00655BF8 /* NSObject+TKCategory.h */; };
 		20DE9F4B168FA1EF00655BF8 /* NSObject+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DE9F49168FA1EF00655BF8 /* NSObject+TKCategory.m */; };
@@ -163,6 +165,8 @@
 		207DFF9115E1E3BE00A0BC2A /* NSDate+CalendarGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CalendarGrid.m"; sourceTree = "<group>"; };
 		20A2A51E174C37870058571F /* TKSlideToUnlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKSlideToUnlockView.h; sourceTree = "<group>"; };
 		20A2A51F174C37870058571F /* TKSlideToUnlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKSlideToUnlockView.m; sourceTree = "<group>"; };
+		20C0354D17C9A5DD009EBB33 /* TKGlowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKGlowButton.h; sourceTree = "<group>"; };
+		20C0354E17C9A5DD009EBB33 /* TKGlowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKGlowButton.m; sourceTree = "<group>"; };
 		20DE9F43168F93E400655BF8 /* DataTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataTests.h; sourceTree = "<group>"; };
 		20DE9F44168F93E400655BF8 /* DataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataTests.m; sourceTree = "<group>"; };
 		20DE9F48168FA1EF00655BF8 /* NSObject+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TKCategory.h"; sourceTree = "<group>"; };
@@ -535,6 +539,8 @@
 				2014592717A1077D00629488 /* TKReorderTableView.m */,
 				20A2A51E174C37870058571F /* TKSlideToUnlockView.h */,
 				20A2A51F174C37870058571F /* TKSlideToUnlockView.m */,
+				20C0354D17C9A5DD009EBB33 /* TKGlowButton.h */,
+				20C0354E17C9A5DD009EBB33 /* TKGlowButton.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -571,6 +577,7 @@
 				3B6EDDE511547C1E00E454DA /* NSDate+TKCategory.h in Headers */,
 				2047DAFC17C6692200C62E32 /* UIDevice+TKCategory.h in Headers */,
 				3B6EDDEB11547C2800E454DA /* TKCalendarMonthViewController.h in Headers */,
+				20C0354F17C9A5DD009EBB33 /* TKGlowButton.h in Headers */,
 				3B6EDDEF11547C2900E454DA /* TKCalendarMonthTableViewController.h in Headers */,
 				3B6EDDF311547C2C00E454DA /* TKCalendarDayViewController.h in Headers */,
 				3B6EDDF511547C3000E454DA /* TKCalendarDayView.h in Headers */,
@@ -780,6 +787,7 @@
 				3B560B7314574E30005FBDBF /* TKImageCache.m in Sources */,
 				3B819B5514601DC500EC0097 /* TKViewController.m in Sources */,
 				3BF9A834159791EA002A7F9E /* TKShapeView.m in Sources */,
+				20C0355017C9A5DD009EBB33 /* TKGlowButton.m in Sources */,
 				207DFF9315E1E3BE00A0BC2A /* NSDate+CalendarGrid.m in Sources */,
 				20DE9F4B168FA1EF00655BF8 /* NSObject+TKCategory.m in Sources */,
 				2057363516A330E700F8CDE6 /* TKCoverflowView.m in Sources */,

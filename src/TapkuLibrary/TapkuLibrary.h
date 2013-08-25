@@ -63,6 +63,8 @@
 #import "TKImageCache.h"
 
 
+#import "TKGlowButton.h"
+
 
 // CELLS
 #import "TKLabelCell.h"
