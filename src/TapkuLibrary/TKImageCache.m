@@ -198,7 +198,17 @@
 }
 
 
-
+- (void) removeRequestForKey:(NSString*)key {
+	if(!_requestKeys[key]) return;
+	
+	[_requestKeys removeObjectForKey:key];
+	for (TKImageRequest* request in _imagesQueue.operations) {
+		if ([request.key isEqualToString:key]) {
+			request.delegate = nil;
+			[request cancel];
+		}
+	}
+}
 - (void) removeAllObjects{
 	[super removeAllObjects];
 	[self cancelOperations];

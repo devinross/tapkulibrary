@@ -19,6 +19,7 @@
 	
 	if(state == UIControlStateNormal){
 		normalBackgroundColor = color;
+		self.backgroundColor = color;
 	}else if(state == UIControlStateHighlighted){
 		highlightedBackgroundColor = color;
 	}else if(state == UIControlStateSelected){

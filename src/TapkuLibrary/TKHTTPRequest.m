@@ -330,16 +330,16 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 	self.statusCode = [httpResponse statusCode];
 	self.responseHeaders = [httpResponse allHeaderFields];
 	
+	NSUInteger contentSize = [httpResponse expectedContentLength] > 0 ? [httpResponse expectedContentLength] : 0;
+	self.data = [[NSMutableData alloc] initWithCapacity:contentSize];
 	
 	if(self.statusCode > 199 && self.statusCode < 300)  {
 		_totalExpectedImageSize = (double)response.expectedContentLength;
-		NSUInteger contentSize = [httpResponse expectedContentLength] > 0 ? [httpResponse expectedContentLength] : 0;
-		self.data = [[NSMutableData alloc] initWithCapacity:contentSize];
 	} else {
 		NSString* statusError  = [NSString stringWithFormat:NSLocalizedString(@"HTTP Error: %ld", nil), self.statusCode];
 		NSDictionary* userInfo = @{NSLocalizedDescriptionKey: statusError};
 		self.error = [[NSError alloc] initWithDomain:TKNetworkRequestErrorDomain code:self.statusCode userInfo:userInfo];
-		[self _completeRequest];
+		//[self _completeRequest];
 	}
 	
 }

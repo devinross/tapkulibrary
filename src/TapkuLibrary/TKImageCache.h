@@ -59,7 +59,6 @@
 /** Shows network activity monitor in status bar when network requests are created. */
 @property BOOL shouldNetworkActivity;
 
-
 /** The queue that manages all network requests for images */
 @property (nonatomic,strong) TKNetworkQueue *imagesQueue;
 
@@ -116,6 +115,11 @@
 
 /** Cancel all image requests */
 - (void) cancelOperations;
+
+/** Remove an image request for a specific key
+ @param key The key corresponding to a specific image.
+ */
+- (void) removeRequestForKey:(NSString*)key;
 
 /** Clears local cache and remove all images from disk */
 - (void) clearCachedImages;
