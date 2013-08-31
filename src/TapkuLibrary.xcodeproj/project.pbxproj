@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2002B17717D241C2002440AE /* UIScreen+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2002B17517D241C2002440AE /* UIScreen+TKCategory.h */; };
+		2002B17817D241C2002440AE /* UIScreen+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2002B17617D241C2002440AE /* UIScreen+TKCategory.m */; };
 		2014592817A1077D00629488 /* TKReorderTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2014592617A1077D00629488 /* TKReorderTableView.h */; };
 		2014592917A1077D00629488 /* TKReorderTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2014592717A1077D00629488 /* TKReorderTableView.m */; };
 		2014592C17A107FF00629488 /* UIGestureRecognizer+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2014592A17A107FF00629488 /* UIGestureRecognizer+TKCategory.h */; };
@@ -141,6 +143,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2002B17517D241C2002440AE /* UIScreen+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+TKCategory.h"; sourceTree = "<group>"; };
+		2002B17617D241C2002440AE /* UIScreen+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+TKCategory.m"; sourceTree = "<group>"; };
 		2014592617A1077D00629488 /* TKReorderTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKReorderTableView.h; sourceTree = "<group>"; };
 		2014592717A1077D00629488 /* TKReorderTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKReorderTableView.m; sourceTree = "<group>"; };
 		2014592A17A107FF00629488 /* UIGestureRecognizer+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+TKCategory.h"; sourceTree = "<group>"; };
@@ -494,6 +498,8 @@
 				2014592B17A107FF00629488 /* UIGestureRecognizer+TKCategory.m */,
 				201E5BF417C7CECE00027C47 /* UIViewController+TKCategory.h */,
 				201E5BF517C7CECE00027C47 /* UIViewController+TKCategory.m */,
+				2002B17517D241C2002440AE /* UIScreen+TKCategory.h */,
+				2002B17617D241C2002440AE /* UIScreen+TKCategory.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -604,6 +610,7 @@
 				3BB96F5812B55CD600C38F46 /* UIImageView+TKCategory.h in Headers */,
 				3BEE1CBB12CFB78300FECF6D /* TKProgressCircleView.h in Headers */,
 				3B4346E412DA6A240076579B /* UIButton+TKCategory.h in Headers */,
+				2002B17717D241C2002440AE /* UIScreen+TKCategory.h in Headers */,
 				3B9D93DA12F74F8F007D839C /* TKAppDelegate.h in Headers */,
 				3B07B7CA133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.h in Headers */,
 				3B166A6F137F38D7006298E6 /* UIColor+TKCategory.h in Headers */,
@@ -774,6 +781,7 @@
 				3BE8FF8612945C4400DBF3FC /* UIScrollview+TKCategory.m in Sources */,
 				3BBF874C1296E976008AB2B1 /* TKTableViewController.m in Sources */,
 				3BB96F5912B55CD600C38F46 /* UIImageView+TKCategory.m in Sources */,
+				2002B17817D241C2002440AE /* UIScreen+TKCategory.m in Sources */,
 				2014592D17A107FF00629488 /* UIGestureRecognizer+TKCategory.m in Sources */,
 				3BEE1CBC12CFB78300FECF6D /* TKProgressCircleView.m in Sources */,
 				3B4346E512DA6A240076579B /* UIButton+TKCategory.m in Sources */,
