@@ -35,7 +35,7 @@
 
 
 - (void) scrollToTop{
-	self.contentOffset = CGPointZero;
+	self.contentOffset = CGPointMake( -self.contentInset.left, -self.contentInset.top);
 }
 
 @end
