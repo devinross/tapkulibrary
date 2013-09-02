@@ -31,8 +31,6 @@
 
 #import "TKLoadingView.h"
 
-
-
 @implementation TKLoadingView
 
 
@@ -62,6 +60,11 @@
 	self.loadingLabel.hidden = NO;
 	self.loadingLabel.text = [NSString stringWithFormat:@"%@...",NSLocalizedString(@"Loading", @"Loading")];
 	if(!self.window) return;
+	
+	[self.loadingLabel sizeToFit];
+	self.loadingLabel.center = CGPointMake(self.frame.size.width/2.0, self.frame.size.height/2.0);
+	self.loadingLabel.frame = CGRectIntegral(self.loadingLabel.frame);
+	
 	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_next) object:nil];
 	[self performSelector:@selector(_next) withObject:nil afterDelay:DELAY];
 }
