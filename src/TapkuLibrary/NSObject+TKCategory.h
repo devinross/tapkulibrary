@@ -74,6 +74,21 @@
 
 
 
+typedef void (^TKJSONCompletionBlock)(id object,NSError *error);
+
+/** Process JSON data in the background with a completion block.
+ @param data The JSON data.
+ @param block The block that will be performed upon the parsing of the json data. The process data will be included as an object with the selector.
+ */
+- (void) processJSON:(NSData*)data withCompletion:(TKJSONCompletionBlock)block;
+
+/** Process JSON data in the background with a completion block.
+ @param data The JSON data.
+ @param options An json parsing options to be included will parsing the JSON data.
+ @param block The block that will be performed upon the parsing of the json data. The process data will be included as an object with the selector.
+ */
+- (void) processJSON:(NSData*)data options:(NSJSONReadingOptions)options withCompletion:(TKJSONCompletionBlock)block;
+
 /** Process JSON data in the background with a callback selector.
  @param data The JSON data.
  @param callback The selector that will be performed upon the parsing of the json data. The process data will be included as an object with the selector.

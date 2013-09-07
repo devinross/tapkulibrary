@@ -30,6 +30,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "NSObject+TKCategory.h"
 
 #if NS_BLOCKS_AVAILABLE
 typedef void (^TKBasicBlock)(void);
@@ -162,20 +163,20 @@ typedef enum _TKNetworkErrorType {
 /// @name Callback Blocks
 ///-------------------------
 #if NS_BLOCKS_AVAILABLE
-/** The block called upon the start of the request.
- @param aStartedBlock The block that will be executed upon the start of the request.
-*/
-- (void) setStartedBlock:(TKBasicBlock)aStartedBlock;
 
-/** The block called up the finishing of the request. 
- @param aCompletionBlock The block that will be executed upon completion of the request.
- */
-- (void) setCompletionBlock:(TKBasicBlock)aCompletionBlock;
+/** The block called upon the start of the request. */
+@property (nonatomic,copy) TKBasicBlock startedBlock;
 
-/** The block called up the failure of the request. 
- @param aFailedBlock The block that will be executed upon failure of the request.
- */
-- (void) setFailedBlock:(TKBasicBlock)aFailedBlock;
+/** The block called up the finishing of the request. */
+@property (nonatomic,copy) TKBasicBlock completionBlock;
+
+/** The block called up the finishing of the request and processing of the JSON response data. */
+@property (nonatomic,copy) TKJSONCompletionBlock JSONCompletionBlock;
+
+/** The block called up the failure of the request. */
+@property (nonatomic,copy) TKBasicBlock failedBlock;
+
+
 #endif
 
 

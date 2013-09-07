@@ -31,6 +31,7 @@
 
 #import "TKHTTPRequest.h"
 #import "TKNetworkQueue.h"
+#import "NSObject+TKCategory.h"
 
 
 typedef enum TKOperationState {
@@ -61,11 +62,6 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 	
 	NSInteger _totalExpectedImageSize,_receivedDataBytes;
 	
-#if NS_BLOCKS_AVAILABLE
-	TKBasicBlock startedBlock;
-	TKBasicBlock completionBlock;
-	TKBasicBlock failureBlock;
-#endif
 	
 }
 
@@ -177,7 +173,7 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 		[self.delegate performSelector:self.didStartSelector withObject:self];
 	
 #if NS_BLOCKS_AVAILABLE
-	if(startedBlock) startedBlock();
+	if(self.startedBlock) self.startedBlock();
 #endif
 }
 
@@ -236,14 +232,26 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 		[self.delegate performSelector:self.didFinishSelector withObject:self];
 
 #if NS_BLOCKS_AVAILABLE
-	if(completionBlock) completionBlock();
+	if(self.completionBlock) self.completionBlock();
+	
+	
+	if(self.JSONCompletionBlock){
+		[self processJSON:self.responseData withCompletion:^(id object, NSError *error){
+			self.JSONCompletionBlock(object,error);
+		}];
+	}
+	
+
+	
+
+	
 #endif
 	
 }
 - (void) _requestFailed{
 	if(self.delegate && [self.delegate respondsToSelector:self.didFailSelector]) [self.delegate performSelector:self.didFailSelector withObject:self];
 #if NS_BLOCKS_AVAILABLE
-	if(failureBlock) failureBlock();
+	if(self.failedBlock) self.failedBlock();
 #endif
 }
 - (void) failWithError:(NSError *)theError{
@@ -349,18 +357,7 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 
 
 
-#pragma mark Blocks
-#if NS_BLOCKS_AVAILABLE
-- (void) setStartedBlock:(TKBasicBlock)aStartedBlock{
-	startedBlock = [aStartedBlock copy];
-}
-- (void) setCompletionBlock:(TKBasicBlock)aCompletionBlock{
-	completionBlock = [aCompletionBlock copy];
-}
-- (void) setFailedBlock:(TKBasicBlock)aFailedBlock{
-	failureBlock = [aFailedBlock copy];
-}
-#endif
+
 
 
 

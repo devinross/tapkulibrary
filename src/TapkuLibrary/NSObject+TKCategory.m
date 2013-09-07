@@ -114,6 +114,25 @@
 
 #pragma mark Process JSON in Background
 
+- (void) processJSON:(NSData*)data withCompletion:(TKJSONCompletionBlock)block{
+	[self processJSON:data options:0 withCompletion:block];
+}
+
+- (void) processJSON:(NSData*)data options:(NSJSONReadingOptions)options withCompletion:(TKJSONCompletionBlock)block{
+	
+	dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
+    dispatch_async(queue, ^{
+		
+		NSError *error;
+		id object = [NSJSONSerialization JSONObjectWithData:data options:options error:&error];
+		dispatch_sync(dispatch_get_main_queue(), ^{
+			block(object,error);
+		});
+	});
+		
+}
+
+
 - (void) processJSONDataInBackground:(NSData *)data withCallbackSelector:(SEL)callback{
 	
 	[self processJSONDataInBackground:data
@@ -200,8 +219,6 @@
 			if(background) object = [self performSelector:NSSelectorFromString(background) withObject:object];
 			[self performSelectorOnMainThread:NSSelectorFromString(callback) withObject:object waitUntilDone:NO];
 		}
-		
-		
 	}
 }
 
