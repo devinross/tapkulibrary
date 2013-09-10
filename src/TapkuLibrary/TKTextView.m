@@ -92,6 +92,11 @@
 
 
 #pragma mark Properties
+- (void) setFont:(UIFont *)font{
+	[super setFont:font];
+	self.placeHolderLabel.font = font;
+	[self setNeedsDisplay];
+}
 - (void) setText:(NSString *)text{
     [super setText:text];
     [self _textChanged:nil];
