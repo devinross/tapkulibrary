@@ -241,10 +241,6 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 		}];
 	}
 	
-
-	
-
-	
 #endif
 	
 }

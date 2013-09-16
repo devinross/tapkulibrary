@@ -1,6 +1,6 @@
 //
-//  TKSlideToUnlockView.h
-//  Created by Devin Ross on 5/21/13.
+//  TKShimmerLabel.h
+//  Created by Devin Ross on 7/20/13.
 //
 /*
  
@@ -31,15 +31,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class TKShimmerLabel;
+@interface TKShimmerLabel : UILabel
 
-@interface TKSlideToUnlockView : UIControl <UIScrollViewDelegate>
-
-@property (nonatomic,strong) TKShimmerLabel *textLabel;
-@property (nonatomic,strong) UIScrollView *scrollView;
-@property (nonatomic,strong) UIImageView *backgroundView;
-@property (nonatomic,readonly) BOOL isUnlocked;
-
-- (void) resetSlider:(BOOL)animated;
+@property (nonatomic,strong) CAGradientLayer *textHighlightLayer;
 
 @end

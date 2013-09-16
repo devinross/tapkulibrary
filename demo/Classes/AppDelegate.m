@@ -43,7 +43,10 @@
 
 	self.root = [[RootViewController alloc] initWithStyle:UITableViewStyleGrouped];
 	self.navigationController = [[UINavigationController alloc] initWithRootViewController:self.root];
-
+	self.navigationController.view.backgroundColor = [UIColor whiteColor];
+	self.window.backgroundColor = [UIColor whiteColor];
+	
+	
 	if([[UIDevice currentDevice] userInterfaceIdiom] ==  UIUserInterfaceIdiomPad){
 		
 		self.splitViewController = [[UISplitViewController alloc] init];

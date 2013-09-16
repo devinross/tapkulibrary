@@ -68,7 +68,6 @@
 - (id) initWithStyle:(UITableViewStyle)s{
 	if(!(self = [super initWithStyle:s])) return nil;
 	self.title = @"Tapku Library";
-	self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back"] style:UIBarButtonItemStylePlain target:nil action:nil];
 	return self;
 }
 - (NSUInteger) supportedInterfaceOrientations{

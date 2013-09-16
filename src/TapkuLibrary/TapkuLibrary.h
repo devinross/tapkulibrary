@@ -65,7 +65,7 @@
 
 
 #import "TKGlowButton.h"
-
+#import "TKShimmerLabel.h"
 
 // CELLS
 #import "TKLabelCell.h"
