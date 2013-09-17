@@ -141,8 +141,7 @@
 
 - (void) info{
 	if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone && self.coverflow.tag != 0){
-		[self dismissModalViewControllerAnimated:YES];
-
+		[self dismissViewControllerAnimated:YES completion:nil];
 		return;
 	}
 	

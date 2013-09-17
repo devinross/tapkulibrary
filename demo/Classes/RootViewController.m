@@ -123,7 +123,7 @@
 			[self.detailViewController setupWithMainController:vc];
 		else{
 			[vc setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-			[self presentModalViewController:vc animated:YES];
+			[self presentViewController:vc animated:YES completion:nil];
 		}
 
 		return;
