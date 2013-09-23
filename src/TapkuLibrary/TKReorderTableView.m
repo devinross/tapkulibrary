@@ -87,7 +87,7 @@
 	dragging.layer.shadowColor = [UIColor blackColor].CGColor;
 	dragging.layer.shadowOffset = CGSizeMake(0, 0);
 	dragging.layer.shadowRadius = 4.0;
-	dragging.layer.shadowOpacity = 0.7;
+	dragging.layer.shadowOpacity = 0.4;
 	return dragging;
 }
 
@@ -96,17 +96,25 @@
     CGPoint location = [gesture locationInView:self];
     NSIndexPath *indexPath = [self indexPathForRowAtPoint:location];
     
-
+	
 	
 	if([self.dataSource respondsToSelector:@selector(tableView:canMoveRowAtIndexPath:)] && ![self.dataSource tableView:self canMoveRowAtIndexPath:indexPath])
 		indexPath = nil;
 	
 	
+	if(indexPath == nil && [gesture began]){
+		[self cancelGesture];
+		
+		return;
+	}
+	
     // get out of here if the long press was not on a valid row or our table is empty
-    if([self isEmpty] || indexPath == nil || ([gesture ended] && self.currentLocationIndexPath == nil)) {
-        [self cancelGesture];
-        return;
-    }
+    //if([self isEmpty] || indexPath == nil || ([gesture ended] && self.currentLocationIndexPath == nil)) {
+	
+	//	[self cancelGesture];
+	
+	//	return;
+    //}
     
     if ([gesture began]) {
         
@@ -123,7 +131,7 @@
         // create and image view that we will drag around the screen
         if (!self.draggingView) {
 			CGRect rect = [self rectForRowAtIndexPath:indexPath];
-
+			
 			self.draggingView = [self draggingImageViewWithImage:cellImage frame:rect];
             [self addSubview:self.draggingView];
             // zoom image towards user
@@ -141,12 +149,12 @@
         [self endUpdates];
         
         // enable scrolling for cell
-        self.scrollingTimer = [NSTimer timerWithTimeInterval:1/4 target:self selector:@selector(scrollTableWithCell:) userInfo:@{ @"gesture" : gesture} repeats:YES];
+        self.scrollingTimer = [NSTimer timerWithTimeInterval:0.01 target:self selector:@selector(scrollTableWithCell:) userInfo:@{ @"gesture" : gesture} repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:self.scrollingTimer forMode:NSDefaultRunLoopMode];
         
     } else if ([gesture changed]) {
 		// dragging
-
+		
         // update position of the drag view
         // don't let it go past the top or the bottom too far
         if (location.y >= 0 && location.y <= self.contentSize.height + 50) {
@@ -157,18 +165,19 @@
         // adjust rect for content inset as we will use it below for calculating scroll zones
         rect.size.height -= self.contentInset.top;
         CGPoint location = [gesture locationInView:self];
-
+		
+		
         [self updateCurrentLocation:gesture];
         
         // tell us if we should scroll and which direction
-        CGFloat scrollZoneHeight = rect.size.height / 6;
+        CGFloat scrollZoneHeight = 20;
         CGFloat bottomScrollBeginning = self.contentOffset.y + self.contentInset.top + rect.size.height - scrollZoneHeight;
         CGFloat topScrollBeginning = self.contentOffset.y + self.contentInset.top  + scrollZoneHeight;
         // we're in the bottom zone
         if (location.y >= bottomScrollBeginning) {
-            self.scrollRate = (location.y - bottomScrollBeginning) / scrollZoneHeight;
+            self.scrollRate = (location.y - bottomScrollBeginning);
         } else if (location.y <= topScrollBeginning) {
-            self.scrollRate = (location.y - topScrollBeginning) / scrollZoneHeight; // we're in the top zone
+            self.scrollRate = (location.y - topScrollBeginning); // we're in the top zone
         } else {
             self.scrollRate = 0;
         }
@@ -176,38 +185,49 @@
 		
     } else if ([gesture ended]) {
 		// dropped
-
+		
+		
+		self.userInteractionEnabled = NO;
+		
         NSIndexPath *indexPath = self.currentLocationIndexPath;
         
         // remove scrolling timer
         [self.scrollingTimer invalidate];
         self.scrollingTimer = nil;
-        self.scrollRate = 0;
         
         // animate the drag view to the newly hovered cell
         [UIView animateWithDuration:0.3 animations:^{
 			
-             CGRect rect = [self rectForRowAtIndexPath:indexPath];
-             self.draggingView.transform = CGAffineTransformIdentity;
-             self.draggingView.frame = CGRectOffset(self.draggingView.bounds, rect.origin.x, rect.origin.y);
+			CGRect rect = [self rectForRowAtIndexPath:indexPath];
+			self.draggingView.transform = CGAffineTransformIdentity;
+			self.draggingView.frame = CGRectOffset(self.draggingView.bounds, rect.origin.x, rect.origin.y);
 			
-         } completion:^(BOOL finished) {
-			 
-             [self.draggingView removeFromSuperview];
-             [self beginUpdates];
-             [self deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-             [self insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-             [self.delegate tableView:self didFinishReorderingAtIndexPath:indexPath];
-             [self endUpdates];
-             
-             // reload the rows that were affected just to be safe
-             NSMutableArray *visibleRows = self.indexPathsForVisibleRows.mutableCopy;
-             [visibleRows removeObject:indexPath];
-             [self reloadRowsAtIndexPaths:visibleRows withRowAnimation:UITableViewRowAnimationNone];
-             
-             self.currentLocationIndexPath = nil;
-             self.draggingView = nil;
-         }];
+		} completion:^(BOOL finished) {
+			
+			[self beginUpdates];
+			[self deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+			[self insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+			[self.delegate tableView:self didFinishReorderingAtIndexPath:indexPath];
+			[self endUpdates];
+			
+			// reload the rows that were affected just to be safe
+			NSMutableArray *visibleRows = self.indexPathsForVisibleRows.mutableCopy;
+			[visibleRows removeObject:indexPath];
+			[self reloadRowsAtIndexPaths:visibleRows withRowAnimation:UITableViewRowAnimationNone];
+			
+			self.currentLocationIndexPath = nil;
+			
+			[UIView animateWithDuration:0.3f animations:^{
+				self.draggingView.alpha = 0;
+			}completion:^(BOOL finished){
+				[self.draggingView removeFromSuperview];
+				self.draggingView = nil;
+				self.userInteractionEnabled = YES;
+				
+			}];
+			
+			
+		}];
     }
 }
 - (void) updateCurrentLocation:(UILongPressGestureRecognizer *)gesture{
@@ -216,9 +236,10 @@
     CGPoint location = [gesture locationInView:self];
 	NSIndexPath *indexPath  = [self indexPathForRowAtPoint:location];
 	
+	
 	if(indexPath && [self.delegate respondsToSelector:@selector(tableView:targetIndexPathForMoveFromRowAtIndexPath:toProposedIndexPath:)])
 		indexPath = [self.delegate tableView:self targetIndexPathForMoveFromRowAtIndexPath:self.currentLocationIndexPath toProposedIndexPath:indexPath];
-
+	
     if (indexPath && ![indexPath isEqual:self.currentLocationIndexPath]) {
         [self beginUpdates];
         [self deleteRowsAtIndexPaths:@[self.currentLocationIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -227,22 +248,24 @@
         self.currentLocationIndexPath = indexPath;
         [self endUpdates];
     }
+	
 }
 - (void) scrollTableWithCell:(NSTimer *)timer {
-
+	
+	
     UILongPressGestureRecognizer *gesture = timer.userInfo[@"gesture"];
     CGPoint location = [gesture locationInView:self];
     
     CGPoint currentOffset = self.contentOffset;
     CGPoint newOffset = CGPointMake(currentOffset.x, currentOffset.y + self.scrollRate);
-
+	
     if (newOffset.y < -self.contentInset.top)
         newOffset.y = -self.contentInset.top;
 	
 	else if (self.contentSize.height < self.frame.size.height)
         newOffset = currentOffset;
 	
-     else if (newOffset.y > self.contentSize.height - self.frame.size.height)
+	else if (newOffset.y > self.contentSize.height - self.frame.size.height)
         newOffset.y = self.contentSize.height - self.frame.size.height;
     
 	
@@ -267,7 +290,7 @@
 }
 - (BOOL) isEmpty{
 	BOOL empty = YES;
-	int sections = self.numberOfSections;
+	NSInteger sections = self.numberOfSections;
     for(int i = 0; i < sections; i++){
 		if([self numberOfRowsInSection:i] > 0){
 			empty = NO;
