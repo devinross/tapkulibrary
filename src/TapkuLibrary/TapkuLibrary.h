@@ -49,6 +49,7 @@
 #import "TKWindow.h"
 #import "TKViewController.h"
 #import "TKTableViewController.h"
+#import "TKKeyboardTableViewController.h"
 #import "TKEmptyView.h"
 
 
