@@ -107,6 +107,7 @@
 }
 
 
+
 #pragma mark UIScrollView Delegate
 - (void) scrollViewWillBeginDragging:(UIScrollView *)scrollView{
 	if(self.hideKeyboardOnScroll)

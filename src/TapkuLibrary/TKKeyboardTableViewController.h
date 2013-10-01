@@ -31,7 +31,7 @@
 
 #import "TKTableViewController.h"
 
-@interface TKKeyboardTableViewController : TKTableViewController
+@interface TKKeyboardTableViewController : TKTableViewController <UITextFieldDelegate,UITextViewDelegate>
 
 @property (nonatomic,assign) BOOL hideKeyboardOnScroll;
 @property (nonatomic,assign) BOOL scrollLock;
