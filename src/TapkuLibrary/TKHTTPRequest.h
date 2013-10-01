@@ -34,6 +34,8 @@
 
 #if NS_BLOCKS_AVAILABLE
 typedef void (^TKBasicBlock)(void);
+typedef void (^TKResponseBlock)(NSData *data, int statusCode, NSError *error);
+typedef void (^TKJSONResponseBlock)(id object, int statusCode, NSError *error);
 #endif
 
 
@@ -77,6 +79,11 @@ typedef enum _TKNetworkErrorType {
  @return The newly created request object.
  */
 + (TKHTTPRequest*) requestWithURL:(NSURL*)URL;
+
+
++ (TKHTTPRequest*) requestWithURL:(NSURL *)URL responseHandler:(TKResponseBlock)responseHandler;
+
++ (TKHTTPRequest*) requestWithURL:(NSURL *)URL JSONResponseHandler:(TKJSONResponseBlock)responseHandler;
 
 /** Returns a newly initialized request with a URL. 
  @param URL The URL for the new request.

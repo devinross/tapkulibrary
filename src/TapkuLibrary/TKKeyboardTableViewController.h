@@ -1,10 +1,10 @@
 //
-//  TKNetworkQueue.m
-//  Created by Devin Ross on 9/24/11.
+//  TKKeyboardTableViewController.h
+//  Created by Devin Ross on 10/1/13.
 //
 /*
  
- tapku || https://github.com/devinross/tapkulibrary
+ tapku || http://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -29,31 +29,15 @@
  
  */
 
-#import "TKNetworkQueue.h"
-#import "TKHTTPRequest.h"
+#import "TKTableViewController.h"
 
-@implementation TKNetworkQueue
+@interface TKKeyboardTableViewController : TKTableViewController
 
+@property (nonatomic,assign) BOOL hideKeyboardOnScroll;
+@property (nonatomic,assign) BOOL scrollLock;
+@property (nonatomic,assign) BOOL scrollToTextField;
 
-+ (TKNetworkQueue*) sharedNetworkQueue{
-	__strong static TKNetworkQueue *sharedInstance = nil;
-	if (!sharedInstance) {
-		sharedInstance = [[TKNetworkQueue alloc] init];
-		[sharedInstance setMaxConcurrentOperationCount:4];
-	}
-	return sharedInstance;
-}
-+ (TKNetworkQueue*) networkQueue{
-	return [[self alloc] init];
-}
-
-
-- (void) reset{
-	
-	for(TKHTTPRequest *op in [self operations]) [op cancel];
-	[self cancelAllOperations];
-	
-}
-
+- (void) scrollToView:(UIView*)view;
+- (BOOL) resignResponders; 
 
 @end

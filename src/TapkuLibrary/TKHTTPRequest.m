@@ -59,17 +59,12 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 
 #pragma mark - TKHTTPRequest
 @interface TKHTTPRequest () {
-	
 	NSInteger _totalExpectedImageSize,_receivedDataBytes;
-	
-	
 }
-
-@property (nonatomic,strong) TKHTTPRequest *selfRetained;
-
+@property (nonatomic,strong) TKJSONResponseBlock JSONResponseBlock;
+@property (nonatomic,strong) TKResponseBlock responseBlock;
 @property (nonatomic,assign) TKOperationState state;
 @property (nonatomic,readwrite,assign,getter=isCancelled) BOOL cancelled;
-
 @property (nonatomic,strong) NSURLConnection *connection;
 @property (nonatomic,strong) NSMutableData *data;
 @property (nonatomic,strong) NSFileHandle *fileHandler; 	// Used for writing data to a file when downloadDestinationPath is set
@@ -105,6 +100,22 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 + (TKHTTPRequest*) requestWithURL:(NSURL*)URL{
 	return [[self alloc] initWithURL:URL];
 }
+
++ (TKHTTPRequest*) requestWithURL:(NSURL *)URL responseHandler:(TKResponseBlock)responseHandler{
+	TKHTTPRequest *request = [TKHTTPRequest requestWithURL:URL];
+	request.responseBlock = responseHandler;
+	[request startAsynchronous];
+	return request;
+}
+
++ (TKHTTPRequest*) requestWithURL:(NSURL *)URL JSONResponseHandler:(TKJSONResponseBlock)responseHandler{
+	TKHTTPRequest *request = [TKHTTPRequest requestWithURL:URL];
+	request.JSONResponseBlock = responseHandler;
+	[request startAsynchronous];
+	return request;
+}
+
+
 - (id) initWithURL:(NSURL*)url{
 	if(!(self=[super init])) return nil;
 	
@@ -234,6 +245,16 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 #if NS_BLOCKS_AVAILABLE
 	if(self.completionBlock) self.completionBlock();
 	
+	if(self.responseBlock)
+		self.responseBlock(self.responseData,self.statusCode,self.error);
+	
+	
+	if(self.JSONResponseBlock){
+		[self processJSON:self.responseData withCompletion:^(id object, NSError *error){
+			self.JSONResponseBlock(object,self.statusCode,error);
+		}];
+	}
+	
 	
 	if(self.JSONCompletionBlock){
 		[self processJSON:self.responseData withCompletion:^(id object, NSError *error){
@@ -248,6 +269,15 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 	if(self.delegate && [self.delegate respondsToSelector:self.didFailSelector]) [self.delegate performSelector:self.didFailSelector withObject:self];
 #if NS_BLOCKS_AVAILABLE
 	if(self.failedBlock) self.failedBlock();
+	
+	if(self.responseBlock)
+		self.responseBlock(nil,self.statusCode,self.error);
+	
+	if(self.JSONResponseBlock){
+		[self processJSON:self.responseData withCompletion:^(id object, NSError *error){
+			self.JSONResponseBlock(object,self.statusCode,self.error ? self.error : error);
+		}];
+	}
 #endif
 }
 - (void) failWithError:(NSError *)theError{

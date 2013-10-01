@@ -21,6 +21,8 @@
 		2026B553174810B900447F22 /* TKTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2026B551174810B900447F22 /* TKTextFieldCell.m */; };
 		2026B55B1748257B00447F22 /* TKTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2026B5591748257B00447F22 /* TKTextView.h */; };
 		2026B55C1748257B00447F22 /* TKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2026B55A1748257B00447F22 /* TKTextView.m */; };
+		2027C60E17FB692700A5E148 /* TKKeyboardTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2027C60C17FB692700A5E148 /* TKKeyboardTableViewController.h */; };
+		2027C60F17FB692700A5E148 /* TKKeyboardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2027C60D17FB692700A5E148 /* TKKeyboardTableViewController.m */; };
 		2047DAFC17C6692200C62E32 /* UIDevice+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2047DAFA17C6692200C62E32 /* UIDevice+TKCategory.h */; };
 		2047DAFD17C6692200C62E32 /* UIDevice+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2047DAFB17C6692200C62E32 /* UIDevice+TKCategory.m */; };
 		2052E87F174F532500F06B66 /* TKWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2052E87D174F532500F06B66 /* TKWebViewController.h */; };
@@ -160,6 +162,8 @@
 		2026B551174810B900447F22 /* TKTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKTextFieldCell.m; sourceTree = "<group>"; };
 		2026B5591748257B00447F22 /* TKTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKTextView.h; sourceTree = "<group>"; };
 		2026B55A1748257B00447F22 /* TKTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKTextView.m; sourceTree = "<group>"; };
+		2027C60C17FB692700A5E148 /* TKKeyboardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKKeyboardTableViewController.h; sourceTree = "<group>"; };
+		2027C60D17FB692700A5E148 /* TKKeyboardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKKeyboardTableViewController.m; sourceTree = "<group>"; };
 		2047DAFA17C6692200C62E32 /* UIDevice+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+TKCategory.h"; sourceTree = "<group>"; };
 		2047DAFB17C6692200C62E32 /* UIDevice+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+TKCategory.m"; sourceTree = "<group>"; };
 		2052E87D174F532500F06B66 /* TKWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKWebViewController.h; sourceTree = "<group>"; };
@@ -526,6 +530,8 @@
 				3B819B5314601DC500EC0097 /* TKViewController.m */,
 				3BBF87491296E976008AB2B1 /* TKTableViewController.h */,
 				3BBF874A1296E976008AB2B1 /* TKTableViewController.m */,
+				2027C60C17FB692700A5E148 /* TKKeyboardTableViewController.h */,
+				2027C60D17FB692700A5E148 /* TKKeyboardTableViewController.m */,
 				2052E87D174F532500F06B66 /* TKWebViewController.h */,
 				2052E87E174F532500F06B66 /* TKWebViewController.m */,
 				3B8F0DF4142AE52B00E3AADE /* TKGradientView.h */,
@@ -583,6 +589,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2027C60E17FB692700A5E148 /* TKKeyboardTableViewController.h in Headers */,
 				3B6EDDD311547BEB00E454DA /* TapkuLibrary.h in Headers */,
 				3B6EDDDB11547C1100E454DA /* UIView+TKCategory.h in Headers */,
 				3B6EDDDC11547C1300E454DA /* UIImage+TKCategory.h in Headers */,
@@ -760,6 +767,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2027C60F17FB692700A5E148 /* TKKeyboardTableViewController.m in Sources */,
 				3B6EDDD611547BF800E454DA /* TKGlobal.m in Sources */,
 				3B6EDDDA11547C1100E454DA /* UIView+TKCategory.m in Sources */,
 				3B6EDDDD11547C1300E454DA /* UIImage+TKCategory.m in Sources */,

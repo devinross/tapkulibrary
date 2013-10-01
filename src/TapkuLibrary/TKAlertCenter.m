@@ -129,7 +129,7 @@
 
 #pragma mark Init & Friends
 + (TKAlertCenter*) defaultCenter {
-	static TKAlertCenter *defaultCenter = nil;
+	__strong static TKAlertCenter *defaultCenter = nil;
 	if (!defaultCenter) {
 		defaultCenter = [[TKAlertCenter alloc] init];
 	}

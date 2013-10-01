@@ -72,7 +72,7 @@
 
 - (NSDictionary*) dataDictionary;
 
-
+#if NS_BLOCKS_AVAILABLE
 
 typedef void (^TKJSONCompletionBlock)(id object,NSError *error);
 
@@ -88,6 +88,8 @@ typedef void (^TKJSONCompletionBlock)(id object,NSError *error);
  @param block The block that will be performed upon the parsing of the json data. The process data will be included as an object with the selector.
  */
 - (void) processJSON:(NSData*)data options:(NSJSONReadingOptions)options withCompletion:(TKJSONCompletionBlock)block;
+
+#endif
 
 /** Process JSON data in the background with a callback selector.
  @param data The JSON data.

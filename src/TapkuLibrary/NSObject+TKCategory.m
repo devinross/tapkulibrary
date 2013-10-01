@@ -113,7 +113,7 @@
 
 
 #pragma mark Process JSON in Background
-
+#if NS_BLOCKS_AVAILABLE
 - (void) processJSON:(NSData*)data withCompletion:(TKJSONCompletionBlock)block{
 	[self processJSON:data options:0 withCompletion:block];
 }
@@ -131,7 +131,7 @@
 	});
 		
 }
-
+#endif
 
 - (void) processJSONDataInBackground:(NSData *)data withCallbackSelector:(SEL)callback{
 	
