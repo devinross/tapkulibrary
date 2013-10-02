@@ -61,8 +61,7 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 @interface TKHTTPRequest () {
 	NSInteger _totalExpectedImageSize,_receivedDataBytes;
 }
-@property (nonatomic,strong) TKJSONResponseBlock JSONResponseBlock;
-@property (nonatomic,strong) TKResponseBlock responseBlock;
+
 @property (nonatomic,assign) TKOperationState state;
 @property (nonatomic,readwrite,assign,getter=isCancelled) BOOL cancelled;
 @property (nonatomic,strong) NSURLConnection *connection;
@@ -243,7 +242,7 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 		[self.delegate performSelector:self.didFinishSelector withObject:self];
 
 #if NS_BLOCKS_AVAILABLE
-	if(self.completionBlock) self.completionBlock();
+	if(self.finishedBlock) self.finishedBlock();
 	
 	if(self.responseBlock)
 		self.responseBlock(self.responseData,self.statusCode,self.error);
@@ -256,9 +255,9 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 	}
 	
 	
-	if(self.JSONCompletionBlock){
+	if(self.JSONFinishedBlock){
 		[self processJSON:self.responseData withCompletion:^(id object, NSError *error){
-			self.JSONCompletionBlock(object,error);
+			self.JSONFinishedBlock(object,error);
 		}];
 	}
 	
@@ -271,7 +270,7 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 	if(self.failedBlock) self.failedBlock();
 	
 	if(self.responseBlock)
-		self.responseBlock(nil,self.statusCode,self.error);
+		self.responseBlock(self.responseData,self.statusCode,self.error);
 	
 	if(self.JSONResponseBlock){
 		[self processJSON:self.responseData withCompletion:^(id object, NSError *error){
