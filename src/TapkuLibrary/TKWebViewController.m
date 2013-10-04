@@ -40,15 +40,36 @@
 	return self;
 }
 
+- (id) initWithURLRequest:(NSURLRequest*)URLRequest{
+	if(!(self=[super init])) return nil;
+	self.URLRequest = URLRequest;
+	return self;
+}
+
 - (void) loadView{
 	[super loadView];
 	self.webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+	self.webView.delegate = self;
 	self.webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	[self.view addSubview:self.webView];
 }
 - (void) viewDidLoad{
 	[super viewDidLoad];
-	[self.webView loadRequest:[NSURLRequest requestWithURL:self.URL]];
+	if(self.URL)
+		[self.webView loadRequest:[NSURLRequest requestWithURL:self.URL]];
+	else if(self.URLRequest)
+		[self.webView loadRequest:self.URLRequest];
+}
+
+- (BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+	
+	if(self.navigationController && (navigationType == UIWebViewNavigationTypeFormSubmitted || navigationType == UIWebViewNavigationTypeLinkClicked)){
+		TKWebViewController *vc = [[TKWebViewController alloc] initWithURLRequest:request];
+		[self.navigationController pushViewController:vc animated:YES];
+		return NO;
+	}
+	
+	return YES;
 }
 
 @end

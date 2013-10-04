@@ -32,11 +32,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TKWebViewController : UIViewController
+@interface TKWebViewController : UIViewController <UIWebViewDelegate>
 
 - (id) initWithURL:(NSURL*)URL;
+- (id) initWithURLRequest:(NSURLRequest*)URLRequest;
+
 
 @property (nonatomic,strong) NSURL *URL;
+@property (nonatomic,strong) NSURLRequest *URLRequest;
 
 @property (nonatomic,strong) UIWebView *webView;
 

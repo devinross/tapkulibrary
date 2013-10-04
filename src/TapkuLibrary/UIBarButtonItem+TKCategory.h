@@ -38,7 +38,7 @@
 
 
 
-/** Creates and returns a bar button item object using witha button with the specified properties. 
+/** Creates and returns a bar button item object using with a button with the specified properties.
  @param image The normal state image.
  @param highlighedImage The highlighted state image.
  @param target The object that receives the action message.
@@ -46,5 +46,51 @@
  @return The `UIBarButtonItem` object.
  */
 + (UIBarButtonItem*) barButtonItemWithImage:(UIImage*)image highlightedImage:(UIImage*)highlighedImage target:(id)target selector:(SEL)selector;
+
+/** Creates and returns a Done button bar button item.
+ @param target The object that receives the action message.
+ @param selector The action to send to target when this item is selected.
+ @return The `UIBarButtonItem` object.
+ */
++ (UIBarButtonItem*) doneItemWithTarget:(id)target action:(SEL)action;
+
+/** Creates and returns a Cancel button bar button item.
+ @param target The object that receives the action message.
+ @param selector The action to send to target when this item is selected.
+ @return The `UIBarButtonItem` object.
+ */
++ (UIBarButtonItem*) cancelItemWithTarget:(id)target action:(SEL)action;
+
+/** Creates and returns a Save button bar button item.
+ @param target The object that receives the action message.
+ @param selector The action to send to target when this item is selected.
+ @return The `UIBarButtonItem` object.
+ */
++ (UIBarButtonItem*) saveItemWithTarget:(id)target action:(SEL)action;
+
+/** Creates and returns a UIActivityIndicatorView bar button item. The style is white.
+ @return The `UIBarButtonItem` object.
+ */
++ (UIBarButtonItem*) activityItem;
+
+/** Creates and returns a UIActivityIndicatorView bar button item.
+ @param style The indicator style.
+ @return The `UIBarButtonItem` object.
+ */
++ (UIBarButtonItem*) activityItemWithIndicatorStyle:(UIActivityIndicatorViewStyle)style;
+
+
+/** Creates and returns a fixed width bar button item.
+ @param width The width of the item;
+ @return The `UIBarButtonItem` object.
+ */
++ (UIBarButtonItem*) fixedSpaceItemWithWidth:(CGFloat)width;
+
+/** Creates and returns a flexible bar button item.
+ @return The `UIBarButtonItem` object.
+ */
++ (UIBarButtonItem*) flexibleSpaceItem;
+
+
 
 @end

@@ -1,6 +1,6 @@
 //
-//  UIGestureRecognizer+TKCategory.h
-//  Created by Devin Ross on 7/25/13.
+//  UIAlertView+TKCategory.m
+//  Created by Devin Ross on 10/4/13.
 //
 /*
  
@@ -29,27 +29,20 @@
  
  */
 
-#import <UIKit/UIKit.h>
+#import "UIAlertView+TKCategory.h"
 
-/** Additional functionality for `UIGestureRecognizer`.  */
-@interface UIGestureRecognizer (TKCategory)
+@implementation UIAlertView (TKCategory)
 
-/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateBegan`, otherwise NO. */
-- (BOOL) began;
 
-/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateChanged`, otherwise NO. */
-- (BOOL) changed;
-
-/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateEnded`, otherwise NO. */
-- (BOOL) ended;
-
-/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateCancelled`, otherwise NO. */
-- (BOOL) cancelled;
-
-/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateFailed`, otherwise NO. */
-- (BOOL) failed;
-
-/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStatePossible`, otherwise NO. */
-- (BOOL) possible;
++ (UIAlertView*) showAlertViewWithTitle:(NSString*)title message:(NSString*)message dismiss:(NSString*)dismiss{
+	
+	if(!dismiss) dismiss = NSLocalizedString(@"Dismiss", @"Dismiss Alert View");
+	
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:dismiss otherButtonTitles:nil];
+	[alert show];
+	
+	return alert;
+	
+}
 
 @end

@@ -25,6 +25,10 @@
 		2027C60F17FB692700A5E148 /* TKKeyboardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2027C60D17FB692700A5E148 /* TKKeyboardTableViewController.m */; };
 		2047DAFC17C6692200C62E32 /* UIDevice+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2047DAFA17C6692200C62E32 /* UIDevice+TKCategory.h */; };
 		2047DAFD17C6692200C62E32 /* UIDevice+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2047DAFB17C6692200C62E32 /* UIDevice+TKCategory.m */; };
+		20529A3617FF465800FFF627 /* UIAlertView+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 20529A3417FF465800FFF627 /* UIAlertView+TKCategory.h */; };
+		20529A3717FF465800FFF627 /* UIAlertView+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 20529A3517FF465800FFF627 /* UIAlertView+TKCategory.m */; };
+		20529A3A17FF46A400FFF627 /* UIActionSheet+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 20529A3817FF46A400FFF627 /* UIActionSheet+TKCategory.h */; };
+		20529A3B17FF46A400FFF627 /* UIActionSheet+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 20529A3917FF46A400FFF627 /* UIActionSheet+TKCategory.m */; };
 		2052E87F174F532500F06B66 /* TKWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2052E87D174F532500F06B66 /* TKWebViewController.h */; };
 		2052E880174F532500F06B66 /* TKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052E87E174F532500F06B66 /* TKWebViewController.m */; };
 		2057363416A330E700F8CDE6 /* TKCoverflowView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2057363216A330E700F8CDE6 /* TKCoverflowView.h */; };
@@ -166,6 +170,10 @@
 		2027C60D17FB692700A5E148 /* TKKeyboardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKKeyboardTableViewController.m; sourceTree = "<group>"; };
 		2047DAFA17C6692200C62E32 /* UIDevice+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+TKCategory.h"; sourceTree = "<group>"; };
 		2047DAFB17C6692200C62E32 /* UIDevice+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+TKCategory.m"; sourceTree = "<group>"; };
+		20529A3417FF465800FFF627 /* UIAlertView+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+TKCategory.h"; sourceTree = "<group>"; };
+		20529A3517FF465800FFF627 /* UIAlertView+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+TKCategory.m"; sourceTree = "<group>"; };
+		20529A3817FF46A400FFF627 /* UIActionSheet+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActionSheet+TKCategory.h"; sourceTree = "<group>"; };
+		20529A3917FF46A400FFF627 /* UIActionSheet+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActionSheet+TKCategory.m"; sourceTree = "<group>"; };
 		2052E87D174F532500F06B66 /* TKWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKWebViewController.h; sourceTree = "<group>"; };
 		2052E87E174F532500F06B66 /* TKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKWebViewController.m; sourceTree = "<group>"; };
 		2057363216A330E700F8CDE6 /* TKCoverflowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCoverflowView.h; sourceTree = "<group>"; };
@@ -512,6 +520,10 @@
 				201E5BF517C7CECE00027C47 /* UIViewController+TKCategory.m */,
 				2002B17517D241C2002440AE /* UIScreen+TKCategory.h */,
 				2002B17617D241C2002440AE /* UIScreen+TKCategory.m */,
+				20529A3417FF465800FFF627 /* UIAlertView+TKCategory.h */,
+				20529A3517FF465800FFF627 /* UIAlertView+TKCategory.m */,
+				20529A3817FF46A400FFF627 /* UIActionSheet+TKCategory.h */,
+				20529A3917FF46A400FFF627 /* UIActionSheet+TKCategory.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -594,8 +606,10 @@
 				3B6EDDDB11547C1100E454DA /* UIView+TKCategory.h in Headers */,
 				3B6EDDDC11547C1300E454DA /* UIImage+TKCategory.h in Headers */,
 				3B6EDDDF11547C1400E454DA /* TKWindow.h in Headers */,
+				20529A3A17FF46A400FFF627 /* UIActionSheet+TKCategory.h in Headers */,
 				3B6EDDE011547C1600E454DA /* TKGlobal.h in Headers */,
 				3B6EDDE211547C1800E454DA /* NSString+TKCategory.h in Headers */,
+				20529A3617FF465800FFF627 /* UIAlertView+TKCategory.h in Headers */,
 				2014592C17A107FF00629488 /* UIGestureRecognizer+TKCategory.h in Headers */,
 				3B6EDDE511547C1E00E454DA /* NSDate+TKCategory.h in Headers */,
 				2047DAFC17C6692200C62E32 /* UIDevice+TKCategory.h in Headers */,
@@ -779,6 +793,8 @@
 				3B6EDDF211547C2C00E454DA /* TKCalendarDayViewController.m in Sources */,
 				3B6EDDF411547C2D00E454DA /* TKCalendarDayView.m in Sources */,
 				3B6EDDF611547C3000E454DA /* TKCalendarDayEventView.m in Sources */,
+				20529A3B17FF46A400FFF627 /* UIActionSheet+TKCategory.m in Sources */,
+				20529A3717FF465800FFF627 /* UIAlertView+TKCategory.m in Sources */,
 				3B6EDDFC11547C3800E454DA /* TKEmptyView.m in Sources */,
 				3B6EDE0B11547C4600E454DA /* TKTextViewCell.m in Sources */,
 				3B6EDE0D11547C4700E454DA /* TKSwitchCell.m in Sources */,

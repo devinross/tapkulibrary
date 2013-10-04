@@ -1,6 +1,6 @@
 //
-//  UIGestureRecognizer+TKCategory.h
-//  Created by Devin Ross on 7/25/13.
+//  UIActionSheet+TKCategory.h
+//  Created by Devin Ross on 10/4/13.
 //
 /*
  
@@ -31,25 +31,12 @@
 
 #import <UIKit/UIKit.h>
 
-/** Additional functionality for `UIGestureRecognizer`.  */
-@interface UIGestureRecognizer (TKCategory)
+@interface UIActionSheet (TKCategory)
 
-/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateBegan`, otherwise NO. */
-- (BOOL) began;
-
-/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateChanged`, otherwise NO. */
-- (BOOL) changed;
-
-/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateEnded`, otherwise NO. */
-- (BOOL) ended;
-
-/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateCancelled`, otherwise NO. */
-- (BOOL) cancelled;
-
-/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateFailed`, otherwise NO. */
-- (BOOL) failed;
-
-/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStatePossible`, otherwise NO. */
-- (BOOL) possible;
+/** Creates and returns a UIActionSheet with the delegate.
+ @param delegate The delegate for the sheet.
+ @return The `UIActionSheet` object.
+ */
++ (UIActionSheet*) sheetWithDelegate:(id<UIActionSheetDelegate>)delegate;
 
 @end

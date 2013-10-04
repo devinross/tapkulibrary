@@ -1,6 +1,6 @@
 //
-//  UIGestureRecognizer+TKCategory.h
-//  Created by Devin Ross on 7/25/13.
+//  UIAlertView+TKCategory.h
+//  Created by Devin Ross on 10/4/13.
 //
 /*
  
@@ -31,25 +31,15 @@
 
 #import <UIKit/UIKit.h>
 
-/** Additional functionality for `UIGestureRecognizer`.  */
-@interface UIGestureRecognizer (TKCategory)
+@interface UIAlertView (TKCategory)
 
-/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateBegan`, otherwise NO. */
-- (BOOL) began;
 
-/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateChanged`, otherwise NO. */
-- (BOOL) changed;
-
-/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateEnded`, otherwise NO. */
-- (BOOL) ended;
-
-/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateCancelled`, otherwise NO. */
-- (BOOL) cancelled;
-
-/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateFailed`, otherwise NO. */
-- (BOOL) failed;
-
-/** Returns YES if the gesture recognizer state is `UIGestureRecognizerStatePossible`, otherwise NO. */
-- (BOOL) possible;
+/** Creates, shows and returns a UIAlertView using with a button with the specified properties.
+ @param title The title of the alert view.
+ @param message The message of the alert view.
+ @param dismiss The cancel button title.
+ @return The `UIAlertView` object.
+ */
++ (UIAlertView*) showAlertViewWithTitle:(NSString*)title message:(NSString*)message dismiss:(NSString*)dismiss;
 
 @end

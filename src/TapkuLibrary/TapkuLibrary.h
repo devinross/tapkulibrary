@@ -44,6 +44,10 @@
 #import "UITextField+TKCategory.h"
 #import "UIImagePickerController+TKCategory.h"
 #import "UIViewController+TKCategory.h"
+#import "UIBarButtonItem+TKCategory.h"
+#import "UIActionSheet+TKCategory.h"
+#import "UIAlertView+TKCategory.h"
+
 #import "TKWebViewController.h"
 
 #import "TKWindow.h"
