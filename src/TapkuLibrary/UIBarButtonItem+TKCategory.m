@@ -65,7 +65,9 @@
 	return item;
 }
 
-
++ (UIBarButtonItem*) actionItemWithTarget:(id)target action:(SEL)action{
+	return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:target action:action];
+}
 
 + (UIBarButtonItem*) activityItemWithIndicatorStyle:(UIActivityIndicatorViewStyle)style{
 	UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:style];

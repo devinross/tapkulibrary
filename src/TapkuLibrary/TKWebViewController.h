@@ -43,4 +43,6 @@
 
 @property (nonatomic,strong) UIWebView *webView;
 
+- (void) showActionSheet:(id)sender;
+
 @end

@@ -31,6 +31,7 @@
 
 
 #import "TKWebViewController.h"
+#import "UIBarButtonItem+TKCategory.h"
 
 @implementation TKWebViewController
 
@@ -50,8 +51,12 @@
 	[super loadView];
 	self.webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
 	self.webView.delegate = self;
+	self.webView.scalesPageToFit = YES;
 	self.webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	[self.view addSubview:self.webView];
+	
+	
+	
 }
 - (void) viewDidLoad{
 	[super viewDidLoad];
@@ -59,6 +64,30 @@
 		[self.webView loadRequest:[NSURLRequest requestWithURL:self.URL]];
 	else if(self.URLRequest)
 		[self.webView loadRequest:self.URLRequest];
+}
+
+- (void) showActionSheet:(id)sender{
+	NSURL *currentURL = self.webView.request.URL;
+	UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[currentURL] applicationActivities:nil];
+	activityVC.excludedActivityTypes = @[UIActivityTypePostToWeibo, UIActivityTypeSaveToCameraRoll, UIActivityTypeAssignToContact];
+	[self presentViewController:activityVC animated:YES completion:nil];
+}
+
+- (void) webViewDidStartLoad:(UIWebView *)webView{
+	self.navigationItem.rightBarButtonItem = [UIBarButtonItem activityItem];
+	
+	
+}
+
+
+- (void) webViewDidFinishLoad:(UIWebView *)webView {
+	
+	self.navigationItem.rightBarButtonItem = [UIBarButtonItem actionItemWithTarget:self action:@selector(showActionSheet:)];
+	self.title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+}
+- (void) webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+	self.navigationItem.rightBarButtonItem = [UIBarButtonItem actionItemWithTarget:self action:@selector(showActionSheet:)];
+	self.title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
 }
 
 - (BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
