@@ -3,9 +3,7 @@ TapkuLibrary
 TapkuLibrary is an iOS library built on Cocoa and UIKit intended for broad use in applications. If you're looking to see what the library can do, check out the demo project included. Some major components include coverflow, calendar grid, network requests and progress indicators.
 
 ## Documentation
-Browse the documentation at [devinsheaven.com/tapku/documentation](http://devinsheaven.com/tapku/documentation/). To add the documentation directly to XCode, [download it](http://devinsheaven.com/tapku/documentation/docset.zip) and place it into `~/Library/Developer/Shared/Documentation/DocSets/` directly in Xcode. Open up the Xcode preferences, navigate to the Downloads tab and Documentation tab. Add the following URL:
-
-	~/Library/Developer/Shared/Documentation/DocSets/
+Browse the documentation at [devinsheaven.com/tapku/documentation](http://devinsheaven.com/tapku/documentation/). To add the documentation directly to XCode, [download the docset](http://devinsheaven.com/tapku/documentation/docset.zip) and place the docset into the `~/Library/Developer/Shared/Documentation/DocSets/` folder.
 
 ## Adding Tapku To Your Project 
 Instructions on adding tapku library can be [found here](https://github.com/devinross/tapkulibrary/wiki/Adding-Tapku-to-Your-Project-in-XCode-4). For additional help, check out the demo project.
