@@ -31,6 +31,7 @@
 
 @import UIKit;
 
+/** Additional functionality for `UIAlertView`.  */
 @interface UIAlertView (TKCategory)
 
 

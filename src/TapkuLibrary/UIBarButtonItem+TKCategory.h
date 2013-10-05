@@ -49,28 +49,28 @@
 
 /** Creates and returns a Action button bar button item.
  @param target The object that receives the action message.
- @param selector The action to send to target when this item is selected.
+ @param action The action to send to target when this item is selected.
  @return The `UIBarButtonItem` object.
  */
 + (UIBarButtonItem*) actionItemWithTarget:(id)target action:(SEL)action;
 
 /** Creates and returns a Done button bar button item.
  @param target The object that receives the action message.
- @param selector The action to send to target when this item is selected.
+ @param action The action to send to target when this item is selected.
  @return The `UIBarButtonItem` object.
  */
 + (UIBarButtonItem*) doneItemWithTarget:(id)target action:(SEL)action;
 
 /** Creates and returns a Cancel button bar button item.
  @param target The object that receives the action message.
- @param selector The action to send to target when this item is selected.
+ @param action The action to send to target when this item is selected.
  @return The `UIBarButtonItem` object.
  */
 + (UIBarButtonItem*) cancelItemWithTarget:(id)target action:(SEL)action;
 
 /** Creates and returns a Save button bar button item.
  @param target The object that receives the action message.
- @param selector The action to send to target when this item is selected.
+ @param action The action to send to target when this item is selected.
  @return The `UIBarButtonItem` object.
  */
 + (UIBarButtonItem*) saveItemWithTarget:(id)target action:(SEL)action;

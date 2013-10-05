@@ -31,6 +31,7 @@
 
 @import UIKit;
 
+/** Additional functionality for `UIActionSheet`.  */
 @interface UIActionSheet (TKCategory)
 
 /** Creates and returns a UIActionSheet with the delegate.
