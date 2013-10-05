@@ -28,7 +28,7 @@
  
 */
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "TKCalendarDayEventView.h"
 
 @protocol TKCalendarDayViewDelegate,TKCalendarDayViewDataSource;

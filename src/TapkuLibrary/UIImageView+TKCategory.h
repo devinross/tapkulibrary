@@ -30,7 +30,7 @@
  */
 
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 /** Additional functionality for `UIImageView`.  */
 @interface UIImageView (TKCategory)

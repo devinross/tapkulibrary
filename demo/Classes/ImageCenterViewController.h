@@ -29,7 +29,7 @@
  
  */
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import <TapkuLibrary/TapkuLibrary.h>
 
 @interface ImageCenterViewController : TKTableViewController

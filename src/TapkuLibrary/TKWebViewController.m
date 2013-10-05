@@ -38,15 +38,17 @@
 - (id) initWithURL:(NSURL*)URL{
 	if(!(self=[super init])) return nil;
 	self.URL = URL;
+	self.activityIndicatorStyle = UIActivityIndicatorViewStyleWhite;
 	return self;
 }
-
 - (id) initWithURLRequest:(NSURLRequest*)URLRequest{
 	if(!(self=[super init])) return nil;
 	self.URLRequest = URLRequest;
+	self.activityIndicatorStyle = UIActivityIndicatorViewStyleWhite;
 	return self;
 }
 
+#pragma mark View Lifecycle
 - (void) loadView{
 	[super loadView];
 	self.webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
@@ -54,9 +56,6 @@
 	self.webView.scalesPageToFit = YES;
 	self.webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	[self.view addSubview:self.webView];
-	
-	
-	
 }
 - (void) viewDidLoad{
 	[super viewDidLoad];
@@ -66,6 +65,7 @@
 		[self.webView loadRequest:self.URLRequest];
 }
 
+#pragma mark Button Actions
 - (void) showActionSheet:(id)sender{
 	NSURL *currentURL = self.webView.request.URL;
 	UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[currentURL] applicationActivities:nil];
@@ -73,13 +73,12 @@
 	[self presentViewController:activityVC animated:YES completion:nil];
 }
 
+#pragma mark UIWebviewDelegate
 - (void) webViewDidStartLoad:(UIWebView *)webView{
 	self.navigationItem.rightBarButtonItem = [UIBarButtonItem activityItem];
 	
 	
 }
-
-
 - (void) webViewDidFinishLoad:(UIWebView *)webView {
 	
 	self.navigationItem.rightBarButtonItem = [UIBarButtonItem actionItemWithTarget:self action:@selector(showActionSheet:)];
@@ -89,7 +88,6 @@
 	self.navigationItem.rightBarButtonItem = [UIBarButtonItem actionItemWithTarget:self action:@selector(showActionSheet:)];
 	self.title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
 }
-
 - (BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
 	
 	if(self.navigationController && (navigationType == UIWebViewNavigationTypeFormSubmitted || navigationType == UIWebViewNavigationTypeLinkClicked)){

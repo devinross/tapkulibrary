@@ -29,9 +29,8 @@
  
  */
 
-
+@import Foundation;
 #import <SenTestingKit/SenTestingKit.h>
-#import <Foundation/Foundation.h>
 #import "NSArray+TKCategory.h"
 
 @interface NSArrayTests : SenTestCase

@@ -31,13 +31,34 @@
 
 #import "TKTableViewController.h"
 
+/**
+ This class provides additional functionality to `TKTableViewController` text entry. 
+ It will adjust its bounds when keyboards appear and hide keyboards when the user scrolls the table.
+ When you subclass, make sure to set this view controller to the delegate of your `UITextField` and `UITextView` objects.
+ */
 @interface TKKeyboardTableViewController : TKTableViewController <UITextFieldDelegate,UITextViewDelegate>
 
+///----------------------------
+/// @name Properties
+///----------------------------
+
+/** This flag is set to YES, it will call resignResponders when the user scrolls a table view. On iPad defaults to NO, Phone defaults to YES. */
 @property (nonatomic,assign) BOOL hideKeyboardOnScroll;
-@property (nonatomic,assign) BOOL scrollLock;
+
+/** This flag is set to YES, it will scroll the UITextField or UITextView into the bounds when it becomes the first responder. Defaults to YES. */
 @property (nonatomic,assign) BOOL scrollToTextField;
 
+
+///----------------------------
+/// @name Methods
+///----------------------------
+
+/** Scrolls the tableview to keep the view within the table view bounds.
+ @param view The view that the table views bounds adjusts to.
+ */
 - (void) scrollToView:(UIView*)view;
-- (BOOL) resignResponders; 
+
+/** When subclassing, call resignFirstResponder on all your `UITextField` and `UITextView` objects */
+- (void) resignResponders;
 
 @end

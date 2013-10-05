@@ -30,7 +30,7 @@
  */
 
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "TKViewController.h"
 @class TKEmptyView;
 

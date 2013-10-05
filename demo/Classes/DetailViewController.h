@@ -30,7 +30,7 @@
  */
 
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import <TapkuLibrary/TapkuLibrary.h>
 
 @interface DetailViewController : UIViewController <UISplitViewControllerDelegate>

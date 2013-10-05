@@ -29,7 +29,7 @@
  
  */
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 /** Additional functionality for `UIScrollView`.  */
 @interface UIScrollView (TKCategory)

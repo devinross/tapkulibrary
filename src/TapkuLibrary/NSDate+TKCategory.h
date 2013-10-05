@@ -31,7 +31,7 @@
 
 
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 #pragma mark - NSDate + TKCategory
 /** Additional functionality for `NSDate`. */

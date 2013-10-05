@@ -29,8 +29,8 @@
  
  */
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+@import Foundation;
+@import UIKit;
 
 @class TKWindow;
 

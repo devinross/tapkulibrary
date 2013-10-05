@@ -30,7 +30,7 @@
  */
 
 #import <SenTestingKit/SenTestingKit.h>
-#import <Foundation/Foundation.h>
+@import Foundation;
 #import "NSString+TKCategory.h"
 
 @interface NSStringTests : SenTestCase

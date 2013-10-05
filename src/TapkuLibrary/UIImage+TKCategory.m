@@ -32,7 +32,7 @@
 #import "UIImage+TKCategory.h"
 #import "UIView+TKCategory.h"
 #import "TKGlobal.h"
-#import <Accelerate/Accelerate.h>
+@import Accelerate;
 #import <float.h>
 
 @implementation UIImage (TKCategory)

@@ -30,8 +30,8 @@
  */
 
 
-#import <UIKit/UIKit.h>
-#import <QuartzCore/QuartzCore.h>
+@import UIKit;
+@import QuartzCore;
 
 /** Additional functionality for `UIView`.  */
 @interface UIView (TKCategory)

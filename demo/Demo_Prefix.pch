@@ -3,7 +3,7 @@
 //
 
 #ifdef __OBJC__
-    #import <Foundation/Foundation.h>
-    #import <UIKit/UIKit.h>
+	@import Foundation;
+    @import UIKit;
 	#import <TapkuLibrary/TapkuLibrary.h>
 #endif

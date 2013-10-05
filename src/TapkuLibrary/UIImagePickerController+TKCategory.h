@@ -29,7 +29,7 @@
  
  */
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 /** Additional functionality for `UIImagePickerController`.  */
 @interface UIImagePickerController (TKCategory)

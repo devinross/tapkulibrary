@@ -30,7 +30,7 @@
  */
 
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "TKProgressBarView.h"
 
 /** A simple alert view with a progress view. */

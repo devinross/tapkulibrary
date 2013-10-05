@@ -29,8 +29,8 @@
  
  */
 
-#import <UIKit/UIKit.h>
-#import <QuartzCore/QuartzCore.h>
+@import UIKit;
+@import QuartzCore;
 
 @class TKCoverflowCoverView,TKCoverflowView,TKGradientView;
 

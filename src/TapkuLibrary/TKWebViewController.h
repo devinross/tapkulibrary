@@ -30,19 +30,44 @@
  */
 
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
+
+/** This class creates a `UIViewController` with a basic `UIWebView` as the focal point view. */
 @interface TKWebViewController : UIViewController <UIWebViewDelegate>
 
+
+/** Initializes a web vew controller that will load the given `NSURL` object.
+ @param URL A `NSURL` object that will loaded by the `UIWebView`.
+ @return An initialized `TKWebViewController` object or nil if the object couldn’t be created.
+ */
 - (id) initWithURL:(NSURL*)URL;
+
+/** Initializes a web vew controller that will load the given `URLRequest` object.
+ @param URLRequest A `URLRequest` object that will loaded by the `UIWebView`.
+ @return An initialized `TKWebViewController` object or nil if the object couldn’t be created.
+ */
 - (id) initWithURLRequest:(NSURLRequest*)URLRequest;
 
-
+///----------------------------
+/// @name Properties
+///----------------------------
+/** The URL that will be loaded by the web view. */
 @property (nonatomic,strong) NSURL *URL;
+
+/** The URLRequest that will be loaded by the web view. */
 @property (nonatomic,strong) NSURLRequest *URLRequest;
 
+/** Returns the `UIWebView`	managed by the controller object. */
 @property (nonatomic,strong) UIWebView *webView;
 
+/** The activity indicator style of the `UIActivityIndicatorView` that will be shown in the navigation bar when loading. */
+@property (nonatomic,assign) UIActivityIndicatorViewStyle activityIndicatorStyle;
+
+
+/** Show a `UIActivityViewController` to share the URL of the web view 
+ @param sender The sender of the action.
+ */
 - (void) showActionSheet:(id)sender;
 
 @end

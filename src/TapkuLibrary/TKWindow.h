@@ -30,7 +30,7 @@
  */
 
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 /** Posted when the a motion event begins. */
 extern NSString *TKWindowShakeBegan;

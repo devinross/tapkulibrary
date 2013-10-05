@@ -29,7 +29,7 @@
  
  */
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 #import "NSObject+TKCategory.h"
 
 #if NS_BLOCKS_AVAILABLE

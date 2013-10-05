@@ -30,8 +30,8 @@
  */
 
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+@import Foundation;
+@import UIKit;
 
 /** Additional functionality for `UIBarButtonItem`.  */
 @interface UIBarButtonItem (TKCategory)

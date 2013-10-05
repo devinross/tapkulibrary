@@ -30,7 +30,7 @@
  */
 
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import <TapkuLibrary/TapkuLibrary.h>
 @class LeftTableViewController, DetailViewController;
 

@@ -34,6 +34,7 @@
 
 @interface TKKeyboardTableViewController ()
 @property (nonatomic,assign) UIEdgeInsets originalContentInsets;
+@property (nonatomic,assign) BOOL scrollLock;
 @end
 
 @implementation TKKeyboardTableViewController
@@ -69,7 +70,7 @@
 
 #pragma mark Move ScrollView
 - (void) keyboardWillAppear:(NSNotification*)sender{
-	_scrollLock = YES;
+	self.scrollLock = YES;
 	
 	self.originalContentInsets = self.tableView.contentInset;
 	
@@ -98,11 +99,13 @@
 	self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
 }
 - (void) textViewDidBeginEditing:(UITextView *)textView{
-	_scrollLock = YES;
+	if(!self.scrollToTextField) return;
+	self.scrollLock = YES;
 	[self performSelector:@selector(scrollToView:) withObject:textView afterDelay:0.1];
 }
 - (void) textFieldDidBeginEditing:(UITextField *)textField{
-	_scrollLock = YES;
+	if(!self.scrollToTextField) return;
+	self.scrollLock = YES;
 	[self performSelector:@selector(scrollToView:) withObject:textField afterDelay:0.1];
 }
 
@@ -110,35 +113,33 @@
 
 #pragma mark UIScrollView Delegate
 - (void) scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-	if(self.hideKeyboardOnScroll)
+	if(self.hideKeyboardOnScroll && !self.scrollLock)
 		[self resignResponders];
 }
 - (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-	_scrollLock = NO;
+	self.scrollLock = NO;
 }
 - (void) scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
-	_scrollLock = NO;
+	self.scrollLock = NO;
 }
 - (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-	if(!decelerate) _scrollLock = NO;
+	if(!decelerate) self.scrollLock = NO;
 }
 - (void) _unlock{
 	dispatch_async(dispatch_get_main_queue(), ^{
-		_scrollLock = NO;
+		self.scrollLock = NO;
 	});
 }
 
 #pragma mark Public Functions
 - (void) scrollToView:(UIView*)view{
-	if(!self.scrollToTextField) return;
 	CGRect rect = [view convertRect:view.bounds toView:self.tableView];
 	rect = CGRectInset(rect, 0, -30);
 	[self.tableView scrollRectToVisible:rect animated:YES];
 	[self performSelector:@selector(_unlock) withObject:nil afterDelay:0.35];
 }
-- (BOOL) resignResponders{
-	if(self.scrollLock) return NO;
-	return YES;
+- (void) resignResponders{
+
 }
 
 @end

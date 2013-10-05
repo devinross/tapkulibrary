@@ -32,8 +32,8 @@
 
 
 #import <SenTestingKit/SenTestingKit.h>
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+@import Foundation;
+@import UIKit;
 
 #import "NSDate+TKCategory.h"
 

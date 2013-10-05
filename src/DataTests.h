@@ -30,7 +30,7 @@
  */
 
 #import <SenTestingKit/SenTestingKit.h>
-#import <Foundation/Foundation.h>
+@import Foundation;
 #import "NSObject+TKCategory.h"
 
 @interface DataTests : SenTestCase

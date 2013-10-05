@@ -28,7 +28,7 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import <TapkuLibrary/TapkuLibrary.h>
 
 #pragma mark - CoverflowViewController

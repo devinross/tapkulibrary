@@ -29,7 +29,7 @@
  
  */
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 /** Additional functionality for `NSObject`.  */
 @interface NSObject (TKCategory)
