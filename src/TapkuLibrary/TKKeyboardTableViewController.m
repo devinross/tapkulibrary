@@ -57,12 +57,9 @@
 }
 
 #pragma mark View Lifecycle
-- (void) viewDidLoad{
-	[super viewDidLoad];
-	self.originalContentInsets = self.tableView.contentInset;
-}
 - (void) viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
+	self.originalContentInsets = self.tableView.contentInset;
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillDisappear:) name:UIKeyboardWillHideNotification object:nil];
 }
