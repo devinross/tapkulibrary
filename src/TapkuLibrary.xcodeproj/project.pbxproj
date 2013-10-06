@@ -33,6 +33,8 @@
 		2052E880174F532500F06B66 /* TKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052E87E174F532500F06B66 /* TKWebViewController.m */; };
 		2057363416A330E700F8CDE6 /* TKCoverflowView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2057363216A330E700F8CDE6 /* TKCoverflowView.h */; };
 		2057363516A330E700F8CDE6 /* TKCoverflowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2057363316A330E700F8CDE6 /* TKCoverflowView.m */; };
+		20732DC01800AA880011D714 /* UIFont+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 20732DBE1800AA880011D714 /* UIFont+TKCategory.h */; };
+		20732DC11800AA880011D714 /* UIFont+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 20732DBF1800AA880011D714 /* UIFont+TKCategory.m */; };
 		207DF656178761210091E898 /* UITextField+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 207DF654178761210091E898 /* UITextField+TKCategory.h */; };
 		207DF657178761210091E898 /* UITextField+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 207DF655178761210091E898 /* UITextField+TKCategory.m */; };
 		207DFF9215E1E3BE00A0BC2A /* NSDate+CalendarGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = 207DFF9015E1E3BE00A0BC2A /* NSDate+CalendarGrid.h */; };
@@ -178,6 +180,8 @@
 		2052E87E174F532500F06B66 /* TKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKWebViewController.m; sourceTree = "<group>"; };
 		2057363216A330E700F8CDE6 /* TKCoverflowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCoverflowView.h; sourceTree = "<group>"; };
 		2057363316A330E700F8CDE6 /* TKCoverflowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoverflowView.m; sourceTree = "<group>"; };
+		20732DBE1800AA880011D714 /* UIFont+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+TKCategory.h"; sourceTree = "<group>"; };
+		20732DBF1800AA880011D714 /* UIFont+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+TKCategory.m"; sourceTree = "<group>"; };
 		207DF654178761210091E898 /* UITextField+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+TKCategory.h"; sourceTree = "<group>"; };
 		207DF655178761210091E898 /* UITextField+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+TKCategory.m"; sourceTree = "<group>"; };
 		207DFF9015E1E3BE00A0BC2A /* NSDate+CalendarGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CalendarGrid.h"; sourceTree = "<group>"; };
@@ -524,6 +528,8 @@
 				20529A3517FF465800FFF627 /* UIAlertView+TKCategory.m */,
 				20529A3817FF46A400FFF627 /* UIActionSheet+TKCategory.h */,
 				20529A3917FF46A400FFF627 /* UIActionSheet+TKCategory.m */,
+				20732DBE1800AA880011D714 /* UIFont+TKCategory.h */,
+				20732DBF1800AA880011D714 /* UIFont+TKCategory.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -619,6 +625,7 @@
 				3B6EDDF311547C2C00E454DA /* TKCalendarDayViewController.h in Headers */,
 				3B6EDDF511547C3000E454DA /* TKCalendarDayView.h in Headers */,
 				3B6EDDF711547C3100E454DA /* TKCalendarDayEventView.h in Headers */,
+				20732DC01800AA880011D714 /* UIFont+TKCategory.h in Headers */,
 				3B6EDDFD11547C3800E454DA /* TKEmptyView.h in Headers */,
 				3B6EDE0C11547C4700E454DA /* TKTextViewCell.h in Headers */,
 				2014592817A1077D00629488 /* TKReorderTableView.h in Headers */,
@@ -840,6 +847,7 @@
 				2026B53A1746F4D000447F22 /* UIImagePickerController+TKCategory.m in Sources */,
 				2026B553174810B900447F22 /* TKTextFieldCell.m in Sources */,
 				2026B55C1748257B00447F22 /* TKTextView.m in Sources */,
+				20732DC11800AA880011D714 /* UIFont+TKCategory.m in Sources */,
 				20A2A521174C37870058571F /* TKSlideToUnlockView.m in Sources */,
 				2052E880174F532500F06B66 /* TKWebViewController.m in Sources */,
 			);

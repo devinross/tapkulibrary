@@ -57,6 +57,10 @@
 }
 
 #pragma mark View Lifecycle
+- (void) viewDidLoad{
+	[super viewDidLoad];
+	self.originalContentInsets = self.tableView.contentInset;
+}
 - (void) viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
@@ -71,8 +75,6 @@
 #pragma mark Move ScrollView
 - (void) keyboardWillAppear:(NSNotification*)sender{
 	self.scrollLock = YES;
-	
-	self.originalContentInsets = self.tableView.contentInset;
 	
 	CGRect keyboardFrame = [sender.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
 	UIWindow *window = [UIApplication sharedApplication].windows[0];
