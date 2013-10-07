@@ -214,4 +214,7 @@
 - (NSDate *) dateByAddingDays:(NSUInteger)days;
 + (NSDate *) dateWithDatePart:(NSDate *)aDate andTimePart:(NSDate *)aTime;
 
+- (NSDate*) firstDateOfWeekWithTimeZone:(NSTimeZone*)timeZone;
+- (NSDate*) firstDateOfWeek;
+
 @end

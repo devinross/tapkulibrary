@@ -218,4 +218,33 @@
 }
 
 
+
+- (NSDate*) firstDateOfWeekWithTimeZone:(NSTimeZone*)timeZone{
+	NSCalendar *gregorian = [NSCalendar currentCalendar];
+	
+	NSDateComponents *weekdayComponents = [gregorian components:NSWeekdayCalendarUnit fromDate:self];
+	weekdayComponents.timeZone = timeZone;
+
+	NSDateComponents *componentsToSubtract = [[NSDateComponents alloc] init];
+	componentsToSubtract.timeZone = timeZone;
+	
+	[componentsToSubtract setDay: - ([weekdayComponents weekday] - [gregorian firstWeekday])];
+	
+	NSDate *beginningOfWeek = [gregorian dateByAddingComponents:componentsToSubtract toDate:self options:0];
+	
+
+	NSDateComponents *components = [gregorian components: (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate: beginningOfWeek];
+	components.timeZone = timeZone;
+
+	beginningOfWeek = [gregorian dateFromComponents: components];
+	
+	return beginningOfWeek;
+}
+
+
+- (NSDate*) firstDateOfWeek{
+	return [self firstDateOfWeekWithTimeZone:[NSTimeZone defaultTimeZone]];
+}
+
+
 @end
