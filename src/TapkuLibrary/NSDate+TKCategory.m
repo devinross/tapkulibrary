@@ -247,4 +247,11 @@
 }
 
 
++ (NSDate*) firstDateOfWeekWithTimeZone:(NSTimeZone*)timeZone{
+	return [[NSDate date] firstDateOfWeekWithTimeZone:timeZone];
+}
++ (NSDate*) firstDateOfWeek{
+	return [[NSDate date] firstDateOfWeek];
+}
+
 @end
