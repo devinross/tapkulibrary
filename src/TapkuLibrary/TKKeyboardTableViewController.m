@@ -90,7 +90,7 @@
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationBeginsFromCurrentState:YES];
 	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-	self.tableView.contentInset = UIEdgeInsetsMake(self.topLayoutGuide.length, 0, self.bottomLayoutGuide.length, 0);
+	self.tableView.contentInset = UIEdgeInsetsMake(self.tableView.contentInset.top, 0, self.bottomLayoutGuide.length, 0);
 	[UIView commitAnimations];
 	
 	self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
