@@ -38,13 +38,11 @@
 - (id) initWithURL:(NSURL*)URL{
 	if(!(self=[super init])) return nil;
 	self.URL = URL;
-	self.activityIndicatorStyle = UIActivityIndicatorViewStyleWhite;
 	return self;
 }
 - (id) initWithURLRequest:(NSURLRequest*)URLRequest{
 	if(!(self=[super init])) return nil;
 	self.URLRequest = URLRequest;
-	self.activityIndicatorStyle = UIActivityIndicatorViewStyleWhite;
 	return self;
 }
 
@@ -75,12 +73,12 @@
 
 #pragma mark UIWebviewDelegate
 - (void) webViewDidStartLoad:(UIWebView *)webView{
-	self.navigationItem.rightBarButtonItem = [UIBarButtonItem activityItem];
 	
+	UIActivityIndicatorViewStyle style = self.navigationController.navigationBar.barTintColor ? UIActivityIndicatorViewStyleWhite : UIActivityIndicatorViewStyleGray;
+	self.navigationItem.rightBarButtonItem = [UIBarButtonItem activityItemWithIndicatorStyle:style];
 	
 }
 - (void) webViewDidFinishLoad:(UIWebView *)webView {
-	
 	self.navigationItem.rightBarButtonItem = [UIBarButtonItem actionItemWithTarget:self action:@selector(showActionSheet:)];
 	self.title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
 }

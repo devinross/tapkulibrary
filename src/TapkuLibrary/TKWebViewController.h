@@ -61,9 +61,6 @@
 /** Returns the `UIWebView`	managed by the controller object. */
 @property (nonatomic,strong) UIWebView *webView;
 
-/** The activity indicator style of the `UIActivityIndicatorView` that will be shown in the navigation bar when loading. */
-@property (nonatomic,assign) UIActivityIndicatorViewStyle activityIndicatorStyle;
-
 
 /** Show a `UIActivityViewController` to share the URL of the web view 
  @param sender The sender of the action.

@@ -86,7 +86,7 @@
   @{@"rows" : @[@"Coverflow",@"Month Grid Calendar",@"Day Calendar"], @"title" : @"Views"},
   @{@"rows" : @[@"Empty Sign",@"Loading HUD",@"Alerts",@"Slide to Unlock"], @"title" : @"UI Elements"},
   @{@"rows" : @[@"Label Cells",@"More Cells"], @"title" : @"Table View Cells"},
-  @{@"rows" : @[@"Image Cache",@"HTTP Request Progress"], @"title" : @"Network"}];
+  @{@"rows" : @[@"Image Cache",@"HTTP Request Progress",@"Web ViewController"], @"title" : @"Network"}];
 }
 
 
@@ -149,8 +149,10 @@
 	
 	else if(s==3 && r==0)
 		vc = [[ImageCenterViewController alloc] init];
-	else
+	else if(s==3 && r==1)
 		vc = [[NetworkRequestProgressViewController alloc] init];
+	else
+		vc = [[TKWebViewController alloc] initWithURL:[NSURL URLWithString:@"http://apple.com"]];
 	
 	
 	if(self.detailViewController && !(s==0))
