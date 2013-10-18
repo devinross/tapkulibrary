@@ -121,6 +121,33 @@
 	return ([components1 year] == [components2 year] && [components1 month] == [components2 month] && [components1 day] == [components2 day]);
 }
 
+#pragma mark Same Month
+- (BOOL) isSameMonth:(NSDate *)anotherDate{
+	return [self isSameMonth:anotherDate timeZone:[NSTimeZone defaultTimeZone]];
+}
+- (BOOL) isSameMonth:(NSDate *)anotherDate timeZone:(NSTimeZone *)timeZone{
+	
+	NSCalendar* calendar = [NSCalendar currentCalendar];
+	calendar.timeZone = timeZone;
+	NSDateComponents* components1 = [calendar components:NSYearCalendarUnit fromDate:self];
+	NSDateComponents* components2 = [calendar components:NSYearCalendarUnit fromDate:anotherDate];
+	return components1.year == components2.year && components1.month == components2.month;
+}
+
+#pragma mark Same Year
+- (BOOL) isSameYear:(NSDate *)anotherDate{
+	return [self isSameYear:anotherDate timeZone:[NSTimeZone defaultTimeZone]];
+}
+- (BOOL) isSameYear:(NSDate *)anotherDate timeZone:(NSTimeZone *)timeZone{
+	
+	NSCalendar* calendar = [NSCalendar currentCalendar];
+	calendar.timeZone = timeZone;
+	NSDateComponents* components1 = [calendar components:NSYearCalendarUnit fromDate:self];
+	NSDateComponents* components2 = [calendar components:NSYearCalendarUnit fromDate:anotherDate];
+	return components1.year == components2.year;
+
+}
+
 #pragma mark Is Today
 - (BOOL) isToday{
 	return [self isSameDay:[NSDate date]];

@@ -94,17 +94,51 @@
 
 #pragma mark Same Day
 /** Returns whether the compared date shares the date with respect to the default time zone.
- @param anotherDate The data to compare.
- @return YES if the two dates share the same year, month day. Otherwise NO.
+ @param anotherDate The date to compare.
+ @return YES if the two dates share the same year, month and day. Otherwise NO.
  */
 - (BOOL) isSameDay:(NSDate*)anotherDate;
 
 /** Returns whether the compared date shares the date with respect to the given time zone.
- @param anotherDate The data to compare.
+ @param anotherDate The date to compare.
  @param timeZone The time zone used to determine the current day.
- @return YES if the two dates share the same year, month day. Otherwise NO.
+ @return YES if the two dates share the same year, month and day. Otherwise NO.
  */
 - (BOOL) isSameDay:(NSDate*)anotherDate timeZone:(NSTimeZone*)timeZone;
+
+
+
+#pragma mark Same Month
+/** Returns whether the compared date shares the month with respect to the given time zone.
+ @param anotherDate The date to compare.
+ @param timeZone The time zone used to determine the current day.
+ @return YES if the two dates share the same year, month. Otherwise NO.
+ */
+- (BOOL) isSameMonth:(NSDate *)anotherDate;
+
+/** Returns whether the compared date shares the month with respect to the given time zone.
+ @param anotherDate The date to compare.
+ @param timeZone The time zone used to determine the current day.
+ @return YES if the two dates share the same year, month. Otherwise NO.
+ */
+- (BOOL) isSameMonth:(NSDate *)anotherDate timeZone:(NSTimeZone *)timeZone;
+
+#pragma mark Same Year
+/** Returns whether the compared date shares the year with respect to the given time zone.
+ @param anotherDate The date to compare.
+ @param timeZone The time zone used to determine the current day.
+ @return YES if the two dates share the same year. Otherwise NO.
+ */
+- (BOOL) isSameYear:(NSDate *)anotherDate;
+
+/** Returns whether the compared date shares the year with respect to the given time zone.
+ @param anotherDate The date to compare.
+ @param timeZone The time zone used to determine the current day.
+ @return YES if the two dates share the same year. Otherwise NO.
+ */
+- (BOOL) isSameYear:(NSDate *)anotherDate timeZone:(NSTimeZone *)timeZone;
+
+
 
 #pragma mark Month and Days Between
 

@@ -47,6 +47,7 @@
 #import "UIBarButtonItem+TKCategory.h"
 #import "UIActionSheet+TKCategory.h"
 #import "UIAlertView+TKCategory.h"
+#import "UIGestureRecognizer+TKCategory.h"
 
 #import "TKWebViewController.h"
 
