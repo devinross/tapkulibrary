@@ -96,21 +96,28 @@ FOUNDATION_STATIC_INLINE CGRect CGRectCompose(CGPoint origin, CGSize size){
 
 
 
-FOUNDATION_STATIC_INLINE CGPoint CGPointMidpoint(CGPoint p1,CGPoint p2);
-FOUNDATION_STATIC_INLINE CGPoint CGPointMidpoint(CGPoint p1,CGPoint p2){
+FOUNDATION_STATIC_INLINE CGPoint CGPointGetMidpoint(CGPoint p1,CGPoint p2);
+FOUNDATION_STATIC_INLINE CGPoint CGPointGetMidpoint(CGPoint p1,CGPoint p2){
 	return CGPointMake((p1.x+p2.x)/2.0f,(p1.y+p2.y)/2.0f);
 }
 
-FOUNDATION_STATIC_INLINE CGFloat CGPointDistance(CGPoint p1,CGPoint p2);
-FOUNDATION_STATIC_INLINE CGFloat CGPointDistance(CGPoint p1,CGPoint p2){
+FOUNDATION_STATIC_INLINE CGFloat CGPointGetDistance(CGPoint p1,CGPoint p2);
+FOUNDATION_STATIC_INLINE CGFloat CGPointGetDistance(CGPoint p1,CGPoint p2){
 	return sqrt(pow(p2.x-p1.x,2)+pow(p2.y-p1.y,2));
 }
 
 
-FOUNDATION_STATIC_INLINE CGPoint CGRectMidpoint(CGRect rect);
-FOUNDATION_STATIC_INLINE CGPoint CGRectMidpoint(CGRect rect){
+FOUNDATION_STATIC_INLINE CGPoint CGRectGetMidpoint(CGRect rect);
+FOUNDATION_STATIC_INLINE CGPoint CGRectGetMidpoint(CGRect rect){
 	return CGPointMake(rect.origin.x + rect.size.width / 2.0f, rect.origin.y + rect.size.height / 2.0f);
 }
+
+FOUNDATION_STATIC_INLINE CGPoint CGRectGetCenter(CGRect rect);
+FOUNDATION_STATIC_INLINE CGPoint CGRectGetCenter(CGRect rect){
+	return CGPointMake(rect.size.width / 2.0f, rect.size.height / 2.0f);
+}
+
+
 
 
 @interface TKGlobal : NSObject 
