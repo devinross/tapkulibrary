@@ -33,6 +33,7 @@
 
 @interface UIFont (TKCategory)
 
+#pragma mark Helvetica Neue
 + (UIFont*) helveticaNeueWithSize:(CGFloat)size;
 + (UIFont*) helveticaNeueBoldItalicWithSize:(CGFloat)size;
 + (UIFont*) helveticaNeueLightWithSize:(CGFloat)size;
@@ -46,5 +47,19 @@
 + (UIFont*) helveticaNeueUltraLightWithSize:(CGFloat)size;
 + (UIFont*) helveticaNeueBoldWithSize:(CGFloat)size;
 + (UIFont*) helveticaNeueCondensedBlackWithSize:(CGFloat)size;
+
+#pragma mark Avenir
++ (UIFont*) avenirHeavyWithSize:(CGFloat)size;
++ (UIFont*) avenirObliqueWithSize:(CGFloat)size;
++ (UIFont*) avenirBlackWithSize:(CGFloat)size;
++ (UIFont*) avenirBookWithSize:(CGFloat)size;
++ (UIFont*) avenirBlackObliqueWithSize:(CGFloat)size;
++ (UIFont*) avenirHeavyObliqueWithSize:(CGFloat)size;
++ (UIFont*) avenirLightWithSize:(CGFloat)size;
++ (UIFont*) avenirMediumObliqueWithSize:(CGFloat)size;
++ (UIFont*) avenirMediumWithSize:(CGFloat)size;
++ (UIFont*) avenirLightObliqueWithSize:(CGFloat)size;
++ (UIFont*) avenirRomanWithSize:(CGFloat)size;
++ (UIFont*) avenirBookObliqueWithSize:(CGFloat)size;
 
 @end

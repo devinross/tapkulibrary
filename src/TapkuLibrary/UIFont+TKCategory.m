@@ -33,6 +33,7 @@
 
 @implementation UIFont (TKCategory)
 
+#pragma mark Helvetica Neue
 + (UIFont*) helveticaNeueWithSize:(CGFloat)size{
 	return [UIFont fontWithName:@"HelveticaNeue" size:size];
 }
@@ -72,5 +73,45 @@
 + (UIFont*) helveticaNeueCondensedBlackWithSize:(CGFloat)size{
 	return [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:size];
 }
+
+
+#pragma mark Avenir
++ (UIFont*) avenirHeavyWithSize:(CGFloat)size{
+	return [UIFont fontWithName:@"Avenir-Heavy" size:size];
+}
++ (UIFont*) avenirObliqueWithSize:(CGFloat)size{
+	return [UIFont fontWithName:@"Avenir-Oblique" size:size];
+}
++ (UIFont*) avenirBlackWithSize:(CGFloat)size{
+	return [UIFont fontWithName:@"Avenir-Black" size:size];
+}
++ (UIFont*) avenirBookWithSize:(CGFloat)size{
+	return [UIFont fontWithName:@"Avenir-Book" size:size];
+}
++ (UIFont*) avenirBlackObliqueWithSize:(CGFloat)size{
+	return [UIFont fontWithName:@"Avenir-BlackOblique" size:size];
+}
++ (UIFont*) avenirHeavyObliqueWithSize:(CGFloat)size{
+	return [UIFont fontWithName:@"Avenir-HeavyOblique" size:size];
+}
++ (UIFont*) avenirLightWithSize:(CGFloat)size{
+	return [UIFont fontWithName:@"Avenir-Light" size:size];
+}
++ (UIFont*) avenirMediumObliqueWithSize:(CGFloat)size{
+	return [UIFont fontWithName:@"Avenir-MediumOblique" size:size];
+}
++ (UIFont*) avenirMediumWithSize:(CGFloat)size{
+	return [UIFont fontWithName:@"Avenir-Medium" size:size];
+}
++ (UIFont*) avenirLightObliqueWithSize:(CGFloat)size{
+	return [UIFont fontWithName:@"Avenir-LightOblique" size:size];
+}
++ (UIFont*) avenirRomanWithSize:(CGFloat)size{
+	return [UIFont fontWithName:@"Avenir-Roman" size:size];
+}
++ (UIFont*) avenirBookObliqueWithSize:(CGFloat)size{
+	return [UIFont fontWithName:@"Avenir-BookOblique" size:size];
+}
+
 
 @end
