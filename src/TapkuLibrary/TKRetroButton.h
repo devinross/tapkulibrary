@@ -1,6 +1,6 @@
 //
-//  SlideToUnlockViewController.h
-//  Created by Devin Ross on 5/21/13.
+//  TKRetroButton.h
+//  Created by Devin Ross on 6/22/13.
 //
 /*
  
@@ -29,10 +29,11 @@
  
  */
 
-@import UIKit;
+#import <UIKit/UIKit.h>
 
-@interface SlideToUnlockViewController : TKViewController
+@interface TKRetroButton : UIButton
 
-@property (nonatomic,strong) TKSlideToUnlockView *unlockView;
+
+@property (nonatomic,assign) CGFloat borderWidth;
 
 @end

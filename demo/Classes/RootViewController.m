@@ -44,7 +44,7 @@
 #import "NetworkRequestProgressViewController.h"
 #import "CalendarDayViewController.h"
 #import "SlideToUnlockViewController.h"
-
+#import "ButtonViewController.h"
 
 @interface UINavigationController (Rotation_IOS6)
 @end
@@ -84,7 +84,7 @@
 
 	self.data = @[
   @{@"rows" : @[@"Coverflow",@"Month Grid Calendar",@"Day Calendar"], @"title" : @"Views"},
-  @{@"rows" : @[@"Empty Sign",@"Loading HUD",@"Alerts",@"Slide to Unlock"], @"title" : @"UI Elements"},
+  @{@"rows" : @[@"Empty Sign",@"Loading HUD",@"Alerts",@"Slide to Unlock",@"Buttons"], @"title" : @"UI Elements"},
   @{@"rows" : @[@"Label Cells",@"More Cells"], @"title" : @"Table View Cells"},
   @{@"rows" : @[@"Image Cache",@"HTTP Request Progress",@"Web ViewController"], @"title" : @"Network"}];
 }
@@ -141,6 +141,8 @@
 		vc = [[AlertsViewController alloc] init];
 	else if(s==1 && r==3)
 		vc = [[SlideToUnlockViewController alloc] init];
+	else if(s==1 && r==4)
+		vc = [[ButtonViewController alloc] init];
 	
 	else if(s==2 && r==0)
 		vc = [[LabelViewController alloc] init];

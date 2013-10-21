@@ -1,6 +1,6 @@
 //
-//  SlideToUnlockViewController.h
-//  Created by Devin Ross on 5/21/13.
+//  ButtonViewController.h
+//  Created by Devin Ross on 10/20/13.
 //
 /*
  
@@ -29,10 +29,11 @@
  
  */
 
-@import UIKit;
+#import <UIKit/UIKit.h>
 
-@interface SlideToUnlockViewController : TKViewController
+@interface ButtonViewController : UIViewController
 
-@property (nonatomic,strong) TKSlideToUnlockView *unlockView;
+@property (nonatomic,strong) TKRetroButton *retroButton;
+@property (nonatomic,strong) TKGlowButton *glowButton;
 
 @end
