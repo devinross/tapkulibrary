@@ -48,6 +48,7 @@
 #import "UIActionSheet+TKCategory.h"
 #import "UIAlertView+TKCategory.h"
 #import "UIGestureRecognizer+TKCategory.h"
+#import "UIFont+TKCategory.h"
 
 #import "TKWebViewController.h"
 
