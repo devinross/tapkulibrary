@@ -61,6 +61,9 @@
 /** Returns the table view managed by the controller object. */
 @property (nonatomic,strong) UITableView *tableView;
 
+/** Returns the table view style. */
+@property (nonatomic,readonly) UITableViewStyle style;
+
 /** Returns the empty view. Good for displaying when the content of the table view is empty. */
 @property (nonatomic,strong) TKEmptyView *emptyView;
 

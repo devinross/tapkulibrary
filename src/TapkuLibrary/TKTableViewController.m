@@ -36,10 +36,10 @@
 
 @interface TKTableViewController () {
 @private
-	UITableViewStyle _style;
 	CGPoint _tableViewContentOffset;
 	
 }
+@property (nonatomic,assign) UITableViewStyle style;
 
 @end
 
@@ -56,7 +56,7 @@
 }
 - (id) initWithStyle:(UITableViewStyle)style{
 	if(!(self = [super init])) return nil;
-	_style = style;
+	self.style = style;
 	_tableViewContentOffset = CGPointZero;
 	_clearsSelectionOnViewWillAppear = YES;
 	return self;
