@@ -61,6 +61,9 @@
 + (UIFont*) helveticaNeueThinItalicWithSize:(CGFloat)size{
 	return [UIFont fontWithName:@"HelveticaNeue-Thin_Italic" size:size];
 }
++ (UIFont*) helveticaNeueThinWithSize:(CGFloat)size{
+	return [UIFont fontWithName:@"HelveticaNeue-Thin" size:size];
+}
 + (UIFont*) helveticaNeueLightItalicWithSize:(CGFloat)size{
 	return [UIFont fontWithName:@"HelveticaNeue-LightItalic" size:size];
 }

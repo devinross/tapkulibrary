@@ -47,6 +47,7 @@
 + (UIFont*) helveticaNeueUltraLightWithSize:(CGFloat)size;
 + (UIFont*) helveticaNeueBoldWithSize:(CGFloat)size;
 + (UIFont*) helveticaNeueCondensedBlackWithSize:(CGFloat)size;
++ (UIFont*) helveticaNeueThinWithSize:(CGFloat)size;
 
 #pragma mark Avenir
 + (UIFont*) avenirHeavyWithSize:(CGFloat)size;
