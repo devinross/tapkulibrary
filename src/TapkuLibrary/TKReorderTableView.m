@@ -102,21 +102,10 @@
 		indexPath = nil;
 	
 	
-	if(indexPath == nil && [gesture began]){
+	if([gesture began] && indexPath == nil){
 		[self cancelGesture];
-		
 		return;
-	}
-	
-    // get out of here if the long press was not on a valid row or our table is empty
-    //if([self isEmpty] || indexPath == nil || ([gesture ended] && self.currentLocationIndexPath == nil)) {
-	
-	//	[self cancelGesture];
-	
-	//	return;
-    //}
-    
-    if ([gesture began]) {
+	}else if ([gesture began] && indexPath) {
         
         UITableViewCell *cell = [self cellForRowAtIndexPath:indexPath];
         [cell setSelected:NO animated:NO];
