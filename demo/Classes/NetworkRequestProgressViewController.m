@@ -83,7 +83,7 @@
 - (void) request:(TKHTTPRequest*)request didReceiveTotalBytes:(NSInteger)received ofExpectedBytes:(NSInteger)total{
 	
 	CGFloat percentage = (CGFloat)received / (CGFloat)total;
-	NSLog(@"Received... %d of %d (%ld%%)",received,total,(long)(percentage*100));
+	NSLog(@"Received... %@ of %@ (%@%%)",@(received),@(total),@(percentage*100));
 	[self.circle setProgress:percentage animated:YES];
 }
 - (void) networkRequestDidFinish:(TKHTTPRequest*)request{

@@ -61,6 +61,9 @@
 	
 	return self;
 }
+- (void) dealloc{
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void) newImageRetrieved:(NSNotification*)sender{
 	
@@ -126,14 +129,14 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
 
-	cell.textLabel.text = [NSString stringWithFormat:@"Cell %d",indexPath.row];
+	cell.textLabel.text = [NSString stringWithFormat:@"Cell %@",@(indexPath.row)];
 	NSInteger i = indexPath.row;
 	NSInteger index = i % [self.urlArray count];
 	
 	NSURL *url = [NSURL URLWithString:self.urlArray[index]];
 	
 	
-	UIImage *img = [self.imageCache imageForKey:[NSString stringWithFormat:@"%d",index] url:url queueIfNeeded:YES tag:index];
+	UIImage *img = [self.imageCache imageForKey:[NSString stringWithFormat:@"%@",@(index)] url:url queueIfNeeded:YES tag:index];
 	cell.imageView.image = img;
 
     

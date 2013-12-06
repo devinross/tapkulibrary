@@ -203,7 +203,7 @@
 
 	
 	if(_range.length<1) return;
-	NSString *ID = [NSString stringWithFormat:@"%d",_currentIndex];
+	NSString *ID = [NSString stringWithFormat:@"%@",@(_currentIndex)];
 	
 	
 	
@@ -270,7 +270,7 @@
 - (CATransform3D) _transformForViewAtIndex:(NSInteger)i{
 	
 	CATransform3D trans = CATransform3DIdentity;
-	NSInteger ii = abs(i-_currentIndex);
+	NSInteger ii = abs((int)(i-_currentIndex));
 	
 	if(i<_currentIndex)
 		trans = CATransform3DConcat(self.leftTransform, CATransform3DMakeTranslation(0, 0, -self.leftIncrementalDistanceFromCenter * ii));
