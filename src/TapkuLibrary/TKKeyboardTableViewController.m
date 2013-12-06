@@ -70,6 +70,8 @@
 
 #pragma mark Move ScrollView
 - (void) keyboardWillAppear:(NSNotification*)sender{
+	if(!self.isViewLoaded || self.view.superview == nil) return;
+	
 	self.scrollLock = YES;
 	
 	CGRect keyboardFrame = [sender.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
@@ -88,6 +90,8 @@
 	
 }
 - (void) keyboardWillDisappear:(NSNotification*)sender{
+	if(!self.isViewLoaded || self.view.superview == nil) return;
+
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationBeginsFromCurrentState:YES];
 	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
