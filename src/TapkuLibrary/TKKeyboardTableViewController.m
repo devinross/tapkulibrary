@@ -51,6 +51,8 @@
 	return self;
 }
 - (void) dealloc{
+	self.tableView.delegate = nil;
+	self.tableView.dataSource = nil;
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidHideNotification object:nil];
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
