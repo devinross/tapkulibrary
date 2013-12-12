@@ -96,18 +96,18 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 
 
 #pragma mark Init & Dealloc
-+ (TKHTTPRequest*) requestWithURL:(NSURL*)URL{
++ (instancetype) requestWithURL:(NSURL*)URL{
 	return [[self alloc] initWithURL:URL];
 }
 
-+ (TKHTTPRequest*) requestWithURL:(NSURL *)URL responseHandler:(TKResponseBlock)responseHandler{
++ (instancetype) requestWithURL:(NSURL *)URL responseHandler:(TKResponseBlock)responseHandler{
 	TKHTTPRequest *request = [TKHTTPRequest requestWithURL:URL];
 	request.responseBlock = responseHandler;
 	[request startAsynchronous];
 	return request;
 }
 
-+ (TKHTTPRequest*) requestWithURL:(NSURL *)URL JSONResponseHandler:(TKJSONResponseBlock)responseHandler{
++ (instancetype) requestWithURL:(NSURL *)URL JSONResponseHandler:(TKJSONResponseBlock)responseHandler{
 	TKHTTPRequest *request = [TKHTTPRequest requestWithURL:URL];
 	request.JSONResponseBlock = responseHandler;
 	[request startAsynchronous];
@@ -115,7 +115,7 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 }
 
 
-- (id) initWithURL:(NSURL*)url{
+- (instancetype) initWithURL:(NSURL*)url{
 	if(!(self=[super init])) return nil;
 	
 	
@@ -126,10 +126,10 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 	
 	return self;
 }
-+ (TKHTTPRequest*) requestWithURLRequest:(NSURLRequest*)request{
++ (instancetype) requestWithURLRequest:(NSURLRequest*)request{
 	return [[self alloc] initWithURLRequest:request];
 }
-- (id) initWithURLRequest:(NSURLRequest*)request{
+- (instancetype) initWithURLRequest:(NSURLRequest*)request{
 	if(!(self=[super init])) return nil;
 	
 	self.URLRequest = request;

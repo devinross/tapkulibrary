@@ -78,39 +78,39 @@ typedef enum _TKNetworkErrorType {
  @param URL The URL for the new request.
  @return The newly created request object.
  */
-+ (TKHTTPRequest*) requestWithURL:(NSURL*)URL;
++ (instancetype) requestWithURL:(NSURL*)URL;
 
 /** Returns a newly created request with a URL and response handler. Immediately starts async request.
  @param URL The URL for the new request.
  @param responseHandler The response handler for the request.
  @return The newly created request object.
  */
-+ (TKHTTPRequest*) requestWithURL:(NSURL *)URL responseHandler:(TKResponseBlock)responseHandler;
++ (instancetype) requestWithURL:(NSURL *)URL responseHandler:(TKResponseBlock)responseHandler;
 
 /** Returns a newly created request with a URL.
  @param URL The URL for the new request.
  @param responseHandler The JSON response handler for the request.
  @return The newly created request object.
  */
-+ (TKHTTPRequest*) requestWithURL:(NSURL *)URL JSONResponseHandler:(TKJSONResponseBlock)responseHandler;
++ (instancetype) requestWithURL:(NSURL *)URL JSONResponseHandler:(TKJSONResponseBlock)responseHandler;
 
 /** Returns a newly initialized request with a URL. 
  @param URL The URL for the new request.
  @return The newly created request object.
  */
-- (id) initWithURL:(NSURL*)URL;
+- (instancetype) initWithURL:(NSURL*)URL;
 
 /** Returns a newly created request with a `NSURLRequest` object. 
  @param request The `NSURLRequest` for the new request.
  @return The newly created request object.
  */
-+ (TKHTTPRequest*) requestWithURLRequest:(NSURLRequest*)request;
++ (instancetype) requestWithURLRequest:(NSURLRequest*)request;
 
 /** Returns a newly initialized request with a `NSURLRequest` object. 
  @param request The `NSURLRequest` for the new request.
  @return The newly created request object.
  */
-- (id) initWithURLRequest:(NSURLRequest*)request;
+- (instancetype) initWithURLRequest:(NSURLRequest*)request;
 
 ///-------------------------
 /// @name Properties
