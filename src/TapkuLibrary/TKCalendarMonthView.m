@@ -326,12 +326,12 @@ static UIImage *tileImage;
 	
 	
 	
-	float myColorValues[] = {1, 1, 1, .8};
+	CGFloat myColorValues[] = {1, 1, 1, .8};
     CGColorSpaceRef myColorSpace = CGColorSpaceCreateDeviceRGB();
     CGColorRef whiteColor = CGColorCreate(myColorSpace, myColorValues);
 	CGContextSetShadowWithColor(context, CGSizeMake(0,1), 0, whiteColor);
 
-	float darkColorValues[] = {0, 0, 0, .5};
+	CGFloat darkColorValues[] = {0, 0, 0, .5};
     CGColorRef darkColor = CGColorCreate(myColorSpace, darkColorValues);
 	
 
