@@ -101,6 +101,19 @@
 	XCTAssertEqualObjects(NSStringFromClass([[NSDate date] class]), NSStringFromClass([item.createdAt class]),@"SampleItem createdAt property is not a NSDate class.");
 	XCTAssertEqualObjects(NSStringFromClass([[NSDate date] class]), NSStringFromClass([item.updatedAt class]),@"SampleItem updatedAt property is not a NSDate class.");
 
+
+	
+
+}
+
+- (void) testNoData{
+	SampleItem *item;
+
+	item = [SampleItem createObject:(id)[NSNull null]];
+	XCTAssertNil(item, @"Item is nil");
+	
+	item = [SampleItem createObject:nil];
+	XCTAssertNotNil(item, @"Item is nil");
 }
 
 @end

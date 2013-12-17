@@ -31,9 +31,7 @@
 
 #import "NSObject+TKCategory.h"
 
-
 #define VALID_OBJECT(_OBJ) _OBJ &&	(id)_OBJ != [NSNull null] && ((![_OBJ isKindOfClass:[NSString class]]) || [(NSString*)_OBJ length] > 0)
-
 
 @implementation NSObject (TKCategory)
 
@@ -47,6 +45,9 @@
 	return [[[self class] alloc] initWithDataDictionary:data];
 }
 - (id) initWithDataDictionary:(NSDictionary*)dictionary{
+	
+	if((id)dictionary == [NSNull null]) return nil;
+	
 	if(!(self=[self init])) return nil;
 	[self importDataWithDictionary:dictionary];
 	return self;
