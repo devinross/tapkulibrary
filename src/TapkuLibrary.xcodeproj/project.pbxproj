@@ -43,6 +43,7 @@
 		20A2A521174C37870058571F /* TKSlideToUnlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A2A51F174C37870058571F /* TKSlideToUnlockView.m */; };
 		20C0354F17C9A5DD009EBB33 /* TKGlowButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 20C0354D17C9A5DD009EBB33 /* TKGlowButton.h */; };
 		20C0355017C9A5DD009EBB33 /* TKGlowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C0354E17C9A5DD009EBB33 /* TKGlowButton.m */; };
+		20CE10C41860A6A500249216 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CE10C21860A62B00249216 /* XCTest.framework */; };
 		20DAFB031814BAAC00EF525B /* TKRetroButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 20DAFB011814BAAC00EF525B /* TKRetroButton.h */; };
 		20DAFB041814BAAC00EF525B /* TKRetroButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAFB021814BAAC00EF525B /* TKRetroButton.m */; };
 		20DE9F45168F93E400655BF8 /* DataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DE9F44168F93E400655BF8 /* DataTests.m */; };
@@ -121,7 +122,6 @@
 		3B859EAD134C73D600661088 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995710953DF400F235F1 /* UIKit.framework */; };
 		3B859EAE134C73DE00661088 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		3B859EB0134C73EF00661088 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BAC995810953DF400F235F1 /* QuartzCore.framework */; };
-		3B859EC6134C74D800661088 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B859EC5134C74D800661088 /* SenTestingKit.framework */; };
 		3B859F02134C76C600661088 /* NSArray+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1DCEC91289B84400884CDF /* NSArray+TKCategory.m */; };
 		3B859F03134C76C700661088 /* NSDate+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A2410953E5200F235F1 /* NSDate+TKCategory.m */; };
 		3B859F08134C76D500661088 /* NSString+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF000FD10957EE50062DA49 /* NSString+TKCategory.m */; };
@@ -192,6 +192,7 @@
 		20A2A51F174C37870058571F /* TKSlideToUnlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKSlideToUnlockView.m; sourceTree = "<group>"; };
 		20C0354D17C9A5DD009EBB33 /* TKGlowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKGlowButton.h; sourceTree = "<group>"; };
 		20C0354E17C9A5DD009EBB33 /* TKGlowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKGlowButton.m; sourceTree = "<group>"; };
+		20CE10C21860A62B00249216 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		20DAFB011814BAAC00EF525B /* TKRetroButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKRetroButton.h; sourceTree = "<group>"; };
 		20DAFB021814BAAC00EF525B /* TKRetroButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKRetroButton.m; sourceTree = "<group>"; };
 		20DE9F43168F93E400655BF8 /* DataTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataTests.h; sourceTree = "<group>"; };
@@ -221,13 +222,12 @@
 		3B4438A715B73C690069AAA3 /* NSStringTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSStringTests.m; path = Tests/NSStringTests.m; sourceTree = SOURCE_ROOT; };
 		3B4438B815B74A990069AAA3 /* UIViewTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIViewTests.h; path = Tests/UIViewTests.h; sourceTree = "<group>"; };
 		3B4438B915B74A990069AAA3 /* UIViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIViewTests.m; path = Tests/UIViewTests.m; sourceTree = "<group>"; };
-		3B45DDF1134C736600D24C1A /* LogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B45DDF1134C736600D24C1A /* LogicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B45DDF2134C736600D24C1A /* LogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LogicTests-Info.plist"; sourceTree = "<group>"; };
 		3B560B7014574E30005FBDBF /* TKImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKImageCache.h; sourceTree = "<group>"; };
 		3B560B7114574E30005FBDBF /* TKImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKImageCache.m; sourceTree = "<group>"; };
 		3B819B5214601DC400EC0097 /* TKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKViewController.h; sourceTree = "<group>"; };
 		3B819B5314601DC500EC0097 /* TKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKViewController.m; sourceTree = "<group>"; };
-		3B859EC5134C74D800661088 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		3B879FC4109BFC07002012FD /* TKCalendarMonthTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCalendarMonthTableViewController.h; sourceTree = "<group>"; };
 		3B879FC5109BFC07002012FD /* TKCalendarMonthTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCalendarMonthTableViewController.m; sourceTree = "<group>"; };
 		3B891629134D93D000BD2B31 /* FoundationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FoundationTests.h; path = Tests/FoundationTests.h; sourceTree = "<group>"; };
@@ -310,10 +310,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20CE10C41860A6A500249216 /* XCTest.framework in Frameworks */,
 				3B859EAD134C73D600661088 /* UIKit.framework in Frameworks */,
 				3B859EAE134C73DE00661088 /* Foundation.framework in Frameworks */,
 				3B859EB0134C73EF00661088 /* QuartzCore.framework in Frameworks */,
-				3B859EC6134C74D800661088 /* SenTestingKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,7 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				D2AAC07E0554694100DB518D /* libTapkuLibrary.a */,
-				3B45DDF1134C736600D24C1A /* LogicTests.octest */,
+				3B45DDF1134C736600D24C1A /* LogicTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -356,12 +356,12 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				20CE10C21860A62B00249216 /* XCTest.framework */,
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 				3BAC995710953DF400F235F1 /* UIKit.framework */,
 				3BAC995610953DF400F235F1 /* CoreGraphics.framework */,
 				3BAC995810953DF400F235F1 /* QuartzCore.framework */,
 				20F6153917E6741D007F443C /* Accelerate.framework */,
-				3B859EC5134C74D800661088 /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -698,8 +698,8 @@
 			);
 			name = LogicTests;
 			productName = LogicTests;
-			productReference = 3B45DDF1134C736600D24C1A /* LogicTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 3B45DDF1134C736600D24C1A /* LogicTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		D2AAC07D0554694100DB518D /* TapkuLibrary */ = {
 			isa = PBXNativeTarget;
@@ -968,24 +968,23 @@
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "LogicTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
-					SenTestingKit,
-					"-framework",
 					UIKit,
 				);
 				PRODUCT_NAME = LogicTests;
 				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -1000,22 +999,21 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "LogicTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
 					"-framework",
-					SenTestingKit,
-					"-framework",
 					UIKit,
 				);
 				PRODUCT_NAME = LogicTests;
 				SDKROOT = iphoneos;
-				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};
 			name = Release;

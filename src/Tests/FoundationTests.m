@@ -39,18 +39,18 @@
     NSDate *date,*date2;
     
 	date = [NSDate date];
-    STAssertTrue([date isToday],@"Expected %@ is today.",date);
+    XCTAssertTrue([date isToday],@"Expected %@ is today.",date);
     
 	date = [NSDate yesterday];
-    STAssertFalse([date isToday],@"Expected %@ is not today.",date);
+    XCTAssertFalse([date isToday],@"Expected %@ is not today.",date);
     
     date = [NSDate dateWithTimeIntervalSinceNow:-60 * 60 * 40];
-    STAssertFalse([date isToday],@"Expected %@ is not today.",date);
+    XCTAssertFalse([date isToday],@"Expected %@ is not today.",date);
     
 	
     date = [NSDate yesterday];
     date2 = [NSDate date];
-    STAssertFalse([date isSameDay:date2],@"Expected %@ is not same day as %@.",date,date2);
+    XCTAssertFalse([date isSameDay:date2],@"Expected %@ is not same day as %@.",date,date2);
     
     
     date = [NSDate date];
@@ -59,11 +59,11 @@
     comp.hour = comp.minute = comp.second = 0;
     date2 = [NSDate dateWithDateComponents:comp];
 	
-    STAssertTrue([date2 isSameDay:[date monthDate] timeZone:[NSTimeZone defaultTimeZone]], @"Expected %@ is same day as %@.",date2,date);
+    XCTAssertTrue([date2 isSameDay:[date monthDate] timeZone:[NSTimeZone defaultTimeZone]], @"Expected %@ is same day as %@.",date2,date);
     
     date = [NSDate date];
     date2 = [NSDate yesterday];
-    STAssertEquals([date daysBetweenDate:date2], 1, @"Expected difference between %@ and %@ is zero.",date,date2);
+    XCTAssertEqual([date daysBetweenDate:date2], 1, @"Expected difference between %@ and %@ is zero.",date,date2);
 	
 	
 }

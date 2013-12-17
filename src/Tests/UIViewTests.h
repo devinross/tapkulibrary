@@ -32,9 +32,9 @@
 @import Foundation;
 @import UIKit;
 @import QuartzCore;
-#import <SenTestingKit/SenTestingKit.h>
+@import XCTest;
 #import "UIView+TKCategory.h"
 
-@interface UIViewTests : SenTestCase
+@interface UIViewTests : XCTestCase
 
 @end

@@ -30,9 +30,9 @@
  */
 
 @import Foundation;
-#import <SenTestingKit/SenTestingKit.h>
+@import XCTest;
 #import "NSArray+TKCategory.h"
 
-@interface NSArrayTests : SenTestCase
+@interface NSArrayTests : XCTestCase
 
 @end

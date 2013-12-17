@@ -36,62 +36,62 @@
 
 - (void) testEmail{
     
-	STAssertFalse(nil, @"POCKET");
-    STAssertTrue([@"bob@sanders.com" isEmail], @"Expected to be a valid email");
-    STAssertTrue([@"ao123sda.b2132Ob@sAND123123dsadrs.c" isEmail], @"Expected to be a valid email");
+	XCTAssertFalse(nil, @"POCKET");
+    XCTAssertTrue([@"bob@sanders.com" isEmail], @"Expected to be a valid email");
+    XCTAssertTrue([@"ao123sda.b2132Ob@sAND123123dsadrs.c" isEmail], @"Expected to be a valid email");
     
-    STAssertFalse([@"ao,sda.bOb@sANDdsadrs.c" isEmail], @"Expected to be an invalid email");
-    STAssertFalse([@"" isEmail], @"Expected to be an invalid email");
-    STAssertFalse([@"@b.d" isEmail], @"Expected to be an invalid email");
+    XCTAssertFalse([@"ao,sda.bOb@sANDdsadrs.c" isEmail], @"Expected to be an invalid email");
+    XCTAssertFalse([@"" isEmail], @"Expected to be an invalid email");
+    XCTAssertFalse([@"@b.d" isEmail], @"Expected to be an invalid email");
     
 }
 
 - (void) testMD5Sum{
-	STAssertEqualObjects([@"password" md5sum], @"5f4dcc3b5aa765d61d8327deb882cf99", nil);
-	STAssertEqualObjects([@"devin" md5sum], @"11ef1590a74e1ab26c31a4e13f52d71b", nil);
+	XCTAssertEqualObjects([@"password" md5sum], @"5f4dcc3b5aa765d61d8327deb882cf99");
+	XCTAssertEqualObjects([@"devin" md5sum], @"11ef1590a74e1ab26c31a4e13f52d71b");
 }
 
 
 - (void) testURLEncode{
-	STAssertEqualObjects([@"Bob Sanders" URLEncode], @"Bob%20Sanders", nil);
-	STAssertEqualObjects([@"\"Aardvarks lurk, OK?\"" URLEncode], @"%22Aardvarks%20lurk%2C%20OK%3F%22", nil);
+	XCTAssertEqualObjects([@"Bob Sanders" URLEncode], @"Bob%20Sanders");
+	XCTAssertEqualObjects([@"\"Aardvarks lurk, OK?\"" URLEncode], @"%22Aardvarks%20lurk%2C%20OK%3F%22");
 }
 
 
 - (void) testHasString{
 	
-	STAssertTrue([@"Bob Sanders" hasString:@"Sanders"], nil);
+	XCTAssertTrue([@"Bob Sanders" hasString:@"Sanders"]);
 	
-	STAssertFalse([@"Bob Sanders" hasString:@"SANDERS"], nil);
-	STAssertFalse([@"Bob Sanders" hasString:@"Cooper"], nil);
+	XCTAssertFalse([@"Bob Sanders" hasString:@"SANDERS"]);
+	XCTAssertFalse([@"Bob Sanders" hasString:@"Cooper"]);
 	
 }
 
 - (void) testPhoneString{
 		
 	NSString *output = [@"2345678901" formattedPhoneNumberWithLastCharacterRemoved:NO];
-	STAssertEqualObjects(output, @"(234) 567-8901", nil);
+	XCTAssertEqualObjects(output, @"(234) 567-8901");
 	
 	output = [@"12345678901" formattedPhoneNumberWithLastCharacterRemoved:NO];
-	STAssertEqualObjects(output, @"1 (234) 567-8901", nil);
+	XCTAssertEqualObjects(output, @"1 (234) 567-8901");
 	
 	output = [@"123456789012" formattedPhoneNumberWithLastCharacterRemoved:NO];
-	STAssertEqualObjects(output, @"123456789012", nil);
+	XCTAssertEqualObjects(output, @"123456789012");
 	
 	output = [@"123" formattedPhoneNumberWithLastCharacterRemoved:NO];
-	STAssertEqualObjects(output, @"1 (23)", nil);
+	XCTAssertEqualObjects(output, @"1 (23)");
 	
 	output = [@"1234" formattedPhoneNumberWithLastCharacterRemoved:NO];
-	STAssertEqualObjects(output, @"1 (234)", nil);
+	XCTAssertEqualObjects(output, @"1 (234)");
 	
 	output = [@"12345" formattedPhoneNumberWithLastCharacterRemoved:NO];
-	STAssertEqualObjects(output, @"1 (234) 5", nil);
+	XCTAssertEqualObjects(output, @"1 (234) 5");
 	
 	output = [@"12345678" formattedPhoneNumberWithLastCharacterRemoved:NO];
-	STAssertEqualObjects(output, @"1 (234) 567-8", nil);
+	XCTAssertEqualObjects(output, @"1 (234) 567-8");
 	
 	output = [@"529112345678912" formattedPhoneNumberWithLastCharacterRemoved:NO];
-	STAssertEqualObjects(output, @"529112345678912", nil);
+	XCTAssertEqualObjects(output, @"529112345678912");
 
 }
 

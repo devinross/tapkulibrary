@@ -37,9 +37,9 @@
 
 - (void) testFirstObject{
 		
-	STAssertNil([[NSArray array] firstObject],nil);
+	XCTAssertNil([[NSArray array] firstObject]);
 	NSArray *ar = @[@"BOB"];
-	STAssertEqualObjects([ar firstObject], @"BOB", nil);
+	XCTAssertEqualObjects([ar firstObject], @"BOB");
 	
 }
 

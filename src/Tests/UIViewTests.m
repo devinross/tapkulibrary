@@ -47,7 +47,7 @@
 	[superview addSubview:two];
 	[superview addSubviewToBack:three];
 	
-	STAssertTrue(superview.subviews[0] == three, nil);
+	XCTAssertTrue(superview.subviews[0] == three);
 }
 
 @end

@@ -30,14 +30,20 @@
  */
 
 #import "DataTests.h"
+#import "NSDate+TKCategory.h"
 
 
 @interface SampleItem : NSObject
 
 @property (nonatomic,strong) NSNumber *identifier;
 @property (nonatomic,strong) NSString *name;
+@property (nonatomic,strong) NSString *position;
+@property (nonatomic,strong) NSString *email;
+
 @property (nonatomic,strong) NSDate *createdAt;
 @property (nonatomic,strong) NSDate *updatedAt;
+@property (nonatomic,strong) NSDate *deletedAt;
+@property (nonatomic,strong) NSDate *finishedAt;
 
 @end
 
@@ -48,7 +54,9 @@
 	@"identifier" : @"id",
 	@"name" : @"name",
 	@"createdAt" : @[@"created_at",@"yyyy-MM-dd'T'HH:mm:ss"],
-	@"updatedAt" : @[@"updated_at",@"yyyy-MM-dd"]
+	@"updatedAt" : @[@"updated_at",@"yyyy-MM-dd"],
+	@"deletedAt" : @[@"deleted_at"],
+	@"finishedAt" : @[@"finished_at",@"yyyy-MM-dd"]
 	};
 }
 
@@ -59,22 +67,39 @@
 - (void) testDataImporting{
 	
 	NSDictionary *dict = @{
-	@"id" : @8000,
-	@"created_at" : @"2012-03-12T18:45:00",
-	@"updated_at" : @"2012-03-12",
-	@"name" : @"Bobby Sanderson"
+	@"id"			: @8000,
+	@"created_at"	: @"2012-03-12T18:45:00",
+	@"updated_at"	: @"2013-04-15",
+	@"name"			: @"Bobby Sanderson",
+	@"position"		: [NSNull null],
+	@"phone"		: @"1-800-123-4567",
+	@"deletedAt"	: @"2012-03-12",
+	@"finishedAt"	: [NSNull null]
+
 	};
-	
 	
 	SampleItem *item = [SampleItem createObject:dict];
 	
-	STAssertEqualObjects(dict[@"name"], item.name, @"%@ isn't equal to %@",dict[@"name"],item.name);
-	STAssertEqualObjects(dict[@"id"], item.identifier, @"%@ isn't equal to %@",dict[@"id"],item.identifier);
-	STAssertNotNil(item.createdAt, @"SampleItem createdAt should not be nil");
-	STAssertNotNil(item.updatedAt, @"SampleItem updatedAt should not be nil");
+	XCTAssertEqualObjects(dict[@"name"], item.name, @"%@ isn't equal to %@",dict[@"name"],item.name);
+	XCTAssertEqualObjects(dict[@"id"], item.identifier, @"%@ isn't equal to %@",dict[@"id"],item.identifier);
+	XCTAssertNotNil(item.createdAt, @"SampleItem createdAt should not be nil");
+	XCTAssertNotNil(item.updatedAt, @"SampleItem updatedAt should not be nil");
 	
-	STAssertEqualObjects(NSStringFromClass([[NSDate date] class]), NSStringFromClass([item.createdAt class]),@"SampleItem createdAt property is not a NSDate class.");
-	STAssertEqualObjects(NSStringFromClass([[NSDate date] class]), NSStringFromClass([item.updatedAt class]),@"SampleItem updatedAt property is not a NSDate class.");
+	
+	NSDateComponents *components = [item.createdAt dateComponentsWithTimeZone:[NSTimeZone defaultTimeZone]];
+	XCTAssertTrue(components.day == 12 && components.month == 3 && components.year == 2012 && components.hour == 18, @"SampleItem createdAt date property didn't match up with input 2012-03-12 != %d-%d-%d",components.year,components.month,components.day);
+	
+	
+	components = [item.updatedAt dateComponentsWithTimeZone:[NSTimeZone defaultTimeZone]];
+	XCTAssertTrue(components.day == 15 && components.month == 4 && components.year == 2013, @"SampleItem createdAt date property didn't match up with input 2013-04-15 != %d-%d-%d",components.year,components.month,components.day);
+	
+	
+	XCTAssertNil(item.position, @"Finished at property is not nil");
+	XCTAssertNil(item.finishedAt, @"Finished at property is not nil");
+	XCTAssertNil(item.deletedAt, @"Finished at property is not nil");
+
+	XCTAssertEqualObjects(NSStringFromClass([[NSDate date] class]), NSStringFromClass([item.createdAt class]),@"SampleItem createdAt property is not a NSDate class.");
+	XCTAssertEqualObjects(NSStringFromClass([[NSDate date] class]), NSStringFromClass([item.updatedAt class]),@"SampleItem updatedAt property is not a NSDate class.");
 
 }
 
