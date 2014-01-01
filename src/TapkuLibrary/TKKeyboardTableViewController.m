@@ -34,6 +34,7 @@
 
 @interface TKKeyboardTableViewController ()
 @property (nonatomic,assign) BOOL scrollLock;
+@property (nonatomic,assign) CGRect keyboardRect;
 @end
 
 @implementation TKKeyboardTableViewController
@@ -76,22 +77,14 @@
 	
 	self.scrollLock = YES;
 	
-	CGRect keyboardFrame = [sender.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-	UIWindow *window = [UIApplication sharedApplication].windows[0];
-	UIView *mainSubviewOfWindow = window.rootViewController.view;
-	CGRect keyboardFrameConverted = [mainSubviewOfWindow convertRect:keyboardFrame fromView:window];
-	CGRect rect = [self.view convertRect:keyboardFrameConverted fromView:mainSubviewOfWindow];
-	rect = CGRectIntersection(rect, self.view.bounds);
-	
-	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDuration:0.05];
-	[UIView setAnimationBeginsFromCurrentState:YES];
-	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
-	self.tableView.contentInset = self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(self.tableView.contentInset.top, 0, rect.size.height, 0);
-	[UIView commitAnimations];
+	self.keyboardRect = [sender.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+
+	[self _updateInsetWithKeyboard];
 	
 }
 - (void) keyboardWillDisappear:(NSNotification*)sender{
+	self.keyboardRect = CGRectZero;
+	
 	if(!self.isViewLoaded || self.view.superview == nil) return;
 
 	[UIView beginAnimations:nil context:nil];
@@ -111,6 +104,27 @@
 	if(!self.scrollToTextField) return;
 	self.scrollLock = YES;
 	[self performSelector:@selector(scrollToView:) withObject:textField afterDelay:0.1];
+}
+- (void) _updateInsetWithKeyboard{
+	UIWindow *window = [UIApplication sharedApplication].windows[0];
+	UIView *mainSubviewOfWindow = window.rootViewController.view;
+	CGRect keyboardFrameConverted = [mainSubviewOfWindow convertRect:self.keyboardRect fromView:window];
+	CGRect rect = [self.view convertRect:keyboardFrameConverted fromView:mainSubviewOfWindow];
+	rect = CGRectIntersection(rect, self.view.bounds);
+	
+	
+	
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDuration:0.05];
+	[UIView setAnimationBeginsFromCurrentState:YES];
+	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
+	self.tableView.contentInset = self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(self.tableView.contentInset.top, 0, CGRectGetHeight(rect), 0);
+	[UIView commitAnimations];
+}
+
+#pragma mark Rotations
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+	[self _updateInsetWithKeyboard];
 }
 
 
