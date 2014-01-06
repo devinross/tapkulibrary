@@ -51,13 +51,12 @@
 
 + (NSDictionary*) dataKeys{
 	return @{
-	@"identifier" : @"id",
-	@"name" : @"name",
-	@"createdAt" : @[@"created_at",@"yyyy-MM-dd'T'HH:mm:ss"],
-	@"updatedAt" : @[@"updated_at",@"yyyy-MM-dd"],
-	@"deletedAt" : @[@"deleted_at"],
-	@"finishedAt" : @[@"finished_at",@"yyyy-MM-dd"]
-	};
+	@"identifier"	: @"id",
+	@"name"			: @"name",
+	@"createdAt"	: @[@"created_at",@"yyyy-MM-dd'T'HH:mm:ss"],
+	@"updatedAt"	: @[@"updated_at",@"yyyy-MM-dd"],
+	@"deletedAt"	: @[@"deleted_at"],
+	@"finishedAt"	: @[@"finished_at",@"yyyy-MM-dd"]};
 }
 
 @end
@@ -87,19 +86,21 @@
 	
 	
 	NSDateComponents *components = [item.createdAt dateComponentsWithTimeZone:[NSTimeZone defaultTimeZone]];
-	XCTAssertTrue(components.day == 12 && components.month == 3 && components.year == 2012 && components.hour == 18, @"SampleItem createdAt date property didn't match up with input 2012-03-12 != %d-%d-%d",components.year,components.month,components.day);
+	XCTAssertTrue(components.day == 12 && components.month == 3 && components.year == 2012 && components.hour == 18, @"SampleItem createdAt date property didn't match up with input 2012-03-12 != %ld-%ld-%ld",(long)components.year,(long)components.month,(long)components.day);
 	
 	
 	components = [item.updatedAt dateComponentsWithTimeZone:[NSTimeZone defaultTimeZone]];
-	XCTAssertTrue(components.day == 15 && components.month == 4 && components.year == 2013, @"SampleItem createdAt date property didn't match up with input 2013-04-15 != %d-%d-%d",components.year,components.month,components.day);
+	XCTAssertTrue(components.day == 15 && components.month == 4 && components.year == 2013, @"SampleItem createdAt date property didn't match up with input 2013-04-15 != %ld-%ld-%ld",(long)components.year,(long)components.month,(long)components.day);
 	
 	
 	XCTAssertNil(item.position, @"Finished at property is not nil");
 	XCTAssertNil(item.finishedAt, @"Finished at property is not nil");
 	XCTAssertNil(item.deletedAt, @"Finished at property is not nil");
 
-	XCTAssertEqualObjects(NSStringFromClass([[NSDate date] class]), NSStringFromClass([item.createdAt class]),@"SampleItem createdAt property is not a NSDate class.");
-	XCTAssertEqualObjects(NSStringFromClass([[NSDate date] class]), NSStringFromClass([item.updatedAt class]),@"SampleItem updatedAt property is not a NSDate class.");
+	
+	XCTAssertTrue([item.createdAt isKindOfClass:[NSDate class]], @"SampleItem 'createdAt' property is not a NSDate class.");
+	XCTAssertTrue([item.updatedAt isKindOfClass:[NSDate class]], @"SampleItem 'updatedAt' property is not a NSDate class.");
+
 
 
 	
