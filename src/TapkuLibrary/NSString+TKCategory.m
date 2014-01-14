@@ -200,8 +200,7 @@
 	if((digits.length > 11 && leadingOne) || (digits.length > 10 && !leadingOne))
 		return digits;
 	
-	
-	NSRegularExpressionOptions opt = NSRegularExpressionSearch;
+	NSStringCompareOptions opt = NSRegularExpressionSearch;
 	NSRange range = NSMakeRange(0, digits.length);
 	
 	NSString *occurence, *replace;
