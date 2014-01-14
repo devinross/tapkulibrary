@@ -64,12 +64,10 @@
 		if(self.placeHolderLabel.superview==nil){
 			[self addSubview:self.placeHolderLabel];
 			[self sendSubviewToBack:self.placeHolderLabel];
-			
-			
 		}
 		
 		if([self respondsToSelector:@selector(textContainer)])
-			self.placeHolderLabel.frame = CGRectMake(4, 8, self.bounds.size.width - 8, 0);
+			self.placeHolderLabel.frame = CGRectMake(4, self.textContainerInset.top, self.bounds.size.width - 8, 0);
 		else
 			self.placeHolderLabel.frame = CGRectMake(8,8,self.bounds.size.width - 16,0);
 		
