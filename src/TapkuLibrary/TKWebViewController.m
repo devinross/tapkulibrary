@@ -79,7 +79,7 @@
 		UIColor *clr = self.navigationController.navigationBar.barTintColor;
 		const CGFloat *componentColors = CGColorGetComponents(clr.CGColor);
 		CGFloat colorBrightness = ((componentColors[0] * 299) + (componentColors[1] * 587) + (componentColors[2] * 114)) / 1000;
-		style = colorBrightness < 0.5 ? UIActivityIndicatorViewStyleWhite : UIActivityIndicatorViewStyleGray ;
+		style = colorBrightness < 0.6 ? UIActivityIndicatorViewStyleWhite : UIActivityIndicatorViewStyleGray ;
 	}else{
 		style = UIActivityIndicatorViewStyleGray;
 	}
