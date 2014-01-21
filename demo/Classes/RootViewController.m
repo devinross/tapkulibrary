@@ -34,7 +34,7 @@
 #import "DetailViewController.h"
 
 #import "LabelViewController.h"
-#import "HUDViewController.h"
+#import "IndicatorsViewController.h"
 #import "EmptyViewController.h"
 #import "CalendarMonthViewController.h"
 #import "CoverflowViewController.h"
@@ -68,6 +68,7 @@
 - (id) initWithStyle:(UITableViewStyle)s{
 	if(!(self = [super initWithStyle:s])) return nil;
 	self.title = @"Tapku Library";
+	self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 	return self;
 }
 - (NSUInteger) supportedInterfaceOrientations{
@@ -136,7 +137,7 @@
 	else if(s==1 && r==0)
 		vc = [[EmptyViewController alloc] init];
 	else if(s==1 && r==1)
-		vc = [[HUDViewController alloc] init];
+		vc = [[IndicatorsViewController alloc] init];
 	else if(s==1 && r==2)
 		vc = [[AlertsViewController alloc] init];
 	else if(s==1 && r==3)

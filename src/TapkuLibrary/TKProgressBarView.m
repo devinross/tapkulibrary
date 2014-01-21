@@ -119,7 +119,9 @@
 	CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, radius);
 	CGContextAddArcToPoint(context, minx, maxy, minx, midy, radius);
 	CGContextClosePath(context);
-	CGContextSetRGBStrokeColor(context, 1, 1, 1, 1);
+	CGContextSetStrokeColorWithColor(context, self.tintColor.CGColor);
+
+	
 	CGContextSetLineWidth(context, thickness);
 	CGContextDrawPath(context, kCGPathStroke);
 	
@@ -137,7 +139,7 @@
 	CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, radius);
 	CGContextAddArcToPoint(context, minx, maxy, minx, midy, radius);
 	CGContextClosePath(context);
-	CGContextSetRGBFillColor(context,1, 1, 1, 1);
+	CGContextSetFillColorWithColor(context, self.tintColor.CGColor);
 	CGContextDrawPath(context, kCGPathFill);
 	
 	

@@ -37,7 +37,9 @@
 @class RootViewController;
 
 #pragma mark - AppDelegate
-@interface AppDelegate : TKAppDelegate 
+@interface AppDelegate : TKAppDelegate
+
++ (AppDelegate*) instance;
 
 @property (nonatomic,strong) RootViewController *root;
 @property (nonatomic,strong) UINavigationController *navigationController;

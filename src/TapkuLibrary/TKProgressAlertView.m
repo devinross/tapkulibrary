@@ -37,48 +37,21 @@
 
 
 - (id) initWithProgressTitle:(NSString*)txt{
-	if(!(self=[super initWithFrame:CGRectZero])) return nil;
+	if(!(self=[super init])) return nil;
 	self.label.text = txt;
 	return self;
 }
 
-- (void) _drawRoundRectangleInRect:(CGRect)rect withRadius:(CGFloat)radius{
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	
-	CGRect rrect = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height );
-	CGFloat minx = CGRectGetMinX(rrect), midx = CGRectGetMidX(rrect), maxx = CGRectGetMaxX(rrect);
-	CGFloat miny = CGRectGetMinY(rrect), midy = CGRectGetMidY(rrect), maxy = CGRectGetMaxY(rrect);
-	CGContextMoveToPoint(context, minx, midy);
-	CGContextAddArcToPoint(context, minx, miny, midx, miny, radius);
-	CGContextAddArcToPoint(context, maxx, miny, maxx, midy, radius);
-	CGContextAddArcToPoint(context, maxx, maxy, midx, maxy, radius);
-	CGContextAddArcToPoint(context, minx, maxy, minx, midy, radius);
-	CGContextClosePath(context);
-	CGContextDrawPath(context, kCGPathFill);
-}
-- (void) drawRect:(CGRect)rect{
-	CGRect r = CGRectInset(rect, 6, 0);
-	[[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8] set];
-	[self _drawRoundRectangleInRect:r withRadius:10];
+- (void) loadView{
+	[super loadView];
+	[self.alertView addSubview:self.progressBar];
+	[self.alertView addSubview:self.label];
+	self.alertView.frame = CGRectMake(0, 0, CGRectGetWidth(self.alertView.frame), CGRectGetMaxY(self.progressBar.frame) + 14);
 }
 
 
-- (void) show{
-	[super show];
-	
-	for (UIView *subview in [self subviews]) {
-		if ([subview isKindOfClass:[UIImageView class]])  subview.hidden = YES;
-	}
-	
-	self.backgroundColor = [UIColor clearColor];
-	[self addSubview:self.progressBar];
-	[self addSubview:self.label];
-}
-- (void) hide{
-	[self dismissWithClickedButtonIndex:0 animated:NO];
-}
 
-
+#pragma mark Properties
 - (TKProgressBarView *) progressBar{
 	if(_progressBar) return _progressBar;
 
@@ -92,8 +65,8 @@
 	_label = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 245, 25)];
 	_label.textAlignment = NSTextAlignmentCenter;
 	_label.backgroundColor = [UIColor clearColor];
-	_label.textColor = [UIColor whiteColor];
-	_label.font = [UIFont boldSystemFontOfSize:16];		
+	_label.textColor = [UIColor blackColor];
+	_label.font = [UIFont boldSystemFontOfSize:16];
 	return _label;
 }
 

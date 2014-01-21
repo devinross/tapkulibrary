@@ -1,10 +1,10 @@
 //
-//  TKRetroButton.h
-//  Created by Devin Ross on 6/22/13.
+//  HUDViewController.h
+//  Created by Devin Ross on 7/4/09.
 //
 /*
  
- tapku || http://github.com/devinross/tapkulibrary
+ tapku || https://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -29,11 +29,13 @@
  
  */
 
-#import <UIKit/UIKit.h>
 
-@interface TKRetroButton : UIButton
+#import <TapkuLibrary/TapkuLibrary.h>
 
-@property (nonatomic,assign) CGFloat borderWidth;
-@property (nonatomic,assign) CGFloat insetWidth;
+@interface IndicatorsViewController : UIViewController 
+
+@property (nonatomic,strong) TKProgressBarView *progressBar;
+@property (nonatomic,strong) TKProgressBarView *progressBarAlternative;
+@property (nonatomic,strong) TKProgressCircleView *progressCircle;
 
 @end

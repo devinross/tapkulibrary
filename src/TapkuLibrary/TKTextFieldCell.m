@@ -49,9 +49,14 @@
 
 - (void) layoutSubviews {
     [super layoutSubviews];
-	_textField.frame = CGRectInset(self.contentView.bounds, 14, 4);
+	
+	CGRect frame = CGRectInset(self.contentView.bounds, 14, 4);
+	if(self.indentationLevel != 0 && self.indentationWidth != 0){
+		frame.origin.x = self.indentationLevel * self.indentationWidth;
+		frame.size.width = CGRectGetWidth(self.contentView.frame) - CGRectGetMinX(frame) - 14;
+	}
+	_textField.frame = frame;
 }
-
 
 - (void) _colorText:(BOOL)active{
 	_textField.textColor = active ? [UIColor whiteColor] : [UIColor blackColor];

@@ -39,6 +39,8 @@
 	[self setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
 	self.titleEdgeInsets = UIEdgeInsetsMake(0, 8, 0, 8);
 	self.borderWidth = 2;
+	self.insetWidth = self.borderWidth * 2.5;
+	self.layer.contentsScale = [UIScreen mainScreen].scale;
     return self;
 }
 
@@ -69,23 +71,20 @@
 	
 	CGContextSetFillColorWithColor(ctx, fillColor);
 	CGContextSetStrokeColorWithColor(ctx, strokeColor);
-	
 	CGContextSaveGState(ctx);
     
-	//CGFloat lineWidth =  2;//self.bold ? kFlatPillButtonBoldLineWidth : kFlatPillButtonNormalLineWidth;
-	
 	CGContextSetLineWidth(ctx, self.borderWidth);
 	
-	UIBezierPath *outlinePath = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(self.bounds, self.borderWidth, self.borderWidth) cornerRadius:self.bounds.size.height/2];
+	UIBezierPath *outlinePath = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(self.bounds, self.borderWidth, self.borderWidth) cornerRadius:(self.bounds.size.height-2)/2];
 	
 	CGContextAddPath(ctx, outlinePath.CGPath);
 	CGContextStrokePath(ctx);
 	
 	CGContextRestoreGState(ctx);
 	
-	if (self.highlighted) {
+	if (self.highlighted || self.selected) {
 		CGContextSaveGState(ctx);
-		UIBezierPath *fillPath = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(self.bounds, self.borderWidth * 2.5, self.borderWidth * 2.5) cornerRadius:self.bounds.size.height/2];
+		UIBezierPath *fillPath = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(self.bounds, self.insetWidth, self.insetWidth) cornerRadius:self.bounds.size.height/2];
 		
 		CGContextAddPath(ctx, fillPath.CGPath);
 		CGContextFillPath(ctx);

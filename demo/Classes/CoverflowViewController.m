@@ -87,7 +87,7 @@
 	
 	
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Tap Me" style:UIBarButtonItemStyleBordered target:self action:@selector(info)];
-	self.toolbarItems = @[item];
+	self.navigationItem.rightBarButtonItem = item;
 
 	
 

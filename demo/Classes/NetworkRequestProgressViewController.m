@@ -55,13 +55,8 @@
 	
 	
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Start" style:UIBarButtonItemStyleBordered target:self action:@selector(start)];
+	self.navigationItem.rightBarButtonItem = item;
 
-	
-	if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-		self.navigationItem.rightBarButtonItem = item;
-	}else{
-		self.toolbarItems = @[item];
-	}
 
 }
 

@@ -44,30 +44,22 @@
 	
 	self.view.backgroundColor = [UIColor whiteColor];
 	UIImageView *image = [UIImageView imageViewWithImageNamed:@"wallpaper"];
+	image.frame = self.view.bounds;
+	image.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	[self.view addSubview:image];
 	
 	
 	if([self respondsToSelector:@selector(edgesForExtendedLayout)])
 		self.edgesForExtendedLayout = UIRectEdgeNone;
+
 	
+	CGFloat w = CGRectGetWidth(self.view.frame), width = 300;
 	
-	
-	
-	
-	self.unlockView = [[TKSlideToUnlockView alloc] init];
+	self.unlockView = [[TKSlideToUnlockView alloc] initWithFrame:CGRectMake((w-width)/2.0f, 330, width, 40)];
+	self.unlockView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 	[self.view addSubview:self.unlockView];
-	
 	[self.unlockView addTarget:self action:@selector(didUnlockView:) forControlEvents:UIControlEventValueChanged];
 	
-	
-	CGRect unlock = self.unlockView.frame;
-	
-	unlock.origin.y = 330;
-	
-	self.unlockView.frame = unlock;
-	
-	self.unlockView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-
 }
 - (void) viewDidLoad{
 	[super viewDidLoad];

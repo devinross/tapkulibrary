@@ -17,7 +17,7 @@
 		2052AF8B168B83E900A49526 /* CalendarMonthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052AF75168B83E900A49526 /* CalendarMonthViewController.m */; };
 		2052AF8C168B83E900A49526 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052AF77168B83E900A49526 /* DetailViewController.m */; };
 		2052AF8D168B83E900A49526 /* EmptyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052AF79168B83E900A49526 /* EmptyViewController.m */; };
-		2052AF8E168B83E900A49526 /* HUDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052AF7B168B83E900A49526 /* HUDViewController.m */; };
+		2052AF8E168B83E900A49526 /* IndicatorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052AF7B168B83E900A49526 /* IndicatorsViewController.m */; };
 		2052AF8F168B83E900A49526 /* ImageCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052AF7D168B83E900A49526 /* ImageCenterViewController.m */; };
 		2052AF90168B83E900A49526 /* LabelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052AF7F168B83E900A49526 /* LabelViewController.m */; };
 		2052AF92168B83E900A49526 /* MoreCellsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052AF83168B83E900A49526 /* MoreCellsViewController.m */; };
@@ -103,8 +103,8 @@
 		2052AF77168B83E900A49526 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		2052AF78168B83E900A49526 /* EmptyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyViewController.h; sourceTree = "<group>"; };
 		2052AF79168B83E900A49526 /* EmptyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyViewController.m; sourceTree = "<group>"; };
-		2052AF7A168B83E900A49526 /* HUDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDViewController.h; sourceTree = "<group>"; };
-		2052AF7B168B83E900A49526 /* HUDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDViewController.m; sourceTree = "<group>"; };
+		2052AF7A168B83E900A49526 /* IndicatorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndicatorsViewController.h; sourceTree = "<group>"; };
+		2052AF7B168B83E900A49526 /* IndicatorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndicatorsViewController.m; sourceTree = "<group>"; };
 		2052AF7C168B83E900A49526 /* ImageCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCenterViewController.h; sourceTree = "<group>"; };
 		2052AF7D168B83E900A49526 /* ImageCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCenterViewController.m; sourceTree = "<group>"; };
 		2052AF7E168B83E900A49526 /* LabelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelViewController.h; sourceTree = "<group>"; };
@@ -288,8 +288,8 @@
 			children = (
 				2052AF78168B83E900A49526 /* EmptyViewController.h */,
 				2052AF79168B83E900A49526 /* EmptyViewController.m */,
-				2052AF7A168B83E900A49526 /* HUDViewController.h */,
-				2052AF7B168B83E900A49526 /* HUDViewController.m */,
+				2052AF7A168B83E900A49526 /* IndicatorsViewController.h */,
+				2052AF7B168B83E900A49526 /* IndicatorsViewController.m */,
 				2052AF6E168B83E900A49526 /* AlertsViewController.h */,
 				2052AF6F168B83E900A49526 /* AlertsViewController.m */,
 				20A2A522174C37CF0058571F /* SlideToUnlockViewController.h */,
@@ -351,7 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				3B111E4F14593F8800C72A38 /* libTapkuLibrary.a */,
-				3B111E5114593F8800C72A38 /* LogicTests.octest */,
+				3B111E5114593F8800C72A38 /* LogicTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -418,10 +418,10 @@
 			remoteRef = 3B111E4E14593F8800C72A38 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		3B111E5114593F8800C72A38 /* LogicTests.octest */ = {
+		3B111E5114593F8800C72A38 /* LogicTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = LogicTests.octest;
+			path = LogicTests.xctest;
 			remoteRef = 3B111E5014593F8800C72A38 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -480,7 +480,7 @@
 				2052AF8B168B83E900A49526 /* CalendarMonthViewController.m in Sources */,
 				2052AF8C168B83E900A49526 /* DetailViewController.m in Sources */,
 				2052AF8D168B83E900A49526 /* EmptyViewController.m in Sources */,
-				2052AF8E168B83E900A49526 /* HUDViewController.m in Sources */,
+				2052AF8E168B83E900A49526 /* IndicatorsViewController.m in Sources */,
 				2052AF8F168B83E900A49526 /* ImageCenterViewController.m in Sources */,
 				2052AF90168B83E900A49526 /* LabelViewController.m in Sources */,
 				2052AF92168B83E900A49526 /* MoreCellsViewController.m in Sources */,

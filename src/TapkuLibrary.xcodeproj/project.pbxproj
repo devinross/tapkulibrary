@@ -23,6 +23,8 @@
 		2026B55C1748257B00447F22 /* TKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2026B55A1748257B00447F22 /* TKTextView.m */; };
 		2027C60E17FB692700A5E148 /* TKKeyboardTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2027C60C17FB692700A5E148 /* TKKeyboardTableViewController.h */; };
 		2027C60F17FB692700A5E148 /* TKKeyboardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2027C60D17FB692700A5E148 /* TKKeyboardTableViewController.m */; };
+		202DD0CB188EF01200D5541E /* TKAlertViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 202DD0C9188EF01200D5541E /* TKAlertViewController.h */; };
+		202DD0CC188EF01200D5541E /* TKAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 202DD0CA188EF01200D5541E /* TKAlertViewController.m */; };
 		2047DAFC17C6692200C62E32 /* UIDevice+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2047DAFA17C6692200C62E32 /* UIDevice+TKCategory.h */; };
 		2047DAFD17C6692200C62E32 /* UIDevice+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2047DAFB17C6692200C62E32 /* UIDevice+TKCategory.m */; };
 		20529A3617FF465800FFF627 /* UIAlertView+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 20529A3417FF465800FFF627 /* UIAlertView+TKCategory.h */; };
@@ -172,6 +174,8 @@
 		2026B55A1748257B00447F22 /* TKTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKTextView.m; sourceTree = "<group>"; };
 		2027C60C17FB692700A5E148 /* TKKeyboardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKKeyboardTableViewController.h; sourceTree = "<group>"; };
 		2027C60D17FB692700A5E148 /* TKKeyboardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKKeyboardTableViewController.m; sourceTree = "<group>"; };
+		202DD0C9188EF01200D5541E /* TKAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAlertViewController.h; sourceTree = "<group>"; };
+		202DD0CA188EF01200D5541E /* TKAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAlertViewController.m; sourceTree = "<group>"; };
 		2047DAFA17C6692200C62E32 /* UIDevice+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+TKCategory.h"; sourceTree = "<group>"; };
 		2047DAFB17C6692200C62E32 /* UIDevice+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+TKCategory.m"; sourceTree = "<group>"; };
 		20529A3417FF465800FFF627 /* UIAlertView+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+TKCategory.h"; sourceTree = "<group>"; };
@@ -554,6 +558,8 @@
 				3BBF874A1296E976008AB2B1 /* TKTableViewController.m */,
 				2027C60C17FB692700A5E148 /* TKKeyboardTableViewController.h */,
 				2027C60D17FB692700A5E148 /* TKKeyboardTableViewController.m */,
+				202DD0C9188EF01200D5541E /* TKAlertViewController.h */,
+				202DD0CA188EF01200D5541E /* TKAlertViewController.m */,
 				2052E87D174F532500F06B66 /* TKWebViewController.h */,
 				2052E87E174F532500F06B66 /* TKWebViewController.m */,
 				3B8F0DF4142AE52B00E3AADE /* TKGradientView.h */,
@@ -635,6 +641,7 @@
 				20732DC01800AA880011D714 /* UIFont+TKCategory.h in Headers */,
 				3B6EDDFD11547C3800E454DA /* TKEmptyView.h in Headers */,
 				3B6EDE0C11547C4700E454DA /* TKTextViewCell.h in Headers */,
+				202DD0CB188EF01200D5541E /* TKAlertViewController.h in Headers */,
 				2014592817A1077D00629488 /* TKReorderTableView.h in Headers */,
 				3B6EDE0E11547C4800E454DA /* TKSwitchCell.h in Headers */,
 				3B6EDE1011547C4900E454DA /* TKLabelTextViewCell.h in Headers */,
@@ -803,6 +810,7 @@
 				3B6EDDE111547C1700E454DA /* NSString+TKCategory.m in Sources */,
 				3B6EDDE411547C1D00E454DA /* NSDate+TKCategory.m in Sources */,
 				3B6EDDEA11547C2700E454DA /* TKCalendarMonthViewController.m in Sources */,
+				202DD0CC188EF01200D5541E /* TKAlertViewController.m in Sources */,
 				3B6EDDEE11547C2900E454DA /* TKCalendarMonthTableViewController.m in Sources */,
 				3B6EDDF211547C2C00E454DA /* TKCalendarDayViewController.m in Sources */,
 				3B6EDDF411547C2D00E454DA /* TKCalendarDayView.m in Sources */,

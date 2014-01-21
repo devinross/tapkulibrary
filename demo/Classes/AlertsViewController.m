@@ -49,11 +49,8 @@
 	self.view.backgroundColor = [UIColor whiteColor];
 	
 	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Tap Me" style:UIBarButtonItemStyleBordered target:self action:@selector(beer)];
-	if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-		self.navigationItem.rightBarButtonItem = item;
-	}else{
-		self.toolbarItems = @[item];
-	}
+	self.navigationItem.rightBarButtonItem = item;
+
 	
 	
 	self.tapMeItem = item;

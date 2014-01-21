@@ -32,9 +32,10 @@
 
 @import UIKit;
 #import "TKProgressBarView.h"
+#import "TKAlertViewController.h"
 
 /** A simple alert view with a progress view. */
-@interface TKProgressAlertView : UIAlertView 
+@interface TKProgressAlertView : TKAlertViewController
 
 /** Initializes a progress alert view with a title.
  @param title The title of the progress alert.
@@ -52,14 +53,6 @@
 /** The title label for the alert. */
 @property (nonatomic,strong) UILabel *label;
 
-///----------------------------
-/// @name Displaying and hiding alert
-///----------------------------
 
-/** Show the alert */
-- (void) show;
-
-/** Hide the alert */
-- (void) hide;
 
 @end

@@ -54,10 +54,12 @@
 		self.detail = [[DetailViewController alloc] init];
 		self.splitViewController.delegate = self.detail;
 		self.root.detailViewController = self.detail;
+		
+		UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.detail];
 
 
 		
-		self.splitViewController.viewControllers = @[self.navigationController,self.detail];
+		self.splitViewController.viewControllers = @[self.navigationController,nav];
 		self.window.rootViewController = self.splitViewController;
 	}else{
 		self.window.rootViewController = self.navigationController;
@@ -74,6 +76,8 @@
 	
 }
 
-
++ (AppDelegate*) instance{
+	return (AppDelegate*)[[UIApplication sharedApplication] delegate];
+}
 
 @end

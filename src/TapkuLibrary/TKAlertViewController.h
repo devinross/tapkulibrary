@@ -1,10 +1,10 @@
 //
-//  HUDViewController.h
-//  Created by Devin Ross on 7/4/09.
+//  TKAlertViewController.h
+//  Created by Devin Ross on 10/21/13.
 //
 /*
  
- tapku || https://github.com/devinross/tapkulibrary
+ tapku || http://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -29,14 +29,29 @@
  
  */
 
+@import UIKit;
 
-#import <TapkuLibrary/TapkuLibrary.h>
+/**
+ This class is a cool little alert view like view controller to subclass. 
+ You can add you message to the alertView and you call the show and hide methods just like `UIAlertView`.
+ */
+@interface TKAlertViewController : UIViewController <UIViewControllerTransitioningDelegate,UIViewControllerAnimatedTransitioning>
 
-@interface HUDViewController : UIViewController 
 
-@property (nonatomic,strong) TKProgressBarView *progressBar;
-@property (nonatomic,strong) TKProgressBarView *progressBarAlternative;
-@property (nonatomic,strong) TKProgressAlertView *alertView;
-@property (nonatomic,strong) TKProgressCircleView *progressCircle;
+///----------------------------
+/// @name Properties
+///----------------------------
+/** The main view to display content on. */
+@property (nonatomic,strong) UIView *alertView;
+
+///----------------------------
+/// @name Displaying and hiding alert
+///----------------------------
+
+/** Show the alert */
+- (void) show;
+
+/** Hide the alert */
+- (void) hide;
 
 @end
