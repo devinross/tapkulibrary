@@ -50,21 +50,19 @@
 #import "UIGestureRecognizer+TKCategory.h"
 #import "UIFont+TKCategory.h"
 
-#import "TKWebViewController.h"
-
 #import "TKWindow.h"
 #import "TKViewController.h"
 #import "TKTableViewController.h"
 #import "TKKeyboardTableViewController.h"
+#import "TKWebViewController.h"
+#import "TKAlertViewController.h"
 #import "TKEmptyView.h"
-
 
 #import "TKAppDelegate.h"
 #import "TKGradientView.h"
 #import "TKShapeView.h"
 #import "TKTextView.h"
 #import "TKSlideToUnlockView.h"
-
 
 #import "TKNetworkQueue.h"
 #import "TKHTTPRequest.h"
@@ -73,6 +71,7 @@
 #import "TKRetroButton.h"
 #import "TKGlowButton.h"
 #import "TKShimmerLabel.h"
+#import "TKReorderTableView.h"
 
 // CELLS
 #import "TKLabelCell.h"
@@ -86,15 +85,12 @@
 #import "TKSwitchCell.h"
 #import "TKTableViewCell.h"
 
-
 // HUD
 #import "TKAlertCenter.h"
 #import "TKProgressBarView.h"
 #import "TKProgressAlertView.h"
 #import "TKProgressCircleView.h"
 #import "TKLoadingView.h"
-
-
 
 // Calendar
 #import "TKCalendarMonthViewController.h"
@@ -104,6 +100,3 @@
 
 // Coverflow
 #import "TKCoverflowView.h"
-
-
-#import "TKReorderTableView.h"
