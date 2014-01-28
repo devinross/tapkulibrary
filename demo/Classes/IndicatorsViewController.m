@@ -42,7 +42,7 @@
 #pragma mark View Lifecycle
 - (void) loadView{
 	[super loadView];
-	self.view.backgroundColor = [UIColor colorWithWhite:0.7 alpha:1];
+	self.view.backgroundColor = [UIColor colorWithWhite:1 alpha:1];
 	
 	[self.view addSubview:self.progressBar];
 	[self.view addSubview:self.progressCircle];

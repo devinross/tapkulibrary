@@ -130,6 +130,7 @@
 	
 	[UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
 		toVC.view.alpha = 1;
+		toVC.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.1];
 	}];
 	
 	
@@ -180,6 +181,8 @@
 	
 	[UIView animateWithDuration:0.4 delay:0.5f options:0 animations:^{
 		self.view.alpha = 0;
+		self.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.0];
+
 	}completion:^(BOOL finished){
 		[transitionContext completeTransition:YES];
 	}];
