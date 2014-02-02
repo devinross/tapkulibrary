@@ -122,6 +122,10 @@
 	_borderWidth = borderWidth;
 	[self setNeedsDisplay];
 }
+- (void) setInsetWidth:(CGFloat)insetWidth{
+	_insetWidth = insetWidth;
+	[self setNeedsDisplay];
+}
 
 
 @end
