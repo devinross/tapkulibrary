@@ -54,4 +54,16 @@
 /** Hide the alert */
 - (void) hide;
 
+/** 
+ Overwrite this function to implement your own presentation animation. 
+ @transitionContext The transition context.
+ */
+- (void) showAlertView:(id<UIViewControllerContextTransitioning>)transitionContext;
+
+/** 
+ Overwrite this function to implement your own dismissal animation. 
+ @transitionContext The transition context.
+ */
+- (void) hideAlertView:(id<UIViewControllerContextTransitioning>)transitionContext;
+
 @end
