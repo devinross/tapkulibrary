@@ -50,10 +50,19 @@
 	self.textHighlightLayer.endPoint = CGPointMake(1.0, 0);
 	self.layer.mask = self.textHighlightLayer;
 	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(applicationDidBecomeActive:)
+												 name:UIApplicationDidBecomeActiveNotification object:nil];
+	
     return self;
 }
+- (void) dealloc{
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
-- (void) willMoveToWindow:(UIWindow *)newWindow{
+- (void) _startShimmerAnimation{
+	
+	if(!self.superview) return;
 	
 	[self.textHighlightLayer removeAllAnimations];
 	CGFloat x = self.textHighlightLayer.frame.size.width/2.0f;
@@ -63,9 +72,16 @@
 	animation.fromValue = @(-x + self.frame.size.width);
 	animation.duration = 4.0f;
 	[self.textHighlightLayer addAnimation:animation forKey:@"position.x"];
-	
 }
 
+- (void) applicationDidBecomeActive:(id)sender{
+	
+	[self _startShimmerAnimation];
+	
+}
+- (void) willMoveToWindow:(UIWindow *)newWindow{
+	[self _startShimmerAnimation];
+}
 
 
 @end
