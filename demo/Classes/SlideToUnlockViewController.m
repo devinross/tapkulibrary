@@ -57,6 +57,8 @@
 	
 	self.unlockView = [[TKSlideToUnlockView alloc] initWithFrame:CGRectMake((w-width)/2.0f, 330, width, 40)];
 	self.unlockView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+	
+	
 	[self.view addSubview:self.unlockView];
 	[self.unlockView addTarget:self action:@selector(didUnlockView:) forControlEvents:UIControlEventValueChanged];
 	
@@ -84,6 +86,9 @@
 	}
 
 	
+	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Disable", @"Disable") style:UIBarButtonItemStylePlain target:self action:@selector(switchMode:)];
+	
+	
 
 }
 - (void) viewWillAppear:(BOOL)animated{
@@ -99,6 +104,12 @@
 - (void) reset{
 	[self.unlockView resetSlider:NO];
 
+}
+
+- (void) switchMode:(id)sender{
+	
+	
+	self.unlockView.mode = self.unlockView.mode == TKSlideToUnlockViewModeDisabled ? TKSlideToUnlockViewModeNormal : TKSlideToUnlockViewModeDisabled;
 }
 
 @end
