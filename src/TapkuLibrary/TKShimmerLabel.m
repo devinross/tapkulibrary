@@ -38,6 +38,7 @@
 		
 	self.textAlignment = NSTextAlignmentCenter;
 	self.backgroundColor = [UIColor clearColor];
+	_direction = TKShimmerLabelDirectionLeftToRight;
 	
 	id dark = (id)[UIColor colorWithWhite:1 alpha:0.40].CGColor;
 	id light = (id)[UIColor colorWithWhite:1 alpha:1.0f].CGColor;
@@ -60,26 +61,44 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+#pragma mark Private Animation Methods
+- (NSNumber*) _animationStartPoint{
+	CGFloat x = CGRectGetWidth(self.textHighlightLayer.frame)/2.0f;
+	if(self.direction == TKShimmerLabelDirectionLeftToRight)
+		return @(-x + self.frame.size.width);
+	return @(x);
+}
+- (NSNumber*) _animationEndPoint{
+	CGFloat x = CGRectGetWidth(self.textHighlightLayer.frame)/2.0f;
+	if(self.direction == TKShimmerLabelDirectionLeftToRight)
+		return @(x);
+	return @(-x + self.frame.size.width);
+}
 - (void) _startShimmerAnimation{
-	
 	if(!self.superview) return;
 	
 	[self.textHighlightLayer removeAllAnimations];
-	CGFloat x = self.textHighlightLayer.frame.size.width/2.0f;
 	CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position.x"];
 	animation.repeatCount = HUGE_VALF;
-	animation.toValue = @(x);
-	animation.fromValue = @(-x + self.frame.size.width);
+	animation.toValue = [self _animationEndPoint];
+	animation.fromValue = [self _animationStartPoint];
 	animation.duration = 4.0f;
 	[self.textHighlightLayer addAnimation:animation forKey:@"position.x"];
 }
 
+#pragma mark Methods That Trigger The Animation To Start
 - (void) applicationDidBecomeActive:(id)sender{
 	
 	[self _startShimmerAnimation];
 	
 }
 - (void) willMoveToWindow:(UIWindow *)newWindow{
+	[self _startShimmerAnimation];
+}
+
+#pragma mark Properties
+- (void) setDirection:(TKShimmerLabelDirection)direction{
+	_direction = direction;
 	[self _startShimmerAnimation];
 }
 
