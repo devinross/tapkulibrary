@@ -35,6 +35,8 @@
 		2052E880174F532500F06B66 /* TKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052E87E174F532500F06B66 /* TKWebViewController.m */; };
 		2057363416A330E700F8CDE6 /* TKCoverflowView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2057363216A330E700F8CDE6 /* TKCoverflowView.h */; };
 		2057363516A330E700F8CDE6 /* TKCoverflowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2057363316A330E700F8CDE6 /* TKCoverflowView.m */; };
+		2070A16518C63AFB00D213FD /* UINavigationBar+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2070A16318C63AFB00D213FD /* UINavigationBar+TKCategory.h */; };
+		2070A16618C63AFB00D213FD /* UINavigationBar+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2070A16418C63AFB00D213FD /* UINavigationBar+TKCategory.m */; };
 		20732DC01800AA880011D714 /* UIFont+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 20732DBE1800AA880011D714 /* UIFont+TKCategory.h */; };
 		20732DC11800AA880011D714 /* UIFont+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 20732DBF1800AA880011D714 /* UIFont+TKCategory.m */; };
 		207DF656178761210091E898 /* UITextField+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 207DF654178761210091E898 /* UITextField+TKCategory.h */; };
@@ -186,6 +188,8 @@
 		2052E87E174F532500F06B66 /* TKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKWebViewController.m; sourceTree = "<group>"; };
 		2057363216A330E700F8CDE6 /* TKCoverflowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCoverflowView.h; sourceTree = "<group>"; };
 		2057363316A330E700F8CDE6 /* TKCoverflowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoverflowView.m; sourceTree = "<group>"; };
+		2070A16318C63AFB00D213FD /* UINavigationBar+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+TKCategory.h"; sourceTree = "<group>"; };
+		2070A16418C63AFB00D213FD /* UINavigationBar+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+TKCategory.m"; sourceTree = "<group>"; };
 		20732DBE1800AA880011D714 /* UIFont+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+TKCategory.h"; sourceTree = "<group>"; };
 		20732DBF1800AA880011D714 /* UIFont+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+TKCategory.m"; sourceTree = "<group>"; };
 		207DF654178761210091E898 /* UITextField+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+TKCategory.h"; sourceTree = "<group>"; };
@@ -493,7 +497,7 @@
 			name = Indicators;
 			sourceTree = "<group>";
 		};
-		3BB3A1D1117814BC00553093 /* Additions */ = {
+		3BB3A1D1117814BC00553093 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
 				20DE9F48168FA1EF00655BF8 /* NSObject+TKCategory.h */,
@@ -538,8 +542,10 @@
 				20529A3917FF46A400FFF627 /* UIActionSheet+TKCategory.m */,
 				20732DBE1800AA880011D714 /* UIFont+TKCategory.h */,
 				20732DBF1800AA880011D714 /* UIFont+TKCategory.m */,
+				2070A16318C63AFB00D213FD /* UINavigationBar+TKCategory.h */,
+				2070A16418C63AFB00D213FD /* UINavigationBar+TKCategory.m */,
 			);
-			name = Additions;
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		3BBF8A4012970B10008AB2B1 /* Core */ = {
@@ -547,7 +553,7 @@
 			children = (
 				3BAC9A1D10953E5200F235F1 /* TKGlobal.h */,
 				3BAC9A1E10953E5200F235F1 /* TKGlobal.m */,
-				3BB3A1D1117814BC00553093 /* Additions */,
+				3BB3A1D1117814BC00553093 /* Categories */,
 				3B9D93D812F74F8F007D839C /* TKAppDelegate.h */,
 				3B9D93D912F74F8F007D839C /* TKAppDelegate.m */,
 				3BEAE08E1096C61A00A0A372 /* TKWindow.h */,
@@ -654,6 +660,7 @@
 				3BB92D2211896022002FA0F9 /* TKProgressBarView.h in Headers */,
 				3BA577BA1199DF1600ECB85B /* TKProgressAlertView.h in Headers */,
 				20F6154217E69E75007F443C /* TKShimmerLabel.h in Headers */,
+				2070A16518C63AFB00D213FD /* UINavigationBar+TKCategory.h in Headers */,
 				3B9724BD11C54C5C0027A97F /* TKCalendarMonthView.h in Headers */,
 				3BD32972125B753900BE5EAF /* TKAlertCenter.h in Headers */,
 				3B1DCECA1289B84400884CDF /* NSArray+TKCategory.h in Headers */,
@@ -858,6 +865,7 @@
 				207DFF9315E1E3BE00A0BC2A /* NSDate+CalendarGrid.m in Sources */,
 				20DE9F4B168FA1EF00655BF8 /* NSObject+TKCategory.m in Sources */,
 				2057363516A330E700F8CDE6 /* TKCoverflowView.m in Sources */,
+				2070A16618C63AFB00D213FD /* UINavigationBar+TKCategory.m in Sources */,
 				20FC7CA81719007300C3A7E1 /* NSMutableArray+TKCategory.m in Sources */,
 				20FC7CBD1719313A00C3A7E1 /* TKLoadingView.m in Sources */,
 				2026B53A1746F4D000447F22 /* UIImagePickerController+TKCategory.m in Sources */,

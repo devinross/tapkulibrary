@@ -49,6 +49,7 @@
 #import "UIAlertView+TKCategory.h"
 #import "UIGestureRecognizer+TKCategory.h"
 #import "UIFont+TKCategory.h"
+#import "UINavigationBar+TKCategory.h"
 
 #import "TKWindow.h"
 #import "TKViewController.h"
