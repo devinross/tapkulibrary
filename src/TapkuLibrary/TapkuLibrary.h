@@ -74,6 +74,8 @@
 #import "TKShimmerLabel.h"
 #import "TKReorderTableView.h"
 
+#import "TKSoundAlertController.h"
+
 // CELLS
 #import "TKLabelCell.h"
 #import "TKLabelTextViewCell.h"

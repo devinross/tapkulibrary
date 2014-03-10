@@ -47,6 +47,8 @@
 		20A2A521174C37870058571F /* TKSlideToUnlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A2A51F174C37870058571F /* TKSlideToUnlockView.m */; };
 		20C0354F17C9A5DD009EBB33 /* TKGlowButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 20C0354D17C9A5DD009EBB33 /* TKGlowButton.h */; };
 		20C0355017C9A5DD009EBB33 /* TKGlowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C0354E17C9A5DD009EBB33 /* TKGlowButton.m */; };
+		20C3592118CE5C0700530279 /* TKSoundAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = 20C3591F18CE5C0700530279 /* TKSoundAlertController.h */; };
+		20C3592218CE5C0700530279 /* TKSoundAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C3592018CE5C0700530279 /* TKSoundAlertController.m */; };
 		20CE10C41860A6A500249216 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CE10C21860A62B00249216 /* XCTest.framework */; };
 		20DAFB031814BAAC00EF525B /* TKRetroButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 20DAFB011814BAAC00EF525B /* TKRetroButton.h */; };
 		20DAFB041814BAAC00EF525B /* TKRetroButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAFB021814BAAC00EF525B /* TKRetroButton.m */; };
@@ -200,6 +202,8 @@
 		20A2A51F174C37870058571F /* TKSlideToUnlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKSlideToUnlockView.m; sourceTree = "<group>"; };
 		20C0354D17C9A5DD009EBB33 /* TKGlowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKGlowButton.h; sourceTree = "<group>"; };
 		20C0354E17C9A5DD009EBB33 /* TKGlowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKGlowButton.m; sourceTree = "<group>"; };
+		20C3591F18CE5C0700530279 /* TKSoundAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKSoundAlertController.h; sourceTree = "<group>"; };
+		20C3592018CE5C0700530279 /* TKSoundAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKSoundAlertController.m; sourceTree = "<group>"; };
 		20CE10C21860A62B00249216 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		20DAFB011814BAAC00EF525B /* TKRetroButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKRetroButton.h; sourceTree = "<group>"; };
 		20DAFB021814BAAC00EF525B /* TKRetroButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKRetroButton.m; sourceTree = "<group>"; };
@@ -574,6 +578,8 @@
 				3BF9A832159791EA002A7F9E /* TKShapeView.m */,
 				2026B5591748257B00447F22 /* TKTextView.h */,
 				2026B55A1748257B00447F22 /* TKTextView.m */,
+				20C3591F18CE5C0700530279 /* TKSoundAlertController.h */,
+				20C3592018CE5C0700530279 /* TKSoundAlertController.m */,
 				3B345A6E142E4F870075E654 /* Network */,
 			);
 			name = Core;
@@ -680,6 +686,7 @@
 				3B560B7214574E30005FBDBF /* TKImageCache.h in Headers */,
 				3B819B5414601DC500EC0097 /* TKViewController.h in Headers */,
 				3BF9A833159791EA002A7F9E /* TKShapeView.h in Headers */,
+				20C3592118CE5C0700530279 /* TKSoundAlertController.h in Headers */,
 				207DF656178761210091E898 /* UITextField+TKCategory.h in Headers */,
 				207DFF9215E1E3BE00A0BC2A /* NSDate+CalendarGrid.h in Headers */,
 				20DE9F4A168FA1EF00655BF8 /* NSObject+TKCategory.h in Headers */,
@@ -816,6 +823,7 @@
 				3B6EDDDE11547C1400E454DA /* TKWindow.m in Sources */,
 				3B6EDDE111547C1700E454DA /* NSString+TKCategory.m in Sources */,
 				3B6EDDE411547C1D00E454DA /* NSDate+TKCategory.m in Sources */,
+				20C3592218CE5C0700530279 /* TKSoundAlertController.m in Sources */,
 				3B6EDDEA11547C2700E454DA /* TKCalendarMonthViewController.m in Sources */,
 				202DD0CC188EF01200D5541E /* TKAlertViewController.m in Sources */,
 				3B6EDDEE11547C2900E454DA /* TKCalendarMonthTableViewController.m in Sources */,
