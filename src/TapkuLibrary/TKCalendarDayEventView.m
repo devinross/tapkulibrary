@@ -109,7 +109,7 @@
 	
 	CGFloat h = self.frame.size.height;
 	
-	if(h < 75){
+	if(h < 45){
 		self.titleLabel.frame = CGRectInset(self.bounds, 5, 5);
 		CGFloat y = self.titleLabel.frame.size.height + self.titleLabel.frame.origin.y;
 		self.locationLabel.frame = CGRectMake(self.titleLabel.frame.origin.x, y, 0, 0);
