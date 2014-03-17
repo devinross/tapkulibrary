@@ -42,7 +42,7 @@
 #define TOP_BAR_HEIGHT 84.0
 #define EVENT_SAME_HOUR 3.0
 #define HORIZONTAL_PAD 5.0f
-#define RIGHT_EVENT_INSET 16.0
+#define RIGHT_EVENT_INSET 10.0
 #define LEFT_INSET 53.0f
 #define VERTICAL_INSET 10.0f
 #define FONT_SIZE 11.0f
@@ -61,6 +61,8 @@
 #pragma mark - TKDateLabel
 @interface TKDateLabel : UILabel
 @property (nonatomic,strong) NSDate *date;
+@property (nonatomic,assign) BOOL today;
+@property (nonatomic,assign) BOOL selected;
 @end
 
 
@@ -713,19 +715,8 @@
 			mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra fromDate:aDate];
 			label.text = [NSString stringWithFormat:@"%@",@(mutedCom.day)];
 			label.date = aDate;
-			
-			BOOL today = [aDate isTodayWithTimeZone:self.calendar.timeZone];
-			BOOL selectedDay = [aDate isSameDay:self.currentDay timeZone:self.calendar.timeZone];
-			if(selectedDay){
-				label.backgroundColor = today ? self.tintColor : [UIColor blackColor];
-				label.textColor = [UIColor whiteColor];
-				label.font = [UIFont boldSystemFontOfSize:DAY_FONT_SIZE];
-			}else{
-				label.textColor = today ? self.tintColor : [UIColor blackColor];
-				label.backgroundColor = [UIColor clearColor];
-				label.font = [UIFont systemFontOfSize:DAY_FONT_SIZE];
-			}
-			label.tag = today ? 1 : 0;
+			label.today = [aDate isTodayWithTimeZone:self.calendar.timeZone];
+			label.selected = [aDate isSameDay:self.currentDay timeZone:self.calendar.timeZone];
 			mutedCom.day++;
 			
 		}
@@ -749,19 +740,8 @@
 			mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra fromDate:aDate];
 			label.text = [NSString stringWithFormat:@"%@",@(mutedCom.day)];
 			label.date = aDate;
-			
-			BOOL today = [aDate isTodayWithTimeZone:self.calendar.timeZone];
-			BOOL selectedDay = [aDate isSameDay:self.currentDay timeZone:self.calendar.timeZone];
-			if(selectedDay){
-				label.backgroundColor = today ? self.tintColor : [UIColor blackColor];
-				label.textColor = [UIColor whiteColor];
-				label.font = [UIFont boldSystemFontOfSize:DAY_FONT_SIZE];
-			}else{
-				label.textColor = today ? self.tintColor : [UIColor blackColor];
-				label.backgroundColor = [UIColor clearColor];
-				label.font = [UIFont systemFontOfSize:DAY_FONT_SIZE];
-			}
-			label.tag = today ? 1 : 0;
+			label.today = [aDate isTodayWithTimeZone:self.calendar.timeZone];
+			label.selected = [aDate isSameDay:self.currentDay timeZone:self.calendar.timeZone];
 			mutedCom.day --;
 			
 		}
@@ -787,19 +767,7 @@
 	NSInteger index = allLabelsIndex;
 	NSInteger i=0;
 	for(TKDateLabel *label in allLabel){
-		
-		BOOL today = label.tag == 1;
-		BOOL selectedDay = i == index;
-		if(selectedDay){
-			label.font = [UIFont boldSystemFontOfSize:18];
-			label.backgroundColor = today ? self.tintColor : [UIColor blackColor];
-			label.textColor = [UIColor whiteColor];
-			label.font = [UIFont boldSystemFontOfSize:DAY_FONT_SIZE];
-		}else{
-			label.textColor = today ? self.tintColor : [UIColor blackColor];
-			label.font = [UIFont systemFontOfSize:DAY_FONT_SIZE];
-			label.backgroundColor = [UIColor clearColor];
-		}
+		label.selected = i == index;
 		i++;
 	}
 	
@@ -909,21 +877,8 @@
 		TKDateLabel *label = labels[cnt];
 		label.text = [NSString stringWithFormat:@"%@",@(mutedCom.day)];
 		label.date = aDate;
-		BOOL today = [aDate isTodayWithTimeZone:self.calendar.timeZone];
-		BOOL selectedDay = [aDate isSameDay:self.currentDay timeZone:self.calendar.timeZone];
-		if(selectedDay){
-			
-			label.font = [UIFont boldSystemFontOfSize:18];
-			label.backgroundColor = today ? self.tintColor : [UIColor blackColor];
-			label.textColor = [UIColor whiteColor];
-			label.font = [UIFont boldSystemFontOfSize:DAY_FONT_SIZE];
-		}else{
-			label.textColor = today ? self.tintColor : [UIColor blackColor];
-			label.font = [UIFont systemFontOfSize:DAY_FONT_SIZE];
-			label.backgroundColor = [UIColor clearColor];
-			
-		}
-		label.tag = today ? 1 : 0;
+		label.today = [aDate isTodayWithTimeZone:self.calendar.timeZone];
+		label.selected = [aDate isSameDay:self.currentDay timeZone:self.calendar.timeZone];
 		mutedCom.day --;
 	}
 	
@@ -933,23 +888,11 @@
 		
 		NSDate *aDate = [self.calendar dateFromComponents:mutedCom];
 		mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra fromDate:aDate];
-		
 		TKDateLabel *label = labels[cnt];
 		label.text = [NSString stringWithFormat:@"%@",@(mutedCom.day)];
 		label.date = aDate;
-
-		BOOL today = [aDate isTodayWithTimeZone:self.calendar.timeZone];
-		BOOL selectedDay = [aDate isSameDay:self.currentDay timeZone:self.calendar.timeZone];
-		if(selectedDay){
-			label.backgroundColor = today ? self.tintColor : [UIColor blackColor];
-			label.textColor = [UIColor whiteColor];
-			label.font = [UIFont boldSystemFontOfSize:DAY_FONT_SIZE];
-		}else{
-			label.textColor = today ? self.tintColor : [UIColor blackColor];
-			label.backgroundColor = [UIColor clearColor];
-			label.font = [UIFont systemFontOfSize:DAY_FONT_SIZE];
-		}
-		label.tag = today ? 1 : 0;
+		label.today = [aDate isTodayWithTimeZone:self.calendar.timeZone];
+		label.selected = [aDate isSameDay:self.currentDay timeZone:self.calendar.timeZone];
 		mutedCom.day ++;
 		
 	}
@@ -964,6 +907,15 @@
 	return labels.copy;
 }
 
+
+- (void) tintColorDidChange{
+	[super tintColorDidChange];
+	self.nowLineView.tintColor = self.tintColor;
+	
+	for(TKDateLabel *label in [self _allDayLabels])
+		label.tintColor = self.tintColor;
+	
+}
 
 #pragma mark Properties & Public Functions
 - (UILabel *) monthYearLabel{
@@ -1158,17 +1110,9 @@
 	
 	NSMutableArray *labels = [NSMutableArray arrayWithCapacity:7];
 	for(NSInteger i=0;i<7;i++){
-		
 		TKDateLabel *label = [[TKDateLabel alloc] initWithFrame:CGRectMake(8+(DAY_LABEL_WIDTH+9)*i, 16, DAY_LABEL_WIDTH, DAY_LABEL_WIDTH)];
-		label.backgroundColor = [UIColor clearColor];
-		label.textColor = [UIColor blackColor];
-		label.textAlignment = NSTextAlignmentCenter;
-		label.backgroundColor = [UIColor randomColor];
-		label.layer.cornerRadius = DAY_LABEL_WIDTH / 2.0f;
-		label.clipsToBounds = YES;
 		[self addSubviewToBack:label];
 		[labels addObject:label];
-		
 	}
 	
 	
@@ -1181,6 +1125,48 @@
 
 #pragma mark - TKDateLabel
 @implementation TKDateLabel
+
+
+- (id) initWithFrame:(CGRect)frame{
+	if(!(self=[super initWithFrame:frame])) return nil;
+	self.textAlignment = NSTextAlignmentCenter;
+	self.layer.cornerRadius = DAY_LABEL_WIDTH / 2.0f;
+	self.clipsToBounds = YES;
+	[self _updateLabelColorState];
+    return self;
+}
+
+
+- (void) tintColorDidChange{
+	[self _updateLabelColorState];
+}
+
+- (void) _updateLabelColorState{
+	
+	if(self.selected){
+		self.backgroundColor = self.today ? self.tintColor : [UIColor blackColor];
+		self.textColor = [UIColor whiteColor];
+		self.font = [UIFont boldSystemFontOfSize:DAY_FONT_SIZE];
+	}else{
+		self.textColor = self.today ? self.tintColor : [UIColor blackColor];
+		self.backgroundColor = [UIColor clearColor];
+		self.font = [UIFont systemFontOfSize:DAY_FONT_SIZE];
+	}
+	self.tag = self.today ? 1 : 0;
+}
+
+- (void) setSelected:(BOOL)selected{
+	if(selected == _selected) return;
+	
+	_selected = selected;
+	[self _updateLabelColorState];
+}
+- (void) setToday:(BOOL)today{
+	if(_today == today) return;
+	_today = today;
+	[self _updateLabelColorState];
+}
+
 @end
 
 #pragma mark - TKNowView
@@ -1203,16 +1189,19 @@
 	
 	UIView *nob = [[UIView alloc] initWithFrame:CGRectMake(LEFT_INSET + 1, 3, 6, 6)];
 	nob.backgroundColor = self.tintColor;
+	nob.tag = 7;
 	nob.layer.cornerRadius = CGRectGetWidth(nob.frame)/2.0f;
 	[self addSubview:nob];
 	
 	UIView *line = [[UIView alloc] initWithFrame:CGRectMake(LEFT_INSET-5, 5.5, 5, 1)];
 	line.backgroundColor = self.tintColor;
+	line.tag = 6;
 	[self addSubview:line];
 	
 	line = [[UIView alloc] initWithFrame:CGRectMake(LEFT_INSET + 8, 5.5, CGRectGetWidth(self.frame) - NOB_SIZE, 1)];
 	line.backgroundColor = self.tintColor;
 	line.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	line.tag = 5;
 	[self addSubview:line];
 	
 	self.clipsToBounds = YES;
@@ -1220,4 +1209,13 @@
 	
 	return self;
 }
+
+- (void) tintColorDidChange{
+	[super tintColorDidChange];
+	self.timeLabel.textColor = self.tintColor;
+	[self viewWithTag:5].backgroundColor = self.tintColor;
+	[self viewWithTag:6].backgroundColor = self.tintColor;
+	[self viewWithTag:7].backgroundColor = self.tintColor;
+}
+
 @end
