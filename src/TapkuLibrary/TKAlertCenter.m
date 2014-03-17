@@ -182,7 +182,7 @@
 	
 	
 	
-	_alertView.center = CGPointMake(_alertFrame.origin.x+_alertFrame.size.width/2, _alertFrame.origin.y+_alertFrame.size.height/2);
+	_alertView.center = CGPointMake(CGRectGetMidX(_alertFrame),CGRectGetMidY(_alertFrame));
 		
 	
 	CGRect rr = _alertView.frame;
@@ -287,8 +287,6 @@ CGRect subtractRect(CGRect wf,CGRect kf){
 	}
 	return CGRectIntersection(wf, kf);
 	
-	
-	
 }
 - (void) keyboardWillAppear:(NSNotification *)notification {
 	
@@ -299,8 +297,7 @@ CGRect subtractRect(CGRect wf,CGRect kf){
 	
 	[UIView beginAnimations:nil context:nil];
 	_alertFrame = subtractRect(wf,kf);
-	_alertView.center = CGPointMake(_alertFrame.origin.x+_alertFrame.size.width/2, _alertFrame.origin.y+_alertFrame.size.height/2);
-
+	_alertView.center = CGPointMake(CGRectGetMidX(_alertFrame), CGRectGetMidY(_alertFrame));
 	[UIView commitAnimations];
 
 }
@@ -324,7 +321,7 @@ CGRect subtractRect(CGRect wf,CGRect kf){
 	
 	[UIView beginAnimations:nil context:nil];
 	_alertView.transform = CGAffineTransformMakeRotation(degrees * M_PI / 180);
-	_alertView.frame = CGRectMake((int)_alertView.frame.origin.x, (int)_alertView.frame.origin.y, (int)_alertView.frame.size.width, (int)_alertView.frame.size.height);
+	_alertView.frame = CGRectMake((int)CGRectGetMinX(_alertView.frame), (int)CGRectGetMinY(_alertView.frame), (int)CGRectGetWidth(_alertView.frame), (int)CGRectGetHeight(_alertView.frame));
 	[UIView commitAnimations];
 	
 }

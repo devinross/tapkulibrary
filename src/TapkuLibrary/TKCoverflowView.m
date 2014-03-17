@@ -73,7 +73,7 @@
 	_covers = [NSMutableArray array];
 	self.delegate = self;
 	self.multipleTouchEnabled = NO;
-	self.contentInset = UIEdgeInsetsMake(0,self.bounds.size.width/2.0,0,self.bounds.size.width/2.0);
+	self.contentInset = UIEdgeInsetsMake(0,CGRectGetWidth(self.bounds)/2.0,0,CGRectGetWidth(self.bounds)/2.0);
 	self.contentOffset = CGPointMake(-self.contentInset.left, 0);
 	
 	self.rightIncrementalDistanceFromCenter = self.leftIncrementalDistanceFromCenter = 80;
@@ -103,22 +103,22 @@
 #pragma mark Layout Subviews
 - (void) layoutSubviews{
 	
-	if(self.contentInset.left != self.bounds.size.width/2.0){
-		self.contentInset = UIEdgeInsetsMake(0,self.bounds.size.width/2.0,0,self.bounds.size.width/2.0);
+	if(self.contentInset.left != CGRectGetWidth(self.bounds)/2.0){
+		self.contentInset = UIEdgeInsetsMake(0,CGRectGetWidth(self.bounds)/2.0,0,CGRectGetWidth(self.bounds)/2.0);
 		
 		[UIView beginAnimations:nil context:nil];
 		
 		for(UIView *active in self.visibleCovers)
-			active.center = CGPointMake(active.center.x, self.frame.size.height/2.0f);
+			active.center = CGPointMake(active.center.x, CGRectGetHeight(self.frame)/2.0f);
 		
 		[UIView commitAnimations];
 		
 	}
 	
 	/*
-	if(_originalBoundsSize.width != self.frame.size.width){
+	if(_originalBoundsSize.width != CGRectGetWidth(self.frame)){
 	
-		_originalBoundsSize.width = self.frame.size.width;
+		_originalBoundsSize.width = CGRectGetWidth(self.frame);
 		BOOL ani = _range.length > 0 ? YES : NO;
 		NSInteger c = _currentIndex;
 		self.userInteractionEnabled = NO;
@@ -171,7 +171,7 @@
 	}
 	
 	
-	CGFloat y = rintf((self.bounds.size.height - self.coverSize.height) / 2.0);
+	CGFloat y = rintf((CGRectGetHeight(self.bounds) - self.coverSize.height) / 2.0);
 	for(NSInteger i=newRange.location;i<newRange.location+newRange.length;i++){
 		if(_covers[i] != [NSNull null]) continue;
 			
@@ -306,7 +306,7 @@
 	
 	NSInteger s = [self _calculatedIndexWithContentOffset:p]-5;
 	NSInteger start = MAX(0,s);
-	p.x += self.bounds.size.width;
+	p.x += CGRectGetWidth(self.bounds);
 	
 	
 	NSInteger max = _numberOfCovers;
@@ -340,7 +340,7 @@
 			
 		}else{
 			NSInteger index = [_covers indexOfObject:currentTouch];
-			CGFloat x = [self _centerXPositionForCoverAtIndex:index] - (self.bounds.size.width / 2.0f);
+			CGFloat x = [self _centerXPositionForCoverAtIndex:index] - (CGRectGetWidth(self.bounds) / 2.0f);
 			[self setContentOffset:CGPointMake(x, 0) animated:YES];
 		}
 		
@@ -445,7 +445,7 @@
 	
 
 	CGFloat xx =  [self _centerXPositionForCoverAtIndex:_numberOfCovers-1];
-	self.contentInset = UIEdgeInsetsMake(0,self.bounds.size.width/2.0,0,self.bounds.size.width/2.0);
+	self.contentInset = UIEdgeInsetsMake(0,CGRectGetWidth(self.bounds)/2.0,0,CGRectGetWidth(self.bounds)/2.0);
 	self.contentSize = CGSizeMake(xx,0);
 	
 	
@@ -456,7 +456,7 @@
 
 }
 - (void) setCurrentCoverAtIndex:(NSInteger)index animated:(BOOL)animated{
-	CGFloat x = [self _centerXPositionForCoverAtIndex:index] - (self.bounds.size.width / 2.0f);
+	CGFloat x = [self _centerXPositionForCoverAtIndex:index] - (CGRectGetWidth(self.bounds) / 2.0f);
 	animate = animated;
 	[self setContentOffset:CGPointMake(x, 0) animated:animated];
 	[self _realignCovers:animated];

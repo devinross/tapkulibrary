@@ -36,56 +36,46 @@
 #import "UIColor+TKCategory.h"
 #import "UIImageView+TKCategory.h"
 #import "UIView+TKCategory.h"
+#import "UIScreen+TKCategory.h"
 
-#define NOB_SIZE 15.0f
-#define TOP_BAR_HEIGHT 45.0
+#define NOB_SIZE 6.0f
+#define TOP_BAR_HEIGHT 84.0
 #define EVENT_SAME_HOUR 3.0
 #define HORIZONTAL_PAD 5.0f
 #define RIGHT_EVENT_INSET 16.0
 #define LEFT_INSET 53.0f
 #define VERTICAL_INSET 10.0f
-#define FONT_SIZE 14.0f
+#define FONT_SIZE 11.0f
 #define AM_SIZE 11.0f
 #define DEFAULT_TEXT_COLOR [UIColor colorWithRed:59/255. green:73/255. blue:88/255. alpha:1]
 #define VERTICAL_DIFF 45.0
 #define TIMELINE_HEIGHT VERTICAL_INSET * 2 + 24 * (VERTICAL_DIFF)
+#define DAY_FONT_SIZE 18
 
 
 #pragma mark - TKNowView
 @interface TKNowView : UIView
+@property (nonatomic,strong) UILabel *timeLabel;
 @end
 
-@implementation TKNowView
-- (id) init{
-	if(!(self=[super initWithFrame:CGRectMake(LEFT_INSET-NOB_SIZE, 0, NOB_SIZE + 20, NOB_SIZE)])) return nil;
-	
-	self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	
-	UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, NOB_SIZE, NOB_SIZE)];
-	iv.image = [UIImage imageNamedTK:@"calendar/nob"];
-	[self addSubview:iv];
-	
-	UIView *line = [[UIView alloc] initWithFrame:CGRectMake(NOB_SIZE, 5, self.frame.size.width - NOB_SIZE, 1)];
-	line.backgroundColor = [UIColor colorWithWhite:102/255. alpha:1];
-	line.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	[self addSubview:line];
-	
-	
-	return self;
-}
+#pragma mark - TKDateLabel
+@interface TKDateLabel : UILabel
+@property (nonatomic,strong) NSDate *date;
 @end
+
 
 #pragma mark - TKTimelineView
 @interface TKTimelineView : UIView
-
 @property (nonatomic,strong) NSMutableArray *events;
 @property (nonatomic,assign) CGFloat startY;
 @property (nonatomic,strong) NSDate *date;
 @property (nonatomic,strong) NSArray *times;
-@property (nonatomic,strong) NSArray *periods;
 @property (nonatomic,strong) UIColor *hourColor;
 @property (nonatomic,assign) BOOL is24hClock;
+@end
 
+@interface TKWeekdaysView : UIView
+@property (nonatomic,strong) NSArray *weekdayLabels;
 @end
 
 
@@ -95,13 +85,15 @@
 @property (nonatomic,strong) NSDateFormatter *formatter;
 @property (nonatomic,strong) NSMutableArray *pages;
 @property (nonatomic,strong) UIScrollView *horizontalScrollView;
+
+@property (nonatomic,strong) NSMutableArray *weekdayPages;
+@property (nonatomic,strong) UIScrollView *daysScrollView;
+
 @property (nonatomic,strong) NSDate *currentDay;
 @property (nonatomic,strong) NSMutableArray *eventGraveYard;
 @property (nonatomic,strong) UILabel *monthYearLabel;
-@property (nonatomic,strong) UIButton *leftArrowButton;
-@property (nonatomic,strong) UIButton *rightArrowButton;
-@property (nonatomic,strong) UIView *topBackground;
 @property (nonatomic,strong) TKNowView *nowLineView;
+@property (nonatomic,assign) NSInteger indexOfCurrentDay;
 
 @end
 
@@ -109,19 +101,27 @@
 @implementation TKCalendarDayView
 
 #pragma mark Init & Friends
-- (id) initWithFrame:(CGRect)frame timeZone:(NSTimeZone*)timeZone{
-    if(!(self=[super initWithFrame:frame])) return nil;
-	self.timeZone = timeZone;
+- (id) initWithFrame:(CGRect)frame calendar:(NSCalendar*)calendar{
+	if(!(self=[super initWithFrame:frame])) return nil;
+	self.calendar = calendar;
     [self _setupView];
     return self;
 }
+- (id) initWithFrame:(CGRect)frame timeZone:(NSTimeZone*)timeZone{
+	
+	NSCalendar *cal = [NSCalendar autoupdatingCurrentCalendar];
+	cal.timeZone = timeZone;
+	
+	self = [self initWithFrame:frame calendar:cal];
+    return self;
+}
 - (id) initWithFrame:(CGRect)frame{
-	self = [self initWithFrame:frame timeZone:[NSTimeZone defaultTimeZone]];
+	self = [self initWithFrame:frame calendar:[NSCalendar autoupdatingCurrentCalendar]];
     return self;
 }
 - (id) initWithCoder:(NSCoder *)decoder {
     if(!(self=[super initWithCoder:decoder])) return nil;
-	self.timeZone = [NSTimeZone defaultTimeZone];
+	self.calendar = [NSCalendar autoupdatingCurrentCalendar];
     [self _setupView];
     return self;
 }
@@ -129,31 +129,17 @@
 	
 	self.nowLineView = [[TKNowView alloc] init];
 	
-	NSDateComponents *info = [[NSDate date] dateComponentsWithTimeZone:self.timeZone];
+	NSDateComponents *info = [[NSDate date] dateComponentsWithTimeZone:self.calendar.timeZone];
 	info.hour = info.minute = info.second = 0;
 	
 	self.formatter = [[NSDateFormatter alloc] init];
-	self.formatter.timeZone = self.timeZone;
+	self.formatter.timeZone = self.calendar.timeZone;
 	
 	self.eventGraveYard = [NSMutableArray array];
 	self.backgroundColor = [UIColor whiteColor];
 	self.clipsToBounds = YES;
 	self.pages = [NSMutableArray arrayWithCapacity:3];
-	
-	[self addSubview:self.topBackground];
-	[self addSubview:self.monthYearLabel];
-	[self addSubview:self.leftArrowButton];
-	[self addSubview:self.rightArrowButton];
-	
-
-	CGRect r = CGRectInset(CGRectMake(0, TOP_BAR_HEIGHT, self.frame.size.width, self.frame.size.height - TOP_BAR_HEIGHT), -HORIZONTAL_PAD, 0);
-	self.horizontalScrollView = [[UIScrollView alloc] initWithFrame:r];
-	self.horizontalScrollView.backgroundColor = [UIColor colorWithWhite:214/255.0 alpha:1];
-	self.horizontalScrollView.pagingEnabled = YES;
-	self.horizontalScrollView.delegate = self;
-	self.horizontalScrollView.contentSize = CGSizeMake(self.horizontalScrollView.frame.size.width*3.0, 0);
-	self.horizontalScrollView.contentOffset = CGPointMake(self.horizontalScrollView.frame.size.width, 0);
-	self.horizontalScrollView.showsHorizontalScrollIndicator = NO;
+	self.weekdayPages = [NSMutableArray arrayWithCapacity:3];
 	[self addSubview:self.horizontalScrollView];
 	
 	
@@ -164,9 +150,8 @@
 		NSDate *date = [NSDate dateWithDateComponents:info];
 		
 		CGRect r = CGRectInset(self.horizontalScrollView.bounds, HORIZONTAL_PAD, 0);
-		r.origin.x = self.horizontalScrollView.frame.size.width * i + HORIZONTAL_PAD;
+		r.origin.x = CGRectGetWidth(self.horizontalScrollView.frame) * i + HORIZONTAL_PAD;
 		r.origin.y = 0;
-		
 		
 		CGRect rr = r;
 		rr.origin.x = 0;
@@ -174,19 +159,11 @@
 		UIScrollView *sv = [[UIScrollView alloc] initWithFrame:r];
 		sv.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		sv.clipsToBounds = NO;
+		sv.tag = i;
 		sv.contentSize = CGSizeMake(0, TIMELINE_HEIGHT);
 		sv.alwaysBounceVertical = TRUE;
 		sv.backgroundColor = [UIColor whiteColor];
 		[self.horizontalScrollView addSubview:sv];
-		
-		sv.layer.shadowPath = [UIBezierPath bezierPathWithRect:rr].CGPath;
-		sv.layer.shadowOpacity = 0.4;
-		sv.layer.shadowOffset = CGSizeZero;
-		sv.layer.shadowRadius = 2;
-		sv.layer.shadowColor = [UIColor blackColor].CGColor;
-		sv.tag = i;
-		
-
 		
 		TKTimelineView *timelineView = [[TKTimelineView alloc] initWithFrame:sv.bounds];
 		timelineView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -199,9 +176,63 @@
 	
 	self.currentDay = [self _timelineAtIndex:1].date;
 	[self _updateDateLabel];
-
-
+	[self addSubview:self.daysBackgroundView];
+	[self addSubview:self.monthYearLabel];
 	
+	
+	NSInteger cnt = 0;
+	NSArray *daySymbols = [[NSCalendar currentCalendar] shortWeekdaySymbols];
+	CGFloat wid = CGRectGetWidth(self.frame);
+	CGFloat xmargin = 20;
+	wid -= 8;
+	
+	for(NSString *str in daySymbols){
+		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(xmargin + cnt* wid/daySymbols.count, 0, 40, 20)];
+		label.font = [UIFont systemFontOfSize:10];
+		label.text = [str substringToIndex:1];
+		label.textColor = cnt == 0 || cnt == 6 ? [UIColor colorWithWhite:167/255. alpha:1] : [UIColor blackColor];
+		label.textAlignment = NSTextAlignmentCenter;
+		[label sizeToFit];
+		label.userInteractionEnabled = NO;
+		[self.daysBackgroundView addSubview:label];
+		cnt++;
+	}
+	
+
+
+	[self.daysBackgroundView addSubviewToBack:self.daysScrollView];
+	
+	UIView *dayContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.daysScrollView.contentSize.width, CGRectGetHeight(self.daysScrollView.frame))];
+	[self.daysScrollView addSubview:dayContainerView];
+	
+	CGRect weekFrame = self.daysScrollView.frame;
+	weekFrame.origin = CGPointZero;
+	for(NSInteger i=0;i<3;i++){
+		
+		weekFrame.origin.x = CGRectGetWidth(weekFrame) * i;
+		TKWeekdaysView *weekdayView = [[TKWeekdaysView alloc] initWithFrame:weekFrame];
+		
+		for(UILabel *label in weekdayView.weekdayLabels){
+			label.userInteractionEnabled = YES;
+			[label addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapWeekdayLabel:)]];
+		}
+		[dayContainerView addSubviewToBack:weekdayView];
+		[self.weekdayPages addObject:weekdayView];
+	}
+	
+}
+
+
+#pragma mark Button Actions
+- (void) nextDay:(id)sender {
+	[self _movePagesToIndex:2 animated:NO];
+}
+- (void) previousDay:(id)sender {
+	[self _movePagesToIndex:0 animated:NO];
+}
+- (void) scrollViewWasTapped:(UITapGestureRecognizer*)gesture{
+	if(self.delegate && [self.delegate respondsToSelector:@selector(calendarDayTimelineView:eventViewWasSelected:)])
+		[self.delegate calendarDayTimelineView:self eventViewWasSelected:(TKCalendarDayEventView*)gesture.view];
 }
 
 
@@ -220,29 +251,21 @@
 }
 
 
-- (void) scrollViewWasTapped:(UITapGestureRecognizer*)gesture{
-	
-	if(self.delegate && [self.delegate respondsToSelector:@selector(calendarDayTimelineView:eventViewWasSelected:)])
-		[self.delegate calendarDayTimelineView:self eventViewWasSelected:(TKCalendarDayEventView*)gesture.view];
-	
-}
-
-
 #pragma mark Private Methods
 - (void) _realignPages{
 	
-	CGFloat w = [self.pages[1] frame].size.width;
+	CGFloat w = CGRectGetWidth([self.pages[1] frame]);
+	CGFloat scrollWidth = CGRectGetWidth(self.horizontalScrollView.frame);
 	
-	self.horizontalScrollView.frame = CGRectInset(CGRectMake(0, TOP_BAR_HEIGHT, self.frame.size.width, self.frame.size.height - TOP_BAR_HEIGHT), -HORIZONTAL_PAD, 0);
-	self.horizontalScrollView.contentSize = CGSizeMake(self.horizontalScrollView.frame.size.width*3.0, 0);
-	self.horizontalScrollView.contentOffset = CGPointMake(self.horizontalScrollView.frame.size.width, 0);
+	self.horizontalScrollView.frame = CGRectInset(CGRectMake(0, TOP_BAR_HEIGHT, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame) - TOP_BAR_HEIGHT), -HORIZONTAL_PAD, 0);
+	self.horizontalScrollView.contentSize = CGSizeMake(scrollWidth*3.0, 0);
+	self.horizontalScrollView.contentOffset = CGPointMake(scrollWidth, 0);
 	
 	NSInteger i = 0;
 	for(UIScrollView *sv in self.pages){
 		CGRect r = CGRectInset(self.horizontalScrollView.bounds, HORIZONTAL_PAD, 0);
-		r.origin.x = self.horizontalScrollView.frame.size.width * i + HORIZONTAL_PAD;
-		r.origin.y = 0;
-		if(r.size.width != w){
+		r.origin = CGPointMake(scrollWidth * i + HORIZONTAL_PAD,0);
+		if(CGRectGetWidth(r) != w){
 			sv.frame = r;
 			[self _realignEventsAtIndex:i];
 		}else
@@ -255,10 +278,8 @@
 }
 - (void) _movePagesToIndex:(NSInteger)nowPage animated:(BOOL)animated{
 	
-
 	UIScrollView *needsUpdating = nil;
 	NSInteger updateIndex = 1;
-
 	if(nowPage<1){
 		UIScrollView *sv = [self.pages lastObject];
 		[self.pages insertObject:sv atIndex:0];
@@ -275,7 +296,7 @@
 
 	self.currentDay = [self _timelineAtIndex:1].date;
 	
-	NSDateComponents *info = [self.currentDay dateComponentsWithTimeZone:self.timeZone];
+	NSDateComponents *info = [self.currentDay dateComponentsWithTimeZone:self.calendar.timeZone];
 	info.day += nowPage < 1 ? -1 : 1;
 	[self _timelineWithScrollView:needsUpdating].date = [NSDate dateWithDateComponents:info];
 	[self _updateDateLabel];
@@ -284,21 +305,49 @@
 	NSInteger i = 0;
 	for(UIScrollView *sv in self.pages){
 		CGRect r = sv.frame;
-		r.origin.x = HORIZONTAL_PAD + self.horizontalScrollView.frame.size.width * i;
+		r.origin.x = HORIZONTAL_PAD + CGRectGetWidth(self.horizontalScrollView.frame) * i;
 		sv.frame = r;
 		i++;
 	}
-	
-	
-	self.horizontalScrollView.contentOffset = CGPointMake(self.horizontalScrollView.frame.size.width, 0);
-	
+
+	self.horizontalScrollView.contentOffset = CGPointMake(CGRectGetWidth(self.horizontalScrollView.frame), 0);
 	needsUpdating.contentOffset = CGPointZero;
 	[self _refreshDataWithPageAtIndex:updateIndex];
-		
-	
+
 	if(self.delegate && [self.delegate respondsToSelector:@selector(calendarDayTimelineView:didMoveToDate:)])
 		[self.delegate calendarDayTimelineView:self didMoveToDate:self.currentDay];
 	
+	self.indexOfCurrentDay = nowPage > 1 ? self.indexOfCurrentDay+1 : self.indexOfCurrentDay-1;
+	
+	
+	BOOL moveDayView = NO;
+	NSInteger day = self.indexOfCurrentDay;
+	if(self.indexOfCurrentDay < 0 || self.indexOfCurrentDay > 6){
+		self.userInteractionEnabled = NO;
+		moveDayView = YES;
+		
+		day = self.indexOfCurrentDay < 0 ? 6 : 0;
+		
+		
+		[UIView animateWithDuration:0.3 animations:^{
+			self.daysScrollView.contentOffset = self.indexOfCurrentDay > 6 ? CGPointMake(CGRectGetWidth(self.daysScrollView.frame)*2, 0) : CGPointZero;
+		}completion:^(BOOL finished){
+			[self _resetWeekdayOrderByMoving:self.indexOfCurrentDay > 0];
+			self.userInteractionEnabled = YES;
+			self.indexOfCurrentDay = day;
+		}];
+		
+	}
+	
+	
+	
+	[UIView transitionWithView:self.daysScrollView.subviews.firstObject duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+		[self _updateSelectedWeekdayAtIndex:self.indexOfCurrentDay+7];
+	}completion:nil];
+	
+
+	
+
 	[self _scrollToTopEvent:animated];
 
 }
@@ -308,12 +357,14 @@
 	
 	CGFloat y = -VERTICAL_INSET + timeline.startY;
 	if(sv == self.nowLineView.superview)
-		y = self.nowLineView.frame.origin.y - 20;
-	y = MIN(sv.contentSize.height - sv.bounds.size.height, y);
+		y = CGRectGetMinY(self.nowLineView.frame) - 20;
+	y = MIN(sv.contentSize.height - CGRectGetHeight(sv.bounds), y);
 	y = MAX(0,y);
 	
 	[sv setContentOffset:CGPointMake(0, y) animated:animated];
 }
+
+
 
 - (TKTimelineView*) _timelineWithScrollView:(UIScrollView*)sv{
 	return (TKTimelineView*)[sv viewWithTag:5];
@@ -322,32 +373,54 @@
 	return (TKTimelineView*)[self.pages[index] viewWithTag:5];
 }
 - (NSInteger) _currentScrolledPage{
-	CGFloat w = self.horizontalScrollView.frame.size.width;
+	CGFloat w = CGRectGetWidth(self.horizontalScrollView.frame);
 	CGFloat x = self.horizontalScrollView.contentOffset.x + (w/2.0f);
 	return x / w;
 }
-- (void) _updateDateLabel{
-	self.formatter.dateFormat = @"EEEE, MMM d yyyy";
-	self.formatter.timeZone = self.timeZone;
-	self.monthYearLabel.text = [self.formatter stringFromDate:self.currentDay];
-	self.monthYearLabel.textColor = [self.currentDay isToday] ? [UIColor colorWithRed:0 green:116/255. blue:230/255. alpha:1] : DEFAULT_TEXT_COLOR;
+- (NSInteger) _currentScrolledWeek{
+	CGFloat w = CGRectGetWidth(self.daysScrollView.frame);
+	CGFloat x = self.daysScrollView.contentOffset.x + (w/2.0f);
+	return x / w;
 }
+- (void) _updateDateLabel{
+	self.formatter.dateFormat = @"EEEE MMMM d, yyyy";
+	self.formatter.timeZone = self.calendar.timeZone;
+	self.monthYearLabel.text = [self.formatter stringFromDate:self.currentDay];
+}
+
 
 
 #pragma mark UIScrollViewDelegate
+- (void) _checkForPageChange{
+	NSInteger page = [self _currentScrolledPage];
+	if(page!=1) [self _movePagesToIndex:page animated:YES];
+}
+- (void) _checkForAdvancingWeek{
+	NSInteger page = [self _currentScrolledWeek];
+	if(page!=1) [self _advanceWeekToIndex:page animated:YES];
+}
 - (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
 	if(decelerate) return;
-	NSInteger page = [self _currentScrolledPage];
-	if(page!=1) [self _movePagesToIndex:page animated:YES];
+
+	if(scrollView == self.horizontalScrollView){
+		[self _checkForPageChange];
+	}else if(scrollView == self.daysScrollView){
+		[self _checkForAdvancingWeek];
+	}
 }
 - (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-	NSInteger page = [self _currentScrolledPage];
-	if(page!=1) [self _movePagesToIndex:page animated:YES];
-	
+	if(scrollView == self.horizontalScrollView){
+		[self _checkForPageChange];
+	}else if(scrollView == self.daysScrollView){
+		[self _checkForAdvancingWeek];
+	}
 }
 - (void) scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
-	NSInteger page = [self _currentScrolledPage];
-	if(page!=1) [self _movePagesToIndex:page animated:YES];
+	if(scrollView == self.horizontalScrollView){
+		[self _checkForPageChange];
+	}else if(scrollView == self.daysScrollView){
+		[self _checkForAdvancingWeek];
+	}
 }
 
 
@@ -360,6 +433,7 @@
 	[self _refreshDataWithPageAtIndex:0];
 	[self _refreshDataWithPageAtIndex:1];
 	[self _refreshDataWithPageAtIndex:2];
+	[self _setupDaysView];
 	[self _scrollToTopEvent:NO];
 }
 - (void) _refreshDataWithPageAtIndex:(NSInteger)index{
@@ -369,7 +443,7 @@
 	
 	
 	CGRect r = CGRectInset(self.horizontalScrollView.bounds, HORIZONTAL_PAD, 0);
-	r.origin.x = self.horizontalScrollView.frame.size.width * index + HORIZONTAL_PAD;
+	r.origin.x = CGRectGetWidth(self.horizontalScrollView.frame) * index + HORIZONTAL_PAD;
 	sv.frame = r;
 	
 
@@ -384,10 +458,10 @@
 	}
 	
 	if(self.nowLineView.superview == sv) [self.nowLineView removeFromSuperview];
-	if([timeline.date isTodayWithTimeZone:self.timeZone]){
+	if([timeline.date isTodayWithTimeZone:self.calendar.timeZone]){
 		
 		NSDate *date = [NSDate date];
-		NSDateComponents *comp = [date dateComponentsWithTimeZone:self.timeZone];
+		NSDateComponents *comp = [date dateComponentsWithTimeZone:self.calendar.timeZone];
 		
 		NSInteger hourStart = comp.hour;
 		CGFloat hourStartPosition = hourStart * VERTICAL_DIFF + VERTICAL_INSET;
@@ -395,7 +469,8 @@
 		NSInteger minuteStart = round(comp.minute / 5.0) * 5;
 		CGFloat minuteStartPosition = roundf((CGFloat)minuteStart / 60.0f * VERTICAL_DIFF);
 		
-		CGRect eventFrame = CGRectMake(self.nowLineView.frame.origin.x, hourStartPosition + minuteStartPosition - 5, NOB_SIZE + self.frame.size.width - LEFT_INSET, NOB_SIZE);
+		
+		CGRect eventFrame = CGRectMake(CGRectGetMinX(self.nowLineView.frame), hourStartPosition + minuteStartPosition - 5,  CGRectGetWidth(self.frame), 14);
 		self.nowLineView.frame = eventFrame;
 		[sv addSubview:self.nowLineView];
 
@@ -441,13 +516,13 @@
 		}
 		
 		
-		BOOL startSameDay = [event.startDate isSameDay:timeline.date timeZone:self.timeZone];
+		BOOL startSameDay = [event.startDate isSameDay:timeline.date timeZone:self.calendar.timeZone];
 		
 		if(!startSameDay && (([event.startDate compare:timeline.date] == NSOrderedAscending && [event.endDate compare:timeline.date] == NSOrderedAscending) || ([event.startDate compare:timeline.date] == NSOrderedDescending))) continue;
 
-		BOOL endSameDay = [event.endDate isSameDay:timeline.date timeZone:self.timeZone];
-		NSDateComponents *startComp = [event.startDate dateComponentsWithTimeZone:self.timeZone];
-		NSDateComponents *endComp = [event.endDate dateComponentsWithTimeZone:self.timeZone];
+		BOOL endSameDay = [event.endDate isSameDay:timeline.date timeZone:self.calendar.timeZone];
+		NSDateComponents *startComp = [event.startDate dateComponentsWithTimeZone:self.calendar.timeZone];
+		NSDateComponents *endComp = [event.endDate dateComponentsWithTimeZone:self.calendar.timeZone];
 
 		NSInteger hourStart = startSameDay ? startComp.hour : 0;
 		CGFloat hourStartPosition = hourStart * VERTICAL_DIFF + VERTICAL_INSET;
@@ -489,7 +564,7 @@
 		
 		
 		
-		CGFloat eventWidth = (self.bounds.size.width  - LEFT_INSET - RIGHT_EVENT_INSET)/(repeatNumber+1);
+		CGFloat eventWidth = (CGRectGetWidth(self.bounds)  - LEFT_INSET - RIGHT_EVENT_INSET)/(repeatNumber+1);
 		CGFloat eventOriginX = LEFT_INSET + 2.0f + horizOffset;
 		CGRect eventFrame = CGRectMake(eventOriginX + (repeatNumber*eventWidth), hourStartPosition + minuteStartPosition, eventWidth, eventHeight);
 		event.frame = CGRectIntegral(eventFrame);
@@ -524,69 +599,399 @@
 	if(sv == self.nowLineView.superview)
 		[sv bringSubviewToFront:self.nowLineView];
 	
+}
+
+
+#pragma mark WeekDay
+- (void) _advanceWeekToIndex:(NSInteger)index animated:(BOOL)animated{
+	self.userInteractionEnabled = NO;
+
+	BOOL moveRight = index > 1 ? YES : NO;
+	NSInteger pageToUpdate = moveRight ? 2 : 0;
+
+	TKWeekdaysView *weekView = self.weekdayPages[pageToUpdate];
+	TKDateLabel *currentLabel = weekView.weekdayLabels[self.indexOfCurrentDay];
+	NSDate *theNewDate = currentLabel.date;
+	[self _resetWeekdayOrderByMoving:moveRight];
+	[self _timelineAtIndex:pageToUpdate].date = theNewDate;
+	[self _refreshDataWithPageAtIndex:pageToUpdate];
+	
+	
+	[UIView animateWithDuration:animated ? 0.3 : 0 animations:^{
 		
-}
+		self.horizontalScrollView.contentOffset = CGPointMake(CGRectGetWidth(self.horizontalScrollView.frame) * pageToUpdate, 0);
 
+	}completion:^(BOOL finished){
+		
+		
+		UIScrollView *needsUpdating = nil;
+		NSInteger updateIndex = 1;
+		
+		if(pageToUpdate<1){
+			UIScrollView *sv = [self.pages lastObject];
+			[self.pages insertObject:sv atIndex:0];
+			[self.pages removeLastObject];
+			needsUpdating = sv;
+			updateIndex = 0;
+		}else if(pageToUpdate>1){
+			UIScrollView *sv = self.pages[0];
+			[self.pages addObject:sv];
+			[self.pages removeObjectAtIndex:0];
+			needsUpdating = sv;
+			updateIndex = 2;
+		}
+		
+		self.currentDay = theNewDate;
+		[self _updateDateLabel];
+		
+		NSDateComponents *info = [self.currentDay dateComponentsWithTimeZone:self.calendar.timeZone];
+		info.day += pageToUpdate < 1 ? -1 : 1;
+		[self _timelineWithScrollView:needsUpdating].date = [NSDate dateWithDateComponents:info];
+		
+		
+		NSInteger i = 0;
+		for(UIScrollView *sv in self.pages){
+			CGRect r = sv.frame;
+			r.origin.x = HORIZONTAL_PAD + CGRectGetWidth(self.horizontalScrollView.frame) * i;
+			sv.frame = r;
+			i++;
+		}
+		self.horizontalScrollView.contentOffset = CGPointMake(CGRectGetWidth(self.horizontalScrollView.frame), 0);
+		
+		NSArray *allLabels = [self _allDayLabels];
+		[self _timelineAtIndex:0].date = [allLabels[self.indexOfCurrentDay+7-1] date];
+		[self _timelineAtIndex:2].date = [allLabels[self.indexOfCurrentDay+7+1] date];
+		((UIScrollView*)self.pages[0]).contentOffset = CGPointZero;
+		((UIScrollView*)self.pages[2]).contentOffset = CGPointZero;
+		[self _refreshDataWithPageAtIndex:0];
+		[self _refreshDataWithPageAtIndex:2];
+		
+		needsUpdating.contentOffset = CGPointZero;
+		[self _refreshDataWithPageAtIndex:updateIndex];
+		
+		
+		if(self.delegate && [self.delegate respondsToSelector:@selector(calendarDayTimelineView:didMoveToDate:)])
+			[self.delegate calendarDayTimelineView:self didMoveToDate:self.currentDay];
+		
+		[self _scrollToTopEvent:YES];
+		
+		
+		if(self.delegate && [self.delegate respondsToSelector:@selector(calendarDayTimelineView:didMoveToDate:)])
+			[self.delegate calendarDayTimelineView:self didMoveToDate:self.currentDay];
+		
 
-#pragma mark Button Actions
-- (void) nextDay:(id)sender {
-	[self _movePagesToIndex:2 animated:NO];
+		[UIView transitionWithView:self.daysScrollView.subviews.firstObject duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+			[self _updateSelectedWeekdayAtIndex:self.indexOfCurrentDay+7];
+		}completion:nil];
+		
+		[self _scrollToTopEvent:animated];
+		self.userInteractionEnabled = YES;
+
+		
+	}];
+	
+	
+	
 }
-- (void) previousDay:(id)sender {
-	[self _movePagesToIndex:0 animated:NO];
+- (void) _resetWeekdayOrderByMoving:(BOOL)forwards{
+	
+	if(forwards){
+		TKWeekdaysView *weekView = [self.weekdayPages firstObject];
+		[self.weekdayPages addObject:weekView];
+		[self.weekdayPages removeObjectAtIndex:0];
+		
+		
+		
+		TKWeekdaysView *currentWeekView = self.weekdayPages[1];
+		TKDateLabel *currentPageLabel  = currentWeekView.weekdayLabels.lastObject;
+		
+		NSDateComponents *mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra fromDate:currentPageLabel.date];
+		mutedCom.day++;
+		for(TKDateLabel *label in weekView.weekdayLabels){
+			
+			NSDate *aDate = [self.calendar dateFromComponents:mutedCom];
+			mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra fromDate:aDate];
+			label.text = [NSString stringWithFormat:@"%@",@(mutedCom.day)];
+			label.date = aDate;
+			
+			BOOL today = [aDate isTodayWithTimeZone:self.calendar.timeZone];
+			BOOL selectedDay = [aDate isSameDay:self.currentDay timeZone:self.calendar.timeZone];
+			if(selectedDay){
+				label.backgroundColor = today ? self.tintColor : [UIColor blackColor];
+				label.textColor = [UIColor whiteColor];
+				label.font = [UIFont boldSystemFontOfSize:DAY_FONT_SIZE];
+			}else{
+				label.textColor = today ? self.tintColor : [UIColor blackColor];
+				label.backgroundColor = [UIColor clearColor];
+				label.font = [UIFont systemFontOfSize:DAY_FONT_SIZE];
+			}
+			label.tag = today ? 1 : 0;
+			mutedCom.day++;
+			
+		}
+		
+	}else{
+		TKWeekdaysView *weekView = [self.weekdayPages lastObject];
+		[self.weekdayPages insertObject:weekView atIndex:0];
+		[self.weekdayPages removeLastObject];
+		
+		
+		
+		
+		TKWeekdaysView *currentWeekView = self.weekdayPages[1];
+		TKDateLabel *currentPageLabel  = currentWeekView.weekdayLabels.firstObject;
+		
+		NSDateComponents *mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra fromDate:currentPageLabel.date];
+		mutedCom.day --;
+		for(TKDateLabel *label in weekView.weekdayLabels.reverseObjectEnumerator){
+			
+			NSDate *aDate = [self.calendar dateFromComponents:mutedCom];
+			mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra fromDate:aDate];
+			label.text = [NSString stringWithFormat:@"%@",@(mutedCom.day)];
+			label.date = aDate;
+			
+			BOOL today = [aDate isTodayWithTimeZone:self.calendar.timeZone];
+			BOOL selectedDay = [aDate isSameDay:self.currentDay timeZone:self.calendar.timeZone];
+			if(selectedDay){
+				label.backgroundColor = today ? self.tintColor : [UIColor blackColor];
+				label.textColor = [UIColor whiteColor];
+				label.font = [UIFont boldSystemFontOfSize:DAY_FONT_SIZE];
+			}else{
+				label.textColor = today ? self.tintColor : [UIColor blackColor];
+				label.backgroundColor = [UIColor clearColor];
+				label.font = [UIFont systemFontOfSize:DAY_FONT_SIZE];
+			}
+			label.tag = today ? 1 : 0;
+			mutedCom.day --;
+			
+		}
+		
+		
+	}
+	
+	
+	NSInteger i = 0;
+	for(TKWeekdaysView *sv in self.weekdayPages){
+		CGRect r = sv.frame;
+		r.origin.x = CGRectGetWidth(self.daysScrollView.frame) * i;
+		sv.frame = r;
+		i++;
+	}
+	self.daysScrollView.contentOffset = CGPointMake(CGRectGetWidth(self.daysScrollView.frame), 0);
+	
+}
+- (void) _updateSelectedWeekdayAtIndex:(NSInteger)allLabelsIndex{
+	
+	NSArray *allLabel = [self _allDayLabels];
+	
+	NSInteger index = allLabelsIndex;
+	NSInteger i=0;
+	for(TKDateLabel *label in allLabel){
+		
+		BOOL today = label.tag == 1;
+		BOOL selectedDay = i == index;
+		if(selectedDay){
+			label.font = [UIFont boldSystemFontOfSize:18];
+			label.backgroundColor = today ? self.tintColor : [UIColor blackColor];
+			label.textColor = [UIColor whiteColor];
+			label.font = [UIFont boldSystemFontOfSize:DAY_FONT_SIZE];
+		}else{
+			label.textColor = today ? self.tintColor : [UIColor blackColor];
+			label.font = [UIFont systemFontOfSize:DAY_FONT_SIZE];
+			label.backgroundColor = [UIColor clearColor];
+		}
+		i++;
+	}
+	
+	
+}
+- (void) didTapWeekdayLabel:(UITapGestureRecognizer*)sender{
+	
+	NSArray *allLabels = [self _allDayLabels];
+	NSInteger indexOfSelectedLabel = [allLabels indexOfObject:sender.view];
+	
+	if(indexOfSelectedLabel == NSNotFound) return;
+	
+	TKDateLabel *label = allLabels[indexOfSelectedLabel];
+	NSDate *theNewDate = label.date;
+	
+	if([label.date isSameDay:self.currentDay timeZone:self.calendar.timeZone]) return;
+	
+	BOOL moveRight = [label.date compare:self.currentDay] == NSOrderedDescending;
+	NSInteger pageToUpdate = moveRight ? 2 : 0;
+	
+	self.userInteractionEnabled = NO;
+	
+	[self _timelineAtIndex:pageToUpdate].date = label.date;
+	[self _refreshDataWithPageAtIndex:pageToUpdate];
+	
+	
+	[UIView transitionWithView:self.daysScrollView.subviews.firstObject duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+		[self _updateSelectedWeekdayAtIndex:indexOfSelectedLabel];
+	}completion:nil];
+	
+	[UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+		self.horizontalScrollView.contentOffset = CGPointMake(CGRectGetWidth(self.horizontalScrollView.frame) * pageToUpdate, 0);
+	}completion:^(BOOL finished){
+		
+		
+		UIScrollView *needsUpdating = nil;
+		NSInteger updateIndex = 1;
+		
+		if(pageToUpdate<1){
+			UIScrollView *sv = [self.pages lastObject];
+			[self.pages insertObject:sv atIndex:0];
+			[self.pages removeLastObject];
+			needsUpdating = sv;
+			updateIndex = 0;
+		}else if(pageToUpdate>1){
+			UIScrollView *sv = self.pages[0];
+			[self.pages addObject:sv];
+			[self.pages removeObjectAtIndex:0];
+			needsUpdating = sv;
+			updateIndex = 2;
+		}
+		
+		self.currentDay = theNewDate;
+		[self _updateDateLabel];
+		
+		NSDateComponents *info = [self.currentDay dateComponentsWithTimeZone:self.calendar.timeZone];
+		info.day += pageToUpdate < 1 ? -1 : 1;
+		[self _timelineWithScrollView:needsUpdating].date = [NSDate dateWithDateComponents:info];
+		
+		
+		NSInteger i = 0;
+		for(UIScrollView *sv in self.pages){
+			CGRect r = sv.frame;
+			r.origin.x = HORIZONTAL_PAD + CGRectGetWidth(self.horizontalScrollView.frame) * i;
+			sv.frame = r;
+			i++;
+		}
+		self.horizontalScrollView.contentOffset = CGPointMake(CGRectGetWidth(self.horizontalScrollView.frame), 0);
+		
+		
+		[self _timelineAtIndex:0].date = [allLabels[indexOfSelectedLabel-1] date];
+		[self _timelineAtIndex:2].date = [allLabels[indexOfSelectedLabel+1] date];
+		((UIScrollView*)self.pages[0]).contentOffset = CGPointZero;
+		((UIScrollView*)self.pages[2]).contentOffset = CGPointZero;
+		[self _refreshDataWithPageAtIndex:0];
+		[self _refreshDataWithPageAtIndex:2];
+		
+		needsUpdating.contentOffset = CGPointZero;
+		[self _refreshDataWithPageAtIndex:updateIndex];
+		
+		
+		if(self.delegate && [self.delegate respondsToSelector:@selector(calendarDayTimelineView:didMoveToDate:)])
+			[self.delegate calendarDayTimelineView:self didMoveToDate:self.currentDay];
+		
+		[self _scrollToTopEvent:YES];
+		
+		self.userInteractionEnabled = YES;
+		self.indexOfCurrentDay = indexOfSelectedLabel - 7;
+		
+		if(self.delegate && [self.delegate respondsToSelector:@selector(calendarDayTimelineView:didMoveToDate:)])
+			[self.delegate calendarDayTimelineView:self didMoveToDate:self.currentDay];
+	}];
+	
+	
+	
+	
+	
+}
+- (void) _setupDaysView{
+	
+	NSArray *labels =  [self _allDayLabels];
+	NSDateComponents *comp = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra | NSCalendarUnitWeekday fromDate:self.currentDay];
+	NSDateComponents *mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra fromDate:self.currentDay];
+	for(NSInteger cnt= comp.weekday + 6;cnt>=0;cnt--){
+		NSDate *aDate = [self.calendar dateFromComponents:mutedCom];
+		mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra fromDate:aDate];
+		TKDateLabel *label = labels[cnt];
+		label.text = [NSString stringWithFormat:@"%@",@(mutedCom.day)];
+		label.date = aDate;
+		BOOL today = [aDate isTodayWithTimeZone:self.calendar.timeZone];
+		BOOL selectedDay = [aDate isSameDay:self.currentDay timeZone:self.calendar.timeZone];
+		if(selectedDay){
+			
+			label.font = [UIFont boldSystemFontOfSize:18];
+			label.backgroundColor = today ? self.tintColor : [UIColor blackColor];
+			label.textColor = [UIColor whiteColor];
+			label.font = [UIFont boldSystemFontOfSize:DAY_FONT_SIZE];
+		}else{
+			label.textColor = today ? self.tintColor : [UIColor blackColor];
+			label.font = [UIFont systemFontOfSize:DAY_FONT_SIZE];
+			label.backgroundColor = [UIColor clearColor];
+			
+		}
+		label.tag = today ? 1 : 0;
+		mutedCom.day --;
+	}
+	
+	mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra fromDate:self.currentDay];
+	
+	for(NSInteger cnt= comp.weekday + 6;cnt<labels.count;cnt++){
+		
+		NSDate *aDate = [self.calendar dateFromComponents:mutedCom];
+		mutedCom = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra fromDate:aDate];
+		
+		TKDateLabel *label = labels[cnt];
+		label.text = [NSString stringWithFormat:@"%@",@(mutedCom.day)];
+		label.date = aDate;
+
+		BOOL today = [aDate isTodayWithTimeZone:self.calendar.timeZone];
+		BOOL selectedDay = [aDate isSameDay:self.currentDay timeZone:self.calendar.timeZone];
+		if(selectedDay){
+			label.backgroundColor = today ? self.tintColor : [UIColor blackColor];
+			label.textColor = [UIColor whiteColor];
+			label.font = [UIFont boldSystemFontOfSize:DAY_FONT_SIZE];
+		}else{
+			label.textColor = today ? self.tintColor : [UIColor blackColor];
+			label.backgroundColor = [UIColor clearColor];
+			label.font = [UIFont systemFontOfSize:DAY_FONT_SIZE];
+		}
+		label.tag = today ? 1 : 0;
+		mutedCom.day ++;
+		
+	}
+	
+	self.indexOfCurrentDay = comp.weekday-1;
+}
+- (NSArray*) _allDayLabels{
+	NSMutableArray *labels = [NSMutableArray array];
+	for(TKWeekdaysView *page in self.weekdayPages){
+		[labels addObjectsFromArray:page.weekdayLabels];
+	}
+	return labels.copy;
 }
 
 
 #pragma mark Properties & Public Functions
-- (UIButton *) leftArrowButton{
-	if(_leftArrowButton) return _leftArrowButton;
-
-	_leftArrowButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	_leftArrowButton.tag = 0;
-	_leftArrowButton.frame = CGRectMake(0, 3, 48, 38);
-	[_leftArrowButton addTarget:self action:@selector(previousDay:) forControlEvents:UIControlEventTouchUpInside];
-	[_leftArrowButton setImage:[UIImage imageNamedTK:@"calendar/calendar_left_arrow"] forState:0];
-	return _leftArrowButton;
-}
-- (UIButton *) rightArrowButton{
-	if(_rightArrowButton) return _rightArrowButton;
-
-	_rightArrowButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	_rightArrowButton.tag = 1;
-	_rightArrowButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
-	_rightArrowButton.frame = CGRectMake(self.frame.size.width-48, 3, 48, 38);
-	[_rightArrowButton addTarget:self action:@selector(nextDay:) forControlEvents:UIControlEventTouchUpInside];
-	[_rightArrowButton setImage:[UIImage imageNamedTK:@"calendar/calendar_right_arrow"] forState:0];
-	return _rightArrowButton;
-}
 - (UILabel *) monthYearLabel{
 	if(_monthYearLabel) return _monthYearLabel;
 	
-	_monthYearLabel = [[UILabel alloc] initWithFrame:CGRectInset(self.topBackground.bounds, 40, 2)];
+	_monthYearLabel = [[UILabel alloc] initWithFrame:CGRectInset(CGRectMake(0, CGRectGetHeight(self.daysBackgroundView.frame) - 24 - 6, CGRectGetWidth(self.daysBackgroundView.frame), 24), 40, 0)];
 	_monthYearLabel.textAlignment = NSTextAlignmentCenter;
 	_monthYearLabel.backgroundColor = [UIColor clearColor];
-	_monthYearLabel.font = [UIFont boldSystemFontOfSize:19.0f];
-	_monthYearLabel.textColor = DEFAULT_TEXT_COLOR;
-	_monthYearLabel.shadowColor = [UIColor whiteColor];
-	_monthYearLabel.shadowOffset = CGSizeMake(0, 1);
+	_monthYearLabel.font = [UIFont systemFontOfSize:16.0f];
+	_monthYearLabel.textColor = [UIColor blackColor];
 	_monthYearLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	return _monthYearLabel;
 }
-- (UIView *) topBackground{
-	if(_topBackground) return _topBackground;
+- (UIView *) daysBackgroundView{
+	if(_daysBackgroundView) return _daysBackgroundView;
+		
+	_daysBackgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), TOP_BAR_HEIGHT)];
+	_daysBackgroundView.backgroundColor = [UIColor colorWithHex:0xf7f7f7];
+	_daysBackgroundView.layer.shadowColor = [UIColor blackColor].CGColor;
+	_daysBackgroundView.layer.shadowOffset = CGSizeZero;
+	_daysBackgroundView.layer.shadowPath = [UIBezierPath bezierPathWithRect:_daysBackgroundView.bounds].CGPath;
+	_daysBackgroundView.layer.shadowRadius = 1;
+	_daysBackgroundView.layer.shadowOpacity = 0.2;
 	
-	
-	TKGradientView *gradient = [[TKGradientView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, TOP_BAR_HEIGHT)];
-	gradient.colors = @[[UIColor colorWithHex:0xf4f4f5],[UIColor colorWithHex:0xccccd1]];
-	gradient.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-
-	UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 44, gradient.bounds.size.width, 1)];
-	line.backgroundColor = [UIColor colorWithHex:0xaaaeb6];
-	line.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	[gradient addSubview:line];
-	
-	_topBackground = gradient;
-	return _topBackground;
+	UIView *div = [[UIView alloc] initWithFrame:CGRectMake(0, TOP_BAR_HEIGHT - [UIScreen mainScreen].onePixelSize, CGRectGetWidth(self.frame),[UIScreen mainScreen].onePixelSize)];
+	div.backgroundColor = [UIColor colorWithHex:0xd7d7d7];
+	[_daysBackgroundView addSubview:div];
+	return _daysBackgroundView;
 }
 - (BOOL) is24hClock{
 	return [self _timelineAtIndex:0].is24hClock;
@@ -601,9 +1006,8 @@
 }
 - (void) setDate:(NSDate *)date{
 	
-	NSDateComponents *comp = [date dateComponentsWithTimeZone:self.timeZone];
-	comp.second = comp.minute = comp.hour = 0;
-	
+
+	NSDateComponents *comp = [self.calendar components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitEra | NSCalendarUnitWeekday fromDate:date];
 	self.currentDay = [NSDate dateWithDateComponents:comp];
 	
 	[self _timelineAtIndex:1].date = self.currentDay;
@@ -632,8 +1036,31 @@
 	return event;
 	
 }
+- (UIScrollView*) horizontalScrollView{
+	if(_horizontalScrollView) return _horizontalScrollView;
+	CGRect r = CGRectInset(CGRectMake(0, TOP_BAR_HEIGHT, CGRectGetWidth(self.frame), CGRectGetHeight(self.frame) - TOP_BAR_HEIGHT), -HORIZONTAL_PAD, 0);
+	_horizontalScrollView = [[UIScrollView alloc] initWithFrame:r];
+	_horizontalScrollView.pagingEnabled = YES;
+	_horizontalScrollView.delegate = self;
+	_horizontalScrollView.contentSize = CGSizeMake(CGRectGetWidth(r)*3.0, 0);
+	_horizontalScrollView.contentOffset = CGPointMake(CGRectGetWidth(r), 0);
+	_horizontalScrollView.showsHorizontalScrollIndicator = NO;
+	return _horizontalScrollView;
+}
+- (UIScrollView*) daysScrollView{
+	if(_daysScrollView) return _daysScrollView;
+	_daysScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.frame), CGRectGetMinY(self.monthYearLabel.frame))];
+	_daysScrollView.pagingEnabled = YES;
+	_daysScrollView.delegate = self;
+	_daysScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.daysScrollView.frame)*3.0, 0);
+	_daysScrollView.contentOffset = CGPointMake(CGRectGetWidth(self.daysScrollView.frame), 0);
+	_daysScrollView.showsHorizontalScrollIndicator = NO;
+	return _daysScrollView;
+}
 
 @end
+
+
 
 
 
@@ -654,24 +1081,12 @@
 }
 - (void) _setupView{
 	
-	
 	self.contentScaleFactor = 1.0f;
 	self.layer.contentsScale = 1.0f;
 	self.tag = 5;
 	self.contentMode = UIViewContentModeRedraw;
 	self.backgroundColor = [UIColor whiteColor];
 	
-	
-	UIView *gray = [[UIView alloc] initWithFrame:CGRectMake(LEFT_INSET, -800, self.frame.size.width - LEFT_INSET, 800 + VERTICAL_INSET)];
-	gray.backgroundColor = [UIColor colorWithWhite:242/255.0 alpha:1];
-	gray.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	[self addSubview:gray];
-	
-	gray = [[UIView alloc] initWithFrame:CGRectMake(LEFT_INSET, TIMELINE_HEIGHT - VERTICAL_INSET + 1, self.frame.size.width - LEFT_INSET, 800 + VERTICAL_INSET)];
-	gray.backgroundColor = [UIColor colorWithWhite:242/255.0 alpha:1];
-	gray.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	[self addSubview:gray];
-		
 }
 
 - (NSString*) description{
@@ -687,79 +1102,31 @@
 - (void) drawRect:(CGRect)rect {
     // Drawing code
 	// Here Draw timeline from 12 am to noon to 12 am next day
-	
-	// Just making sure that times and periods are correctly initialized
-	// Should have exactly the same number of objects
-	if ((!self.is24hClock && self.times.count != self.periods.count)) {
-		return;
-	}
-	
 	// Times appearance
 	UIFont *timeFont = [UIFont systemFontOfSize:FONT_SIZE];
-	UIColor *timeColor = self.hourColor ? self.hourColor : [UIColor colorWithWhite:143/255. alpha:1];
-	
-	// Periods appearance
-	UIFont *periodFont = [UIFont systemFontOfSize:AM_SIZE];
-	UIColor *periodColor = self.hourColor ? self.hourColor : [UIColor colorWithWhite:143/255. alpha:1];
-	
+	UIColor *timeColor = [UIColor blackColor];
+	UIColor *lineColor = [UIColor colorWithHex:0xd7d7d7];
+
 	// Draw each times string
 	for (NSInteger i=0; i<self.times.count; i++) {
 		
-		
 		[timeColor set];
-		CGRect timeRect = CGRectMake(2.0, i * VERTICAL_DIFF + VERTICAL_INSET - 9, 20.0 + (self.is24hClock?22:0), FONT_SIZE + 2.0);
-		
-		
-		if([self.times[i] length] > 2){
-			
-			timeRect.size.width = LEFT_INSET - timeRect.origin.x - 10;
-			[self.times[i] drawInRect:timeRect withFont:timeFont lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentRight];
+		CGRect timeRect = CGRectMake(2.0, i * VERTICAL_DIFF + VERTICAL_INSET - 7, LEFT_INSET - 2.0f - 6, FONT_SIZE + 2.0);
 
-		}else{
-			[self.times[i] drawInRect:timeRect withFont:timeFont lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentRight];
-
-		}
-		
-		
-		
-		if (!self.is24hClock && i != 24/2) {
-			[periodColor set];
-			CGRect r = CGRectMake(2.0f + 20.0, i * VERTICAL_DIFF + VERTICAL_INSET - 7, 22.0, AM_SIZE + 2.0);
-			[self.periods[i] drawInRect:r withFont:periodFont lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentRight];
-		}
-		
+		[self.times[i] drawInRect:timeRect withFont:timeFont lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentRight];
 		
 		CGContextRef context = UIGraphicsGetCurrentContext();
 		CGContextSetInterpolationQuality(context, kCGInterpolationNone);
 		CGContextSaveGState(context);
-		CGContextSetStrokeColorWithColor(context, [[UIColor lightGrayColor] CGColor]);
-		CGContextSetLineWidth(context, 0.5);
+		CGContextSetStrokeColorWithColor(context, [lineColor CGColor]);
+		CGContextSetLineWidth(context,[UIScreen mainScreen].onePixelSize);
 		CGContextTranslateCTM(context, 0, 0.5);
-		
-		CGFloat x = 53.0f;
-		CGFloat y = VERTICAL_INSET + i * VERTICAL_DIFF;
-		
+		CGFloat x = 53.0f, y = VERTICAL_INSET + i * VERTICAL_DIFF;
 		CGContextBeginPath(context);
 		CGContextMoveToPoint(context, x, y);
-		CGContextAddLineToPoint(context, self.bounds.size.width, y);
+		CGContextAddLineToPoint(context, CGRectGetWidth(self.bounds), y);
 		CGContextStrokePath(context);
-		
-		if (i != self.times.count-1) {
-			
-			y = ceilf(VERTICAL_INSET + i * VERTICAL_DIFF + (VERTICAL_DIFF / 2.0f));
-			
-			
-			CGContextBeginPath(context);
-			CGContextMoveToPoint(context, x, y);
-			CGContextAddLineToPoint(context, self.bounds.size.width, y);
-			CGFloat dash1[] = {3.0, 1.0};
-			CGContextSetLineDash(context, 0.0, dash1, 2);
-			CGContextStrokePath(context);
-		}
-		
 		CGContextRestoreGState(context);
-		
-		
 		
 	}
 }
@@ -778,19 +1145,79 @@
 			 @"Noon",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12"];
 	return _times;
 }
-- (NSArray *) periods{
-	if (self.is24hClock) return nil;
-	if(_periods) return _periods;
-	
-	// Setup array consisting of string
-	// representing time periods aka AM or PM
-	// Matching the array of times 25 x
+
+@end
 
 
-	_periods = @[@"AM",@"AM",@"AM",@"AM",@"AM",@"AM",@"AM",@"AM",@"AM",@"AM",@"AM",@"AM",@"",
-			  @"PM",@"PM",@"PM",@"PM",@"PM",@"PM",@"PM",@"PM",@"PM",@"PM",@"PM",@"AM"];
+
+#define DAY_LABEL_WIDTH 35.0f
+@implementation TKWeekdaysView
+- (id) initWithFrame:(CGRect)frame{
+	if(!(self=[super initWithFrame:frame])) return nil;
 	
-	return _periods;
+	
+	NSMutableArray *labels = [NSMutableArray arrayWithCapacity:7];
+	for(NSInteger i=0;i<7;i++){
+		
+		TKDateLabel *label = [[TKDateLabel alloc] initWithFrame:CGRectMake(8+(DAY_LABEL_WIDTH+9)*i, 16, DAY_LABEL_WIDTH, DAY_LABEL_WIDTH)];
+		label.backgroundColor = [UIColor clearColor];
+		label.textColor = [UIColor blackColor];
+		label.textAlignment = NSTextAlignmentCenter;
+		label.backgroundColor = [UIColor randomColor];
+		label.layer.cornerRadius = DAY_LABEL_WIDTH / 2.0f;
+		label.clipsToBounds = YES;
+		[self addSubviewToBack:label];
+		[labels addObject:label];
+		
+	}
+	
+	
+	self.weekdayLabels = labels.copy;
+	
+    return self;
 }
+@end
 
+
+#pragma mark - TKDateLabel
+@implementation TKDateLabel
+@end
+
+#pragma mark - TKNowView
+@implementation TKNowView
+- (id) init{
+	if(!(self=[super initWithFrame:CGRectMake(0, 0, 320, 14)])) return nil;
+	
+	self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	
+	self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(2, 0, LEFT_INSET-2, CGRectGetHeight(self.frame))];
+	self.timeLabel.textColor = self.tintColor;
+	self.timeLabel.font = [UIFont boldSystemFontOfSize:10];
+	[self addSubview:self.timeLabel];
+	
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+	NSString *currentTime = [dateFormatter stringFromDate:[NSDate date]];
+	
+	self.timeLabel.text = currentTime;
+	
+	UIView *nob = [[UIView alloc] initWithFrame:CGRectMake(LEFT_INSET + 1, 3, 6, 6)];
+	nob.backgroundColor = self.tintColor;
+	nob.layer.cornerRadius = CGRectGetWidth(nob.frame)/2.0f;
+	[self addSubview:nob];
+	
+	UIView *line = [[UIView alloc] initWithFrame:CGRectMake(LEFT_INSET-5, 5.5, 5, 1)];
+	line.backgroundColor = self.tintColor;
+	[self addSubview:line];
+	
+	line = [[UIView alloc] initWithFrame:CGRectMake(LEFT_INSET + 8, 5.5, CGRectGetWidth(self.frame) - NOB_SIZE, 1)];
+	line.backgroundColor = self.tintColor;
+	line.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	[self addSubview:line];
+	
+	self.clipsToBounds = YES;
+	
+	
+	return self;
+}
 @end

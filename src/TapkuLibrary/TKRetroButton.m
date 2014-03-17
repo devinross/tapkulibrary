@@ -75,7 +75,7 @@
     
 	CGContextSetLineWidth(ctx, self.borderWidth);
 	
-	UIBezierPath *outlinePath = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(self.bounds, self.borderWidth, self.borderWidth) cornerRadius:(self.bounds.size.height-2)/2];
+	UIBezierPath *outlinePath = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(self.bounds, self.borderWidth, self.borderWidth) cornerRadius:(CGRectGetHeight(self.bounds)-2)/2];
 	
 	CGContextAddPath(ctx, outlinePath.CGPath);
 	CGContextStrokePath(ctx);
@@ -84,7 +84,7 @@
 	
 	if (self.highlighted || self.selected) {
 		CGContextSaveGState(ctx);
-		UIBezierPath *fillPath = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(self.bounds, self.insetWidth, self.insetWidth) cornerRadius:self.bounds.size.height/2];
+		UIBezierPath *fillPath = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(self.bounds, self.insetWidth, self.insetWidth) cornerRadius:CGRectGetHeight(self.bounds)/2];
 		
 		CGContextAddPath(ctx, fillPath.CGPath);
 		CGContextFillPath(ctx);

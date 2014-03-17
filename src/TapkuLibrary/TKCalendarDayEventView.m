@@ -76,10 +76,8 @@
 	self.titleLabel.numberOfLines = 2;
 	self.titleLabel.backgroundColor = [UIColor clearColor];
 	self.titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	self.titleLabel.textColor = [UIColor colorWithHex:0x194fa5];
+	self.titleLabel.textColor = [UIColor colorWithHex:0x1a719e];
 	self.titleLabel.font = [UIFont boldSystemFontOfSize:12];
-	self.titleLabel.shadowColor = [UIColor colorWithWhite:1 alpha:0.6];
-	self.titleLabel.shadowOffset = CGSizeMake(0, 1);
 	[self addSubview:self.titleLabel];
 
 	
@@ -90,29 +88,27 @@
 	self.locationLabel.numberOfLines = 2;
 	self.locationLabel.backgroundColor = [UIColor clearColor];
 	self.locationLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	self.locationLabel.textColor = [UIColor colorWithHex:0x194fa5];
+	self.locationLabel.textColor = [UIColor colorWithHex:0x1a719e];
 	self.locationLabel.font = [UIFont systemFontOfSize:12];
-	self.locationLabel.shadowColor = [UIColor colorWithWhite:1 alpha:0.6];
-	self.locationLabel.shadowOffset = CGSizeMake(0, 1);
 	[self addSubview:self.locationLabel];
 	
-	self.backgroundColor = [UIColor colorWithHex:0x7ca6ec alpha:0.8];
+	self.edgeView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1, CGRectGetHeight(self.frame))];
+	self.edgeView.backgroundColor = [UIColor colorWithHex:0x1badf8];
+	self.edgeView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+	[self addSubview:self.edgeView];
 	
-	self.layer.cornerRadius = 5.0;
-	self.layer.borderColor = [UIColor colorWithHex:0x6591db alpha:0.8].CGColor;
-	self.layer.borderWidth = 1;
+	self.backgroundColor = [UIColor colorWithHex:0x72c8f3 alpha:0.2];
+	
 }
 
 - (void) layoutSubviews{
 	[super layoutSubviews];
 	
-	
-	CGFloat h = self.frame.size.height;
-	
+	CGFloat h = CGRectGetHeight(self.frame);
 	if(h < 45){
 		self.titleLabel.frame = CGRectInset(self.bounds, 5, 5);
-		CGFloat y = self.titleLabel.frame.size.height + self.titleLabel.frame.origin.y;
-		self.locationLabel.frame = CGRectMake(self.titleLabel.frame.origin.x, y, 0, 0);
+		CGFloat y = CGRectGetMaxY(self.titleLabel.frame);
+		self.locationLabel.frame = CGRectMake(CGRectGetMinX(self.titleLabel.frame), y, 0, 0);
 		self.locationLabel.hidden = YES;
 		return;
 	}
@@ -121,9 +117,7 @@
 	CGFloat hh = h > 200 ? 14 * 2 : 14;
 	CGRect r = CGRectInset(self.bounds, 5, 5);
 	r.size.height = hh;
-	
 	r = CGRectIntersection(r, self.bounds);
-	
 	
 	self.titleLabel.frame = r;
 	[self.titleLabel sizeToFit];
@@ -131,7 +125,7 @@
 	hh = h > 200 ? (FONT_SIZE+2.0) * 2 : FONT_SIZE+2;
 	r = CGRectInset(self.bounds, 5, 5);
 	r.size.height = hh;
-	r.origin.y += self.titleLabel.frame.size.height;
+	r.origin.y += CGRectGetHeight(self.titleLabel.frame);
 	r = CGRectIntersection(r, self.bounds);
 
 	self.locationLabel.frame = r;
@@ -143,15 +137,10 @@
 - (CGFloat) contentHeight{
 	
 	if(!self.locationLabel.hidden && self.locationLabel.text.length > 0)
-		return self.locationLabel.frame.size.height + self.locationLabel.frame.origin.y - 4;
-	
-	
+		return CGRectGetMaxY(self.locationLabel.frame) - 4;
 	
 	if(!self.titleLabel.hidden && self.titleLabel.text.length > 0)
-		return self.titleLabel.frame.size.height + self.titleLabel.frame.origin.y - 4;
-	
-	
-	
+		return CGRectGetMaxY(self.titleLabel.frame) - 4;
 	return 0;
 	
 }

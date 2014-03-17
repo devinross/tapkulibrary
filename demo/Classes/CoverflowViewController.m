@@ -80,7 +80,7 @@
 	[self.view addSubview:infoButton];
 	
 	
-	UIView *center = [[UIView alloc] initWithFrame:CGRectMake(self.view.bounds.size.width/2.0, 0,1, 1000)];
+	UIView *center = [[UIView alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.view.bounds)/2.0, 0,1, 1000)];
 	center.backgroundColor = [UIColor redColor];
 	center.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 	//[self.view addSubview:center];

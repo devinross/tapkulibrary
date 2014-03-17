@@ -59,8 +59,9 @@
     [super layoutSubviews];
 	
 	CGRect r = CGRectInset(self.contentView.bounds, 8, 8);
-	r.origin.x += self.label.frame.size.width + 6;
-	r.size.width -= self.label.frame.size.width + 6;
+	CGFloat wid = CGRectGetWidth(self.label.frame);
+	r.origin.x += wid + 6;
+	r.size.width -= wid + 6;
 	_field.frame = r;
 	
 	

@@ -132,7 +132,7 @@
 - (UISearchBar*) searchBar{
 	if(_searchBar) return _searchBar;
 	
-	_searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+	_searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44)];
 	_searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	return _searchBar;
 }

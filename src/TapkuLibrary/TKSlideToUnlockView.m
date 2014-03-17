@@ -76,7 +76,7 @@
 
 #pragma mark Init & Friends
 - (id) init{
-	CGRect frame = CGRectInset(CGRectMake(0, 15, [UIScreen mainScreen].bounds.size.width, 62), 15, 0) ;
+	CGRect frame = CGRectInset(CGRectMake(0, 15, CGRectGetWidth([UIScreen mainScreen].bounds), 62), 15, 0) ;
 	self = [self initWithFrame:frame];
 	return self;
 }

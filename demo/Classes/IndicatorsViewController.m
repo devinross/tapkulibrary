@@ -99,21 +99,21 @@
 	if(_progressBar) return _progressBar;
 	
 	_progressBar = [[TKProgressBarView alloc] initWithStyle:TKProgressBarViewStyleShort];
-	_progressBar.center = CGPointMake(self.view.bounds.size.width/2, 220);
+	_progressBar.center = CGPointMake(CGRectGetWidth(self.view.bounds)/2, 220);
 	return _progressBar;
 }
 - (TKProgressBarView *) progressBarAlternative{
 	if(_progressBarAlternative) return _progressBarAlternative;
 	
 	_progressBarAlternative = [[TKProgressBarView alloc] initWithStyle:TKProgressBarViewStyleLong];
-	_progressBarAlternative.center = CGPointMake(self.view.bounds.size.width/2, 320);
+	_progressBarAlternative.center = CGPointMake(CGRectGetWidth(self.view.bounds)/2, 320);
 	return _progressBarAlternative;
 }
 - (TKProgressCircleView *) progressCircle{
 	if(_progressCircle) return _progressCircle;
 
 	_progressCircle = [[TKProgressCircleView alloc] init];
-	_progressCircle.center = CGPointMake(self.view.bounds.size.width/2, 120);
+	_progressCircle.center = CGPointMake(CGRectGetWidth(self.view.bounds)/2, 120);
 	return _progressCircle;
 }
 

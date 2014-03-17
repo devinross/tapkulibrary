@@ -58,6 +58,8 @@
 /** The location label for the event. */
 @property (nonatomic,strong) UILabel *locationLabel;
 
+@property (nonatomic,strong) UIView *edgeView;
+
 - (CGFloat) contentHeight;
 
 

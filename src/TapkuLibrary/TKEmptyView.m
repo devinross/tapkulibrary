@@ -124,7 +124,7 @@
     _subtitleLabel.text = subtitleString;
     
     _imageView = [[UIImageView alloc] initWithImage:[self maskedImageWithImage:image]];
-    _imageView.frame = CGRectMake((int)(frame.size.width/2)-(_imageView.frame.size.width/2), (int)(frame.size.height/2)-(_imageView.frame.size.height/2), _imageView.image.size.width, _imageView.image.size.height);
+    _imageView.frame = CGRectMakeWithSize((int)(CGRectGetWidth(frame)/2)-(CGRectGetWidth(_imageView.frame)/2), (int)(CGRectGetHeight(frame)/2)-(CGRectGetHeight(_imageView.frame)/2), _imageView.image.size);
 
 	    
     [self addSubview:_imageView];
@@ -157,7 +157,7 @@
 	_imageView.frame = ir;
 	
 	_titleLabel.frame = CGRectMake(0,(int) MAX( s.height/2+s.height/4,(int)ir.origin.y+ir.size.height+4) , s.width , 20);
-	_subtitleLabel.frame = CGRectMake((int)0, _titleLabel.frame.origin.y + _titleLabel.frame.size.height , s.width , 16);
+	_subtitleLabel.frame = CGRectMake((int)0, CGRectGetMaxY(_titleLabel.frame), s.width , 16);
 
 }
 

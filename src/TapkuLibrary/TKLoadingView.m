@@ -43,7 +43,7 @@
 	self.loadingLabel.text = [NSString stringWithFormat:@"%@...",NSLocalizedString(@"Loading", @"Loading")];
 	self.loadingLabel.font = [UIFont boldSystemFontOfSize:16];
 	[self.loadingLabel sizeToFit];
-	self.loadingLabel.center = CGPointMake(frame.size.width/2.0, frame.size.height/2.0);
+	self.loadingLabel.center = CGPointMake(CGRectGetWidth(frame)/2.0, CGRectGetHeight(frame)/2.0);
 	self.loadingLabel.frame = CGRectIntegral(self.loadingLabel.frame);
 	self.loadingLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 	[self addSubview:self.loadingLabel];
@@ -62,7 +62,7 @@
 	if(!self.window) return;
 	
 	[self.loadingLabel sizeToFit];
-	self.loadingLabel.center = CGPointMake(self.frame.size.width/2.0, self.frame.size.height/2.0);
+	self.loadingLabel.center = CGPointMake(CGRectGetWidth(self.frame)/2.0, CGRectGetHeight(self.frame)/2.0);
 	self.loadingLabel.frame = CGRectIntegral(self.loadingLabel.frame);
 	
 	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_next) object:nil];

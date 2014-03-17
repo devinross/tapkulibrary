@@ -43,10 +43,8 @@
 	self.view.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1];
 
 
-	
-	CGFloat y = self.view.bounds.size.height/2.0;
-	CGFloat x = self.view.bounds.size.width/2.0;
-	
+	CGFloat y = CGRectGetHeight(self.view.bounds)/2.0;
+	CGFloat x = CGRectGetWidth(self.view.bounds)/2.0;
 	self.circle = [[TKProgressCircleView alloc] init];
 	self.circle.center = CGPointMake(x,y);
 	self.circle.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;

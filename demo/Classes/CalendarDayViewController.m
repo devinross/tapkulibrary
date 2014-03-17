@@ -34,6 +34,17 @@
   @[@"Greet the king at the castle", @"Burger King", @19, @30, @30, @0]];
 	
 }
+- (void) viewWillAppear:(BOOL)animated{
+	[super viewWillAppear:animated];
+	
+	self.navigationController.navigationBar.hairlineDividerImageView.hidden = YES;
+	self.dayView.daysBackgroundView.backgroundColor = [UIColor colorWithHex:0xf8f8f8];
+}
+- (void) viewWillDisappear:(BOOL)animated{
+	[super viewWillDisappear:animated];
+	self.navigationController.navigationBar.hairlineDividerImageView.hidden = NO;
+
+}
 
 #pragma mark TKCalendarDayViewDelegate
 - (NSArray *) calendarDayTimelineView:(TKCalendarDayView*)calendarDayTimeline eventsForDate:(NSDate *)eventDate{
@@ -41,7 +52,7 @@
 	if([eventDate compare:[NSDate dateWithTimeIntervalSinceNow:-24*60*60]] == NSOrderedAscending) return @[];
 	if([eventDate compare:[NSDate dateWithTimeIntervalSinceNow:24*60*60]] == NSOrderedDescending) return @[];
 
-	NSDateComponents *info = [[NSDate date] dateComponentsWithTimeZone:calendarDayTimeline.timeZone];
+	NSDateComponents *info = [[NSDate date] dateComponentsWithTimeZone:calendarDayTimeline.calendar.timeZone];
 	info.second = 0;
 	NSMutableArray *ret = [NSMutableArray array];
 	

@@ -55,8 +55,9 @@
 	
 	
 	CGRect r = CGRectInset(self.contentView.bounds, 8, 8);
-	r.origin.x += self.label.frame.size.width + 0;
-	r.size.width -= self.label.frame.size.width + 0;
+	CGFloat wid = CGRectGetWidth(self.label.frame);
+	r.origin.x += wid;
+	r.size.width -= wid;
 	_textView.frame = r;
 
 }

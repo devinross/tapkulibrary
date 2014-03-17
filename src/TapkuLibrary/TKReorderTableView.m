@@ -82,7 +82,7 @@
 
 - (UIImageView*) draggingImageViewWithImage:(UIImage*)image frame:(CGRect)frame{
 	UIImageView *dragging = [[UIImageView alloc] initWithImage:image];
-	dragging.frame = CGRectOffset(dragging.bounds, frame.origin.x, frame.origin.y);
+	dragging.frame = CGRectOffset(dragging.bounds, CGRectGetMinX(frame), CGRectGetMinY(frame));
 	dragging.layer.masksToBounds = NO;
 	dragging.layer.shadowColor = [UIColor blackColor].CGColor;
 	dragging.layer.shadowOffset = CGSizeMake(0, 0);
@@ -251,11 +251,11 @@
     if (newOffset.y < -self.contentInset.top)
         newOffset.y = -self.contentInset.top;
 	
-	else if (self.contentSize.height < self.frame.size.height)
+	else if (self.contentSize.height < CGRectGetHeight(self.frame))
         newOffset = currentOffset;
 	
-	else if (newOffset.y > self.contentSize.height - self.frame.size.height)
-        newOffset.y = self.contentSize.height - self.frame.size.height;
+	else if (newOffset.y > self.contentSize.height - CGRectGetHeight(self.frame))
+        newOffset.y = self.contentSize.height - CGRectGetHeight(self.frame);
     
 	
 	self.contentOffset = newOffset;

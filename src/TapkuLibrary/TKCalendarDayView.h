@@ -38,6 +38,17 @@
 /** `TKCalendarDayView` imitates the day view in the Calendar app on iPhone. */
 @interface TKCalendarDayView : UIView <UIScrollViewDelegate>
 
+- (id) initWithFrame:(CGRect)frame calendar:(NSCalendar*)calendar;
+
+- (id) initWithFrame:(CGRect)frame timeZone:(NSTimeZone*)timeZone;
+
+
+@property (nonatomic,strong) NSCalendar *calendar;
+
+
+
+
+@property (nonatomic,strong) UIView *daysBackgroundView;
 
 /** The date for the current timeline. */
 @property (nonatomic,strong) NSDate *date;
@@ -52,7 +63,7 @@
 @property (nonatomic,assign) BOOL is24hClock;
 
 /** The time zone for day view. */
-@property (nonatomic,strong) NSTimeZone *timeZone;
+//@property (nonatomic,strong) NSTimeZone *timeZone;
 
 /** Reloads the events. */
 - (void) reloadData;
@@ -98,5 +109,3 @@
 - (NSArray *) calendarDayTimelineView:(TKCalendarDayView*)calendarDay eventsForDate:(NSDate *)date;
 
 @end
-
-

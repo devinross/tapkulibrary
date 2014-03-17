@@ -79,7 +79,7 @@
 - (UIView*) loadingView{
 	if(_loadingView) return _loadingView;
 	
-	_loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
+	_loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 44)];
 	_loadingView.backgroundColor = [UIColor clearColor];
 	_loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	

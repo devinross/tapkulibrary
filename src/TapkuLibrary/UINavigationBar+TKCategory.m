@@ -40,7 +40,7 @@
 }
 
 - (UIImageView*) _hairlineImageViewUnder:(UIView *)view {
-    if ([view isKindOfClass:UIImageView.class] && view.bounds.size.height == 0.5) {
+    if ([view isKindOfClass:UIImageView.class] && CGRectGetHeight(view.bounds) == 0.5) {
 		return (UIImageView *)view;
     }
     for (UIView *subview in view.subviews) {
