@@ -51,6 +51,7 @@
 #define VERTICAL_DIFF 45.0
 #define TIMELINE_HEIGHT VERTICAL_INSET * 2 + 24 * (VERTICAL_DIFF)
 #define DAY_FONT_SIZE 18
+#define WEEKEND_TEXT_COLOR [UIColor colorWithWhite:167/255. alpha:1]
 
 
 #pragma mark - TKNowView
@@ -63,6 +64,7 @@
 @property (nonatomic,strong) NSDate *date;
 @property (nonatomic,assign) BOOL today;
 @property (nonatomic,assign) BOOL selected;
+@property (nonatomic,assign) BOOL weekend;
 @end
 
 
@@ -192,7 +194,7 @@
 		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(xmargin + cnt* wid/daySymbols.count, 0, 40, 20)];
 		label.font = [UIFont systemFontOfSize:10];
 		label.text = [str substringToIndex:1];
-		label.textColor = cnt == 0 || cnt == 6 ? [UIColor colorWithWhite:167/255. alpha:1] : [UIColor blackColor];
+		label.textColor = cnt == 0 || cnt == 6 ? WEEKEND_TEXT_COLOR : [UIColor blackColor];
 		label.textAlignment = NSTextAlignmentCenter;
 		[label sizeToFit];
 		label.userInteractionEnabled = NO;
@@ -1111,6 +1113,7 @@
 	NSMutableArray *labels = [NSMutableArray arrayWithCapacity:7];
 	for(NSInteger i=0;i<7;i++){
 		TKDateLabel *label = [[TKDateLabel alloc] initWithFrame:CGRectMake(8+(DAY_LABEL_WIDTH+9)*i, 16, DAY_LABEL_WIDTH, DAY_LABEL_WIDTH)];
+		label.weekend = i % 6 == 0;
 		[self addSubviewToBack:label];
 		[labels addObject:label];
 	}
@@ -1148,7 +1151,8 @@
 		self.textColor = [UIColor whiteColor];
 		self.font = [UIFont boldSystemFontOfSize:DAY_FONT_SIZE];
 	}else{
-		self.textColor = self.today ? self.tintColor : [UIColor blackColor];
+		UIColor *clr = self.weekend ? WEEKEND_TEXT_COLOR : [UIColor blackColor];
+		self.textColor = self.today ? self.tintColor : clr;
 		self.backgroundColor = [UIColor clearColor];
 		self.font = [UIFont systemFontOfSize:DAY_FONT_SIZE];
 	}
@@ -1164,6 +1168,10 @@
 - (void) setToday:(BOOL)today{
 	if(_today == today) return;
 	_today = today;
+	[self _updateLabelColorState];
+}
+- (void) setWeekend:(BOOL)weekend{
+	_weekend = weekend;
 	[self _updateLabelColorState];
 }
 
