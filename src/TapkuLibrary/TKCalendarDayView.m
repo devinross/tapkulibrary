@@ -57,6 +57,7 @@
 #pragma mark - TKNowView
 @interface TKNowView : UIView
 @property (nonatomic,strong) UILabel *timeLabel;
+- (void) updateTime;
 @end
 
 #pragma mark - TKDateLabel
@@ -439,6 +440,7 @@
 	[self _refreshDataWithPageAtIndex:2];
 	[self _setupDaysView];
 	[self _scrollToTopEvent:NO];
+	[self.nowLineView updateTime];
 }
 - (void) _refreshDataWithPageAtIndex:(NSInteger)index{
 	
@@ -1189,11 +1191,7 @@
 	self.timeLabel.font = [UIFont boldSystemFontOfSize:10];
 	[self addSubview:self.timeLabel];
 	
-	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-	NSString *currentTime = [dateFormatter stringFromDate:[NSDate date]];
-	
-	self.timeLabel.text = currentTime;
+
 	
 	UIView *nob = [[UIView alloc] initWithFrame:CGRectMake(LEFT_INSET + 1, 3, 6, 6)];
 	nob.backgroundColor = self.tintColor;
@@ -1214,8 +1212,17 @@
 	
 	self.clipsToBounds = YES;
 	
+	[self updateTime];
+	
 	
 	return self;
+}
+
+- (void) updateTime{
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+	self.timeLabel.text = [dateFormatter stringFromDate:[NSDate date]];
+	
 }
 
 - (void) tintColorDidChange{
