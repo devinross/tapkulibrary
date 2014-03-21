@@ -81,10 +81,9 @@
 
 #define COVERFLOW NSLocalizedString(@"Coverflow", @"")
 #define MONTH_GRID NSLocalizedString(@"Month Grid Calendar", @"")
+#define DAY_VIEW NSLocalizedString(@"Day View Calendar", @"")
 #define EMPTY_SIGN NSLocalizedString(@"Empty Sign", @"")
 #define HUD NSLocalizedString(@"Loading HUD",@"")
-
-
 #define ALERTS NSLocalizedString(@"Alerts",@"")
 #define SLIDE NSLocalizedString(@"Slide to Unlock",@"")
 #define BUTTONS NSLocalizedString(@"Buttons",@"")
@@ -102,7 +101,7 @@
 	
 	
 	self.data = @[
-  @{@"rows" : @[COVERFLOW,MONTH_GRID,WEB_VC], @"title" : @"Views"},
+  @{@"rows" : @[COVERFLOW,MONTH_GRID,DAY_VIEW,WEB_VC], @"title" : @"Views"},
   @{@"rows" : @[EMPTY_SIGN,HUD,ALERTS,SLIDE,BUTTONS,CUSTOM_KEYBOARDS], @"title" : @"UI Elements"},
   @{@"rows" : @[LABEL_CELLS,MORE_CELLS], @"title" : @"Table View Cells"},
   @{@"rows" : @[IMAGE_CACHE,HTTP_PROGRESS], @"title" : @"Network"}];
@@ -151,7 +150,7 @@
 	}else if([str isEqualToString:MONTH_GRID])
 		vc = [[CalendarMonthViewController alloc] initWithSunday:YES];
 	
-	else if(s==0 && r==2)
+	else if([str isEqualToString:DAY_VIEW])
 		vc = CalendarDayViewController.new;
 	
 	else if([str isEqualToString:EMPTY_SIGN])
@@ -181,7 +180,7 @@
 		vc = [[TKWebViewController alloc] initWithURL:[NSURL URLWithString:@"http://apple.com"]];
 	
 	
-	if(self.detailViewController && !(s==0))
+	if(self.detailViewController && ([str isEqualToString:MONTH_GRID] || [str isEqualToString:DAY_VIEW]))
 		[self.detailViewController setupWithMainController:vc];
 	else
 		[self.navigationController pushViewController:vc animated:YES];
