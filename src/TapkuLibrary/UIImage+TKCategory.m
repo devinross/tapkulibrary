@@ -43,9 +43,7 @@
 	if([[UIScreen mainScreen] respondsToSelector:@selector(scale)]){
 		s = [[UIScreen mainScreen] scale];
 	}
-	
 	NSString *path = [NSString stringWithFormat:@"%@%@.png",str,s > 1 ? @"@2x":@""];
-	NSLog(@"%@",TKBUNDLE(path));
 	return [UIImage imageWithCGImage:[UIImage imageWithContentsOfFile:TKBUNDLE(path)].CGImage scale:s orientation:UIImageOrientationUp];
 
 }

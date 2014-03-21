@@ -133,7 +133,6 @@
 	
 	UITableViewCell *cell = [tv cellForRowAtIndexPath:indexPath];
 	UIViewController *vc;
-	NSInteger s = indexPath.section, r = indexPath.row;
 	NSString *str = cell.textLabel.text;
 	
 	if([str isEqualToString:COVERFLOW]){
