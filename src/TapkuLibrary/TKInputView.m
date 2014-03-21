@@ -99,7 +99,7 @@
 		self.containerView.frame = cntRect;
 		
 		self.hideKeyboardKey = [[TKInputKey alloc] initWithFrame:CGRectMake(frame.size.width - 80 - 32, frame.size.height - 75 - 12, 80, 75)
-														  symbol:[UIImage imageNamedTK:@"unlockslider/down-keyboard"]
+														  symbol:[UIImage imageNamedTK:@"keyboard/down-keyboard"]
 													  normalType:TKInputKeyTypeDefault
 													selectedType:TKInputKeyTypeHighlighted runner:NO];
 		self.hideKeyboardKey.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
@@ -108,7 +108,7 @@
 		[self addSubview:self.hideKeyboardKey];
 		
 		UIImageView *dots = [UIImageView imageViewWithFrame:CGRectMakeWithSize(CGRectGetWidth(frame) - 18, CGRectGetHeight(frame) - 57, dots.frame.size)];
-		dots.image = [UIImage imageNamedTK:@"unlockslider/move-keyboard-dots"];
+		dots.image = [UIImage imageNamedTK:@"keyboard/move-keyboard-dots"];
 		dots.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
 		[self addSubview:dots];
 	}

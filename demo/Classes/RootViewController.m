@@ -45,6 +45,7 @@
 #import "CalendarDayViewController.h"
 #import "SlideToUnlockViewController.h"
 #import "ButtonViewController.h"
+#import "CustomKeyboardsViewController.h"
 
 @interface UINavigationController (Rotation_IOS6)
 @end
@@ -78,16 +79,33 @@
 	return [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad ? YES : UIInterfaceOrientationIsPortrait(interfaceOrientation) ;
 }
 
+#define COVERFLOW NSLocalizedString(@"Coverflow", @"")
+#define MONTH_GRID NSLocalizedString(@"Month Grid Calendar", @"")
+#define EMPTY_SIGN NSLocalizedString(@"Empty Sign", @"")
+#define HUD NSLocalizedString(@"Loading HUD",@"")
+
+
+#define ALERTS NSLocalizedString(@"Alerts",@"")
+#define SLIDE NSLocalizedString(@"Slide to Unlock",@"")
+#define BUTTONS NSLocalizedString(@"Buttons",@"")
+#define LABEL_CELLS NSLocalizedString(@"Label Cells",@"")
+#define MORE_CELLS NSLocalizedString(@"More Cells",@"")
+#define IMAGE_CACHE NSLocalizedString(@"Image Cache",@"")
+#define HTTP_PROGRESS NSLocalizedString(@"HTTP Request Progress",@"")
+#define WEB_VC NSLocalizedString(@"Web View Controller",@"")
+#define CUSTOM_KEYBOARDS NSLocalizedString(@"Custom Keyboards",@"")
 
 #pragma mark View Lifecycle
 - (void) viewDidLoad{
 	[super viewDidLoad];
 
+	
+	
 	self.data = @[
-  @{@"rows" : @[@"Coverflow",@"Month Grid Calendar",@"Day Calendar"], @"title" : @"Views"},
-  @{@"rows" : @[@"Empty Sign",@"Loading HUD",@"Alerts",@"Slide to Unlock",@"Buttons"], @"title" : @"UI Elements"},
-  @{@"rows" : @[@"Label Cells",@"More Cells"], @"title" : @"Table View Cells"},
-  @{@"rows" : @[@"Image Cache",@"HTTP Request Progress",@"Web ViewController"], @"title" : @"Network"}];
+  @{@"rows" : @[COVERFLOW,MONTH_GRID,WEB_VC], @"title" : @"Views"},
+  @{@"rows" : @[EMPTY_SIGN,HUD,ALERTS,SLIDE,BUTTONS,CUSTOM_KEYBOARDS], @"title" : @"UI Elements"},
+  @{@"rows" : @[LABEL_CELLS,MORE_CELLS], @"title" : @"Table View Cells"},
+  @{@"rows" : @[IMAGE_CACHE,HTTP_PROGRESS], @"title" : @"Network"}];
 }
 
 
@@ -114,10 +132,12 @@
 - (void) tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tv deselectRowAtIndexPath:indexPath animated:YES];
 	
+	UITableViewCell *cell = [tv cellForRowAtIndexPath:indexPath];
 	UIViewController *vc;
 	NSInteger s = indexPath.section, r = indexPath.row;
+	NSString *str = cell.textLabel.text;
 	
-	if(s==0 && r == 0){
+	if([str isEqualToString:COVERFLOW]){
 		vc = [[CoverflowViewController alloc] init];
 		
 		if(self.detailViewController)
@@ -128,33 +148,36 @@
 		}
 
 		return;
-	}else if(s==0 && r==1)
+	}else if([str isEqualToString:MONTH_GRID])
 		vc = [[CalendarMonthViewController alloc] initWithSunday:YES];
 	
 	else if(s==0 && r==2)
-		vc = [[CalendarDayViewController alloc] init];
+		vc = CalendarDayViewController.new;
 	
-	else if(s==1 && r==0)
-		vc = [[EmptyViewController alloc] init];
-	else if(s==1 && r==1)
-		vc = [[IndicatorsViewController alloc] init];
-	else if(s==1 && r==2)
-		vc = [[AlertsViewController alloc] init];
-	else if(s==1 && r==3)
-		vc = [[SlideToUnlockViewController alloc] init];
-	else if(s==1 && r==4)
-		vc = [[ButtonViewController alloc] init];
+	else if([str isEqualToString:EMPTY_SIGN])
+		vc = EmptyViewController.new;
+	else if([str isEqualToString:HUD])
+		vc = IndicatorsViewController.new;
+	else if([str isEqualToString:ALERTS])
+		vc = AlertsViewController.new;
+	else if([str isEqualToString:SLIDE])
+		vc = SlideToUnlockViewController.new;
+	else if([str isEqualToString:BUTTONS])
+		vc = ButtonViewController.new;
 	
-	else if(s==2 && r==0)
-		vc = [[LabelViewController alloc] init];
-	else if(s==2 && r==1)
-		vc = [[MoreCellsViewController alloc] init];
+	else if([str isEqualToString:CUSTOM_KEYBOARDS])
+		vc = CustomKeyboardsViewController.new;
 	
-	else if(s==3 && r==0)
-		vc = [[ImageCenterViewController alloc] init];
-	else if(s==3 && r==1)
-		vc = [[NetworkRequestProgressViewController alloc] init];
-	else
+	else if([str isEqualToString:LABEL_CELLS])
+		vc = LabelViewController.new;
+	else if([str isEqualToString:MORE_CELLS])
+		vc = MoreCellsViewController.new;
+	
+	else if([str isEqualToString:IMAGE_CACHE])
+		vc = ImageCenterViewController.new;
+	else if([str isEqualToString:HTTP_PROGRESS])
+		vc = NetworkRequestProgressViewController.new;
+	else if([str isEqualToString:WEB_VC])
 		vc = [[TKWebViewController alloc] initWithURL:[NSURL URLWithString:@"http://apple.com"]];
 	
 	
