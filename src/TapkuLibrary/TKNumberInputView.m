@@ -84,7 +84,7 @@
 		BOOL insert = YES;
 		
 		if(self.textField.delegate)
-			insert = [self.textField.delegate textField:self.textField shouldChangeCharactersInRange:NSMakeRange(self.textField.text.length, 1) replacementString:self.selectedKey.label.text];
+			insert = [self.textField.delegate textField:self.textField shouldChangeCharactersInRange:NSMakeRange(self.textField.text.length, 0) replacementString:self.selectedKey.label.text];
 		
 		if(insert)
 			[self.textField insertText:self.selectedKey.label.text];
