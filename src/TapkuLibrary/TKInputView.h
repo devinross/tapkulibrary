@@ -1,6 +1,6 @@
 //
-//  TKSoundAlertController.h
-//  Created by Devin Ross on 3/10/14.
+//  TKInputView.h
+//  Created by Devin Ross on 3/21/14.
 //
 /*
  
@@ -29,18 +29,26 @@
  
  */
 
-@import Foundation;
-@import AVFoundation;
-@import AudioToolbox;
+@import UIKit;
+@class TKInputView;
+@class TKInputKey;
 
-@interface TKSoundAlertController : NSObject <AVAudioPlayerDelegate>
+@protocol TKInputViewDelegate <NSObject>
 
-+ (TKSoundAlertController*) sharedInstance;
+- (void) inputView:(TKInputView*)inputView didSelectKey:(TKInputKey*)key;
 
-@property (assign,nonatomic) BOOL on;
+@end
 
-+ (void) playAIF:(NSString*)soundName;
-+ (void) playAIFF:(NSString*)soundName;
-+ (void) playWAV:(NSString*)soundName;
+@interface TKInputView : UIView <UIInputViewAudioFeedback>
+
+- (id) initWithFrame:(CGRect)frame withKeysModels:(NSArray*)keys;
+
+@property (nonatomic,assign) id <TKInputViewDelegate> delegate;
+@property (nonatomic,assign) UITextField *textField;
+@property (nonatomic,strong) TKInputKey *backspaceKey;
+@property (nonatomic,strong) TKInputKey *hideKeyboardKey;
+
+@property (nonatomic,readonly) TKInputKey *selectedKey;
+@property (nonatomic,strong) UIView *containerView;
 
 @end

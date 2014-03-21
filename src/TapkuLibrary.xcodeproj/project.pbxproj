@@ -9,6 +9,18 @@
 /* Begin PBXBuildFile section */
 		2002B17717D241C2002440AE /* UIScreen+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2002B17517D241C2002440AE /* UIScreen+TKCategory.h */; };
 		2002B17817D241C2002440AE /* UIScreen+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2002B17617D241C2002440AE /* UIScreen+TKCategory.m */; };
+		2007869B18DCAEAD008526DE /* TKInputView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2007869918DCAEAD008526DE /* TKInputView.h */; };
+		2007869C18DCAEAD008526DE /* TKInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2007869A18DCAEAD008526DE /* TKInputView.m */; };
+		200786A018DCAEC6008526DE /* TKInputKey.h in Headers */ = {isa = PBXBuildFile; fileRef = 2007869E18DCAEC6008526DE /* TKInputKey.h */; };
+		200786A118DCAEC6008526DE /* TKInputKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 2007869F18DCAEC6008526DE /* TKInputKey.m */; };
+		200786A418DCB0D7008526DE /* TKNumberInputView.h in Headers */ = {isa = PBXBuildFile; fileRef = 200786A218DCB0D7008526DE /* TKNumberInputView.h */; };
+		200786A518DCB0D7008526DE /* TKNumberInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 200786A318DCB0D7008526DE /* TKNumberInputView.m */; };
+		200786A818DCB277008526DE /* TKDecimalInputView.h in Headers */ = {isa = PBXBuildFile; fileRef = 200786A618DCB277008526DE /* TKDecimalInputView.h */; };
+		200786A918DCB277008526DE /* TKDecimalInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 200786A718DCB277008526DE /* TKDecimalInputView.m */; };
+		200786AC18DCB418008526DE /* TKNumberInputWithNextKeyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 200786AA18DCB418008526DE /* TKNumberInputWithNextKeyView.h */; };
+		200786AD18DCB418008526DE /* TKNumberInputWithNextKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 200786AB18DCB418008526DE /* TKNumberInputWithNextKeyView.m */; };
+		200786B018DCB55C008526DE /* TKDecimalInputWithNextKeyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 200786AE18DCB55C008526DE /* TKDecimalInputWithNextKeyView.h */; };
+		200786B118DCB55C008526DE /* TKDecimalInputWithNextKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 200786AF18DCB55C008526DE /* TKDecimalInputWithNextKeyView.m */; };
 		2014592817A1077D00629488 /* TKReorderTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2014592617A1077D00629488 /* TKReorderTableView.h */; };
 		2014592917A1077D00629488 /* TKReorderTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2014592717A1077D00629488 /* TKReorderTableView.m */; };
 		2014592C17A107FF00629488 /* UIGestureRecognizer+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2014592A17A107FF00629488 /* UIGestureRecognizer+TKCategory.h */; };
@@ -164,6 +176,18 @@
 /* Begin PBXFileReference section */
 		2002B17517D241C2002440AE /* UIScreen+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+TKCategory.h"; sourceTree = "<group>"; };
 		2002B17617D241C2002440AE /* UIScreen+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+TKCategory.m"; sourceTree = "<group>"; };
+		2007869918DCAEAD008526DE /* TKInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKInputView.h; sourceTree = "<group>"; };
+		2007869A18DCAEAD008526DE /* TKInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKInputView.m; sourceTree = "<group>"; };
+		2007869E18DCAEC6008526DE /* TKInputKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKInputKey.h; sourceTree = "<group>"; };
+		2007869F18DCAEC6008526DE /* TKInputKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKInputKey.m; sourceTree = "<group>"; };
+		200786A218DCB0D7008526DE /* TKNumberInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKNumberInputView.h; sourceTree = "<group>"; };
+		200786A318DCB0D7008526DE /* TKNumberInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKNumberInputView.m; sourceTree = "<group>"; };
+		200786A618DCB277008526DE /* TKDecimalInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDecimalInputView.h; sourceTree = "<group>"; };
+		200786A718DCB277008526DE /* TKDecimalInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDecimalInputView.m; sourceTree = "<group>"; };
+		200786AA18DCB418008526DE /* TKNumberInputWithNextKeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKNumberInputWithNextKeyView.h; sourceTree = "<group>"; };
+		200786AB18DCB418008526DE /* TKNumberInputWithNextKeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKNumberInputWithNextKeyView.m; sourceTree = "<group>"; };
+		200786AE18DCB55C008526DE /* TKDecimalInputWithNextKeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDecimalInputWithNextKeyView.h; sourceTree = "<group>"; };
+		200786AF18DCB55C008526DE /* TKDecimalInputWithNextKeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDecimalInputWithNextKeyView.m; sourceTree = "<group>"; };
 		2014592617A1077D00629488 /* TKReorderTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKReorderTableView.h; sourceTree = "<group>"; };
 		2014592717A1077D00629488 /* TKReorderTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKReorderTableView.m; sourceTree = "<group>"; };
 		2014592A17A107FF00629488 /* UIGestureRecognizer+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+TKCategory.h"; sourceTree = "<group>"; };
@@ -376,6 +400,25 @@
 				20F6153917E6741D007F443C /* Accelerate.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2007869D18DCAEB0008526DE /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				2007869918DCAEAD008526DE /* TKInputView.h */,
+				2007869A18DCAEAD008526DE /* TKInputView.m */,
+				2007869E18DCAEC6008526DE /* TKInputKey.h */,
+				2007869F18DCAEC6008526DE /* TKInputKey.m */,
+				200786A218DCB0D7008526DE /* TKNumberInputView.h */,
+				200786A318DCB0D7008526DE /* TKNumberInputView.m */,
+				200786A618DCB277008526DE /* TKDecimalInputView.h */,
+				200786A718DCB277008526DE /* TKDecimalInputView.m */,
+				200786AA18DCB418008526DE /* TKNumberInputWithNextKeyView.h */,
+				200786AB18DCB418008526DE /* TKNumberInputWithNextKeyView.m */,
+				200786AE18DCB55C008526DE /* TKDecimalInputWithNextKeyView.h */,
+				200786AF18DCB55C008526DE /* TKDecimalInputWithNextKeyView.m */,
+			);
+			name = Keyboard;
 			sourceTree = "<group>";
 		};
 		32C88DFF0371C24200C91783 /* Other Sources */ = {
@@ -605,6 +648,7 @@
 				20DAFB021814BAAC00EF525B /* TKRetroButton.m */,
 				20C0354D17C9A5DD009EBB33 /* TKGlowButton.h */,
 				20C0354E17C9A5DD009EBB33 /* TKGlowButton.m */,
+				2007869D18DCAEB0008526DE /* Keyboard */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -633,6 +677,7 @@
 			files = (
 				2027C60E17FB692700A5E148 /* TKKeyboardTableViewController.h in Headers */,
 				3B6EDDD311547BEB00E454DA /* TapkuLibrary.h in Headers */,
+				200786A818DCB277008526DE /* TKDecimalInputView.h in Headers */,
 				3B6EDDDB11547C1100E454DA /* UIView+TKCategory.h in Headers */,
 				20DAFB031814BAAC00EF525B /* TKRetroButton.h in Headers */,
 				3B6EDDDC11547C1300E454DA /* UIImage+TKCategory.h in Headers */,
@@ -663,7 +708,9 @@
 				3B6EDE1811547C5100E454DA /* TKLabelCell.h in Headers */,
 				3B6EDE1A11547C5400E454DA /* TKButtonCell.h in Headers */,
 				3B6EDE2011547C5700E454DA /* TKTableViewCell.h in Headers */,
+				200786A018DCAEC6008526DE /* TKInputKey.h in Headers */,
 				3BB92D2211896022002FA0F9 /* TKProgressBarView.h in Headers */,
+				200786AC18DCB418008526DE /* TKNumberInputWithNextKeyView.h in Headers */,
 				3BA577BA1199DF1600ECB85B /* TKProgressAlertView.h in Headers */,
 				20F6154217E69E75007F443C /* TKShimmerLabel.h in Headers */,
 				2070A16518C63AFB00D213FD /* UINavigationBar+TKCategory.h in Headers */,
@@ -678,6 +725,7 @@
 				3B4346E412DA6A240076579B /* UIButton+TKCategory.h in Headers */,
 				2002B17717D241C2002440AE /* UIScreen+TKCategory.h in Headers */,
 				3B9D93DA12F74F8F007D839C /* TKAppDelegate.h in Headers */,
+				200786B018DCB55C008526DE /* TKDecimalInputWithNextKeyView.h in Headers */,
 				3B07B7CA133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.h in Headers */,
 				3B166A6F137F38D7006298E6 /* UIColor+TKCategory.h in Headers */,
 				3B8F0DF6142AE52B00E3AADE /* TKGradientView.h in Headers */,
@@ -688,10 +736,12 @@
 				3BF9A833159791EA002A7F9E /* TKShapeView.h in Headers */,
 				20C3592118CE5C0700530279 /* TKSoundAlertController.h in Headers */,
 				207DF656178761210091E898 /* UITextField+TKCategory.h in Headers */,
+				2007869B18DCAEAD008526DE /* TKInputView.h in Headers */,
 				207DFF9215E1E3BE00A0BC2A /* NSDate+CalendarGrid.h in Headers */,
 				20DE9F4A168FA1EF00655BF8 /* NSObject+TKCategory.h in Headers */,
 				2057363416A330E700F8CDE6 /* TKCoverflowView.h in Headers */,
 				20FC7CA71719007300C3A7E1 /* NSMutableArray+TKCategory.h in Headers */,
+				200786A418DCB0D7008526DE /* TKNumberInputView.h in Headers */,
 				20FC7CBC1719313A00C3A7E1 /* TKLoadingView.h in Headers */,
 				2026B5391746F4D000447F22 /* UIImagePickerController+TKCategory.h in Headers */,
 				2026B552174810B900447F22 /* TKTextFieldCell.h in Headers */,
@@ -823,6 +873,7 @@
 				3B6EDDDE11547C1400E454DA /* TKWindow.m in Sources */,
 				3B6EDDE111547C1700E454DA /* NSString+TKCategory.m in Sources */,
 				3B6EDDE411547C1D00E454DA /* NSDate+TKCategory.m in Sources */,
+				200786B118DCB55C008526DE /* TKDecimalInputWithNextKeyView.m in Sources */,
 				20C3592218CE5C0700530279 /* TKSoundAlertController.m in Sources */,
 				3B6EDDEA11547C2700E454DA /* TKCalendarMonthViewController.m in Sources */,
 				202DD0CC188EF01200D5541E /* TKAlertViewController.m in Sources */,
@@ -832,12 +883,14 @@
 				3B6EDDF611547C3000E454DA /* TKCalendarDayEventView.m in Sources */,
 				20529A3B17FF46A400FFF627 /* UIActionSheet+TKCategory.m in Sources */,
 				20529A3717FF465800FFF627 /* UIAlertView+TKCategory.m in Sources */,
+				200786AD18DCB418008526DE /* TKNumberInputWithNextKeyView.m in Sources */,
 				3B6EDDFC11547C3800E454DA /* TKEmptyView.m in Sources */,
 				3B6EDE0B11547C4600E454DA /* TKTextViewCell.m in Sources */,
 				3B6EDE0D11547C4700E454DA /* TKSwitchCell.m in Sources */,
 				207DF657178761210091E898 /* UITextField+TKCategory.m in Sources */,
 				20DAFB041814BAAC00EF525B /* TKRetroButton.m in Sources */,
 				3B6EDE0F11547C4800E454DA /* TKLabelTextViewCell.m in Sources */,
+				200786A918DCB277008526DE /* TKDecimalInputView.m in Sources */,
 				2047DAFD17C6692200C62E32 /* UIDevice+TKCategory.m in Sources */,
 				3B6EDE1111547C4900E454DA /* TKLabelTextFieldCell.m in Sources */,
 				3B6EDE1311547C4A00E454DA /* TKLabelSwitchCell.m in Sources */,
@@ -855,15 +908,18 @@
 				3BBF874C1296E976008AB2B1 /* TKTableViewController.m in Sources */,
 				3BB96F5912B55CD600C38F46 /* UIImageView+TKCategory.m in Sources */,
 				2002B17817D241C2002440AE /* UIScreen+TKCategory.m in Sources */,
+				2007869C18DCAEAD008526DE /* TKInputView.m in Sources */,
 				2014592D17A107FF00629488 /* UIGestureRecognizer+TKCategory.m in Sources */,
 				3BEE1CBC12CFB78300FECF6D /* TKProgressCircleView.m in Sources */,
 				3B4346E512DA6A240076579B /* UIButton+TKCategory.m in Sources */,
+				200786A118DCAEC6008526DE /* TKInputKey.m in Sources */,
 				2014592917A1077D00629488 /* TKReorderTableView.m in Sources */,
 				3B9D93DB12F74F8F007D839C /* TKAppDelegate.m in Sources */,
 				3B07B7CB133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.m in Sources */,
 				3B166A70137F38D7006298E6 /* UIColor+TKCategory.m in Sources */,
 				3B8F0DF7142AE52B00E3AADE /* TKGradientView.m in Sources */,
 				3B17D26D142E31C40090616F /* TKHTTPRequest.m in Sources */,
+				200786A518DCB0D7008526DE /* TKNumberInputView.m in Sources */,
 				3B17D28A142E3CD40090616F /* TKNetworkQueue.m in Sources */,
 				3B560B7314574E30005FBDBF /* TKImageCache.m in Sources */,
 				3B819B5514601DC500EC0097 /* TKViewController.m in Sources */,

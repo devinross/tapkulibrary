@@ -1,6 +1,6 @@
 //
-//  TKSoundAlertController.h
-//  Created by Devin Ross on 3/10/14.
+//  TKNumberInputView.h
+//  Created by Devin Ross on 3/21/14.
 //
 /*
  
@@ -29,18 +29,26 @@
  
  */
 
-@import Foundation;
-@import AVFoundation;
-@import AudioToolbox;
+#import "TKInputView.h"
+@class TKInputKey;
 
-@interface TKSoundAlertController : NSObject <AVAudioPlayerDelegate>
+@interface TKNumberInputView : TKInputView
 
-+ (TKSoundAlertController*) sharedInstance;
 
-@property (assign,nonatomic) BOOL on;
+- (id) initWithFrame:(CGRect)frame withKeysModels:(NSArray*)keys keypadFrame:(CGRect)padFrame;
 
-+ (void) playAIF:(NSString*)soundName;
-+ (void) playAIFF:(NSString*)soundName;
-+ (void) playWAV:(NSString*)soundName;
+@property (nonatomic,strong) TKInputKey *oneKey;
+@property (nonatomic,strong) TKInputKey *twoKey;
+@property (nonatomic,strong) TKInputKey *threeKey;
+@property (nonatomic,strong) TKInputKey *fourKey;
+@property (nonatomic,strong) TKInputKey *fiveKey;
+@property (nonatomic,strong) TKInputKey *sixKey;
+@property (nonatomic,strong) TKInputKey *sevenKey;
+@property (nonatomic,strong) TKInputKey *eightKey;
+@property (nonatomic,strong) TKInputKey *nineKey;
+@property (nonatomic,strong) TKInputKey *zeroKey;
+
+
+- (NSArray*) keypadKeys;
 
 @end

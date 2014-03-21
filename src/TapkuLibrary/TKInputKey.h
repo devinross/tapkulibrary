@@ -1,6 +1,6 @@
 //
-//  TKSoundAlertController.h
-//  Created by Devin Ross on 3/10/14.
+//  TKInputKey.h
+//  Created by Devin Ross on 3/21/14.
 //
 /*
  
@@ -29,18 +29,27 @@
  
  */
 
-@import Foundation;
-@import AVFoundation;
-@import AudioToolbox;
+@import UIKit;
 
-@interface TKSoundAlertController : NSObject <AVAudioPlayerDelegate>
+typedef enum {
+	TKInputKeyTypeDefault = 0,
+	TKInputKeyTypeDark = 1,
+	TKInputKeyTypeHighlighted = 2
+} TKInputKeyType;
 
-+ (TKSoundAlertController*) sharedInstance;
+@interface TKInputKey : UIView 
 
-@property (assign,nonatomic) BOOL on;
++ (id) keyWithFrame:(CGRect)frame symbol:(id)symbol normalType:(TKInputKeyType)normal selectedType:(TKInputKeyType)highlighted runner:(BOOL)runner;
 
-+ (void) playAIF:(NSString*)soundName;
-+ (void) playAIFF:(NSString*)soundName;
-+ (void) playWAV:(NSString*)soundName;
+- (id) initWithFrame:(CGRect)frame symbol:(id)symbol normalType:(TKInputKeyType)normal selectedType:(TKInputKeyType)highlighted runner:(BOOL)runner;
+
+@property (nonatomic,assign) TKInputKeyType normalType;
+@property (nonatomic,assign) TKInputKeyType highlighedType;
+@property (nonatomic,assign) BOOL runner;
+@property (nonatomic,strong) UILabel *label;
+@property (nonatomic,strong) UIImageView *symbol;
+
+
+- (void) setHighlighted:(BOOL)highlighted;
 
 @end

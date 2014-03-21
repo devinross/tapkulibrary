@@ -1,6 +1,6 @@
 //
-//  TKSoundAlertController.h
-//  Created by Devin Ross on 3/10/14.
+//  TKDecimalInputWithNextKeyView.h
+//  Created by Devin Ross on 3/21/14.
 //
 /*
  
@@ -29,18 +29,11 @@
  
  */
 
-@import Foundation;
-@import AVFoundation;
-@import AudioToolbox;
+#import "TKDecimalInputView.h"
 
-@interface TKSoundAlertController : NSObject <AVAudioPlayerDelegate>
+@interface TKDecimalInputWithNextKeyView : TKDecimalInputView
 
-+ (TKSoundAlertController*) sharedInstance;
+@property (nonatomic,strong) TKInputKey *nextKey;
 
-@property (assign,nonatomic) BOOL on;
-
-+ (void) playAIF:(NSString*)soundName;
-+ (void) playAIFF:(NSString*)soundName;
-+ (void) playWAV:(NSString*)soundName;
 
 @end
