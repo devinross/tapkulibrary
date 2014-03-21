@@ -192,7 +192,11 @@
 		
 		BOOL delete = YES;
 		
-		if(self.textField.delegate && [self.textField.delegate respondsToSelector:@selector(textField:shouldChangeCharactersInRange:replacementString:)])
+		if(self.textField.text.length < 1)
+			delete = NO;
+		
+		
+		else if(self.textField.delegate && [self.textField.delegate respondsToSelector:@selector(textField:shouldChangeCharactersInRange:replacementString:)])
 			delete = [self.textField.delegate textField:self.textField shouldChangeCharactersInRange:NSMakeRange(self.textField.text.length-1, 1) replacementString:@""];
 		
 		if(delete)
