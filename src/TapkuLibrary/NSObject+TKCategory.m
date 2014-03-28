@@ -45,9 +45,7 @@
 	return [[[self class] alloc] initWithDataDictionary:data];
 }
 - (id) initWithDataDictionary:(NSDictionary*)dictionary{
-	
 	if((id)dictionary == [NSNull null]) return nil;
-	
 	if(!(self=[self init])) return nil;
 	[self importDataWithDictionary:dictionary];
 	return self;
@@ -79,22 +77,25 @@
 			}
 			
 		}else if([value isKindOfClass:[NSDictionary class]]){
-			
+
 			NSDictionary *dataKeyDictionary = (NSDictionary*)value;
 			Class class = NSClassFromString(dataKeyDictionary[@"class"]);
 			id key = dataKeyDictionary[@"key"];
-			Class structure = NSClassFromString(dataKeyDictionary[@"structure"]);
-			if(structure == [NSArray class]){
-				
-				NSArray *array = dictionary[key];
-				NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:array.count];
-				for(NSDictionary *subDictionary in array)
-					[mutableArray addObject:[class createObject:subDictionary]];
-				[self setValue:mutableArray.copy forKey:propertyKey];
-				
+			
+			if([dictionary[key] isKindOfClass:[NSDictionary class]] || [dictionary[key] isKindOfClass:[NSArray class]]){
+				Class structure = NSClassFromString(dataKeyDictionary[@"structure"]);
+				if(structure == [NSArray class]){
+					NSArray *array = dictionary[key];
+					NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:array.count];
+					for(NSDictionary *subDictionary in array)
+						[mutableArray addObject:[class createObject:subDictionary]];
+					[self setValue:mutableArray.copy forKey:propertyKey];
+				}else{
+					id obj = [class createObject:dictionary[key]];
+					[self setValue:obj forKeyPath:propertyKey];
+				}
 			}else{
-				id obj = [class createObject:dictionary[key]];
-				[self setValue:obj forKeyPath:propertyKey];
+				[self setValue:nil forKeyPath:propertyKey];
 			}
 		}
 	}
