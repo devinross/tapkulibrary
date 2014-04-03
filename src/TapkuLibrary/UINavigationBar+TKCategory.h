@@ -33,6 +33,6 @@
 
 @interface UINavigationBar (TKCategory)
 
-- (UIImageView*) hairlineDividerImageView;
+- (UIView*) hairlineDividerView;
 
 @end

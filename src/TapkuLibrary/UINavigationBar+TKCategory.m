@@ -33,24 +33,21 @@
 
 @implementation UINavigationBar (TKCategory)
 
-
-
-- (UIImageView*) hairlineDividerImageView{
-	return [self _hairlineImageViewUnder:self];
+- (UIView*) hairlineDividerView{
+	return [self _hairlineViewUnder:self];
 }
 
-- (UIImageView*) _hairlineImageViewUnder:(UIView *)view {
-    if ([view isKindOfClass:UIImageView.class] && CGRectGetHeight(view.bounds) == 0.5) {
-		return (UIImageView *)view;
+- (UIView*) _hairlineViewUnder:(UIView *)view {
+    if (([view isKindOfClass:UIImageView.class] && CGRectGetHeight(view.bounds) == 0.5) || (CGRectGetHeight(view.frame) == 1)) {
+		return view;
     }
     for (UIView *subview in view.subviews) {
-        UIImageView *imageView = [self _hairlineImageViewUnder:subview];
-        if (imageView) {
-            return imageView;
+        UIView *hairline = [self _hairlineViewUnder:subview];
+        if (hairline) {
+            return hairline;
         }
     }
     return nil;
 }
-
 
 @end

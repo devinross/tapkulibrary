@@ -43,33 +43,19 @@
 - (void) setupWithMainController:(UIViewController*)controller{
 	
 	UINavigationController *nav = [AppDelegate instance].splitViewController.viewControllers.lastObject;
-	
 	nav.viewControllers = @[controller];
-	
 	self.mainController = controller;
-	
-	
-
-
-	
 	nav.navigationItem.leftBarButtonItem = self.navigationItem.leftBarButtonItem;
-
 
 	
 }
 - (void) splitViewController: (UISplitViewController*)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem*)barButtonItem forPopoverController: (UIPopoverController*)pc {
     
 	self.navigationItem.leftBarButtonItem = barButtonItem;
-
     self.currentPopoverController = pc;
 }
 - (void) splitViewController: (UISplitViewController*)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem {
-	
-	
 	self.navigationItem.leftBarButtonItem = nil;
-	
-
-
 }
 
 #pragma mark TableView Delegate & Data Source
