@@ -34,12 +34,9 @@
 @implementation UIViewController (TKCategory)
 
 - (void) presentNavigationControllerWithRoot:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion{
-	
-	
 	UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:viewControllerToPresent];
-	
+	nav.modalPresentationStyle = viewControllerToPresent.modalPresentationStyle;
 	[self presentViewController:nav animated:flag completion:completion];
-	
 }
 
 
