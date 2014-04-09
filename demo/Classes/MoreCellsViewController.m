@@ -44,7 +44,7 @@
 	[super loadView];
 	
 	self.buttonCell = [[TKButtonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"button"];
-	self.buttonCell.textLabel.text = @"This is a BUTTON Cell";
+	self.buttonCell.textLabel.text = @"This is a Button Cell";
 	
 	self.switchCell = [[TKSwitchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
 	self.switchCell.textLabel.text = @"Switch Cell";
@@ -52,6 +52,10 @@
 	self.textFieldCell = [[TKTextFieldCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
 	self.textFieldCell.textField.text = @"Text field label";
 	
+	self.stepperCell = [[TKStepperCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
+	self.stepperCell.textLabel.text = @"Stepper Cell";
+	self.stepperCell.detailTextLabel.text = @"0";
+	[self.stepperCell.stepper addTarget:self action:@selector(changedStep:) forControlEvents:UIControlEventValueChanged];
 	
 	self.textViewCell = [[TKTextViewCell alloc]  initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
 	self.textViewCell.textView.font = self.textFieldCell.textField.font;
@@ -64,7 +68,7 @@
 
 #pragma mark UITableView Delegate & DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    return 5;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
@@ -81,6 +85,9 @@
 			cell = self.switchCell;
 			break;
 		case 2:
+			cell = self.stepperCell;
+			break;
+		case 3:
 			cell = self.textFieldCell;
 			break;
 		default:
@@ -93,8 +100,14 @@
 	
 }
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-	return indexPath.section == 3 ? 140 : 44;
+	return indexPath.section == 4 ? 140 : 44;
 }
 
+
+- (void) changedStep:(UIStepper*)stepper{
+	
+	self.stepperCell.detailTextLabel.text = [NSString stringWithFormat:@"%@",@(stepper.value)];
+	
+}
 
 @end

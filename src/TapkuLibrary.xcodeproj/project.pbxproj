@@ -27,6 +27,8 @@
 		2014592D17A107FF00629488 /* UIGestureRecognizer+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2014592B17A107FF00629488 /* UIGestureRecognizer+TKCategory.m */; };
 		201E5BF617C7CECE00027C47 /* UIViewController+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 201E5BF417C7CECE00027C47 /* UIViewController+TKCategory.h */; };
 		201E5BF717C7CECE00027C47 /* UIViewController+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 201E5BF517C7CECE00027C47 /* UIViewController+TKCategory.m */; };
+		202369DE18F586F300FE69B0 /* TKStepperCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 202369DC18F586F300FE69B0 /* TKStepperCell.h */; };
+		202369DF18F586F300FE69B0 /* TKStepperCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 202369DD18F586F300FE69B0 /* TKStepperCell.m */; };
 		2026B5391746F4D000447F22 /* UIImagePickerController+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2026B5371746F4D000447F22 /* UIImagePickerController+TKCategory.h */; };
 		2026B53A1746F4D000447F22 /* UIImagePickerController+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2026B5381746F4D000447F22 /* UIImagePickerController+TKCategory.m */; };
 		2026B552174810B900447F22 /* TKTextFieldCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 2026B550174810B900447F22 /* TKTextFieldCell.h */; };
@@ -194,6 +196,8 @@
 		2014592B17A107FF00629488 /* UIGestureRecognizer+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+TKCategory.m"; sourceTree = "<group>"; };
 		201E5BF417C7CECE00027C47 /* UIViewController+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TKCategory.h"; sourceTree = "<group>"; };
 		201E5BF517C7CECE00027C47 /* UIViewController+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TKCategory.m"; sourceTree = "<group>"; };
+		202369DC18F586F300FE69B0 /* TKStepperCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKStepperCell.h; sourceTree = "<group>"; };
+		202369DD18F586F300FE69B0 /* TKStepperCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKStepperCell.m; sourceTree = "<group>"; };
 		2026B5371746F4D000447F22 /* UIImagePickerController+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImagePickerController+TKCategory.h"; sourceTree = "<group>"; };
 		2026B5381746F4D000447F22 /* UIImagePickerController+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImagePickerController+TKCategory.m"; sourceTree = "<group>"; };
 		2026B550174810B900447F22 /* TKTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKTextFieldCell.h; sourceTree = "<group>"; };
@@ -506,6 +510,8 @@
 				3BAC9A3610953E5200F235F1 /* TKTextViewCell.m */,
 				3BAC9A3C10953E5200F235F1 /* TKTableViewCell.h */,
 				3BAC9A3D10953E5200F235F1 /* TKTableViewCell.m */,
+				202369DC18F586F300FE69B0 /* TKStepperCell.h */,
+				202369DD18F586F300FE69B0 /* TKStepperCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -696,6 +702,7 @@
 				3B6EDDF511547C3000E454DA /* TKCalendarDayView.h in Headers */,
 				3B6EDDF711547C3100E454DA /* TKCalendarDayEventView.h in Headers */,
 				20732DC01800AA880011D714 /* UIFont+TKCategory.h in Headers */,
+				202369DE18F586F300FE69B0 /* TKStepperCell.h in Headers */,
 				3B6EDDFD11547C3800E454DA /* TKEmptyView.h in Headers */,
 				3B6EDE0C11547C4700E454DA /* TKTextViewCell.h in Headers */,
 				202DD0CB188EF01200D5541E /* TKAlertViewController.h in Headers */,
@@ -891,6 +898,7 @@
 				20DAFB041814BAAC00EF525B /* TKRetroButton.m in Sources */,
 				3B6EDE0F11547C4800E454DA /* TKLabelTextViewCell.m in Sources */,
 				200786A918DCB277008526DE /* TKDecimalInputView.m in Sources */,
+				202369DF18F586F300FE69B0 /* TKStepperCell.m in Sources */,
 				2047DAFD17C6692200C62E32 /* UIDevice+TKCategory.m in Sources */,
 				3B6EDE1111547C4900E454DA /* TKLabelTextFieldCell.m in Sources */,
 				3B6EDE1311547C4A00E454DA /* TKLabelSwitchCell.m in Sources */,

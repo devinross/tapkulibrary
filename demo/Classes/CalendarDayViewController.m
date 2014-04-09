@@ -37,12 +37,12 @@
 - (void) viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
 	
-	self.navigationController.navigationBar.hairlineDividerImageView.hidden = YES;
+	self.navigationController.navigationBar.hairlineDividerView.hidden = YES;
 	self.dayView.daysBackgroundView.backgroundColor = [UIColor colorWithHex:0xf8f8f8];
 }
 - (void) viewWillDisappear:(BOOL)animated{
 	[super viewWillDisappear:animated];
-	self.navigationController.navigationBar.hairlineDividerImageView.hidden = NO;
+	self.navigationController.navigationBar.hairlineDividerView.hidden = NO;
 
 }
 

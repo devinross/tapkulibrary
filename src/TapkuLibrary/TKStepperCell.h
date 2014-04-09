@@ -1,10 +1,10 @@
 //
-//  MoreCellsViewController.h
-//  Created by Devin Ross on 4/15/10.
+//  TKStepperCell.h
+//  Created by Devin Ross on 4/9/14.
 //
 /*
  
- tapku || https://github.com/devinross/tapkulibrary
+ tapku || http://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -30,15 +30,9 @@
  */
 
 @import UIKit;
-#import <TapkuLibrary/TapkuLibrary.h>
 
-#pragma mark - MoreCellsViewController
-@interface MoreCellsViewController : UITableViewController 
+@interface TKStepperCell : UITableViewCell
 
-@property (nonatomic,strong) TKButtonCell *buttonCell;
-@property (nonatomic,strong) TKSwitchCell *switchCell;
-@property (nonatomic,strong) TKTextViewCell *textViewCell;
-@property (nonatomic,strong) TKTextFieldCell *textFieldCell;
-@property (nonatomic,strong) TKStepperCell *stepperCell;
+@property (nonatomic,strong) UIStepper *stepper;
 
 @end

@@ -1,10 +1,10 @@
 //
-//  MoreCellsViewController.h
-//  Created by Devin Ross on 4/15/10.
+//  TKStepperCell.m
+//  Created by Devin Ross on 4/9/14.
 //
 /*
  
- tapku || https://github.com/devinross/tapkulibrary
+ tapku || http://github.com/devinross/tapkulibrary
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -29,16 +29,35 @@
  
  */
 
-@import UIKit;
-#import <TapkuLibrary/TapkuLibrary.h>
+#import "TKStepperCell.h"
 
-#pragma mark - MoreCellsViewController
-@interface MoreCellsViewController : UITableViewController 
+@interface TKStepperCell ()
+@property (nonatomic,assign) UITableViewCellStyle theStyle;
+@end
 
-@property (nonatomic,strong) TKButtonCell *buttonCell;
-@property (nonatomic,strong) TKSwitchCell *switchCell;
-@property (nonatomic,strong) TKTextViewCell *textViewCell;
-@property (nonatomic,strong) TKTextFieldCell *textFieldCell;
-@property (nonatomic,strong) TKStepperCell *stepperCell;
+@implementation TKStepperCell
+
+
+- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+	if(!(self=[super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
+	self.theStyle = style;
+	self.stepper = [[UIStepper alloc] initWithFrame:CGRectZero];
+	self.accessoryView = self.stepper;
+	
+    return self;
+}
+- (id) initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
+	return [self initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
+}
+
+- (void) layoutSubviews{
+	[super layoutSubviews];
+	
+	if(self.theStyle == UITableViewCellStyleValue1){
+		CGRect rect = self.detailTextLabel.frame;
+		rect.origin.x -= 4;
+		self.detailTextLabel.frame = rect;
+	}
+}
 
 @end
