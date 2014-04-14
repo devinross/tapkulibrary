@@ -31,9 +31,17 @@
 
 @import UIKit;
 
+/** `TKRetroButton` is a subclassed `UIButton` with a rounded corner and border. */
 @interface TKRetroButton : UIButton
 
+///----------------------------
+/// @name Properties
+///----------------------------
+
+/** The border width of the button. */
 @property (nonatomic,assign) CGFloat borderWidth;
+
+/** The inset width between the highlighted background and border. */
 @property (nonatomic,assign) CGFloat insetWidth;
 
 @end

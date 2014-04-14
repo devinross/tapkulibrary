@@ -31,12 +31,21 @@
 
 @import UIKit;
 
+/** This class creates a `UITextView` with placeholder text. */
 @interface TKTextView : UITextView
 
+///----------------------------
+/// @name Properties
+///----------------------------
+
+/** The placeholder label. */
 @property (nonatomic,strong) UILabel *placeHolderLabel;
+
+
+/** The placeholder text. */
 @property (nonatomic,strong) NSString *placeholder;
+
+/** The text color of the placehold text. */
 @property (nonatomic,strong) UIColor *placeholderColor;
-
-
 
 @end

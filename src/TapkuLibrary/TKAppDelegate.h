@@ -34,7 +34,7 @@
 
 @class TKWindow;
 
-/** This class allocates a TKWindow instance and provides a convience method for application launching. */
+/** This class allocates a `TKWindow` instance and provides a convience method for application launching. */
 @interface TKAppDelegate : NSObject <UIApplicationDelegate> 
 
 
@@ -42,9 +42,10 @@
  Apple recommends placing initialization of 
  application:willFinishLaunchingWithOptions (instead of didFinish) 
  for iOS 6 despite its absence in previous versions of iOS.
- Subclassing the method will take care of that recommendation. The 
- UIWindow for the application is allocated and setup just before 
- this method is called. The default implementation does nothing.
+ Subclassing the method will take care of that recommendation 
+ automatically. The UIWindow for the application is allocated and 
+ setup just before this method is called. The default implementation 
+ does nothing.
  @param application The application instance.
  @param launchOptions The launch options.
  */

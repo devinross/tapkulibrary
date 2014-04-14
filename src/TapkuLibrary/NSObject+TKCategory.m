@@ -47,51 +47,58 @@
 - (id) initWithDataDictionary:(NSDictionary*)dictionary{
 	if((id)dictionary == [NSNull null]) return nil;
 	if(!(self=[self init])) return nil;
-	[self importDataWithDictionary:dictionary];
+	[self importDataWithDictionary:VALID_OBJECT(dictionary)?dictionary:nil];
 	return self;
 }
-- (void) importDataWithDictionary:(NSDictionary*)dictionary{
+- (void) importDataWithDictionary:(NSDictionary*)rawData{
 	
 	NSDateFormatter *formatter = nil;
-	NSDictionary *dataKeys = [[self class] dataKeys];
+	NSDictionary *propertyKeys = [[self class] dataKeys];
 	
-	for(NSString *propertyKey in [dataKeys allKeys]){
+	for(NSString *propertyKey in propertyKeys.allKeys){
 		
-		id value = dataKeys[propertyKey];
+		id jsonKey = propertyKeys[propertyKey];
 		
-		if([value isKindOfClass:[NSString class]]){
+		if([jsonKey isKindOfClass:[NSString class]]){
 			
-			id obj = dictionary[dataKeys[propertyKey]];
+			id obj = rawData[jsonKey];
 			if(VALID_OBJECT(obj)) [self setValue:obj forKey:propertyKey];
 			
-		}else if([value isKindOfClass:[NSArray class]]){
+		}else if([jsonKey isKindOfClass:[NSArray class]]){
 			
-			NSString *format = [value lastObject];
-			NSString *key = [value firstObject];
+			NSString *format = [jsonKey lastObject];
+			jsonKey = [jsonKey firstObject];
 			
-			if(VALID_OBJECT(format) && VALID_OBJECT(key) && VALID_OBJECT(dictionary[key])){
+			if(VALID_OBJECT(format) && VALID_OBJECT(jsonKey) && VALID_OBJECT(rawData[jsonKey])){
 				if(!formatter) formatter = [[NSDateFormatter alloc] init];
 				[formatter setDateFormat:format];
-				NSDate *date = [formatter dateFromString:dictionary[key]];
+				NSDate *date = [formatter dateFromString:rawData[jsonKey]];
 				[self setValue:date forKey:propertyKey];
 			}
 			
-		}else if([value isKindOfClass:[NSDictionary class]]){
+		}else if([jsonKey isKindOfClass:[NSDictionary class]]){
 
-			NSDictionary *dataKeyDictionary = (NSDictionary*)value;
+			NSDictionary *dataKeyDictionary = (NSDictionary*)jsonKey;
 			Class class = NSClassFromString(dataKeyDictionary[@"class"]);
-			id key = dataKeyDictionary[@"key"];
+			jsonKey = dataKeyDictionary[@"key"];
 			
-			if([dictionary[key] isKindOfClass:[NSDictionary class]] || [dictionary[key] isKindOfClass:[NSArray class]]){
+			if([rawData[jsonKey] isKindOfClass:[NSDictionary class]] || [rawData[jsonKey] isKindOfClass:[NSArray class]]){
 				Class structure = NSClassFromString(dataKeyDictionary[@"structure"]);
 				if(structure == [NSArray class]){
-					NSArray *array = dictionary[key];
-					NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:array.count];
-					for(NSDictionary *subDictionary in array)
-						[mutableArray addObject:[class createObject:subDictionary]];
-					[self setValue:mutableArray.copy forKey:propertyKey];
-				}else{
-					id obj = [class createObject:dictionary[key]];
+					if([rawData[jsonKey] isKindOfClass:[NSArray class]]){
+						NSArray *rawArray = rawData[jsonKey];
+						NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:rawArray.count];
+						for(NSDictionary *subDictionary in rawArray){
+							
+							
+							if([subDictionary isKindOfClass:[NSDictionary class]])
+								[mutableArray addObject:[class createObject:subDictionary]];
+
+						}
+						[self setValue:mutableArray.copy forKey:propertyKey];
+					}
+				}else if([rawData[jsonKey] isKindOfClass:[NSDictionary class]]){
+					id obj = [class createObject:rawData[jsonKey]];
 					[self setValue:obj forKeyPath:propertyKey];
 				}
 			}else{

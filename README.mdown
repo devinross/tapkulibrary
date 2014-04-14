@@ -9,4 +9,4 @@ Browse the documentation at [devinsheaven.com/tapku/documentation](http://devins
 Instructions on adding tapku library can be [found here](https://github.com/devinross/tapkulibrary/wiki/Adding-Tapku-to-Your-Project-in-XCode-4). For additional help, check out the demo project.
 
 
-Follow me on twitter, [@devin_ross](http://twitter.com/devin_ross).
+Follow me on twitter [@devin_ross](http://twitter.com/devin_ross).

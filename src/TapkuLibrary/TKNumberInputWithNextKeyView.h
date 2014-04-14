@@ -31,8 +31,13 @@
 
 #import "TKNumberInputView.h"
 
+/** `TKNumberInputWithNextKeyView` is subclass `TKNumberInputView` with a next key. */
 @interface TKNumberInputWithNextKeyView : TKNumberInputView
 
+///----------------------------
+/// @name Properties
+///----------------------------
+/** The next key. */
 @property (nonatomic,strong) TKInputKey *nextKey;
 
 @end

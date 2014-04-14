@@ -1013,10 +1013,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"-all_load",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				WARNING_CFLAGS = "-Wno-arc-performSelector-leaks";
 			};
@@ -1033,10 +1030,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = (
-					"-all_load",
-					"-ObjC",
-				);
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				WARNING_CFLAGS = "-Wno-arc-performSelector-leaks";
 			};

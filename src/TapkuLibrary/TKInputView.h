@@ -33,22 +33,54 @@
 @class TKInputView;
 @class TKInputKey;
 
+/** The delegate of a `TKInputView` object must adopt the `TKInputViewDelegate` protocol. */
 @protocol TKInputViewDelegate <NSObject>
 
+/** When a key is tapped, this delegate method is invoked.
+ @param inputView The input view.
+ @param key The input key tapped.
+ @return
+ */
 - (void) inputView:(TKInputView*)inputView didSelectKey:(TKInputKey*)key;
 
 @end
 
+/** 
+ `TKInputView` is intended to be a custom keyboard
+ that you can present to the user instead of the 
+ customary Apple provided keyboards.
+ */
 @interface TKInputView : UIView <UIInputViewAudioFeedback>
 
+
+/** Initializes an input view. Invoke this method for subclasses.
+ 
+ @param frame The frame of the `UIView`.
+ @param keys The keys included on the view.
+ @return An initialized `TKInputView` object or nil if the object couldn’t be created.
+ */
 - (id) initWithFrame:(CGRect)frame withKeysModels:(NSArray*)keys;
 
-@property (nonatomic,assign) id <TKInputViewDelegate> delegate;
-@property (nonatomic,assign) UITextField *textField;
+///----------------------------
+/// @name Properties
+///----------------------------
+
+/** The delegate must adopt the `TKInputViewDelegate` protocol. The delegate is not retained. */
+@property (nonatomic,weak) id <TKInputViewDelegate> delegate;
+
+/** The text field using the custom input view. The text field is not retained.  */
+@property (nonatomic,weak) UITextField *textField;
+
+/** The backspace key. */
 @property (nonatomic,strong) TKInputKey *backspaceKey;
+
+/** The key that will resign the text field.  */
 @property (nonatomic,strong) TKInputKey *hideKeyboardKey;
 
+/** The current key that is being touched down.  */
 @property (nonatomic,readonly) TKInputKey *selectedKey;
+
+/** The view that contains all the keys. This view becomes useful when dealing with iPad formatting.  */
 @property (nonatomic,strong) UIView *containerView;
 
 @end

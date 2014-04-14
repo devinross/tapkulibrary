@@ -31,9 +31,13 @@
 
 #import "TKDecimalInputView.h"
 
+/** `TKDecimalInputWithNextKeyView` is subclass `TKDecimalInputView` with a next key. */
 @interface TKDecimalInputWithNextKeyView : TKDecimalInputView
 
+///----------------------------
+/// @name Properties
+///----------------------------
+/** The next key. */
 @property (nonatomic,strong) TKInputKey *nextKey;
-
 
 @end

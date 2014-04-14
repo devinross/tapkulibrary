@@ -32,23 +32,55 @@
 #import "TKInputView.h"
 @class TKInputKey;
 
+/** `TKNumberInputView` is subclass `TKInputView` with a number pad. */
 @interface TKNumberInputView : TKInputView
 
-
+/** Initializes an number pad input view.
+ 
+ @param frame The frame of the `UIView`.
+ @param keys The keys included on the view.
+ @param padFrame The frame of the number pad.
+ @return An initialized `TKInputView` object or nil if the object couldn’t be created.
+ */
 - (id) initWithFrame:(CGRect)frame withKeysModels:(NSArray*)keys keypadFrame:(CGRect)padFrame;
 
+///----------------------------
+/// @name Properties
+///----------------------------
+
+/** One key. */
 @property (nonatomic,strong) TKInputKey *oneKey;
+
+/** Two key. */
 @property (nonatomic,strong) TKInputKey *twoKey;
+
+/** Three key. */
 @property (nonatomic,strong) TKInputKey *threeKey;
+
+/** Four key. */
 @property (nonatomic,strong) TKInputKey *fourKey;
+
+/** Five key. */
 @property (nonatomic,strong) TKInputKey *fiveKey;
+
+/** Six key. */
 @property (nonatomic,strong) TKInputKey *sixKey;
+
+/** Seven key. */
 @property (nonatomic,strong) TKInputKey *sevenKey;
+
+/** Eight key. */
 @property (nonatomic,strong) TKInputKey *eightKey;
+
+/** Nine key. */
 @property (nonatomic,strong) TKInputKey *nineKey;
+
+/** Zero key. */
 @property (nonatomic,strong) TKInputKey *zeroKey;
 
-
+/** Zero key. 
+ @return An array of all the number keys.
+ */
 - (NSArray*) keypadKeys;
 
 @end

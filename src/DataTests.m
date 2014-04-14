@@ -45,7 +45,11 @@
 @property (nonatomic,strong) NSDate *deletedAt;
 @property (nonatomic,strong) NSDate *finishedAt;
 
+@property (nonatomic,strong) SampleItem *parentItem;
+@property (nonatomic,strong) NSArray *childItems;
+
 @end
+
 
 @implementation SampleItem
 
@@ -56,14 +60,19 @@
 	@"createdAt"	: @[@"created_at",@"yyyy-MM-dd'T'HH:mm:ss"],
 	@"updatedAt"	: @[@"updated_at",@"yyyy-MM-dd"],
 	@"deletedAt"	: @[@"deleted_at"],
-	@"finishedAt"	: @[@"finished_at",@"yyyy-MM-dd"]};
+	@"finishedAt"	: @[@"finished_at",@"yyyy-MM-dd"],
+	@"parentItem"	: @{@"class": NSStringFromClass([SampleItem class]),		@"key": @"parent" },
+	@"childItems"	: @{@"class": NSStringFromClass([SampleItem class]),		@"key": @"children", @"structure" :  NSStringFromClass([NSArray class]) },
+
+	
+	};
 }
 
 @end
 
 @implementation DataTests
 
-- (void) testDataImporting{
+- (void) testShouldProperlyImportData{
 	
 	NSDictionary *dict = @{
 	@"id"			: @8000,
@@ -73,7 +82,9 @@
 	@"position"		: [NSNull null],
 	@"phone"		: @"1-800-123-4567",
 	@"deletedAt"	: @"2012-03-12",
-	@"finishedAt"	: [NSNull null]
+	@"finishedAt"	: [NSNull null],
+	@"children"		: @[@{@"id": @5},@{@"id": @20}],
+	@"parent"		: @{@"id": @5}
 
 	};
 	
@@ -102,12 +113,60 @@
 	XCTAssertTrue([item.updatedAt isKindOfClass:[NSDate class]], @"SampleItem 'updatedAt' property is not a NSDate class.");
 
 
+	XCTAssertTrue([item.parentItem isKindOfClass:[SampleItem class]], @"SampleItem 'parent' property is not a SampleItem class.");
+
+	XCTAssertTrue([item.parentItem.identifier isEqualToNumber:@5], @"SampleItem's parent doesn't have an id of 5.");
 
 	
+	XCTAssertTrue([item.childItems isKindOfClass:[NSArray class]], @"SampleItem 'childItems' property is not a NSArray class.");
+
+	
+	SampleItem *child1 = item.childItems.firstObject;
+	SampleItem *child2 = item.childItems.lastObject;
+
+	
+	XCTAssertTrue([child1.identifier isEqualToNumber:@5], @"SampleItem's child doesn't have an id of 5.");
+	XCTAssertTrue([child2.identifier isEqualToNumber:@20], @"SampleItem's child doesn't have an id of 5.");
 
 }
 
-- (void) testNoData{
+
+- (void) testShouldHandleImportingAClassStrucureWhenContentIsntADictionary{
+	
+	NSDictionary *dict = @{@"id"			: @8000,
+						   @"created_at"	: @"2012-03-12T18:45:00",
+						   @"updated_at"	: @"2013-04-15",
+						   @"name"			: @"Bobby Sanderson",
+						   @"position"		: [NSNull null],
+						   @"phone"			: @"1-800-123-4567",
+						   @"deletedAt"		: @"2012-03-12",
+						   @"finishedAt"	: [NSNull null],
+						   @"parent"		: @[@5,@4] };
+	
+	XCTAssertNoThrow([SampleItem createObject:dict], @"We don't throw exception when ");
+	
+}
+
+
+- (void) testShouldHandleImportingAClassArrayStrucureWhenArrayContentsIsntDictionaries{
+	
+	NSDictionary *dict = @{@"id"			: @8000,
+						   @"created_at"	: @"2012-03-12T18:45:00",
+						   @"updated_at"	: @"2013-04-15",
+						   @"name"			: @"Bobby Sanderson",
+						   @"position"		: [NSNull null],
+						   @"phone"			: @"1-800-123-4567",
+						   @"deletedAt"		: @"2012-03-12",
+						   @"finishedAt"	: [NSNull null],
+						   @"children"		: @[@5,@4] };
+	
+	XCTAssertNoThrow([SampleItem createObject:dict], @"We don't throw exception when ");
+	
+}
+
+
+
+- (void) testShouldHandleWhenDataIsNotADictionaryProperly{
 	SampleItem *item;
 
 	item = [SampleItem createObject:(id)[NSNull null]];

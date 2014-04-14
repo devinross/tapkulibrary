@@ -39,7 +39,6 @@
 
 @implementation TKSoundAlertController
 
-
 + (TKSoundAlertController*)sharedInstance {
 	static TKSoundAlertController *instance = nil;
 	if (!instance) {

@@ -29,8 +29,6 @@
  
  */
 
-
-
 @import Foundation;
 
 #pragma mark - NSDate + TKCategory
@@ -45,8 +43,8 @@
 + (NSDate *) yesterday;
 
 /** Creates and returns a new date set to the previous day and current time.
+ Things get tricky with respect to day light saving. Simple subtraction of 24 hours (using @code[NSDate dateWithTimeIntervalSinceNow:]@endcode) might not yield the expected results.
  @param timeZone The time zone to repect.
- @note Things get tricky with respect to day light saving. Simple subtraction of 24 hours (using @code[NSDate dateWithTimeIntervalSinceNow:]@endcode) might not yield the expected results.
  @return A `NSDate` object set to yesterday.
  */
 + (NSDate*) yesterdayWithTimeZone:(NSTimeZone*)timeZone;
@@ -59,8 +57,9 @@
 + (NSDate*) tomorrow;
 
 /** Creates and returns a new date set to the tomorrow's day and current time.
+ Things get tricky with respect to day light saving. Simple subtraction of 24 hours (using @code[NSDate dateWithTimeIntervalSinceNow:]@endcode) might not yield the expected results.
+
  @param timeZone The time zone to repect.
- @note Things get tricky with respect to day light saving. Simple subtraction of 24 hours (using @code[NSDate dateWithTimeIntervalSinceNow:]@endcode) might not yield the expected results.
  @return A `NSDate` object set to tomorrow.
  */
 + (NSDate*) tomorrowWithTimeZone:(NSTimeZone*)timeZone;
@@ -73,8 +72,9 @@
 + (NSDate *) month;
 
 /** Creates and returns a new date set to the current month date.
+ Things get tricky with respect to day light saving. Simple subtraction of a give time (using @code[NSDate dateWithTimeIntervalSinceNow:]@endcode) might not yield the expected results.
+
  @param timeZone The time zone to repect.
- @note Things get tricky with respect to day light saving. Simple subtraction of a give time (using @code[NSDate dateWithTimeIntervalSinceNow:]@endcode) might not yield the expected results.
  @return A `NSDate` object set to the current month.
  */
 + (NSDate*) monthWithTimeZone:(NSTimeZone*)timeZone;
@@ -85,8 +85,9 @@
 - (NSDate*) monthDate;
 
 /** Creates and returns a new date set to the first day of the month from the date object.
+ Things get tricky with respect to day light saving. Simple subtraction of a give time (using @code[NSDate dateWithTimeIntervalSinceNow:]@endcode) might not yield the expected results.
+
  @param timeZone Time Zone for month.
- @note Things get tricky with respect to day light saving. Simple subtraction of a give time (using @code[NSDate dateWithTimeIntervalSinceNow:]@endcode) might not yield the expected results.
  @return A `NSDate` object set to the same month as the date object. The day will be the first of the month.
  */
 - (NSDate *) monthDateWithTimeZone:(NSTimeZone*)timeZone;
@@ -111,7 +112,6 @@
 #pragma mark Same Month
 /** Returns whether the compared date shares the month with respect to the given time zone.
  @param anotherDate The date to compare.
- @param timeZone The time zone used to determine the current day.
  @return YES if the two dates share the same year, month. Otherwise NO.
  */
 - (BOOL) isSameMonth:(NSDate *)anotherDate;
@@ -126,7 +126,6 @@
 #pragma mark Same Year
 /** Returns whether the compared date shares the year with respect to the given time zone.
  @param anotherDate The date to compare.
- @param timeZone The time zone used to determine the current day.
  @return YES if the two dates share the same year. Otherwise NO.
  */
 - (BOOL) isSameYear:(NSDate *)anotherDate;

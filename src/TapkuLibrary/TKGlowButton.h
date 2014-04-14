@@ -31,9 +31,14 @@
 
 @import UIKit;
 
+/** `TKGlowButton` is a subclassed `UIButton` that allows the background of a button to glow on touch. */
 @interface TKGlowButton : UIButton
 
-
+/**
+ This method allows you to set the background color during a certain state.
+ @param color The background color of the button.
+ @param state The state to which the color will appear.
+ */
 - (void) setBackgroundColor:(UIColor*)color forState:(UIControlState)state;
 
 @end

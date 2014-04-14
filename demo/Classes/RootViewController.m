@@ -101,8 +101,8 @@
 	
 	
 	self.data = @[
-  @{@"rows" : @[COVERFLOW,MONTH_GRID,DAY_VIEW,WEB_VC], @"title" : @"Views"},
-  @{@"rows" : @[EMPTY_SIGN,HUD,ALERTS,SLIDE,BUTTONS,CUSTOM_KEYBOARDS], @"title" : @"UI Elements"},
+  @{@"rows" : @[WEB_VC,DAY_VIEW,MONTH_GRID,COVERFLOW], @"title" : @"Views"},
+  @{@"rows" : @[SLIDE,BUTTONS,CUSTOM_KEYBOARDS,HUD,EMPTY_SIGN,ALERTS], @"title" : @"UI Elements"},
   @{@"rows" : @[LABEL_CELLS,MORE_CELLS], @"title" : @"Table View Cells"},
   @{@"rows" : @[IMAGE_CACHE,HTTP_PROGRESS], @"title" : @"Network"}];
 }

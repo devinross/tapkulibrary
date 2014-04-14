@@ -33,14 +33,35 @@
 @import AVFoundation;
 @import AudioToolbox;
 
+/** `TKSoundAlertController` plays simple user interface sounds. */
 @interface TKSoundAlertController : NSObject <AVAudioPlayerDelegate>
 
+/** Returns the singleton sound alert controller.
+ @return The shared instance sound alert controller object.
+ */
 + (TKSoundAlertController*) sharedInstance;
 
-@property (assign,nonatomic) BOOL on;
-
+/** Plays a sound file immediately.
+ @param soundName Plays a sound file with name 'insert-sound-name'.aif
+ */
 + (void) playAIF:(NSString*)soundName;
+
+/** Plays a sound file immediately.
+ @param soundName Plays a sound file with name 'insert-sound-name'.aiff
+ */
 + (void) playAIFF:(NSString*)soundName;
+
+/** Plays a sound file immediately.
+ @param soundName Plays a sound file with name 'insert-sound-name'.wav
+ */
 + (void) playWAV:(NSString*)soundName;
+
+
+///----------------------------
+/// @name Properties
+///----------------------------
+/** Flag to enable the play of the sound. If off, it will not play the sound. Default is off. */
+@property (assign,nonatomic,getter = isOn) BOOL on;
+
 
 @end

@@ -31,14 +31,22 @@
 
 @import UIKit;
 
+/** The direction of the shimmering on the label. */
 typedef enum {
 	TKShimmerLabelDirectionLeftToRight,
 	TKShimmerLabelDirectionRightToLeft
 } TKShimmerLabelDirection;
 
+/** `TKShimmerLabel` is a subclassed `UILabel` with a shimmer animation similiar to the unlock screen. */
 @interface TKShimmerLabel : UILabel
 
+///----------------------------
+/// @name Properties
+///----------------------------
+/** The gradient layer that masks the text label to create the shimmer effect. */
 @property (nonatomic,strong) CAGradientLayer *textHighlightLayer;
+
+/** The direction the shimmer should move. */
 @property (nonatomic,assign) TKShimmerLabelDirection direction;
 
 @end

@@ -33,21 +33,36 @@
 @import AudioToolbox;
 @class TKShimmerLabel;
 
+/** The mode that the slider to unlock view is in. */
 typedef enum {
 	TKSlideToUnlockViewModeNormal = 0,
 	TKSlideToUnlockViewModeDisabled = 1
 } TKSlideToUnlockViewMode;
 
-
+/** `TKSlideToUnlockView` is a control that allows users to slide to unlock like you would the lock screen. */
 @interface TKSlideToUnlockView : UIControl <UIScrollViewDelegate>
 
+///----------------------------
+/// @name Properties
+///----------------------------
+/** The shimmering text label that directs the user to act. */
 @property (nonatomic,strong) TKShimmerLabel *textLabel;
+
+/** The scroll view that the user slides */
 @property (nonatomic,strong) UIScrollView *scrollView;
+
+/** The view behind the scroll view */
 @property (nonatomic,strong) UIImageView *backgroundView;
+
+/** A read-only property to tell whether to tell the state of the view */
 @property (nonatomic,readonly) BOOL isUnlocked;
 
+/** The mode flag to enable of disable the view from acting. If disabled the device will vibrate. */
 @property (nonatomic,assign) TKSlideToUnlockViewMode mode;
 
+/** Reset the slider view to the original position.
+ @param animated If yes, the view will animate to a reset position.
+ */
 - (void) resetSlider:(BOOL)animated;
 
 @end

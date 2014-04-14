@@ -63,9 +63,8 @@
     
     date = [NSDate date];
     date2 = [NSDate yesterday];
-	
 	NSInteger diff = [date daysBetweenDate:date2];
-    XCTAssertEqualObjects(@(diff), @1, @"Expected difference between %@ and %@ is 1, but found %ld.",date,date2,diff);
+	XCTAssertEqualObjects(@(diff), @1, @"Expected difference between %@ and %@ is 1, but found %@.",date,date2,@(diff));
 	
 }
 

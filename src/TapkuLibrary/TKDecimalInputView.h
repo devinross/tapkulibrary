@@ -31,8 +31,14 @@
 
 #import "TKNumberInputView.h"
 
+/** `TKDecimalInputView` is subclass `TKNumberInputView` with a decimal key. */
 @interface TKDecimalInputView : TKNumberInputView
 
+///----------------------------
+/// @name Properties
+///----------------------------
+
+/** Decimal key. */
 @property (nonatomic,strong) TKInputKey *decimalKey;
 
 @end
