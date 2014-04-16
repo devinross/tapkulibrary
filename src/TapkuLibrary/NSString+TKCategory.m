@@ -35,13 +35,107 @@
 @implementation NSString (TKCategory)
 
 
+- (NSString*) creditCardType{
+	
+	if(self.length < 4) return nil;
+	
+
+	NSString *firstTwo = [self substringToIndex:2];
+	
+	NSInteger value = firstTwo.integerValue;
+	
+	if(value == 34 || value == 37)
+		return NSLocalizedString(@"American Express", @"");
+	
+	else if(value == 36)
+		return NSLocalizedString(@"Diners Club", @"");
+	
+	else if(value == 38)
+		return NSLocalizedString(@"Carte Blanche", @"");
+	
+	else if(value > 50 && value < 56)
+		return NSLocalizedString(@"Master Card", @"");
+	
+
+	
+	
+		
+	NSString *firstFour = [self substringFromIndex:4];
+	value = firstFour.integerValue;
+	
+	
+	if(value == 2014 || value == 2149)
+		return NSLocalizedString(@"EnRoute", @"");
+	
+	else if(value == 2131 || value == 1800)
+		return NSLocalizedString(@"JCB", @"");
+	
+	else if(value == 6011 || value == 1800)
+		return NSLocalizedString(@"Discover", @"");
+		
+		
+
+	
+	NSString *firstThree = [self substringFromIndex:3];
+	value = firstThree.integerValue;
+	
+	if(value >= 300 && value < 306) return NSLocalizedString(@"American Diners Club", @"");
+	
+	NSString *firstOne = [self substringFromIndex:1];
+	value = firstOne.integerValue;
+	
+	if(value == 3) return NSLocalizedString(@"JCB", @"");
+	
+	else if(value == 4) return NSLocalizedString(@"Visa", @"");
+	
+	
+	return nil;
+}
+
+
+- (BOOL) isValidCreditCardNumber:(NSString *)cardNumber{
+	
+	NSCharacterSet *nonDecimalsSet = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+	
+	if([self rangeOfCharacterFromSet:nonDecimalsSet].location != NSNotFound)
+		return NO;
+
+
+	
+	
+	
+	NSInteger luhnChecksum = 0;
+	NSInteger subtractionNumber = 48;
+	
+	for (NSInteger i=0;i<cardNumber.length;i++){
+		
+		NSUInteger count = cardNumber.length-1;
+		NSInteger doubled = [[NSNumber numberWithUnsignedChar:[cardNumber characterAtIndex:count-i]] integerValue] - subtractionNumber;
+		if (i % 2) doubled = doubled*2;
+		
+		NSString *doubleDigit = [NSString stringWithFormat:@"%d",doubled];
+		
+		if ([[NSString stringWithFormat:@"%d",doubled] length] > 1){
+			luhnChecksum += [[NSNumber numberWithUnsignedChar:[doubleDigit characterAtIndex:0]] integerValue]-subtractionNumber;
+			luhnChecksum += [[NSNumber numberWithUnsignedChar:[doubleDigit characterAtIndex:1]] integerValue]-subtractionNumber;
+		}else{
+			luhnChecksum += doubled;
+		}
+	}
+	
+	
+	return luhnChecksum % 10 == 0;
+}
+
+
+
 - (BOOL) isEmail{
 	
-    NSString *emailRegEx =  
-	@"(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"  
-	@"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\" 
-	@"x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-"  
-	@"z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5"  
+    NSString *emailRegEx =
+	@"(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"
+	@"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\"
+	@"x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-"
+	@"z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5"
 	@"]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-"  
 	@"9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21"  
 	@"-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"; 

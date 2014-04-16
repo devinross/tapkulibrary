@@ -72,6 +72,16 @@
 - (BOOL) hasString:(NSString*)substring;
 
 
+/** Returns the credit card type based on the first for digits of the card number.
+ @return A credit card company name if the number matches a company otherwise nil.
+ */
+- (NSString*) creditCardType;
+
+/** Returns YES if the card number passes the Luhn algorithm. No spaces in the card number.
+ @return Returns YES if the card is a valid credit card number, otherwise NO.
+ */
+- (BOOL) isValidCreditCardNumber:(NSString *)cardNumber;
+
 
 - (NSString*) formattedPhoneNumberWithLastCharacterRemoved:(BOOL)deleteLastChar;
 
