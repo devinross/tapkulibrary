@@ -80,7 +80,7 @@
 /** Returns YES if the card number passes the Luhn algorithm. No spaces in the card number.
  @return Returns YES if the card is a valid credit card number, otherwise NO.
  */
-- (BOOL) isValidCreditCardNumber:(NSString *)cardNumber;
+- (BOOL) isValidCreditCardNumber;
 
 
 - (NSString*) formattedPhoneNumberWithLastCharacterRemoved:(BOOL)deleteLastChar;

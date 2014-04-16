@@ -93,7 +93,7 @@
 }
 
 
-- (BOOL) isValidCreditCardNumber:(NSString *)cardNumber{
+- (BOOL) isValidCreditCardNumber{
 	
 	NSCharacterSet *nonDecimalsSet = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
 	
@@ -107,10 +107,10 @@
 	NSInteger luhnChecksum = 0;
 	NSInteger subtractionNumber = 48;
 	
-	for (NSInteger i=0;i<cardNumber.length;i++){
+	for (NSInteger i=0;i<self.length;i++){
 		
-		NSUInteger count = cardNumber.length-1;
-		NSInteger doubled = [[NSNumber numberWithUnsignedChar:[cardNumber characterAtIndex:count-i]] integerValue] - subtractionNumber;
+		NSUInteger count = self.length-1;
+		NSInteger doubled = [[NSNumber numberWithUnsignedChar:[self characterAtIndex:count-i]] integerValue] - subtractionNumber;
 		if (i % 2) doubled = doubled*2;
 		
 		NSString *doubleDigit = [NSString stringWithFormat:@"%d",doubled];
