@@ -35,4 +35,16 @@
 
 @interface NSStringTests : XCTestCase
 
+- (void) testShouldValidateEmailAddress;
+
+- (void) testShouldGenerateMD5Sum;
+
+- (void) testShouldEncodeString;
+
+- (void) testShouldHaveString;
+
+- (void) testShouldPassCreditCardValidation;
+
+- (void) testShouldFormatPhoneString;
+
 @end

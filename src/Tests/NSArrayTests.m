@@ -35,12 +35,13 @@
 @implementation NSArrayTests
 
 
-- (void) testFirstObject{
+- (void) testShouldReturnFirstObject{
 		
 	XCTAssertNil([[NSArray array] firstObject]);
 	NSArray *ar = @[@"BOB"];
 	XCTAssertEqualObjects([ar firstObject], @"BOB");
-	
+	XCTAssertEqual([ar firstObject], ar[0]);
+
 }
 
 

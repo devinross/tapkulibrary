@@ -36,12 +36,9 @@
 
 
 - (NSString*) creditCardType{
-	
 	if(self.length < 4) return nil;
-	
 
 	NSString *firstTwo = [self substringToIndex:2];
-	
 	NSInteger value = firstTwo.integerValue;
 	
 	if(value == 34 || value == 37)
@@ -60,7 +57,7 @@
 	
 	
 		
-	NSString *firstFour = [self substringFromIndex:4];
+	NSString *firstFour = [self substringToIndex:4];
 	value = firstFour.integerValue;
 	
 	
@@ -70,25 +67,25 @@
 	else if(value == 2131 || value == 1800)
 		return NSLocalizedString(@"JCB", @"");
 	
-	else if(value == 6011 || value == 1800)
+	else if(value == 6011)
 		return NSLocalizedString(@"Discover", @"");
 		
 		
 
 	
-	NSString *firstThree = [self substringFromIndex:3];
+	NSString *firstThree = [self substringToIndex:3];
 	value = firstThree.integerValue;
 	
-	if(value >= 300 && value < 306) return NSLocalizedString(@"American Diners Club", @"");
+	if(value >= 300 && value < 306) return NSLocalizedString(@"Diners Club", @"");
 	
-	NSString *firstOne = [self substringFromIndex:1];
+	NSString *firstOne = [self substringToIndex:1];
 	value = firstOne.integerValue;
 	
 	if(value == 3) return NSLocalizedString(@"JCB", @"");
 	
 	else if(value == 4) return NSLocalizedString(@"Visa", @"");
 	
-	
+
 	return nil;
 }
 

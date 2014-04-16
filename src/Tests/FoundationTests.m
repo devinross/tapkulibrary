@@ -34,7 +34,7 @@
 @implementation FoundationTests
 
 
-- (void) testDateCategory{
+- (void) testShouldCreateExpectedDate{
 	
     NSDate *date,*date2;
     

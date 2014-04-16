@@ -34,7 +34,7 @@
 
 @implementation UIViewTests
 
-- (void) testAddSubviewToBack{
+- (void) testShouldAddSubviewToBack{
 	
 	CGRect zero = CGRectMake(0, 0, 0, 0);
 	
