@@ -129,8 +129,8 @@
 	
 	NSCalendar* calendar = [NSCalendar currentCalendar];
 	calendar.timeZone = timeZone;
-	NSDateComponents* components1 = [calendar components:NSYearCalendarUnit fromDate:self];
-	NSDateComponents* components2 = [calendar components:NSYearCalendarUnit fromDate:anotherDate];
+	NSDateComponents* components1 = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit fromDate:self];
+	NSDateComponents* components2 = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit fromDate:anotherDate];
 	return components1.year == components2.year && components1.month == components2.month;
 }
 
