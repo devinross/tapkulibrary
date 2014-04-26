@@ -152,7 +152,7 @@
 #pragma mark Public Functions
 - (void) scrollToView:(UIView*)view{
 	CGRect rect = [view convertRect:view.bounds toView:self.tableView];
-	rect = CGRectInset(rect, 0, -30);
+	rect = CGRectInset(rect, 0, -15);
 	[self.tableView scrollRectToVisible:rect animated:YES];
 	[self performSelector:@selector(_unlock) withObject:nil afterDelay:0.35];
 }
