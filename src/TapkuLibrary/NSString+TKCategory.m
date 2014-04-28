@@ -110,9 +110,9 @@
 		NSInteger doubled = [[NSNumber numberWithUnsignedChar:[self characterAtIndex:count-i]] integerValue] - subtractionNumber;
 		if (i % 2) doubled = doubled*2;
 		
-		NSString *doubleDigit = [NSString stringWithFormat:@"%d",doubled];
+		NSString *doubleDigit = [NSString stringWithFormat:@"%@",@(doubled)];
 		
-		if ([[NSString stringWithFormat:@"%d",doubled] length] > 1){
+		if (doubleDigit.length > 1){
 			luhnChecksum += [[NSNumber numberWithUnsignedChar:[doubleDigit characterAtIndex:0]] integerValue]-subtractionNumber;
 			luhnChecksum += [[NSNumber numberWithUnsignedChar:[doubleDigit characterAtIndex:1]] integerValue]-subtractionNumber;
 		}else{

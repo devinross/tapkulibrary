@@ -36,6 +36,6 @@
 
 @interface FoundationTests : XCTestCase 
 
-- (void) testDateCategory;
+- (void) testShouldCreateExpectedDate;
 
 @end
