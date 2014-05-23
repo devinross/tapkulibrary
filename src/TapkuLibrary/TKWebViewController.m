@@ -98,11 +98,11 @@
 - (BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
 	
 	if(self.navigationController && (navigationType == UIWebViewNavigationTypeFormSubmitted || navigationType == UIWebViewNavigationTypeLinkClicked)){
-		TKWebViewController *vc = [[TKWebViewController alloc] initWithURLRequest:request];
+		TKWebViewController *vc = [[[self class] alloc] initWithURLRequest:request];
 		[self.navigationController pushViewController:vc animated:YES];
 		return NO;
 	}
-	
+
 	return YES;
 }
 
