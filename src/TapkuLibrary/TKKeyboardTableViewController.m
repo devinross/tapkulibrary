@@ -151,6 +151,17 @@
 
 #pragma mark Public Functions
 - (void) scrollToView:(UIView*)view{
+	
+	if([view isKindOfClass:[UITextView class]]){
+		UITextView *textView = (UITextView*)view;
+		CGRect cursorPosition = [textView caretRectForPosition:textView.selectedTextRange.start];
+		CGRect rect = [view convertRect:cursorPosition toView:self.tableView];
+		rect = CGRectInset(rect, 0, -15);
+		[self.tableView scrollRectToVisible:rect animated:YES];
+		[self performSelector:@selector(_unlock) withObject:nil afterDelay:0.35];
+		return;
+	}
+	
 	CGRect rect = [view convertRect:view.bounds toView:self.tableView];
 	rect = CGRectInset(rect, 0, -15);
 	[self.tableView scrollRectToVisible:rect animated:YES];
