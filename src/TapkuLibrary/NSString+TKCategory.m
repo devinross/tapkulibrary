@@ -125,6 +125,11 @@
 }
 
 
+- (NSString*) capitalizeSentence{
+	if(self.length < 1) return self;
+	
+	return [self stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[self substringToIndex:1].capitalizedString];
+}
 
 - (BOOL) isEmail{
 	

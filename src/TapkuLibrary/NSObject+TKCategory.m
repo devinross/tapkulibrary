@@ -135,28 +135,16 @@
 			if(NSClassFromString(keyDict[@"structure"]) == [NSArray class]){
 				
 				NSArray *propertyArray = value;
-				
 				if(!propertyArray) continue;
 				
 				NSMutableArray *dictArray = [NSMutableArray arrayWithCapacity:propertyArray.count];
-				
 				for(id obj in propertyArray){
-					
 					[dictArray addObject:[obj dataDictionary]];
 				}
-				
-				
 				ret[dataKeys[propertyKey][@"key"]] = dictArray.copy;
-				
-				
-				
+
 			}else{
-
-				
 				ret[dataKeys[propertyKey][@"key"]] = [value dataDictionary];
-
-				
-				
 			}
 			
 			

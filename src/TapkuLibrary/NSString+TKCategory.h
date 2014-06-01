@@ -72,6 +72,9 @@
 - (BOOL) hasString:(NSString*)substring;
 
 
+- (NSString*) capitalizeSentence;
+
+
 /** Returns the credit card type based on the first for digits of the card number.
  @return A credit card company name if the number matches a company otherwise nil.
  */
