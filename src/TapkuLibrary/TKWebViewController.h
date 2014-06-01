@@ -61,6 +61,9 @@
 /** Returns the `UIWebView`	managed by the controller object. */
 @property (nonatomic,strong) UIWebView *webView;
 
+@property (nonatomic,strong) UIBarButtonItem *actionBarButtonItem;
+
+
 
 /** Show a `UIActivityViewController` to share the URL of the web view 
  @param sender The sender of the action.

@@ -78,7 +78,7 @@
 	self.scrollLock = YES;
 	
 	self.keyboardRect = [sender.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-
+	
 	[self _updateInsetWithKeyboard];
 	
 }
@@ -86,7 +86,7 @@
 	self.keyboardRect = CGRectZero;
 	
 	if(!self.isViewLoaded || self.view.superview == nil) return;
-
+	
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationBeginsFromCurrentState:YES];
 	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
@@ -156,7 +156,7 @@
 		UITextView *textView = (UITextView*)view;
 		CGRect cursorPosition = [textView caretRectForPosition:textView.selectedTextRange.start];
 		CGRect rect = [view convertRect:cursorPosition toView:self.tableView];
-		rect = CGRectInset(rect, 0, -15);
+		rect = CGRectInset(rect, 0, -50);
 		[self.tableView scrollRectToVisible:rect animated:YES];
 		[self performSelector:@selector(_unlock) withObject:nil afterDelay:0.35];
 		return;
@@ -168,7 +168,7 @@
 	[self performSelector:@selector(_unlock) withObject:nil afterDelay:0.35];
 }
 - (void) resignResponders{
-
+	
 }
 
 @end

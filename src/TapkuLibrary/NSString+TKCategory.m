@@ -96,8 +96,8 @@
 	
 	if([self rangeOfCharacterFromSet:nonDecimalsSet].location != NSNotFound)
 		return NO;
-
-
+	
+	
 	
 	
 	
@@ -123,6 +123,7 @@
 	
 	return luhnChecksum % 10 == 0;
 }
+
 
 
 - (NSString*) capitalizeSentence{

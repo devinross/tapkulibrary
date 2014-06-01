@@ -37,7 +37,7 @@
 - (id) initWithFrame:(CGRect)frame{
 	if(!(self=[super initWithFrame:frame])) return nil;
 	
-
+	
 	self.loadingLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 	self.loadingLabel.backgroundColor = [UIColor clearColor];
 	self.loadingLabel.text = [NSString stringWithFormat:@"%@...",NSLocalizedString(@"Loading", @"Loading")];
@@ -45,11 +45,31 @@
 	[self.loadingLabel sizeToFit];
 	self.loadingLabel.center = CGPointMake(CGRectGetWidth(frame)/2.0, CGRectGetHeight(frame)/2.0);
 	self.loadingLabel.frame = CGRectIntegral(self.loadingLabel.frame);
-	self.loadingLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 	[self addSubview:self.loadingLabel];
 	self.loadingLabel.hidden = YES;
-
+	
 	return self;
+}
+
+
+- (void) layoutSubviews{
+	[super layoutSubviews];
+	
+	NSString *str = [NSString stringWithFormat:@"%@...",NSLocalizedString(@"Loading", @"Loading")];
+	
+	CGSize size = [str sizeWithFont:self.loadingLabel.font];
+	
+	
+	CGFloat wid = CGRectGetWidth(self.frame), hei = CGRectGetHeight(self.frame);
+	
+	
+	NSInteger x = (wid-size.width) / 2, y = (hei-size.height) / 2;
+	
+	CGRect frame = CGRectMake(x, y, size.width, size.height);
+	
+	self.loadingLabel.frame = frame;
+	
+	
 }
 
 
@@ -85,13 +105,13 @@
 	if(!self.loadingLabel.superview) return;
 	
 	NSString *str = self.loadingLabel.text;
-
+	
 	if([str hasSuffix:@"..."])
 		str = NSLocalizedString(@"Loading", @"Loading");
 	else
 		str = [str stringByAppendingString:@"."];
-
-		
+	
+	
 	self.loadingLabel.text = str;
 	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(_next) object:nil];
 	[self performSelector:@selector(_next) withObject:nil afterDelay:DELAY];
