@@ -77,6 +77,7 @@
 @property (nonatomic,strong) NSArray *times;
 @property (nonatomic,strong) UIColor *hourColor;
 @property (nonatomic,assign) BOOL is24hClock;
+@property (nonatomic,assign) BOOL isToday;
 @end
 
 @interface TKWeekdaysView : UIView
@@ -441,6 +442,7 @@
 	[self _setupDaysView];
 	[self _scrollToTopEvent:NO];
 	[self.nowLineView updateTime];
+
 }
 - (void) _refreshDataWithPageAtIndex:(NSInteger)index{
 	
@@ -463,6 +465,8 @@
 		}
 	}
 	
+	timeline.isToday = NO;
+	
 	if(self.nowLineView.superview == sv) [self.nowLineView removeFromSuperview];
 	if([timeline.date isTodayWithTimeZone:self.calendar.timeZone]){
 		
@@ -479,10 +483,12 @@
 		CGRect eventFrame = CGRectMake(CGRectGetMinX(self.nowLineView.frame), hourStartPosition + minuteStartPosition - 5,  CGRectGetWidth(self.frame), 14);
 		self.nowLineView.frame = eventFrame;
 		[sv addSubview:self.nowLineView];
+		timeline.isToday = YES;
 
 	}
 	
-	
+	[timeline setNeedsDisplay];
+
 	if(!self.dataSource) return;
 	timeline.events = [NSMutableArray arrayWithArray:[self.dataSource calendarDayTimelineView:self eventsForDate:timeline.date]];
 	
@@ -1062,6 +1068,25 @@
 	UIFont *timeFont = [UIFont systemFontOfSize:FONT_SIZE];
 	UIColor *timeColor = [UIColor blackColor];
 	UIColor *lineColor = [UIColor colorWithHex:0xd7d7d7];
+	
+	NSInteger discount = - 100;
+	
+	if(self.isToday){
+		
+		NSDate *now = [NSDate date];
+		NSDateFormatter *form = [[NSDateFormatter alloc] init];
+		form.dateFormat = @"H";
+		NSInteger hour = [[form stringFromDate:now] integerValue];
+		form.dateFormat = @"m";
+
+		NSInteger minute = [[form stringFromDate:now] integerValue];
+		
+		if(minute > 39)
+			discount = hour+1;
+		else if(minute < 21)
+			discount = hour;
+
+	}
 
 	// Draw each times string
 	for (NSInteger i=0; i<self.times.count; i++) {
@@ -1069,7 +1094,9 @@
 		[timeColor set];
 		CGRect timeRect = CGRectMake(2.0, i * VERTICAL_DIFF + VERTICAL_INSET - 7, LEFT_INSET - 2.0f - 6, FONT_SIZE + 2.0);
 
-		[self.times[i] drawInRect:timeRect withFont:timeFont lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentRight];
+		
+		if(i != discount)
+			[self.times[i] drawInRect:timeRect withFont:timeFont lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentRight];
 		
 		CGContextRef context = UIGraphicsGetCurrentContext();
 		CGContextSetInterpolationQuality(context, kCGInterpolationNone);
@@ -1185,7 +1212,8 @@
 	if(!(self=[super initWithFrame:CGRectMake(0, 0, 320, 14)])) return nil;
 	
 	self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	
+	self.userInteractionEnabled = NO;
+
 	self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(2, 0, LEFT_INSET-2, CGRectGetHeight(self.frame))];
 	self.timeLabel.textColor = self.tintColor;
 	self.timeLabel.font = [UIFont boldSystemFontOfSize:10];

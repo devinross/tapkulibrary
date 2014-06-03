@@ -104,17 +104,17 @@
 - (void) layoutSubviews{
 	[super layoutSubviews];
 	
-	CGFloat h = CGRectGetHeight(self.frame);
-	if(h < 45){
+	CGFloat blockHeight = CGRectGetHeight(self.frame);
+	if(blockHeight < 45){
 		self.titleLabel.frame = CGRectInset(self.bounds, 5, 5);
 		CGFloat y = CGRectGetMaxY(self.titleLabel.frame);
 		self.locationLabel.frame = CGRectMake(CGRectGetMinX(self.titleLabel.frame), y, 0, 0);
 		self.locationLabel.hidden = YES;
 		return;
 	}
-		
 	
-	CGFloat hh = h > 200 ? 14 * 2 : 14;
+	
+	CGFloat hh = blockHeight > 200 ? 14 * 2 : 14;
 	CGRect r = CGRectInset(self.bounds, 5, 5);
 	r.size.height = hh;
 	r = CGRectIntersection(r, self.bounds);
@@ -122,16 +122,21 @@
 	self.titleLabel.frame = r;
 	[self.titleLabel sizeToFit];
 	
-	hh = h > 200 ? (FONT_SIZE+2.0) * 2 : FONT_SIZE+2;
+	
+	
+	hh = blockHeight > 200 ? (FONT_SIZE+2.0) * 2 : FONT_SIZE+2;
 	r = CGRectInset(self.bounds, 5, 5);
 	r.size.height = hh;
-	r.origin.y += CGRectGetHeight(self.titleLabel.frame);
-	r = CGRectIntersection(r, self.bounds);
-
+	r.origin.y = CGRectGetMaxY(self.titleLabel.frame);
+	CGFloat maxLocationHeight = CGRectGetHeight(self.frame) - CGRectGetMinY(r);
+	r.size.height = MIN(maxLocationHeight, r.size.height);
+	
+	
 	self.locationLabel.frame = r;
 	self.locationLabel.hidden = self.locationLabel.text.length > 0 ? NO : YES;
-	[self.locationLabel sizeToFit];
-
+	CGSize s = [self.locationLabel sizeThatFits:r.size];
+	r.size.height = MIN(maxLocationHeight,s.height);
+	self.locationLabel.frame = r;
 }
 
 - (CGFloat) contentHeight{
