@@ -56,7 +56,7 @@
 /** Returns the current number of request managed by the view controller.
  @see addActiveRequest:
 */
-- (NSInteger) activeRequestCount;
+@property (nonatomic, readonly) NSInteger activeRequestCount;
 
 /** Remove an active request.
  @param request The request that will be removed.

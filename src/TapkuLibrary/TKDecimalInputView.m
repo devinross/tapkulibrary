@@ -38,7 +38,7 @@
 
 #define RECT(_X,_Y,_S) CGRectMakeWithSize(_X,_Y,_S)
 
-- (id) initWithFrame:(CGRect)frame withKeysModels:(NSArray*)keys keypadFrame:(CGRect)padFrame{
+- (instancetype) initWithFrame:(CGRect)frame withKeysModels:(NSArray*)keys keypadFrame:(CGRect)padFrame{
 	frame.size = CGSizeMake([UIScreen mainScreen].bounds.size.width, [UIDevice phoneIdiom] ? 216 : 352);
 	
 	CGFloat w = padFrame.size.width / 3;

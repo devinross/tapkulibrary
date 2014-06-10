@@ -82,7 +82,7 @@
 @interface TKCoverflowView : UIScrollView <UIScrollViewDelegate>
 
 
-- (id) initWithFrame:(CGRect)frame deleclerationRate:(CGFloat)decelerationRate;
+- (instancetype) initWithFrame:(CGRect)frame deleclerationRate:(CGFloat)decelerationRate;
 
 /** The transform applied to covers left of the center cover. */
 @property (nonatomic,assign) CATransform3D leftTransform;
@@ -116,7 +116,7 @@
 - (void) setCurrentCoverAtIndex:(NSInteger)index animated:(BOOL)animated;
 
 /** Returns an usued coverflow view. If there are no reusable views, it will return nil. */
-- (TKCoverflowCoverView*) dequeueReusableCoverView;
+@property (nonatomic, readonly, strong) TKCoverflowCoverView *dequeueReusableCoverView;
 
 /** Returns the cover object corresponding to that index.
  @param index Index of the cover object.
@@ -129,7 +129,7 @@
 /** Returns the range covers on screen.
  @return A range of visible covers.
  */
-- (NSRange) visibleRange;
+@property (nonatomic, readonly) NSRange visibleRange;
 
 /** Reloads the cover views of the receiver. */
 - (void) reloadData;
@@ -137,7 +137,7 @@
 /** Returns the visible covers on screen.
  @return An array of visible covers.
  */
-- (NSArray*) visibleCovers;
+@property (nonatomic, readonly, copy) NSArray *visibleCovers;
 
 @end
 
@@ -148,7 +148,7 @@
  */
 @interface TKCoverflowCoverView : UIView
 
-- (id) initWithFrame:(CGRect)frame reflection:(BOOL)reflection;
+- (instancetype) initWithFrame:(CGRect)frame reflection:(BOOL)reflection;
 
 @property (nonatomic,strong) UIImageView *imageView;
 @property (nonatomic,strong) UIImageView *reflectedImageView;

@@ -54,11 +54,11 @@
 
 @implementation TKImageCache
 
-- (id) init{
+- (instancetype) init{
 	self = [self initWithCacheDirectoryName:@"imagecache"];
 	return self;
 }
-- (id) initWithCacheDirectoryName:(NSString*)dirName{
+- (instancetype) initWithCacheDirectoryName:(NSString*)dirName{
 	if(!(self=[super init])) return nil;
 	
 	[self setCountLimit:20];

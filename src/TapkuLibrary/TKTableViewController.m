@@ -50,11 +50,11 @@
 
 // -----------------------------
 #pragma mark Init & Friends
-- (id) init{
+- (instancetype) init{
 	self = [self initWithStyle:UITableViewStylePlain];
 	return self;
 }
-- (id) initWithStyle:(UITableViewStyle)style{
+- (instancetype) initWithStyle:(UITableViewStyle)style{
 	if(!(self = [super init])) return nil;
 	self.style = style;
 	_tableViewContentOffset = CGPointZero;

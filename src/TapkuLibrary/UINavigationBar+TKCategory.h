@@ -33,6 +33,6 @@
 
 @interface UINavigationBar (TKCategory)
 
-- (UIView*) hairlineDividerView;
+@property (nonatomic, readonly, strong) UIView *hairlineDividerView;
 
 @end

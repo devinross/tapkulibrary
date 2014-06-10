@@ -48,7 +48,7 @@
 
 @implementation TKInputView
 
-- (id) initWithFrame:(CGRect)frame withKeysModels:(NSArray*)keys{
+- (instancetype) initWithFrame:(CGRect)frame withKeysModels:(NSArray*)keys{
 	
 	frame.size = CGSizeMake([UIScreen mainScreen].bounds.size.width, [UIDevice phoneIdiom] ? 216 : 352);
 	

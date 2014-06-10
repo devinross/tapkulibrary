@@ -36,20 +36,17 @@
 #pragma mark - TKAlertView
 @interface TKAlertView : UIView {
 	CGRect _messageRect;
-	NSString *_text;
-	UIImage *_image;
 }
 
-- (id) init;
-- (void) setMessageText:(NSString*)str;
-- (void) setImage:(UIImage*)image;
+@property (nonatomic,strong) UIImage *image;
+@property (nonatomic,copy) NSString *messageText;
 
 @end
 
 
 @implementation TKAlertView
 
-- (id) init{
+- (instancetype) init{
 	if(!(self = [super initWithFrame:CGRectMake(0, 0, 100, 100)])) return nil;
 	_messageRect = CGRectInset(self.bounds, 10, 10);
 	self.backgroundColor = [UIColor clearColor];
@@ -77,7 +74,7 @@
 	[[UIColor colorWithWhite:0 alpha:0.8] set];
 	[self _drawRoundRectangleInRect:rect withRadius:10];
 	[[UIColor whiteColor] set];
-	[_text drawInRect:_messageRect
+	[_messageText drawInRect:_messageRect
 			 withFont:[UIFont boldSystemFontOfSize:14]
 		lineBreakMode:NSLineBreakByWordWrapping
 			alignment:NSTextAlignmentCenter];
@@ -93,7 +90,7 @@
 #pragma mark Setter Methods
 - (void) adjust{
 	
-	CGSize s = [_text sizeWithFont:[UIFont boldSystemFontOfSize:14]
+	CGSize s = [_messageText sizeWithFont:[UIFont boldSystemFontOfSize:14]
 				 constrainedToSize:CGSizeMake(160,200)
 					 lineBreakMode:NSLineBreakByWordWrapping];
 	
@@ -114,7 +111,7 @@
 	
 }
 - (void) setMessageText:(NSString*)str{
-	_text = str;
+	_messageText = str;
 	[self adjust];
 }
 - (void) setImage:(UIImage*)img{
@@ -135,7 +132,7 @@
 	}
 	return defaultCenter;
 }
-- (id) init{
+- (instancetype) init{
 	if(!(self=[super init])) return nil;
 	
 	_alerts = [[NSMutableArray alloc] init];

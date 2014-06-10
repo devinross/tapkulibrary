@@ -53,12 +53,12 @@
 @implementation TKCoverflowView
 
 #pragma mark Init
-- (id) initWithFrame:(CGRect)frame{
+- (instancetype) initWithFrame:(CGRect)frame{
 	self = [self initWithFrame:frame deleclerationRate:UIScrollViewDecelerationRateFast];
 	self.decelerationRate = UIScrollViewDecelerationRateFast;
 	return self;
 }
-- (id) initWithFrame:(CGRect)frame deleclerationRate:(CGFloat)decelerationRate{
+- (instancetype) initWithFrame:(CGRect)frame deleclerationRate:(CGFloat)decelerationRate{
 	if(!(self=[super initWithFrame:frame])) return nil;
 	
 	@try {
@@ -478,7 +478,7 @@
 #pragma mark - TKCoverflowCoverView
 @implementation TKCoverflowCoverView
 
-- (id) initWithFrame:(CGRect)frame reflection:(BOOL)reflection{
+- (instancetype) initWithFrame:(CGRect)frame reflection:(BOOL)reflection{
 	if(!(self=[super initWithFrame:frame])) return nil;
 	self.imageView = [UIImageView imageViewWithFrame:self.bounds];
 	[self addSubview:self.imageView];
@@ -501,7 +501,7 @@
 	
     return self;
 }
-- (id) initWithFrame:(CGRect)frame {
+- (instancetype) initWithFrame:(CGRect)frame {
 	self = [self initWithFrame:frame reflection:YES];
 	return self;
 }

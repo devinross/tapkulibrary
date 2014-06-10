@@ -46,7 +46,7 @@
 	}
 	return instance;
 }
-- (id) init{
+- (instancetype) init{
 	if(!(self=[super init])) return nil;
 	self.sounds = [[NSMutableDictionary alloc] initWithCapacity:10];
 	return self;
@@ -64,7 +64,7 @@
 	if (!self.on)
 		return;
 	
-	NSNumber *soundIDHolder = [self.sounds objectForKey:soundName];
+	NSNumber *soundIDHolder = (self.sounds)[soundName];
 	if (soundIDHolder) {
 		SystemSoundID soundID = (SystemSoundID) [soundIDHolder unsignedLongValue];
 		AudioServicesPlaySystemSound(soundID);
@@ -74,7 +74,7 @@
 			NSURL *url = [NSURL fileURLWithPath:path];
 			SystemSoundID soundID = 0;
 			if (AudioServicesCreateSystemSoundID((__bridge CFURLRef)url, &soundID) == noErr) {
-				[self.sounds setObject:[NSNumber numberWithUnsignedLong:soundID] forKey:soundName];
+				(self.sounds)[soundName] = @(soundID);
 				AudioServicesPlaySystemSound(soundID);
 			}
 		}

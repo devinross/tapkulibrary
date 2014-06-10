@@ -35,21 +35,21 @@
 @interface UIGestureRecognizer (TKCategory)
 
 /** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateBegan`, otherwise NO. */
-- (BOOL) began;
+@property (nonatomic, readonly) BOOL began;
 
 /** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateChanged`, otherwise NO. */
-- (BOOL) changed;
+@property (nonatomic, readonly) BOOL changed;
 
 /** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateEnded`, otherwise NO. */
-- (BOOL) ended;
+@property (nonatomic, readonly) BOOL ended;
 
 /** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateCancelled`, otherwise NO. */
-- (BOOL) cancelled;
+@property (nonatomic, readonly) BOOL cancelled;
 
 /** Returns YES if the gesture recognizer state is `UIGestureRecognizerStateFailed`, otherwise NO. */
-- (BOOL) failed;
+@property (nonatomic, readonly) BOOL failed;
 
 /** Returns YES if the gesture recognizer state is `UIGestureRecognizerStatePossible`, otherwise NO. */
-- (BOOL) possible;
+@property (nonatomic, readonly) BOOL possible;
 
 @end

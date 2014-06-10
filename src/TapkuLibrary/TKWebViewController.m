@@ -35,12 +35,12 @@
 
 @implementation TKWebViewController
 
-- (id) initWithURL:(NSURL*)URL{
+- (instancetype) initWithURL:(NSURL*)URL{
 	if(!(self=[super init])) return nil;
 	self.URL = URL;
 	return self;
 }
-- (id) initWithURLRequest:(NSURLRequest*)URLRequest{
+- (instancetype) initWithURLRequest:(NSURLRequest*)URLRequest{
 	if(!(self=[super init])) return nil;
 	self.URLRequest = URLRequest;
 	return self;

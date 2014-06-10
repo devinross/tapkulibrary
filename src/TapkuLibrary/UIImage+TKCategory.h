@@ -39,18 +39,18 @@
 
 - (UIImage *) imageCroppedToRect:(CGRect)rect;
 
-- (UIImage *) squareImage;
+@property (nonatomic, readonly, strong) UIImage *squareImage;
 
 
 /** Creates and returns an image with the applyed lighting effect.
  @return An image with the applied lighting effect.
  */
-- (UIImage *) imageByApplyingLightEffect;
+@property (nonatomic, readonly, strong) UIImage *imageByApplyingLightEffect;
 
 /** Creates and returns an image with the applyed lighting effect.
  @return An image with the applied lighting effect.
  */
-- (UIImage *) imageByApplyingExtraLightEffect;
+@property (nonatomic, readonly, strong) UIImage *imageByApplyingExtraLightEffect;
 
 /** Creates and returns an image with the applyed tint color.
  @param blurRadius the blur radius applied to the image
@@ -63,7 +63,7 @@
 /** Creates and returns an image with the a dark tint color applied.
  @return An image with the applied dark tint effect.
  */
-- (UIImage *) imageByApplyingDarkEffect;
+@property (nonatomic, readonly, strong) UIImage *imageByApplyingDarkEffect;
 
 
 /** Creates and returns an image with the applyed tint color.

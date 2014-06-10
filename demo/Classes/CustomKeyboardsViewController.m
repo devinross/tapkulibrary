@@ -38,7 +38,7 @@
 @implementation CustomKeyboardsViewController
 
 
-- (id) init{
+- (instancetype) init{
 	if(!(self=[super initWithStyle:UITableViewStyleGrouped])) return nil;
 	self.title = NSLocalizedString(@"Custom Keyboards", @"");
 	return self;

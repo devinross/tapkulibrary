@@ -39,13 +39,13 @@
 
 @implementation TKKeyboardTableViewController
 
-- (id) init{
+- (instancetype) init{
 	if(!(self=[super init])) return nil;
 	self.scrollToTextField = YES;
 	self.hideKeyboardOnScroll = [UIDevice phoneIdiom];
 	return self;
 }
-- (id) initWithStyle:(UITableViewStyle)style{
+- (instancetype) initWithStyle:(UITableViewStyle)style{
 	if(!(self=[super initWithStyle:style])) return nil;
 	self.scrollToTextField = YES;
 	self.hideKeyboardOnScroll = [UIDevice phoneIdiom];

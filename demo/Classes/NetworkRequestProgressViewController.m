@@ -33,7 +33,7 @@
 
 @implementation NetworkRequestProgressViewController
 
-- (id) init{
+- (instancetype) init{
 	if(!(self=[super init])) return nil;
 	return self;
 }

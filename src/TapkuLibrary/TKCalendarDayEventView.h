@@ -60,7 +60,7 @@
 
 @property (nonatomic,strong) UIView *edgeView;
 
-- (CGFloat) contentHeight;
+@property (nonatomic, readonly) CGFloat contentHeight;
 
 
 @end

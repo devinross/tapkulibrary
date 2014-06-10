@@ -37,7 +37,7 @@
 
 - (void) testShouldReturnFirstObject{
 		
-	XCTAssertNil([[NSArray array] firstObject]);
+	XCTAssertNil([@[] firstObject]);
 	NSArray *ar = @[@"BOB"];
 	XCTAssertEqualObjects([ar firstObject], @"BOB");
 	XCTAssertEqual([ar firstObject], ar[0]);

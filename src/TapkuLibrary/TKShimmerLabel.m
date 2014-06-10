@@ -33,7 +33,7 @@
 
 @implementation TKShimmerLabel
 
-- (id) initWithFrame:(CGRect)frame{
+- (instancetype) initWithFrame:(CGRect)frame{
     if (!(self = [super initWithFrame:frame])) return nil;
 		
 	self.textAlignment = NSTextAlignmentCenter;

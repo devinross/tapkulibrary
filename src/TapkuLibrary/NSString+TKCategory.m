@@ -107,14 +107,14 @@
 	for (NSInteger i=0;i<self.length;i++){
 		
 		NSUInteger count = self.length-1;
-		NSInteger doubled = [[NSNumber numberWithUnsignedChar:[self characterAtIndex:count-i]] integerValue] - subtractionNumber;
+		NSInteger doubled = [@([self characterAtIndex:count-i]) integerValue] - subtractionNumber;
 		if (i % 2) doubled = doubled*2;
 		
 		NSString *doubleDigit = [NSString stringWithFormat:@"%@",@(doubled)];
 		
 		if (doubleDigit.length > 1){
-			luhnChecksum += [[NSNumber numberWithUnsignedChar:[doubleDigit characterAtIndex:0]] integerValue]-subtractionNumber;
-			luhnChecksum += [[NSNumber numberWithUnsignedChar:[doubleDigit characterAtIndex:1]] integerValue]-subtractionNumber;
+			luhnChecksum += [@([doubleDigit characterAtIndex:0]) integerValue]-subtractionNumber;
+			luhnChecksum += [@([doubleDigit characterAtIndex:1]) integerValue]-subtractionNumber;
 		}else{
 			luhnChecksum += doubled;
 		}

@@ -32,7 +32,7 @@
 #import "LabelViewController.h"
 @implementation LabelViewController
 
-- (id) init{
+- (instancetype) init{
 	if(!(self=[super initWithStyle:UITableViewStyleGrouped])) return nil;
 	self.title = @"Label Cells";
 	return self;

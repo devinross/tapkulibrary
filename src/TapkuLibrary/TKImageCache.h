@@ -44,13 +44,13 @@
 /** Initialize a new image cache object.
  @return A new created `TKImageCache` object.
  */
-- (id) init;
+- (instancetype) init;
 
 /** Initialize a new image cache object.
  @param cacheDirectoryName The name of the folder to place cached images to disk.
  @return A new created `TKImageCache` object.
  */
-- (id) initWithCacheDirectoryName:(NSString*)cacheDirectoryName;
+- (instancetype) initWithCacheDirectoryName:(NSString*)cacheDirectoryName;
 
 
 ///-------------------------
@@ -137,7 +137,7 @@
 /** The directory where images are stored on disk.
  @return A `NSString` with the location to store images.
  */
-- (NSString *) cacheDirectoryPath; // for subclassing
+@property (nonatomic, readonly, copy) NSString *cacheDirectoryPath; // for subclassing
 
 
 /** Perform image adjustments before storing it in local cache.

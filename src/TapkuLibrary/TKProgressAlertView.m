@@ -36,7 +36,7 @@
 @implementation TKProgressAlertView
 
 
-- (id) initWithProgressTitle:(NSString*)txt{
+- (instancetype) initWithProgressTitle:(NSString*)txt{
 	if(!(self=[super init])) return nil;
 	self.label.text = txt;
 	return self;

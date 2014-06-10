@@ -215,7 +215,7 @@ static UIImage *tileImage;
 }
 
 
-- (id) initWithMonth:(NSDate*)date marks:(NSArray*)markArray startDayOnSunday:(BOOL)sunday timeZone:(NSTimeZone*)timeZone{
+- (instancetype) initWithMonth:(NSDate*)date marks:(NSArray*)markArray startDayOnSunday:(BOOL)sunday timeZone:(NSTimeZone*)timeZone{
 	if(!(self=[super initWithFrame:CGRectZero])) return nil;
 
 	
@@ -647,7 +647,7 @@ static UIImage *tileImage;
 		numberFormatter = [[NSNumberFormatter alloc] init];
     }
 }
-- (id) initWithSundayAsFirst:(BOOL)s timeZone:(NSTimeZone*)timeZone{
+- (instancetype) initWithSundayAsFirst:(BOOL)s timeZone:(NSTimeZone*)timeZone{
 	if (!(self = [super initWithFrame:CGRectMake(0, 0, VIEW_WIDTH, VIEW_WIDTH)])) return nil;
 	self.backgroundColor = [UIColor colorWithHex:0xaaaeb6];
 	self.timeZone = timeZone;
@@ -731,19 +731,19 @@ static UIImage *tileImage;
 	
 	return self;
 }
-- (id) initWithTimeZone:(NSTimeZone*)timeZone{
+- (instancetype) initWithTimeZone:(NSTimeZone*)timeZone{
 	self = [self initWithSundayAsFirst:YES timeZone:timeZone];
 	return self;
 }
-- (id) initWithSundayAsFirst:(BOOL)sunday{
+- (instancetype) initWithSundayAsFirst:(BOOL)sunday{
 	self = [self initWithSundayAsFirst:sunday timeZone:[NSTimeZone defaultTimeZone]];
 	return self;
 }
-- (id) init{
+- (instancetype) init{
 	self = [self initWithSundayAsFirst:YES];
 	return self;
 }
-- (id) initWithFrame:(CGRect)frame{
+- (instancetype) initWithFrame:(CGRect)frame{
 	self = [self init];
 	return self;
 }

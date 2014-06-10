@@ -36,7 +36,7 @@
 
 @implementation TKProgressBarView
 
-- (id) initWithStyle:(TKProgressBarViewStyle)s{
+- (instancetype) initWithStyle:(TKProgressBarViewStyle)s{
 	CGRect r = s==TKProgressBarViewStyleLong ? CGRectMake(0, 0, 210, 20) : CGRectMake(0, 0, 180, 42);
 	
 	if(!(self=[super initWithFrame:r])) return nil;

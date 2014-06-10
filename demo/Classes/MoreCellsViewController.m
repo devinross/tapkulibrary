@@ -33,7 +33,7 @@
 
 @implementation MoreCellsViewController
 
-- (id) init{
+- (instancetype) init{
 	if(!(self=[super initWithStyle:UITableViewStyleGrouped])) return nil;
 	return self;
 }

@@ -36,11 +36,11 @@
 
 @implementation TKProgressCircleView
 
-- (id) init{
+- (instancetype) init{
 	self = [self initWithFrame:CGRectZero];	
 	return self;
 }
-- (id) initWithFrame:(CGRect)frame {
+- (instancetype) initWithFrame:(CGRect)frame {
 	frame.size = CGSizeMake(40,40);
 	if(!(self = [super initWithFrame:frame])) return nil;
 	

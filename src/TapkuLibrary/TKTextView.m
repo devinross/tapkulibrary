@@ -35,12 +35,12 @@
 
 
 #pragma mark Init & Friends
-- (id) initWithFrame:(CGRect)frame{
+- (instancetype) initWithFrame:(CGRect)frame{
 	if(!(self=[super initWithFrame:frame])) return nil;
 	[self _setupView];
     return self;
 }
-- (id) initWithCoder:(NSCoder *)aDecoder{
+- (instancetype) initWithCoder:(NSCoder *)aDecoder{
 	if(!(self=[super initWithCoder:aDecoder])) return nil;
 	[self _setupView];
     return self;

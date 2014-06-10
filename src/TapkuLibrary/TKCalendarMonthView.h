@@ -43,7 +43,7 @@
  @param timeZone The time zone of the grid,
  @return A `TKCalendarMonthView` object or nil.
  */
-- (id) initWithTimeZone:(NSTimeZone*)timeZone; // or Monday
+- (instancetype) initWithTimeZone:(NSTimeZone*)timeZone; // or Monday
 
 
 /** Initialize a Calendar Month Grid.
@@ -51,13 +51,13 @@
  @param timeZone The time zone of the grid,
  @return A `TKCalendarMonthView` object or nil.
  */
-- (id) initWithSundayAsFirst:(BOOL)sunday timeZone:(NSTimeZone*)timeZone;
+- (instancetype) initWithSundayAsFirst:(BOOL)sunday timeZone:(NSTimeZone*)timeZone;
 
 /** Initialize a Calendar Month Grid.
  @param sunday Flag to setup the grid with Monday or Sunday as the leftmost day.
  @return A `TKCalendarMonthView` object or nil.
  */
-- (id) initWithSundayAsFirst:(BOOL)sunday;
+- (instancetype) initWithSundayAsFirst:(BOOL)sunday;
 
 /** The delegate must adopt the `TKCalendarMonthViewDelegate` protocol. The delegate is not retained. */
 @property (nonatomic,assign) id <TKCalendarMonthViewDelegate> delegate;
@@ -72,13 +72,13 @@
 /** The current date highlighted on the month grid.
  @return An `NSDate` object set to the month, year and day of the current selection.
  */
-- (NSDate*) dateSelected;
+@property (nonatomic, readonly, copy) NSDate *dateSelected;
 
 
 /** The current month date being displayed. 
  @return An `NSDate` object set to the month and year of the current month grid.
  */
-- (NSDate*) monthDate;
+@property (nonatomic, readonly, copy) NSDate *monthDate;
 
 /** Selects a specific date in the month grid. 
  @param date The date that will be highlighed.

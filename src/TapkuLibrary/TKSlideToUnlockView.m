@@ -75,18 +75,18 @@
 @implementation TKSlideToUnlockView
 
 #pragma mark Init & Friends
-- (id) init{
+- (instancetype) init{
 	CGRect frame = CGRectInset(CGRectMake(0, 15, CGRectGetWidth([UIScreen mainScreen].bounds), 62), 15, 0) ;
 	self = [self initWithFrame:frame];
 	return self;
 }
-- (id) initWithFrame:(CGRect)frame{
+- (instancetype) initWithFrame:(CGRect)frame{
 	frame.size.height = 62;
 	if(!(self=[super initWithFrame:frame])) return nil;
 	[self _setupView];
     return self;
 }
-- (id) initWithCoder:(NSCoder *)aDecoder{
+- (instancetype) initWithCoder:(NSCoder *)aDecoder{
 	if(!(self=[super initWithCoder:aDecoder])) return nil;
 	[self _setupView];
 	return self;

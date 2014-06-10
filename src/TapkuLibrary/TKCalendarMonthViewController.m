@@ -39,25 +39,25 @@
 
 @implementation TKCalendarMonthViewController
 
-- (id) init{
+- (instancetype) init{
 	self = [self initWithSunday:YES];
 	return self;
 }
-- (id) initWithSunday:(BOOL)sundayFirst{
+- (instancetype) initWithSunday:(BOOL)sundayFirst{
 	self = [self initWithSunday:sundayFirst timeZone:[NSTimeZone defaultTimeZone]];
 	return self;
 }
-- (id) initWithTimeZone:(NSTimeZone *)timeZone{
+- (instancetype) initWithTimeZone:(NSTimeZone *)timeZone{
 	self = [self initWithSunday:YES timeZone:self.timeZone];
 	return self;
 }
-- (id) initWithSunday:(BOOL)sundayFirst timeZone:(NSTimeZone *)timeZone{
+- (instancetype) initWithSunday:(BOOL)sundayFirst timeZone:(NSTimeZone *)timeZone{
 	if(!(self = [super init])) return nil;
 	self.timeZone = timeZone;
 	self.sundayFirst = sundayFirst;
 	return self;
 }
-- (id) initWithCoder:(NSCoder *)decoder {
+- (instancetype) initWithCoder:(NSCoder *)decoder {
     if(!(self=[super initWithCoder:decoder])) return nil;
 	self.timeZone = [NSTimeZone defaultTimeZone];
 	self.sundayFirst = YES;

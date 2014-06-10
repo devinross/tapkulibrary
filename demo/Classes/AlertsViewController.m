@@ -34,7 +34,7 @@
 #pragma mark - AlertsViewController
 @implementation AlertsViewController
 
-- (id) init{
+- (instancetype) init{
 	if(!(self=[super init])) return nil;
 	self.title = NSLocalizedString(@"Alerts",@"Alerts");
 	return self;

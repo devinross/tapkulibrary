@@ -92,7 +92,7 @@
 @implementation TKEmptyView
 
 #pragma mark Init & Friends
-- (id) initWithFrame:(CGRect)frame mask:(UIImage*)image title:(NSString*)titleString subtitle:(NSString*)subtitleString{
+- (instancetype) initWithFrame:(CGRect)frame mask:(UIImage*)image title:(NSString*)titleString subtitle:(NSString*)subtitleString{
     if(!(self=[super initWithFrame:frame])) return nil;
     self.backgroundColor = [UIColor whiteColor];
 	
@@ -135,10 +135,10 @@
 	return self;
 	
 }
-- (id) initWithFrame:(CGRect)frame emptyViewImage:(TKEmptyViewImage)image title:(NSString*)titleString subtitle:(NSString*)subtitleString{
+- (instancetype) initWithFrame:(CGRect)frame emptyViewImage:(TKEmptyViewImage)image title:(NSString*)titleString subtitle:(NSString*)subtitleString{
 	return [self initWithFrame:frame mask:[self predefinedImage:image] title:titleString subtitle:subtitleString];
 }
-- (id) initWithFrame:(CGRect)frame {
+- (instancetype) initWithFrame:(CGRect)frame {
 	return [self initWithFrame:frame emptyViewImage:TKEmptyViewImageStar title:@"" subtitle:@""];
 }
 

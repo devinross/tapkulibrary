@@ -82,7 +82,7 @@
 /** Creates and returns a new date set to the first day of the month from the date object.
  @return A `NSDate` object set to the same month as the date object. The day will be the first of the month.
  */
-- (NSDate*) monthDate;
+@property (nonatomic, readonly, copy) NSDate *monthDate;
 
 /** Creates and returns a new date set to the first day of the month from the date object.
  Things get tricky with respect to day light saving. Simple subtraction of a give time (using @code[NSDate dateWithTimeIntervalSinceNow:]@endcode) might not yield the expected results.
@@ -163,7 +163,7 @@
 /** Returns a Boolean value that indicates whether the date object is that same date information as the current day. 
  @return YES if the date object represents the current date, otherwise NO.
  */
-- (BOOL) isToday;
+@property (nonatomic, getter=isToday, readonly) BOOL today;
 
 /** Returns a Boolean value that indicates whether the date object is that same date information as the current day.
  @param timeZone The time zone to respect.
@@ -175,7 +175,7 @@
 /** Returns a Boolean value that indicates whether the date object is that same date information as tomorrow.
  @return YES if the date object represents tomorrow's date, otherwise NO.
  */
-- (BOOL) isTomorrow;
+@property (nonatomic, getter=isTomorrow, readonly) BOOL tomorrow;
 
 /** Returns a Boolean value that indicates whether the date object is that same date information as tomorrow.
  @param timeZone The time zone to respect.
@@ -187,7 +187,7 @@
 /** Returns a Boolean value that indicates whether the date object is that same date information as yesterday.
  @return YES if the date object represents yesterday's date, otherwise NO.
  */
-- (BOOL) isYesterday;
+@property (nonatomic, getter=isYesterday, readonly) BOOL yesterday;
 /** Returns a Boolean value that indicates whether the date object is that same date information as yesterday.
  @param timeZone The time zone to respect.
  @return YES if the date object represents yesterday's date, otherwise NO.
@@ -199,7 +199,7 @@
 /** Returns a NSString with the localized month and year string for the NSDate object.
  @return An NSString object.
  */
-- (NSString *) monthYearString;
+@property (nonatomic, readonly, copy) NSString *monthYearString;
 
 /** Returns a NSString with the localized month and year string for the NSDate object.
  @param timeZone The time zone to respect.
@@ -210,7 +210,7 @@
 /** Returns a NSString with the localized month string for the NSDate object.
  @return An NSString object.
  */
-- (NSString *) monthString;
+@property (nonatomic, readonly, copy) NSString *monthString;
 
 /** Returns a NSString with the localized month string for the NSDate object.
  @param timeZone The time zone to respect.
@@ -221,7 +221,7 @@
 /** Returns a NSString with the localized year string for the NSDate object.
  @return An NSString object.
  */
-- (NSString *) yearString;
+@property (nonatomic, readonly, copy) NSString *yearString;
 
 /** Returns a NSString with the localized year string for the NSDate object.
  @param timeZone The time zone to respect.
@@ -251,6 +251,6 @@
 + (NSDate*) firstDateOfWeekWithTimeZone:(NSTimeZone*)timeZone;
 + (NSDate*) firstDateOfWeek;
 - (NSDate*) firstDateOfWeekWithTimeZone:(NSTimeZone*)timeZone;
-- (NSDate*) firstDateOfWeek;
+@property (nonatomic, readonly, copy) NSDate *firstDateOfWeek;
 
 @end

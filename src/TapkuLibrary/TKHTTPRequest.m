@@ -60,10 +60,11 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 #pragma mark - TKHTTPRequest
 @interface TKHTTPRequest () {
 	NSInteger _totalExpectedImageSize,_receivedDataBytes;
+	BOOL _cancelled;
 }
 
 @property (nonatomic,assign) TKOperationState state;
-@property (nonatomic,readwrite,assign,getter=isCancelled) BOOL cancelled;
+@property (nonatomic,assign,getter=isCancelled) BOOL cancelled;
 @property (nonatomic,strong) NSURLConnection *connection;
 @property (nonatomic,strong) NSMutableData *data;
 @property (nonatomic,strong) NSFileHandle *fileHandler; 	// Used for writing data to a file when downloadDestinationPath is set
@@ -450,6 +451,9 @@ static inline NSString * TKKeyPathFromOperationState(TKOperationState state) {
 	
 }
 
+- (BOOL) isCancelled{
+	return _cancelled;
+}
 
 - (void) setCancelled:(BOOL)cancelled {
     [self willChangeValueForKey:@"isCancelled"];

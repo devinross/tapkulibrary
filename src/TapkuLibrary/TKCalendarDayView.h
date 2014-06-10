@@ -38,9 +38,9 @@
 /** `TKCalendarDayView` imitates the day view in the Calendar app on iPhone. */
 @interface TKCalendarDayView : UIView <UIScrollViewDelegate>
 
-- (id) initWithFrame:(CGRect)frame calendar:(NSCalendar*)calendar;
+- (instancetype) initWithFrame:(CGRect)frame calendar:(NSCalendar*)calendar;
 
-- (id) initWithFrame:(CGRect)frame timeZone:(NSTimeZone*)timeZone;
+- (instancetype) initWithFrame:(CGRect)frame timeZone:(NSTimeZone*)timeZone;
 
 
 @property (nonatomic,strong) NSCalendar *calendar;
@@ -71,7 +71,7 @@
 /** Returns an event view that can used by the data source.
  @return A previously used `TKCalendarDayEventView` object.
  */
-- (TKCalendarDayEventView*) dequeueReusableEventView;
+@property (nonatomic, readonly, strong) TKCalendarDayEventView *dequeueReusableEventView;
 
 
 @end

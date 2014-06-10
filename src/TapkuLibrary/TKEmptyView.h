@@ -73,7 +73,7 @@ typedef enum {
  @param subtitleString The subtitle of the empty view.
  @return An initialized `TKEmptyView` object or nil if the object couldn’t be created.
  */
-- (id) initWithFrame:(CGRect)frame 
+- (instancetype) initWithFrame:(CGRect)frame 
 				mask:(UIImage*)image 
 			   title:(NSString*)titleString 
 			subtitle:(NSString*)subtitleString;
@@ -88,7 +88,7 @@ typedef enum {
  @param subtitleString The subtitle of the empty view.
  @return An initialized `TKEmptyView` object or nil if the object couldn’t be created.
  */
-- (id) initWithFrame:(CGRect)frame 
+- (instancetype) initWithFrame:(CGRect)frame 
 	  emptyViewImage:(TKEmptyViewImage)image 
 			   title:(NSString*)titleString 
 			subtitle:(NSString*)subtitleString;

@@ -33,6 +33,6 @@
 
 @interface UIScreen (TKCategory)
 
-- (CGFloat) onePixelSize;
+@property (nonatomic, readonly) CGFloat onePixelSize;
 
 @end

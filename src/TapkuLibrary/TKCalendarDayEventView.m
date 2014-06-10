@@ -53,12 +53,12 @@
 	event.locationLabel.text = location;
 	return event;
 }
-- (id) initWithFrame:(CGRect)frame {
+- (instancetype) initWithFrame:(CGRect)frame {
     if(!(self=[super initWithFrame:frame])) return nil;
     [self _setupView];
     return self;
 }
-- (id) initWithCoder:(NSCoder *)decoder {
+- (instancetype) initWithCoder:(NSCoder *)decoder {
     if(!(self=[super initWithCoder:decoder])) return nil;
     [self _setupView];
 	return self;

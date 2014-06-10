@@ -34,7 +34,7 @@
 @implementation ImageCenterViewController
 
 
-- (id) init{
+- (instancetype) init{
 	if(!(self=[super init])) return nil;
 	
 	self.urlArray = @[

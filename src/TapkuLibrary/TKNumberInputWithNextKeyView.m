@@ -37,7 +37,7 @@
 
 @implementation TKNumberInputWithNextKeyView
 
-- (id) initWithFrame:(CGRect)frame{
+- (instancetype) initWithFrame:(CGRect)frame{
 	frame.size = CGSizeMake([UIScreen mainScreen].bounds.size.width, [UIDevice phoneIdiom] ? 216 : 352);
 	
 	CGFloat yPad = 0, xPad = 0, xMargin = 0;

@@ -51,22 +51,22 @@
 @dynamic delegate;
 
 #pragma mark Init & Friends
-- (id) init{
+- (instancetype) init{
 	if(!(self=[super init])) return nil;
 	[self setup];
     return self;
 }
-- (id) initWithFrame:(CGRect)frame{
+- (instancetype) initWithFrame:(CGRect)frame{
 	if(!(self=[super initWithFrame:frame])) return nil;
 	[self setup];
     return self;
 }
-- (id) initWithCoder:(NSCoder *)coder {
+- (instancetype) initWithCoder:(NSCoder *)coder {
 	if(!(self=[super initWithCoder:coder])) return nil;
 	[self setup];
     return self;
 }
-- (id) initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
+- (instancetype) initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
 	if(!(self=[super initWithFrame:frame style:style])) return nil;
 	[self setup];
     return self;

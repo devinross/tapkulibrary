@@ -50,7 +50,7 @@
  @param style A constant that specifies the style of table view that the controller object is to manage (`UITableViewStylePlain` or `UITableViewStyleGrouped`).
  @return An initialized `TKTableViewController` object or nil if the object couldn’t be created.
  */
-- (id) initWithStyle:(UITableViewStyle)style;
+- (instancetype) initWithStyle:(UITableViewStyle)style;
 
 
 

@@ -44,7 +44,7 @@
 + (id) createObject:(NSDictionary*)data{
 	return [[[self class] alloc] initWithDataDictionary:data];
 }
-- (id) initWithDataDictionary:(NSDictionary*)dictionary{
+- (instancetype) initWithDataDictionary:(NSDictionary*)dictionary{
 	if((id)dictionary == [NSNull null]) return nil;
 	if(!(self=[self init])) return nil;
 	[self importDataWithDictionary:VALID_OBJECT(dictionary)?dictionary:nil];

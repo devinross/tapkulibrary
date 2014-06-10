@@ -37,16 +37,16 @@
 @implementation UIButton (TKCategory)
 
 
-+ (id) buttonWithFrame:(CGRect)frame{
++ (instancetype) buttonWithFrame:(CGRect)frame{
 	return [[self class] buttonWithFrame:frame title:nil];
 }
-+ (id) buttonWithFrame:(CGRect)frame title:(NSString*)title{
++ (instancetype) buttonWithFrame:(CGRect)frame title:(NSString*)title{
 	return [[self class] buttonWithFrame:frame title:title backgroundImage:nil];
 }
-+ (id) buttonWithFrame:(CGRect)frame title:(NSString*)title backgroundImage:(UIImage*)backgroundImage{
++ (instancetype) buttonWithFrame:(CGRect)frame title:(NSString*)title backgroundImage:(UIImage*)backgroundImage{
 	return [[self class] buttonWithFrame:frame title:title backgroundImage:backgroundImage highlightedBackgroundImage:nil];
 }
-+ (id) buttonWithFrame:(CGRect)frame title:(NSString*)title backgroundImage:(UIImage*)backgroundImage highlightedBackgroundImage:(UIImage*)highlightedBackgroundImage{
++ (instancetype) buttonWithFrame:(CGRect)frame title:(NSString*)title backgroundImage:(UIImage*)backgroundImage highlightedBackgroundImage:(UIImage*)highlightedBackgroundImage{
 	UIButton *btn = [[self class] buttonWithType:UIButtonTypeCustom];
 	btn.frame = frame;
 	[btn setTitle:title forState:UIControlStateNormal];
@@ -55,10 +55,10 @@
 	return btn;
 }
 
-+ (id) buttonWithFrame:(CGRect)frame image:(UIImage*)image{
++ (instancetype) buttonWithFrame:(CGRect)frame image:(UIImage*)image{
 	return [[self class] buttonWithFrame:frame image:image highlightedImage:nil];
 }
-+ (id) buttonWithFrame:(CGRect)frame image:(UIImage*)image highlightedImage:(UIImage*)highlightedImage{
++ (instancetype) buttonWithFrame:(CGRect)frame image:(UIImage*)image highlightedImage:(UIImage*)highlightedImage{
 	UIButton *btn = [[self class] buttonWithType:UIButtonTypeCustom];
 	btn.frame = frame;
 	[btn setImage:image forState:UIControlStateNormal];

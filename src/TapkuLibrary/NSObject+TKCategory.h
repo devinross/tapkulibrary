@@ -60,7 +60,7 @@
 + (id) createObject:(NSDictionary*)dictionary;
 
 
-- (id) initWithDataDictionary:(NSDictionary*)dictionary;
+- (instancetype) initWithDataDictionary:(NSDictionary*)dictionary;
 
 
 /** Imports data from an `NSDictionary` objects using the map provided by the dataKeys dictionary.
@@ -70,7 +70,7 @@
 - (void) importDataWithDictionary:(NSDictionary*)dictionary;
 
 
-- (NSDictionary*) dataDictionary;
+@property (nonatomic, readonly, copy) NSDictionary *dataDictionary;
 
 #if NS_BLOCKS_AVAILABLE
 

@@ -66,7 +66,7 @@
 
 @implementation RootViewController
 
-- (id) initWithStyle:(UITableViewStyle)s{
+- (instancetype) initWithStyle:(UITableViewStyle)s{
 	if(!(self = [super initWithStyle:s])) return nil;
 	self.title = @"Tapku Library";
 	self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
