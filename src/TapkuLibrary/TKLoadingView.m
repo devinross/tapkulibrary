@@ -34,7 +34,7 @@
 @implementation TKLoadingView
 
 
-- (instancetype) initWithFrame:(CGRect)frame{
+- (id) initWithFrame:(CGRect)frame{
 	if(!(self=[super initWithFrame:frame])) return nil;
 	
 	
@@ -54,22 +54,12 @@
 
 - (void) layoutSubviews{
 	[super layoutSubviews];
-	
 	NSString *str = [NSString stringWithFormat:@"%@...",NSLocalizedString(@"Loading", @"Loading")];
-	
 	CGSize size = [str sizeWithFont:self.loadingLabel.font];
-	
-	
 	CGFloat wid = CGRectGetWidth(self.frame), hei = CGRectGetHeight(self.frame);
-	
-	
 	NSInteger x = (wid-size.width) / 2, y = (hei-size.height) / 2;
-	
 	CGRect frame = CGRectMake(x, y, size.width, size.height);
-	
 	self.loadingLabel.frame = frame;
-	
-	
 }
 
 
