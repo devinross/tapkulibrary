@@ -326,13 +326,10 @@
 	self.indexOfCurrentDay = nowPage > 1 ? self.indexOfCurrentDay+1 : self.indexOfCurrentDay-1;
 	
 	
-	BOOL moveDayView = NO;
-	NSInteger day = self.indexOfCurrentDay;
 	if(self.indexOfCurrentDay < 0 || self.indexOfCurrentDay > 6){
 		self.userInteractionEnabled = NO;
-		moveDayView = YES;
 		
-		day = self.indexOfCurrentDay < 0 ? 6 : 0;
+		NSInteger day = self.indexOfCurrentDay < 0 ? 6 : 0;
 		
 		
 		[UIView animateWithDuration:0.3 animations:^{

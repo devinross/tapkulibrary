@@ -68,9 +68,6 @@
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return NO;
 }
-- (void) viewDidUnload {
-	self.monthView = nil;
-}
 
 - (void) loadView{
 	[super loadView];

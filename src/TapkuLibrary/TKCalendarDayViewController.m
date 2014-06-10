@@ -51,9 +51,7 @@
 	self.dayView.dataSource = self;
 	[self.view addSubview:self.dayView];
 }
-- (void) viewDidUnload {
-	self.dayView = nil;
-}
+
 
 #pragma mark TKCalendarDayViewDelegate
 - (NSArray *) calendarDayTimelineView:(TKCalendarDayView*)calendarDayTimeline eventsForDate:(NSDate *)eventDate{

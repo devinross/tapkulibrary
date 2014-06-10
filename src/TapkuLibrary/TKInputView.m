@@ -107,7 +107,8 @@
 		[self.hideKeyboardKey setHighlighted:NO];
 		[self addSubview:self.hideKeyboardKey];
 		
-		UIImageView *dots = [UIImageView imageViewWithFrame:CGRectMakeWithSize(CGRectGetWidth(frame) - 18, CGRectGetHeight(frame) - 57, dots.frame.size)];
+		UIImage *dotsImage = [UIImage imageNamedTK:@"keyboard/move-keyboard-dots"];
+		UIImageView *dots = [UIImageView imageViewWithFrame:CGRectMakeWithSize(CGRectGetWidth(frame) - 18, CGRectGetHeight(frame) - 57, dotsImage.size)];
 		dots.image = [UIImage imageNamedTK:@"keyboard/move-keyboard-dots"];
 		dots.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
 		[self addSubview:dots];
@@ -187,11 +188,8 @@
 	
 	
 	if(self.selectedKey == self.backspaceKey){
-		
-		
-		
+
 		BOOL delete = YES;
-		
 		if(self.textField.text.length < 1)
 			delete = NO;
 		
@@ -204,12 +202,8 @@
 		
 		
 	}else if(self.selectedKey){
-		
 		[self.delegate inputView:self didSelectKey:self.selectedKey];
-		
 	}
-	
-	
 	[self touchesCancelled:touches withEvent:event];
 }
 - (void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
