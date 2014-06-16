@@ -44,6 +44,9 @@
 /** The main view to display content on. */
 @property (nonatomic,strong) UIView *alertView;
 
+@property (nonatomic,strong) UIColor *backgroundShadeColor;
+
+
 ///----------------------------
 /// @name Displaying and hiding alert
 ///----------------------------

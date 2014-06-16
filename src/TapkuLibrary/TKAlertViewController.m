@@ -57,6 +57,8 @@
 - (void) loadView{
 	[super loadView];
 	
+	self.backgroundShadeColor = [UIColor colorWithWhite:0 alpha:0.1];
+	
 	CGSize s = CGSizeMake(280, 300);
 	CGRect alertRect = CGRectMakeWithSize( (CGRectGetWidth(self.view.frame)- s.width)/2.0f, (CGRectGetHeight(self.view.frame)- s.height)/2.0f, s);
 	
@@ -68,7 +70,7 @@
 	self.alertView.layer.shadowOpacity = 0.1;
 	self.alertView.layer.cornerRadius = 8;
 	[self.view addSubview:self.alertView];
-
+	
 	self.alertView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 	
 }
@@ -120,17 +122,15 @@
 	UIView *containerView = [transitionContext containerView];
 	[containerView addSubview:toVC.view];
 	
-	
-	
 	toVC.view.frame = CGRectMake(0, 0, CGRectGetWidth(containerView.frame), CGRectGetHeight(containerView.frame));
-	toVC.view.alpha = 0;
+	toVC.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0];
+	self.alertView.alpha = 0;
 	
-
 	self.alertView.transform = CGScale(0.8, 0.8);
 	
 	[UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-		toVC.view.alpha = 1;
-		toVC.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.1];
+		toVC.view.layer.backgroundColor = self.backgroundShadeColor.CGColor;
+		self.alertView.alpha = 1;
 	}];
 	
 	
@@ -179,10 +179,16 @@
 	[self.animator addBehavior:behav];
 	
 	
+	[UIView animateWithDuration:0.4 delay:0 options:0 animations:^{
+		self.view.layer.backgroundColor = [UIColor colorWithWhite:0 alpha:0.0].CGColor;
+		
+	}completion:nil];
+	
+	
+	
 	[UIView animateWithDuration:0.4 delay:0.5f options:0 animations:^{
-		self.view.alpha = 0;
-		self.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.0];
-
+		self.alertView.alpha = 0.8;
+		
 	}completion:^(BOOL finished){
 		[transitionContext completeTransition:YES];
 	}];
