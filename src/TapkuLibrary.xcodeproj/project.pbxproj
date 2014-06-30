@@ -49,6 +49,8 @@
 		2052E880174F532500F06B66 /* TKWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052E87E174F532500F06B66 /* TKWebViewController.m */; };
 		2053A4951961B14F00A9E00D /* TKMultiSwitch.h in Headers */ = {isa = PBXBuildFile; fileRef = 2053A4931961B14F00A9E00D /* TKMultiSwitch.h */; };
 		2053A4961961B14F00A9E00D /* TKMultiSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 2053A4941961B14F00A9E00D /* TKMultiSwitch.m */; };
+		2053A49D1961CAE400A9E00D /* TKPegSlider.h in Headers */ = {isa = PBXBuildFile; fileRef = 2053A49B1961CAE400A9E00D /* TKPegSlider.h */; };
+		2053A49E1961CAE400A9E00D /* TKPegSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2053A49C1961CAE400A9E00D /* TKPegSlider.m */; };
 		2057363416A330E700F8CDE6 /* TKCoverflowView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2057363216A330E700F8CDE6 /* TKCoverflowView.h */; };
 		2057363516A330E700F8CDE6 /* TKCoverflowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2057363316A330E700F8CDE6 /* TKCoverflowView.m */; };
 		2070A16518C63AFB00D213FD /* UINavigationBar+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2070A16318C63AFB00D213FD /* UINavigationBar+TKCategory.h */; };
@@ -220,6 +222,8 @@
 		2052E87E174F532500F06B66 /* TKWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKWebViewController.m; sourceTree = "<group>"; };
 		2053A4931961B14F00A9E00D /* TKMultiSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKMultiSwitch.h; sourceTree = "<group>"; };
 		2053A4941961B14F00A9E00D /* TKMultiSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKMultiSwitch.m; sourceTree = "<group>"; };
+		2053A49B1961CAE400A9E00D /* TKPegSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKPegSlider.h; sourceTree = "<group>"; };
+		2053A49C1961CAE400A9E00D /* TKPegSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKPegSlider.m; sourceTree = "<group>"; };
 		2057363216A330E700F8CDE6 /* TKCoverflowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCoverflowView.h; sourceTree = "<group>"; };
 		2057363316A330E700F8CDE6 /* TKCoverflowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCoverflowView.m; sourceTree = "<group>"; };
 		2070A16318C63AFB00D213FD /* UINavigationBar+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+TKCategory.h"; sourceTree = "<group>"; };
@@ -656,6 +660,8 @@
 				20F6154117E69E75007F443C /* TKShimmerLabel.m */,
 				2053A4931961B14F00A9E00D /* TKMultiSwitch.h */,
 				2053A4941961B14F00A9E00D /* TKMultiSwitch.m */,
+				2053A49B1961CAE400A9E00D /* TKPegSlider.h */,
+				2053A49C1961CAE400A9E00D /* TKPegSlider.m */,
 				20DAFB011814BAAC00EF525B /* TKRetroButton.h */,
 				20DAFB021814BAAC00EF525B /* TKRetroButton.m */,
 				20C0354D17C9A5DD009EBB33 /* TKGlowButton.h */,
@@ -708,6 +714,7 @@
 				3B6EDDF511547C3000E454DA /* TKCalendarDayView.h in Headers */,
 				3B6EDDF711547C3100E454DA /* TKCalendarDayEventView.h in Headers */,
 				20732DC01800AA880011D714 /* UIFont+TKCategory.h in Headers */,
+				2053A49D1961CAE400A9E00D /* TKPegSlider.h in Headers */,
 				202369DE18F586F300FE69B0 /* TKStepperCell.h in Headers */,
 				3B6EDDFD11547C3800E454DA /* TKEmptyView.h in Headers */,
 				3B6EDE0C11547C4700E454DA /* TKTextViewCell.h in Headers */,
@@ -809,6 +816,7 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = TK;
 				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "TapkuLibrary" */;
@@ -949,6 +957,7 @@
 				20FC7CA81719007300C3A7E1 /* NSMutableArray+TKCategory.m in Sources */,
 				20FC7CBD1719313A00C3A7E1 /* TKLoadingView.m in Sources */,
 				2026B53A1746F4D000447F22 /* UIImagePickerController+TKCategory.m in Sources */,
+				2053A49E1961CAE400A9E00D /* TKPegSlider.m in Sources */,
 				2026B553174810B900447F22 /* TKTextFieldCell.m in Sources */,
 				2026B55C1748257B00447F22 /* TKTextView.m in Sources */,
 				20732DC11800AA880011D714 /* UIFont+TKCategory.m in Sources */,

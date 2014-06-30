@@ -46,7 +46,7 @@
 #import "SlideToUnlockViewController.h"
 #import "ButtonViewController.h"
 #import "CustomKeyboardsViewController.h"
-#import "MultiSwitchViewController.h"
+#import "ControlsViewController.h"
 
 @interface UINavigationController (Rotation_IOS6)
 @end
@@ -135,6 +135,8 @@
 	UIViewController *vc;
 	NSString *str = cell.textLabel.text;
 	
+	
+	
 	if([str isEqualToString:COVERFLOW]){
 		vc = [[CoverflowViewController alloc] init];
 		
@@ -153,7 +155,7 @@
 		vc = CalendarDayViewController.new;
 	
 	else if([str isEqualToString:MULTI_SWITCH])
-		vc = MultiSwitchViewController.new;
+		vc = ControlsViewController.new;
 	
 	else if([str isEqualToString:EMPTY_SIGN])
 		vc = EmptyViewController.new;

@@ -29,15 +29,12 @@
  
  */
 
-
 @interface CustomKeyboardsViewController : TKKeyboardTableViewController <TKInputViewDelegate>
-
 
 @property (nonatomic,strong) TKTextFieldCell *numberFieldCell;
 @property (nonatomic,strong) TKNumberInputWithNextKeyView *numberInputView;
 
 @property (nonatomic,strong) TKTextFieldCell *decimalFieldCell;
 @property (nonatomic,strong) TKDecimalInputWithNextKeyView *decimalInputView;
-
 
 @end

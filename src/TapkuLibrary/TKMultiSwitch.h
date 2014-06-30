@@ -34,6 +34,11 @@
 /** `TKMultiSwitch` a slide control with multiple options. Sort of like a `UISwitch` mixed with a `UISegmentControl`. */
 @interface TKMultiSwitch : UIControl
 
+/**
+ Initialize a `TKMultiSwitch` instance.
+ @param items The items in the switch view.
+ @return A `TKMultiSwitch` object.
+ */
 - (id) initWithItems:(NSArray*)items;
 
 /** The index of the selected item. */

@@ -1,5 +1,5 @@
 //
-//  MultiSwitchViewController.m
+//  TKPegSlider.h
 //  Created by Devin Ross on 6/30/14.
 //
 /*
@@ -29,28 +29,28 @@
  
  */
 
-#import "MultiSwitchViewController.h"
+@import UIKit;
 
-@implementation MultiSwitchViewController
+/** `TKPegSlider` a slider control with set points. */
+@interface TKPegSlider : UIControl
 
-- (void) loadView{
-	[super loadView];
-	
-	self.view.backgroundColor = [UIColor whiteColor];
-	
-	self.multiswitch1 = [[TKMultiSwitch alloc] initWithItems:@[@"Option 1", @"Option 2"]];
-	self.multiswitch1.frame = CGRectMakeWithSize(10, 80, self.multiswitch1.frame.size);
-	[self.multiswitch1 addTarget:self action:@selector(changedSwitchValue:) forControlEvents:UIControlEventValueChanged];
-	[self.view addSubview:self.multiswitch1];
-	
-	self.multiswitch2 = [[TKMultiSwitch alloc] initWithItems:@[@"One", @"Two",@"Three"]];
-	self.multiswitch2.frame = CGRectMakeWithSize(10, 140, self.multiswitch2.frame.size);
-	[self.multiswitch2 addTarget:self action:@selector(changedSwitchValue:) forControlEvents:UIControlEventValueChanged];
-	[self.view addSubview:self.multiswitch2];
-}
+/** The index of the selected item. */
+@property (nonatomic,assign) NSInteger selectedPegIndex;
 
-- (void) changedSwitchValue:(TKMultiSwitch*)switcher{
+/** The index of the selected item. */
+@property (nonatomic,assign) NSUInteger numberOfPegs;
 
-}
+/** The left side image. */
+@property (nonatomic,strong) UIImage *leftEndImage;
+
+/** The right side image. */
+@property (nonatomic,strong) UIImage *rightEndImage;
+
+/**
+ Select an item manually.
+ @param index The index of the item.
+ @param animated Animate the selection of the item.
+ */
+- (void) selectPegAtIndex:(NSInteger)index animated:(BOOL)animated;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  MultiSwitchViewController.h
+//  ControlsViewController.h
 //  Created by Devin Ross on 6/30/14.
 //
 /*
@@ -31,9 +31,10 @@
 
 @import UIKit;
 
-@interface MultiSwitchViewController : UIViewController
+@interface ControlsViewController : UIViewController
 
 @property (nonatomic,strong) TKMultiSwitch *multiswitch1;
 @property (nonatomic,strong) TKMultiSwitch *multiswitch2;
+@property (nonatomic,strong) TKPegSlider *pegSlider;
 
 @end

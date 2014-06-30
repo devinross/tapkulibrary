@@ -48,6 +48,14 @@
 #define UNSELECTED_ALPHA 0.5
 #define SCALE_UP CGScale(1.04, 1.16)
 
+- (id) init{
+	self = [self initWithItems:@[@""]];
+	return self;
+}
+- (id) initWithFrame:(CGRect)frame{
+	self = [self initWithItems:@[@""]];
+    return self;
+}
 - (id) initWithItems:(NSArray*)items{
 	if(!(self=[super initWithFrame:CGRectMake(10, 6, 320-20, HEIGHT)])) return nil;
 	
@@ -279,6 +287,13 @@
 	
 	_indexOfSelectedItem = index;
 	
+}
+
+- (void) tintColorDidChange{
+	[super tintColorDidChange];
+	for(UILabel *label in self.labels)
+		label.textColor = self.tintColor;
+	self.selectionView.layer.borderColor = self.tintColor.CGColor;
 }
 
 @end

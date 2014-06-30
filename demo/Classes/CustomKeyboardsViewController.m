@@ -37,7 +37,6 @@
 
 @implementation CustomKeyboardsViewController
 
-
 - (instancetype) init{
 	if(!(self=[super initWithStyle:UITableViewStyleGrouped])) return nil;
 	self.title = NSLocalizedString(@"Custom Keyboards", @"");
@@ -91,7 +90,6 @@
     return self.cells.count;
 }
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
 	return self.cells[indexPath.row];
 }
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -99,7 +97,5 @@
 	
 	
 }
-
-
 
 @end
