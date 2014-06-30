@@ -57,10 +57,10 @@
 	self.clipsToBounds = NO;
 	self.layer.cornerRadius = CGRectGetHeight(self.frame)/2;
 	
-	self.leftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+	self.leftImageView = [[UIImageView alloc] initWithFrame:CGRectInset(CGRectMake(0, 0, 40, 40), 6, 6)];
 	[self addSubview:self.leftImageView];
 	
-	self.rightImageView = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.frame)-40, 0, 40, 40)];
+	self.rightImageView = [[UIImageView alloc] initWithFrame:CGRectInset(CGRectMake(CGRectGetWidth(self.frame)-40, 0, 40, 40), 6, 6)];
 	[self addSubview:self.rightImageView];
 	
 	_numberOfPegs = 3;
@@ -118,6 +118,8 @@
 - (void) tintColorDidChange{
 	[super tintColorDidChange];
 	[self _setupPegs];
+	self.leftImageView.tintColor = self.rightImageView.tintColor = self.tintColor;
+	
 }
 
 - (NSInteger) _indexOfSelectAtPoint:(CGFloat)point{
@@ -125,6 +127,7 @@
 	CGFloat rightPad = 16 + (self.rightImageView.image ? 40 : 3);
 	CGFloat per = (CGRectGetWidth(self.frame)-leftPad-rightPad)  / (_numberOfPegs-1);
 	NSInteger index = (point+(per/2)-leftPad) / per;
+	index = MAX(0,index);
 	return MAX(0,MIN(_numberOfPegs-1,index));
 }
 - (void) pan:(UIPanGestureRecognizer*)gesture{
@@ -139,6 +142,11 @@
 		i++;
 	}
 	[UIView commitAnimations];
+	
+	if(index!= _selectedPegIndex){
+		_selectedPegIndex = index;
+		[self sendActionsForControlEvents:UIControlEventValueChanged];
+	}
 }
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
 	[super touchesBegan:touches withEvent:event];
@@ -156,6 +164,11 @@
 		i++;
 	}
 	[UIView commitAnimations];
+	
+	if(index!= _selectedPegIndex){
+		_selectedPegIndex = index;
+		[self sendActionsForControlEvents:UIControlEventValueChanged];
+	}
 	
 }
 
@@ -184,11 +197,11 @@
 	
 }
 - (void) setLeftEndImage:(UIImage *)leftEndImage{
-	self.leftImageView.image = leftEndImage;
+	self.leftImageView.image = [leftEndImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 	[self _setupPegs];
 }
 - (void) setRightEndImage:(UIImage *)rightEndImage{
-	self.rightImageView.image = rightEndImage;
+	self.rightImageView.image = [rightEndImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 	[self _setupPegs];
 }
 - (UIImage*) leftEndImage{

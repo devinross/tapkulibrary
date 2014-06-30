@@ -51,7 +51,10 @@
 	
 	self.pegSlider = [[TKPegSlider alloc] initWithFrame:CGRectMake(10, 200, 40, 40)];
 	self.pegSlider.frame = CGRectMakeWithSize(10, 200, self.pegSlider.frame.size);
-	self.pegSlider.numberOfPegs = 10;
+	self.pegSlider.numberOfPegs = 8;
+	self.pegSlider.leftEndImage = [UIImage imageNamed:@"sad"];
+	self.pegSlider.rightEndImage = [UIImage imageNamed:@"happy"];
+
 	[self.pegSlider addTarget:self action:@selector(changedPegValue:) forControlEvents:UIControlEventValueChanged];
 	[self.view addSubview:self.pegSlider];
 	
@@ -62,6 +65,7 @@
 }
 
 - (void) changedSwitchValue:(TKMultiSwitch*)switcher{
+	TKLog(@"%@",switcher);
 
 }
 

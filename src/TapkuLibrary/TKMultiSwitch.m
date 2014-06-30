@@ -211,8 +211,6 @@
 	
 	if(pan.ended || pan.cancelled){
 
-		
-		
 		[UIView beginAnimations:nil context:nil];
 		self.selectionView.transform = CGAffineTransformIdentity;
 		self.selectionView.center = CGPointMake( INSET + per * index + CGRectGetWidth(self.selectionView.frame)/2, self.selectionView.center.y);
@@ -264,12 +262,8 @@
 }
 - (void) selectItemAtIndex:(NSInteger)index animated:(BOOL)animated{
 	
-	
 	CGFloat per = CGRectGetWidth(self.frame) / self.labels.count;
-	
 	self.offsetFromCenter = -1;
-	
-	
 	if(index == _indexOfSelectedItem) return;
 	
 	
@@ -283,8 +277,6 @@
 		i++;
 	}
 	if(animated) [UIView commitAnimations];
-	
-	
 	_indexOfSelectedItem = index;
 	
 }
