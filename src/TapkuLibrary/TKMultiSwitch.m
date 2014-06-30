@@ -80,11 +80,17 @@
 	self.multipleTouchEnabled = NO;
 	
 	UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+	pan.delegate = self;
 	[self addGestureRecognizer:pan];
 	
 	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
 	tap.delegate = self;
 	[self addGestureRecognizer:tap];
+	
+	UILongPressGestureRecognizer *longtap = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longtap:)];
+	longtap.minimumPressDuration = 0.25;
+	longtap.delegate = self;
+	[self addGestureRecognizer:longtap];
 	
 	self.offsetFromCenter = -1;
 	_indexOfSelectedItem = 0;
@@ -93,21 +99,85 @@
 }
 
 #pragma mark UIGesture Actions
+- (void) longtap:(UILongPressGestureRecognizer*)press{
+	
+	CGPoint point = [press locationInView:self];
+	CGFloat per = CGRectGetWidth(self.frame) / self.labels.count;
+	NSInteger index = point.x / per;
+	
+	if(press.began){
+		
+		
+		
+		[UIView beginAnimations:nil context:nil];
+		[UIView setAnimationBeginsFromCurrentState:YES];
+		self.selectionView.transform = SCALE_UP;
+		[UIView commitAnimations];
+
+
+
+		[UIView beginAnimations:nil context:nil];
+		[UIView setAnimationBeginsFromCurrentState:YES];
+		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+
+		if(index != _indexOfSelectedItem){
+
+			CGFloat x = point.x;
+			x = MIN(CGRectGetWidth(self.frame)-(CGRectGetWidth(self.selectionView.frame)/2),x);
+			x = MAX(CGRectGetWidth(self.selectionView.frame)/2,x);
+
+			self.selectionView.center = CGPointMake( x, self.selectionView.center.y);
+			self.offsetFromCenter = 0;
+
+			NSInteger i = 0;;
+			for(UILabel *label in self.labels){
+				label.alpha = i == index ? 1 : UNSELECTED_ALPHA;
+				i++;
+			}
+		}
+		[UIView commitAnimations];
+		
+		
+	}else if(press.ended || press.cancelled){
+		
+		CGFloat per = CGRectGetWidth(self.frame) / self.labels.count;
+		NSInteger index = self.selectionView.center.x / per;
+		
+		[UIView beginAnimations:nil context:nil];
+		[UIView setAnimationBeginsFromCurrentState:YES];
+		self.selectionView.transform = CGAffineTransformIdentity;
+		[UIView commitAnimations];
+		
+		
+		
+		[UIView beginAnimations:nil context:nil];
+		self.selectionView.transform = CGAffineTransformIdentity;
+		self.selectionView.center = CGPointMake( INSET + per * index + CGRectGetWidth(self.selectionView.frame)/2, self.selectionView.center.y);
+		[UIView commitAnimations];
+		
+		self.offsetFromCenter = -1;
+		
+		if(_indexOfSelectedItem == index) return;
+		_indexOfSelectedItem = index;
+		[self sendActionsForControlEvents:UIControlEventValueChanged];
+		
+		
+	}
+	
+
+}
 - (void) pan:(UIPanGestureRecognizer*)pan{
 	
 	CGPoint p = [pan locationInView:self];
-
 	if(pan.began){
-		
-		if(self.offsetFromCenter == -1){
+		if(self.offsetFromCenter == -1)
 			self.offsetFromCenter = p.x - self.selectionView.center.x;
-		}
-		
 		[UIView beginAnimations:nil context:nil];
+		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 		self.selectionView.transform = SCALE_UP;
 		[UIView commitAnimations];
+
 	}
-	
 	
 	CGFloat per = CGRectGetWidth(self.frame) / self.labels.count;
 	NSInteger index = self.selectionView.center.x / per;
@@ -125,22 +195,24 @@
 		[UIView beginAnimations:nil context:nil];
 		NSInteger i = 0;
 		for(UILabel *label in self.labels){
-			
 			label.alpha = i == index ? 1 : UNSELECTED_ALPHA;
 			i++;
 		}
 		[UIView commitAnimations];
-		
 	}
 	
 	if(pan.ended || pan.cancelled){
 
+		
+		
 		[UIView beginAnimations:nil context:nil];
 		self.selectionView.transform = CGAffineTransformIdentity;
 		self.selectionView.center = CGPointMake( INSET + per * index + CGRectGetWidth(self.selectionView.frame)/2, self.selectionView.center.y);
 		[UIView commitAnimations];
 		
 		self.offsetFromCenter = -1;
+		
+		if(_indexOfSelectedItem == index) return;
 		_indexOfSelectedItem = index;
 		[self sendActionsForControlEvents:UIControlEventValueChanged];
 		
@@ -157,9 +229,9 @@
 
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationBeginsFromCurrentState:YES];
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 	self.selectionView.transform = CGAffineTransformIdentity;
 	self.selectionView.center = CGPointMake( INSET + per * index + CGRectGetWidth(self.selectionView.frame)/2, self.selectionView.center.y);
-	
 	NSInteger i = 0;
 	for(UILabel *label in self.labels){
 		label.alpha = i == index ? 1 : UNSELECTED_ALPHA;
@@ -173,45 +245,10 @@
 
 }
 - (BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
-	return NO;
+	if([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]] || [otherGestureRecognizer isKindOfClass:[UITapGestureRecognizer class]])
+		return NO;
+	return YES;
 }
-
-#pragma mark UITouch Event
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-	[super touchesBegan:touches withEvent:event];
-	
-	UITouch *touch = [touches anyObject];
-	CGPoint point = [touch locationInView:self];
-	CGFloat per = CGRectGetWidth(self.frame) / self.labels.count;
-	NSInteger index = point.x / per;
-	
-	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationBeginsFromCurrentState:YES];
-	self.selectionView.transform = SCALE_UP;
-	
-	if(index != _indexOfSelectedItem){
-
-		CGFloat x = point.x;
-		x = MIN(CGRectGetWidth(self.frame)-(CGRectGetWidth(self.selectionView.frame)/2),x);
-		x = MAX(CGRectGetWidth(self.selectionView.frame)/2,x);
-		
-		self.selectionView.center = CGPointMake( x, self.selectionView.center.y);
-		self.offsetFromCenter = 0;
-		
-		NSInteger i = 0;;
-		for(UILabel *label in self.labels){
-			label.alpha = i == index ? 1 : UNSELECTED_ALPHA;
-			i++;
-		}
-	}
-	
-	[UIView commitAnimations];
-}
-- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-	[super touchesEnded:touches withEvent:event];
-	self.offsetFromCenter = -1;
-}
-
 
 #pragma mark Public Properties
 - (void) setIndexOfSelectedItem:(NSInteger)indexOfSelectedItem{

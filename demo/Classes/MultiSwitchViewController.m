@@ -40,11 +40,17 @@
 	
 	self.multiswitch1 = [[TKMultiSwitch alloc] initWithItems:@[@"Option 1", @"Option 2"]];
 	self.multiswitch1.frame = CGRectMakeWithSize(10, 80, self.multiswitch1.frame.size);
+	[self.multiswitch1 addTarget:self action:@selector(changedSwitchValue:) forControlEvents:UIControlEventValueChanged];
 	[self.view addSubview:self.multiswitch1];
 	
 	self.multiswitch2 = [[TKMultiSwitch alloc] initWithItems:@[@"One", @"Two",@"Three"]];
 	self.multiswitch2.frame = CGRectMakeWithSize(10, 140, self.multiswitch2.frame.size);
+	[self.multiswitch2 addTarget:self action:@selector(changedSwitchValue:) forControlEvents:UIControlEventValueChanged];
 	[self.view addSubview:self.multiswitch2];
+}
+
+- (void) changedSwitchValue:(TKMultiSwitch*)switcher{
+
 }
 
 @end
