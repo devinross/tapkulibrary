@@ -46,6 +46,7 @@
 #import "SlideToUnlockViewController.h"
 #import "ButtonViewController.h"
 #import "CustomKeyboardsViewController.h"
+#import "MultiSwitchViewController.h"
 
 @interface UINavigationController (Rotation_IOS6)
 @end
@@ -93,16 +94,15 @@
 #define HTTP_PROGRESS NSLocalizedString(@"HTTP Request Progress",@"")
 #define WEB_VC NSLocalizedString(@"Web View Controller",@"")
 #define CUSTOM_KEYBOARDS NSLocalizedString(@"Custom Keyboards",@"")
+#define MULTI_SWITCH NSLocalizedString(@"Multiswitch",@"")
 
 #pragma mark View Lifecycle
 - (void) viewDidLoad{
 	[super viewDidLoad];
 
-	
-	
 	self.data = @[
   @{@"rows" : @[WEB_VC,DAY_VIEW,MONTH_GRID,COVERFLOW], @"title" : @"Views"},
-  @{@"rows" : @[SLIDE,BUTTONS,CUSTOM_KEYBOARDS,HUD,EMPTY_SIGN,ALERTS], @"title" : @"UI Elements"},
+  @{@"rows" : @[SLIDE,BUTTONS,MULTI_SWITCH,CUSTOM_KEYBOARDS,HUD,EMPTY_SIGN,ALERTS], @"title" : @"UI Elements"},
   @{@"rows" : @[LABEL_CELLS,MORE_CELLS], @"title" : @"Table View Cells"},
   @{@"rows" : @[IMAGE_CACHE,HTTP_PROGRESS], @"title" : @"Network"}];
 }
@@ -151,6 +151,9 @@
 	
 	else if([str isEqualToString:DAY_VIEW])
 		vc = CalendarDayViewController.new;
+	
+	else if([str isEqualToString:MULTI_SWITCH])
+		vc = MultiSwitchViewController.new;
 	
 	else if([str isEqualToString:EMPTY_SIGN])
 		vc = EmptyViewController.new;

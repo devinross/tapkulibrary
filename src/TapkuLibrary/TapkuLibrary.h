@@ -97,6 +97,7 @@
 #import "TKProgressAlertView.h"
 #import "TKProgressCircleView.h"
 #import "TKLoadingView.h"
+#import "TKMultiSwitch.h"
 
 // Calendar
 #import "TKCalendarMonthViewController.h"
@@ -106,7 +107,6 @@
 
 // Coverflow
 #import "TKCoverflowView.h"
-
 
 // Keyboards
 #import "TKInputView.h"
