@@ -44,4 +44,7 @@
 /** Rounds of views frame coordinates to the nearest integer. */
 - (void) roundOffFrame;
 
+
+- (UIImage*) snapshotImageAfterScreenUpdates:(BOOL)updates;
+
 @end

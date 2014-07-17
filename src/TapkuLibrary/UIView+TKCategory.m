@@ -46,7 +46,15 @@
 
 
 
-
+- (UIImage*) snapshotImageAfterScreenUpdates:(BOOL)updates{
+	
+	UIGraphicsBeginImageContextWithOptions(self.bounds.size, YES, [UIScreen mainScreen].scale);
+	[self drawViewHierarchyInRect:self.bounds  afterScreenUpdates:updates];
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+	
+	return img;
+}
 
 
 
