@@ -120,6 +120,43 @@ FOUNDATION_STATIC_INLINE CGPoint CGRectGetCenter(CGRect rect){
 
 
 
+FOUNDATION_STATIC_INLINE CGFloat CGFrameGetWidth(UIView *view);
+FOUNDATION_STATIC_INLINE CGFloat CGFrameGetWidth(UIView *view){
+	return CGRectGetWidth(view.frame);
+}
+
+FOUNDATION_STATIC_INLINE CGFloat CGFrameGetHeight(UIView *view);
+FOUNDATION_STATIC_INLINE CGFloat CGFrameGetHeight(UIView *view){
+	return CGRectGetHeight(view.frame);
+}
+
+FOUNDATION_STATIC_INLINE CGFloat CGFrameGetMinX(UIView *view);
+FOUNDATION_STATIC_INLINE CGFloat CGFrameGetMinX(UIView *view){
+	return CGRectGetMinX(view.frame);
+}
+FOUNDATION_STATIC_INLINE CGFloat CGFrameGetMinY(UIView *view);
+FOUNDATION_STATIC_INLINE CGFloat CGFrameGetMinY(UIView *view){
+	return CGRectGetMinY(view.frame);
+}
+
+FOUNDATION_STATIC_INLINE CGFloat CGFrameGetMaxX(UIView *view);
+FOUNDATION_STATIC_INLINE CGFloat CGFrameGetMaxX(UIView *view){
+	return CGRectGetMaxX(view.frame);
+}
+FOUNDATION_STATIC_INLINE CGFloat CGFrameGetMaxY(UIView *view);
+FOUNDATION_STATIC_INLINE CGFloat CGFrameGetMaxY(UIView *view){
+	return CGRectGetMaxY(view.frame);
+}
+
+FOUNDATION_STATIC_INLINE CGFloat CGFrameGetMidX(UIView *view);
+FOUNDATION_STATIC_INLINE CGFloat CGFrameGetMidX(UIView *view){
+	return CGRectGetMidX(view.frame);
+}
+FOUNDATION_STATIC_INLINE CGFloat CGFrameGetMidY(UIView *view);
+FOUNDATION_STATIC_INLINE CGFloat CGFrameGetMidY(UIView *view){
+	return CGRectGetMidY(view.frame);
+}
+
 @interface TKGlobal : NSObject 
 
 + (NSString*) fullBundlePath:(NSString*)bundlePath;
