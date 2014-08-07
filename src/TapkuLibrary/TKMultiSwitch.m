@@ -106,6 +106,39 @@
     return self;
 }
 
+- (void) setFrame:(CGRect)frame{
+	[super setFrame:frame];
+	
+	[self readjustLayout];
+}
+- (void) readjustLayout{
+	
+	self.layer.cornerRadius = CGRectGetHeight(self.frame)/2;
+	
+	CGFloat per = CGRectGetWidth(self.frame) / self.labels.count;
+	self.selectionView.frame = CGRectInset(CGRectMake(0, 0, per, HEIGHT), INSET, INSET);
+	self.selectionView.layer.borderColor = self.tintColor.CGColor;
+	self.selectionView.layer.cornerRadius = CGRectGetHeight(self.selectionView.frame) / 2;
+	self.selectionView.layer.borderWidth = 1;
+	[self addSubview:self.selectionView];
+	
+	NSInteger i = 0;
+	for(UILabel *label in self.labels){
+		label.frame = CGRectMake(per * i, 0, per, HEIGHT);
+		i++;
+	}
+	self.selectionView.center = CGPointMake( INSET + per * _indexOfSelectedItem + CGRectGetWidth(self.selectionView.frame)/2, self.selectionView.center.y);
+	
+	
+	
+}
+- (void) tintColorDidChange{
+	[super tintColorDidChange];
+	for(UILabel *label in self.labels)
+		label.textColor = self.tintColor;
+	self.selectionView.layer.borderColor = self.tintColor.CGColor;
+}
+
 #pragma mark UIGesture Actions
 - (void) longtap:(UILongPressGestureRecognizer*)press{
 	
@@ -281,11 +314,6 @@
 	
 }
 
-- (void) tintColorDidChange{
-	[super tintColorDidChange];
-	for(UILabel *label in self.labels)
-		label.textColor = self.tintColor;
-	self.selectionView.layer.borderColor = self.tintColor.CGColor;
-}
+
 
 @end
