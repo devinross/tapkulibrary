@@ -54,6 +54,9 @@ typedef enum {
 /** The view behind the scroll view */
 @property (nonatomic,strong) UIImageView *backgroundView;
 
+/** The arrow */
+@property (nonatomic,strong) UIImageView *arrowView;
+
 /** A read-only property to tell whether to tell the state of the view */
 @property (nonatomic,readonly) BOOL isUnlocked;
 

@@ -107,6 +107,7 @@
 	self.backgroundView = [UIImageView imageViewWithFrame:self.bounds];
 	self.backgroundView.layer.cornerRadius = 5;
 	self.backgroundView.clipsToBounds = YES;
+	self.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 	[self addSubview:self.backgroundView];
 	
 	self.scrollView = [[CustomScrollView alloc] initWithFrame:self.bounds];
@@ -118,14 +119,16 @@
 	self.scrollView.showsHorizontalScrollIndicator = NO;
 	self.scrollView.delegate = self;
 	self.scrollView.delaysContentTouches = NO;
+	self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+	
 	[self addSubview:self.scrollView];
 	
 	self.scrollView.contentOffset = CGPointMake(CGRectGetWidth(self.scrollView.frame), 0);
 	
 	UIImage *arrow = [UIImage imageNamedTK:@"unlockslider/arrow"];
-	UIImageView *arrowView = [[UIImageView alloc] initWithImage:arrow];
-	arrowView.center = CGPointMake(CGRectGetWidth(self.scrollView.frame) + 25, CGRectGetHeight(self.scrollView.frame)/2.0f);
-	[self.scrollView addSubview:arrowView];
+	self.arrowView = [[UIImageView alloc] initWithImage:arrow];
+	self.arrowView.center = CGPointMake(CGRectGetWidth(self.scrollView.frame) + 25, CGRectGetHeight(self.scrollView.frame)/2.0f);
+	[self.scrollView addSubview:self.arrowView];
 	
 	
 	CGRect textFrame = self.scrollView.bounds;
@@ -138,6 +141,8 @@
 	self.textLabel.textColor = [UIColor whiteColor];
 	self.textLabel.font = [UIFont systemFontOfSize:25];
 	self.textLabel.userInteractionEnabled = NO;
+	self.textLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+	
 	[self.scrollView addSubview:self.textLabel];
 	
 }
