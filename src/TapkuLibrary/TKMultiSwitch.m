@@ -38,15 +38,16 @@
 @property (nonatomic,strong) UIView *selectionView;
 @property (nonatomic,strong) NSArray *labels;
 @property (nonatomic,assign) CGFloat offsetFromCenter;
+@property (nonatomic,assign) BOOL needsReadjustment;
 
 @end
 
 @implementation TKMultiSwitch
 
-#define HEIGHT 40
-#define INSET 3
 #define UNSELECTED_ALPHA 0.5
-#define SCALE_UP CGScale(1.04, 1.16)
+
+#define UP_SCALE (CGRectGetHeight(self.frame) / (CGRectGetHeight(self.frame) - self.selectionInset*2))
+#define SCALE_UP CGScale(UP_SCALE, UP_SCALE)
 
 - (id) init{
 	self = [self initWithItems:@[@""]];
@@ -57,24 +58,32 @@
     return self;
 }
 - (id) initWithItems:(NSArray*)items{
-	if(!(self=[super initWithFrame:CGRectMake(10, 6, 320-20, HEIGHT)])) return nil;
+	CGFloat height = 40;
+	if(!(self=[super initWithFrame:CGRectMake(10, 6, 320-20, height)])) return nil;
+	
+	_style = TKMultiSwitchStyleHollow;
 	
 	self.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1];
 	self.clipsToBounds = NO;
 	self.layer.cornerRadius = CGRectGetHeight(self.frame)/2;
 	
+	self.selectionInset = 3;
+	
 	CGFloat per = CGRectGetWidth(self.frame) / items.count;
-	self.selectionView = [[UIView alloc] initWithFrame:CGRectInset(CGRectMake(0, 0, per, HEIGHT), INSET, INSET)];
+	self.selectionView = [[UIView alloc] initWithFrame:CGRectInset(CGRectMake(0, 0, per, height), self.selectionInset, self.selectionInset)];
 	self.selectionView.layer.borderColor = self.tintColor.CGColor;
 	self.selectionView.layer.cornerRadius = CGRectGetHeight(self.selectionView.frame) / 2;
 	self.selectionView.layer.borderWidth = 1;
+	self.selectionView.userInteractionEnabled = NO;
 	[self addSubview:self.selectionView];
+	
+	_font = [UIFont systemFontOfSize:12];
 	
 	NSInteger i = 0;
 	NSMutableArray *labels = [NSMutableArray arrayWithCapacity:items.count];
 	for(NSString *txt in items){
-		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(per * i, 0, per, HEIGHT)];
-		label.font = [UIFont systemFontOfSize:12];
+		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(per * i, 0, per, height)];
+		label.font = self.font;
 		label.text = txt;
 		label.textAlignment = NSTextAlignmentCenter;
 		label.textColor = self.tintColor;
@@ -95,41 +104,81 @@
 	tap.delegate = self;
 	[self addGestureRecognizer:tap];
 	
-	UILongPressGestureRecognizer *longtap = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longtap:)];
-	longtap.minimumPressDuration = 0.25;
-	longtap.delegate = self;
-	[self addGestureRecognizer:longtap];
+	//	UILongPressGestureRecognizer *longtap = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longtap:)];
+	//	longtap.minimumPressDuration = 0.25;
+	//	longtap.delegate = self;
+	//	[self addGestureRecognizer:longtap];
 	
 	self.offsetFromCenter = -1;
 	_indexOfSelectedItem = 0;
-
+	
     return self;
+}
+
+
+
+- (void) layoutSubviews{
+	[super layoutSubviews];
+	[self readjustLayout];
 }
 
 - (void) setFrame:(CGRect)frame{
 	[super setFrame:frame];
-	
-	[self readjustLayout];
+	self.needsReadjustment = YES;
+	[self setNeedsLayout];
 }
+
+
+
+
 - (void) readjustLayout{
 	
-	self.layer.cornerRadius = CGRectGetHeight(self.frame)/2;
+	if(!self.needsReadjustment) return;
 	
-	CGFloat per = CGRectGetWidth(self.frame) / self.labels.count;
-	self.selectionView.frame = CGRectInset(CGRectMake(0, 0, per, HEIGHT), INSET, INSET);
-	self.selectionView.layer.borderColor = self.tintColor.CGColor;
-	self.selectionView.layer.cornerRadius = CGRectGetHeight(self.selectionView.frame) / 2;
-	self.selectionView.layer.borderWidth = 1;
+	self.needsReadjustment = NO;
+	
+	CGFloat height = CGRectGetHeight(self.frame);
+	self.layer.cornerRadius = height/2;
+	
+	CGFloat per = (CGRectGetWidth(self.frame)) / self.labels.count;
+	self.selectionView.frame = CGRectInset(CGRectMake(0, 0, per, height), self.selectionInset, self.selectionInset);
+	
+	
+	if(self.style == TKMultiSwitchStyleHollow) {
+		self.selectionView.layer.borderColor = self.tintColor.CGColor;
+		self.selectionView.layer.cornerRadius = CGRectGetHeight(self.selectionView.frame) / 2;
+		self.selectionView.layer.borderWidth = 1;
+		self.selectionView.backgroundColor = [UIColor clearColor];
+	}else{
+		self.selectionView.layer.borderColor = self.tintColor.CGColor;
+		self.selectionView.layer.cornerRadius = CGRectGetHeight(self.selectionView.frame) / 2;
+		self.selectionView.layer.borderWidth = 0;
+		self.selectionView.backgroundColor = self.tintColor;
+	}
+	
+	
 	[self addSubview:self.selectionView];
+	[self sendSubviewToBack:self.selectionView];
 	
 	NSInteger i = 0;
 	for(UILabel *label in self.labels){
-		label.frame = CGRectMake(per * i, 0, per, HEIGHT);
+		label.frame = CGRectMake(per * i , 0, per, CGFrameGetHeight(self));
+		label.font = self.font;
+		
+		
+		if(self.style == TKMultiSwitchStyleFilled){
+			label.textColor = i == _indexOfSelectedItem ? self.selectedTextColor : self.textColor;
+			label.alpha = 1;
+		}else{
+			label.alpha = i == _indexOfSelectedItem ? 1 : UNSELECTED_ALPHA;
+		}
+		
+		
 		i++;
 	}
-	self.selectionView.center = CGPointMake( INSET + per * _indexOfSelectedItem + CGRectGetWidth(self.selectionView.frame)/2, self.selectionView.center.y);
 	
-	
+	CGFloat x = [self.labels[_indexOfSelectedItem] center].x;
+	self.selectionView.center = CGPointMake( x, CGFrameGetHeight(self)/2);
 	
 }
 - (void) tintColorDidChange{
@@ -137,6 +186,7 @@
 	for(UILabel *label in self.labels)
 		label.textColor = self.tintColor;
 	self.selectionView.layer.borderColor = self.tintColor.CGColor;
+	[self readjustLayout];
 }
 
 #pragma mark UIGesture Actions
@@ -146,35 +196,53 @@
 	CGFloat per = CGRectGetWidth(self.frame) / self.labels.count;
 	NSInteger index = point.x / per;
 	
+	TKLog(@"== %d",press.state);
+	
 	if(press.began){
 		
-		
-		
-		[UIView beginAnimations:nil context:nil];
-		[UIView setAnimationBeginsFromCurrentState:YES];
-		self.selectionView.transform = SCALE_UP;
-		[UIView commitAnimations];
-
-
-
 		[UIView beginAnimations:nil context:nil];
 		[UIView setAnimationBeginsFromCurrentState:YES];
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-
+		self.selectionView.transform = SCALE_UP;
+		
 		if(index != _indexOfSelectedItem){
-
+			
 			CGFloat x = point.x;
 			x = MIN(CGRectGetWidth(self.frame)-(CGRectGetWidth(self.selectionView.frame)/2),x);
 			x = MAX(CGRectGetWidth(self.selectionView.frame)/2,x);
-
+			
 			self.selectionView.center = CGPointMake( x, self.selectionView.center.y);
 			self.offsetFromCenter = 0;
-
-			NSInteger i = 0;;
+			
+			NSInteger i = 0;
+			
+			
+			
+			
+			
 			for(UILabel *label in self.labels){
-				label.alpha = i == index ? 1 : UNSELECTED_ALPHA;
+				
+				
+				if(self.style == TKMultiSwitchStyleFilled){
+					[UIView transitionWithView:label duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve | UIViewAnimationOptionBeginFromCurrentState animations:^{
+						label.textColor = i == index ? self.selectedTextColor : self.textColor;
+						label.alpha = 1;
+					} completion:nil];
+					
+				}else{
+					label.alpha = i == index ? 1 : UNSELECTED_ALPHA;
+					
+				}
+				
 				i++;
 			}
+		}else{
+			
+			CGFloat x = point.x;
+			x = MIN(CGRectGetWidth(self.frame)-(CGRectGetWidth(self.selectionView.frame)/2),x);
+			x = MAX(CGRectGetWidth(self.selectionView.frame)/2,x);
+			self.selectionView.center = CGPointMake( x, self.selectionView.center.y);
+			
 		}
 		[UIView commitAnimations];
 		
@@ -189,11 +257,9 @@
 		self.selectionView.transform = CGAffineTransformIdentity;
 		[UIView commitAnimations];
 		
-		
-		
 		[UIView beginAnimations:nil context:nil];
 		self.selectionView.transform = CGAffineTransformIdentity;
-		self.selectionView.center = CGPointMake( INSET + per * index + CGRectGetWidth(self.selectionView.frame)/2, self.selectionView.center.y);
+		self.selectionView.center = CGPointMake( self.selectionInset + per * index + CGRectGetWidth(self.selectionView.frame)/2, self.selectionView.center.y);
 		[UIView commitAnimations];
 		
 		self.offsetFromCenter = -1;
@@ -202,10 +268,7 @@
 		_indexOfSelectedItem = index;
 		[self sendActionsForControlEvents:UIControlEventValueChanged];
 		
-		
 	}
-	
-
 }
 - (void) pan:(UIPanGestureRecognizer*)pan{
 	
@@ -217,7 +280,7 @@
 		[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 		self.selectionView.transform = SCALE_UP;
 		[UIView commitAnimations];
-
+		
 	}
 	
 	CGFloat per = CGRectGetWidth(self.frame) / self.labels.count;
@@ -236,17 +299,25 @@
 		[UIView beginAnimations:nil context:nil];
 		NSInteger i = 0;
 		for(UILabel *label in self.labels){
-			label.alpha = i == index ? 1 : UNSELECTED_ALPHA;
+			if(self.style == TKMultiSwitchStyleFilled){
+				[UIView transitionWithView:label duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+					label.textColor = i == index ? self.selectedTextColor : self.textColor;
+					label.alpha = 1;
+				} completion:nil];
+				
+			}else{
+				label.alpha = i == index ? 1 : UNSELECTED_ALPHA;
+			}
 			i++;
 		}
 		[UIView commitAnimations];
 	}
 	
 	if(pan.ended || pan.cancelled){
-
+		
 		[UIView beginAnimations:nil context:nil];
 		self.selectionView.transform = CGAffineTransformIdentity;
-		self.selectionView.center = CGPointMake( INSET + per * index + CGRectGetWidth(self.selectionView.frame)/2, self.selectionView.center.y);
+		self.selectionView.center = CGPointMake( self.selectionInset + per * index + CGRectGetWidth(self.selectionView.frame)/2, self.selectionView.center.y);
 		[UIView commitAnimations];
 		
 		self.offsetFromCenter = -1;
@@ -260,20 +331,34 @@
 	
 }
 - (void) tap:(UITapGestureRecognizer*)tap{
-		
+	
 	CGPoint point = [tap locationInView:self];
 	CGFloat per = CGRectGetWidth(self.frame) / self.labels.count;
 	NSInteger index = point.x / per;
 	self.offsetFromCenter = -1;
-
+	
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationBeginsFromCurrentState:YES];
 	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
 	self.selectionView.transform = CGAffineTransformIdentity;
-	self.selectionView.center = CGPointMake( INSET + per * index + CGRectGetWidth(self.selectionView.frame)/2, self.selectionView.center.y);
+	self.selectionView.center = CGPointMake( self.selectionInset + per * index + CGRectGetWidth(self.selectionView.frame)/2, self.selectionView.center.y);
 	NSInteger i = 0;
 	for(UILabel *label in self.labels){
-		label.alpha = i == index ? 1 : UNSELECTED_ALPHA;
+		
+		
+		if(self.style == TKMultiSwitchStyleFilled){
+			[UIView transitionWithView:label duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve | UIViewAnimationOptionBeginFromCurrentState animations:^{
+				label.textColor = i == index ? self.selectedTextColor : self.textColor;
+				label.alpha = 1;
+			} completion:nil];
+			
+		}else{
+			label.alpha = i == index ? 1 : UNSELECTED_ALPHA;
+			
+		}
+		
+		
+		
 		i++;
 	}
 	[UIView commitAnimations];
@@ -281,11 +366,11 @@
 	if(index == _indexOfSelectedItem) return;
 	_indexOfSelectedItem = index;
 	[self sendActionsForControlEvents:UIControlEventValueChanged];
-
+	
 }
 - (BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
-	if([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]] || [otherGestureRecognizer isKindOfClass:[UITapGestureRecognizer class]])
-		return NO;
+	//if([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]] || [otherGestureRecognizer isKindOfClass:[UITapGestureRecognizer class]])
+	//	return NO;
 	return YES;
 }
 
@@ -302,11 +387,24 @@
 	
 	if(animated) [UIView beginAnimations:nil context:nil];
 	self.selectionView.transform = CGAffineTransformIdentity;
-	self.selectionView.center = CGPointMake( INSET + per * index + CGRectGetWidth(self.selectionView.frame)/2, self.selectionView.center.y);
+	self.selectionView.center = CGPointMake( self.selectionInset + per * index + CGRectGetWidth(self.selectionView.frame)/2, self.selectionView.center.y);
 	
 	NSInteger i = 0;
 	for(UILabel *label in self.labels){
-		label.alpha = i == index ? 1 : UNSELECTED_ALPHA;
+		
+		
+		if(self.style == TKMultiSwitchStyleFilled){
+			
+			[UIView transitionWithView:label duration:animated ? 0.3 : 0 options:UIViewAnimationOptionTransitionCrossDissolve | UIViewAnimationOptionBeginFromCurrentState animations:^{
+				label.textColor = i == index ? self.selectedTextColor : self.textColor;
+				label.alpha = 1;
+			} completion:nil];
+		}else{
+			label.alpha = i == index ? 1 : UNSELECTED_ALPHA;
+			
+		}
+		
+		
 		i++;
 	}
 	if(animated) [UIView commitAnimations];
@@ -314,6 +412,34 @@
 	
 }
 
+- (void) setStyle:(TKMultiSwitchStyle)style{
+	_style = style;
+	self.needsReadjustment = YES;
+	[self setNeedsLayout];
+}
+
+- (void) setSelectionInset:(CGFloat)selectionInset{
+	_selectionInset = selectionInset;
+	self.needsReadjustment = YES;
+	[self setNeedsLayout];
+}
+
+- (void) setSelectedTextColor:(UIColor *)selectedTextColor{
+	_selectedTextColor = selectedTextColor;
+	self.needsReadjustment = YES;
+	[self setNeedsLayout];
+}
+- (void) setTextColor:(UIColor *)textColor{
+	_textColor = textColor;
+	self.needsReadjustment = YES;
+	[self setNeedsLayout];
+}
+
+- (void) setFont:(UIFont *)font{
+	_font = font;
+	self.needsReadjustment = YES;
+	[self setNeedsLayout];
+}
 
 
 @end

@@ -31,6 +31,11 @@
 
 @import UIKit;
 
+typedef enum {
+	TKMultiSwitchStyleHollow,
+	TKMultiSwitchStyleFilled
+} TKMultiSwitchStyle;
+
 /** `TKMultiSwitch` a slide control with multiple options. Sort of like a `UISwitch` mixed with a `UISegmentControl`. */
 @interface TKMultiSwitch : UIControl
 
@@ -43,6 +48,22 @@
 
 /** The index of the selected item. */
 @property (nonatomic,assign) NSInteger indexOfSelectedItem;
+
+/** The select padding. */
+@property (nonatomic,assign) CGFloat selectionInset;
+
+/** The font used. */
+@property (nonatomic,strong) UIFont *font;
+
+/** Choose between a hollow or filled selection indicator. */
+@property (nonatomic,assign) TKMultiSwitchStyle style;
+
+/** If the style is a filled selection, then this will be used for the current select label. */
+@property (nonatomic,strong) UIColor *selectedTextColor;
+
+/** If the style is a filled selection, then this will be used for the current unselected labels. */
+@property (nonatomic,strong) UIColor *textColor;
+
 
 /**
  Select an item manually.
