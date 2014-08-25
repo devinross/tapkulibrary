@@ -39,6 +39,7 @@
 @property (nonatomic,strong) NSArray *labels;
 @property (nonatomic,assign) CGFloat offsetFromCenter;
 @property (nonatomic,assign) BOOL needsReadjustment;
+@property (nonatomic,strong) UIPanGestureRecognizer *panGesture;
 
 @end
 
@@ -99,6 +100,8 @@
 	UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
 	pan.delegate = self;
 	[self addGestureRecognizer:pan];
+	
+	self.panGesture = pan;
 	
 	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
 	tap.delegate = self;
@@ -369,8 +372,12 @@
 	
 }
 - (BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
-	//if([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]] || [otherGestureRecognizer isKindOfClass:[UITapGestureRecognizer class]])
-	//	return NO;
+	if([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]] || [otherGestureRecognizer isKindOfClass:[UITapGestureRecognizer class]])
+		return NO;
+	
+	if(gestureRecognizer == self.panGesture || [otherGestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]])
+		return NO;
+	
 	return YES;
 }
 
