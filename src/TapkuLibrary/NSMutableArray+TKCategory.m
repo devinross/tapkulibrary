@@ -42,5 +42,8 @@
 }
 
 
+- (void) removeFirstObject{
+	[self removeObjectAtIndex:0];
+}
 
 @end

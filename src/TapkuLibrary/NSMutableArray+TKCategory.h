@@ -37,4 +37,7 @@
 /** Shuffles the order of the objects. */
 - (void) shuffle;
 
+/** Remove first object. */
+- (void) removeFirstObject;
+
 @end
