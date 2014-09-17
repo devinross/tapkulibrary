@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name          = 'TapkuLibrary'
-  s.version       = '0.3.6'
-  s.platform      = :ios
+  s.version       = '0.3.7'
+  s.platform      = :ios, '7.0'
   s.author        = { 'Devin Ross' => 'devin@devinsheaven.com' }
   s.license       = { :type => 'MIT', :file => 'License.txt' }
   s.homepage      = 'https://github.com/devinross/tapkulibrary'
@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
                     'use in applications. If you\'re looking to see what the library can do, check ' \
                     'out the demo project included. Some major components include coverflow, calendar ' \
                     'grid, network requests and progress indicators.'
-  s.source        = { :git => 'https://github.com/devinross/tapkulibrary.git', :tag => 'v0.3.6' }
+  s.source        = { :git => 'https://github.com/devinross/tapkulibrary.git', :tag => 'v0.3.7' }
   s.requires_arc  = true
   s.source_files  = 'src/TapkuLibrary/*.{h,m}'
   s.resources     = 'src/TapkuLibrary.bundle'
