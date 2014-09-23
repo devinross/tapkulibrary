@@ -32,11 +32,11 @@
 @import UIKit;
 
 /** An input key display type. */
-typedef enum {
+typedef NS_ENUM(NSInteger, TKInputKeyType) {
 	TKInputKeyTypeDefault = 0,
 	TKInputKeyTypeDark = 1,
 	TKInputKeyTypeHighlighted = 2
-} TKInputKeyType;
+} ;
 
 /** `TKInputKey` is an input key to be used by a `TKInputView`. */
 @interface TKInputKey : UIView 
@@ -62,7 +62,7 @@ typedef enum {
  @param runner If yes, the key can be highlighted and selected even if it isn't the initial key touched at the beginning.
  @return An initialized `TKInputKey` object or nil if the object couldn’t be created.
  */
-- (instancetype) initWithFrame:(CGRect)frame symbol:(id)symbol normalType:(TKInputKeyType)normal selectedType:(TKInputKeyType)highlighted runner:(BOOL)runner;
+- (instancetype) initWithFrame:(CGRect)frame symbol:(id)symbol normalType:(TKInputKeyType)normal selectedType:(TKInputKeyType)highlighted runner:(BOOL)runner NS_DESIGNATED_INITIALIZER;
 
 ///----------------------------
 /// @name Properties

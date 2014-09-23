@@ -38,7 +38,7 @@
 /** `TKCalendarDayView` imitates the day view in the Calendar app on iPhone. */
 @interface TKCalendarDayView : UIView <UIScrollViewDelegate>
 
-- (instancetype) initWithFrame:(CGRect)frame calendar:(NSCalendar*)calendar;
+- (instancetype) initWithFrame:(CGRect)frame calendar:(NSCalendar*)calendar NS_DESIGNATED_INITIALIZER;
 
 - (instancetype) initWithFrame:(CGRect)frame timeZone:(NSTimeZone*)timeZone;
 

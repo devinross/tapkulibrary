@@ -55,7 +55,7 @@
  @param sundayFirst If YES, Sunday will be the left most day in the month grid, otherwise Monday.
  @return A newly create month view controller.
  */
-- (instancetype) initWithSunday:(BOOL)sundayFirst timeZone:(NSTimeZone*)timeZone;
+- (instancetype) initWithSunday:(BOOL)sundayFirst timeZone:(NSTimeZone*)timeZone NS_DESIGNATED_INITIALIZER;
 
 /** Initializes a month view controller to manage a month grid. Sunday will be the left-most day.
  @param timeZone The time zone for the calendar grid.

@@ -109,6 +109,21 @@
     return ((abs(time) / (60.0 * 60.0 * 24.0)) + 0.5);
 }
 
++ (NSInteger) daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime{
+	NSDate *fromDate;
+	NSDate *toDate;
+	
+	NSCalendar *calendar = [NSCalendar currentCalendar];
+	
+	[calendar rangeOfUnit:NSDayCalendarUnit startDate:&fromDate interval:NULL forDate:fromDateTime];
+	[calendar rangeOfUnit:NSDayCalendarUnit startDate:&toDate interval:NULL forDate:toDateTime];
+	
+	NSDateComponents *difference = [calendar components:NSDayCalendarUnit fromDate:fromDate toDate:toDate options:0];
+	
+	return [difference day];
+}
+
+
 #pragma mark Same Day
 - (BOOL) isSameDay:(NSDate*)anotherDate{
 	return [self isSameDay:anotherDate timeZone:[NSTimeZone defaultTimeZone]];

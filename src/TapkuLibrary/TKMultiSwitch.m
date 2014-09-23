@@ -52,15 +52,15 @@
 #define UP_SCALE (CGRectGetHeight(self.frame) / (CGRectGetHeight(self.frame) - self.selectionInset*2))
 #define SCALE_UP CGScale(UP_SCALE, UP_SCALE)
 
-- (id) init{
+- (instancetype) init{
 	self = [self initWithItems:@[@""]];
 	return self;
 }
-- (id) initWithFrame:(CGRect)frame{
+- (instancetype) initWithFrame:(CGRect)frame{
 	self = [self initWithItems:@[@""]];
     return self;
 }
-- (id) initWithItems:(NSArray*)items{
+- (instancetype) initWithItems:(NSArray*)items{
 	CGFloat height = 40;
 	if(!(self=[super initWithFrame:CGRectMake(10, 6, 320-20, height)])) return nil;
 	

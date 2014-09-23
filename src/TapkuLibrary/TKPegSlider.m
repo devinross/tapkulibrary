@@ -46,11 +46,11 @@
 
 @implementation TKPegSlider
 
-- (id) init{
+- (instancetype) init{
 	self = [self initWithFrame:CGRectZero];
 	return self;
 }
-- (id) initWithFrame:(CGRect)frame{
+- (instancetype) initWithFrame:(CGRect)frame{
 	frame.size = CGSizeMake(300, 40);
 	if(!(self=[super initWithFrame:frame])) return nil;
 	self.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1];

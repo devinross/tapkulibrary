@@ -86,7 +86,7 @@
 	else if(value == 4) return NSLocalizedString(@"Visa", @"");
 	
 
-	return nil;
+	return NSLocalizedString(@"Unknown", @"");
 }
 
 
@@ -123,6 +123,8 @@
 	
 	return luhnChecksum % 10 == 0;
 }
+
+
 
 
 

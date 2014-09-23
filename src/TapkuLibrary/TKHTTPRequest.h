@@ -98,7 +98,7 @@ typedef enum _TKNetworkErrorType {
  @param URL The URL for the new request.
  @return The newly created request object.
  */
-- (instancetype) initWithURL:(NSURL*)URL;
+- (instancetype) initWithURL:(NSURL*)URL NS_DESIGNATED_INITIALIZER;
 
 /** Returns a newly created request with a `NSURLRequest` object. 
  @param request The `NSURLRequest` for the new request.
@@ -110,7 +110,7 @@ typedef enum _TKNetworkErrorType {
  @param request The `NSURLRequest` for the new request.
  @return The newly created request object.
  */
-- (instancetype) initWithURLRequest:(NSURLRequest*)request;
+- (instancetype) initWithURLRequest:(NSURLRequest*)request NS_DESIGNATED_INITIALIZER;
 
 ///-------------------------
 /// @name Properties

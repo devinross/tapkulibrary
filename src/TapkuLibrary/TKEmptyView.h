@@ -37,7 +37,7 @@
 /**
  The glyph that appears with the empty view.
  */
-typedef enum {
+typedef NS_ENUM(NSInteger, TKEmptyViewImage) {
 	TKEmptyViewImageChatBubble,
 	TKEmptyViewImageClock,
 	TKEmptyViewImageCompass,
@@ -54,7 +54,7 @@ typedef enum {
 	TKEmptyViewImageKey,
 	TKEmptyViewImageMale,
 	TKEmptyViewImageTelevision
-} TKEmptyViewImage;
+} ;
 
 #pragma mark - TKEmptyView
 /** A simple view for showing no content available. */
@@ -76,7 +76,7 @@ typedef enum {
 - (instancetype) initWithFrame:(CGRect)frame 
 				mask:(UIImage*)image 
 			   title:(NSString*)titleString 
-			subtitle:(NSString*)subtitleString;
+			subtitle:(NSString*)subtitleString NS_DESIGNATED_INITIALIZER;
 
 /** Initializes an empty view with the given `TKEmptyViewImage`.
  

@@ -41,13 +41,13 @@
  @param URL A `NSURL` object that will loaded by the `UIWebView`.
  @return An initialized `TKWebViewController` object or nil if the object couldn’t be created.
  */
-- (instancetype) initWithURL:(NSURL*)URL;
+- (instancetype) initWithURL:(NSURL*)URL NS_DESIGNATED_INITIALIZER;
 
 /** Initializes a web vew controller that will load the given `URLRequest` object.
  @param URLRequest A `URLRequest` object that will loaded by the `UIWebView`.
  @return An initialized `TKWebViewController` object or nil if the object couldn’t be created.
  */
-- (instancetype) initWithURLRequest:(NSURLRequest*)URLRequest;
+- (instancetype) initWithURLRequest:(NSURLRequest*)URLRequest NS_DESIGNATED_INITIALIZER;
 
 ///----------------------------
 /// @name Properties

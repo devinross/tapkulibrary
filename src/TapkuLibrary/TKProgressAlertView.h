@@ -41,7 +41,7 @@
  @param title The title of the progress alert.
  @return A newly create progress alert view.
  */
-- (instancetype) initWithProgressTitle:(NSString*)title;
+- (instancetype) initWithProgressTitle:(NSString*)title NS_DESIGNATED_INITIALIZER;
 
 ///----------------------------
 /// @name Properties

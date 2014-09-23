@@ -253,4 +253,6 @@
 - (NSDate*) firstDateOfWeekWithTimeZone:(NSTimeZone*)timeZone;
 @property (nonatomic, readonly, copy) NSDate *firstDateOfWeek;
 
++ (NSInteger) daysBetweenDate:(NSDate*)fromDateTime andDate:(NSDate*)toDateTime;
+
 @end

@@ -31,10 +31,10 @@
 
 @import UIKit;
 
-typedef enum {
+typedef NS_ENUM(NSInteger, TKProgressBarViewStyle) {
 	TKProgressBarViewStyleLong,
 	TKProgressBarViewStyleShort
-} TKProgressBarViewStyle;
+} ;
 
 
 /** A progress bar view. */
@@ -48,7 +48,7 @@ typedef enum {
  @param style The style of the progress bar.
  @return A progress bar or nil.
  */
-- (instancetype) initWithStyle:(TKProgressBarViewStyle)style;
+- (instancetype) initWithStyle:(TKProgressBarViewStyle)style NS_DESIGNATED_INITIALIZER;
 
 /** The progress. */
 @property (nonatomic,assign) float progress; // a value between 0.0 and 1.0

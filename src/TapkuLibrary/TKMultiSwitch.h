@@ -31,10 +31,10 @@
 
 @import UIKit;
 
-typedef enum {
+typedef NS_ENUM(NSInteger, TKMultiSwitchStyle) {
 	TKMultiSwitchStyleHollow,
 	TKMultiSwitchStyleFilled
-} TKMultiSwitchStyle;
+} ;
 
 /** `TKMultiSwitch` a slide control with multiple options. Sort of like a `UISwitch` mixed with a `UISegmentControl`. */
 @interface TKMultiSwitch : UIControl
@@ -44,7 +44,7 @@ typedef enum {
  @param items The items in the switch view.
  @return A `TKMultiSwitch` object.
  */
-- (id) initWithItems:(NSArray*)items;
+- (instancetype) initWithItems:(NSArray*)items NS_DESIGNATED_INITIALIZER;
 
 /** The index of the selected item. */
 @property (nonatomic,assign) NSInteger indexOfSelectedItem;

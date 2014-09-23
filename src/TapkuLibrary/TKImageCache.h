@@ -50,7 +50,7 @@
  @param cacheDirectoryName The name of the folder to place cached images to disk.
  @return A new created `TKImageCache` object.
  */
-- (instancetype) initWithCacheDirectoryName:(NSString*)cacheDirectoryName;
+- (instancetype) initWithCacheDirectoryName:(NSString*)cacheDirectoryName NS_DESIGNATED_INITIALIZER;
 
 
 ///-------------------------

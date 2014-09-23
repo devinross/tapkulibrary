@@ -82,7 +82,7 @@
 @interface TKCoverflowView : UIScrollView <UIScrollViewDelegate>
 
 
-- (instancetype) initWithFrame:(CGRect)frame deleclerationRate:(CGFloat)decelerationRate;
+- (instancetype) initWithFrame:(CGRect)frame deleclerationRate:(CGFloat)decelerationRate NS_DESIGNATED_INITIALIZER;
 
 /** The transform applied to covers left of the center cover. */
 @property (nonatomic,assign) CATransform3D leftTransform;
@@ -148,7 +148,7 @@
  */
 @interface TKCoverflowCoverView : UIView
 
-- (instancetype) initWithFrame:(CGRect)frame reflection:(BOOL)reflection;
+- (instancetype) initWithFrame:(CGRect)frame reflection:(BOOL)reflection NS_DESIGNATED_INITIALIZER;
 
 @property (nonatomic,strong) UIImageView *imageView;
 @property (nonatomic,strong) UIImageView *reflectedImageView;

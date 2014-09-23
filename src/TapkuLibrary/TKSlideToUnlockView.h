@@ -34,10 +34,10 @@
 @class TKShimmerLabel;
 
 /** The mode that the slider to unlock view is in. */
-typedef enum {
+typedef NS_ENUM(NSInteger, TKSlideToUnlockViewMode) {
 	TKSlideToUnlockViewModeNormal = 0,
 	TKSlideToUnlockViewModeDisabled = 1
-} TKSlideToUnlockViewMode;
+} ;
 
 /** `TKSlideToUnlockView` is a control that allows users to slide to unlock like you would the lock screen. */
 @interface TKSlideToUnlockView : UIControl <UIScrollViewDelegate>
