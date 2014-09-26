@@ -126,7 +126,7 @@
     return self;
 }
 - (instancetype) initWithCoder:(NSCoder *)decoder {
-    if(!(self=[super initWithCoder:decoder])) return nil;
+    if(!(self=[self initWithCoder:decoder])) return nil;
 	self.calendar = [NSCalendar autoupdatingCurrentCalendar];
     [self _setupView];
     return self;

@@ -59,7 +59,7 @@
  @param keys The keys included on the view.
  @return An initialized `TKInputView` object or nil if the object couldn’t be created.
  */
-- (instancetype) initWithFrame:(CGRect)frame withKeysModels:(NSArray*)keys NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithFrame:(CGRect)frame withKeysModels:(NSArray*)keys;
 
 ///----------------------------
 /// @name Properties
