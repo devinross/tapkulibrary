@@ -60,6 +60,11 @@
 + (void) playWAV:(NSString*)soundName {
 	[[TKSoundAlertController sharedInstance] playSoundName:soundName type:@"wav"];
 }
+
++ (void) playCAF:(NSString*)soundName{
+	[[TKSoundAlertController sharedInstance] playSoundName:soundName type:@"caf"];
+}
+
 - (void) playSoundName:(NSString*)soundName type:(NSString*)type{
 	if (!self.on)
 		return;

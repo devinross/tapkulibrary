@@ -56,12 +56,20 @@
  */
 + (void) playWAV:(NSString*)soundName;
 
+/** Plays a sound file immediately.
+ @param soundName Plays a sound file with name 'insert-sound-name'.caf
+ */
++ (void) playCAF:(NSString*)soundName;
+
 
 ///----------------------------
 /// @name Properties
 ///----------------------------
 /** Flag to enable the play of the sound. If off, it will not play the sound. Default is off. */
 @property (assign,nonatomic,getter = isOn) BOOL on;
+
+
+- (void) playSoundName:(NSString*)soundName type:(NSString*)type;
 
 
 @end
