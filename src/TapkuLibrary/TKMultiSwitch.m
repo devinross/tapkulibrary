@@ -39,9 +39,7 @@
 @property (nonatomic,strong) NSArray *labels;
 @property (nonatomic,assign) CGFloat offsetFromCenter;
 @property (nonatomic,assign) BOOL needsReadjustment;
-@property (nonatomic,strong) UIPanGestureRecognizer *panGesture;
-@property (nonatomic,strong) UILongPressGestureRecognizer *longPressGesture;
-@property (nonatomic,strong) UITapGestureRecognizer *tapGesture;
+
 
 @end
 
@@ -99,21 +97,18 @@
 	
 	self.multipleTouchEnabled = NO;
 	
-	UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
-	pan.delegate = self;
-	[self addGestureRecognizer:pan];
-	self.panGesture = pan;
+	self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+	self.panGesture.delegate = self;
+	[self addGestureRecognizer:self.panGesture];
 	
-	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
-	tap.delegate = self;
-	[self addGestureRecognizer:tap];
-	self.tapGesture = tap;
+	self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
+	self.tapGesture.delegate = self;
+	[self addGestureRecognizer:self.tapGesture];
 	
-	UILongPressGestureRecognizer *longtap = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longtap:)];
-	longtap.minimumPressDuration = 0.25;
-	longtap.delegate = self;
-	[self addGestureRecognizer:longtap];
-	self.longPressGesture = longtap;
+	self.longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longtap:)];
+	self.longPressGesture.minimumPressDuration = 0.25;
+	self.longPressGesture.delegate = self;
+	[self addGestureRecognizer:self.longPressGesture];
 	
 	self.offsetFromCenter = -1;
 	_indexOfSelectedItem = 0;

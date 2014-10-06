@@ -72,4 +72,9 @@ typedef NS_ENUM(NSInteger, TKMultiSwitchStyle) {
  */
 - (void) selectItemAtIndex:(NSInteger)index animated:(BOOL)animated;
 
+
+@property (nonatomic,strong) UIPanGestureRecognizer *panGesture;
+@property (nonatomic,strong) UILongPressGestureRecognizer *longPressGesture;
+@property (nonatomic,strong) UITapGestureRecognizer *tapGesture;
+
 @end
