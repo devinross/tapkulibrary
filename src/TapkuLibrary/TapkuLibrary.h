@@ -50,6 +50,7 @@
 #import "UIGestureRecognizer+TKCategory.h"
 #import "UIFont+TKCategory.h"
 #import "UINavigationBar+TKCategory.h"
+#import "UILabel+TKCategory.h"
 
 #import "TKWindow.h"
 #import "TKViewController.h"

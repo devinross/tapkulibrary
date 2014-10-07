@@ -37,6 +37,8 @@
 		2026B55C1748257B00447F22 /* TKTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2026B55A1748257B00447F22 /* TKTextView.m */; };
 		2027C60E17FB692700A5E148 /* TKKeyboardTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2027C60C17FB692700A5E148 /* TKKeyboardTableViewController.h */; };
 		2027C60F17FB692700A5E148 /* TKKeyboardTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2027C60D17FB692700A5E148 /* TKKeyboardTableViewController.m */; };
+		202DC83719E469E200E06018 /* UILabel+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 202DC83519E469E200E06018 /* UILabel+TKCategory.h */; };
+		202DC83819E469E200E06018 /* UILabel+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 202DC83619E469E200E06018 /* UILabel+TKCategory.m */; };
 		202DD0CB188EF01200D5541E /* TKAlertViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 202DD0C9188EF01200D5541E /* TKAlertViewController.h */; };
 		202DD0CC188EF01200D5541E /* TKAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 202DD0CA188EF01200D5541E /* TKAlertViewController.m */; };
 		2047DAFC17C6692200C62E32 /* UIDevice+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2047DAFA17C6692200C62E32 /* UIDevice+TKCategory.h */; };
@@ -210,6 +212,8 @@
 		2026B55A1748257B00447F22 /* TKTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKTextView.m; sourceTree = "<group>"; };
 		2027C60C17FB692700A5E148 /* TKKeyboardTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKKeyboardTableViewController.h; sourceTree = "<group>"; };
 		2027C60D17FB692700A5E148 /* TKKeyboardTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKKeyboardTableViewController.m; sourceTree = "<group>"; };
+		202DC83519E469E200E06018 /* UILabel+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+TKCategory.h"; sourceTree = "<group>"; };
+		202DC83619E469E200E06018 /* UILabel+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+TKCategory.m"; sourceTree = "<group>"; };
 		202DD0C9188EF01200D5541E /* TKAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKAlertViewController.h; sourceTree = "<group>"; };
 		202DD0CA188EF01200D5541E /* TKAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKAlertViewController.m; sourceTree = "<group>"; };
 		2047DAFA17C6692200C62E32 /* UIDevice+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+TKCategory.h"; sourceTree = "<group>"; };
@@ -597,6 +601,8 @@
 				201E5BF517C7CECE00027C47 /* UIViewController+TKCategory.m */,
 				2002B17517D241C2002440AE /* UIScreen+TKCategory.h */,
 				2002B17617D241C2002440AE /* UIScreen+TKCategory.m */,
+				202DC83519E469E200E06018 /* UILabel+TKCategory.h */,
+				202DC83619E469E200E06018 /* UILabel+TKCategory.m */,
 				20529A3417FF465800FFF627 /* UIAlertView+TKCategory.h */,
 				20529A3517FF465800FFF627 /* UIAlertView+TKCategory.m */,
 				20529A3817FF46A400FFF627 /* UIActionSheet+TKCategory.h */,
@@ -747,6 +753,7 @@
 				2002B17717D241C2002440AE /* UIScreen+TKCategory.h in Headers */,
 				3B9D93DA12F74F8F007D839C /* TKAppDelegate.h in Headers */,
 				200786B018DCB55C008526DE /* TKDecimalInputWithNextKeyView.h in Headers */,
+				202DC83719E469E200E06018 /* UILabel+TKCategory.h in Headers */,
 				3B07B7CA133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.h in Headers */,
 				3B166A6F137F38D7006298E6 /* UIColor+TKCategory.h in Headers */,
 				3B8F0DF6142AE52B00E3AADE /* TKGradientView.h in Headers */,
@@ -897,6 +904,7 @@
 				3B6EDDE411547C1D00E454DA /* NSDate+TKCategory.m in Sources */,
 				200786B118DCB55C008526DE /* TKDecimalInputWithNextKeyView.m in Sources */,
 				20C3592218CE5C0700530279 /* TKSoundAlertController.m in Sources */,
+				202DC83819E469E200E06018 /* UILabel+TKCategory.m in Sources */,
 				3B6EDDEA11547C2700E454DA /* TKCalendarMonthViewController.m in Sources */,
 				202DD0CC188EF01200D5541E /* TKAlertViewController.m in Sources */,
 				3B6EDDEE11547C2900E454DA /* TKCalendarMonthTableViewController.m in Sources */,
