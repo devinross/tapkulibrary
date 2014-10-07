@@ -11,5 +11,6 @@
 @interface UILabel (TKCategory)
 
 - (void) sizeToFitWithAlignment;
+- (void) sizeToFitWithAlignmentAndVerticalCentering;
 
 @end
