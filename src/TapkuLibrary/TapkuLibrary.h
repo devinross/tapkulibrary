@@ -81,6 +81,8 @@
 
 #import "TKSoundAlertController.h"
 
+#import "TKCardModalViewController.h"
+
 // CELLS
 #import "TKLabelCell.h"
 #import "TKLabelTextViewCell.h"

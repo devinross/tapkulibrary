@@ -21,6 +21,8 @@
 		200786AD18DCB418008526DE /* TKNumberInputWithNextKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 200786AB18DCB418008526DE /* TKNumberInputWithNextKeyView.m */; };
 		200786B018DCB55C008526DE /* TKDecimalInputWithNextKeyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 200786AE18DCB55C008526DE /* TKDecimalInputWithNextKeyView.h */; };
 		200786B118DCB55C008526DE /* TKDecimalInputWithNextKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 200786AF18DCB55C008526DE /* TKDecimalInputWithNextKeyView.m */; };
+		20136C4419EC4E54001F02D9 /* TKCardModalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 20136C4219EC4E54001F02D9 /* TKCardModalViewController.h */; };
+		20136C4519EC4E54001F02D9 /* TKCardModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20136C4319EC4E54001F02D9 /* TKCardModalViewController.m */; };
 		2014592817A1077D00629488 /* TKReorderTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2014592617A1077D00629488 /* TKReorderTableView.h */; };
 		2014592917A1077D00629488 /* TKReorderTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2014592717A1077D00629488 /* TKReorderTableView.m */; };
 		2014592C17A107FF00629488 /* UIGestureRecognizer+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 2014592A17A107FF00629488 /* UIGestureRecognizer+TKCategory.h */; };
@@ -196,6 +198,8 @@
 		200786AB18DCB418008526DE /* TKNumberInputWithNextKeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKNumberInputWithNextKeyView.m; sourceTree = "<group>"; };
 		200786AE18DCB55C008526DE /* TKDecimalInputWithNextKeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDecimalInputWithNextKeyView.h; sourceTree = "<group>"; };
 		200786AF18DCB55C008526DE /* TKDecimalInputWithNextKeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDecimalInputWithNextKeyView.m; sourceTree = "<group>"; };
+		20136C4219EC4E54001F02D9 /* TKCardModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCardModalViewController.h; sourceTree = "<group>"; };
+		20136C4319EC4E54001F02D9 /* TKCardModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCardModalViewController.m; sourceTree = "<group>"; };
 		2014592617A1077D00629488 /* TKReorderTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKReorderTableView.h; sourceTree = "<group>"; };
 		2014592717A1077D00629488 /* TKReorderTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKReorderTableView.m; sourceTree = "<group>"; };
 		2014592A17A107FF00629488 /* UIGestureRecognizer+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+TKCategory.h"; sourceTree = "<group>"; };
@@ -673,6 +677,8 @@
 				20C0354D17C9A5DD009EBB33 /* TKGlowButton.h */,
 				20C0354E17C9A5DD009EBB33 /* TKGlowButton.m */,
 				2007869D18DCAEB0008526DE /* Keyboard */,
+				20136C4219EC4E54001F02D9 /* TKCardModalViewController.h */,
+				20136C4319EC4E54001F02D9 /* TKCardModalViewController.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -713,6 +719,7 @@
 				2014592C17A107FF00629488 /* UIGestureRecognizer+TKCategory.h in Headers */,
 				3B6EDDE511547C1E00E454DA /* NSDate+TKCategory.h in Headers */,
 				2047DAFC17C6692200C62E32 /* UIDevice+TKCategory.h in Headers */,
+				20136C4419EC4E54001F02D9 /* TKCardModalViewController.h in Headers */,
 				3B6EDDEB11547C2800E454DA /* TKCalendarMonthViewController.h in Headers */,
 				20C0354F17C9A5DD009EBB33 /* TKGlowButton.h in Headers */,
 				3B6EDDEF11547C2900E454DA /* TKCalendarMonthTableViewController.h in Headers */,
@@ -909,6 +916,7 @@
 				202DD0CC188EF01200D5541E /* TKAlertViewController.m in Sources */,
 				3B6EDDEE11547C2900E454DA /* TKCalendarMonthTableViewController.m in Sources */,
 				3B6EDDF211547C2C00E454DA /* TKCalendarDayViewController.m in Sources */,
+				20136C4519EC4E54001F02D9 /* TKCardModalViewController.m in Sources */,
 				3B6EDDF411547C2D00E454DA /* TKCalendarDayView.m in Sources */,
 				3B6EDDF611547C3000E454DA /* TKCalendarDayEventView.m in Sources */,
 				20529A3B17FF46A400FFF627 /* UIActionSheet+TKCategory.m in Sources */,

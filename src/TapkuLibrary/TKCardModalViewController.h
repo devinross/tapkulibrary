@@ -1,6 +1,6 @@
 //
-//  UILabel+TKCategory.h
-//  Created by Devin Ross on 10/7/14.
+//  TKCardModalViewController.h
+//  Created by Devin Ross on 10/13/14.
 //
 /*
  
@@ -31,9 +31,23 @@
 
 @import UIKit;
 
-@interface UILabel (TKCategory)
+@interface TKCardModalViewController : UIViewController <UIViewControllerTransitioningDelegate,UIViewControllerAnimatedTransitioning,UICollisionBehaviorDelegate>
 
-- (void) sizeToFitWithAlignment;
-- (void) sizeToFitWithAlignmentAndVerticalCentering;
+
+@property (nonatomic,strong) UIView *contentView;
+@property (nonatomic,strong) UIView *backgroundView;
+@property (nonatomic,assign) BOOL throwToDismissEnabled;
+@property (nonatomic,assign) BOOL tapToDismissEnabled;
+@property (nonatomic,assign) BOOL onlyAllowTapOffCardToDismiss;
+
+@property (nonatomic,assign) CGRect visibleFrame;
+
+
+- (void) show;
+- (void) hide;
+
+- (void) showAlertView:(id<UIViewControllerContextTransitioning>)transitionContext;
+- (void) hideAlertView:(id<UIViewControllerContextTransitioning>)transitionContext;
+- (void) tapped:(UITapGestureRecognizer*)sender;
 
 @end
