@@ -35,7 +35,7 @@
 #import "TKGlobal.h"
 #import "UIGestureRecognizer+TKCategory.h"
 
-@interface TKCardModalViewController ()
+@interface TKCardModalViewController () <UIGestureRecognizerDelegate>
 
 @property (nonatomic,strong) UIDynamicAnimator *animator;
 @property (nonatomic) UIAttachmentBehavior* attachmentBehavior;
@@ -51,11 +51,11 @@
 
 @end
 
-static const CGFloat __resistance = 0.0f;						// linear resistance applied to the image’s dynamic item behavior
-static const CGFloat __density = 1.0f;							// relative mass density applied to the image's dynamic item behavior
-static const CGFloat __velocityFactor = 1.0f;					// affects how quickly the view is pushed out of the view
-static const CGFloat __angularVelocityFactor = 1.0f;			// adjusts the amount of spin applied to the view during a push force, increases towards the view bounds
-static const CGFloat __minimumVelocityRequiredForPush = 50.0f;	// defines how much velocity is required for the push behavior to be applied
+static const CGFloat _resistance = 0.0f;						// linear resistance applied to the image’s dynamic item behavior
+static const CGFloat _density = 1.0f;							// relative mass density applied to the image's dynamic item behavior
+static const CGFloat _velocityFactor = 1.0f;					// affects how quickly the view is pushed out of the view
+static const CGFloat _angularVelocityFactor = 1.0f;				// adjusts the amount of spin applied to the view during a push force, increases towards the view bounds
+static const CGFloat _minimumVelocityRequiredForPush = 50.0f;	// defines how much velocity is required for the push behavior to be applied
 
 @implementation TKCardModalViewController
 
@@ -109,6 +109,7 @@ static const CGFloat __minimumVelocityRequiredForPush = 50.0f;	// defines how mu
 	
 	self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
 	self.tapGesture.enabled = self.tapToDismissEnabled;
+	self.tapGesture.delegate = self;
 	[self.view addGestureRecognizer:self.tapGesture];
 	
 	self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
@@ -214,8 +215,8 @@ static const CGFloat __minimumVelocityRequiredForPush = 50.0f;	// defines how mu
 		self.itemBehavior.elasticity = 0.0f;
 		self.itemBehavior.friction = 0.2f;
 		self.itemBehavior.allowsRotation = YES;
-		self.itemBehavior.density = __density;
-		self.itemBehavior.resistance = __resistance;
+		self.itemBehavior.density = _density;
+		self.itemBehavior.resistance = _resistance;
 		[self.animator addBehavior:self.itemBehavior];
 		
 		self.attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:view offsetFromCenter:offset attachedToAnchor:p];
@@ -245,7 +246,7 @@ static const CGFloat __minimumVelocityRequiredForPush = 50.0f;	// defines how mu
 		CGPoint velocity = [gesture velocityInView:self.view];
 		CGFloat velocityAdjust = 10.0f * deviceVelocityScale;
 		
-		if (fabs(velocity.x / velocityAdjust) > __minimumVelocityRequiredForPush || fabs(velocity.y / velocityAdjust) > __minimumVelocityRequiredForPush) {
+		if (fabs(velocity.x / velocityAdjust) > _minimumVelocityRequiredForPush || fabs(velocity.y / velocityAdjust) > _minimumVelocityRequiredForPush) {
 			
 			
 			self.pushBehavior = [[UIPushBehavior alloc] initWithItems:@[view] mode:UIPushBehaviorModeInstantaneous];
@@ -289,9 +290,9 @@ static const CGFloat __minimumVelocityRequiredForPush = 50.0f;	// defines how mu
 			
 			
 			
-			[self.itemBehavior addAngularVelocity:angularVelocity * __angularVelocityFactor * direction forItem:view];
+			[self.itemBehavior addAngularVelocity:angularVelocity * _angularVelocityFactor * direction forItem:view];
 			[self.animator addBehavior:self.pushBehavior];
-			self.pushBehavior.pushDirection = CGVectorMake((velocity.x / velocityAdjust) * __velocityFactor, (velocity.y / velocityAdjust) * __velocityFactor);
+			self.pushBehavior.pushDirection = CGVectorMake((velocity.x / velocityAdjust) * _velocityFactor, (velocity.y / velocityAdjust) * _velocityFactor);
 			self.pushBehavior.active = YES;
 			[self.animator addBehavior:self.pushBehavior];
 			
