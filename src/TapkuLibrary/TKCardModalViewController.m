@@ -174,6 +174,13 @@ static const CGFloat __minimumVelocityRequiredForPush = 50.0f;	// defines how mu
 
 
 
+- (BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+	CGPoint p = [touch locationInView:self.contentView.superview];
+	if(gestureRecognizer == self.tapGesture && CGRectContainsPoint(self.contentView.frame, p))
+		return NO;
+	return YES;
+}
+
 - (void) tapped:(UITapGestureRecognizer*)sender{
 	
 	if(self.onlyAllowTapOffCardToDismiss){
