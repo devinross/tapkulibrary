@@ -65,6 +65,8 @@
 		207DF657178761210091E898 /* UITextField+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 207DF655178761210091E898 /* UITextField+TKCategory.m */; };
 		207DFF9215E1E3BE00A0BC2A /* NSDate+CalendarGrid.h in Headers */ = {isa = PBXBuildFile; fileRef = 207DFF9015E1E3BE00A0BC2A /* NSDate+CalendarGrid.h */; };
 		207DFF9315E1E3BE00A0BC2A /* NSDate+CalendarGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 207DFF9115E1E3BE00A0BC2A /* NSDate+CalendarGrid.m */; };
+		20915EC419F08363004DD34F /* DataTests.h in Headers */ = {isa = PBXBuildFile; fileRef = 20915EC219F08363004DD34F /* DataTests.h */; };
+		20915EC619F08363004DD34F /* DataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20915EC319F08363004DD34F /* DataTests.m */; };
 		20A2A520174C37870058571F /* TKSlideToUnlockView.h in Headers */ = {isa = PBXBuildFile; fileRef = 20A2A51E174C37870058571F /* TKSlideToUnlockView.h */; };
 		20A2A521174C37870058571F /* TKSlideToUnlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A2A51F174C37870058571F /* TKSlideToUnlockView.m */; };
 		20C0354F17C9A5DD009EBB33 /* TKGlowButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 20C0354D17C9A5DD009EBB33 /* TKGlowButton.h */; };
@@ -74,7 +76,6 @@
 		20CE10C41860A6A500249216 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CE10C21860A62B00249216 /* XCTest.framework */; };
 		20DAFB031814BAAC00EF525B /* TKRetroButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 20DAFB011814BAAC00EF525B /* TKRetroButton.h */; };
 		20DAFB041814BAAC00EF525B /* TKRetroButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAFB021814BAAC00EF525B /* TKRetroButton.m */; };
-		20DE9F45168F93E400655BF8 /* DataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DE9F44168F93E400655BF8 /* DataTests.m */; };
 		20DE9F4A168FA1EF00655BF8 /* NSObject+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 20DE9F48168FA1EF00655BF8 /* NSObject+TKCategory.h */; };
 		20DE9F4B168FA1EF00655BF8 /* NSObject+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DE9F49168FA1EF00655BF8 /* NSObject+TKCategory.m */; };
 		20DE9F4C168FAC6000655BF8 /* NSObject+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DE9F49168FA1EF00655BF8 /* NSObject+TKCategory.m */; };
@@ -242,6 +243,8 @@
 		207DF655178761210091E898 /* UITextField+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+TKCategory.m"; sourceTree = "<group>"; };
 		207DFF9015E1E3BE00A0BC2A /* NSDate+CalendarGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CalendarGrid.h"; sourceTree = "<group>"; };
 		207DFF9115E1E3BE00A0BC2A /* NSDate+CalendarGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CalendarGrid.m"; sourceTree = "<group>"; };
+		20915EC219F08363004DD34F /* DataTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataTests.h; path = Tests/DataTests.h; sourceTree = "<group>"; };
+		20915EC319F08363004DD34F /* DataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataTests.m; path = Tests/DataTests.m; sourceTree = "<group>"; };
 		20A2A51E174C37870058571F /* TKSlideToUnlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKSlideToUnlockView.h; sourceTree = "<group>"; };
 		20A2A51F174C37870058571F /* TKSlideToUnlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKSlideToUnlockView.m; sourceTree = "<group>"; };
 		20C0354D17C9A5DD009EBB33 /* TKGlowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKGlowButton.h; sourceTree = "<group>"; };
@@ -251,8 +254,6 @@
 		20CE10C21860A62B00249216 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		20DAFB011814BAAC00EF525B /* TKRetroButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKRetroButton.h; sourceTree = "<group>"; };
 		20DAFB021814BAAC00EF525B /* TKRetroButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKRetroButton.m; sourceTree = "<group>"; };
-		20DE9F43168F93E400655BF8 /* DataTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataTests.h; sourceTree = "<group>"; };
-		20DE9F44168F93E400655BF8 /* DataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataTests.m; sourceTree = "<group>"; };
 		20DE9F48168FA1EF00655BF8 /* NSObject+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TKCategory.h"; sourceTree = "<group>"; };
 		20DE9F49168FA1EF00655BF8 /* NSObject+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TKCategory.m"; sourceTree = "<group>"; };
 		20F6153917E6741D007F443C /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -474,8 +475,8 @@
 				3B4438B915B74A990069AAA3 /* UIViewTests.m */,
 				3BDE805C15BE3B210010738D /* NSArrayTests.h */,
 				3BDE805D15BE3B210010738D /* NSArrayTests.m */,
-				20DE9F43168F93E400655BF8 /* DataTests.h */,
-				20DE9F44168F93E400655BF8 /* DataTests.m */,
+				20915EC219F08363004DD34F /* DataTests.h */,
+				20915EC319F08363004DD34F /* DataTests.m */,
 			);
 			name = UnitTests;
 			sourceTree = "<group>";
@@ -739,6 +740,7 @@
 				3B6EDE1411547C4B00E454DA /* TKLabelSwitchCell.h in Headers */,
 				3B6EDE1611547C5000E454DA /* TKLabelFieldCell.h in Headers */,
 				3B6EDE1811547C5100E454DA /* TKLabelCell.h in Headers */,
+				20915EC419F08363004DD34F /* DataTests.h in Headers */,
 				3B6EDE1A11547C5400E454DA /* TKButtonCell.h in Headers */,
 				3B6EDE2011547C5700E454DA /* TKTableViewCell.h in Headers */,
 				200786A018DCAEC6008526DE /* TKInputKey.h in Headers */,
@@ -889,12 +891,12 @@
 				3B4438C115B74C920069AAA3 /* UIView+TKCategory.m in Sources */,
 				3B859F02134C76C600661088 /* NSArray+TKCategory.m in Sources */,
 				3B859F03134C76C700661088 /* NSDate+TKCategory.m in Sources */,
+				20915EC619F08363004DD34F /* DataTests.m in Sources */,
 				3B859F08134C76D500661088 /* NSString+TKCategory.m in Sources */,
 				3B89162B134D93D000BD2B31 /* FoundationTests.m in Sources */,
 				3B4438A815B73C690069AAA3 /* NSStringTests.m in Sources */,
 				3B4438BA15B74A990069AAA3 /* UIViewTests.m in Sources */,
 				3BDE805E15BE3B210010738D /* NSArrayTests.m in Sources */,
-				20DE9F45168F93E400655BF8 /* DataTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

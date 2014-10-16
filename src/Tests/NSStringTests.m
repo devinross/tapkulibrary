@@ -69,7 +69,7 @@
 	XCTAssertNil([@"12" creditCardType], @"Card number not long enough");
 	
 	
-	XCTAssertNil([@"12HelloGuys" creditCardType], @"Not a proper card");
+	XCTAssertEqualObjects([@"12HelloGuys" creditCardType],NSLocalizedString(@"Unknown", @""), @"Not a proper card");
 
 	
 	XCTAssertEqualObjects([@"34085943" creditCardType],NSLocalizedString(@"American Express", @"")); // 34 AE
