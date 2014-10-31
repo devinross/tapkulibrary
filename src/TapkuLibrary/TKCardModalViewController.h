@@ -42,6 +42,9 @@
 
 @property (nonatomic,assign) CGRect visibleFrame;
 
+- (void) keyboardWillShow:(NSNotification*)notification;
+- (void) keyboardWillHide:(NSNotification*)notification;
+
 
 - (void) show;
 - (void) hide;
