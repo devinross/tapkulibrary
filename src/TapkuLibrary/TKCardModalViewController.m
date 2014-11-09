@@ -362,8 +362,10 @@ static const CGFloat _minimumVelocityRequiredForPush = 50.0f;	// defines how muc
 	
 	
 	[UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0.0 usingSpringWithDamping:0.7 initialSpringVelocity:0.3 options:0 animations:^{
-		self.contentView.center = CGPointMake(self.view.bounds.size.width/2, CGRectGetHeight(self.visibleFrame)/2);
 		self.contentView.transform = CGAffineTransformIdentity;
+		NSInteger x = (CGFrameGetWidth(self.view) - CGFrameGetWidth(self.contentView)) / 2;
+		NSInteger y = (CGRectGetHeight(self.visibleFrame) - CGFrameGetHeight(self.contentView)) / 2;
+		self.contentView.frame = CGRectMake(x, y, CGFrameGetWidth(self.contentView), CGFrameGetHeight(self.contentView));
 	} completion:^(BOOL finished) {
 		[transitionContext completeTransition:YES];
 	}];
