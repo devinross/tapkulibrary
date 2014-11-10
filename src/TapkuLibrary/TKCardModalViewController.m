@@ -348,24 +348,22 @@ static const CGFloat _minimumVelocityRequiredForPush = 50.0f;	// defines how muc
 	UIView *containerView = [transitionContext containerView];
 	[containerView addSubview:toVC.view];
 	
-	
 	toVC.view.frame = CGRectMake(0, 0, CGRectGetWidth(containerView.frame), CGRectGetHeight(containerView.frame));
 	
+	CGFloat originalX = self.contentView.center.x;
+	CGFloat originalMinX = CGFrameGetMinX(self.contentView);
 	
-	self.contentView.center = CGPointMake(self.view.bounds.size.width/2, -300);
+	self.contentView.center = CGPointMake(originalX, -300);
 	self.contentView.transform = CGRotate(-10 * M_PI / 180.0f);
 	
 	[UIView animateWithDuration:0.4 animations:^{
 		self.backgroundView.alpha = 1;
-		
 	}];
-	
 	
 	[UIView animateWithDuration:[self transitionDuration:transitionContext] delay:0.0 usingSpringWithDamping:0.7 initialSpringVelocity:0.3 options:0 animations:^{
 		self.contentView.transform = CGAffineTransformIdentity;
-		NSInteger x = (CGFrameGetWidth(self.view) - CGFrameGetWidth(self.contentView)) / 2;
 		NSInteger y = (CGRectGetHeight(self.visibleFrame) - CGFrameGetHeight(self.contentView)) / 2;
-		self.contentView.frame = CGRectMake(x, y, CGFrameGetWidth(self.contentView), CGFrameGetHeight(self.contentView));
+		self.contentView.frame = CGRectMake(originalMinX, y, CGFrameGetWidth(self.contentView), CGFrameGetHeight(self.contentView));
 	} completion:^(BOOL finished) {
 		[transitionContext completeTransition:YES];
 	}];
