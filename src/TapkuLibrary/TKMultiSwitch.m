@@ -56,19 +56,26 @@
 }
 - (instancetype) initWithFrame:(CGRect)frame{
 	self = [self initWithItems:@[@""]];
-    return self;
+	return self;
 }
 - (instancetype) initWithItems:(NSArray*)items{
+	self = [self initWithItems:items style:TKMultiSwitchStyleHollow];
+	return self;
+}
+- (instancetype) initWithItems:(NSArray*)items style:(TKMultiSwitchStyle)style{
 	CGFloat height = 40;
 	if(!(self=[super initWithFrame:CGRectMake(10, 6, 320-20, height)])) return nil;
 	
-	_style = TKMultiSwitchStyleHollow;
+	_style = style;
+	_selectionInset = 3;
+	_font = [UIFont systemFontOfSize:12];
+	_offsetFromCenter = -1;
+	_indexOfSelectedItem = 0;
 	
 	self.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1];
 	self.clipsToBounds = NO;
 	self.layer.cornerRadius = CGRectGetHeight(self.frame)/2;
-	
-	self.selectionInset = 3;
+	self.multipleTouchEnabled = NO;
 	
 	CGFloat per = CGRectGetWidth(self.frame) / items.count;
 	self.selectionView = [[UIView alloc] initWithFrame:CGRectInset(CGRectMake(0, 0, per, height), self.selectionInset, self.selectionInset)];
@@ -78,8 +85,6 @@
 	self.selectionView.userInteractionEnabled = NO;
 	[self addSubview:self.selectionView];
 	
-	_font = [UIFont systemFontOfSize:12];
-	
 	NSInteger i = 0;
 	NSMutableArray *labels = [NSMutableArray arrayWithCapacity:items.count];
 	for(NSString *txt in items){
@@ -87,15 +92,15 @@
 		label.font = self.font;
 		label.text = txt;
 		label.textAlignment = NSTextAlignmentCenter;
-		label.textColor = self.tintColor;
-		label.alpha = i == 0 ? 1 : UNSELECTED_ALPHA;
+		if(_style == TKMultiSwitchStyleHollow)
+			label.textColor = self.tintColor;
+		if(_style == TKMultiSwitchStyleHollow)
+			label.alpha = i == _indexOfSelectedItem ? 1 : UNSELECTED_ALPHA;
 		[self addSubview:label];
 		[labels addObject:label];
 		i++;
 	}
 	self.labels = labels.copy;
-	
-	self.multipleTouchEnabled = NO;
 	
 	self.panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
 	self.panGesture.delegate = self;
@@ -110,30 +115,22 @@
 	self.longPressGesture.delegate = self;
 	[self addGestureRecognizer:self.longPressGesture];
 	
-	self.offsetFromCenter = -1;
-	_indexOfSelectedItem = 0;
 	
-    return self;
+	
+	return self;
 }
-
-
 
 - (void) layoutSubviews{
 	[super layoutSubviews];
 	[self readjustLayout];
 }
-
 - (void) setFrame:(CGRect)frame{
 	[super setFrame:frame];
 	self.needsReadjustment = YES;
 	[self setNeedsLayout];
 }
 
-
-
-
 - (void) readjustLayout{
-	
 	if(!self.needsReadjustment) return;
 	
 	self.needsReadjustment = NO;
@@ -143,7 +140,6 @@
 	
 	CGFloat per = (CGRectGetWidth(self.frame)) / self.labels.count;
 	self.selectionView.frame = CGRectInset(CGRectMake(0, 0, per, height), self.selectionInset, self.selectionInset);
-	
 	
 	if(self.style == TKMultiSwitchStyleHollow) {
 		self.selectionView.layer.borderColor = self.tintColor.CGColor;
@@ -157,24 +153,16 @@
 		self.selectionView.backgroundColor = self.tintColor;
 	}
 	
-	
-	[self addSubview:self.selectionView];
-	[self sendSubviewToBack:self.selectionView];
-	
 	NSInteger i = 0;
 	for(UILabel *label in self.labels){
 		label.frame = CGRectMake(per * i , 0, per, CGFrameGetHeight(self));
 		label.font = self.font;
-		
-		
 		if(self.style == TKMultiSwitchStyleFilled){
 			label.textColor = i == _indexOfSelectedItem ? self.selectedTextColor : self.textColor;
 			label.alpha = 1;
 		}else{
 			label.alpha = i == _indexOfSelectedItem ? 1 : UNSELECTED_ALPHA;
 		}
-		
-		
 		i++;
 	}
 	
@@ -196,7 +184,7 @@
 	CGPoint point = [press locationInView:self];
 	CGFloat per = CGRectGetWidth(self.frame) / self.labels.count;
 	NSInteger index = point.x / per;
-		
+	
 	if(press.began){
 		
 		[UIView beginAnimations:nil context:nil];
@@ -379,8 +367,8 @@
 	
 	CGFloat per = CGRectGetWidth(self.frame) / self.labels.count;
 	self.offsetFromCenter = -1;
-	if(index == _indexOfSelectedItem) return;
-	
+	//if(index == _indexOfSelectedItem) return;
+	_indexOfSelectedItem = index;
 	
 	if(animated) [UIView beginAnimations:nil context:nil];
 	self.selectionView.transform = CGAffineTransformIdentity;
@@ -388,39 +376,35 @@
 	
 	NSInteger i = 0;
 	for(UILabel *label in self.labels){
-		
-		
 		if(self.style == TKMultiSwitchStyleFilled){
-			
-			[UIView transitionWithView:label duration:animated ? 0.3 : 0 options:UIViewAnimationOptionTransitionCrossDissolve | UIViewAnimationOptionBeginFromCurrentState animations:^{
+			if(animated){
+				[UIView transitionWithView:label duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve | UIViewAnimationOptionBeginFromCurrentState animations:^{
+					label.textColor = i == index ? self.selectedTextColor : self.textColor;
+					label.alpha = 1;
+				} completion:nil];
+			}else{
 				label.textColor = i == index ? self.selectedTextColor : self.textColor;
 				label.alpha = 1;
-			} completion:nil];
+			}
 		}else{
 			label.alpha = i == index ? 1 : UNSELECTED_ALPHA;
-			
 		}
-		
-		
 		i++;
 	}
 	if(animated) [UIView commitAnimations];
 	_indexOfSelectedItem = index;
 	
 }
-
 - (void) setStyle:(TKMultiSwitchStyle)style{
 	_style = style;
 	self.needsReadjustment = YES;
 	[self setNeedsLayout];
 }
-
 - (void) setSelectionInset:(CGFloat)selectionInset{
 	_selectionInset = selectionInset;
 	self.needsReadjustment = YES;
 	[self setNeedsLayout];
 }
-
 - (void) setSelectedTextColor:(UIColor *)selectedTextColor{
 	_selectedTextColor = selectedTextColor;
 	self.needsReadjustment = YES;
@@ -431,12 +415,10 @@
 	self.needsReadjustment = YES;
 	[self setNeedsLayout];
 }
-
 - (void) setFont:(UIFont *)font{
 	_font = font;
 	self.needsReadjustment = YES;
 	[self setNeedsLayout];
 }
-
 
 @end

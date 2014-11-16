@@ -89,7 +89,10 @@ static const CGFloat _minimumVelocityRequiredForPush = 50.0f;	// defines how muc
 	
 	
 	CGSize s = CGSizeMake(280, 200);
-	CGRect alertRect = CGRectMakeWithSize( (CGFrameGetWidth(self.view)- s.width)/2.0f, (CGFrameGetHeight(self.view)- s.height)/2.0f, s);
+	NSInteger minX = (CGFrameGetWidth(self.view)- s.width)/2.0f;
+	NSInteger minY = (CGFrameGetHeight(self.view)- s.height)/2.0f;
+	CGRect alertRect = CGRectMakeWithSize(minX,minY, s);
+	
 	
 	self.contentView = [[UIView alloc] initWithFrame:alertRect];
 	self.contentView.backgroundColor = [UIColor whiteColor];

@@ -39,12 +39,14 @@ typedef NS_ENUM(NSInteger, TKMultiSwitchStyle) {
 /** `TKMultiSwitch` a slide control with multiple options. Sort of like a `UISwitch` mixed with a `UISegmentControl`. */
 @interface TKMultiSwitch : UIControl
 
+- (instancetype) initWithItems:(NSArray*)items style:(TKMultiSwitchStyle)style NS_DESIGNATED_INITIALIZER;
+
 /**
  Initialize a `TKMultiSwitch` instance.
  @param items The items in the switch view.
  @return A `TKMultiSwitch` object.
  */
-- (instancetype) initWithItems:(NSArray*)items NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithItems:(NSArray*)items ;
 
 /** The index of the selected item. */
 @property (nonatomic,assign) NSInteger indexOfSelectedItem;
