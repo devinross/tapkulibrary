@@ -95,13 +95,14 @@
 #define WEB_VC NSLocalizedString(@"Web View Controller",@"")
 #define CUSTOM_KEYBOARDS NSLocalizedString(@"Custom Keyboards",@"")
 #define MULTI_SWITCH NSLocalizedString(@"Multiswitch",@"")
+#define CARD_MODAL NSLocalizedString(@"Card Modal View Controller",@"")
 
 #pragma mark View Lifecycle
 - (void) viewDidLoad{
 	[super viewDidLoad];
 
 	self.data = @[
-  @{@"rows" : @[WEB_VC,DAY_VIEW,MONTH_GRID,COVERFLOW], @"title" : @"Views"},
+  @{@"rows" : @[CARD_MODAL,WEB_VC,DAY_VIEW,MONTH_GRID,COVERFLOW], @"title" : @"Views"},
   @{@"rows" : @[SLIDE,BUTTONS,MULTI_SWITCH,CUSTOM_KEYBOARDS,HUD,EMPTY_SIGN,ALERTS], @"title" : @"UI Elements"},
   @{@"rows" : @[LABEL_CELLS,MORE_CELLS], @"title" : @"Table View Cells"},
   @{@"rows" : @[IMAGE_CACHE,HTTP_PROGRESS], @"title" : @"Network"}];
@@ -135,6 +136,12 @@
 	UIViewController *vc;
 	NSString *str = cell.textLabel.text;
 	
+	
+	if([str isEqualToString:CARD_MODAL]){
+		TKCardModalViewController *modal = [[TKCardModalViewController alloc] init];
+		[self presentViewController:modal animated:YES completion:nil];
+		return;
+	}
 	
 	
 	if([str isEqualToString:COVERFLOW]){

@@ -315,7 +315,7 @@ static const CGFloat _minimumVelocityRequiredForPush = 50.0f;	// defines how muc
 		
 		
 		CGPoint pp = [self.view convertPoint:self.cardRestingPosition toView:cnt];
-		UISnapBehavior *snapBehavior = [[UISnapBehavior alloc] initWithItem:view snapToPoint:pp];
+		UISnapBehavior *snapBehavior = [[UISnapBehavior alloc] initWithItem:view snapToPoint:self.cardRestingPosition];
 		snapBehavior.damping = 0.85;
 		[self.animator addBehavior:snapBehavior];
 		
