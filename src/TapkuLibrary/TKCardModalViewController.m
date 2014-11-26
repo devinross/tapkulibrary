@@ -151,28 +151,27 @@ static const CGFloat _minimumVelocityRequiredForPush = 50.0f;	// defines how muc
 	NSValue *keyRectVal = notification.userInfo[UIKeyboardFrameEndUserInfoKey];
 	CGRect keyFrame = [keyRectVal CGRectValue];
 	
-	
 	CGRect bounds = self.view.bounds;
 	bounds.origin.y = 20;
 	bounds.size.height -= keyFrame.size.height;
 	bounds.size.height -= 20;
-	
 	self.visibleFrame = bounds;
 	
-	
 	[UIView animateWithDuration:0.6 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.4 options:0 animations:^{
-		self.contentView.center = CGPointMake(self.contentView.center.x, bounds.size.height/2);
-	}completion:^(BOOL finished) {
-		
-	}];
+		NSInteger y = (CGRectGetHeight(bounds)-CGFrameGetHeight(self.contentView))/2;
+		CGRect rr = self.contentView.frame;
+		rr.origin.y = y;
+		self.contentView.frame = rr;
+	}completion:nil];
 }
 - (void) keyboardWillHide:(NSNotification*)notification{
 	
 	self.visibleFrame = self.view.bounds;
-	
-	
 	[UIView animateWithDuration:0.9 delay:0.3 usingSpringWithDamping:0.6 initialSpringVelocity:0.6 options:0 animations:^{
-		self.contentView.center = CGPointMake(self.contentView.center.x, (CGFrameGetHeight(self.view)-20) / 2 + 20);
+		NSInteger y = (CGFrameGetHeight(self.view)-CGFrameGetHeight(self.contentView))/2;
+		CGRect rr = self.contentView.frame;
+		rr.origin.y = y;
+		self.contentView.frame = rr;
 	}completion:nil];
 }
 
