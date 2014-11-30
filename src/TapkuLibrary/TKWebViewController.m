@@ -32,6 +32,7 @@
 
 #import "TKWebViewController.h"
 #import "UIBarButtonItem+TKCategory.h"
+#import "UIDevice+TKCategory.h"
 
 @implementation TKWebViewController
 
@@ -64,11 +65,23 @@
 }
 
 #pragma mark Button Actions
-- (void) showActionSheet:(id)sender{
+- (void) showActionSheet:(UIBarButtonItem*)sender{
 	NSURL *currentURL = self.webView.request.URL;
 	UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[currentURL] applicationActivities:nil];
 	activityVC.excludedActivityTypes = @[UIActivityTypePostToWeibo, UIActivityTypeSaveToCameraRoll, UIActivityTypeAssignToContact];
-	[self presentViewController:activityVC animated:YES completion:nil];
+	
+	
+	if([UIDevice padIdiom]){
+		
+		UIPopoverController *popup = [[UIPopoverController alloc] initWithContentViewController:activityVC];
+		[popup presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+		
+	}else{
+		
+		[self presentViewController:activityVC animated:YES completion:nil];
+
+	}
+	
 }
 
 #pragma mark UIWebviewDelegate
