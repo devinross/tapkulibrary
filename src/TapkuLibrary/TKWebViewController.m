@@ -34,6 +34,10 @@
 #import "UIBarButtonItem+TKCategory.h"
 #import "UIDevice+TKCategory.h"
 
+@interface TKWebViewController ()
+@property (nonatomic,strong) UIBarButtonItem *loadingActivityBarButtonItem;
+@end
+
 @implementation TKWebViewController
 
 - (instancetype) initWithURL:(NSURL*)URL{
@@ -86,26 +90,17 @@
 
 #pragma mark UIWebviewDelegate
 - (void) webViewDidStartLoad:(UIWebView *)webView{
-	
-	UIActivityIndicatorViewStyle style;
-	if(self.navigationController.navigationBar.barTintColor){
-		UIColor *clr = self.navigationController.navigationBar.barTintColor;
-		const CGFloat *componentColors = CGColorGetComponents(clr.CGColor);
-		CGFloat colorBrightness = ((componentColors[0] * 299) + (componentColors[1] * 587) + (componentColors[2] * 114)) / 1000;
-		style = colorBrightness < 0.6 ? UIActivityIndicatorViewStyleWhite : UIActivityIndicatorViewStyleGray ;
-	}else{
-		style = UIActivityIndicatorViewStyleGray;
-	}
-	
-	self.navigationItem.rightBarButtonItem = [UIBarButtonItem activityItemWithIndicatorStyle:style];
-	
+	if(self.navigationItem.rightBarButtonItem == _actionBarButtonItem)
+		self.navigationItem.rightBarButtonItem = self.loadingActivityBarButtonItem;
 }
 - (void) webViewDidFinishLoad:(UIWebView *)webView {
-	self.navigationItem.rightBarButtonItem = self.actionBarButtonItem;
+	if(self.navigationItem.rightBarButtonItem == _loadingActivityBarButtonItem)
+		self.navigationItem.rightBarButtonItem = self.actionBarButtonItem;
 	self.title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
 }
 - (void) webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-	self.navigationItem.rightBarButtonItem = self.actionBarButtonItem;
+	if(self.navigationItem.rightBarButtonItem == _loadingActivityBarButtonItem)
+		self.navigationItem.rightBarButtonItem = self.actionBarButtonItem;
 	self.title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
 }
 - (BOOL) webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
@@ -120,10 +115,27 @@
 }
 
 
+#pragma mark Properties
 - (UIBarButtonItem*) actionBarButtonItem{
 	if(_actionBarButtonItem) return _actionBarButtonItem;
 	_actionBarButtonItem =  [UIBarButtonItem actionItemWithTarget:self action:@selector(showActionSheet:)];
 	return _actionBarButtonItem;
+}
+- (UIBarButtonItem*) loadingActivityBarButtonItem{
+	if(_loadingActivityBarButtonItem) return _loadingActivityBarButtonItem;
+	
+	UIActivityIndicatorViewStyle style;
+	if(self.navigationController.navigationBar.barTintColor){
+		UIColor *clr = self.navigationController.navigationBar.barTintColor;
+		const CGFloat *componentColors = CGColorGetComponents(clr.CGColor);
+		CGFloat colorBrightness = ((componentColors[0] * 299) + (componentColors[1] * 587) + (componentColors[2] * 114)) / 1000;
+		style = colorBrightness < 0.6 ? UIActivityIndicatorViewStyleWhite : UIActivityIndicatorViewStyleGray ;
+	}else{
+		style = UIActivityIndicatorViewStyleGray;
+	}
+	
+	_loadingActivityBarButtonItem = [UIBarButtonItem activityItemWithIndicatorStyle:style];
+	return _loadingActivityBarButtonItem;
 }
 
 @end
