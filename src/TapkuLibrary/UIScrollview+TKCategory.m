@@ -29,13 +29,20 @@
  
  */
 #import "UIScrollview+TKCategory.h"
-
+#import "TKGlobal.h"
 
 @implementation UIScrollView (TKCategory)
 
 
 - (void) scrollToTop{
 	self.contentOffset = CGPointMake( -self.contentInset.left, -self.contentInset.top);
+}
+
+- (NSInteger) currentHorizontalPage{
+	return (CGFrameGetWidth(self) / 2 + self.contentOffset.x) / CGFrameGetWidth(self);
+}
+- (NSInteger) currentVerticalPage{
+	return (CGFrameGetHeight(self) / 2 + self.contentOffset.y) / CGFrameGetHeight(self);
 }
 
 @end

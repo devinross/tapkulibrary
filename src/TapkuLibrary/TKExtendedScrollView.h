@@ -1,6 +1,6 @@
 //
-//  UIScrollview+TKCategory.h
-//  Created by Devin Ross on 11/17/10.
+//  TKExtendedScrollView.h
+//  Created by Devin Ross on 12/7/14.
 //
 /*
  
@@ -29,19 +29,19 @@
  
  */
 
-@import UIKit;
+#import <UIKit/UIKit.h>
 
-/** Additional functionality for `UIScrollView`.  */
-@interface UIScrollView (TKCategory)
+/** The planes that will receive the touch gestures. */
+typedef NS_ENUM(NSInteger, TKExtendedScrollViewExtensionPlane) {
+	TKExtendedScrollViewExtensionPlaneNone = 0,
+	TKExtendedScrollViewExtensionPlaneX = 1 << 0,
+	TKExtendedScrollViewExtensionPlaneY = 1 << 1
+};
 
-/** Sets the content offset of the scrollview to zero (0,0). */
-- (void) scrollToTop;
 
-/** Current horizontally scrolled page. */
-@property (nonatomic,readonly) NSInteger currentHorizontalPage;
+@interface TKExtendedScrollView : UIScrollView
 
-/** Current vertical scrolled page. */
-@property (nonatomic,readonly) NSInteger currentVerticalPage;
-
+/** A bitwise operator for the receiving touch gestures outside the scroll view for the x and y planes. */
+@property (nonatomic,assign) TKExtendedScrollViewExtensionPlane extensionPlane;
 
 @end

@@ -21,6 +21,8 @@
 		200786AD18DCB418008526DE /* TKNumberInputWithNextKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 200786AB18DCB418008526DE /* TKNumberInputWithNextKeyView.m */; };
 		200786B018DCB55C008526DE /* TKDecimalInputWithNextKeyView.h in Headers */ = {isa = PBXBuildFile; fileRef = 200786AE18DCB55C008526DE /* TKDecimalInputWithNextKeyView.h */; };
 		200786B118DCB55C008526DE /* TKDecimalInputWithNextKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 200786AF18DCB55C008526DE /* TKDecimalInputWithNextKeyView.m */; };
+		2011FB411A34DCFF00BBA432 /* TKExtendedScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2011FB3F1A34DCFF00BBA432 /* TKExtendedScrollView.h */; };
+		2011FB421A34DCFF00BBA432 /* TKExtendedScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2011FB401A34DCFF00BBA432 /* TKExtendedScrollView.m */; };
 		20136C4419EC4E54001F02D9 /* TKCardModalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 20136C4219EC4E54001F02D9 /* TKCardModalViewController.h */; };
 		20136C4519EC4E54001F02D9 /* TKCardModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20136C4319EC4E54001F02D9 /* TKCardModalViewController.m */; };
 		2014592817A1077D00629488 /* TKReorderTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2014592617A1077D00629488 /* TKReorderTableView.h */; };
@@ -199,6 +201,8 @@
 		200786AB18DCB418008526DE /* TKNumberInputWithNextKeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKNumberInputWithNextKeyView.m; sourceTree = "<group>"; };
 		200786AE18DCB55C008526DE /* TKDecimalInputWithNextKeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKDecimalInputWithNextKeyView.h; sourceTree = "<group>"; };
 		200786AF18DCB55C008526DE /* TKDecimalInputWithNextKeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKDecimalInputWithNextKeyView.m; sourceTree = "<group>"; };
+		2011FB3F1A34DCFF00BBA432 /* TKExtendedScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKExtendedScrollView.h; sourceTree = "<group>"; };
+		2011FB401A34DCFF00BBA432 /* TKExtendedScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKExtendedScrollView.m; sourceTree = "<group>"; };
 		20136C4219EC4E54001F02D9 /* TKCardModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCardModalViewController.h; sourceTree = "<group>"; };
 		20136C4319EC4E54001F02D9 /* TKCardModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCardModalViewController.m; sourceTree = "<group>"; };
 		2014592617A1077D00629488 /* TKReorderTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKReorderTableView.h; sourceTree = "<group>"; };
@@ -646,6 +650,8 @@
 				3BF9A832159791EA002A7F9E /* TKShapeView.m */,
 				2026B5591748257B00447F22 /* TKTextView.h */,
 				2026B55A1748257B00447F22 /* TKTextView.m */,
+				2011FB3F1A34DCFF00BBA432 /* TKExtendedScrollView.h */,
+				2011FB401A34DCFF00BBA432 /* TKExtendedScrollView.m */,
 				20C3591F18CE5C0700530279 /* TKSoundAlertController.h */,
 				20C3592018CE5C0700530279 /* TKSoundAlertController.m */,
 				3B345A6E142E4F870075E654 /* Network */,
@@ -712,6 +718,7 @@
 				3B6EDDDB11547C1100E454DA /* UIView+TKCategory.h in Headers */,
 				20DAFB031814BAAC00EF525B /* TKRetroButton.h in Headers */,
 				3B6EDDDC11547C1300E454DA /* UIImage+TKCategory.h in Headers */,
+				2011FB411A34DCFF00BBA432 /* TKExtendedScrollView.h in Headers */,
 				3B6EDDDF11547C1400E454DA /* TKWindow.h in Headers */,
 				20529A3A17FF46A400FFF627 /* UIActionSheet+TKCategory.h in Headers */,
 				3B6EDDE011547C1600E454DA /* TKGlobal.h in Headers */,
@@ -905,6 +912,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2027C60F17FB692700A5E148 /* TKKeyboardTableViewController.m in Sources */,
+				2011FB421A34DCFF00BBA432 /* TKExtendedScrollView.m in Sources */,
 				3B6EDDD611547BF800E454DA /* TKGlobal.m in Sources */,
 				3B6EDDDA11547C1100E454DA /* UIView+TKCategory.m in Sources */,
 				3B6EDDDD11547C1300E454DA /* UIImage+TKCategory.m in Sources */,
