@@ -35,6 +35,8 @@
 
 - (instancetype) initWithFrame:(CGRect)frame{
     if (!(self = [super initWithFrame:frame])) return nil;
+	
+	self.shimmerDuration = 4.0;
 		
 	self.textAlignment = NSTextAlignmentCenter;
 	self.backgroundColor = [UIColor clearColor];
@@ -82,7 +84,7 @@
 	animation.repeatCount = HUGE_VALF;
 	animation.toValue = [self _animationEndPoint];
 	animation.fromValue = [self _animationStartPoint];
-	animation.duration = 4.0f;
+	animation.duration = self.shimmerDuration;
 	[self.textHighlightLayer addAnimation:animation forKey:@"position.x"];
 }
 

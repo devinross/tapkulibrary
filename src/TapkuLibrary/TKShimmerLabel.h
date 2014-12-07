@@ -49,4 +49,8 @@ typedef NS_ENUM(NSInteger, TKShimmerLabelDirection) {
 /** The direction the shimmer should move. */
 @property (nonatomic,assign) TKShimmerLabelDirection direction;
 
+
+/** The duration of the shimmer animation */
+@property (nonatomic,assign) NSTimeInterval shimmerDuration;
+
 @end
