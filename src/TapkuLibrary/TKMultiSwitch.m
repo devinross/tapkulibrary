@@ -307,6 +307,21 @@
 		self.selectionView.center = CGPointMake( self.selectionInset + per * index + CGRectGetWidth(self.selectionView.frame)/2, self.selectionView.center.y);
 		[UIView commitAnimations];
 		
+		[UIView beginAnimations:nil context:nil];
+		NSInteger i = 0;
+		for(UILabel *label in self.labels){
+			if(self.style == TKMultiSwitchStyleFilled){
+				[UIView transitionWithView:label duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+					label.textColor = i == index ? self.selectedTextColor : self.textColor;
+					label.alpha = 1;
+				} completion:nil];
+				
+			}else
+				label.alpha = i == index ? 1 : UNSELECTED_ALPHA;
+			i++;
+		}
+		[UIView commitAnimations];
+		
 		self.offsetFromCenter = -1;
 		
 		if(_indexOfSelectedItem == index) return;
