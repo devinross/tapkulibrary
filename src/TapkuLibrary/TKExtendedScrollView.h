@@ -29,7 +29,7 @@
  
  */
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 /** The planes that will receive the touch gestures. */
 typedef NS_ENUM(NSInteger, TKExtendedScrollViewExtensionPlane) {
