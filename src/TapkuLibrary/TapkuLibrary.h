@@ -33,6 +33,8 @@
 #import "NSDate+TKCategory.h"
 #import "NSArray+TKCategory.h"
 #import "NSMutableArray+TKCategory.h"
+#import "NSAttributedString+TKCategory.h"
+#import "NSMutableAttributedString+TKCategory.h"
 #import "UIDevice+TKCategory.h"
 #import "UIScreen+TKCategory.h"
 #import "UIView+TKCategory.h"

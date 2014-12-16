@@ -81,6 +81,10 @@
 		20DE9F4A168FA1EF00655BF8 /* NSObject+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 20DE9F48168FA1EF00655BF8 /* NSObject+TKCategory.h */; };
 		20DE9F4B168FA1EF00655BF8 /* NSObject+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DE9F49168FA1EF00655BF8 /* NSObject+TKCategory.m */; };
 		20DE9F4C168FAC6000655BF8 /* NSObject+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DE9F49168FA1EF00655BF8 /* NSObject+TKCategory.m */; };
+		20F046631A40A09E004BF728 /* NSAttributedString+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 20F046611A40A09E004BF728 /* NSAttributedString+TKCategory.h */; };
+		20F046641A40A09E004BF728 /* NSAttributedString+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F046621A40A09E004BF728 /* NSAttributedString+TKCategory.m */; };
+		20F046671A40A0F3004BF728 /* NSMutableAttributedString+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 20F046651A40A0F3004BF728 /* NSMutableAttributedString+TKCategory.h */; };
+		20F046681A40A0F3004BF728 /* NSMutableAttributedString+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F046661A40A0F3004BF728 /* NSMutableAttributedString+TKCategory.m */; };
 		20F6153A17E6741D007F443C /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20F6153917E6741D007F443C /* Accelerate.framework */; };
 		20F6154217E69E75007F443C /* TKShimmerLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 20F6154017E69E75007F443C /* TKShimmerLabel.h */; };
 		20F6154317E69E75007F443C /* TKShimmerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F6154117E69E75007F443C /* TKShimmerLabel.m */; };
@@ -260,6 +264,10 @@
 		20DAFB021814BAAC00EF525B /* TKRetroButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKRetroButton.m; sourceTree = "<group>"; };
 		20DE9F48168FA1EF00655BF8 /* NSObject+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TKCategory.h"; sourceTree = "<group>"; };
 		20DE9F49168FA1EF00655BF8 /* NSObject+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TKCategory.m"; sourceTree = "<group>"; };
+		20F046611A40A09E004BF728 /* NSAttributedString+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+TKCategory.h"; sourceTree = "<group>"; };
+		20F046621A40A09E004BF728 /* NSAttributedString+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+TKCategory.m"; sourceTree = "<group>"; };
+		20F046651A40A0F3004BF728 /* NSMutableAttributedString+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+TKCategory.h"; sourceTree = "<group>"; };
+		20F046661A40A0F3004BF728 /* NSMutableAttributedString+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributedString+TKCategory.m"; sourceTree = "<group>"; };
 		20F6153917E6741D007F443C /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		20F6154017E69E75007F443C /* TKShimmerLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKShimmerLabel.h; sourceTree = "<group>"; };
 		20F6154117E69E75007F443C /* TKShimmerLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKShimmerLabel.m; sourceTree = "<group>"; };
@@ -584,6 +592,10 @@
 				20FC7CA61719007300C3A7E1 /* NSMutableArray+TKCategory.m */,
 				3BAC9A2310953E5200F235F1 /* NSDate+TKCategory.h */,
 				3BAC9A2410953E5200F235F1 /* NSDate+TKCategory.m */,
+				20F046611A40A09E004BF728 /* NSAttributedString+TKCategory.h */,
+				20F046621A40A09E004BF728 /* NSAttributedString+TKCategory.m */,
+				20F046651A40A0F3004BF728 /* NSMutableAttributedString+TKCategory.h */,
+				20F046661A40A0F3004BF728 /* NSMutableAttributedString+TKCategory.m */,
 				2047DAFA17C6692200C62E32 /* UIDevice+TKCategory.h */,
 				2047DAFB17C6692200C62E32 /* UIDevice+TKCategory.m */,
 				3BAC9A2110953E5200F235F1 /* UIView+TKCategory.h */,
@@ -755,8 +767,10 @@
 				200786AC18DCB418008526DE /* TKNumberInputWithNextKeyView.h in Headers */,
 				2053A4951961B14F00A9E00D /* TKMultiSwitch.h in Headers */,
 				3BA577BA1199DF1600ECB85B /* TKProgressAlertView.h in Headers */,
+				20F046631A40A09E004BF728 /* NSAttributedString+TKCategory.h in Headers */,
 				20F6154217E69E75007F443C /* TKShimmerLabel.h in Headers */,
 				2070A16518C63AFB00D213FD /* UINavigationBar+TKCategory.h in Headers */,
+				20F046671A40A0F3004BF728 /* NSMutableAttributedString+TKCategory.h in Headers */,
 				3B9724BD11C54C5C0027A97F /* TKCalendarMonthView.h in Headers */,
 				3BD32972125B753900BE5EAF /* TKAlertCenter.h in Headers */,
 				3B1DCECA1289B84400884CDF /* NSArray+TKCategory.h in Headers */,
@@ -973,10 +987,12 @@
 				3B17D28A142E3CD40090616F /* TKNetworkQueue.m in Sources */,
 				3B560B7314574E30005FBDBF /* TKImageCache.m in Sources */,
 				3B819B5514601DC500EC0097 /* TKViewController.m in Sources */,
+				20F046641A40A09E004BF728 /* NSAttributedString+TKCategory.m in Sources */,
 				3BF9A834159791EA002A7F9E /* TKShapeView.m in Sources */,
 				20F6154317E69E75007F443C /* TKShimmerLabel.m in Sources */,
 				20C0355017C9A5DD009EBB33 /* TKGlowButton.m in Sources */,
 				207DFF9315E1E3BE00A0BC2A /* NSDate+CalendarGrid.m in Sources */,
+				20F046681A40A0F3004BF728 /* NSMutableAttributedString+TKCategory.m in Sources */,
 				20DE9F4B168FA1EF00655BF8 /* NSObject+TKCategory.m in Sources */,
 				2057363516A330E700F8CDE6 /* TKCoverflowView.m in Sources */,
 				2070A16618C63AFB00D213FD /* UINavigationBar+TKCategory.m in Sources */,
