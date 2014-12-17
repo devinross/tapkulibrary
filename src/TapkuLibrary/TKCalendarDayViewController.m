@@ -31,6 +31,7 @@
 #import "TKCalendarDayViewController.h"
 #import "TKCalendarDayEventView.h"
 #import "TKCalendarDayView.h"
+#import "UIDevice+TKCategory.h"
 
 #pragma mark - TKCalendarDayViewController
 @implementation TKCalendarDayViewController
@@ -40,7 +41,7 @@
 	[super loadView];
 	
 	CGRect frame = self.view.frame;
-	frame.size.width = 320;
+	frame.size.width = [UIDevice phoneIdiom] ? CGRectGetWidth(self.view.frame) : 320;
 	self.view.frame = frame;
 	
 	if([self respondsToSelector:@selector(edgesForExtendedLayout)])

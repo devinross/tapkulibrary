@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		200908B616F627F60012DC4F /* launch_iphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 200908B516F627F60012DC4F /* launch_iphone@2x.png */; };
 		205164EA18DCBC9C0048E640 /* CustomKeyboardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 205164E918DCBC9C0048E640 /* CustomKeyboardsViewController.m */; };
 		205164ED18DCBD6F0048E640 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 205164EC18DCBD6F0048E640 /* TapkuLibrary.bundle */; };
 		2052AF6C168B83C600A49526 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052AF6B168B83C600A49526 /* main.m */; };
@@ -25,10 +24,6 @@
 		2052AF92168B83E900A49526 /* MoreCellsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052AF83168B83E900A49526 /* MoreCellsViewController.m */; };
 		2052AF93168B83E900A49526 /* NetworkRequestProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052AF85168B83E900A49526 /* NetworkRequestProgressViewController.m */; };
 		2052AF94168B83E900A49526 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052AF87168B83E900A49526 /* RootViewController.m */; };
-		2052AFB4168B840B00A49526 /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 2052AF97168B840B00A49526 /* Back.png */; };
-		2052AFB5168B840B00A49526 /* Back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2052AF98168B840B00A49526 /* Back@2x.png */; };
-		2052AFB6168B840B00A49526 /* beer.png in Resources */ = {isa = PBXBuildFile; fileRef = 2052AF99168B840B00A49526 /* beer.png */; };
-		2052AFB7168B840B00A49526 /* beer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2052AF9A168B840B00A49526 /* beer@2x.png */; };
 		2052AFB8168B840B00A49526 /* ipadcover_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2052AF9C168B840B00A49526 /* ipadcover_1.jpg */; };
 		2052AFB9168B840B00A49526 /* ipadcover_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2052AF9D168B840B00A49526 /* ipadcover_2.jpg */; };
 		2052AFBA168B840B00A49526 /* ipadcover_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2052AF9E168B840B00A49526 /* ipadcover_3.jpg */; };
@@ -47,21 +42,11 @@
 		2052AFC7168B840B00A49526 /* cover_7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2052AFAC168B840B00A49526 /* cover_7.jpg */; };
 		2052AFC8168B840B00A49526 /* cover_8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2052AFAD168B840B00A49526 /* cover_8.jpg */; };
 		2052AFC9168B840B00A49526 /* cover_9.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2052AFAE168B840B00A49526 /* cover_9.jpeg */; };
-		2052AFCA168B840B00A49526 /* icon_114.png in Resources */ = {isa = PBXBuildFile; fileRef = 2052AFAF168B840B00A49526 /* icon_114.png */; };
-		2052AFCB168B840B00A49526 /* icon_57.png in Resources */ = {isa = PBXBuildFile; fileRef = 2052AFB0168B840B00A49526 /* icon_57.png */; };
-		2052AFCC168B840B00A49526 /* icon_74.png in Resources */ = {isa = PBXBuildFile; fileRef = 2052AFB1168B840B00A49526 /* icon_74.png */; };
-		2052AFCD168B840B00A49526 /* launch_iphone-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2052AFB2168B840B00A49526 /* launch_iphone-568h@2x.png */; };
-		2052AFCE168B840B00A49526 /* launch_iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 2052AFB3168B840B00A49526 /* launch_iphone.png */; };
 		2053A4991961B5CC00A9E00D /* ControlsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2053A4981961B5CC00A9E00D /* ControlsViewController.m */; };
-		2053A4BD1961F9B500A9E00D /* sad.png in Resources */ = {isa = PBXBuildFile; fileRef = 2053A4BB1961F9B500A9E00D /* sad.png */; };
-		2053A4BE1961F9B500A9E00D /* sad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2053A4BC1961F9B500A9E00D /* sad@2x.png */; };
-		2053A4C21961F9C900A9E00D /* happy.png in Resources */ = {isa = PBXBuildFile; fileRef = 2053A4C01961F9C900A9E00D /* happy.png */; };
-		2053A4C31961F9C900A9E00D /* happy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2053A4C11961F9C900A9E00D /* happy@2x.png */; };
 		20A2A524174C37CF0058571F /* SlideToUnlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A2A523174C37CF0058571F /* SlideToUnlockViewController.m */; };
 		20CAEA9216F4EE6400D347E1 /* CalendarDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CAEA9116F4EE6400D347E1 /* CalendarDayViewController.m */; };
+		20D1C0121A4209560028547A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D1C0111A4209560028547A /* Images.xcassets */; };
 		20DAFB071814BB0D00EF525B /* ButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAFB061814BB0D00EF525B /* ButtonViewController.m */; };
-		20F6153C17E68C3E007F443C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 20F6153B17E68C3E007F443C /* icon.png */; };
-		20F6154517E6A717007F443C /* wallpaper@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 20F6154417E6A717007F443C /* wallpaper@2x.png */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		3B111E5414593FA200C72A38 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B111E4F14593F8800C72A38 /* libTapkuLibrary.a */; };
 		3BF88C1B11E547BE00C9FC43 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF88BEB11E547A000C9FC43 /* QuartzCore.framework */; };
@@ -95,7 +80,6 @@
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* unviersaldemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = unviersaldemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		200908B516F627F60012DC4F /* launch_iphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch_iphone@2x.png"; sourceTree = "<group>"; };
 		205164E818DCBC9C0048E640 /* CustomKeyboardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomKeyboardsViewController.h; sourceTree = "<group>"; };
 		205164E918DCBC9C0048E640 /* CustomKeyboardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomKeyboardsViewController.m; sourceTree = "<group>"; };
 		205164EC18DCBD6F0048E640 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = ../../src/TapkuLibrary.bundle; sourceTree = "<group>"; };
@@ -124,10 +108,6 @@
 		2052AF85168B83E900A49526 /* NetworkRequestProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkRequestProgressViewController.m; sourceTree = "<group>"; };
 		2052AF86168B83E900A49526 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		2052AF87168B83E900A49526 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		2052AF97168B840B00A49526 /* Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Back.png; sourceTree = "<group>"; };
-		2052AF98168B840B00A49526 /* Back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Back@2x.png"; sourceTree = "<group>"; };
-		2052AF99168B840B00A49526 /* beer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beer.png; sourceTree = "<group>"; };
-		2052AF9A168B840B00A49526 /* beer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "beer@2x.png"; sourceTree = "<group>"; };
 		2052AF9C168B840B00A49526 /* ipadcover_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ipadcover_1.jpg; sourceTree = "<group>"; };
 		2052AF9D168B840B00A49526 /* ipadcover_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ipadcover_2.jpg; sourceTree = "<group>"; };
 		2052AF9E168B840B00A49526 /* ipadcover_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ipadcover_3.jpg; sourceTree = "<group>"; };
@@ -146,25 +126,15 @@
 		2052AFAC168B840B00A49526 /* cover_7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_7.jpg; sourceTree = "<group>"; };
 		2052AFAD168B840B00A49526 /* cover_8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_8.jpg; sourceTree = "<group>"; };
 		2052AFAE168B840B00A49526 /* cover_9.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_9.jpeg; sourceTree = "<group>"; };
-		2052AFAF168B840B00A49526 /* icon_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_114.png; sourceTree = "<group>"; };
-		2052AFB0168B840B00A49526 /* icon_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_57.png; sourceTree = "<group>"; };
-		2052AFB1168B840B00A49526 /* icon_74.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_74.png; sourceTree = "<group>"; };
-		2052AFB2168B840B00A49526 /* launch_iphone-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch_iphone-568h@2x.png"; sourceTree = "<group>"; };
-		2052AFB3168B840B00A49526 /* launch_iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_iphone.png; sourceTree = "<group>"; };
 		2053A4971961B5CC00A9E00D /* ControlsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlsViewController.h; sourceTree = "<group>"; };
 		2053A4981961B5CC00A9E00D /* ControlsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlsViewController.m; sourceTree = "<group>"; };
-		2053A4BB1961F9B500A9E00D /* sad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sad.png; sourceTree = "<group>"; };
-		2053A4BC1961F9B500A9E00D /* sad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sad@2x.png"; sourceTree = "<group>"; };
-		2053A4C01961F9C900A9E00D /* happy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = happy.png; sourceTree = "<group>"; };
-		2053A4C11961F9C900A9E00D /* happy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "happy@2x.png"; sourceTree = "<group>"; };
 		20A2A522174C37CF0058571F /* SlideToUnlockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideToUnlockViewController.h; sourceTree = "<group>"; };
 		20A2A523174C37CF0058571F /* SlideToUnlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideToUnlockViewController.m; sourceTree = "<group>"; };
 		20CAEA9016F4EE6400D347E1 /* CalendarDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarDayViewController.h; sourceTree = "<group>"; };
 		20CAEA9116F4EE6400D347E1 /* CalendarDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarDayViewController.m; sourceTree = "<group>"; };
+		20D1C0111A4209560028547A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Demo/Images.xcassets; sourceTree = "<group>"; };
 		20DAFB051814BB0D00EF525B /* ButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonViewController.h; sourceTree = "<group>"; };
 		20DAFB061814BB0D00EF525B /* ButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonViewController.m; sourceTree = "<group>"; };
-		20F6153B17E68C3E007F443C /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		20F6154417E6A717007F443C /* wallpaper@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wallpaper@2x.png"; sourceTree = "<group>"; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* Demo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demo_Prefix.pch; sourceTree = "<group>"; };
 		3B111E4614593F8800C72A38 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = ../src/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
@@ -216,6 +186,7 @@
 		2052AF95168B840B00A49526 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				20D1C0111A4209560028547A /* Images.xcassets */,
 				205164EC18DCBD6F0048E640 /* TapkuLibrary.bundle */,
 				2052AF96168B840B00A49526 /* Images */,
 			);
@@ -225,24 +196,8 @@
 		2052AF96168B840B00A49526 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				2053A4C01961F9C900A9E00D /* happy.png */,
-				2053A4C11961F9C900A9E00D /* happy@2x.png */,
-				2053A4BB1961F9B500A9E00D /* sad.png */,
-				2053A4BC1961F9B500A9E00D /* sad@2x.png */,
-				20F6154417E6A717007F443C /* wallpaper@2x.png */,
-				2052AF97168B840B00A49526 /* Back.png */,
-				2052AF98168B840B00A49526 /* Back@2x.png */,
-				2052AF99168B840B00A49526 /* beer.png */,
-				2052AF9A168B840B00A49526 /* beer@2x.png */,
 				2052AF9B168B840B00A49526 /* coverflow_ipad */,
 				2052AFA5168B840B00A49526 /* coverflow_iphone */,
-				2052AFAF168B840B00A49526 /* icon_114.png */,
-				2052AFB0168B840B00A49526 /* icon_57.png */,
-				2052AFB1168B840B00A49526 /* icon_74.png */,
-				20F6153B17E68C3E007F443C /* icon.png */,
-				2052AFB2168B840B00A49526 /* launch_iphone-568h@2x.png */,
-				2052AFB3168B840B00A49526 /* launch_iphone.png */,
-				200908B516F627F60012DC4F /* launch_iphone@2x.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -454,21 +409,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2052AFB4168B840B00A49526 /* Back.png in Resources */,
-				2052AFB5168B840B00A49526 /* Back@2x.png in Resources */,
-				2052AFB6168B840B00A49526 /* beer.png in Resources */,
-				2052AFB7168B840B00A49526 /* beer@2x.png in Resources */,
 				2052AFB8168B840B00A49526 /* ipadcover_1.jpg in Resources */,
 				2052AFB9168B840B00A49526 /* ipadcover_2.jpg in Resources */,
-				2053A4C31961F9C900A9E00D /* happy@2x.png in Resources */,
 				2052AFBA168B840B00A49526 /* ipadcover_3.jpg in Resources */,
 				2052AFBB168B840B00A49526 /* ipadcover_4.jpg in Resources */,
+				20D1C0121A4209560028547A /* Images.xcassets in Resources */,
 				2052AFBC168B840B00A49526 /* ipadcover_5.jpg in Resources */,
-				2053A4BD1961F9B500A9E00D /* sad.png in Resources */,
 				2052AFBD168B840B00A49526 /* ipadcover_6.jpg in Resources */,
 				2052AFBE168B840B00A49526 /* ipadcover_7.jpg in Resources */,
 				2052AFBF168B840B00A49526 /* ipadcover_8.jpg in Resources */,
-				2053A4C21961F9C900A9E00D /* happy.png in Resources */,
 				2052AFC0168B840B00A49526 /* ipadcover_9.jpg in Resources */,
 				2052AFC1168B840B00A49526 /* cover_1.jpg in Resources */,
 				2052AFC2168B840B00A49526 /* cover_2.jpg in Resources */,
@@ -479,16 +428,7 @@
 				2052AFC7168B840B00A49526 /* cover_7.jpg in Resources */,
 				2052AFC8168B840B00A49526 /* cover_8.jpg in Resources */,
 				2052AFC9168B840B00A49526 /* cover_9.jpeg in Resources */,
-				2052AFCA168B840B00A49526 /* icon_114.png in Resources */,
-				20F6154517E6A717007F443C /* wallpaper@2x.png in Resources */,
-				2053A4BE1961F9B500A9E00D /* sad@2x.png in Resources */,
-				2052AFCB168B840B00A49526 /* icon_57.png in Resources */,
-				2052AFCC168B840B00A49526 /* icon_74.png in Resources */,
 				205164ED18DCBD6F0048E640 /* TapkuLibrary.bundle in Resources */,
-				2052AFCD168B840B00A49526 /* launch_iphone-568h@2x.png in Resources */,
-				20F6153C17E68C3E007F443C /* icon.png in Resources */,
-				2052AFCE168B840B00A49526 /* launch_iphone.png in Resources */,
-				200908B616F627F60012DC4F /* launch_iphone@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,6 +475,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
@@ -559,6 +501,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;

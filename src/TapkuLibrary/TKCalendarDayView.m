@@ -37,6 +37,7 @@
 #import "UIImageView+TKCategory.h"
 #import "UIView+TKCategory.h"
 #import "UIScreen+TKCategory.h"
+#import "UILabel+TKCategory.h"
 
 #define NOB_SIZE 6.0f
 #define TOP_BAR_HEIGHT 84.0
@@ -52,7 +53,7 @@
 #define TIMELINE_HEIGHT VERTICAL_INSET * 2 + 24 * (VERTICAL_DIFF)
 #define DAY_FONT_SIZE 18
 #define WEEKEND_TEXT_COLOR [UIColor colorWithWhite:167/255. alpha:1]
-
+#define DAY_LABEL_WIDTH 35.0f
 
 #pragma mark - TKNowView
 @interface TKNowView : UIView
@@ -189,23 +190,25 @@
 	NSInteger cnt = 0;
 	NSArray *daySymbols = [[NSCalendar currentCalendar] shortWeekdaySymbols];
 	CGFloat wid = CGRectGetWidth(self.frame);
-	CGFloat xmargin = 20;
 	wid -= 8;
 	
+	NSInteger per = CGFrameGetWidth(self) - (DAY_LABEL_WIDTH *7);
+	per /= 7;
+	NSInteger minX = per / 2;
+	
 	for(NSString *str in daySymbols){
-		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(xmargin + cnt* wid/daySymbols.count, 0, 40, 20)];
+		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(minX + cnt*(DAY_LABEL_WIDTH+per) , 0, DAY_LABEL_WIDTH, 20)];
 		label.font = [UIFont systemFontOfSize:10];
 		label.text = [str substringToIndex:1];
 		label.textColor = cnt == 0 || cnt == 6 ? WEEKEND_TEXT_COLOR : [UIColor blackColor];
 		label.textAlignment = NSTextAlignmentCenter;
-		[label sizeToFit];
 		label.userInteractionEnabled = NO;
 		[self.daysBackgroundView addSubview:label];
+		[label sizeToFitWithAlignment];
+
 		cnt++;
 	}
 	
-
-
 	[self.daysBackgroundView addSubviewToBack:self.daysScrollView];
 	
 	UIView *dayContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.daysScrollView.contentSize.width, CGRectGetHeight(self.daysScrollView.frame))];
@@ -1130,16 +1133,20 @@
 
 
 
-#define DAY_LABEL_WIDTH 35.0f
+
 @implementation TKWeekdaysView
 - (instancetype) initWithFrame:(CGRect)frame{
 	if(!(self=[super initWithFrame:frame])) return nil;
 	
+	NSInteger per = CGFrameGetWidth(self) - (DAY_LABEL_WIDTH *7);
+	per /= 7;
+	NSInteger minX = per / 2;
 	
 	NSMutableArray *labels = [NSMutableArray arrayWithCapacity:7];
 	for(NSInteger i=0;i<7;i++){
-		TKDateLabel *label = [[TKDateLabel alloc] initWithFrame:CGRectMake(8+(DAY_LABEL_WIDTH+9)*i, 16, DAY_LABEL_WIDTH, DAY_LABEL_WIDTH)];
+		TKDateLabel *label = [[TKDateLabel alloc] initWithFrame:CGRectMake(minX+(DAY_LABEL_WIDTH+per)*i, 16, DAY_LABEL_WIDTH, DAY_LABEL_WIDTH)];
 		label.weekend = i % 6 == 0;
+		//label.backgroundColor = [UIColor redColor];
 		[self addSubviewToBack:label];
 		[labels addObject:label];
 	}
@@ -1205,6 +1212,7 @@
 
 #pragma mark - TKNowView
 @implementation TKNowView
+
 - (instancetype) init{
 	if(!(self=[super initWithFrame:CGRectMake(0, 0, 320, 14)])) return nil;
 	
@@ -1215,8 +1223,6 @@
 	self.timeLabel.textColor = self.tintColor;
 	self.timeLabel.font = [UIFont boldSystemFontOfSize:10];
 	[self addSubview:self.timeLabel];
-	
-
 	
 	UIView *nob = [[UIView alloc] initWithFrame:CGRectMake(LEFT_INSET + 1, 3, 6, 6)];
 	nob.backgroundColor = self.tintColor;
@@ -1238,7 +1244,6 @@
 	self.clipsToBounds = YES;
 	
 	[self updateTime];
-	
 	
 	return self;
 }
