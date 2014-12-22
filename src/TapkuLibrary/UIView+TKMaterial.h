@@ -1,10 +1,13 @@
 //
-//  UIViewAdditions.m
-//  Created by Devin Ross on 7/25/09.
+//  UIView+TKMaterial.h
+//  Created by Devin Ross on 12/22/14.
 //
 /*
  
  tapku || http://github.com/devinross/tapkulibrary
+ 
+ Portions Copyright (c) 2013 Ben Vogelzang.
+ https://github.com/bvogelzang/BVReorderTableView
  
  Permission is hereby granted, free of charge, to any person
  obtaining a copy of this software and associated documentation
@@ -28,35 +31,15 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
-#import "UIView+TKCategory.h"
+
+@import UIKit;
+
+@interface UIView (TKMaterial)
+
+- (void) fireMaterialTouchDiskAtPoint:(CGPoint)point;
 
 
-@implementation UIView (TKCategory)
-
-
-- (void) addSubviewToBack:(UIView*)view{
-	[self insertSubview:view atIndex:0];
-}
-
-
-- (void) roundOffFrame{
-	self.frame = CGRectMake(roundf(CGRectGetMinX(self.frame)), roundf(CGRectGetMinY(self.frame)), roundf(CGRectGetWidth(self.frame)), roundf(CGRectGetHeight(self.frame)));
-}
-
-
-
-
-- (UIImage*) snapshotImageAfterScreenUpdates:(BOOL)updates{
-	
-	UIGraphicsBeginImageContextWithOptions(self.bounds.size, YES, [UIScreen mainScreen].scale);
-	[self drawViewHierarchyInRect:self.bounds  afterScreenUpdates:updates];
-    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-	
-	return img;
-}
-
-
+- (void) materialTransitionWithSubview:(UIView*)subview atPoint:(CGPoint)point changes:(void (^)(void))changes completion:(void (^)(BOOL finished))completion;
 
 
 @end

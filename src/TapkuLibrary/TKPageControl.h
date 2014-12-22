@@ -1,6 +1,6 @@
 //
-//  UIViewAdditions.m
-//  Created by Devin Ross on 7/25/09.
+//  TKPageControl.h
+//  Created by Devin Ross on 12/22/14.
 //
 /*
  
@@ -28,35 +28,21 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
-#import "UIView+TKCategory.h"
 
+@import UIKit;
 
-@implementation UIView (TKCategory)
+@interface TKPageControl : UIControl
 
+- (void) setCurrentPage:(NSInteger)currentPage animated:(BOOL)animated;
 
-- (void) addSubviewToBack:(UIView*)view{
-	[self insertSubview:view atIndex:0];
-}
+- (void) setImage:(UIImage*)image forPage:(NSInteger)page;
 
+@property(nonatomic,assign) NSInteger numberOfPages;
+@property(nonatomic,assign) NSInteger currentPage;
+@property(nonatomic,retain) UIColor *pageIndicatorTintColor;
+@property(nonatomic,retain) UIColor *currentPageIndicatorTintColor;
 
-- (void) roundOffFrame{
-	self.frame = CGRectMake(roundf(CGRectGetMinX(self.frame)), roundf(CGRectGetMinY(self.frame)), roundf(CGRectGetWidth(self.frame)), roundf(CGRectGetHeight(self.frame)));
-}
-
-
-
-
-- (UIImage*) snapshotImageAfterScreenUpdates:(BOOL)updates{
-	
-	UIGraphicsBeginImageContextWithOptions(self.bounds.size, YES, [UIScreen mainScreen].scale);
-	[self drawViewHierarchyInRect:self.bounds  afterScreenUpdates:updates];
-    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-	
-	return img;
-}
-
-
-
+@property (nonatomic,assign) CGFloat dotRadius;
+@property (nonatomic,assign) CGFloat spaceBetweenDots;
 
 @end

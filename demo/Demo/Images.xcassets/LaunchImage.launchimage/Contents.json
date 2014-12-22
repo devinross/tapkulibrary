@@ -28,25 +28,10 @@
     },
     {
       "orientation" : "portrait",
-      "idiom" : "watch",
-      "extent" : "full-screen",
-      "minimum-system-version" : "8.0",
-      "subtype" : "38mm",
-      "scale" : "2x"
-    },
-    {
-      "orientation" : "portrait",
-      "idiom" : "watch",
-      "extent" : "full-screen",
-      "minimum-system-version" : "8.0",
-      "subtype" : "42mm",
-      "scale" : "2x"
-    },
-    {
-      "orientation" : "portrait",
       "idiom" : "iphone",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
+      "filename" : "iOS Simulator Screen Shot Dec 22, 2014, 4.22.24 PM.png",
       "scale" : "2x"
     },
     {

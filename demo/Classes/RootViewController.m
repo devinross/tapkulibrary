@@ -47,6 +47,7 @@
 #import "ButtonViewController.h"
 #import "CustomKeyboardsViewController.h"
 #import "ControlsViewController.h"
+#import "MaterialViewController.h"
 
 @interface UINavigationController (Rotation_IOS6)
 @end
@@ -96,6 +97,7 @@
 #define CUSTOM_KEYBOARDS NSLocalizedString(@"Custom Keyboards",@"")
 #define MULTI_SWITCH NSLocalizedString(@"Multiswitch",@"")
 #define CARD_MODAL NSLocalizedString(@"Card Modal View Controller",@"")
+#define MATERIAL NSLocalizedString(@"Material Touch",@"")
 
 #pragma mark View Lifecycle
 - (void) viewDidLoad{
@@ -103,7 +105,7 @@
 
 	self.data = @[
   @{@"rows" : @[CARD_MODAL,WEB_VC,DAY_VIEW,MONTH_GRID,COVERFLOW], @"title" : @"Views"},
-  @{@"rows" : @[SLIDE,BUTTONS,MULTI_SWITCH,CUSTOM_KEYBOARDS,HUD,EMPTY_SIGN,ALERTS], @"title" : @"UI Elements"},
+  @{@"rows" : @[SLIDE,BUTTONS,MULTI_SWITCH,CUSTOM_KEYBOARDS,HUD,EMPTY_SIGN,ALERTS,MATERIAL], @"title" : @"UI Elements"},
   @{@"rows" : @[LABEL_CELLS,MORE_CELLS], @"title" : @"Table View Cells"},
   @{@"rows" : @[IMAGE_CACHE,HTTP_PROGRESS], @"title" : @"Network"}];
 }
@@ -174,6 +176,9 @@
 		vc = SlideToUnlockViewController.new;
 	else if([str isEqualToString:BUTTONS])
 		vc = ButtonViewController.new;
+	
+	else if([str isEqualToString:MATERIAL])
+		vc = MaterialViewController.new;
 	
 	else if([str isEqualToString:CUSTOM_KEYBOARDS])
 		vc = CustomKeyboardsViewController.new;

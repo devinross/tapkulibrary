@@ -85,6 +85,7 @@
 #import "TKSoundAlertController.h"
 
 #import "TKCardModalViewController.h"
+#import "TKPageControl.h"
 
 // CELLS
 #import "TKLabelCell.h"
@@ -123,3 +124,8 @@
 #import "TKDecimalInputView.h"
 #import "TKDecimalInputWithNextKeyView.h"
 #import "TKNumberInputWithNextKeyView.h"
+
+
+
+
+#import "UIView+TKMaterial.h"
