@@ -61,6 +61,7 @@
 /** Returns the `UIWebView`	managed by the controller object. */
 @property (nonatomic,strong) UIWebView *webView;
 
+/** Returns the `UIBarButtonItem` that shows the share sheet. */
 @property (nonatomic,strong) UIBarButtonItem *actionBarButtonItem;
 
 
@@ -69,5 +70,8 @@
  @param sender The sender of the action.
  */
 - (void) showActionSheet:(id)sender;
+
+/** A convenience method for dismissing the presented view controller. */
+- (void) dismiss:(id)sender;
 
 @end

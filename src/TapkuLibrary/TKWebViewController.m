@@ -115,6 +115,11 @@
 }
 
 
+- (void) dismiss:(id)sender{
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 #pragma mark Properties
 - (UIBarButtonItem*) actionBarButtonItem{
 	if(_actionBarButtonItem) return _actionBarButtonItem;
