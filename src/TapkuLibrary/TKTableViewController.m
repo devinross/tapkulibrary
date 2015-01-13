@@ -76,7 +76,11 @@
 	self.tableView = nil;
 	self.emptyView = nil;
 	self.searchBar = nil;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 	self.searchBarDisplayController = nil;
+#pragma clang diagnostic pop
+
 }
 - (void) viewDidUnload {
 	[self _unloadSubviews];
@@ -131,20 +135,21 @@
 }
 - (UISearchBar*) searchBar{
 	if(_searchBar) return _searchBar;
-	
 	_searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44)];
 	_searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	return _searchBar;
 }
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (UISearchDisplayController*) searchBarDisplayController{
 	if(_searchBarDisplayController) return _searchBarDisplayController;
-		
 	_searchBarDisplayController = [[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
 	_searchBarDisplayController.delegate = self;
 	_searchBarDisplayController.searchResultsDataSource = self;
 	_searchBarDisplayController.searchResultsDelegate = self;
 	return _searchBarDisplayController;
 }
+#pragma clang diagnostic pop
 // -----------------------------
 
 @end
