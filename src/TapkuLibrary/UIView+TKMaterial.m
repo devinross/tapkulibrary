@@ -56,15 +56,13 @@
 	
 }
 
-
-
 - (void) materialTransitionWithSubview:(UIView*)subview atPoint:(CGPoint)point changes:(void (^)(void))changes completion:(void (^)(BOOL finished))completion{
-	[self materialTransitionWithSubview:subview expandCircle:YES atPoint:point changes:changes completion:completion];
+	[self materialTransitionWithSubview:subview expandCircle:YES atPoint:point duration:1 changes:changes completion:completion];
 	return;
 }
 
 
-- (void) materialTransitionWithSubview:(UIView*)subview expandCircle:(BOOL)expandCircle atPoint:(CGPoint)point changes:(void (^)(void))changes completion:(void (^)(BOOL finished))completion{
+- (void) materialTransitionWithSubview:(UIView*)subview expandCircle:(BOOL)expandCircle atPoint:(CGPoint)point duration:(CFTimeInterval)duration changes:(void (^)(void))changes completion:(void (^)(BOOL finished))completion{
 	
 	UIImage *snapshotImage = [subview snapshotImageAfterScreenUpdates:NO];
 	
@@ -108,7 +106,7 @@
 		CABasicAnimation *anime = [CABasicAnimation animationWithKeyPath:@"transform"];
 		anime.fromValue = [NSValue valueWithCATransform3D:shapeMask.transform];
 		anime.toValue = [NSValue valueWithCATransform3D:endTransform];
-		anime.duration = 1;
+		anime.duration = duration;
 		[shapeMask addAnimation:anime forKey:@"material"];
 		shapeMask.transform = endTransform;
 
