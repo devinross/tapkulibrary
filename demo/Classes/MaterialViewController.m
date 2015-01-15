@@ -31,7 +31,7 @@
 	CGPoint p = [touch locationInView:self.view];
 	
 	
-	[self.view materialTransitionWithSubview:self.colorView expandCircle:self.flipper atPoint:p changes:^{
+	[self.view materialTransitionWithSubview:self.colorView expandCircle:self.flipper atPoint:p duration:1 changes:^{
 		self.colorView.backgroundColor = [UIColor randomColor];
 	} completion:nil];
 	
