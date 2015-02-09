@@ -1,5 +1,5 @@
 //
-//  DaterViewController.h
+//  TKCalendarMonthViewController.h
 //  Created by Devin Ross on 7/28/09.
 //
 /*
