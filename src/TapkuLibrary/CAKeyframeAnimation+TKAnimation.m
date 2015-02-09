@@ -35,15 +35,33 @@
 
 @implementation CAKeyframeAnimation (TKAnimation)
 
-+ (CAKeyframeAnimation*) keyframeAnimationWithKeyPath:(NSString *)keyPath duration:(CFTimeInterval)duration delay:(CFTimeInterval)delay path:(UIBezierPath*)bezierPath options:(UIViewAnimationOptions)options completion:(void (^)(BOOL))completion{
++ (CAKeyframeAnimation*) keyframeAnimationWithKeyPath:(NSString *)keyPath duration:(CFTimeInterval)duration delay:(CFTimeInterval)delay path:(CGPathRef)path options:(UIViewAnimationOptions)options{
+    return [CAKeyframeAnimation keyframeAnimationWithKeyPath:keyPath duration:duration delay:delay path:path options:options completion:nil];
+}
++ (CAKeyframeAnimation*) keyframeAnimationWithKeyPath:(NSString *)keyPath duration:(CFTimeInterval)duration delay:(CFTimeInterval)delay path:(CGPathRef)path options:(UIViewAnimationOptions)options completion:(void (^)(BOOL))completion{
     CAKeyframeAnimation *animation = [CAKeyframeAnimation keyframeAnimationWithKeyPath:keyPath duration:duration delay:delay options:options completion:completion];
-    animation.path = bezierPath.CGPath;
+    animation.path = path;
     return animation;
+}
+
++ (CAKeyframeAnimation*) keyframeAnimationWithKeyPath:(NSString *)keyPath duration:(CFTimeInterval)duration delay:(CFTimeInterval)delay bezierPath:(UIBezierPath*)bezierPath options:(UIViewAnimationOptions)options{
+    return [CAKeyframeAnimation keyframeAnimationWithKeyPath:keyPath duration:duration delay:delay bezierPath:bezierPath options:options completion:nil];
+}
++ (CAKeyframeAnimation*) keyframeAnimationWithKeyPath:(NSString *)keyPath duration:(CFTimeInterval)duration delay:(CFTimeInterval)delay bezierPath:(UIBezierPath*)bezierPath options:(UIViewAnimationOptions)options completion:(void (^)(BOOL))completion{
+    return [CAKeyframeAnimation keyframeAnimationWithKeyPath:keyPath duration:duration delay:delay path:bezierPath.CGPath options:options completion:completion];
+}
+
++ (CAKeyframeAnimation*) keyframeAnimationWithKeyPath:(NSString *)keyPath duration:(CFTimeInterval)duration delay:(CFTimeInterval)delay values:(NSArray*)values options:(UIViewAnimationOptions)options{
+    return [CAKeyframeAnimation keyframeAnimationWithKeyPath:keyPath duration:duration delay:delay values:values options:options completion:nil];
 }
 + (CAKeyframeAnimation*) keyframeAnimationWithKeyPath:(NSString *)keyPath duration:(CFTimeInterval)duration delay:(CFTimeInterval)delay values:(NSArray*)values options:(UIViewAnimationOptions)options completion:(void (^)(BOOL))completion{
     CAKeyframeAnimation *animation = [CAKeyframeAnimation keyframeAnimationWithKeyPath:keyPath duration:duration delay:delay options:options completion:completion];
     animation.values = values;
     return animation;
+}
+
++ (CAKeyframeAnimation*) keyframeAnimationWithKeyPath:(NSString *)keyPath duration:(CFTimeInterval)duration delay:(CFTimeInterval)delay options:(UIViewAnimationOptions)options{
+    return [CAKeyframeAnimation keyframeAnimationWithKeyPath:keyPath duration:duration delay:delay options:options completion:nil];
 }
 + (CAKeyframeAnimation*) keyframeAnimationWithKeyPath:(NSString *)keyPath duration:(CFTimeInterval)duration delay:(CFTimeInterval)delay options:(UIViewAnimationOptions)options completion:(void (^)(BOOL))completion{
     
@@ -59,7 +77,9 @@
     CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:keyPath];
     animation.autoreverses = (UIViewAnimationOptionAutoreverse & options) == UIViewAnimationOptionAutoreverse ? YES : NO;
     animation.duration = duration;
-    animation.beginTime = CACurrentMediaTime() + delay;
+    
+    if(delay != 0.0)
+        animation.beginTime = CACurrentMediaTime() + delay;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:timing];
     
     if(completion)
@@ -67,5 +87,7 @@
     
     return animation;
 }
+
+
 
 @end
