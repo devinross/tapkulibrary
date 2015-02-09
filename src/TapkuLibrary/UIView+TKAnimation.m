@@ -31,66 +31,8 @@
 
 #import "UIView+TKAnimation.h"
 #import "UIView+TKCategory.h"
-
-@interface CAAnimationDelegate : NSObject
-
-@property (nonatomic, copy) void (^completion)(BOOL);
-@property (nonatomic, copy) void (^start)(void);
-
-- (void) animationDidStart:(CAAnimation *)anim;
-- (void) animationDidStop:(CAAnimation *)anim finished:(BOOL)flag;
-
-@end
-
-
-@implementation CAAnimationDelegate
-
-- (void) animationDidStart:(CAAnimation *)anim{
-    if (self.start != nil) {
-        self.start();
-    }
-}
-- (void) animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
-    if (self.completion != nil) {
-        self.completion(flag);
-    }
-}
-
-@end
-
-
-@implementation CAAnimation (BlocksAddition)
-
-- (void) setCompletion:(void (^)(BOOL))completion{
-    if ([self.delegate isKindOfClass:[CAAnimationDelegate class]]) {
-        ((CAAnimationDelegate *)self.delegate).completion = completion;
-    }
-    else {
-        CAAnimationDelegate *delegate = [[CAAnimationDelegate alloc] init];
-        delegate.completion = completion;
-        self.delegate = delegate;
-    }
-}
-- (void (^)(BOOL)) completion{
-    return [self.delegate isKindOfClass:[CAAnimationDelegate class]]? ((CAAnimationDelegate *)self.delegate).completion: nil;
-}
-
-- (void) setStart:(void (^)(void))start{
-    if ([self.delegate isKindOfClass:[CAAnimationDelegate class]]) {
-        ((CAAnimationDelegate *)self.delegate).start = start;
-    }
-    else {
-        CAAnimationDelegate *delegate = [[CAAnimationDelegate alloc] init];
-        delegate.start = start;
-        self.delegate = delegate;
-    }
-}
-- (void (^)(void)) start{
-    return [self.delegate isKindOfClass:[CAAnimationDelegate class]]? ((CAAnimationDelegate *)self.delegate).start: nil;
-}
-
-@end
-
+#import "CALayer+TKAnimation.h"
+#import "CAAnimation+TKAnimation.h"
 
 
 @implementation UIView (TKAnimation)
@@ -188,64 +130,5 @@
 @end
 
 
-@implementation CALayer (TKAnimation)
 
-- (void) addAnimation:(CAAnimation*)animation forKey:(NSString *)key completion:(void (^)(BOOL))completion{
-    if(completion)
-        animation.completion = completion;
-    [self addAnimation:animation forKey:key];
-    
-}
 
-#pragma mark Keyframe Animations
-- (void) addKeyframeAnimationWithKeyPath:(NSString *)keyPath forKey:(NSString*)key duration:(CFTimeInterval)duration delay:(CFTimeInterval)delay path:(UIBezierPath*)bezierPath options:(UIViewAnimationOptions)options completion:(void (^)(BOOL))completion{
-    CAKeyframeAnimation *animation = [CAKeyframeAnimation keyframeAnimationWithKeyPath:keyPath duration:duration delay:delay path:bezierPath options:options completion:completion];
-    animation.removedOnCompletion = YES;
-    animation.fillMode = kCAFillModeBoth;
-    [self addAnimation:animation forKey:key];
-}
-- (void) addKeyframeAnimationWithKeyPath:(NSString *)keyPath forKey:(NSString*)key duration:(CFTimeInterval)duration delay:(CFTimeInterval)delay values:(NSArray*)values options:(UIViewAnimationOptions)options completion:(void (^)(BOOL))completion{
-    CAKeyframeAnimation *animation = [CAKeyframeAnimation keyframeAnimationWithKeyPath:keyPath duration:duration delay:delay values:values options:options completion:completion];
-    animation.removedOnCompletion = YES;
-    animation.fillMode = kCAFillModeBoth;
-    [self addAnimation:animation forKey:key];
-}
-
-@end
-
-@implementation CAKeyframeAnimation
-
-+ (CAKeyframeAnimation*) keyframeAnimationWithKeyPath:(NSString *)keyPath duration:(CFTimeInterval)duration delay:(CFTimeInterval)delay path:(UIBezierPath*)bezierPath options:(UIViewAnimationOptions)options completion:(void (^)(BOOL))completion{
-    CAKeyframeAnimation *animation = [CAKeyframeAnimation keyframeAnimationWithKeyPath:keyPath duration:duration delay:delay options:options completion:completion];
-    animation.path = bezierPath.CGPath;
-    return animation;
-}
-+ (CAKeyframeAnimation*) keyframeAnimationWithKeyPath:(NSString *)keyPath duration:(CFTimeInterval)duration delay:(CFTimeInterval)delay values:(NSArray*)values options:(UIViewAnimationOptions)options completion:(void (^)(BOOL))completion{
-    CAKeyframeAnimation *animation = [CAKeyframeAnimation keyframeAnimationWithKeyPath:keyPath duration:duration delay:delay options:options completion:completion];
-    animation.values = values;
-    return animation;
-}
-+ (CAKeyframeAnimation*) keyframeAnimationWithKeyPath:(NSString *)keyPath duration:(CFTimeInterval)duration delay:(CFTimeInterval)delay options:(UIViewAnimationOptions)options completion:(void (^)(BOOL))completion{
-
-    NSString *timing = kCAMediaTimingFunctionLinear;
-    if(UIViewAnimationOptionCurveEaseInOut & options){
-        timing = kCAMediaTimingFunctionEaseInEaseOut;
-    }else if(UIViewAnimationOptionCurveEaseIn & options){
-        timing = kCAMediaTimingFunctionEaseIn;
-    }else if(UIViewAnimationOptionCurveEaseOut & options){
-        timing = kCAMediaTimingFunctionEaseOut;
-    }
-    
-    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:keyPath];
-    animation.autoreverses = UIViewAnimationOptionAutoreverse & options;
-    animation.duration = duration;
-    animation.beginTime = CACurrentMediaTime() + delay;
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:timing];
-    
-    if(completion)
-        animation.completion = completion;
-    
-    return animation;
-}
-
-@end

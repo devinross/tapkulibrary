@@ -80,6 +80,12 @@
 		20C3592118CE5C0700530279 /* TKSoundAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = 20C3591F18CE5C0700530279 /* TKSoundAlertController.h */; };
 		20C3592218CE5C0700530279 /* TKSoundAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C3592018CE5C0700530279 /* TKSoundAlertController.m */; };
 		20CE10C41860A6A500249216 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20CE10C21860A62B00249216 /* XCTest.framework */; };
+		20DA8C0B1A8940BB00A1BCF1 /* CALayer+TKAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 20DA8C091A8940BB00A1BCF1 /* CALayer+TKAnimation.h */; };
+		20DA8C0C1A8940BB00A1BCF1 /* CALayer+TKAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA8C0A1A8940BB00A1BCF1 /* CALayer+TKAnimation.m */; };
+		20DA8C101A8940EC00A1BCF1 /* CAKeyframeAnimation+TKAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 20DA8C0E1A8940EC00A1BCF1 /* CAKeyframeAnimation+TKAnimation.h */; };
+		20DA8C111A8940EC00A1BCF1 /* CAKeyframeAnimation+TKAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA8C0F1A8940EC00A1BCF1 /* CAKeyframeAnimation+TKAnimation.m */; };
+		20DA8C141A89414000A1BCF1 /* CAAnimation+TKAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 20DA8C121A89414000A1BCF1 /* CAAnimation+TKAnimation.h */; };
+		20DA8C151A89414000A1BCF1 /* CAAnimation+TKAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DA8C131A89414000A1BCF1 /* CAAnimation+TKAnimation.m */; };
 		20DAFB031814BAAC00EF525B /* TKRetroButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 20DAFB011814BAAC00EF525B /* TKRetroButton.h */; };
 		20DAFB041814BAAC00EF525B /* TKRetroButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAFB021814BAAC00EF525B /* TKRetroButton.m */; };
 		20DE9F4A168FA1EF00655BF8 /* NSObject+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 20DE9F48168FA1EF00655BF8 /* NSObject+TKCategory.h */; };
@@ -268,6 +274,12 @@
 		20C3591F18CE5C0700530279 /* TKSoundAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKSoundAlertController.h; sourceTree = "<group>"; };
 		20C3592018CE5C0700530279 /* TKSoundAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKSoundAlertController.m; sourceTree = "<group>"; };
 		20CE10C21860A62B00249216 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		20DA8C091A8940BB00A1BCF1 /* CALayer+TKAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+TKAnimation.h"; sourceTree = "<group>"; };
+		20DA8C0A1A8940BB00A1BCF1 /* CALayer+TKAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+TKAnimation.m"; sourceTree = "<group>"; };
+		20DA8C0E1A8940EC00A1BCF1 /* CAKeyframeAnimation+TKAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAKeyframeAnimation+TKAnimation.h"; sourceTree = "<group>"; };
+		20DA8C0F1A8940EC00A1BCF1 /* CAKeyframeAnimation+TKAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAKeyframeAnimation+TKAnimation.m"; sourceTree = "<group>"; };
+		20DA8C121A89414000A1BCF1 /* CAAnimation+TKAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAAnimation+TKAnimation.h"; sourceTree = "<group>"; };
+		20DA8C131A89414000A1BCF1 /* CAAnimation+TKAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAAnimation+TKAnimation.m"; sourceTree = "<group>"; };
 		20DAFB011814BAAC00EF525B /* TKRetroButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKRetroButton.h; sourceTree = "<group>"; };
 		20DAFB021814BAAC00EF525B /* TKRetroButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKRetroButton.m; sourceTree = "<group>"; };
 		20DE9F48168FA1EF00655BF8 /* NSObject+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TKCategory.h"; sourceTree = "<group>"; };
@@ -469,6 +481,21 @@
 			name = Material;
 			sourceTree = "<group>";
 		};
+		20DA8C0D1A8940C800A1BCF1 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				209161681A48C8FB00575988 /* UIView+TKAnimation.h */,
+				209161691A48C8FB00575988 /* UIView+TKAnimation.m */,
+				20DA8C091A8940BB00A1BCF1 /* CALayer+TKAnimation.h */,
+				20DA8C0A1A8940BB00A1BCF1 /* CALayer+TKAnimation.m */,
+				20DA8C0E1A8940EC00A1BCF1 /* CAKeyframeAnimation+TKAnimation.h */,
+				20DA8C0F1A8940EC00A1BCF1 /* CAKeyframeAnimation+TKAnimation.m */,
+				20DA8C121A89414000A1BCF1 /* CAAnimation+TKAnimation.h */,
+				20DA8C131A89414000A1BCF1 /* CAAnimation+TKAnimation.m */,
+			);
+			name = Animation;
+			sourceTree = "<group>";
+		};
 		32C88DFF0371C24200C91783 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -615,8 +642,7 @@
 				2047DAFB17C6692200C62E32 /* UIDevice+TKCategory.m */,
 				3BAC9A2110953E5200F235F1 /* UIView+TKCategory.h */,
 				3BAC9A2210953E5200F235F1 /* UIView+TKCategory.m */,
-				209161681A48C8FB00575988 /* UIView+TKAnimation.h */,
-				209161691A48C8FB00575988 /* UIView+TKAnimation.m */,
+				20DA8C0D1A8940C800A1BCF1 /* Animation */,
 				3BAC9A1F10953E5200F235F1 /* UIImage+TKCategory.h */,
 				3BAC9A2010953E5200F235F1 /* UIImage+TKCategory.m */,
 				207DF654178761210091E898 /* UITextField+TKCategory.h */,
@@ -768,6 +794,7 @@
 				3B6EDDF711547C3100E454DA /* TKCalendarDayEventView.h in Headers */,
 				20732DC01800AA880011D714 /* UIFont+TKCategory.h in Headers */,
 				2053A49D1961CAE400A9E00D /* TKPegSlider.h in Headers */,
+				20DA8C141A89414000A1BCF1 /* CAAnimation+TKAnimation.h in Headers */,
 				202369DE18F586F300FE69B0 /* TKStepperCell.h in Headers */,
 				3B6EDDFD11547C3800E454DA /* TKEmptyView.h in Headers */,
 				3B6EDE0C11547C4700E454DA /* TKTextViewCell.h in Headers */,
@@ -799,6 +826,7 @@
 				209161651A48C1A500575988 /* TKPageControl.h in Headers */,
 				201E5BF617C7CECE00027C47 /* UIViewController+TKCategory.h in Headers */,
 				3BB96F5812B55CD600C38F46 /* UIImageView+TKCategory.h in Headers */,
+				20DA8C101A8940EC00A1BCF1 /* CAKeyframeAnimation+TKAnimation.h in Headers */,
 				3BEE1CBB12CFB78300FECF6D /* TKProgressCircleView.h in Headers */,
 				3B4346E412DA6A240076579B /* UIButton+TKCategory.h in Headers */,
 				2002B17717D241C2002440AE /* UIScreen+TKCategory.h in Headers */,
@@ -807,6 +835,7 @@
 				202DC83719E469E200E06018 /* UILabel+TKCategory.h in Headers */,
 				3B07B7CA133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.h in Headers */,
 				3B166A6F137F38D7006298E6 /* UIColor+TKCategory.h in Headers */,
+				20DA8C0B1A8940BB00A1BCF1 /* CALayer+TKAnimation.h in Headers */,
 				3B8F0DF6142AE52B00E3AADE /* TKGradientView.h in Headers */,
 				3B17D26C142E31C40090616F /* TKHTTPRequest.h in Headers */,
 				3B17D289142E3CD40090616F /* TKNetworkQueue.h in Headers */,
@@ -955,6 +984,7 @@
 				3B6EDDDD11547C1300E454DA /* UIImage+TKCategory.m in Sources */,
 				3B6EDDDE11547C1400E454DA /* TKWindow.m in Sources */,
 				3B6EDDE111547C1700E454DA /* NSString+TKCategory.m in Sources */,
+				20DA8C0C1A8940BB00A1BCF1 /* CALayer+TKAnimation.m in Sources */,
 				3B6EDDE411547C1D00E454DA /* NSDate+TKCategory.m in Sources */,
 				200786B118DCB55C008526DE /* TKDecimalInputWithNextKeyView.m in Sources */,
 				20C3592218CE5C0700530279 /* TKSoundAlertController.m in Sources */,
@@ -1004,6 +1034,7 @@
 				3B9D93DB12F74F8F007D839C /* TKAppDelegate.m in Sources */,
 				3B07B7CB133ADAD8001B1C6F /* UIBarButtonItem+TKCategory.m in Sources */,
 				3B166A70137F38D7006298E6 /* UIColor+TKCategory.m in Sources */,
+				20DA8C111A8940EC00A1BCF1 /* CAKeyframeAnimation+TKAnimation.m in Sources */,
 				3B8F0DF7142AE52B00E3AADE /* TKGradientView.m in Sources */,
 				3B17D26D142E31C40090616F /* TKHTTPRequest.m in Sources */,
 				200786A518DCB0D7008526DE /* TKNumberInputView.m in Sources */,
@@ -1017,6 +1048,7 @@
 				20C0355017C9A5DD009EBB33 /* TKGlowButton.m in Sources */,
 				207DFF9315E1E3BE00A0BC2A /* NSDate+CalendarGrid.m in Sources */,
 				20F046681A40A0F3004BF728 /* NSMutableAttributedString+TKCategory.m in Sources */,
+				20DA8C151A89414000A1BCF1 /* CAAnimation+TKAnimation.m in Sources */,
 				20DE9F4B168FA1EF00655BF8 /* NSObject+TKCategory.m in Sources */,
 				2057363516A330E700F8CDE6 /* TKCoverflowView.m in Sources */,
 				2070A16618C63AFB00D213FD /* UINavigationBar+TKCategory.m in Sources */,

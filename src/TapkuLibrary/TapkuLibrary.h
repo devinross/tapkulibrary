@@ -126,6 +126,8 @@
 #import "TKNumberInputWithNextKeyView.h"
 
 
-
-
+// Animations
 #import "UIView+TKAnimation.h"
+#import "CAAnimation+TKAnimation.h"
+#import "CALayer+TKAnimation.h"
+#import "CAKeyframeAnimation+TKAnimation.h"

@@ -1,6 +1,6 @@
 //
-//  UIView+TKMaterial.h
-//  Created by Devin Ross on 12/22/14.
+//  CALayer+TKAnimation.h
+//  Created by Devin Ross on 2/9/15.
 //
 /*
  
@@ -29,21 +29,12 @@
  
  */
 
-@import UIKit;
 @import QuartzCore;
 
-@interface UIView (TKAnimation)
+@interface CALayer (TKAnimation)
 
-
-#pragma mark Material Like Animations
-
-- (void) fireMaterialTouchDiskAtPoint:(CGPoint)point;
-- (void) materialTransitionWithSubview:(UIView*)subview atPoint:(CGPoint)point changes:(void (^)(void))changes completion:(void (^)(BOOL finished))completion;
-- (void) materialTransitionWithSubview:(UIView*)subview expandCircle:(BOOL)expandCircle atPoint:(CGPoint)point duration:(CFTimeInterval)duration changes:(void (^)(void))changes completion:(void (^)(BOOL finished))completion;
-
-- (void) addAnimation:(CAAnimation*)animation forKey:(NSString *)key;
 - (void) addAnimation:(CAAnimation*)animation forKey:(NSString *)key completion:(void (^)(BOOL))completion;
 - (void) addKeyframeAnimationWithKeyPath:(NSString *)keyPath forKey:(NSString*)key duration:(CFTimeInterval)duration delay:(CFTimeInterval)delay path:(UIBezierPath*)bezierPath options:(UIViewAnimationOptions)options completion:(void (^)(BOOL))completion;
+- (void) addKeyframeAnimationWithKeyPath:(NSString *)keyPath forKey:(NSString*)key duration:(CFTimeInterval)duration delay:(CFTimeInterval)delay values:(NSArray*)values options:(UIViewAnimationOptions)options completion:(void (^)(BOOL))completion;
 
 @end
-
