@@ -48,16 +48,16 @@
 + (CAKeyframeAnimation*) keyframeAnimationWithKeyPath:(NSString *)keyPath duration:(CFTimeInterval)duration delay:(CFTimeInterval)delay options:(UIViewAnimationOptions)options completion:(void (^)(BOOL))completion{
     
     NSString *timing = kCAMediaTimingFunctionLinear;
-    if(UIViewAnimationOptionCurveEaseInOut & options){
+    if((UIViewAnimationOptionCurveEaseInOut & options) == UIViewAnimationOptionCurveEaseInOut){
         timing = kCAMediaTimingFunctionEaseInEaseOut;
-    }else if(UIViewAnimationOptionCurveEaseIn & options){
+    }else if((UIViewAnimationOptionCurveEaseIn & options) == UIViewAnimationOptionCurveEaseIn){
         timing = kCAMediaTimingFunctionEaseIn;
-    }else if(UIViewAnimationOptionCurveEaseOut & options){
+    }else if((UIViewAnimationOptionCurveEaseOut & options) == UIViewAnimationOptionCurveEaseOut){
         timing = kCAMediaTimingFunctionEaseOut;
     }
     
     CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:keyPath];
-    animation.autoreverses = UIViewAnimationOptionAutoreverse & options;
+    animation.autoreverses = (UIViewAnimationOptionAutoreverse & options) == UIViewAnimationOptionAutoreverse ? YES : NO;
     animation.duration = duration;
     animation.beginTime = CACurrentMediaTime() + delay;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:timing];
