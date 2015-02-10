@@ -267,8 +267,8 @@ CGRect subtractRect(CGRect wf,CGRect kf){
 	}else{
 		
 		
-		kf.origin.x = abs(kf.size.width - wf.size.width);
-		kf.origin.y = abs(kf.size.height -  wf.size.height);
+		kf.origin.x = fabs(kf.size.width - wf.size.width);
+		kf.origin.y = fabs(kf.size.height -  wf.size.height);
 		
 		
 		if(kf.origin.x > 0){

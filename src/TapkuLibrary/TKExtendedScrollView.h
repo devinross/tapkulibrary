@@ -39,6 +39,7 @@ typedef NS_ENUM(NSInteger, TKExtendedScrollViewExtensionPlane) {
 };
 
 
+/** This class is a subclass of `UIScrollView` that allows for tracking of gestures outside its bounds. Good for paged scroll view with pages that peek on both sides. */
 @interface TKExtendedScrollView : UIScrollView
 
 /** A bitwise operator for the receiving touch gestures outside the scroll view for the x and y planes. */

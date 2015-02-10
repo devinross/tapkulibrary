@@ -188,7 +188,6 @@
 }
 
 
-
 #pragma mark Visual Properties
 - (void) setDotRadius:(CGFloat)dotRadius{
 	_dotRadius = dotRadius;

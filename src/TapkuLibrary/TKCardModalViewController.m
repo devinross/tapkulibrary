@@ -142,10 +142,7 @@ static const CGFloat _minimumVelocityRequiredForPush = 50.0f;	// defines how muc
 	}
 }
 
-
-
-
-
+#pragma makr Keyboard Notifications
 - (void) keyboardWillShow:(NSNotification*)notification{
 	
 	NSValue *keyRectVal = notification.userInfo[UIKeyboardFrameEndUserInfoKey];
@@ -176,14 +173,13 @@ static const CGFloat _minimumVelocityRequiredForPush = 50.0f;	// defines how muc
 }
 
 
-
+#pragma mark Gestures Actions
 - (BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
 	CGPoint p = [touch locationInView:self.contentView.superview];
 	if(gestureRecognizer == self.tapGesture && CGRectContainsPoint(self.contentView.frame, p))
 		return NO;
 	return YES;
 }
-
 - (void) tapped:(UITapGestureRecognizer*)sender{
 	
 	if(self.onlyAllowTapOffCardToDismiss){
@@ -268,9 +264,9 @@ static const CGFloat _minimumVelocityRequiredForPush = 50.0f;	// defines how muc
 			}
 			
 			// angle (θ) is the angle between the push vector (V) and vector component parallel to radius, so it should always be positive
-			CGFloat angle = fabsf(fabsf(velocityAngle) - fabsf(locationAngle));
+			CGFloat angle = fabs(fabs(velocityAngle) - fabs(locationAngle));
 			// angular velocity formula: w = (abs(V) * sin(θ)) / abs(r)
-			CGFloat angularVelocity = fabsf((fabsf(pushVelocity) * sinf(angle)) / fabsf(radius));
+			CGFloat angularVelocity = fabs((fabs(pushVelocity) * sinf(angle)) / fabs(radius));
 			
 			// rotation direction is dependent upon which corner was pushed relative to the center of the view
 			// when velocity.y is positive, pushes to the right of center rotate clockwise, left is counterclockwise
@@ -281,8 +277,8 @@ static const CGFloat _minimumVelocityRequiredForPush = 50.0f;	// defines how muc
 			// amount of angular velocity should be relative to how close to the edge of the view the force originated
 			// angular velocity is reduced the closer to the center the force is applied
 			// for angular velocity: positive = clockwise, negative = counterclockwise
-			CGFloat xRatioFromCenter = fabsf(offsetFromCenter.horizontal) / (CGRectGetWidth(view.frame) / 2.0f);
-			CGFloat yRatioFromCetner = fabsf(offsetFromCenter.vertical) / (CGRectGetHeight(view.frame) / 2.0f);
+			CGFloat xRatioFromCenter = fabs(offsetFromCenter.horizontal) / (CGRectGetWidth(view.frame) / 2.0f);
+			CGFloat yRatioFromCetner = fabs(offsetFromCenter.vertical) / (CGRectGetHeight(view.frame) / 2.0f);
 			
 			// apply device scale to angular velocity
 			angularVelocity *= deviceAngularScale;
@@ -322,7 +318,7 @@ static const CGFloat _minimumVelocityRequiredForPush = 50.0f;	// defines how muc
 	
 }
 
-
+#pragma mark Actions
 - (void) show{
 	id <UIApplicationDelegate> delegate = [[UIApplication sharedApplication] delegate];
 	[[delegate window].rootViewController presentViewController:self animated:YES completion:nil];

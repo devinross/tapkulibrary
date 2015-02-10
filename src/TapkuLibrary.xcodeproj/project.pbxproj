@@ -75,6 +75,8 @@
 		2091616B1A48C8FB00575988 /* UIView+TKAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 209161691A48C8FB00575988 /* UIView+TKAnimation.m */; };
 		20A2A520174C37870058571F /* TKSlideToUnlockView.h in Headers */ = {isa = PBXBuildFile; fileRef = 20A2A51E174C37870058571F /* TKSlideToUnlockView.h */; };
 		20A2A521174C37870058571F /* TKSlideToUnlockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A2A51F174C37870058571F /* TKSlideToUnlockView.m */; };
+		20A5FDBE1A8A6F80004D3E1A /* TKCurrentTimeLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 20A5FDBC1A8A6F80004D3E1A /* TKCurrentTimeLabel.h */; };
+		20A5FDBF1A8A6F80004D3E1A /* TKCurrentTimeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A5FDBD1A8A6F80004D3E1A /* TKCurrentTimeLabel.m */; };
 		20C0354F17C9A5DD009EBB33 /* TKGlowButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 20C0354D17C9A5DD009EBB33 /* TKGlowButton.h */; };
 		20C0355017C9A5DD009EBB33 /* TKGlowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C0354E17C9A5DD009EBB33 /* TKGlowButton.m */; };
 		20C3592118CE5C0700530279 /* TKSoundAlertController.h in Headers */ = {isa = PBXBuildFile; fileRef = 20C3591F18CE5C0700530279 /* TKSoundAlertController.h */; };
@@ -269,6 +271,8 @@
 		209161691A48C8FB00575988 /* UIView+TKAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TKAnimation.m"; sourceTree = "<group>"; };
 		20A2A51E174C37870058571F /* TKSlideToUnlockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKSlideToUnlockView.h; sourceTree = "<group>"; };
 		20A2A51F174C37870058571F /* TKSlideToUnlockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKSlideToUnlockView.m; sourceTree = "<group>"; };
+		20A5FDBC1A8A6F80004D3E1A /* TKCurrentTimeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKCurrentTimeLabel.h; sourceTree = "<group>"; };
+		20A5FDBD1A8A6F80004D3E1A /* TKCurrentTimeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKCurrentTimeLabel.m; sourceTree = "<group>"; };
 		20C0354D17C9A5DD009EBB33 /* TKGlowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKGlowButton.h; sourceTree = "<group>"; };
 		20C0354E17C9A5DD009EBB33 /* TKGlowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKGlowButton.m; sourceTree = "<group>"; };
 		20C3591F18CE5C0700530279 /* TKSoundAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKSoundAlertController.h; sourceTree = "<group>"; };
@@ -472,13 +476,6 @@
 				200786AF18DCB55C008526DE /* TKDecimalInputWithNextKeyView.m */,
 			);
 			name = Keyboard;
-			sourceTree = "<group>";
-		};
-		209161671A48C8E300575988 /* Material */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Material;
 			sourceTree = "<group>";
 		};
 		20DA8C0D1A8940C800A1BCF1 /* Animation */ = {
@@ -726,7 +723,6 @@
 				3BAC9A4F10953E5200F235F1 /* TKEmptyView.m */,
 				2014592617A1077D00629488 /* TKReorderTableView.h */,
 				2014592717A1077D00629488 /* TKReorderTableView.m */,
-				209161671A48C8E300575988 /* Material */,
 				20A2A51E174C37870058571F /* TKSlideToUnlockView.h */,
 				20A2A51F174C37870058571F /* TKSlideToUnlockView.m */,
 				20F6154017E69E75007F443C /* TKShimmerLabel.h */,
@@ -744,6 +740,8 @@
 				20136C4319EC4E54001F02D9 /* TKCardModalViewController.m */,
 				209161631A48C1A500575988 /* TKPageControl.h */,
 				209161641A48C1A500575988 /* TKPageControl.m */,
+				20A5FDBC1A8A6F80004D3E1A /* TKCurrentTimeLabel.h */,
+				20A5FDBD1A8A6F80004D3E1A /* TKCurrentTimeLabel.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -773,6 +771,7 @@
 				2027C60E17FB692700A5E148 /* TKKeyboardTableViewController.h in Headers */,
 				3B6EDDD311547BEB00E454DA /* TapkuLibrary.h in Headers */,
 				200786A818DCB277008526DE /* TKDecimalInputView.h in Headers */,
+				20A5FDBE1A8A6F80004D3E1A /* TKCurrentTimeLabel.h in Headers */,
 				3B6EDDDB11547C1100E454DA /* UIView+TKCategory.h in Headers */,
 				20DAFB031814BAAC00EF525B /* TKRetroButton.h in Headers */,
 				3B6EDDDC11547C1300E454DA /* UIImage+TKCategory.h in Headers */,
@@ -1028,6 +1027,7 @@
 				2007869C18DCAEAD008526DE /* TKInputView.m in Sources */,
 				2014592D17A107FF00629488 /* UIGestureRecognizer+TKCategory.m in Sources */,
 				3BEE1CBC12CFB78300FECF6D /* TKProgressCircleView.m in Sources */,
+				20A5FDBF1A8A6F80004D3E1A /* TKCurrentTimeLabel.m in Sources */,
 				3B4346E512DA6A240076579B /* UIButton+TKCategory.m in Sources */,
 				200786A118DCAEC6008526DE /* TKInputKey.m in Sources */,
 				2014592917A1077D00629488 /* TKReorderTableView.m in Sources */,

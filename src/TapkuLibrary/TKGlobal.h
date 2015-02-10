@@ -39,6 +39,8 @@
 #define TKBUNDLE(_URL) [TKGlobal fullBundlePath:[@"TapkuLibrary.bundle/Images" stringByAppendingPathComponent:_URL]]
 
 
+
+
 FOUNDATION_STATIC_INLINE CATransform3D CAScale(CGFloat x,CGFloat y,CGFloat z);
 FOUNDATION_STATIC_INLINE CATransform3D CAScale(CGFloat x,CGFloat y,CGFloat z){
 	return CATransform3DMakeScale(x,y,z);
@@ -155,6 +157,16 @@ FOUNDATION_STATIC_INLINE CGFloat CGFrameGetMidX(UIView *view){
 FOUNDATION_STATIC_INLINE CGFloat CGFrameGetMidY(UIView *view);
 FOUNDATION_STATIC_INLINE CGFloat CGFrameGetMidY(UIView *view){
 	return CGRectGetMidY(view.frame);
+}
+
+FOUNDATION_STATIC_INLINE NSValue* NSValueCATransform(CATransform3D transform);
+FOUNDATION_STATIC_INLINE NSValue* NSValueCATransform(CATransform3D transform){
+    return [NSValue valueWithCATransform3D:transform];
+}
+
+FOUNDATION_STATIC_INLINE NSValue* NSValueCGTransform(CGAffineTransform transform);
+FOUNDATION_STATIC_INLINE NSValue* NSValueCGTransform(CGAffineTransform transform){
+    return [NSValue valueWithCGAffineTransform:transform];
 }
 
 @interface TKGlobal : NSObject 

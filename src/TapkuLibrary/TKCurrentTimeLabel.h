@@ -1,6 +1,6 @@
 //
-//  TKCardModalViewController.h
-//  Created by Devin Ross on 10/13/14.
+//  TKCurrentTimeLabel.h
+//  Created by Devin Ross on 2/10/15.
 //
 /*
  
@@ -31,25 +31,13 @@
 
 @import UIKit;
 
-@interface TKCardModalViewController : UIViewController <UIViewControllerTransitioningDelegate,UIViewControllerAnimatedTransitioning,UICollisionBehaviorDelegate>
+/** `TKCurrentTimeLabel` is a label that prints out the current time. */
+@interface TKCurrentTimeLabel : UILabel
 
-@property (nonatomic,strong) UIView *contentView;
-@property (nonatomic,strong) UIView *backgroundView;
-@property (nonatomic,assign) BOOL throwToDismissEnabled;
-@property (nonatomic,assign) BOOL tapToDismissEnabled;
-@property (nonatomic,assign) BOOL onlyAllowTapOffCardToDismiss;
+/** For subclassing, return the current time string. */
+- (NSString*) currentTime;
 
-@property (nonatomic,assign) CGRect visibleFrame;
-
-- (void) keyboardWillShow:(NSNotification*)notification;
-- (void) keyboardWillHide:(NSNotification*)notification;
-
-
-- (void) show;
-- (void) hide;
-
-- (void) showAlertView:(id<UIViewControllerContextTransitioning>)transitionContext;
-- (void) hideAlertView:(id<UIViewControllerContextTransitioning>)transitionContext;
-- (void) tapped:(UITapGestureRecognizer*)sender;
+/** For subclassing, apply and text styling here. */
+- (NSAttributedString*) attributeStringWithTime:(NSString*)time;
 
 @end

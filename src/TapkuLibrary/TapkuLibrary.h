@@ -53,6 +53,11 @@
 #import "UIFont+TKCategory.h"
 #import "UINavigationBar+TKCategory.h"
 #import "UILabel+TKCategory.h"
+// Animations
+#import "UIView+TKAnimation.h"
+#import "CAAnimation+TKAnimation.h"
+#import "CALayer+TKAnimation.h"
+#import "CAKeyframeAnimation+TKAnimation.h"
 
 #import "TKWindow.h"
 #import "TKViewController.h"
@@ -125,9 +130,3 @@
 #import "TKDecimalInputWithNextKeyView.h"
 #import "TKNumberInputWithNextKeyView.h"
 
-
-// Animations
-#import "UIView+TKAnimation.h"
-#import "CAAnimation+TKAnimation.h"
-#import "CALayer+TKAnimation.h"
-#import "CAKeyframeAnimation+TKAnimation.h"
