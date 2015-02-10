@@ -53,9 +53,8 @@
 - (void) _startTimer{
     [self.timer invalidate];
     self.timer = nil;
-    self.timer = [NSTimer timerWithTimeInterval:5 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
+    self.timer = [NSTimer timerWithTimeInterval:5 target:self selector:@selector(_updateTime) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
-    
 }
 
 - (void) handleEnteredBackground:(id)sender{
