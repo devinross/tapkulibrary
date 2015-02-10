@@ -75,6 +75,7 @@
 #import "TKMultiSwitch.h"
 #import "TKPegSlider.h"
 #import "TKExtendedScrollView.h"
+#import "TKCurrentTimeLabel.h"
 
 
 // Network
