@@ -64,6 +64,12 @@
     self.layer.borderColor = color.CGColor;
     self.layer.borderWidth = width;
 }
+- (void) setCornerRadius:(CGFloat)cornerRadius{
+    self.layer.cornerRadius = cornerRadius;
+}
+- (CGFloat) cornerRadius{
+    return self.layer.cornerRadius;
+}
 
 - (UIImage*) snapshotImageAfterScreenUpdates:(BOOL)updates{
 	
