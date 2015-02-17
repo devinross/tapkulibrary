@@ -44,7 +44,26 @@
 }
 
 
+- (void) setShadowWithOffset:(CGSize)offset opacity:(CGFloat)opacity radius:(CGFloat)radius{
+    [self setShadowWithOffset:offset opacity:opacity color:[UIColor blackColor] radius:radius];
+}
+- (void) setShadowWithOffset:(CGSize)offset opacity:(CGFloat)opacity color:(UIColor*)color radius:(CGFloat)radius{
+    [self setShadowWithPath:[UIBezierPath bezierPathWithRect:self.bounds] offset:offset opacity:opacity color:color radius:radius];
+}
+- (void) setShadowWithPath:(UIBezierPath*)bezierPath offset:(CGSize)offset opacity:(CGFloat)opacity color:(UIColor*)color radius:(CGFloat)radius{
+    self.layer.shadowPath = bezierPath.CGPath;
+    self.layer.shadowOpacity = opacity;
+    self.layer.shadowOffset = offset;
+    self.layer.shadowColor = color.CGColor;
+    self.layer.shadowRadius = radius;
+}
 
+
+
+- (void) setBorderWithColor:(UIColor*)color width:(CGFloat)width{
+    self.layer.borderColor = color.CGColor;
+    self.layer.borderWidth = width;
+}
 
 - (UIImage*) snapshotImageAfterScreenUpdates:(BOOL)updates{
 	
