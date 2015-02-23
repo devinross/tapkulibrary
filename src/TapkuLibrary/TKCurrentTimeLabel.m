@@ -47,6 +47,16 @@
     return self;
 }
 
+- (void) willMoveToWindow:(UIWindow *)newWindow{
+    if(newWindow==nil){
+        [self.timer invalidate];
+        self.timer = nil;
+        return;
+    }
+    [self _updateTime];
+    [self _startTimer];
+}
+
 - (void) _updateTime{
     self.attributedText = [self attributeStringWithTime:[self currentTime]];
 }
@@ -63,7 +73,8 @@
 }
 - (void) handleEnteredForeground:(id)sender{
     [self _updateTime];
-    [self _startTimer];
+    if(self.window)
+        [self _startTimer];
 }
 
 #pragma mark Functions for Subclassing
