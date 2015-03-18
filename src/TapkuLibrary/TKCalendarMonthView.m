@@ -288,20 +288,20 @@ static UIImage *tileImage;
 	
 	CGContextSetPatternPhase(context, CGSizeMake(r.origin.x, r.origin.y - 2));
 
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraphStyle.alignment = NSTextAlignmentCenter;
+    
+    [str drawInRect:r withAttributes:@{ NSFontAttributeName: f1, NSParagraphStyleAttributeName: paragraphStyle}];
 	
-	[str drawInRect: r
-		   withFont: f1
-	  lineBreakMode: NSLineBreakByWordWrapping
-		  alignment: NSTextAlignmentCenter];
+
 	
 	if(mark){
 		r.size.height = 10;
 		r.origin.y += 19;
+        
+        [@"•" drawInRect:r withAttributes:@{ NSFontAttributeName: f2, NSParagraphStyleAttributeName: paragraphStyle}];
 		
-		[@"•" drawInRect: r
-				withFont: f2
-		   lineBreakMode: NSLineBreakByWordWrapping 
-			   alignment: NSTextAlignmentCenter];
 	}
 	
 

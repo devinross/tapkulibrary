@@ -30,7 +30,7 @@
  */
 
 
-#import <TapkuLibrary/TapkuLibrary.h>
+@import tapku;
 
 @interface IndicatorsViewController : UIViewController 
 

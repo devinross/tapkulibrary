@@ -6,7 +6,7 @@
 //
 //
 
-#import <TapkuLibrary/TapkuLibrary.h>
+@import tapku;
 @import UIKit;
 
 @interface CalendarDayViewController : TKCalendarDayViewController

@@ -29,6 +29,8 @@
  
  */
 
+@import Foundation;
+@import UIKit;
 @import QuartzCore;
 
 @interface CALayer (TKAnimation)

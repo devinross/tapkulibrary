@@ -74,10 +74,13 @@
 	[[UIColor colorWithWhite:0 alpha:0.8] set];
 	[self _drawRoundRectangleInRect:rect withRadius:10];
 	[[UIColor whiteColor] set];
-	[_messageText drawInRect:_messageRect
-			 withFont:[UIFont boldSystemFontOfSize:14]
-		lineBreakMode:NSLineBreakByWordWrapping
-			alignment:NSTextAlignmentCenter];
+
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
+    paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
+    paragraphStyle.alignment = NSTextAlignmentCenter;
+    [_messageText drawInRect:_messageRect withAttributes:@{ NSFontAttributeName: [UIFont boldSystemFontOfSize:14], NSParagraphStyleAttributeName: paragraphStyle}];
+
 	
 	CGRect r = CGRectZero;
 	r.origin.y = 15;
@@ -90,9 +93,14 @@
 #pragma mark Setter Methods
 - (void) adjust{
 	
-	CGSize s = [_messageText sizeWithFont:[UIFont boldSystemFontOfSize:14]
-				 constrainedToSize:CGSizeMake(160,200)
-					 lineBreakMode:NSLineBreakByWordWrapping];
+    
+    CGSize s = [_messageText boundingRectWithSize:CGSizeMake(160,200)
+                                             options:NSLineBreakByWordWrapping | NSStringDrawingUsesLineFragmentOrigin
+                                          attributes:@{ NSFontAttributeName : [UIFont boldSystemFontOfSize:14]}
+                                             context:nil].size;
+    
+    
+    [_messageText sizeWithAttributes:@{ NSFontAttributeName: [UIFont boldSystemFontOfSize:14]}];
 	
 	float imageAdjustment = 0;
 	if (_image) {

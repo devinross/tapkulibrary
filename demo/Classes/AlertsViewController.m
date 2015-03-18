@@ -48,7 +48,7 @@
 	[super loadView];
 	self.view.backgroundColor = [UIColor whiteColor];
 	
-	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Tap Me" style:UIBarButtonItemStyleBordered target:self action:@selector(beer)];
+	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Tap Me" style:UIBarButtonItemStylePlain target:self action:@selector(beer)];
 	self.navigationItem.rightBarButtonItem = item;
 
 	

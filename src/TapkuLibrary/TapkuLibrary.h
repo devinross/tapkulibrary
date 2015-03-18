@@ -53,6 +53,7 @@
 #import "UIFont+TKCategory.h"
 #import "UINavigationBar+TKCategory.h"
 #import "UILabel+TKCategory.h"
+
 // Animations
 #import "UIView+TKAnimation.h"
 #import "CAAnimation+TKAnimation.h"
@@ -119,6 +120,8 @@
 #import "TKCalendarMonthTableViewController.h"
 #import "TKCalendarMonthView.h"
 #import "TKCalendarDayViewController.h"
+#import "NSDate+CalendarGrid.h"
+
 
 // Coverflow
 #import "TKCoverflowView.h"

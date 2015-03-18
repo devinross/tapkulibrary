@@ -256,8 +256,8 @@
 		for( NSString *file in files ) {
 			if( ![file isEqual:@"."] && ![file isEqual:@".."] ) {
 				
-				NSString *path = [path stringByAppendingPathComponent:file];
-				NSDate *created = [[[NSFileManager defaultManager] attributesOfItemAtPath:path error:NULL] fileCreationDate];
+				NSString *aPath = [path stringByAppendingPathComponent:file];
+				NSDate *created = [[[NSFileManager defaultManager] attributesOfItemAtPath:aPath error:NULL] fileCreationDate];
 				NSTimeInterval timeSince = fabs([created timeIntervalSinceNow]);
 				
 				if(timeSince > time){
@@ -265,7 +265,7 @@
 					dispatch_async(dispatch_get_main_queue(), ^{
 						if(_diskKeys) [_diskKeys removeObjectForKey:file];
 					});
-					[[NSFileManager defaultManager] removeItemAtPath:[path stringByAppendingPathComponent:file] error:&error];
+					[[NSFileManager defaultManager] removeItemAtPath:aPath error:&error];
 				}
 			}
 		}

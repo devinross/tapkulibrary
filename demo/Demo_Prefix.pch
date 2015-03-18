@@ -5,5 +5,6 @@
 #ifdef __OBJC__
 	@import Foundation;
     @import UIKit;
-	#import <TapkuLibrary/TapkuLibrary.h>
+    @import tapku;
+	//#import <TapkuLibrary/TapkuLibrary.h>
 #endif

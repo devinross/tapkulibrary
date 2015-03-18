@@ -33,12 +33,29 @@
 #import "UIDevice+TKCategory.h"
 #import "TKInputKey.h"
 #import "TKGlobal.h"
+#import "UIImage+TKCategory.h"
 
 @implementation TKNumberInputView
 
 #define RECT(_X,_Y,_S) CGRectMakeWithSize(_X,_Y,_S)
 
-
+- (instancetype) initWithFrame:(CGRect)frame{
+    frame.size = CGSizeMake([UIScreen mainScreen].bounds.size.width, [UIDevice phoneIdiom] ? 216 : 352);
+    
+    CGFloat yPad = 0, xPad = 0, xMargin = 0;
+    CGFloat w = frame.size.width / 4;
+    CGFloat h = frame.size.height / 4;
+    
+    if([UIDevice padIdiom]){
+        w = 108, h = 75, yPad = 0, xPad = 16, xMargin = 28;
+    }
+    
+    self.backspaceKey = [[TKInputKey alloc] initWithFrame:CGRectMake(xMargin+w*3+ (xPad*3), 0, w+1, h*4) symbol:[UIImage imageNamedTK:@"keyboard/backspace-key"] normalType:TKInputKeyTypeDefault selectedType:TKInputKeyTypeDark runner:NO];
+    
+    CGRect pad = CGRectMake(0, 0, w*3, h*4);
+    
+    return [self initWithFrame:frame withKeysModels:@[self.backspaceKey] keypadFrame:pad];
+}
 
 - (instancetype) initWithFrame:(CGRect)frame withKeysModels:(NSArray*)keys keypadFrame:(CGRect)padFrame{
 	frame.size = CGSizeMake([UIScreen mainScreen].bounds.size.width, [UIDevice phoneIdiom] ? 216 : 352);

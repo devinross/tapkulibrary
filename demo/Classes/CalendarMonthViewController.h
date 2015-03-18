@@ -29,7 +29,7 @@
  
  */
 
-#import <TapkuLibrary/TapkuLibrary.h>
+@import tapku;
 @import UIKit;
 
 #pragma mark - CalendarMonthViewController

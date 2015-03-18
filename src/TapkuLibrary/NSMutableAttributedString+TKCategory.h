@@ -30,6 +30,7 @@
  */
 
 @import Foundation;
+@import UIKit;
 
 @interface NSMutableAttributedString (TKCategory)
 

@@ -86,7 +86,7 @@
 	//[self.view addSubview:center];
 	
 	
-	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Tap Me" style:UIBarButtonItemStyleBordered target:self action:@selector(info)];
+	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Tap Me" style:UIBarButtonItemStylePlain target:self action:@selector(info)];
 	self.navigationItem.rightBarButtonItem = item;
 
 	
@@ -121,7 +121,7 @@
 	
 	if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
 		[[UIApplication sharedApplication] setStatusBarHidden:YES];
-		[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+		[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 	}
 	
 }

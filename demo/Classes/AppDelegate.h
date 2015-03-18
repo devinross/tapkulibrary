@@ -31,7 +31,7 @@
 
 
 @import UIKit;
-#import <TapkuLibrary/TapkuLibrary.h>
+@import tapku;
 @class LeftTableViewController, DetailViewController;
 
 @class RootViewController;

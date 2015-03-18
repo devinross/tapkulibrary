@@ -29,7 +29,7 @@
  
  */
 @import UIKit;
-#import <TapkuLibrary/TapkuLibrary.h>
+@import tapku;
 
 #pragma mark - CoverflowViewController
 @interface CoverflowViewController : UIViewController <TKCoverflowViewDataSource,TKCoverflowViewDelegate>

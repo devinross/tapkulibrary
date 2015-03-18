@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		204C74C21ABA113600A68988 /* tapku.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 204C74BF1ABA112C00A68988 /* tapku.framework */; };
+		204C74C31ABA113600A68988 /* tapku.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 204C74BF1ABA112C00A68988 /* tapku.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		205164EA18DCBC9C0048E640 /* CustomKeyboardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 205164E918DCBC9C0048E640 /* CustomKeyboardsViewController.m */; };
 		205164ED18DCBD6F0048E640 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 205164EC18DCBD6F0048E640 /* TapkuLibrary.bundle */; };
 		2052AF6C168B83C600A49526 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052AF6B168B83C600A49526 /* main.m */; };
@@ -49,38 +51,66 @@
 		20D1C0121A4209560028547A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D1C0111A4209560028547A /* Images.xcassets */; };
 		20DAFB071814BB0D00EF525B /* ButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAFB061814BB0D00EF525B /* ButtonViewController.m */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
-		3B111E5414593FA200C72A38 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B111E4F14593F8800C72A38 /* libTapkuLibrary.a */; };
 		3BF88C1B11E547BE00C9FC43 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF88BEB11E547A000C9FC43 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3B111E4E14593F8800C72A38 /* PBXContainerItemProxy */ = {
+		204C74BA1ABA112C00A68988 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 3B111E4614593F8800C72A38 /* TapkuLibrary.xcodeproj */;
+			containerPortal = 204C74B31ABA112C00A68988 /* TapkuLibrary.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D2AAC07E0554694100DB518D;
 			remoteInfo = TapkuLibrary;
 		};
-		3B111E5014593F8800C72A38 /* PBXContainerItemProxy */ = {
+		204C74BC1ABA112C00A68988 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 3B111E4614593F8800C72A38 /* TapkuLibrary.xcodeproj */;
+			containerPortal = 204C74B31ABA112C00A68988 /* TapkuLibrary.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 3B45DDF1134C736600D24C1A;
 			remoteInfo = LogicTests;
 		};
-		3B111E5214593F9E00C72A38 /* PBXContainerItemProxy */ = {
+		204C74BE1ABA112C00A68988 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 3B111E4614593F8800C72A38 /* TapkuLibrary.xcodeproj */;
+			containerPortal = 204C74B31ABA112C00A68988 /* TapkuLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 204C73E11ABA0EA600A68988;
+			remoteInfo = tapku;
+		};
+		204C74C01ABA112C00A68988 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 204C74B31ABA112C00A68988 /* TapkuLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 204C73EB1ABA0EA600A68988;
+			remoteInfo = tapkuTests;
+		};
+		204C74C41ABA113600A68988 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 204C74B31ABA112C00A68988 /* TapkuLibrary.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = TapkuLibrary;
+			remoteGlobalIDString = 204C73E01ABA0EA600A68988;
+			remoteInfo = tapku;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		204C74051ABA0EBD00A68988 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				204C74C31ABA113600A68988 /* tapku.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* unviersaldemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = unviersaldemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		204C74B31ABA112C00A68988 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = ../src/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
 		205164E818DCBC9C0048E640 /* CustomKeyboardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomKeyboardsViewController.h; sourceTree = "<group>"; };
 		205164E918DCBC9C0048E640 /* CustomKeyboardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomKeyboardsViewController.m; sourceTree = "<group>"; };
 		205164EC18DCBD6F0048E640 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = ../../src/TapkuLibrary.bundle; sourceTree = "<group>"; };
@@ -140,7 +170,6 @@
 		20DAFB061814BB0D00EF525B /* ButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonViewController.m; sourceTree = "<group>"; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* Demo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demo_Prefix.pch; sourceTree = "<group>"; };
-		3B111E4614593F8800C72A38 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = ../src/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
 		3BF88BEB11E547A000C9FC43 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* Demo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Demo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,8 +179,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B111E5414593FA200C72A38 /* libTapkuLibrary.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				204C74C21ABA113600A68988 /* tapku.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				3BF88C1B11E547BE00C9FC43 /* QuartzCore.framework in Frameworks */,
@@ -165,6 +194,17 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* unviersaldemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		204C74B41ABA112C00A68988 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				204C74BB1ABA112C00A68988 /* libTapkuLibrary.a */,
+				204C74BD1ABA112C00A68988 /* LogicTests.xctest */,
+				204C74BF1ABA112C00A68988 /* tapku.framework */,
+				204C74C11ABA112C00A68988 /* tapkuTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -298,7 +338,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				3B111E4614593F8800C72A38 /* TapkuLibrary.xcodeproj */,
+				204C74B31ABA112C00A68988 /* TapkuLibrary.xcodeproj */,
 				2052AF6D168B83E900A49526 /* Classes */,
 				2052AF95168B840B00A49526 /* Assets */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -329,15 +369,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3B111E4714593F8800C72A38 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3B111E4F14593F8800C72A38 /* libTapkuLibrary.a */,
-				3B111E5114593F8800C72A38 /* LogicTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -348,11 +379,12 @@
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+				204C74051ABA0EBD00A68988 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				3B111E5314593F9E00C72A38 /* PBXTargetDependency */,
+				204C74C51ABA113600A68988 /* PBXTargetDependency */,
 			);
 			name = Demo;
 			productName = unviersaldemo;
@@ -381,8 +413,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 3B111E4714593F8800C72A38 /* Products */;
-					ProjectRef = 3B111E4614593F8800C72A38 /* TapkuLibrary.xcodeproj */;
+					ProductGroup = 204C74B41ABA112C00A68988 /* Products */;
+					ProjectRef = 204C74B31ABA112C00A68988 /* TapkuLibrary.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -393,18 +425,32 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		3B111E4F14593F8800C72A38 /* libTapkuLibrary.a */ = {
+		204C74BB1ABA112C00A68988 /* libTapkuLibrary.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libTapkuLibrary.a;
-			remoteRef = 3B111E4E14593F8800C72A38 /* PBXContainerItemProxy */;
+			remoteRef = 204C74BA1ABA112C00A68988 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		3B111E5114593F8800C72A38 /* LogicTests.xctest */ = {
+		204C74BD1ABA112C00A68988 /* LogicTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = LogicTests.xctest;
-			remoteRef = 3B111E5014593F8800C72A38 /* PBXContainerItemProxy */;
+			remoteRef = 204C74BC1ABA112C00A68988 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		204C74BF1ABA112C00A68988 /* tapku.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = tapku.framework;
+			remoteRef = 204C74BE1ABA112C00A68988 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		204C74C11ABA112C00A68988 /* tapkuTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = tapkuTests.xctest;
+			remoteRef = 204C74C01ABA112C00A68988 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -469,10 +515,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3B111E5314593F9E00C72A38 /* PBXTargetDependency */ = {
+		204C74C51ABA113600A68988 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = TapkuLibrary;
-			targetProxy = 3B111E5214593F9E00C72A38 /* PBXContainerItemProxy */;
+			name = tapku;
+			targetProxy = 204C74C41ABA113600A68988 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -486,14 +532,16 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Demo_Prefix.pch;
 				GCC_VERSION = "";
-				HEADER_SEARCH_PATHS = ../src;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Demo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -512,13 +560,15 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
+				DEFINES_MODULE = YES;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Demo_Prefix.pch;
 				GCC_VERSION = "";
-				HEADER_SEARCH_PATHS = ../src;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Demo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

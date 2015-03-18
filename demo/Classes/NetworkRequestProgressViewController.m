@@ -52,7 +52,7 @@
 	[self.view addSubview:self.circle];
 	
 	
-	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Start" style:UIBarButtonItemStyleBordered target:self action:@selector(start)];
+	UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Start" style:UIBarButtonItemStylePlain target:self action:@selector(start)];
 	self.navigationItem.rightBarButtonItem = item;
 
 
