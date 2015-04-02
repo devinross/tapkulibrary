@@ -96,7 +96,24 @@ FOUNDATION_STATIC_INLINE CGRect CGRectCompose(CGPoint origin, CGSize size){
 	CGRect r; r.origin = origin; r.size = size; return r;
 }
 
+FOUNDATION_STATIC_INLINE CGRect CGRectCenteredInRect(CGRect parentRect, CGSize size);
+FOUNDATION_STATIC_INLINE CGRect CGRectCenteredInRect(CGRect parentRect, CGSize size){
+    CGFloat minX = CGRectGetMinX(parentRect) + round((CGRectGetWidth(parentRect) - size.width) / 2);
+    CGFloat minY = CGRectGetMinY(parentRect) + round((CGRectGetHeight(parentRect) - size.height) / 2);
+    return CGRectMakeWithSize(minX, minY, size);
+}
 
+FOUNDATION_STATIC_INLINE CGRect CGRectXCenteredInRect(CGRect parentRect, CGFloat originY, CGSize size);
+FOUNDATION_STATIC_INLINE CGRect CGRectXCenteredInRect(CGRect parentRect, CGFloat originY, CGSize size){
+    CGFloat minX = CGRectGetMinX(parentRect) + round((CGRectGetWidth(parentRect) - size.width) / 2);
+    return CGRectMakeWithSize(minX, originY, size);
+}
+
+FOUNDATION_STATIC_INLINE CGRect CGRectYCenteredInRect(CGRect parentRect, CGFloat originX, CGSize size);
+FOUNDATION_STATIC_INLINE CGRect CGRectYCenteredInRect(CGRect parentRect, CGFloat originX, CGSize size){
+    CGFloat minY = CGRectGetMinY(parentRect) + round((CGRectGetHeight(parentRect) - size.height) / 2);
+    return CGRectMakeWithSize(originX, minY, size);
+}
 
 FOUNDATION_STATIC_INLINE CGPoint CGPointGetMidpoint(CGPoint p1,CGPoint p2);
 FOUNDATION_STATIC_INLINE CGPoint CGPointGetMidpoint(CGPoint p1,CGPoint p2){
