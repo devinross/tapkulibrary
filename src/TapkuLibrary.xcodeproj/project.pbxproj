@@ -269,6 +269,10 @@
 		20DE9F4A168FA1EF00655BF8 /* NSObject+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 20DE9F48168FA1EF00655BF8 /* NSObject+TKCategory.h */; };
 		20DE9F4B168FA1EF00655BF8 /* NSObject+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DE9F49168FA1EF00655BF8 /* NSObject+TKCategory.m */; };
 		20DE9F4C168FAC6000655BF8 /* NSObject+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DE9F49168FA1EF00655BF8 /* NSObject+TKCategory.m */; };
+		20EB5B901AD354E700100316 /* UIApplication+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 20EB5B8E1AD354E700100316 /* UIApplication+TKCategory.h */; };
+		20EB5B911AD354E700100316 /* UIApplication+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 20EB5B8F1AD354E700100316 /* UIApplication+TKCategory.m */; };
+		20EB5B921AD355F900100316 /* UIApplication+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 20EB5B8E1AD354E700100316 /* UIApplication+TKCategory.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		20EB5B931AD355FF00100316 /* UIApplication+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 20EB5B8F1AD354E700100316 /* UIApplication+TKCategory.m */; };
 		20F046631A40A09E004BF728 /* NSAttributedString+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 20F046611A40A09E004BF728 /* NSAttributedString+TKCategory.h */; };
 		20F046641A40A09E004BF728 /* NSAttributedString+TKCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F046621A40A09E004BF728 /* NSAttributedString+TKCategory.m */; };
 		20F046671A40A0F3004BF728 /* NSMutableAttributedString+TKCategory.h in Headers */ = {isa = PBXBuildFile; fileRef = 20F046651A40A0F3004BF728 /* NSMutableAttributedString+TKCategory.h */; };
@@ -480,6 +484,8 @@
 		20DAFB021814BAAC00EF525B /* TKRetroButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKRetroButton.m; sourceTree = "<group>"; };
 		20DE9F48168FA1EF00655BF8 /* NSObject+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TKCategory.h"; sourceTree = "<group>"; };
 		20DE9F49168FA1EF00655BF8 /* NSObject+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TKCategory.m"; sourceTree = "<group>"; };
+		20EB5B8E1AD354E700100316 /* UIApplication+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+TKCategory.h"; sourceTree = "<group>"; };
+		20EB5B8F1AD354E700100316 /* UIApplication+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+TKCategory.m"; sourceTree = "<group>"; };
 		20F046611A40A09E004BF728 /* NSAttributedString+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+TKCategory.h"; sourceTree = "<group>"; };
 		20F046621A40A09E004BF728 /* NSAttributedString+TKCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+TKCategory.m"; sourceTree = "<group>"; };
 		20F046651A40A0F3004BF728 /* NSMutableAttributedString+TKCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString+TKCategory.h"; sourceTree = "<group>"; };
@@ -917,6 +923,8 @@
 				20732DBF1800AA880011D714 /* UIFont+TKCategory.m */,
 				2070A16318C63AFB00D213FD /* UINavigationBar+TKCategory.h */,
 				2070A16418C63AFB00D213FD /* UINavigationBar+TKCategory.m */,
+				20EB5B8E1AD354E700100316 /* UIApplication+TKCategory.h */,
+				20EB5B8F1AD354E700100316 /* UIApplication+TKCategory.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -1019,6 +1027,7 @@
 				204C74091ABA0F9400A68988 /* NSString+TKCategory.h in Headers */,
 				204C740A1ABA0F9400A68988 /* NSArray+TKCategory.h in Headers */,
 				204C740B1ABA0F9400A68988 /* NSMutableArray+TKCategory.h in Headers */,
+				20EB5B921AD355F900100316 /* UIApplication+TKCategory.h in Headers */,
 				204C740C1ABA0F9400A68988 /* NSDate+TKCategory.h in Headers */,
 				204C740D1ABA0F9400A68988 /* NSAttributedString+TKCategory.h in Headers */,
 				204C740E1ABA0F9400A68988 /* NSMutableAttributedString+TKCategory.h in Headers */,
@@ -1114,6 +1123,7 @@
 				20A5FDBE1A8A6F80004D3E1A /* TKCurrentTimeLabel.h in Headers */,
 				3B6EDDDB11547C1100E454DA /* UIView+TKCategory.h in Headers */,
 				20DAFB031814BAAC00EF525B /* TKRetroButton.h in Headers */,
+				20EB5B901AD354E700100316 /* UIApplication+TKCategory.h in Headers */,
 				3B6EDDDC11547C1300E454DA /* UIImage+TKCategory.h in Headers */,
 				2011FB411A34DCFF00BBA432 /* TKExtendedScrollView.h in Headers */,
 				3B6EDDDF11547C1400E454DA /* TKWindow.h in Headers */,
@@ -1362,6 +1372,7 @@
 				204C745E1ABA0FFC00A68988 /* NSObject+TKCategory.m in Sources */,
 				204C745F1ABA0FFC00A68988 /* NSString+TKCategory.m in Sources */,
 				204C74601ABA0FFC00A68988 /* NSArray+TKCategory.m in Sources */,
+				20EB5B931AD355FF00100316 /* UIApplication+TKCategory.m in Sources */,
 				204C74611ABA0FFC00A68988 /* NSMutableArray+TKCategory.m in Sources */,
 				204C74621ABA0FFC00A68988 /* NSDate+TKCategory.m in Sources */,
 				204C74631ABA0FFC00A68988 /* NSAttributedString+TKCategory.m in Sources */,
@@ -1480,6 +1491,7 @@
 				2011FB421A34DCFF00BBA432 /* TKExtendedScrollView.m in Sources */,
 				3B6EDDD611547BF800E454DA /* TKGlobal.m in Sources */,
 				3B6EDDDA11547C1100E454DA /* UIView+TKCategory.m in Sources */,
+				20EB5B911AD354E700100316 /* UIApplication+TKCategory.m in Sources */,
 				209161661A48C1A500575988 /* TKPageControl.m in Sources */,
 				3B6EDDDD11547C1300E454DA /* UIImage+TKCategory.m in Sources */,
 				3B6EDDDE11547C1400E454DA /* TKWindow.m in Sources */,

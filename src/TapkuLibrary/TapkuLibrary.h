@@ -53,6 +53,7 @@
 #import "UIFont+TKCategory.h"
 #import "UINavigationBar+TKCategory.h"
 #import "UILabel+TKCategory.h"
+#import "UIApplication+TKCategory.h"
 
 // Animations
 #import "UIView+TKAnimation.h"
