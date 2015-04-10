@@ -53,4 +53,6 @@
 */
 + (UIColor *) randomColor;
 
++ (UIColor*) randomColorWithAlpha:(CGFloat)alpha;
+
 @end
