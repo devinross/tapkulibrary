@@ -48,7 +48,6 @@
 	self.circle = [[TKProgressCircleView alloc] init];
 	self.circle.center = CGPointMake(x,y);
 	self.circle.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-	[self.circle roundOffFrame];
 	[self.view addSubview:self.circle];
 	
 	

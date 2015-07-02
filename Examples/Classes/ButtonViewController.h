@@ -34,6 +34,5 @@
 @interface ButtonViewController : UIViewController
 
 @property (nonatomic,strong) TKRetroButton *retroButton;
-@property (nonatomic,strong) TKGlowButton *glowButton;
 
 @end

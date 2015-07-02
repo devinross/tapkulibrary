@@ -30,7 +30,6 @@
  */
 
 #import "TKProgressAlertView.h"
-#import "UIView+TKCategory.h"
 #import "TKGlobal.h"
 
 @implementation TKProgressAlertView

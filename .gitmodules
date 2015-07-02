@@ -1,0 +1,3 @@
+[submodule "Vendor/curry"]
+	path = Vendor/curry
+	url = git@github.com:devinross/curry.git

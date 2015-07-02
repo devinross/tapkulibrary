@@ -30,7 +30,6 @@
  */
 
 @import Foundation;
-#import "NSObject+TKCategory.h"
 
 #if NS_BLOCKS_AVAILABLE
 typedef void (^TKBasicBlock)(void);

@@ -31,7 +31,6 @@
 
 #import "TKAlertViewController.h"
 #import "TKGlobal.h"
-#import "UIDevice+TKCategory.h"
 
 @interface TKAlertViewController ()
 @property (nonatomic,strong) UIDynamicAnimator *animator;
@@ -47,7 +46,7 @@
 }
 
 - (NSUInteger) supportedInterfaceOrientations{
-	if([UIDevice padIdiom])
+	if([UIDevice currentDevice].padIdiom)
 		return UIInterfaceOrientationMaskAll;
 	return UIInterfaceOrientationMaskPortrait;
 }

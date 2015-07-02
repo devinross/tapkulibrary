@@ -31,7 +31,7 @@
 #import "NSDate+TKCategory.h"
 
 #pragma mark - NSDate + TKCategory
-@implementation NSDate (TKCategory)
+@implementation NSDate (Tapku)
 
 #pragma mark Yesterday
 + (NSDate*) yesterday{

@@ -43,11 +43,7 @@
 #import "ImageCenterViewController.h"
 #import "NetworkRequestProgressViewController.h"
 #import "CalendarDayViewController.h"
-#import "SlideToUnlockViewController.h"
 #import "ButtonViewController.h"
-#import "CustomKeyboardsViewController.h"
-#import "ControlsViewController.h"
-#import "MaterialViewController.h"
 
 @interface UINavigationController (Rotation_IOS6)
 @end
@@ -87,25 +83,19 @@
 #define EMPTY_SIGN NSLocalizedString(@"Empty Sign", @"")
 #define HUD NSLocalizedString(@"Loading HUD",@"")
 #define ALERTS NSLocalizedString(@"Alerts",@"")
-#define SLIDE NSLocalizedString(@"Slide to Unlock",@"")
 #define BUTTONS NSLocalizedString(@"Buttons",@"")
 #define LABEL_CELLS NSLocalizedString(@"Label Cells",@"")
 #define MORE_CELLS NSLocalizedString(@"More Cells",@"")
 #define IMAGE_CACHE NSLocalizedString(@"Image Cache",@"")
 #define HTTP_PROGRESS NSLocalizedString(@"HTTP Request Progress",@"")
-#define WEB_VC NSLocalizedString(@"Web View Controller",@"")
-#define CUSTOM_KEYBOARDS NSLocalizedString(@"Custom Keyboards",@"")
-#define MULTI_SWITCH NSLocalizedString(@"Multiswitch",@"")
-#define CARD_MODAL NSLocalizedString(@"Card Modal View Controller",@"")
-#define MATERIAL NSLocalizedString(@"Material Touch",@"")
 
 #pragma mark View Lifecycle
 - (void) viewDidLoad{
 	[super viewDidLoad];
 
 	self.data = @[
-  @{@"rows" : @[CARD_MODAL,WEB_VC,DAY_VIEW,MONTH_GRID,COVERFLOW], @"title" : @"Views"},
-  @{@"rows" : @[SLIDE,BUTTONS,MULTI_SWITCH,CUSTOM_KEYBOARDS,HUD,EMPTY_SIGN,ALERTS,MATERIAL], @"title" : @"UI Elements"},
+  @{@"rows" : @[DAY_VIEW,MONTH_GRID,COVERFLOW], @"title" : @"Views"},
+  @{@"rows" : @[BUTTONS,HUD,EMPTY_SIGN,ALERTS], @"title" : @"UI Elements"},
   @{@"rows" : @[LABEL_CELLS,MORE_CELLS], @"title" : @"Table View Cells"},
   @{@"rows" : @[IMAGE_CACHE,HTTP_PROGRESS], @"title" : @"Network"}];
 }
@@ -138,13 +128,7 @@
 	UIViewController *vc;
 	NSString *str = cell.textLabel.text;
 	
-	
-	if([str isEqualToString:CARD_MODAL]){
-		TKCardModalViewController *modal = [[TKCardModalViewController alloc] init];
-		[self presentViewController:modal animated:YES completion:nil];
-		return;
-	}
-	
+
 	
 	if([str isEqualToString:COVERFLOW]){
 		vc = [[CoverflowViewController alloc] init];
@@ -163,8 +147,7 @@
 	else if([str isEqualToString:DAY_VIEW])
 		vc = CalendarDayViewController.new;
 	
-	else if([str isEqualToString:MULTI_SWITCH])
-		vc = ControlsViewController.new;
+
 	
 	else if([str isEqualToString:EMPTY_SIGN])
 		vc = EmptyViewController.new;
@@ -172,16 +155,12 @@
 		vc = IndicatorsViewController.new;
 	else if([str isEqualToString:ALERTS])
 		vc = AlertsViewController.new;
-	else if([str isEqualToString:SLIDE])
-		vc = SlideToUnlockViewController.new;
+
 	else if([str isEqualToString:BUTTONS])
 		vc = ButtonViewController.new;
 	
-	else if([str isEqualToString:MATERIAL])
-		vc = MaterialViewController.new;
 	
-	else if([str isEqualToString:CUSTOM_KEYBOARDS])
-		vc = CustomKeyboardsViewController.new;
+
 	
 	else if([str isEqualToString:LABEL_CELLS])
 		vc = LabelViewController.new;
@@ -192,8 +171,6 @@
 		vc = ImageCenterViewController.new;
 	else if([str isEqualToString:HTTP_PROGRESS])
 		vc = NetworkRequestProgressViewController.new;
-	else if([str isEqualToString:WEB_VC])
-		vc = [[TKWebViewController alloc] initWithURL:[NSURL URLWithString:@"http://apple.com"]];
 	
 	
 	if(self.detailViewController && ([str isEqualToString:MONTH_GRID] || [str isEqualToString:DAY_VIEW]))

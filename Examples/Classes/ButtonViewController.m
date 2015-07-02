@@ -39,13 +39,7 @@
 	
 	CGFloat w = CGRectGetWidth(self.view.frame);
 	
-	self.glowButton = [TKGlowButton buttonWithFrame:CGRectMake(50, 100, w - 100, 40)];
-	self.glowButton.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-	[self.glowButton setTitle:@"Glow" forState:UIControlStateNormal];
-	[self.glowButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-	[self.glowButton setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.05] forState:UIControlStateNormal];
-	[self.glowButton setBackgroundColor:[UIColor colorWithWhite:0 alpha:0.2] forState:UIControlStateHighlighted];
-	[self.view addSubview:self.glowButton];
+
 	
 	self.retroButton = [TKRetroButton buttonWithFrame:CGRectMake(50, 200,  w - 100, 40)];
 	self.retroButton.autoresizingMask = UIViewAutoresizingFlexibleWidth;

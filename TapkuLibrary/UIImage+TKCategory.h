@@ -33,54 +33,9 @@
 @import UIKit;
 
 /** Additional functionality for `UIImage`.  */
-@interface UIImage (TKCategory)
+@interface UIImage (Tapku)
 
 + (UIImage*) imageNamedTK:(NSString*)path;
-
-- (UIImage *) imageCroppedToRect:(CGRect)rect;
-
-@property (nonatomic, readonly, strong) UIImage *squareImage;
-
-
-/** Creates and returns an image with the applyed lighting effect.
- @return An image with the applied lighting effect.
- */
-@property (nonatomic, readonly, strong) UIImage *imageByApplyingLightEffect;
-
-/** Creates and returns an image with the applyed lighting effect.
- @return An image with the applied lighting effect.
- */
-@property (nonatomic, readonly, strong) UIImage *imageByApplyingExtraLightEffect;
-
-/** Creates and returns an image with the applyed tint color.
- @param blurRadius the blur radius applied to the image
- @param saturation The saturation change applied to the original image. 1.0 is the default.
- @return An image with the applied tint effect.
- */
-- (UIImage*) imageByApplyingDarkEffectWithBlurRadius:(CGFloat)blurRadius saturationFactor:(CGFloat)saturation;
-
-
-/** Creates and returns an image with the a dark tint color applied.
- @return An image with the applied dark tint effect.
- */
-@property (nonatomic, readonly, strong) UIImage *imageByApplyingDarkEffect;
-
-
-/** Creates and returns an image with the applyed tint color.
- @param tintColor The color that will applied to the image. For subtle changes, make sure the alpha of the color is less than 1.
- @return An image with the applied tint effect.
- */
-- (UIImage *) imageByApplyingTintEffectWithColor:(UIColor *)tintColor;
-
-
-/** Creates and returns an image with the applyed blur, tint color, saturation change, and masked image.
- @param blurRadius the blur radius applied to the image
- @param tintColor The color that will applied to the image. For subtle changes, make sure the alpha of the color is less than 1.
- @param saturationDeltaFactor The saturation change applied to the original image. 1.0 is the default.
- @param maskImage The mask image applied to the original image.
- @return An image with the applied blur.
- */
-- (UIImage *) imageByApplyingBlurWithRadius:(CGFloat)blurRadius tintColor:(UIColor *)tintColor saturationDeltaFactor:(CGFloat)saturationDeltaFactor maskImage:(UIImage *)maskImage;
 
 
 @end

@@ -36,9 +36,7 @@
 @interface MoreCellsViewController : UITableViewController 
 
 @property (nonatomic,strong) TKButtonCell *buttonCell;
-@property (nonatomic,strong) TKSwitchCell *switchCell;
 @property (nonatomic,strong) TKTextViewCell *textViewCell;
 @property (nonatomic,strong) TKTextFieldCell *textFieldCell;
-@property (nonatomic,strong) TKStepperCell *stepperCell;
 
 @end

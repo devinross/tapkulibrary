@@ -31,7 +31,6 @@
 
 #import "TKViewController.h"
 #import "TKHTTPRequest.h"
-#import "NSArray+TKCategory.h"
 
 @interface TKViewController () {
 	NSMutableArray *_activeRequests;

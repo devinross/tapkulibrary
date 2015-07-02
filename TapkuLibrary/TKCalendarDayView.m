@@ -32,12 +32,6 @@
 #import "NSDate+TKCategory.h"
 #import "UIImage+TKCategory.h"
 #import "TKGlobal.h"
-#import "TKGradientView.h"
-#import "UIColor+TKCategory.h"
-#import "UIImageView+TKCategory.h"
-#import "UIView+TKCategory.h"
-#import "UIScreen+TKCategory.h"
-#import "UILabel+TKCategory.h"
 
 #define NOB_SIZE 6.0f
 #define TOP_BAR_HEIGHT 84.0

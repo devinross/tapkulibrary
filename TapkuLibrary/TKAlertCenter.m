@@ -30,7 +30,6 @@
  */
 
 #import "TKAlertCenter.h"
-#import "UIView+TKCategory.h"
 #import "TKGlobal.h"
 
 #pragma mark - TKAlertView
@@ -79,7 +78,8 @@
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     paragraphStyle.alignment = NSTextAlignmentCenter;
-    [_messageText drawInRect:_messageRect withAttributes:@{ NSFontAttributeName: [UIFont boldSystemFontOfSize:14], NSParagraphStyleAttributeName: paragraphStyle}];
+	NSDictionary *dict = @{ NSFontAttributeName: [UIFont boldSystemFontOfSize:14], NSParagraphStyleAttributeName: paragraphStyle, NSForegroundColorAttributeName : [UIColor whiteColor] };
+	[_messageText drawInRect:_messageRect withAttributes:dict];
 
 	
 	CGRect r = CGRectZero;

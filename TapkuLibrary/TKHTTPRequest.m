@@ -31,7 +31,6 @@
 
 #import "TKHTTPRequest.h"
 #import "TKNetworkQueue.h"
-#import "NSObject+TKCategory.h"
 
 
 typedef enum TKOperationState {

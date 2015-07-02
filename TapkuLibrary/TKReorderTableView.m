@@ -34,7 +34,6 @@
 
 
 #import "TKReorderTableView.h"
-#import "UIGestureRecognizer+TKCategory.h"
 
 @interface TKReorderTableView ()
 

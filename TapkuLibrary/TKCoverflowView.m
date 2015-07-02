@@ -30,8 +30,6 @@
  */
 
 #import "TKCoverflowView.h"
-#import "UIImageView+TKCategory.h"
-#import "TKGradientView.h"
 #import "TKGlobal.h"
 
 @interface TKCoverflowView (){

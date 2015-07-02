@@ -46,17 +46,11 @@
 	self.buttonCell = [[TKButtonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"button"];
 	self.buttonCell.textLabel.text = @"This is a Button Cell";
 	
-	self.switchCell = [[TKSwitchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-	self.switchCell.textLabel.text = @"Switch Cell";
-	
+
 	self.textFieldCell = [[TKTextFieldCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
 	self.textFieldCell.textField.text = @"Text field label";
 	
-	self.stepperCell = [[TKStepperCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:nil];
-	self.stepperCell.textLabel.text = @"Stepper Cell";
-	self.stepperCell.detailTextLabel.text = @"0";
-	[self.stepperCell.stepper addTarget:self action:@selector(changedStep:) forControlEvents:UIControlEventValueChanged];
-	
+
 	self.textViewCell = [[TKTextViewCell alloc]  initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
 	self.textViewCell.textView.font = self.textFieldCell.textField.font;
 	//self.textViewCell.textView.text = @"TextView Cell - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent blandit malesuada turpis quis egestas. Curabitur varius nunc nec leo tincidunt mattis. Cras malesuada euismod lobortis. Praesent ultrices malesuada lorem et convallis. Pellentesque hendrerit lectus eget felis rutrum vel volutpat nisl semper. Suspendisse consectetur sem eu arcu ullamcorper ut cursus est fringilla. Suspendisse blandit rhoncus nisi ac lacinia. Curabitur vestibulum mattis eros a accumsan. Morbi pulvinar consequat hendrerit. In hac habitasse platea dictumst. Mauris euismod convallis faucibus. Morbi faucibus ultricies elit, ac ullamcorper ipsum accumsan et.";
@@ -82,12 +76,6 @@
 			cell = self.buttonCell;
 			break;
 		case 1:
-			cell = self.switchCell;
-			break;
-		case 2:
-			cell = self.stepperCell;
-			break;
-		case 3:
 			cell = self.textFieldCell;
 			break;
 		default:
@@ -104,10 +92,6 @@
 }
 
 
-- (void) changedStep:(UIStepper*)stepper{
-	
-	self.stepperCell.detailTextLabel.text = [NSString stringWithFormat:@"%@",@(stepper.value)];
-	
-}
+
 
 @end

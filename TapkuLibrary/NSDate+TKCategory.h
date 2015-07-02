@@ -33,7 +33,7 @@
 
 #pragma mark - NSDate + TKCategory
 /** Additional functionality for `NSDate`. */
-@interface NSDate (TKCategory)
+@interface NSDate (Tapku)
 
 
 #pragma mark Yesterday

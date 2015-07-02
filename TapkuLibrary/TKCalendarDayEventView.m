@@ -30,7 +30,6 @@
  */
 
 #import "TKCalendarDayEventView.h"
-#import "UIColor+TKCategory.h"
 
 #define FONT_SIZE 12.0
 

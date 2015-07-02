@@ -11,7 +11,6 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		200B633A1AD807B60049E35C /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 200B63391AD807B60049E35C /* TapkuLibrary.bundle */; };
 		200B63501AD808E20049E35C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 200B634F1AD808E20049E35C /* Images.xcassets */; };
-		205164EA18DCBC9C0048E640 /* CustomKeyboardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 205164E918DCBC9C0048E640 /* CustomKeyboardsViewController.m */; };
 		2052AF6C168B83C600A49526 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052AF6B168B83C600A49526 /* main.m */; };
 		2052AF88168B83E900A49526 /* AlertsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052AF6F168B83E900A49526 /* AlertsViewController.m */; };
 		2052AF89168B83E900A49526 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2052AF71168B83E900A49526 /* AppDelegate.m */; };
@@ -43,23 +42,17 @@
 		2052AFC7168B840B00A49526 /* cover_7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2052AFAC168B840B00A49526 /* cover_7.jpg */; };
 		2052AFC8168B840B00A49526 /* cover_8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2052AFAD168B840B00A49526 /* cover_8.jpg */; };
 		2052AFC9168B840B00A49526 /* cover_9.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2052AFAE168B840B00A49526 /* cover_9.jpeg */; };
-		2053A4991961B5CC00A9E00D /* ControlsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2053A4981961B5CC00A9E00D /* ControlsViewController.m */; };
-		2091616E1A48C95000575988 /* MaterialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2091616D1A48C95000575988 /* MaterialViewController.m */; };
-		20A2A524174C37CF0058571F /* SlideToUnlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A2A523174C37CF0058571F /* SlideToUnlockViewController.m */; };
 		20CAEA9216F4EE6400D347E1 /* CalendarDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CAEA9116F4EE6400D347E1 /* CalendarDayViewController.m */; };
 		20DAFB071814BB0D00EF525B /* ButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAFB061814BB0D00EF525B /* ButtonViewController.m */; };
+		20F156441B44A81400D49391 /* curry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20F156431B44A81400D49391 /* curry.framework */; };
+		20F156451B44A81400D49391 /* curry.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20F156431B44A81400D49391 /* curry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		20F156481B44A81400D49391 /* tapku.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200B63461AD808260049E35C /* tapku.framework */; };
+		20F156491B44A81400D49391 /* tapku.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 200B63461AD808260049E35C /* tapku.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		3BF88C1B11E547BE00C9FC43 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BF88BEB11E547A000C9FC43 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		200B63431AD808260049E35C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 200B633D1AD808260049E35C /* tapku.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D;
-			remoteInfo = TapkuLibrary;
-		};
 		200B63451AD808260049E35C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 200B633D1AD808260049E35C /* tapku.xcodeproj */;
@@ -74,6 +67,13 @@
 			remoteGlobalIDString = 3B45DDF1134C736600D24C1A;
 			remoteInfo = LogicTests;
 		};
+		20F1564A1B44A81400D49391 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 200B633D1AD808260049E35C /* tapku.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 204C73E01ABA0EA600A68988;
+			remoteInfo = tapku;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,6 +83,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				20F156491B44A81400D49391 /* tapku.framework in Embed Frameworks */,
+				20F156451B44A81400D49391 /* curry.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,8 +98,6 @@
 		200B63391AD807B60049E35C /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = ../../TapkuLibrary.bundle; sourceTree = "<group>"; };
 		200B633D1AD808260049E35C /* tapku.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = tapku.xcodeproj; path = ../tapku.xcodeproj; sourceTree = "<group>"; };
 		200B634F1AD808E20049E35C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		205164E818DCBC9C0048E640 /* CustomKeyboardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomKeyboardsViewController.h; sourceTree = "<group>"; };
-		205164E918DCBC9C0048E640 /* CustomKeyboardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomKeyboardsViewController.m; sourceTree = "<group>"; };
 		2052AF6B168B83C600A49526 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2052AF6E168B83E900A49526 /* AlertsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertsViewController.h; sourceTree = "<group>"; };
 		2052AF6F168B83E900A49526 /* AlertsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertsViewController.m; sourceTree = "<group>"; };
@@ -141,16 +141,11 @@
 		2052AFAC168B840B00A49526 /* cover_7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_7.jpg; sourceTree = "<group>"; };
 		2052AFAD168B840B00A49526 /* cover_8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_8.jpg; sourceTree = "<group>"; };
 		2052AFAE168B840B00A49526 /* cover_9.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_9.jpeg; sourceTree = "<group>"; };
-		2053A4971961B5CC00A9E00D /* ControlsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlsViewController.h; sourceTree = "<group>"; };
-		2053A4981961B5CC00A9E00D /* ControlsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlsViewController.m; sourceTree = "<group>"; };
-		2091616C1A48C95000575988 /* MaterialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaterialViewController.h; sourceTree = "<group>"; };
-		2091616D1A48C95000575988 /* MaterialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaterialViewController.m; sourceTree = "<group>"; };
-		20A2A522174C37CF0058571F /* SlideToUnlockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideToUnlockViewController.h; sourceTree = "<group>"; };
-		20A2A523174C37CF0058571F /* SlideToUnlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideToUnlockViewController.m; sourceTree = "<group>"; };
 		20CAEA9016F4EE6400D347E1 /* CalendarDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarDayViewController.h; sourceTree = "<group>"; };
 		20CAEA9116F4EE6400D347E1 /* CalendarDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarDayViewController.m; sourceTree = "<group>"; };
 		20DAFB051814BB0D00EF525B /* ButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonViewController.h; sourceTree = "<group>"; };
 		20DAFB061814BB0D00EF525B /* ButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonViewController.m; sourceTree = "<group>"; };
+		20F156431B44A81400D49391 /* curry.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = curry.framework; path = "/Users/devinross/Library/Developer/Xcode/DerivedData/Examples-etjsrqeqzrntgvblytwmtovcigmm/Build/Products/Debug-iphoneos/curry.framework"; sourceTree = "<absolute>"; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* Examples_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Examples_Prefix.pch; sourceTree = "<group>"; };
 		3BF88BEB11E547A000C9FC43 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -162,9 +157,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20F156481B44A81400D49391 /* tapku.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
+				20F156441B44A81400D49391 /* curry.framework in Frameworks */,
 				3BF88C1B11E547BE00C9FC43 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -183,7 +180,6 @@
 		200B633E1AD808260049E35C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				200B63441AD808260049E35C /* libtapku.a */,
 				200B63461AD808260049E35C /* tapku.framework */,
 				200B63481AD808260049E35C /* LogicTests.xctest */,
 			);
@@ -283,22 +279,14 @@
 		2052AFD2168B855300A49526 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				2091616C1A48C95000575988 /* MaterialViewController.h */,
-				2091616D1A48C95000575988 /* MaterialViewController.m */,
 				2052AF78168B83E900A49526 /* EmptyViewController.h */,
 				2052AF79168B83E900A49526 /* EmptyViewController.m */,
 				2052AF7A168B83E900A49526 /* IndicatorsViewController.h */,
 				2052AF7B168B83E900A49526 /* IndicatorsViewController.m */,
 				2052AF6E168B83E900A49526 /* AlertsViewController.h */,
 				2052AF6F168B83E900A49526 /* AlertsViewController.m */,
-				20A2A522174C37CF0058571F /* SlideToUnlockViewController.h */,
-				20A2A523174C37CF0058571F /* SlideToUnlockViewController.m */,
 				20DAFB051814BB0D00EF525B /* ButtonViewController.h */,
 				20DAFB061814BB0D00EF525B /* ButtonViewController.m */,
-				205164E818DCBC9C0048E640 /* CustomKeyboardsViewController.h */,
-				205164E918DCBC9C0048E640 /* CustomKeyboardsViewController.m */,
-				2053A4971961B5CC00A9E00D /* ControlsViewController.h */,
-				2053A4981961B5CC00A9E00D /* ControlsViewController.m */,
 			);
 			name = Elements;
 			sourceTree = "<group>";
@@ -342,6 +330,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				20F156431B44A81400D49391 /* curry.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
@@ -365,6 +354,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				20F1564B1B44A81400D49391 /* PBXTargetDependency */,
 			);
 			name = Examples;
 			productName = unviersaldemo;
@@ -405,13 +395,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		200B63441AD808260049E35C /* libtapku.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libtapku.a;
-			remoteRef = 200B63431AD808260049E35C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		200B63461AD808260049E35C /* tapku.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -475,17 +458,21 @@
 				2052AF90168B83E900A49526 /* LabelViewController.m in Sources */,
 				2052AF92168B83E900A49526 /* MoreCellsViewController.m in Sources */,
 				2052AF93168B83E900A49526 /* NetworkRequestProgressViewController.m in Sources */,
-				2091616E1A48C95000575988 /* MaterialViewController.m in Sources */,
 				20DAFB071814BB0D00EF525B /* ButtonViewController.m in Sources */,
 				2052AF94168B83E900A49526 /* RootViewController.m in Sources */,
-				205164EA18DCBC9C0048E640 /* CustomKeyboardsViewController.m in Sources */,
 				20CAEA9216F4EE6400D347E1 /* CalendarDayViewController.m in Sources */,
-				2053A4991961B5CC00A9E00D /* ControlsViewController.m in Sources */,
-				20A2A524174C37CF0058571F /* SlideToUnlockViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		20F1564B1B44A81400D49391 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = tapku;
+			targetProxy = 20F1564A1B44A81400D49391 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
@@ -498,6 +485,10 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				DEFINES_MODULE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Examples-etjsrqeqzrntgvblytwmtovcigmm/Build/Products/Debug-iphoneos",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -526,6 +517,10 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				DEFINES_MODULE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Examples-etjsrqeqzrntgvblytwmtovcigmm/Build/Products/Debug-iphoneos",
+				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Examples_Prefix.pch;
