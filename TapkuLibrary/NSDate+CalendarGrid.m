@@ -30,7 +30,6 @@
  */
 
 #import "NSDate+CalendarGrid.h"
-#import "NSDate+TKCategory.h"
 
 @implementation NSDate (CalendarGrid)
 

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7F91018C-F646-4DD6-892F-661B1A7E8A09</string>
+	<key>IDESourceControlProjectName</key>
+	<string>tapku</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>771CDDC8828BA5C85B70BAEAFD5C3B58BF9E0AE2</key>
+		<string>github.com:devinross/curry.git</string>
+		<key>EE5017F42780957232AFF14DD75D9A51833942BE</key>
+		<string>github.com:devinross/tapkulibrary.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>tapku.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>771CDDC8828BA5C85B70BAEAFD5C3B58BF9E0AE2</key>
+		<string>../..Vendor/curry</string>
+		<key>EE5017F42780957232AFF14DD75D9A51833942BE</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:devinross/tapkulibrary.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EE5017F42780957232AFF14DD75D9A51833942BE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>771CDDC8828BA5C85B70BAEAFD5C3B58BF9E0AE2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>curry</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EE5017F42780957232AFF14DD75D9A51833942BE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>tapkulibrary</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -29,7 +29,6 @@
  */
 
 #import "TKCalendarDayView.h"
-#import "NSDate+TKCategory.h"
 #import "UIImage+TKCategory.h"
 #import "TKGlobal.h"
 

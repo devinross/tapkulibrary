@@ -30,7 +30,6 @@
  */
 
 #import "TKCalendarMonthView.h"
-#import "NSDate+TKCategory.h"
 #import "TKGlobal.h"
 #import "UIImage+TKCategory.h"
 #import "NSDate+CalendarGrid.h"
