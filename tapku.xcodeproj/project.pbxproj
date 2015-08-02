@@ -24,7 +24,6 @@
 		204C74381ABA0F9600A68988 /* TKCalendarDayViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A0510953E2400F235F1 /* TKCalendarDayViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		204C74391ABA0F9600A68988 /* TKCalendarDayView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A0310953E2400F235F1 /* TKCalendarDayView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		204C743A1ABA0F9600A68988 /* TKCalendarDayEventView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BAC9A0110953E2400F235F1 /* TKCalendarDayEventView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		204C743B1ABA0F9600A68988 /* TKLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 20FC7CBA1719313A00C3A7E1 /* TKLoadingView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		204C743C1ABA0F9600A68988 /* TKAlertCenter.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BD32970125B753900BE5EAF /* TKAlertCenter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		204C743D1ABA0F9600A68988 /* TKProgressAlertView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BA577B81199DF1600ECB85B /* TKProgressAlertView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		204C743E1ABA0F9600A68988 /* TKProgressBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3BB92D2011896022002FA0F9 /* TKProgressBarView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -56,7 +55,6 @@
 		204C748E1ABA0FFC00A68988 /* TKCalendarDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A0610953E2400F235F1 /* TKCalendarDayViewController.m */; };
 		204C748F1ABA0FFC00A68988 /* TKCalendarDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A0410953E2400F235F1 /* TKCalendarDayView.m */; };
 		204C74901ABA0FFC00A68988 /* TKCalendarDayEventView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BAC9A0210953E2400F235F1 /* TKCalendarDayEventView.m */; };
-		204C74911ABA0FFC00A68988 /* TKLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20FC7CBB1719313A00C3A7E1 /* TKLoadingView.m */; };
 		204C74921ABA0FFC00A68988 /* TKAlertCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD32971125B753900BE5EAF /* TKAlertCenter.m */; };
 		204C74931ABA0FFC00A68988 /* TKProgressAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BA577B91199DF1600ECB85B /* TKProgressAlertView.m */; };
 		204C74941ABA0FFC00A68988 /* TKProgressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB92D2111896022002FA0F9 /* TKProgressBarView.m */; };
@@ -115,8 +113,6 @@
 		20DAFB021814BAAC00EF525B /* TKRetroButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKRetroButton.m; sourceTree = "<group>"; };
 		20F156331B44A31600D49391 /* curry.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = curry.xcodeproj; path = Vendor/curry/curry.xcodeproj; sourceTree = "<group>"; };
 		20F6153917E6741D007F443C /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		20FC7CBA1719313A00C3A7E1 /* TKLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKLoadingView.h; sourceTree = "<group>"; };
-		20FC7CBB1719313A00C3A7E1 /* TKLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKLoadingView.m; sourceTree = "<group>"; };
 		3B17D26A142E31C40090616F /* TKHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKHTTPRequest.h; sourceTree = "<group>"; };
 		3B17D26B142E31C40090616F /* TKHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKHTTPRequest.m; sourceTree = "<group>"; };
 		3B17D287142E3CD40090616F /* TKNetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKNetworkQueue.h; sourceTree = "<group>"; };
@@ -357,8 +353,6 @@
 		3BAC9A3E10953E5200F235F1 /* Indicators */ = {
 			isa = PBXGroup;
 			children = (
-				20FC7CBA1719313A00C3A7E1 /* TKLoadingView.h */,
-				20FC7CBB1719313A00C3A7E1 /* TKLoadingView.m */,
 				3BD32970125B753900BE5EAF /* TKAlertCenter.h */,
 				3BD32971125B753900BE5EAF /* TKAlertCenter.m */,
 				3BA577B81199DF1600ECB85B /* TKProgressAlertView.h */,
@@ -451,7 +445,6 @@
 				204C74381ABA0F9600A68988 /* TKCalendarDayViewController.h in Headers */,
 				204C74391ABA0F9600A68988 /* TKCalendarDayView.h in Headers */,
 				204C743A1ABA0F9600A68988 /* TKCalendarDayEventView.h in Headers */,
-				204C743B1ABA0F9600A68988 /* TKLoadingView.h in Headers */,
 				204C743C1ABA0F9600A68988 /* TKAlertCenter.h in Headers */,
 				204C743D1ABA0F9600A68988 /* TKProgressAlertView.h in Headers */,
 				204C743E1ABA0F9600A68988 /* TKProgressBarView.h in Headers */,
@@ -623,7 +616,6 @@
 				204C748E1ABA0FFC00A68988 /* TKCalendarDayViewController.m in Sources */,
 				204C748F1ABA0FFC00A68988 /* TKCalendarDayView.m in Sources */,
 				204C74901ABA0FFC00A68988 /* TKCalendarDayEventView.m in Sources */,
-				204C74911ABA0FFC00A68988 /* TKLoadingView.m in Sources */,
 				204C74921ABA0FFC00A68988 /* TKAlertCenter.m in Sources */,
 				204C74931ABA0FFC00A68988 /* TKProgressAlertView.m in Sources */,
 				204C74941ABA0FFC00A68988 /* TKProgressBarView.m in Sources */,

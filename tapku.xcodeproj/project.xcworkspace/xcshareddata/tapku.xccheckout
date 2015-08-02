@@ -20,7 +20,7 @@
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>771CDDC8828BA5C85B70BAEAFD5C3B58BF9E0AE2</key>
-		<string>../..Vendor/curry</string>
+		<string>../..Vendor/curry/</string>
 		<key>EE5017F42780957232AFF14DD75D9A51833942BE</key>
 		<string>../..</string>
 	</dict>
