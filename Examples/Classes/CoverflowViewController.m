@@ -33,7 +33,7 @@
 #pragma mark - CoverflowViewController
 @implementation CoverflowViewController
 
-- (NSUInteger) supportedInterfaceOrientations{
+- (UIInterfaceOrientationMask) supportedInterfaceOrientations{
 	return  UIInterfaceOrientationMaskLandscapeLeft | UIInterfaceOrientationMaskLandscapeRight;
 }
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

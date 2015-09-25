@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "EE5017F42780957232AFF14DD75D9A51833942BE",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "EE5017F42780957232AFF14DD75D9A51833942BE" : 0,
+    "771CDDC8828BA5C85B70BAEAFD5C3B58BF9E0AE2" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "422A1A24-BF3B-41EA-AA02-E37C392352B8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "EE5017F42780957232AFF14DD75D9A51833942BE" : "tapkulibrary",
+    "771CDDC8828BA5C85B70BAEAFD5C3B58BF9E0AE2" : "tapkulibrary\/Vendor\/curry"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Examples",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Examples\/Examples.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:devinross\/curry.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "771CDDC8828BA5C85B70BAEAFD5C3B58BF9E0AE2"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:devinross\/tapkulibrary.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EE5017F42780957232AFF14DD75D9A51833942BE"
+    }
+  ]
+}

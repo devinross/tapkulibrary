@@ -80,6 +80,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2002F2361BB54A0900B565DA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20F156331B44A31600D49391 /* curry.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 20CEA42B1BA1105D0009D60C;
+			remoteInfo = curryTV;
+		};
+		2002F2381BB54A0900B565DA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20F156331B44A31600D49391 /* curry.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2010DCB01BB0E40E00810A98;
+			remoteInfo = curryWatch;
+		};
+		2002F23A1BB54A0900B565DA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20F156331B44A31600D49391 /* curry.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 20B5FE1F1BB3613F00C0F848;
+			remoteInfo = curryMac;
+		};
 		20F156391B44A31700D49391 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 20F156331B44A31600D49391 /* curry.xcodeproj */;
@@ -240,6 +261,9 @@
 			children = (
 				20F1563A1B44A31700D49391 /* curry.framework */,
 				20F1563C1B44A31700D49391 /* curryTests.xctest */,
+				2002F2371BB54A0900B565DA /* curryTV.framework */,
+				2002F2391BB54A0900B565DA /* curryWatch.framework */,
+				2002F23B1BB54A0900B565DA /* curryMac.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -512,7 +536,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TK;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				TargetAttributes = {
 					204C73E01ABA0EA600A68988 = {
 						CreatedOnToolsVersion = 6.3;
@@ -547,6 +571,27 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		2002F2371BB54A0900B565DA /* curryTV.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = curryTV.framework;
+			remoteRef = 2002F2361BB54A0900B565DA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2002F2391BB54A0900B565DA /* curryWatch.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = curryWatch.framework;
+			remoteRef = 2002F2381BB54A0900B565DA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2002F23B1BB54A0900B565DA /* curryMac.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = curryMac.framework;
+			remoteRef = 2002F23A1BB54A0900B565DA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		20F1563A1B44A31700D49391 /* curry.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -649,6 +694,7 @@
 		1DEB922308733DC00010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -726,6 +772,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.devinross.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -774,6 +821,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.devinross.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -808,6 +856,7 @@
 					"-framework",
 					UIKit,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yourcompany.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = LogicTests;
 				SDKROOT = iphoneos;
 			};
@@ -837,6 +886,7 @@
 					"-framework",
 					UIKit,
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.yourcompany.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = LogicTests;
 				SDKROOT = iphoneos;
 				ZERO_LINK = NO;

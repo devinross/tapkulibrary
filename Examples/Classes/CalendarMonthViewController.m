@@ -34,7 +34,7 @@
 #pragma mark - CalendarMonthViewController
 @implementation CalendarMonthViewController
 
-- (NSUInteger) supportedInterfaceOrientations{
+- (UIInterfaceOrientationMask) supportedInterfaceOrientations{
 	return  UIInterfaceOrientationMaskPortrait;
 }
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

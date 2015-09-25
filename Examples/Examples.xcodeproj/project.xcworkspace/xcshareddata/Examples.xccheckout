@@ -5,9 +5,9 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>7F91018C-F646-4DD6-892F-661B1A7E8A09</string>
+	<string>422A1A24-BF3B-41EA-AA02-E37C392352B8</string>
 	<key>IDESourceControlProjectName</key>
-	<string>tapku</string>
+	<string>Examples</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>771CDDC8828BA5C85B70BAEAFD5C3B58BF9E0AE2</key>
@@ -16,13 +16,13 @@
 		<string>github.com:devinross/tapkulibrary.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>tapku.xcodeproj</string>
+	<string>Examples/Examples.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>771CDDC8828BA5C85B70BAEAFD5C3B58BF9E0AE2</key>
-		<string>../..Vendor/curry</string>
+		<string>../../../Vendor/curry/</string>
 		<key>EE5017F42780957232AFF14DD75D9A51833942BE</key>
-		<string>../..</string>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:devinross/tapkulibrary.git</string>

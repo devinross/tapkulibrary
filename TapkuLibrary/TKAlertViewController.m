@@ -45,7 +45,7 @@
 	return self;
 }
 
-- (NSUInteger) supportedInterfaceOrientations{
+- (UIInterfaceOrientationMask) supportedInterfaceOrientations{
 	if([UIDevice currentDevice].padIdiom)
 		return UIInterfaceOrientationMaskAll;
 	return UIInterfaceOrientationMaskPortrait;
