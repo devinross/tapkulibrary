@@ -51,7 +51,7 @@
  @param timeZone The time zone of the grid,
  @return A `TKCalendarMonthView` object or nil.
  */
-- (instancetype) initWithSundayAsFirst:(BOOL)sunday timeZone:(NSTimeZone*)timeZone NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithSundayAsFirst:(BOOL)sunday timeZone:(NSTimeZone*)timeZone;
 
 /** Initialize a Calendar Month Grid.
  @param sunday Flag to setup the grid with Monday or Sunday as the leftmost day.

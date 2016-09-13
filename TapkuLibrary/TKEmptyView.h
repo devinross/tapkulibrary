@@ -75,7 +75,7 @@ typedef NS_ENUM(NSInteger, TKEmptyViewImage) {
 - (instancetype) initWithFrame:(CGRect)frame 
 				mask:(UIImage*)image 
 			   title:(NSString*)titleString 
-			subtitle:(NSString*)subtitleString NS_DESIGNATED_INITIALIZER;
+			subtitle:(NSString*)subtitleString;
 
 /** Initializes an empty view with the given `TKEmptyViewImage`.
  

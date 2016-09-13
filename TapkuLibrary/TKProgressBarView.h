@@ -48,7 +48,7 @@ typedef NS_ENUM(NSInteger, TKProgressBarViewStyle) {
  @param style The style of the progress bar.
  @return A progress bar or nil.
  */
-- (instancetype) initWithStyle:(TKProgressBarViewStyle)style NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithStyle:(TKProgressBarViewStyle)style;
 
 /** The progress. */
 @property (nonatomic,assign) float progress; // a value between 0.0 and 1.0

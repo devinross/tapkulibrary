@@ -2,6 +2,16 @@
   "images" : [
     {
       "idiom" : "iphone",
+      "size" : "20x20",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "size" : "20x20",
+      "scale" : "3x"
+    },
+    {
+      "idiom" : "iphone",
       "size" : "29x29",
       "scale" : "1x"
     },
@@ -46,6 +56,16 @@
       "idiom" : "iphone",
       "filename" : "iphone@3x.png",
       "scale" : "3x"
+    },
+    {
+      "idiom" : "ipad",
+      "size" : "20x20",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "ipad",
+      "size" : "20x20",
+      "scale" : "2x"
     },
     {
       "idiom" : "ipad",
@@ -100,9 +120,9 @@
       "scale" : "2x"
     },
     {
-      "idiom" : "car",
-      "size" : "120x120",
-      "scale" : "1x"
+      "idiom" : "ipad",
+      "size" : "83.5x83.5",
+      "scale" : "2x"
     },
     {
       "size" : "24x24",
@@ -157,6 +177,11 @@
       "scale" : "2x",
       "role" : "quickLook",
       "subtype" : "42mm"
+    },
+    {
+      "idiom" : "car",
+      "size" : "120x120",
+      "scale" : "1x"
     },
     {
       "size" : "40x40",

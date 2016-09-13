@@ -42,10 +42,10 @@
 		2052AFC7168B840B00A49526 /* cover_7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2052AFAC168B840B00A49526 /* cover_7.jpg */; };
 		2052AFC8168B840B00A49526 /* cover_8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2052AFAD168B840B00A49526 /* cover_8.jpg */; };
 		2052AFC9168B840B00A49526 /* cover_9.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2052AFAE168B840B00A49526 /* cover_9.jpeg */; };
+		209D2F7C1D8895EF006E6013 /* curry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 209D2F731D8895E7006E6013 /* curry.framework */; };
+		209D2F7D1D8895EF006E6013 /* curry.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 209D2F731D8895E7006E6013 /* curry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		20CAEA9216F4EE6400D347E1 /* CalendarDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20CAEA9116F4EE6400D347E1 /* CalendarDayViewController.m */; };
 		20DAFB071814BB0D00EF525B /* ButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DAFB061814BB0D00EF525B /* ButtonViewController.m */; };
-		20F156441B44A81400D49391 /* curry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20F156431B44A81400D49391 /* curry.framework */; };
-		20F156451B44A81400D49391 /* curry.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20F156431B44A81400D49391 /* curry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		20F156481B44A81400D49391 /* tapku.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200B63461AD808260049E35C /* tapku.framework */; };
 		20F156491B44A81400D49391 /* tapku.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 200B63461AD808260049E35C /* tapku.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
@@ -67,6 +67,48 @@
 			remoteGlobalIDString = 3B45DDF1134C736600D24C1A;
 			remoteInfo = LogicTests;
 		};
+		209D2F721D8895E7006E6013 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 209D2F691D8895E7006E6013 /* curry.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 200B62551AD7FB460049E35C;
+			remoteInfo = curry;
+		};
+		209D2F741D8895E7006E6013 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 209D2F691D8895E7006E6013 /* curry.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 200B62601AD7FB460049E35C;
+			remoteInfo = curryTests;
+		};
+		209D2F761D8895E7006E6013 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 209D2F691D8895E7006E6013 /* curry.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 20CEA42B1BA1105D0009D60C;
+			remoteInfo = curryTV;
+		};
+		209D2F781D8895E7006E6013 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 209D2F691D8895E7006E6013 /* curry.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2010DCB01BB0E40E00810A98;
+			remoteInfo = curryWatch;
+		};
+		209D2F7A1D8895E7006E6013 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 209D2F691D8895E7006E6013 /* curry.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 20B5FE1F1BB3613F00C0F848;
+			remoteInfo = curryMac;
+		};
+		209D2F7E1D8895EF006E6013 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 209D2F691D8895E7006E6013 /* curry.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 200B62541AD7FB450049E35C;
+			remoteInfo = curry;
+		};
 		20F1564A1B44A81400D49391 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 200B633D1AD808260049E35C /* tapku.xcodeproj */;
@@ -83,8 +125,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				209D2F7D1D8895EF006E6013 /* curry.framework in Embed Frameworks */,
 				20F156491B44A81400D49391 /* tapku.framework in Embed Frameworks */,
-				20F156451B44A81400D49391 /* curry.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,6 +183,7 @@
 		2052AFAC168B840B00A49526 /* cover_7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_7.jpg; sourceTree = "<group>"; };
 		2052AFAD168B840B00A49526 /* cover_8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_8.jpg; sourceTree = "<group>"; };
 		2052AFAE168B840B00A49526 /* cover_9.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover_9.jpeg; sourceTree = "<group>"; };
+		209D2F691D8895E7006E6013 /* curry.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = curry.xcodeproj; path = ../Vendor/curry/curry.xcodeproj; sourceTree = "<group>"; };
 		20CAEA9016F4EE6400D347E1 /* CalendarDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarDayViewController.h; sourceTree = "<group>"; };
 		20CAEA9116F4EE6400D347E1 /* CalendarDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarDayViewController.m; sourceTree = "<group>"; };
 		20DAFB051814BB0D00EF525B /* ButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonViewController.h; sourceTree = "<group>"; };
@@ -157,11 +200,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				209D2F7C1D8895EF006E6013 /* curry.framework in Frameworks */,
 				20F156481B44A81400D49391 /* tapku.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
-				20F156441B44A81400D49391 /* curry.framework in Frameworks */,
 				3BF88C1B11E547BE00C9FC43 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,10 +347,23 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		209D2F6A1D8895E7006E6013 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				209D2F731D8895E7006E6013 /* curry.framework */,
+				209D2F751D8895E7006E6013 /* curryTests.xctest */,
+				209D2F771D8895E7006E6013 /* curryTV.framework */,
+				209D2F791D8895E7006E6013 /* curryWatch.framework */,
+				209D2F7B1D8895E7006E6013 /* curryMac.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
 				200B633D1AD808260049E35C /* tapku.xcodeproj */,
+				209D2F691D8895E7006E6013 /* curry.xcodeproj */,
 				2052AF6D168B83E900A49526 /* Classes */,
 				2052AF95168B840B00A49526 /* Assets */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -355,6 +411,7 @@
 			);
 			dependencies = (
 				20F1564B1B44A81400D49391 /* PBXTargetDependency */,
+				209D2F7F1D8895EF006E6013 /* PBXTargetDependency */,
 			);
 			name = Examples;
 			productName = unviersaldemo;
@@ -367,7 +424,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Examples" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -382,6 +439,10 @@
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 209D2F6A1D8895E7006E6013 /* Products */;
+					ProjectRef = 209D2F691D8895E7006E6013 /* curry.xcodeproj */;
+				},
 				{
 					ProductGroup = 200B633E1AD808260049E35C /* Products */;
 					ProjectRef = 200B633D1AD808260049E35C /* tapku.xcodeproj */;
@@ -407,6 +468,41 @@
 			fileType = wrapper.cfbundle;
 			path = LogicTests.xctest;
 			remoteRef = 200B63471AD808260049E35C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		209D2F731D8895E7006E6013 /* curry.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = curry.framework;
+			remoteRef = 209D2F721D8895E7006E6013 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		209D2F751D8895E7006E6013 /* curryTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = curryTests.xctest;
+			remoteRef = 209D2F741D8895E7006E6013 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		209D2F771D8895E7006E6013 /* curryTV.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = curryTV.framework;
+			remoteRef = 209D2F761D8895E7006E6013 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		209D2F791D8895E7006E6013 /* curryWatch.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = curryWatch.framework;
+			remoteRef = 209D2F781D8895E7006E6013 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		209D2F7B1D8895E7006E6013 /* curryMac.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = curryMac.framework;
+			remoteRef = 209D2F7A1D8895E7006E6013 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -467,6 +563,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		209D2F7F1D8895EF006E6013 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = curry;
+			targetProxy = 209D2F7E1D8895EF006E6013 /* PBXContainerItemProxy */;
+		};
 		20F1564B1B44A81400D49391 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = tapku;
@@ -478,6 +579,7 @@
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -485,10 +587,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				DEFINES_MODULE = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Examples-etjsrqeqzrntgvblytwmtovcigmm/Build/Products/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -511,6 +610,7 @@
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -518,10 +618,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				DEFINES_MODULE = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Examples-etjsrqeqzrntgvblytwmtovcigmm/Build/Products/Debug-iphoneos",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Examples_Prefix.pch;
@@ -544,14 +641,30 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"-all_load",
@@ -565,14 +678,30 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_ENABLE_SYMBOL_SEPARATION = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_VERSION = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = (
